@@ -1,7 +1,8 @@
+from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium import webdriver
+import os
 import time
 
 driver = webdriver.Chrome()
@@ -23,7 +24,7 @@ try:
     driver.find_element(By.CSS_SELECTOR, ('.login.flex-row')).click()
     # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
 
-    driver.find_element(By.CSS_SELECTOR, ('a[href="/company/registration"]')).click()
+    driver.find_element(By.CSS_SELECTOR, ('#employer a[href="/company/registration"]')).click()
     # нажатие на кнопку для перехона на страницу регистрации
 
     driver.find_element(By.CSS_SELECTOR, ('#' + inputPrefix + 'login')).send_keys(login + str(int(timeNow)))
@@ -36,7 +37,7 @@ try:
     driver.find_element(By.CSS_SELECTOR, ('#' + inputPrefix + 'surname')).send_keys('surname' + str(int(timeNow)))
     driver.find_element(By.CSS_SELECTOR, ('#' + inputPrefix + 'position')).send_keys('position' + str(int(timeNow)))
     driver.find_element(By.CSS_SELECTOR, ('#' + inputPrefix + 'phone')).send_keys('+38(010)000-00-00' + str(int(timeNow)))
-    driver.find_element(By.CSS_SELECTOR, ('#' + inputPrefix + 'contact_email')).send_keys('email' + str(int(timeNow)) + email[1])
+    driver.find_element(By.CSS_SELECTOR, ('#' + inputPrefix + 'contact_email')).send_keys('contact_email' + str(int(timeNow)) + email[1])
     driver.find_element(By.CSS_SELECTOR, ('#' + inputPrefix + 'skype')).send_keys('skype' + str(int(timeNow)))
     # заполнение блока "Контактная информация"
 
@@ -69,13 +70,21 @@ try:
     driver.find_element(By.CSS_SELECTOR, ('#' + inputPrefix + 'count_employees > option:nth-child(8)')).click()  # Количество сотрудников компании
 
     iframe = driver.find_element(By.CSS_SELECTOR, ('iframe.cke_wysiwyg_frame'))
-    driver.switch_to.frame(iframe)  # вход в фрейма
+    driver.switch_to.frame(iframe)  # вход в фрейм
     CKEditor = driver.find_element(By.CSS_SELECTOR, ('body.cke_editable'))
     CKEditor.clear()
     CKEditor.send_keys("CKEditor" + str(int(timeNow)))
     driver.switch_to.default_content()  # выход из фрейма
-    # ввод данных в CKEditor
+    # ввод данных в CKEditor (поле " Описание компании")
     # заполнение блока "Информация о компании"
+
+    current_dir = os.path.abspath(os.path.dirname(__file__))
+    file_path = os.path.join(current_dir, 'логотип 170х85.jpg')
+    driver.find_element(By.CSS_SELECTOR, ('#' + inputPrefix + 'logo')).send_keys(file_path)
+
+    file_path = os.path.join(current_dir, 'обложка 1920х230.png')
+    driver.find_element(By.CSS_SELECTOR, ('#' + inputPrefix + 'cover')).send_keys(file_path)
+    # заполнение блока "Оформление профиля"
 
     driver.find_element(By.CSS_SELECTOR, ('#' + inputPrefix + 'video1')).send_keys('http://video1' + str(int(timeNow)) + '.com')
     driver.find_element(By.CSS_SELECTOR, ('#' + inputPrefix + 'video2')).send_keys('http://video2' + str(int(timeNow)) + '.com')

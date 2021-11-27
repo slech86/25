@@ -1,3 +1,6 @@
 /venv/
 /environments/
 /.idea/
+/.pytest_cache/
+Page_Object_Model/geckodriver.log
+Page_Object_Model/reports/assets/
