@@ -8,7 +8,7 @@ class OllPageLocators():
 class RegistrationPageLocators():
     inputPrefix = 'companyregistrationform-'
 
-    FIELD_LOGIN = (By.CSS_SELECTOR, '#' + inputPrefix + 'login')
+    FIELD_LOGIN = (By.CSS_SELECTOR, ('#' + inputPrefix + 'login'))
     FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'email'))
     FIELD_PASSWORD = (By.CSS_SELECTOR, ('#' + inputPrefix + 'password'))
     FIELD_REPEAT_PASSWORD = (By.CSS_SELECTOR, ('#' + inputPrefix + 'repeatpassword'))
@@ -46,10 +46,10 @@ class RegistrationPageLocators():
     FIELD_TWITTER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'twitter'))
     FIELD_VK = (By.CSS_SELECTOR, ('#' + inputPrefix + 'vk'))
 
-    COMPANY_ACTIVITY = "document.getElementsByName('CompanyRegistrationForm[activity][]')[15].click()"
-    NUMBER_OF_COMPANY_EMPLOYEES= (By.CSS_SELECTOR, ('#' + inputPrefix + 'count_employees > option:nth-child(8)'))
+    COMPANY_ACTIVITY = "document.getElementsByName('CompanyRegistrationForm[activity][]')[15].click()"  # Сфера деятельности компании
+    NUMBER_OF_COMPANY_EMPLOYEES = (By.CSS_SELECTOR, ('#' + inputPrefix + 'count_employees > option:nth-child(8)'))  # Количество сотрудников компании
 
-    IFRAME = (By.CSS_SELECTOR, ('iframe.cke_wysiwyg_frame'))
+    IFRAME_CKEDITOR = (By.CSS_SELECTOR, ('iframe.cke_wysiwyg_frame'))
     CKEDITOR = (By.CSS_SELECTOR, ('body.cke_editable'))
     # заполнение блока "Информация о компании"
 
@@ -58,8 +58,28 @@ class RegistrationPageLocators():
 
     FIELD_VIDEO1 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video1'))
     FIELD_VIDEO2 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video2'))
-    FIELD_VIDEO_ADD = (By.CSS_SELECTOR, ('.js-add-video'))
+    BUTTON_VIDEO_ADD = (By.CSS_SELECTOR, ('.js-add-video'))
     FIELD_VIDEO3 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video3'))
     # заполнение блока "Видео"
 
     BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#submit-button'))
+
+class MainPageLocators():
+    INFO_TEXT_ABOUT_SENDING_EMPLOYER_REGISTRATION_FORM = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст о подтверждении отправки формы регистрации работодателя
+    INFORMATION_TEXT_ABOUT_CONFIRMATION_OF_EMPLOYER_EMAIL_AFTER_REGISTRATION = (By.CSS_SELECTOR, ('#to-publish-modal h2'))  # информационный текст о подтверждении електронной почты работодателя после регистрации
+
+class EmailPageLocators():
+
+    FIELD_EMAIL = (By.CSS_SELECTOR, ('#rcmloginuser'))
+    FIELD_PASSWORD = (By.CSS_SELECTOR, ('#rcmloginpwd'))
+    BUTTON_LOG_IN = (By.CSS_SELECTOR, ('#rcmloginsubmit'))
+    # авторизация email
+
+    LETTER_OF_REGISTRATION_CONFIRMATION_EMPLOYER = (By.CSS_SELECTOR, ('.message.unread > .subject'))
+    IFRAME_LETTER = (By.CSS_SELECTOR, ('#messagecontframe'))
+    BUTTON_REGISTRATION_CONFIRM = (By.CSS_SELECTOR, ('[rel="noreferrer"]'))
+
+
+
+
+
