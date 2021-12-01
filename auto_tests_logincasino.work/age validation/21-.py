@@ -22,7 +22,7 @@ try:
         EC.element_to_be_clickable((By.CSS_SELECTOR, ".modal-content .btn.btn-disabled.age-validation"))).click()
     # подтверждение возраста мение 21 года
 
-    infoText = driver.find_element(By.CSS_SELECTOR,('div.empty-page > svg + p')).text
+    infoText = driver.find_element(By.CSS_SELECTOR, ('div.empty-page > svg + p')).text
     assert "Данный сайт logincasino.work предназначен для аудитории старше 21 года" == infoText
     # проверка на открытие страницы и отображение на ней информации о пользании сайтом аудетории старше 21 года
 

@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from Page_Object_Model.data_for_testing import TestData
 
 class OllPageLocators():
     BUTTON_YES_WHEN_CHECKING_AGE = (By.CSS_SELECTOR, ".modal-content .btn.btn-blue.age-validation")
@@ -75,9 +76,28 @@ class EmailPageLocators():
     BUTTON_LOG_IN = (By.CSS_SELECTOR, ('#rcmloginsubmit'))
     # авторизация email
 
-    LETTER_OF_REGISTRATION_CONFIRMATION_EMPLOYER = (By.CSS_SELECTOR, ('.message.unread > .subject'))
+    LETTER_OF_REGISTRATION_CONFIRMATION_EMPLOYER_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Регистрация работодателя на LCwork"]'))
+    LETTER_OF_REGISTRATION_CONFIRMATION_EMPLOYER_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Реєстрація роботодавця на LCwork"]'))
     IFRAME_LETTER = (By.CSS_SELECTOR, ('#messagecontframe'))
     BUTTON_REGISTRATION_CONFIRM = (By.CSS_SELECTOR, ('[rel="noreferrer"]'))
+
+class AdminPageLocators():
+    FIELD_LOGIN = (By.CSS_SELECTOR, ('#loginform-username'))
+    FIELD_PASSWORD = (By.CSS_SELECTOR, ('#loginform-password'))
+    BUTTON_LOG_IN = (By.CSS_SELECTOR, ('[type="submit"]'))
+    # авторизация админки
+
+    DROPDOWN_WORK = (By.CSS_SELECTOR, ('.dropdown:nth-child(4)'))
+    USERS = (By.CSS_SELECTOR, ('[href="/x/user"]'))
+
+    USER_EMAIL_ = (By.XPATH, ('//td[text()="testLogin_1638263652ua"]'))
+    FIELD_EMAIL_SEARCH = (By.CSS_SELECTOR, ('[name="User[email]"]'))
+    USER_EMAIL_RU = (By.XPATH, ('//td[text()="' + TestData.email_ru + '"]'))
+    USER_EMAIL_UA = (By.XPATH, ('//td[text()="' + TestData.email_ua + '"]'))
+    USER_STATUS = (By.CSS_SELECTOR, ('[data-name="status"]'))
+    STATUS_ACTIVE = (By.CSS_SELECTOR, ('.form-control.input-sm [value="1"]'))
+    STATUS_SAVING = (By.CSS_SELECTOR, ('.editable-buttons > [type="submit"]'))
+
 
 
 
