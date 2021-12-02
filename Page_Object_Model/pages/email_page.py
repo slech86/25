@@ -34,3 +34,26 @@ class EmailPage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
         self.browser.switch_to.window(self.browser.window_handles[1])
 
+    def letter_after_first_moderation_ru(self):  # письмо после первой модерации ru
+        # time.sleep(20)
+        # self.browser.refresh()
+
+        self.browser.find_element(*EmailPageLocators.LETTER_AFTER_FIRST_MODERATION_RU).click()
+
+        iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
+        self.browser.switch_to.frame(iframe)  # вход в фрейм
+        letter_text = self.browser.find_element(*EmailPageLocators.TEXT_IN_LETTER_AFTER_FIRST_MODERATION_RU).text
+        assert "Ура! Ваш аккаунт прошел модерацию." == letter_text, 'Не верное сообщение'
+        self.browser.switch_to.default_content()  # выход из фрейма
+
+    def letter_after_first_moderation_ua(self):  # письмо после первой модерации ua
+        # time.sleep(20)
+        # self.browser.refresh()
+
+        self.browser.find_element(*EmailPageLocators.LETTER_AFTER_FIRST_MODERATION_UA).click()
+
+        iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
+        self.browser.switch_to.frame(iframe)  # вход в фрейм
+        letter_text = self.browser.find_element(*EmailPageLocators.TEXT_IN_LETTER_AFTER_FIRST_MODERATION_UA).text
+        assert "Ура!" == letter_text, 'Не верное сообщение'  # ???
+        self.browser.switch_to.default_content()  # выход из фрейма

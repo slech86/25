@@ -90,3 +90,4 @@ class RegistrationPage(BasePage):
 
     def submitting_form_for_registration(self):  # отправка формы на регистрацию
         self.browser.find_element(*RegistrationPageLocators.BUTTON_SUBMIT).click()
+        time.sleep(12)

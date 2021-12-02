@@ -1,18 +1,14 @@
 import time
 
 class UrlStartPage():
-    prefix = 'http://preprod.'
-    suffix = '.preprod.pw'
+    prefix = 'http://preprod.'  # 'http://preprod.', 'http://master.'. 'https://'
+    suffix = '.preprod.pw'  # '.preprod.pw'
     suffix_page = '/vacancy'
 
     url_start_page = f"{prefix}logincasino.work{suffix}{suffix_page}"
 
-# class UrlStartPageAdmin(BasePage):
-#     prefix = 'http://'
-#     suffix = '.preprod.pw'
-#     suffix_page = '/x'
-#
-#     url_start_page = f"{prefix}admin-work.pw{suffix}{suffix_page}"
+class UrlPageAdmin():
+    url_page_admin = "http://admin-work.pw.preprod.pw/x"  # 'http://admin-work.pw.preprod.pw/x', 'https://admin-work.work/x'
 
 class TestData():
     time_Now = str(int(time.time()))

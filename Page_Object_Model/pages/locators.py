@@ -3,8 +3,17 @@ from Page_Object_Model.data_for_testing import TestData
 
 class OllPageLocators():
     BUTTON_YES_WHEN_CHECKING_AGE = (By.CSS_SELECTOR, ".modal-content .btn.btn-blue.age-validation")
-    POP_UP_FOR_LOGIN = (By.CSS_SELECTOR, ('.login.flex-row'))
-    REGISTRATION_LINK = (By.CSS_SELECTOR, ('#employer .fz-13'))
+
+    BUTTON_POP_UP_FOR_LOGIN = (By.CSS_SELECTOR, ('.login.flex-row'))
+    BUTTON_AUTHORIZED_USER = (By.CSS_SELECTOR, ('.logout.flex-row'))
+
+    COMPANY_REGISTRATION_LINK = (By.CSS_SELECTOR, ('#employer .fz-13'))
+
+    FIELD_LOGIN = (By.CSS_SELECTOR, ('#loginform-emaillogin'))
+    FIELD_PASSWORD = (By.CSS_SELECTOR, ('#loginform-password'))
+    BUTTON_LOG_IN = (By.CSS_SELECTOR, ('.field-loginform-summaryerror + [type="submit"]'))
+    INFO_TEXT_IN_POP_UP_WINDOW = (By.CSS_SELECTOR, ('#login-form .small-text'))
+
 
 class RegistrationPageLocators():
     inputPrefix = 'companyregistrationform-'
@@ -78,8 +87,13 @@ class EmailPageLocators():
 
     LETTER_OF_REGISTRATION_CONFIRMATION_EMPLOYER_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Регистрация работодателя на LCwork"]'))
     LETTER_OF_REGISTRATION_CONFIRMATION_EMPLOYER_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Реєстрація роботодавця на LCwork"]'))
+    LETTER_AFTER_FIRST_MODERATION_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Добро пожаловать на LСwork"]'))
+    LETTER_AFTER_FIRST_MODERATION_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ласкаво просимо на LCwork"]'))
+
     IFRAME_LETTER = (By.CSS_SELECTOR, ('#messagecontframe'))
     BUTTON_REGISTRATION_CONFIRM = (By.CSS_SELECTOR, ('[rel="noreferrer"]'))
+    TEXT_IN_LETTER_AFTER_FIRST_MODERATION_RU = (By.XPATH, ('//div[text()="Ура! Ваш аккаунт прошел модерацию."]'))
+    TEXT_IN_LETTER_AFTER_FIRST_MODERATION_UA = (By.XPATH, ('//div[text()="Ура!"]'))  # ???
 
 class AdminPageLocators():
     FIELD_LOGIN = (By.CSS_SELECTOR, ('#loginform-username'))
@@ -89,6 +103,7 @@ class AdminPageLocators():
 
     DROPDOWN_WORK = (By.CSS_SELECTOR, ('.dropdown:nth-child(4)'))
     USERS = (By.CSS_SELECTOR, ('[href="/x/user"]'))
+    # шапка
 
     USER_EMAIL_ = (By.XPATH, ('//td[text()="testLogin_1638263652ua"]'))
     FIELD_EMAIL_SEARCH = (By.CSS_SELECTOR, ('[name="User[email]"]'))
@@ -97,6 +112,7 @@ class AdminPageLocators():
     USER_STATUS = (By.CSS_SELECTOR, ('[data-name="status"]'))
     STATUS_ACTIVE = (By.CSS_SELECTOR, ('.form-control.input-sm [value="1"]'))
     STATUS_SAVING = (By.CSS_SELECTOR, ('.editable-buttons > [type="submit"]'))
+    # страница пользователей
 
 
 
