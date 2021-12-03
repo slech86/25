@@ -243,7 +243,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 02-Dec-2021 at 18:47:42 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
+    <p>Report generated on 03-Dec-2021 at 15:37:38 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -259,8 +259,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <td>Python</td>
         <td>3.8.9</td></tr></table>
     <h2>Summary</h2>
-    <p>16 tests ran in 182.94 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">15 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="rerun">0 rerun</span>
+    <p>18 tests ran in 213.46 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">18 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="rerun">0 rerun</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -271,20 +271,11 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <th class="sortable links" col="links">Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
-      <tbody class="failed results-table-row">
-        <tr>
-          <td class="col-result">Failed</td>
-          <td class="col-name">test_registration.py::test_checking_letter_after_first_moderation_ua</td>
-          <td class="col-duration">4.59</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;c362fb13fb8f52f72f93e7a4827f808f&quot;)&gt;<br/><br/>    def test_checking_letter_after_first_moderation_ua(browser):<br/>        link = &quot;https://mail.smileexpo.com.ua/?_task=mail&amp;_mbox=INBOX&quot;<br/>        email_page = EmailPage(browser, link)<br/>        email_page.open()<br/>        # browser.maximize_window()<br/>        email_page.email_authorization()  # авторизация email<br/>&gt;       email_page.letter_after_first_moderation_ua()  # письмо после первой модерации ua<br/><br/>test_registration.py:132: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;Page_Object_Model.pages.email_page.EmailPage object at 0x106015ee0&gt;<br/><br/>    def letter_after_first_moderation_ua(self):  # письмо после первой модерации ua<br/>        # time.sleep(20)<br/>        # self.browser.refresh()<br/>    <br/>        self.browser.find_element(*EmailPageLocators.LETTER_AFTER_FIRST_MODERATION_UA).click()<br/>    <br/>        iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)<br/>        self.browser.switch_to.frame(iframe)  # вход в фрейм<br/>        letter_text = self.browser.find_element(*EmailPageLocators.TEXT_IN_LETTER_AFTER_FIRST_MODERATION_UA).text<br/>&gt;       assert &quot;Ура!&quot; == letter_text, &#x27;Не верное сообщение&#x27;  # ???<br/><span class="error">E       AssertionError: Не верное сообщение</span><br/><br/>pages/email_page.py:58: AssertionError<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_registration.py::test_employer_registration_with_filling_in_only_required_fields[]</td>
-          <td class="col-duration">23.51</td>
+          <td class="col-name">test_company_registration.py::test_employer_registration_with_filling_in_only_required_fields[]</td>
+          <td class="col-duration">24.50</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -292,8 +283,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_registration.py::test_employer_registration_with_filling_in_only_required_fields[/ua]</td>
-          <td class="col-duration">23.65</td>
+          <td class="col-name">test_company_registration.py::test_employer_registration_with_filling_in_only_required_fields[/ua]</td>
+          <td class="col-duration">23.53</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -301,8 +292,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_registration.py::test_checking_creation_of_user_in_admin_panel_ru</td>
-          <td class="col-duration">6.98</td>
+          <td class="col-name">test_company_registration.py::test_checking_creation_of_user_in_admin_panel_ru</td>
+          <td class="col-duration">7.24</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -310,8 +301,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_registration.py::test_checking_creation_of_user_in_admin_panel_ua</td>
-          <td class="col-duration">6.83</td>
+          <td class="col-name">test_company_registration.py::test_checking_creation_of_user_in_admin_panel_ua</td>
+          <td class="col-duration">6.84</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -319,8 +310,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_registration.py::test_authorization_of_user_in_Disabled_status[]</td>
-          <td class="col-duration">10.61</td>
+          <td class="col-name">test_company_registration.py::test_authorization_of_user_in_Disabled_status[]</td>
+          <td class="col-duration">10.70</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -328,8 +319,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_registration.py::test_authorization_of_user_in_Disabled_status[/ua]</td>
-          <td class="col-duration">10.75</td>
+          <td class="col-name">test_company_registration.py::test_authorization_of_user_in_Disabled_status[/ua]</td>
+          <td class="col-duration">11.31</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -337,8 +328,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_registration.py::test_email_verification_after_employer_registration_ru</td>
-          <td class="col-duration">8.94</td>
+          <td class="col-name">test_company_registration.py::test_email_verification_after_employer_registration_ru</td>
+          <td class="col-duration">8.62</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -346,8 +337,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_registration.py::test_email_verification_after_employer_registration_ua</td>
-          <td class="col-duration">8.57</td>
+          <td class="col-name">test_company_registration.py::test_email_verification_after_employer_registration_ua</td>
+          <td class="col-duration">8.05</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -355,8 +346,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_registration.py::test_authorization_of_user_in_On_moderation_status[]</td>
-          <td class="col-duration">10.69</td>
+          <td class="col-name">test_company_registration.py::test_authorization_of_user_in_On_moderation_status[]</td>
+          <td class="col-duration">11.13</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -364,8 +355,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_registration.py::test_authorization_of_user_in_On_moderation_status[/ua]</td>
-          <td class="col-duration">11.16</td>
+          <td class="col-name">test_company_registration.py::test_authorization_of_user_in_On_moderation_status[/ua]</td>
+          <td class="col-duration">11.22</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -373,8 +364,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_registration.py::test_change_of_employer_status_from_On_moderation_to_Aktivet_ua</td>
-          <td class="col-duration">15.30</td>
+          <td class="col-name">test_company_registration.py::test_change_of_employer_status_from_On_moderation_to_Aktivet_ua</td>
+          <td class="col-duration">15.45</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -382,8 +373,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_registration.py::test_change_of_employer_status_from_On_moderation_to_Aktivet_ru</td>
-          <td class="col-duration">15.03</td>
+          <td class="col-name">test_company_registration.py::test_change_of_employer_status_from_On_moderation_to_Aktivet_ru</td>
+          <td class="col-duration">15.47</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -391,7 +382,16 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_registration.py::test_authorization_of_user_in_Active_status[]</td>
+          <td class="col-name">test_company_registration.py::test_authorization_of_user_in_Active_status[]</td>
+          <td class="col-duration">11.02</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_company_registration.py::test_authorization_of_user_in_Active_status[/ua]</td>
           <td class="col-duration">10.92</td>
           <td class="col-links"></td></tr>
         <tr>
@@ -400,8 +400,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_registration.py::test_authorization_of_user_in_Active_status[/ua]</td>
-          <td class="col-duration">10.71</td>
+          <td class="col-name">test_company_registration.py::test_checking_letter_after_first_moderation_ru</td>
+          <td class="col-duration">4.81</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -409,8 +409,26 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_registration.py::test_checking_letter_after_first_moderation_ru</td>
-          <td class="col-duration">4.54</td>
+          <td class="col-name">test_company_registration.py::test_checking_letter_after_first_moderation_ua</td>
+          <td class="col-duration">4.55</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_company_registration.py::test_delete_user_ru</td>
+          <td class="col-duration">14.14</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_company_registration.py::test_delete_user_ua</td>
+          <td class="col-duration">13.82</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">

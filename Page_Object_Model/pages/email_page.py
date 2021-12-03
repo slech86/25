@@ -1,13 +1,14 @@
 from .base_page import BasePage
 from .locators import EmailPageLocators
+from Page_Object_Model.data_for_testing import Accounts
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
 class EmailPage(BasePage):
     def email_authorization(self):  # авторизация email
-        self.browser.find_element(*EmailPageLocators.FIELD_EMAIL).send_keys('test_automation@smileexpo.com.ua')
-        self.browser.find_element(*EmailPageLocators.FIELD_PASSWORD).send_keys('BwX37KJyiw02Cl')
+        self.browser.find_element(*EmailPageLocators.FIELD_EMAIL).send_keys(Accounts.main_login_email)
+        self.browser.find_element(*EmailPageLocators.FIELD_PASSWORD).send_keys(Accounts.main_password_email)
         self.browser.find_element(*EmailPageLocators.BUTTON_LOG_IN).click()
 
     def confirmation_of_employer_registration_in_letter_ru(self):  # подтверждение регистрации работодателя в письме RU
@@ -55,5 +56,5 @@ class EmailPage(BasePage):
         iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
         letter_text = self.browser.find_element(*EmailPageLocators.TEXT_IN_LETTER_AFTER_FIRST_MODERATION_UA).text
-        assert "Ура!" == letter_text, 'Не верное сообщение'  # ???
+        assert "Ура! Ваш акаунт пройшов модерацiю." == letter_text, 'Не верное сообщение'
         self.browser.switch_to.default_content()  # выход из фрейма

@@ -32,13 +32,16 @@ def test_checking_creation_of_user_in_admin_panel_ru(browser):  # проверк
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
-    admin_page.checking_that_newly_created_user_has_status_Disabled_ru()
-
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
+    admin_page.checking_that_newly_created_user_has_status_Disabled()  # проверка что новосозданный пользователь имеет статус "Отключено"
 def test_checking_creation_of_user_in_admin_panel_ua(browser):  # проверка создания пользователя в админке ua
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
-    admin_page.checking_that_newly_created_user_has_status_Disabled_ua()
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
+    admin_page.checking_that_newly_created_user_has_status_Disabled()  # проверка что новосозданный пользователь имеет статус "Отключено"
 
 
 @pytest.mark.parametrize('language', ["", "/ua"])
@@ -64,7 +67,6 @@ def test_email_verification_after_employer_registration_ru(browser):  # вери
     main_page = MainPage(browser, browser.current_url)
     main_page.confirmation_opening_of_main_page()  # подтверждение открытия главной страницы
     main_page.checking_employer_email_confirmation_message_after_registration()  # проверка сообщения о подтверждении электронной почты работодателя после регистрации
-
 def test_email_verification_after_employer_registration_ua(browser):  # верификация почты после регистрации работодателя UA
     link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
     email_page = EmailPage(browser, link)
@@ -94,13 +96,16 @@ def test_change_of_employer_status_from_On_moderation_to_Aktivet_ua(browser):  #
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
-    admin_page.change_of_user_status_from_On_moderation_to_Active_ua()
-
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
+    admin_page.change_of_user_status_from_On_moderation_to_Active()  # изменение статуса пользователя с "На модерации" на "Активет"
 def test_change_of_employer_status_from_On_moderation_to_Aktivet_ru(browser):  # изменение статуса работодателя с "На модерации" на "Активет" ru
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
-    admin_page.change_of_user_status_from_On_moderation_to_Active_ru()
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
+    admin_page.change_of_user_status_from_On_moderation_to_Active()  # изменение статуса пользователя с "На модерации" на "Активет"
 
 
 @pytest.mark.parametrize('language', ["", "/ua"])
@@ -115,18 +120,33 @@ def test_authorization_of_user_in_Active_status(browser, language):  # авто�
     page.check_for_user_authorization()  # проверка на авторизацию пользователя
 
 
-def test_checking_letter_after_first_moderation_ru(browser):
+def test_checking_letter_after_first_moderation_ru(browser):  # проверка письма после первой модерации ru
     link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
     email_page = EmailPage(browser, link)
     email_page.open()
     # browser.maximize_window()
     email_page.email_authorization()  # авторизация email
     email_page.letter_after_first_moderation_ru()  # письмо после первой модерации ru
-
-def test_checking_letter_after_first_moderation_ua(browser):
+def test_checking_letter_after_first_moderation_ua(browser):  # проверка письма после первой модерации ua
     link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
     email_page = EmailPage(browser, link)
     email_page.open()
     # browser.maximize_window()
     email_page.email_authorization()  # авторизация email
     email_page.letter_after_first_moderation_ua()  # письмо после первой модерации ua
+
+
+def test_delete_user_ru(browser):  # удаление пользователя ru
+    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page.open()
+    admin_page.admin_authorization()
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
+    admin_page.changing_user_status_to_Deleted()  # изменение статуса пользователя на "Удалено"
+def test_delete_user_ua(browser):  # удаление пользователя ua
+    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page.open()
+    admin_page.admin_authorization()
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
+    admin_page.changing_user_status_to_Deleted()  # изменение статуса пользователя на "Удалено"

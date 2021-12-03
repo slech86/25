@@ -93,7 +93,7 @@ class EmailPageLocators():
     IFRAME_LETTER = (By.CSS_SELECTOR, ('#messagecontframe'))
     BUTTON_REGISTRATION_CONFIRM = (By.CSS_SELECTOR, ('[rel="noreferrer"]'))
     TEXT_IN_LETTER_AFTER_FIRST_MODERATION_RU = (By.XPATH, ('//div[text()="Ура! Ваш аккаунт прошел модерацию."]'))
-    TEXT_IN_LETTER_AFTER_FIRST_MODERATION_UA = (By.XPATH, ('//div[text()="Ура!"]'))  # ???
+    TEXT_IN_LETTER_AFTER_FIRST_MODERATION_UA = (By.XPATH, ('//div[text()="Ура! Ваш акаунт пройшов модерацiю."]'))
 
 class AdminPageLocators():
     FIELD_LOGIN = (By.CSS_SELECTOR, ('#loginform-username'))
@@ -111,6 +111,7 @@ class AdminPageLocators():
     USER_EMAIL_UA = (By.XPATH, ('//td[text()="' + TestData.email_ua + '"]'))
     USER_STATUS = (By.CSS_SELECTOR, ('[data-name="status"]'))
     STATUS_ACTIVE = (By.CSS_SELECTOR, ('.form-control.input-sm [value="1"]'))
+    STATUS_DELETED = (By.CSS_SELECTOR, ('.form-control.input-sm [value="-1"]'))
     STATUS_SAVING = (By.CSS_SELECTOR, ('.editable-buttons > [type="submit"]'))
     # страница пользователей
 
