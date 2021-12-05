@@ -1,10 +1,10 @@
 import pytest
-from .pages.oll_page import OllPage
-from .pages.registration_page import RegistrationPage
-from .pages.main_page import MainPage
-from .pages.email_page import EmailPage
-from .data_for_testing import UrlStartPage, UrlPageAdmin
-from .pages.admin_page import AdminPage
+from Page_Object_Model.pages.oll_page import OllPage
+from Page_Object_Model.pages.registration_page import RegistrationPage
+from Page_Object_Model.pages.main_page import MainPage
+from Page_Object_Model.pages.email_page import EmailPage
+from Page_Object_Model.data_for_testing import UrlStartPage, UrlPageAdmin
+from Page_Object_Model.pages.admin_page import AdminPage
 import time
 
 
@@ -150,3 +150,21 @@ def test_delete_user_ua(browser):  # удаление пользователя u
     admin_page.go_to_users_page()  # переход на страницу пользователей
     admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
     admin_page.changing_user_status_to_Deleted()  # изменение статуса пользователя на "Удалено"
+
+def test_changing_user_role_from_User_to_SuperAdmin_ru(browser):  # изменение роли пользователя с "User" на "SuperAdmin" ru
+    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page.open()
+    admin_page.admin_authorization()
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
+    admin_page.go_to_user_page()  # переход на страницу пользователя
+    admin_page.changing_role_from_User_to_SuperAdmin()  # изменение роли с "User" на "SuperAdmin"
+def test_changing_user_role_from_User_to_SuperAdmin_ua(browser):  # изменение роли пользователя с "User" на "SuperAdmin" ua
+    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page.open()
+    admin_page.admin_authorization()
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
+    admin_page.go_to_user_page()  # переход на страницу пользователя
+    admin_page.changing_role_from_User_to_SuperAdmin()  # изменение роли с "User" на "SuperAdmin"
+

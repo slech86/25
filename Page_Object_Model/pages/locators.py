@@ -105,7 +105,6 @@ class AdminPageLocators():
     USERS = (By.CSS_SELECTOR, ('[href="/x/user"]'))
     # шапка
 
-    USER_EMAIL_ = (By.XPATH, ('//td[text()="testLogin_1638263652ua"]'))
     FIELD_EMAIL_SEARCH = (By.CSS_SELECTOR, ('[name="User[email]"]'))
     USER_EMAIL_RU = (By.XPATH, ('//td[text()="' + TestData.email_ru + '"]'))
     USER_EMAIL_UA = (By.XPATH, ('//td[text()="' + TestData.email_ua + '"]'))
@@ -113,8 +112,13 @@ class AdminPageLocators():
     STATUS_ACTIVE = (By.CSS_SELECTOR, ('.form-control.input-sm [value="1"]'))
     STATUS_DELETED = (By.CSS_SELECTOR, ('.form-control.input-sm [value="-1"]'))
     STATUS_SAVING = (By.CSS_SELECTOR, ('.editable-buttons > [type="submit"]'))
+    BUTTON_USER_EDIT = (By.CSS_SELECTOR, ('div > .fa.fa-bars'))  # костыль из-за ховер эффекта на кнопке меню пользователя
     # страница пользователей
 
+    FIELD_WITH_ROLE_USER = (By.CSS_SELECTOR, ('[title="[#4] User"]'))  # поле с ролью "User"
+    ROLE_SUPER_ADMIN = (By.XPATH, ('//li[text()="[#1] SuperAdmin"]'))
+    BUTTON_SAVE_AND_EDIT = (By.CSS_SELECTOR, ('[type="submit"].btn.btn-primary'))
+    # страница пользователя
 
 
 

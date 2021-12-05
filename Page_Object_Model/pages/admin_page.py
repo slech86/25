@@ -17,6 +17,16 @@ class AdminPage(BasePage):
         self.browser.find_element(*AdminPageLocators.USERS).click()
 
 
+    def go_to_user_page(self):  # переход на страницу пользователя
+        self.browser.find_element(*AdminPageLocators.BUTTON_USER_EDIT).click()
+
+    def changing_role_from_User_to_SuperAdmin(self):  # изменение роли с "User" на "SuperAdmin"
+        self.browser.find_element(*AdminPageLocators.FIELD_WITH_ROLE_USER).click()
+        self.browser.find_element(*AdminPageLocators.ROLE_SUPER_ADMIN).click()
+        self.browser.find_element(*AdminPageLocators.BUTTON_SAVE_AND_EDIT).click()
+        time.sleep(4)
+
+
     def search_user_by_email_ru(self):  # поиск пользователя по e-mail ru
         self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_SEARCH).send_keys(TestData.email_ru, Keys.ENTER)
         time.sleep(2)
