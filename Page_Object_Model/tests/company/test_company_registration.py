@@ -1,6 +1,6 @@
 import pytest
 from Page_Object_Model.pages.oll_page import OllPage
-from Page_Object_Model.pages.registration_page import RegistrationPage
+from Page_Object_Model.pages.company_registration_page import CompanyRegistrationPage
 from Page_Object_Model.pages.main_page import MainPage
 from Page_Object_Model.pages.email_page import EmailPage
 from Page_Object_Model.data_for_testing import UrlStartPage, UrlPageAdmin
@@ -8,24 +8,25 @@ from Page_Object_Model.pages.admin_page import AdminPage
 import time
 
 
+
 @pytest.mark.parametrize('language', ["", "/ua"])
-def test_employer_registration_with_filling_in_only_required_fields(browser, language):  # регистрация работодателя с заполнением только обязательных полей
+def test_company_registration_with_filling_in_only_required_fields(browser, language):  # регистрация работодателя с заполнением только обязательных полей
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
     # browser.maximize_window()
     page.open()
     page.age_confirmation()  # подтверждение возраста больше 21 года
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.go_to_registration_page()  # нажатие на кнопку для перехода на страницу регистрации работодателя
+    page.go_to_company_registration_page()  # нажатие на кнопку для перехода на страницу регистрации работодателя
 
-    registration_page = RegistrationPage(browser, browser.current_url)
-    registration_page.filling_in_required_fields()  # заполнение обязательных полей
-    registration_page.browser.execute_script("window.scrollBy(0, 1300);")
-    registration_page.submitting_form_for_registration()  # отправка формы на регистрацию
+    company_registration_page = CompanyRegistrationPage(browser, browser.current_url)
+    company_registration_page.filling_in_required_fields()  # заполнение обязательных полей
+    company_registration_page.browser.execute_script("window.scrollBy(0, 1300);")
+    company_registration_page.submitting_form_for_registration()  # отправка формы на регистрацию
 
     main_page = MainPage(browser, browser.current_url)
     main_page.confirmation_opening_of_main_page()  # подтверждение открытия главной страницы
-    main_page.confirmation_message_for_sending_registration_form()  # проверка сообщения о подтверждении отправки формы регистрации работодателем
+    main_page.confirmation_message_for_sending_registration_form()  # проверка сообщения о подтверждении отправки формы регистрации
 
 
 def test_checking_creation_of_user_in_admin_panel_ru(browser):  # проверка создания пользователя в админке ru
@@ -120,20 +121,20 @@ def test_authorization_of_user_in_Active_status(browser, language):  # авто�
     page.check_for_user_authorization()  # проверка на авторизацию пользователя
 
 
-def test_checking_letter_after_first_moderation_ru(browser):  # проверка письма после первой модерации ru
+def test_checking_letter_after_first_moderation_ru(browser):  # проверка письма после первой модерации компании ru
     link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
     email_page = EmailPage(browser, link)
     email_page.open()
     # browser.maximize_window()
     email_page.email_authorization()  # авторизация email
-    email_page.letter_after_first_moderation_ru()  # письмо после первой модерации ru
-def test_checking_letter_after_first_moderation_ua(browser):  # проверка письма после первой модерации ua
+    email_page.letter_after_first_moderation_of_company_ru()  # письмо после первой модерации компании ru
+def test_checking_letter_after_first_moderation_ua(browser):  # проверка письма после первой модерации компании ua
     link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
     email_page = EmailPage(browser, link)
     email_page.open()
     # browser.maximize_window()
     email_page.email_authorization()  # авторизация email
-    email_page.letter_after_first_moderation_ua()  # письмо после первой модерации ua
+    email_page.letter_after_first_moderation_of_company_ua()  # письмо после первой модерации компании ua
 
 
 def test_delete_user_ru(browser):  # удаление пользователя ru
@@ -167,4 +168,24 @@ def test_changing_user_role_from_User_to_SuperAdmin_ua(browser):  # измене
     admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
     admin_page.go_to_user_page()  # переход на страницу пользователя
     admin_page.changing_role_from_User_to_SuperAdmin()  # изменение роли с "User" на "SuperAdmin"
+
+def test_change_field_Login_and_Email_ru(browser):  # изменение поля "Login" и "Электронный адрес" ru
+    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page.open()
+    admin_page.admin_authorization()
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
+    admin_page.go_to_user_page()  # переход на страницу пользователя
+    admin_page.adding_unique_values_to_Login_and_Email_fields()  # внескние в поля "Login" и "Электронный адрес" уникальные значения
+def test_change_field_Login_and_Email_ua(browser):  # изменение поля "Login" и "Электронный адрес" ua
+    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page.open()
+    admin_page.admin_authorization()
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
+    admin_page.go_to_user_page()  # переход на страницу пользователя
+    admin_page.adding_unique_values_to_Login_and_Email_fields()  # внескние в поля "Login" и "Электронный адрес" уникальные значения
+
+
+
 

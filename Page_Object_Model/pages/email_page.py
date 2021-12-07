@@ -15,7 +15,7 @@ class EmailPage(BasePage):
         # time.sleep(20)
         # self.browser.refresh()
 
-        self.browser.find_element(*EmailPageLocators.LETTER_OF_REGISTRATION_CONFIRMATION_EMPLOYER_RU).click()
+        self.browser.find_element(*EmailPageLocators.LETTER_OF_REGISTRATION_CONFIRMATION_COMPANY_RU).click()
 
         iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
@@ -27,7 +27,7 @@ class EmailPage(BasePage):
         # time.sleep(20)
         # self.browser.refresh()
 
-        self.browser.find_element(*EmailPageLocators.LETTER_OF_REGISTRATION_CONFIRMATION_EMPLOYER_UA).click()
+        self.browser.find_element(*EmailPageLocators.LETTER_OF_REGISTRATION_CONFIRMATION_COMPANY_UA).click()
 
         iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
@@ -35,11 +35,11 @@ class EmailPage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
         self.browser.switch_to.window(self.browser.window_handles[1])
 
-    def letter_after_first_moderation_ru(self):  # письмо после первой модерации ru
+    def letter_after_first_moderation_of_company_ru(self):  # письмо после первой модерации компании ru
         # time.sleep(20)
         # self.browser.refresh()
 
-        self.browser.find_element(*EmailPageLocators.LETTER_AFTER_FIRST_MODERATION_RU).click()
+        self.browser.find_element(*EmailPageLocators.LETTER_WELCOME_TO_LCWORK_RU).click()
 
         iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
@@ -47,11 +47,11 @@ class EmailPage(BasePage):
         assert "Ура! Ваш аккаунт прошел модерацию." == letter_text, 'Не верное сообщение'
         self.browser.switch_to.default_content()  # выход из фрейма
 
-    def letter_after_first_moderation_ua(self):  # письмо после первой модерации ua
+    def letter_after_first_moderation_of_company_ua(self):  # письмо после первой модерации компании ua
         # time.sleep(20)
         # self.browser.refresh()
 
-        self.browser.find_element(*EmailPageLocators.LETTER_AFTER_FIRST_MODERATION_UA).click()
+        self.browser.find_element(*EmailPageLocators.LETTER_WELCOME_TO_LCWORK_UA).click()
 
         iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
         self.browser.switch_to.frame(iframe)  # вход в фрейм

@@ -6,16 +6,19 @@ class OllPageLocators():
 
     BUTTON_POP_UP_FOR_LOGIN = (By.CSS_SELECTOR, ('.login.flex-row'))
     BUTTON_AUTHORIZED_USER = (By.CSS_SELECTOR, ('.logout.flex-row'))
+    # хедер
 
     COMPANY_REGISTRATION_LINK = (By.CSS_SELECTOR, ('#employer .fz-13'))
-
+    JOB_SEEKER_REGISTRATION_LINK = (By.CSS_SELECTOR, ('#job-seeker .fz-13'))
+    JOB_SEEKER_TAB = (By.CSS_SELECTOR, ('#job-seeker-tab'))
     FIELD_LOGIN = (By.CSS_SELECTOR, ('#loginform-emaillogin'))
     FIELD_PASSWORD = (By.CSS_SELECTOR, ('#loginform-password'))
     BUTTON_LOG_IN = (By.CSS_SELECTOR, ('.field-loginform-summaryerror + [type="submit"]'))
     INFO_TEXT_IN_POP_UP_WINDOW = (By.CSS_SELECTOR, ('#login-form .small-text'))
+    # pop-up окно авторизации
 
 
-class RegistrationPageLocators():
+class CompanyRegistrationPageLocators():
     inputPrefix = 'companyregistrationform-'
 
     FIELD_LOGIN = (By.CSS_SELECTOR, ('#' + inputPrefix + 'login'))
@@ -74,21 +77,45 @@ class RegistrationPageLocators():
 
     BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#submit-button'))
 
+class JobSeekerRegistrationPageLocators():
+    inputPrefix = 'jobseekerregistrationform-'
+
+    FIELD_LOGIN = (By.CSS_SELECTOR, ('#' + inputPrefix + 'login'))
+    FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'email'))
+    FIELD_PASSWORD = (By.CSS_SELECTOR, ('#' + inputPrefix + 'password'))
+    FIELD_REPEAT_PASSWORD = (By.CSS_SELECTOR, ('#' + inputPrefix + 'repeatpassword'))
+    # блок "Данные для авторизации"
+
+    FIELD_NAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'name'))
+    FIELD_SURNAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'surname'))
+    FIELD_YEAR = (By.CSS_SELECTOR, ('#' + inputPrefix + 'birthdayy > option:nth-child(4)'))
+    FIELD_MONTH = (By.CSS_SELECTOR, ('#' + inputPrefix + 'birthdaym > option:nth-child(12)'))
+    FIELD_DAY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'birthdayd > option:nth-child(31)'))
+    FIELD_GENDER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'gender [value="2"] + .radio-custom'))
+    FIELD_COUNTRY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option:nth-child(3)'))
+    FIELD_CITY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option:nth-child(7)'))
+    # блок "Личная информация"
+
+    BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#button-registration'))
+
+
 class MainPageLocators():
-    INFO_TEXT_ABOUT_SENDING_EMPLOYER_REGISTRATION_FORM = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст о подтверждении отправки формы регистрации работодателя
-    INFORMATION_TEXT_ABOUT_CONFIRMATION_OF_EMPLOYER_EMAIL_AFTER_REGISTRATION = (By.CSS_SELECTOR, ('#to-publish-modal h2'))  # информационный текст о подтверждении електронной почты работодателя после регистрации
+    INFO_TEXT_ABOUT_SENDING_REGISTRATION_FORM = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст о подтверждении отправки формы регистрации
+    INFORMATION_TEXT_ABOUT_CONFIRMATION_OF_COMPANY_EMAIL_AFTER_REGISTRATION = (By.CSS_SELECTOR, ('#to-publish-modal h2'))  # информационный текст о подтверждении електронной почты работодателя после регистрации
+
+    INFORMATION_TEXT_ABOUT_CONFIRMATION_OF_JOB_SEEKER_EMAIL_AFTER_REGISTRATION = (By.CSS_SELECTOR, (''))  # информационный текст о подтверждении електронной почты соискателя после регистрации
+
 
 class EmailPageLocators():
-
     FIELD_EMAIL = (By.CSS_SELECTOR, ('#rcmloginuser'))
     FIELD_PASSWORD = (By.CSS_SELECTOR, ('#rcmloginpwd'))
     BUTTON_LOG_IN = (By.CSS_SELECTOR, ('#rcmloginsubmit'))
     # авторизация email
 
-    LETTER_OF_REGISTRATION_CONFIRMATION_EMPLOYER_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Регистрация работодателя на LCwork"]'))
-    LETTER_OF_REGISTRATION_CONFIRMATION_EMPLOYER_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Реєстрація роботодавця на LCwork"]'))
-    LETTER_AFTER_FIRST_MODERATION_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Добро пожаловать на LСwork"]'))
-    LETTER_AFTER_FIRST_MODERATION_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ласкаво просимо на LCwork"]'))
+    LETTER_OF_REGISTRATION_CONFIRMATION_COMPANY_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Регистрация работодателя на LCwork"]'))
+    LETTER_OF_REGISTRATION_CONFIRMATION_COMPANY_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Реєстрація роботодавця на LCwork"]'))
+    LETTER_WELCOME_TO_LCWORK_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Добро пожаловать на LСwork"]'))  # письмо после первой модерации для работодателя и подтверждение регистрации для соискателя ru
+    LETTER_WELCOME_TO_LCWORK_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ласкаво просимо на LCwork"]'))  # письмо после первой модерации для работодателя и подтверждение регистрации для соискателя ua
 
     IFRAME_LETTER = (By.CSS_SELECTOR, ('#messagecontframe'))
     BUTTON_REGISTRATION_CONFIRM = (By.CSS_SELECTOR, ('[rel="noreferrer"]'))
@@ -114,6 +141,9 @@ class AdminPageLocators():
     STATUS_SAVING = (By.CSS_SELECTOR, ('.editable-buttons > [type="submit"]'))
     BUTTON_USER_EDIT = (By.CSS_SELECTOR, ('div > .fa.fa-bars'))  # костыль из-за ховер эффекта на кнопке меню пользователя
     # страница пользователей
+
+    FIELD_USER_LOGIN = (By.CSS_SELECTOR, ('[name="User[login]"]'))
+    FIELD_USER_EMAIL = (By.CSS_SELECTOR, ('[name="User[email]"]'))
 
     FIELD_WITH_ROLE_USER = (By.CSS_SELECTOR, ('[title="[#4] User"]'))  # поле с ролью "User"
     ROLE_SUPER_ADMIN = (By.XPATH, ('//li[text()="[#1] SuperAdmin"]'))

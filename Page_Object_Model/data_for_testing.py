@@ -22,6 +22,7 @@ class TestData():
     email_ru = email[0] + time_Now + email[1]
     email_ua = email[0] + time_Now + 'ua' + email[1]
 
+
 class Accounts():
     main_login_admin = 'p.verbenets'
     main_password_admin = 'l6FOt9tvJT'

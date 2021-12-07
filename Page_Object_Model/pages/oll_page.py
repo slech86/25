@@ -12,13 +12,15 @@ class OllPage(BasePage):
         time.sleep(1)
         # подтверждение возраста больше 21 года
 
-    def opening_pop_up_for_login(self):
+    def opening_pop_up_for_login(self):  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
         self.browser.find_element(*OllPageLocators.BUTTON_POP_UP_FOR_LOGIN).click()
-        # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
 
-    def go_to_registration_page(self):
+    def go_to_company_registration_page(self):  # нажатие на кнопку для перехода на страницу регистрации работодателя
         self.browser.find_element(*OllPageLocators.COMPANY_REGISTRATION_LINK).click()
-        # нажатие на кнопку для перехода на страницу регистрации работодателя
+
+    def go_to_job_seeker_registration_page(self):  # нажатие на кнопку для перехода на страницу регистрации соискателя
+        self.browser.find_element(*OllPageLocators.JOB_SEEKER_TAB).click()
+        self.browser.find_element(*OllPageLocators.JOB_SEEKER_REGISTRATION_LINK).click()
 
     def authorization_after_registration(self):  # авторизация после регистрации
         if "ua" in self.browser.current_url:
