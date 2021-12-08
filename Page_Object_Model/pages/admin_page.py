@@ -24,13 +24,15 @@ class AdminPage(BasePage):
     def changing_role_from_User_to_SuperAdmin(self):  # изменение роли с "User" на "SuperAdmin"
         self.browser.find_element(*AdminPageLocators.FIELD_WITH_ROLE_USER).click()
         self.browser.find_element(*AdminPageLocators.ROLE_SUPER_ADMIN).click()
-        self.browser.find_element(*AdminPageLocators.BUTTON_SAVE_AND_EDIT).click()  # вынести в отдельный метод ???
-        time.sleep(4)
 
 
     def adding_unique_values_to_Login_and_Email_fields(self):  # внескние в поля "Login" и "Электронный адрес" уникальные значения
         self.browser.find_element(*AdminPageLocators.FIELD_USER_LOGIN).send_keys(str(random.random()))
-        self.browser.find_element(*AdminPageLocators.FIELD_USER_EMAIL).send_keys(str(random.random()))
+        field_user_email = self.browser.find_element(*AdminPageLocators.FIELD_USER_EMAIL)
+        field_user_email.clear()
+        field_user_email.send_keys(TestData.time_Now + '@test.com' + str(random.random()))
+
+    def saving_user_card(self):  # сохранение карточки пользователя
         self.browser.find_element(*AdminPageLocators.BUTTON_SAVE_AND_EDIT).click()  # вынести в отдельный метод ???
         time.sleep(4)
 

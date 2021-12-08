@@ -53,28 +53,28 @@ def test_authorization_of_user_in_Disabled_status(browser, language):  # авт�
     page.open()
     page.age_confirmation()  # подтверждение возраста больше 21 года
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.authorization_after_registration()  # авторизация
+    page.user_authorization()  # авторизация пользователя
     page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
     page.info_text_for_authorization_in_user_status_Disabled()  # инфо текст при авторизации в статусе пользователя "Отключен"
 
 
-def test_email_verification_after_employer_registration_ru(browser):  # верификация почты после регистрации работодателя RU
+def test_email_verification_after_company_registration_ru(browser):  # верификация почты после регистрации работодателя RU
     link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
     email_page = EmailPage(browser, link)
     email_page.open()
     # browser.maximize_window()
     email_page.email_authorization()  # авторизация email
-    email_page.confirmation_of_employer_registration_in_letter_ru()  # переход по ссылке для подтверждения регистрации работодателя в письме
+    email_page.confirmation_of_company_registration_in_letter_ru()  # переход по ссылке для подтверждения регистрации работодателя в письме
     main_page = MainPage(browser, browser.current_url)
     main_page.confirmation_opening_of_main_page()  # подтверждение открытия главной страницы
     main_page.checking_employer_email_confirmation_message_after_registration()  # проверка сообщения о подтверждении электронной почты работодателя после регистрации
-def test_email_verification_after_employer_registration_ua(browser):  # верификация почты после регистрации работодателя UA
+def test_email_verification_after_company_registration_ua(browser):  # верификация почты после регистрации работодателя UA
     link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
     email_page = EmailPage(browser, link)
     email_page.open()
     # browser.maximize_window()
     email_page.email_authorization()  # авторизация email
-    email_page.confirmation_of_employer_registration_in_letter_ua()  # переход по ссылке для подтверждения регистрации работодателя в письме
+    email_page.confirmation_of_company_registration_in_letter_ua()  # переход по ссылке для подтверждения регистрации работодателя в письме
     main_page = MainPage(browser, browser.current_url)
     main_page.confirmation_opening_of_main_page()  # подтверждение открытия главной страницы
     main_page.checking_employer_email_confirmation_message_after_registration()  # проверка сообщения о подтверждении электронной почты работодателя после регистрации
@@ -88,7 +88,7 @@ def test_authorization_of_user_in_On_moderation_status(browser, language):  # а
     page.open()
     page.age_confirmation()  # подтверждение возраста больше 21 года
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.authorization_after_registration()  # авторизация
+    page.user_authorization()  # авторизация пользователя
     page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
     page.info_text_for_authorization_in_user_status_On_moderation()  # инфо текст при авторизации в статусе пользователя "На модерации"
 
@@ -117,7 +117,7 @@ def test_authorization_of_user_in_Active_status(browser, language):  # авто�
     page.open()
     page.age_confirmation()  # подтверждение возраста больше 21 года
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.authorization_after_registration()  # авторизация
+    page.user_authorization()  # авторизация пользователя
     page.check_for_user_authorization()  # проверка на авторизацию пользователя
 
 
@@ -160,6 +160,7 @@ def test_changing_user_role_from_User_to_SuperAdmin_ru(browser):  # измене
     admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
     admin_page.go_to_user_page()  # переход на страницу пользователя
     admin_page.changing_role_from_User_to_SuperAdmin()  # изменение роли с "User" на "SuperAdmin"
+    admin_page.saving_user_card()  # сохранение карточки пользователя
 def test_changing_user_role_from_User_to_SuperAdmin_ua(browser):  # изменение роли пользователя с "User" на "SuperAdmin" ua
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
@@ -168,6 +169,7 @@ def test_changing_user_role_from_User_to_SuperAdmin_ua(browser):  # измене
     admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
     admin_page.go_to_user_page()  # переход на страницу пользователя
     admin_page.changing_role_from_User_to_SuperAdmin()  # изменение роли с "User" на "SuperAdmin"
+    admin_page.saving_user_card()  # сохранение карточки пользователя
 
 def test_change_field_Login_and_Email_ru(browser):  # изменение поля "Login" и "Электронный адрес" ru
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
@@ -177,6 +179,7 @@ def test_change_field_Login_and_Email_ru(browser):  # изменение пол�
     admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
     admin_page.go_to_user_page()  # переход на страницу пользователя
     admin_page.adding_unique_values_to_Login_and_Email_fields()  # внескние в поля "Login" и "Электронный адрес" уникальные значения
+    admin_page.saving_user_card()  # сохранение карточки пользователя
 def test_change_field_Login_and_Email_ua(browser):  # изменение поля "Login" и "Электронный адрес" ua
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
@@ -185,6 +188,7 @@ def test_change_field_Login_and_Email_ua(browser):  # изменение пол�
     admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
     admin_page.go_to_user_page()  # переход на страницу пользователя
     admin_page.adding_unique_values_to_Login_and_Email_fields()  # внескние в поля "Login" и "Электронный адрес" уникальные значения
+    admin_page.saving_user_card()  # сохранение карточки пользователя
 
 
 

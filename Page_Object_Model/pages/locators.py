@@ -118,7 +118,7 @@ class EmailPageLocators():
     LETTER_WELCOME_TO_LCWORK_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ласкаво просимо на LCwork"]'))  # письмо после первой модерации для работодателя и подтверждение регистрации для соискателя ua
 
     IFRAME_LETTER = (By.CSS_SELECTOR, ('#messagecontframe'))
-    BUTTON_REGISTRATION_CONFIRM = (By.CSS_SELECTOR, ('[rel="noreferrer"]'))
+    LINK_IN_LETTER = (By.CSS_SELECTOR, ('[rel="noreferrer"]'))
     TEXT_IN_LETTER_AFTER_FIRST_MODERATION_RU = (By.XPATH, ('//div[text()="Ура! Ваш аккаунт прошел модерацию."]'))
     TEXT_IN_LETTER_AFTER_FIRST_MODERATION_UA = (By.XPATH, ('//div[text()="Ура! Ваш акаунт пройшов модерацiю."]'))
 

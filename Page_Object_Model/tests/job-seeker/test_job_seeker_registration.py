@@ -49,15 +49,78 @@ def test_authorization_of_user_in_Disabled_status(browser, language):  # авт�
     page.open()
     page.age_confirmation()  # подтверждение возраста больше 21 года
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.authorization_after_registration()  # авторизация
+    page.user_authorization()  # авторизация пользователя
     page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
     page.info_text_for_authorization_in_user_status_Disabled()  # инфо текст при авторизации в статусе пользователя "Отключен"
 
-# def test_change_field_Login_and_Email_ru(browser):  # изменение поля "Login" и "Электронный адрес" ru
-#     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
-#     admin_page.open()
-#     admin_page.admin_authorization()
-#     admin_page.go_to_users_page()  # переход на страницу пользователей
-#     admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
-#     admin_page.go_to_user_page()  # переход на страницу пользователя
-#     admin_page.adding_unique_values_to_Login_and_Email_fields()  # внескние в поля "Login" и "Электронный адрес" уникальные значения
+
+def test_confirmation_of_registration_of_applicant_and_authorization_on_site_ru(browser):  # подтверждение регистрации соискателя и авторизация на сайте ru
+    link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
+    email_page = EmailPage(browser, link)
+    email_page.open()
+    # browser.maximize_window()
+    email_page.email_authorization()  # авторизация email
+    email_page.confirmation_of_job_seeker_registration_in_letter_ru()  # подтверждение регистрации соискателя в письме ru
+
+    main_page = MainPage(browser, browser.current_url)
+    main_page.confirmation_opening_of_main_page()  # подтверждение открытия главной страницы
+
+    page = OllPage(browser, browser.current_url)
+    page.age_confirmation()  # подтверждение возраста больше 21 года
+    page.user_authorization()  # авторизация пользователя
+    page.check_for_user_authorization()  # проверка на авторизацию пользователя
+def test_confirmation_of_registration_of_applicant_and_authorization_on_site_ua(browser):  # подтверждение регистрации соискателя и авторизация на сайте ua
+    link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
+    email_page = EmailPage(browser, link)
+    email_page.open()
+    # browser.maximize_window()
+    email_page.email_authorization()  # авторизация email
+    email_page.confirmation_of_job_seeker_registration_in_letter_ua()  # подтверждение регистрации соискателя в письме ua
+
+    main_page = MainPage(browser, browser.current_url)
+    main_page.confirmation_opening_of_main_page()  # подтверждение открытия главной страницы
+
+    page = OllPage(browser, browser.current_url)
+    page.age_confirmation()  # подтверждение возраста больше 21 года
+    page.user_authorization()  # авторизация пользователя
+    page.check_for_user_authorization()  # проверка на авторизацию пользователя
+
+
+def test_changing_user_role_from_User_to_SuperAdmin_ru(browser):  # изменение роли пользователя с "User" на "SuperAdmin" ru
+    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page.open()
+    admin_page.admin_authorization()
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
+    admin_page.go_to_user_page()  # переход на страницу пользователя
+    admin_page.changing_role_from_User_to_SuperAdmin()  # изменение роли с "User" на "SuperAdmin"
+    admin_page.saving_user_card()  # сохранение карточки пользователя
+def test_changing_user_role_from_User_to_SuperAdmin_ua(browser):  # изменение роли пользователя с "User" на "SuperAdmin" ua
+    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page.open()
+    admin_page.admin_authorization()
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
+    admin_page.go_to_user_page()  # переход на страницу пользователя
+    admin_page.changing_role_from_User_to_SuperAdmin()  # изменение роли с "User" на "SuperAdmin"
+    admin_page.saving_user_card()  # сохранение карточки пользователя
+
+
+def test_change_field_Login_and_Email_ru(browser):  # изменение поля "Login" и "Электронный адрес" ru
+    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page.open()
+    admin_page.admin_authorization()
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
+    admin_page.go_to_user_page()  # переход на страницу пользователя
+    admin_page.adding_unique_values_to_Login_and_Email_fields()  # внескние в поля "Login" и "Электронный адрес" уникальные значения
+    admin_page.saving_user_card()  # сохранение карточки пользователя
+def test_change_field_Login_and_Email_ua(browser):  # изменение поля "Login" и "Электронный адрес" ua
+    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page.open()
+    admin_page.admin_authorization()
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
+    admin_page.go_to_user_page()  # переход на страницу пользователя
+    admin_page.adding_unique_values_to_Login_and_Email_fields()  # внескние в поля "Login" и "Электронный адрес" уникальные значения
+    admin_page.saving_user_card()  # сохранение карточки пользователя

@@ -22,14 +22,14 @@ class OllPage(BasePage):
         self.browser.find_element(*OllPageLocators.JOB_SEEKER_TAB).click()
         self.browser.find_element(*OllPageLocators.JOB_SEEKER_REGISTRATION_LINK).click()
 
-    def authorization_after_registration(self):  # авторизация после регистрации
+    def user_authorization(self):  # авторизация пользователя
         if "ua" in self.browser.current_url:
-            self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(TestData.login_ru)
-        else:
             self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(TestData.login_ua)
+        else:
+            self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(TestData.login_ru)
         self.browser.find_element(*OllPageLocators.FIELD_PASSWORD).send_keys(TestData.password)
         self.browser.find_element(*OllPageLocators.BUTTON_LOG_IN).click()
-        time.sleep(1)
+        time.sleep(2)
 
     def check_for_non_authorization_of_user(self):  # проверка на не авторизацию пользователя
         self.browser.find_element(*OllPageLocators.BUTTON_POP_UP_FOR_LOGIN)
