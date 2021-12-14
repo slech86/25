@@ -7,12 +7,12 @@ import os
 
 class CompanyRegistrationPage(BasePage):
     def filling_in_required_fields(self):  # заполнение обязательных полей
-        if "ua" in self.browser.current_url:
+        if "/ua" in self.browser.current_url:
             self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_LOGIN).send_keys(TestData.login_ua)
         else:
             self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_LOGIN).send_keys(TestData.login_ru)
 
-        if "ua" in self.browser.current_url:
+        if "/ua" in self.browser.current_url:
             self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_EMAIL).send_keys(TestData.email_ua)
         else:
             self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_EMAIL).send_keys(TestData.email_ru)

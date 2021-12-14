@@ -18,7 +18,7 @@ class MainPage(BasePage):
             assert "Для завершения активации своего аккаунта перейдите по ссылке в письме, которое было отправлено на ваш e-mail." == infoText, 'Не верное сообщение'
 
     def checking_employer_email_confirmation_message_after_registration(self):  # проверка сообщения о подтверждении электронной почты работодателя после регистрации
-        infoText = self.browser.find_element(*MainPageLocators.INFORMATION_TEXT_ABOUT_CONFIRMATION_OF_COMPANY_EMAIL_AFTER_REGISTRATION).text
+        infoText = self.browser.find_element(*MainPageLocators.INFO_TEXT_ABOUT_CONFIRMATION_OF_COMPANY_EMAIL_AFTER_REGISTRATION).text
         if "ua" in self.browser.current_url:
             assert "Профіль Вашої компанії був відправлений на модерацію, очікуйте на підтвердження!" == infoText, 'Не верное сообщение'
         else:

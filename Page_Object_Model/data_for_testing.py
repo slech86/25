@@ -3,7 +3,7 @@ import time
 class UrlStartPage():
     prefix = 'http://preprod.'  # 'http://preprod.', 'http://master.'. 'https://'
     suffix = '.preprod.pw'  # '.preprod.pw'
-    suffix_page = '/vacancy'
+    suffix_page = ''
 
     url_start_page = f"{prefix}logincasino.work{suffix}{suffix_page}"
 

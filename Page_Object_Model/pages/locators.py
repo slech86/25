@@ -6,6 +6,7 @@ class OllPageLocators():
 
     BUTTON_POP_UP_FOR_LOGIN = (By.CSS_SELECTOR, ('.login.flex-row'))
     BUTTON_AUTHORIZED_USER = (By.CSS_SELECTOR, ('.logout.flex-row'))
+    LINK_PERSONAL_ACCOUNT = (By.XPATH, ('//a[@class="dropdown-item"][contains(@href, "/cabinet")]'))
     # хедер
 
     COMPANY_REGISTRATION_LINK = (By.CSS_SELECTOR, ('#employer .fz-13'))
@@ -98,12 +99,37 @@ class JobSeekerRegistrationPageLocators():
 
     BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#button-registration'))
 
+class UserPersonalAccountPageLocators():
+    BUTTON_SERVICES_AND_PRICES = (By.XPATH, ('//a[contains(@href, "/prices")]/div[@class="employer-card"]'))
+
+class ServicesAndPricesPageLocators():
+    TAB_ACTIVATED_SERVICES = (By.CSS_SELECTOR, ('.labet-activated-servises'))
+    TAB_NOT_ACTIVATED_SERVICES = (By.CSS_SELECTOR, ('.labet-deactivate-servises'))
+    # вкладки
+
+    # вапр = (By.CSS_SELECTOR, ('.tab_item:nth-child(2) .packages-wrap[data-product-id="4"][data-purchases-id="448"]'))
+    # не активированные услуги
+
+    BUTTON_ORDER_IN_STANDART = (By.CSS_SELECTOR, ('[data-product-id="1"]'))
+    STANDART_IN_BASKET = (By.CSS_SELECTOR, ('.bascket-list-item > [data-product-id="1"]'))
+    # пакеты услуг
+
+    BUTTON_ORDER_IN_MONTHLY_FREE_VACANCY = (By.CSS_SELECTOR, ('[data-product-id="25"]'))
+    MONTHLY_FREE_VACANCY_IN_BASKET = (By.CSS_SELECTOR, ('.bascket-list-item > [data-product-id="25"]'))
+
+    BUTTON_ORDER_IN_1_VACANCY = (By.CSS_SELECTOR, ('[data-product-id="4"]'))
+    ONE_VACANCY_IN_BASKET = (By.CSS_SELECTOR, ('.bascket-list-item > [data-product-id="4"]'))
+    # пакеты поштучно
+
+    BUTTON_BUY = (By.CSS_SELECTOR, ('.js-button .btn.btn-blue'))
+
+    INFO_TEXT_AFTER_BUTTON_PRESSED_BUY_IN_CART = (By.CSS_SELECTOR, ('#to-buy-modal .modal-body'))  # информационный текст после нажаия кнопки "Купить" в корзине
+    CROSS_IN_POP_UP_AFTER_PRESSING_BUTTON_BUY_IN_CART = (By.CSS_SELECTOR, ('#to-buy-modal .close'))  # крестик в pop-up окне после нажаия кнопки "Купить" в корзине
+
 
 class MainPageLocators():
     INFO_TEXT_ABOUT_SENDING_REGISTRATION_FORM = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст о подтверждении отправки формы регистрации
-    INFORMATION_TEXT_ABOUT_CONFIRMATION_OF_COMPANY_EMAIL_AFTER_REGISTRATION = (By.CSS_SELECTOR, ('#to-publish-modal h2'))  # информационный текст о подтверждении електронной почты работодателя после регистрации
-
-    INFORMATION_TEXT_ABOUT_CONFIRMATION_OF_JOB_SEEKER_EMAIL_AFTER_REGISTRATION = (By.CSS_SELECTOR, (''))  # информационный текст о подтверждении електронной почты соискателя после регистрации
+    INFO_TEXT_ABOUT_CONFIRMATION_OF_COMPANY_EMAIL_AFTER_REGISTRATION = (By.CSS_SELECTOR, ('#to-publish-modal h2'))  # информационный текст о подтверждении електронной почты работодателя после регистрации
 
 
 class EmailPageLocators():
@@ -130,17 +156,23 @@ class AdminPageLocators():
 
     DROPDOWN_WORK = (By.CSS_SELECTOR, ('.dropdown:nth-child(4)'))
     USERS = (By.CSS_SELECTOR, ('[href="/x/user"]'))
+    ORDERS = (By.CSS_SELECTOR, ('[href="/x/orders"]'))
+    USER_PURCHASES = (By.CSS_SELECTOR, ('[href="/x/purchases"]'))
     # шапка
+
+    STATUS = (By.CSS_SELECTOR, ('[data-name="status"]'))
+    STATUS_SAVING = (By.CSS_SELECTOR, ('.editable-buttons > [type="submit"]'))
+    BUTTON_USER_EDIT = (By.CSS_SELECTOR, ('div > .fa.fa-bars'))  # костыль из-за ховер эффекта на кнопке меню пользователя
+    # общие
+
 
     FIELD_EMAIL_SEARCH = (By.CSS_SELECTOR, ('[name="User[email]"]'))
     USER_EMAIL_RU = (By.XPATH, ('//td[text()="' + TestData.email_ru + '"]'))
     USER_EMAIL_UA = (By.XPATH, ('//td[text()="' + TestData.email_ua + '"]'))
-    USER_STATUS = (By.CSS_SELECTOR, ('[data-name="status"]'))
     STATUS_ACTIVE = (By.CSS_SELECTOR, ('.form-control.input-sm [value="1"]'))
     STATUS_DELETED = (By.CSS_SELECTOR, ('.form-control.input-sm [value="-1"]'))
-    STATUS_SAVING = (By.CSS_SELECTOR, ('.editable-buttons > [type="submit"]'))
-    BUTTON_USER_EDIT = (By.CSS_SELECTOR, ('div > .fa.fa-bars'))  # костыль из-за ховер эффекта на кнопке меню пользователя
     # страница пользователей
+
 
     FIELD_USER_LOGIN = (By.CSS_SELECTOR, ('[name="User[login]"]'))
     FIELD_USER_EMAIL = (By.CSS_SELECTOR, ('[name="User[email]"]'))
@@ -149,6 +181,21 @@ class AdminPageLocators():
     ROLE_SUPER_ADMIN = (By.XPATH, ('//li[text()="[#1] SuperAdmin"]'))
     BUTTON_SAVE_AND_EDIT = (By.CSS_SELECTOR, ('[type="submit"].btn.btn-primary'))
     # страница пользователя
+
+    # SEARCH_STATUS_NEW = (By.CSS_SELECTOR, ('[name="Orders[status]"] > [value="1"]'))
+    FIELD_EMAIL_SEARCH_ORDERS = (By.CSS_SELECTOR, ('[name="Orders[userEmail]"]'))
+    USER_EMAIL_ORDERS_RU = (By.XPATH, ('//span[text()="' + TestData.email_ru + '"]'))
+    USER_EMAIL_ORDERS_UA = (By.XPATH, ('//span[text()="' + TestData.email_ua + '"]'))
+    STATUS_COMPLETED = (By.CSS_SELECTOR, ('.form-control.input-sm > [value="3"]'))
+    ID_LAST_ORDER = (By.CSS_SELECTOR, ('tbody > tr:nth-child(1) > td:nth-child(2)'))
+    # страница заказов
+
+    DROPDOWN_SEARCH_ORDERS = (By.CSS_SELECTOR, ('[data-select2-id="7"]'))
+    FIELD_SEARCH_IN_DROPDOWN = (By.CSS_SELECTOR, ('.select2-search__field'))  # общее поле ?
+    ITEMS_ID_PURCHASE = (By.CSS_SELECTOR, ('#model-grid tbody tr td:nth-child(2)'))
+    # страница 'Покупки пользователей'
+
+
 
 
 

@@ -25,9 +25,15 @@ class OllPage(BasePage):
     def user_authorization(self):  # авторизация пользователя
         if "ua" in self.browser.current_url:
             self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(TestData.login_ua)
+            # self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys('p.verbenets')
+
         else:
             self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(TestData.login_ru)
+            # self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys('p.verbenets')
+
         self.browser.find_element(*OllPageLocators.FIELD_PASSWORD).send_keys(TestData.password)
+        # self.browser.find_element(*OllPageLocators.FIELD_PASSWORD).send_keys('l6FOt9tvJT')
+
         self.browser.find_element(*OllPageLocators.BUTTON_LOG_IN).click()
         time.sleep(2)
 
@@ -35,7 +41,12 @@ class OllPage(BasePage):
         self.browser.find_element(*OllPageLocators.BUTTON_POP_UP_FOR_LOGIN)
 
     def check_for_user_authorization(self):  # проверка на авторизацию пользователя
-        self.browser.find_element(*OllPageLocators.BUTTON_AUTHORIZED_USER)
+        self.browser.find_element(*OllPageLocators.BUTTON_AUTHORIZED_USER).click()
+
+    def go_to_personal_account_page(self):  # нажатие на кнопку для перехода на страницу личного кабинета
+        self.browser.find_element(*OllPageLocators.LINK_PERSONAL_ACCOUNT).click()
+
+
 
     def info_text_for_authorization_in_user_status_Disabled(self):  # инфо текст при авторизации в статусе пользователя "Отключен"
         infoText = self.browser.find_element(*OllPageLocators.INFO_TEXT_IN_POP_UP_WINDOW).text
