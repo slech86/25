@@ -8,7 +8,11 @@ class UrlStartPage():
     url_start_page = f"{prefix}logincasino.work{suffix}{suffix_page}"
 
 class UrlPageAdmin():
-    url_page_admin = "http://admin-work.pw.preprod.pw/x"  # 'http://admin-work.pw.preprod.pw/x', 'https://admin-work.work/x'
+    if UrlStartPage.suffix == '.preprod.pw':
+        url_page_admin = "http://admin-work.pw.preprod.pw/x"
+    else:
+        url_page_admin = "https://admin-work.work/x"
+
 
 class TestData():
     time_Now = str(int(time.time()))

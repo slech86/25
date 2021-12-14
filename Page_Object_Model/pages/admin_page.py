@@ -90,6 +90,7 @@ class AdminPage(BasePage):
 
 
 
+
     def search_for_user_orders_by_email_ru(self):  # поиск заказов пользователя по e-mail ru
         self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_SEARCH_ORDERS).send_keys(TestData.email_ru, Keys.ENTER)
         time.sleep(2)
@@ -129,5 +130,4 @@ class AdminPage(BasePage):
         time.sleep(5)
         status = self.browser.find_element(*AdminPageLocators.STATUS).text
         assert status == 'Проведенный', 'Статус не "Проведенный"'
-
     # страница заказов

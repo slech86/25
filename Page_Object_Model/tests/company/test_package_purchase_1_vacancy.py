@@ -8,7 +8,7 @@ from Page_Object_Model.data_for_testing import UrlStartPage, UrlPageAdmin
 from Page_Object_Model.pages.admin_page import AdminPage
 
 @pytest.mark.parametrize('language', ["", "/ua"])
-def test_package_purchase_1_vacancy(browser, language):  # покупка пакета "1 вакансия"
+def test_package_purchase_1_vacancy_and_orders_processing_and_activating_it_on_site(browser, language):  # покупка пакета "1 вакансия" и проведение заказа в админке и активация его на сайте
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
     # browser.maximize_window()
@@ -28,7 +28,6 @@ def test_package_purchase_1_vacancy(browser, language):  # покупка пак
     services_and_prices_page.click_button_buy_in_basket()  # нажатие кнопки "Курить" в корзине
     services_and_prices_page.verification_of_message_after_purchase()  # проверка сообщения после покупки
 
-# def test_orders_processingand_activating_it_on_site_ru(browser):  # проведение заказа в админке и активация его на сайте
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
@@ -39,7 +38,6 @@ def test_package_purchase_1_vacancy(browser, language):  # покупка пак
         admin_page.search_for_user_orders_by_email_ua()  # поиск заказов пользователя по e-mail ua
     else:
         admin_page.search_for_user_orders_by_email_ru()  # поиск заказов пользователя по e-mail ru
-
 
     admin_page.order_processing()  # проведение заказа, изменение статуса заказа с "Новый" на "Проведенный"
     id_order = admin_page.getting_last_order_id_of_user()  # получение последнего id заказа пользователя
@@ -66,4 +64,4 @@ def test_package_purchase_1_vacancy(browser, language):  # покупка пак
     services_and_prices_page.availability_of_product_in_not_activated_services(id_product, id_purchase)  # наличие "1 вакансия" в не активированных услугах
     services_and_prices_page.product_activation(id_purchase)  # активация продукта
     services_and_prices_page.product_availability_in_activated_services(id_product, id_purchase)  # наличие "1 вакансия" в активированных услугах
-    time.sleep(3)
+

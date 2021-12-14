@@ -10,7 +10,7 @@ import time
 
 
 @pytest.mark.parametrize('language', ["", "/ua"])
-def test_company_registration_with_filling_in_only_required_fields(browser, language):  # регистрация работодателя с заполнением только обязательных полей
+def test_company_registration_with_filling_in_all_fields(browser, language):  # регистрация работодателя с заполнением всех полей
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
     # browser.maximize_window()
@@ -21,6 +21,7 @@ def test_company_registration_with_filling_in_only_required_fields(browser, lang
 
     company_registration_page = CompanyRegistrationPage(browser, browser.current_url)
     company_registration_page.filling_in_required_fields()  # заполнение обязательных полей
+    company_registration_page.filling_in_optional_fields()  # заполнение не обязательных полей
     company_registration_page.browser.execute_script("window.scrollBy(0, 1300);")
     company_registration_page.submitting_form_for_registration()  # отправка формы на регистрацию
 
@@ -29,35 +30,55 @@ def test_company_registration_with_filling_in_only_required_fields(browser, lang
     main_page.confirmation_message_for_sending_registration_form()  # проверка сообщения о подтверждении отправки формы регистрации
 
 
-# def test_checking_creation_of_user_in_admin_panel_ru(browser):  # проверка создания пользователя в админке ru
-#     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
-#     admin_page.open()
-#     admin_page.admin_authorization()
-#     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
-#     admin_page.go_to_users_page()  # переход на страницу пользователей
-#     admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
-#     admin_page.checking_that_newly_created_user_has_status_Disabled()  # проверка что новосозданный пользователь имеет статус "Отключено"
-# def test_checking_creation_of_user_in_admin_panel_ua(browser):  # проверка создания пользователя в админке ua
-#     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
-#     admin_page.open()
-#     admin_page.admin_authorization()
-#     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
-#     admin_page.go_to_users_page()  # переход на страницу пользователей
-#     admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
-#     admin_page.checking_that_newly_created_user_has_status_Disabled()  # проверка что новосозданный пользователь имеет статус "Отключено"
+def test_checking_creation_of_user_in_admin_panel_ru(browser):  # проверка создания пользователя в админке ru
+    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page.open()
+    admin_page.admin_authorization()
+    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
+    admin_page.checking_that_newly_created_user_has_status_Disabled()  # проверка что новосозданный пользователь имеет статус "Отключено"
+def test_checking_creation_of_user_in_admin_panel_ua(browser):  # проверка создания пользователя в админке ua
+    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page.open()
+    admin_page.admin_authorization()
+    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
+    admin_page.checking_that_newly_created_user_has_status_Disabled()  # проверка что новосозданный пользователь имеет статус "Отключено"
 
+def test_changing_user_role_from_User_to_SuperAdmin_ru(browser):  # изменение роли пользователя с "User" на "SuperAdmin" ru
+    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page.open()
+    admin_page.admin_authorization()
+    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
+    admin_page.go_to_user_page()  # переход на страницу пользователя
+    admin_page.changing_role_from_User_to_SuperAdmin()  # изменение роли с "User" на "SuperAdmin"
+    admin_page.saving_user_card()  # сохранение карточки пользователя
+def test_changing_user_role_from_User_to_SuperAdmin_ua(browser):  # изменение роли пользователя с "User" на "SuperAdmin" ua
+    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page.open()
+    admin_page.admin_authorization()
+    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
+    admin_page.go_to_user_page()  # переход на страницу пользователя
+    admin_page.changing_role_from_User_to_SuperAdmin()  # изменение роли с "User" на "SuperAdmin"
+    admin_page.saving_user_card()  # сохранение карточки пользователя
 
-# @pytest.mark.parametrize('language', ["", "/ua"])
-# def test_authorization_of_user_in_Disabled_status(browser, language):  # авторизация пользователя в статусе "Отключен"
-#     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
-#     page = OllPage(browser, url_Page)
-#     # browser.maximize_window()
-#     page.open()
-#     page.age_confirmation()  # подтверждение возраста больше 21 года
-#     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-#     page.user_authorization()  # авторизация пользователя
-#     page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
-#     page.info_text_for_authorization_in_user_status_Disabled()  # инфо текст при авторизации в статусе пользователя "Отключен"
+@pytest.mark.parametrize('language', ["", "/ua"])
+def test_authorization_of_user_in_Disabled_status(browser, language):  # авторизация пользователя в статусе "Отключен"
+    url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
+    page = OllPage(browser, url_Page)
+    # browser.maximize_window()
+    page.open()
+    page.age_confirmation()  # подтверждение возраста больше 21 года
+    page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
+    page.user_authorization()  # авторизация пользователя
+    page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
+    page.info_text_for_authorization_in_user_status_Disabled()  # инфо текст при авторизации в статусе пользователя "Отключен"
 
 
 def test_email_verification_after_company_registration_ru(browser):  # верификация почты после регистрации работодателя RU
@@ -82,17 +103,17 @@ def test_email_verification_after_company_registration_ua(browser):  # вери�
     main_page.checking_employer_email_confirmation_message_after_registration()  # проверка сообщения о подтверждении электронной почты работодателя после регистрации
 
 
-# @pytest.mark.parametrize('language', ["", "/ua"])
-# def test_authorization_of_user_in_On_moderation_status(browser, language):  # авторизация пользователя в статусе "На модерации"
-#     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
-#     page = OllPage(browser, url_Page)
-#     # browser.maximize_window()
-#     page.open()
-#     page.age_confirmation()  # подтверждение возраста больше 21 года
-#     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-#     page.user_authorization()  # авторизация пользователя
-#     page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
-#     page.info_text_for_authorization_in_user_status_On_moderation()  # инфо текст при авторизации в статусе пользователя "На модерации"
+@pytest.mark.parametrize('language', ["", "/ua"])
+def test_authorization_of_user_in_On_moderation_status(browser, language):  # авторизация пользователя в статусе "На модерации"
+    url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
+    page = OllPage(browser, url_Page)
+    # browser.maximize_window()
+    page.open()
+    page.age_confirmation()  # подтверждение возраста больше 21 года
+    page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
+    page.user_authorization()  # авторизация пользователя
+    page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
+    page.info_text_for_authorization_in_user_status_On_moderation()  # инфо текст при авторизации в статусе пользователя "На модерации"
 
 
 def test_change_of_employer_status_from_On_moderation_to_Aktivet_ua(browser):  # изменение статуса работодателя с "На модерации" на "Активет" ua
@@ -125,80 +146,20 @@ def test_change_of_employer_status_from_On_moderation_to_Aktivet_ru(browser):  #
 #     page.check_for_user_authorization()  # проверка на авторизацию пользователя
 
 
-# def test_checking_letter_after_first_moderation_ru(browser):  # проверка письма после первой модерации компании ru
-#     link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
-#     email_page = EmailPage(browser, link)
-#     email_page.open()
-#     # browser.maximize_window()
-#     email_page.email_authorization()  # авторизация email
-#     email_page.letter_after_first_moderation_of_company_ru()  # письмо после первой модерации компании ru
-# def test_checking_letter_after_first_moderation_ua(browser):  # проверка письма после первой модерации компании ua
-#     link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
-#     email_page = EmailPage(browser, link)
-#     email_page.open()
-#     # browser.maximize_window()
-#     email_page.email_authorization()  # авторизация email
-#     email_page.letter_after_first_moderation_of_company_ua()  # письмо после первой модерации компании ua
-
-
-# def test_delete_user_ru(browser):  # удаление пользователя ru
-#     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
-#     admin_page.open()
-#     admin_page.admin_authorization()
-#     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
-#     admin_page.go_to_users_page()  # переход на страницу пользователей
-#     admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
-#     admin_page.changing_user_status_to_Deleted()  # изменение статуса пользователя на "Удалено"
-# def test_delete_user_ua(browser):  # удаление пользователя ua
-#     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
-#     admin_page.open()
-#     admin_page.admin_authorization()
-#     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
-#     admin_page.go_to_users_page()  # переход на страницу пользователей
-#     admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
-#     admin_page.changing_user_status_to_Deleted()  # изменение статуса пользователя на "Удалено"
-
-# def test_changing_user_role_from_User_to_SuperAdmin_ru(browser):  # изменение роли пользователя с "User" на "SuperAdmin" ru
-#     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
-#     admin_page.open()
-#     admin_page.admin_authorization()
-#     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
-#     admin_page.go_to_users_page()  # переход на страницу пользователей
-#     admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
-#     admin_page.go_to_user_page()  # переход на страницу пользователя
-#     admin_page.changing_role_from_User_to_SuperAdmin()  # изменение роли с "User" на "SuperAdmin"
-#     admin_page.saving_user_card()  # сохранение карточки пользователя
-# def test_changing_user_role_from_User_to_SuperAdmin_ua(browser):  # изменение роли пользователя с "User" на "SuperAdmin" ua
-#     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
-#     admin_page.open()
-#     admin_page.admin_authorization()
-#     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
-#     admin_page.go_to_users_page()  # переход на страницу пользователей
-#     admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
-#     admin_page.go_to_user_page()  # переход на страницу пользователя
-#     admin_page.changing_role_from_User_to_SuperAdmin()  # изменение роли с "User" на "SuperAdmin"
-#     admin_page.saving_user_card()  # сохранение карточки пользователя
-#
-# def test_change_field_Login_and_Email_ru(browser):  # изменение поля "Login" и "Электронный адрес" ru
-#     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
-#     admin_page.open()
-#     admin_page.admin_authorization()
-#     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
-#     admin_page.go_to_users_page()  # переход на страницу пользователей
-#     admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
-#     admin_page.go_to_user_page()  # переход на страницу пользователя
-#     admin_page.adding_unique_values_to_Login_and_Email_fields()  # внесение в поля "Login" и "Электронный адрес" уникальные значения
-#     admin_page.saving_user_card()  # сохранение карточки пользователя
-# def test_change_field_Login_and_Email_ua(browser):  # изменение поля "Login" и "Электронный адрес" ua
-#     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
-#     admin_page.open()
-#     admin_page.admin_authorization()
-#     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
-#     admin_page.go_to_users_page()  # переход на страницу пользователей
-#     admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
-#     admin_page.go_to_user_page()  # переход на страницу пользователя
-#     admin_page.adding_unique_values_to_Login_and_Email_fields()  # внесение в поля "Login" и "Электронный адрес" уникальные значения
-#     admin_page.saving_user_card()  # сохранение карточки пользователя
+def test_checking_letter_after_first_moderation_ru(browser):  # проверка письма после первой модерации компании ru
+    link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
+    email_page = EmailPage(browser, link)
+    email_page.open()
+    # browser.maximize_window()
+    email_page.email_authorization()  # авторизация email
+    email_page.letter_after_first_moderation_of_company_ru()  # письмо после первой модерации компании ru
+def test_checking_letter_after_first_moderation_ua(browser):  # проверка письма после первой модерации компании ua
+    link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
+    email_page = EmailPage(browser, link)
+    email_page.open()
+    # browser.maximize_window()
+    email_page.email_authorization()  # авторизация email
+    email_page.letter_after_first_moderation_of_company_ua()  # письмо после первой модерации компании ua
 
 
 
