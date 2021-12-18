@@ -6,8 +6,10 @@ class BasePage():
         self.url = url
         self.browser.implicitly_wait(timeout)
 
-    def open(self):
+    def open(self, cookie=True):
         self.browser.get(self.url)
+        if cookie == True:
+            self.browser.add_cookie({'name': 'AgeValidation', 'value': '1'})
 
     def is_element_present(self, how, what):
         try:

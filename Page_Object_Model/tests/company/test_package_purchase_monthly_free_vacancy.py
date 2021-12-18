@@ -1,14 +1,14 @@
-import time
 import pytest
-from Page_Object_Model.pages.oll_page import OllPage
-from Page_Object_Model.pages.user_personal_account_page import UserPersonalAccountPage
-from Page_Object_Model.pages.services_and_prices_page import ServicesAndPricesPage
+
 from Page_Object_Model.data_for_testing import UrlStartPage, UrlPageAdmin
 from Page_Object_Model.pages.admin_page import AdminPage
-from Page_Object_Model.pages.email_page import EmailPage
+from Page_Object_Model.pages.oll_page import OllPage
+from Page_Object_Model.pages.services_and_prices_page import ServicesAndPricesPage
+from Page_Object_Model.pages.user_personal_account_page import UserPersonalAccountPage
+
 
 @pytest.mark.parametrize('language', ["", "/ua"])
-def test_package_purchase_1_vacancy_and_orders_processing_and_activating_it_on_site(browser, language):  # покупка пакета "1 вакансия" и проведение заказа в админке и активация его на сайте
+def test_package_purchase_monthly_free_vacancy_and_activating_it_on_site(browser, language):  # покупка пакета "Ежемесячная бесплатная вакансия" и активация его на сайте
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
     # browser.maximize_window()
@@ -22,8 +22,7 @@ def test_package_purchase_1_vacancy_and_orders_processing_and_activating_it_on_s
     user_personal_account_page.go_to_services_and_prices_page()  # переход на страницу "Услуги и цены"
 
     services_and_prices_page = ServicesAndPricesPage(browser, browser.current_url)
-    services_and_prices_page.browser.execute_script("window.scrollBy(0, 500);")
-    id_product = services_and_prices_page.adding_to_cart_1_vacancy_and_getting_product_id()  # добавление в корзину "1 вакансия" и получение id продукта
+    id_product = services_and_prices_page.adding_to_cart_Monthly_free_vacancy()  # добавление в корзину "Ежемесячная бесплатная вакансия" и получение id продукта
     services_and_prices_page.click_button_buy_in_basket()  # нажатие кнопки "Курить" в корзине
     services_and_prices_page.verification_of_message_after_purchase()  # проверка сообщения после покупки
 
@@ -38,7 +37,6 @@ def test_package_purchase_1_vacancy_and_orders_processing_and_activating_it_on_s
     else:
         admin_page.search_for_user_orders_by_email_ru()  # поиск заказов пользователя по e-mail ru
 
-    admin_page.order_processing()  # проведение заказа, изменение статуса заказа с "Новый" на "Проведенный"
     id_order = admin_page.getting_last_order_id_of_user()  # получение последнего id заказа пользователя
 
     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
@@ -60,21 +58,6 @@ def test_package_purchase_1_vacancy_and_orders_processing_and_activating_it_on_s
     services_and_prices_page.availability_of_product_in_not_activated_services(id_product, id_purchase)  # наличие "1 вакансия" в не активированных услугах
     services_and_prices_page.product_activation(id_purchase)  # активация продукта
     services_and_prices_page.product_availability_in_activated_services(id_product, id_purchase)  # наличие "1 вакансия" в активированных услугах
-
-def test_checking_letter_after_order_processing_ru(browser):  # проверка письма после проведения заказа ru
-    link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
-    email_page = EmailPage(browser, link)
-    email_page.open()
-    # browser.maximize_window()
-    email_page.email_authorization()  # авторизация email
-    email_page.letter_after_order_processing_ru()  # письмо после проведения заказа ru
-def test_checking_letter_after_order_processing_ua(browser):  # проверка письма после проведения заказа ua
-    link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
-    email_page = EmailPage(browser, link)
-    email_page.open()
-    # browser.maximize_window()
-    email_page.email_authorization()  # авторизация email
-    email_page.letter_after_order_processing_ua()  # письмо после проведения заказа ua
 
 
 def test_complete_deletion_of_user_orders_ru(browser):  # полное удаление заказов пользователя ru

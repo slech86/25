@@ -4,15 +4,41 @@ from selenium.webdriver.common.by import By
 import time
 
 class ServicesAndPricesPage(BasePage):
-    def adding_to_cart_Monthly_free_vacancy(self):  # добавление в корзину "Ежемесячная бесплатная вакансия"
+    def adding_to_cart_standart_1_vacancy_and_getting_product_id(self):  # добавление в корзину "Standart" и получение id продукта
+        self.browser.execute_script("window.scrollBy(0, 100);")
+        self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_ORDER_IN_STANDART).click()
+        self.browser.find_element(*ServicesAndPricesPageLocators.STANDART_IN_BASKET)  # наличие в корзине
+        id_product = "1"
+        return id_product
+    def adding_to_cart_standart_5_vacancy_and_getting_product_id(self):  # добавление в корзину "Standart" и получение id продукта
+        self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_5_VACANCY).click()
+        self.browser.execute_script("window.scrollBy(0, 100);")
+        self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_ORDER_IN_STANDART).click()
+        self.browser.find_element(*ServicesAndPricesPageLocators.STANDART_IN_BASKET)  # наличие в корзине
+        id_product = "1"
+        return id_product
+    # пакеты услуг
+
+
+
+
+    def adding_to_cart_Monthly_free_vacancy(self):  # добавление в корзину "Ежемесячная бесплатная вакансия" и получение id продукта
+        self.browser.execute_script("window.scrollBy(0, 500);")
         self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_ORDER_IN_MONTHLY_FREE_VACANCY).click()
         self.browser.find_element(*ServicesAndPricesPageLocators.MONTHLY_FREE_VACANCY_IN_BASKET)  # наличие в корзине
+        id_product = "25"
+        return id_product
 
     def adding_to_cart_1_vacancy_and_getting_product_id(self):  # добавление в корзину "1 вакансия" и получение id продукта
+        self.browser.execute_script("window.scrollBy(0, 500);")
         self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_ORDER_IN_1_VACANCY).click()
         self.browser.find_element(*ServicesAndPricesPageLocators.ONE_VACANCY_IN_BASKET)  # наличие в корзине
         id_product = "4"
         return id_product
+    # пакеты поштучно
+
+
+
 
     def click_button_buy_in_basket(self):  # нажатие кнопки "Курить" в корзине
         self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_BUY).click()
@@ -42,6 +68,3 @@ class ServicesAndPricesPage(BasePage):
     def product_availability_in_activated_services(self, id_product, id_purchase):  # наличие продукта в активированных услугах
         for id in id_purchase:
             self.browser.find_element(By.CSS_SELECTOR, ('.tab-activated-servises .packages-wrap[data-product-id="' + id_product + '"][data-purchases-id="' + id + '"]'))
-
-
-

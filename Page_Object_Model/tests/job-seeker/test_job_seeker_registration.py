@@ -14,7 +14,6 @@ def test_job_seeker_registration_with_filling_in_all_fields(browser, language): 
     page = OllPage(browser, url_Page)
     # browser.maximize_window()
     page.open()
-    page.age_confirmation()  # подтверждение возраста больше 21 года
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
     page.go_to_job_seeker_registration_page()  # нажатие на кнопку для перехода на страницу регистрации соискателя
 
@@ -50,7 +49,7 @@ def test_changing_user_role_from_User_to_SuperAdmin_ru(browser):  # измене
     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
     admin_page.go_to_users_page()  # переход на страницу пользователей
     admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
-    admin_page.go_to_user_page()  # переход на страницу пользователя
+    admin_page.go_to_object_editing_page()  # переход на страницу пользователя
     admin_page.changing_role_from_User_to_SuperAdmin()  # изменение роли с "User" на "SuperAdmin"
     admin_page.saving_user_card()  # сохранение карточки пользователя
 def test_changing_user_role_from_User_to_SuperAdmin_ua(browser):  # изменение роли пользователя с "User" на "SuperAdmin" ua
@@ -60,7 +59,7 @@ def test_changing_user_role_from_User_to_SuperAdmin_ua(browser):  # измене
     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
     admin_page.go_to_users_page()  # переход на страницу пользователей
     admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
-    admin_page.go_to_user_page()  # переход на страницу пользователя
+    admin_page.go_to_object_editing_page()  # переход на страницу пользователя
     admin_page.changing_role_from_User_to_SuperAdmin()  # изменение роли с "User" на "SuperAdmin"
     admin_page.saving_user_card()  # сохранение карточки пользователя
 
@@ -70,7 +69,6 @@ def test_authorization_of_user_in_Disabled_status(browser, language):  # авт�
     page = OllPage(browser, url_Page)
     # browser.maximize_window()
     page.open()
-    page.age_confirmation()  # подтверждение возраста больше 21 года
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
     page.user_authorization()  # авторизация пользователя
     page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
@@ -107,3 +105,21 @@ def test_confirmation_of_registration_of_applicant_and_authorization_on_site_ua(
     page.age_confirmation()  # подтверждение возраста больше 21 года
     page.user_authorization()  # авторизация пользователя
     page.check_for_user_authorization()  # проверка на авторизацию пользователя
+
+
+def test_check_that_user_has_status_Active_ru(browser):  # проверка что пользователь имеет статус "Активен" ru
+    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page.open()
+    admin_page.admin_authorization()
+    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
+    admin_page.check_that_user_has_status_Active()  # проверка что пользователь имеет статус "Активен"
+def test_check_that_user_has_status_Active_ua(browser):  # проверка что пользователь имеет статус "Активен" ua
+    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page.open()
+    admin_page.admin_authorization()
+    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
+    admin_page.check_that_user_has_status_Active()  # проверка что пользователь имеет статус "Активен"

@@ -2,6 +2,7 @@ from .base_page import BasePage
 from .locators import AdminPageLocators
 from Page_Object_Model.data_for_testing import TestData, Accounts
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import random
@@ -30,9 +31,22 @@ class AdminPage(BasePage):
 
 
 
+    def complete_objects_deletion(self):  # полное удаление объектов (кроме пользователя)
+        objects = self.browser.find_elements(*AdminPageLocators.BUTTON_OBJECT_MENU)
 
-    def go_to_user_page(self):  # переход на страницу пользователя
-        self.browser.find_element(*AdminPageLocators.BUTTON_USER_EDIT).click()
+        for object in objects:
+            element_to_hover_over = object
+            ActionChains(self.browser).move_to_element(element_to_hover_over).perform()
+            self.browser.find_element(*AdminPageLocators.BUTTON_COMPLETE_OBJECT_DELETED).click()
+            self.browser.find_element(*AdminPageLocators.BUTTON_OBJECT_DELETE_CONFIRMATION).click()
+            time.sleep(2)
+
+    def go_to_object_editing_page(self):  # переход на страницу редактирования объекта
+        self.browser.find_element(*AdminPageLocators.BUTTON_OBJECT_MENU).click()  # костыль из-за ховер эффекта на кнопке меню пользователя
+    # общие
+
+
+
 
     def search_user_by_email_ru(self):  # поиск пользователя по e-mail ru
         self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_SEARCH).send_keys(TestData.email_ru, Keys.ENTER)
@@ -47,7 +61,7 @@ class AdminPage(BasePage):
         status = self.browser.find_element(*AdminPageLocators.STATUS).text
         assert status == 'Отключен', 'Статус не "Отключен"'
 
-    def change_of_user_status_from_On_moderation_to_Active(self):  # изменение статуса пользователя с "На модерации" на "Активет"
+    def change_of_user_status_from_On_moderation_to_Active(self):  # изменение статуса пользователя с "На модерации" на "Активен"
         status = self.browser.find_element(*AdminPageLocators.STATUS).text
         assert status == 'На модерации', 'Статус не "На модерации"'
         self.browser.find_element(*AdminPageLocators.STATUS).click()
@@ -56,8 +70,6 @@ class AdminPage(BasePage):
         time.sleep(1)
         self.browser.find_element(*AdminPageLocators.STATUS_SAVING).click()
         time.sleep(5)
-        status = self.browser.find_element(*AdminPageLocators.STATUS).text
-        assert status == 'Активен', 'Статус не "Активен"'
 
     def changing_user_status_to_Deleted(self):  # изменение статуса пользователя на "Удалено"
         self.browser.find_element(*AdminPageLocators.STATUS).click()
@@ -66,8 +78,14 @@ class AdminPage(BasePage):
         time.sleep(1)
         self.browser.find_element(*AdminPageLocators.STATUS_SAVING).click()
         time.sleep(5)
+        self.browser.refresh()
         status = self.browser.find_element(*AdminPageLocators.STATUS).text
         assert status == 'Удалено', 'Статус не "Удалено"'
+
+    def check_that_user_has_status_Active(self):  # проверка что пользователь имеет статус "Активен"
+        self.browser.refresh()
+        status = self.browser.find_element(*AdminPageLocators.STATUS).text
+        assert status == 'Активен', 'Статус не "Активен"'
     # страница пользователей
 
 
@@ -108,16 +126,6 @@ class AdminPage(BasePage):
         id_order = self.browser.find_element(*AdminPageLocators.ID_LAST_ORDER).text
         return id_order
 
-    def getting_id_of_purchase(self, id_order):  # получение id покупки
-        self.browser.find_element(*AdminPageLocators.DROPDOWN_SEARCH_ORDERS).click()
-        self.browser.find_element(*AdminPageLocators.FIELD_SEARCH_IN_DROPDOWN).send_keys('#' + id_order, Keys.ENTER)
-        time.sleep(2)
-        items_id_purchase = self.browser.find_elements(*AdminPageLocators.ITEMS_ID_PURCHASE)
-        id_purchase = []
-        for id in items_id_purchase:
-            id_purchase.append(id.text)
-        return id_purchase
-
 
     def order_processing(self):  # проведение заказа, изменение статуса заказа с "Новый" на "Проведенный"
         status = self.browser.find_element(*AdminPageLocators.STATUS).text
@@ -131,3 +139,17 @@ class AdminPage(BasePage):
         status = self.browser.find_element(*AdminPageLocators.STATUS).text
         assert status == 'Проведенный', 'Статус не "Проведенный"'
     # страница заказов
+
+
+
+
+    def getting_id_of_purchase(self, id_order):  # получение id покупки
+        self.browser.find_element(*AdminPageLocators.DROPDOWN_SEARCH_ORDERS).click()
+        self.browser.find_element(*AdminPageLocators.FIELD_SEARCH_IN_DROPDOWN).send_keys('#' + id_order, Keys.ENTER)
+        time.sleep(2)
+        items_id_purchase = self.browser.find_elements(*AdminPageLocators.ITEMS_ID_PURCHASE)
+        id_purchase = []
+        for id in items_id_purchase:
+            id_purchase.append(id.text)
+        return id_purchase
+    # страница "Покупки пользователей"

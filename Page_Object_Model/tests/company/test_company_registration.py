@@ -14,7 +14,7 @@ def test_company_registration_with_filling_in_all_fields(browser, language):  # 
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
     # browser.maximize_window()
-    page.open()
+    page.open(False)
     page.age_confirmation()  # подтверждение возраста больше 21 года
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
     page.go_to_company_registration_page()  # нажатие на кнопку для перехода на страницу регистрации работодателя
@@ -54,7 +54,7 @@ def test_changing_user_role_from_User_to_SuperAdmin_ru(browser):  # измене
     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
     admin_page.go_to_users_page()  # переход на страницу пользователей
     admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
-    admin_page.go_to_user_page()  # переход на страницу пользователя
+    admin_page.go_to_object_editing_page()  # переход на страницу пользователя
     admin_page.changing_role_from_User_to_SuperAdmin()  # изменение роли с "User" на "SuperAdmin"
     admin_page.saving_user_card()  # сохранение карточки пользователя
 def test_changing_user_role_from_User_to_SuperAdmin_ua(browser):  # изменение роли пользователя с "User" на "SuperAdmin" ua
@@ -64,7 +64,7 @@ def test_changing_user_role_from_User_to_SuperAdmin_ua(browser):  # измене
     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
     admin_page.go_to_users_page()  # переход на страницу пользователей
     admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
-    admin_page.go_to_user_page()  # переход на страницу пользователя
+    admin_page.go_to_object_editing_page()  # переход на страницу пользователя
     admin_page.changing_role_from_User_to_SuperAdmin()  # изменение роли с "User" на "SuperAdmin"
     admin_page.saving_user_card()  # сохранение карточки пользователя
 
@@ -74,7 +74,6 @@ def test_authorization_of_user_in_Disabled_status(browser, language):  # авт�
     page = OllPage(browser, url_Page)
     # browser.maximize_window()
     page.open()
-    page.age_confirmation()  # подтверждение возраста больше 21 года
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
     page.user_authorization()  # авторизация пользователя
     page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
@@ -109,29 +108,30 @@ def test_authorization_of_user_in_On_moderation_status(browser, language):  # а
     page = OllPage(browser, url_Page)
     # browser.maximize_window()
     page.open()
-    page.age_confirmation()  # подтверждение возраста больше 21 года
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
     page.user_authorization()  # авторизация пользователя
     page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
     page.info_text_for_authorization_in_user_status_On_moderation()  # инфо текст при авторизации в статусе пользователя "На модерации"
 
 
-def test_change_of_employer_status_from_On_moderation_to_Aktivet_ua(browser):  # изменение статуса работодателя с "На модерации" на "Активет" ua
+def test_change_of_employer_status_from_On_moderation_to_Aktivet_ua(browser):  # изменение статуса работодателя с "На модерации" на "Активен" ua
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
     admin_page.go_to_users_page()  # переход на страницу пользователей
     admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
-    admin_page.change_of_user_status_from_On_moderation_to_Active()  # изменение статуса пользователя с "На модерации" на "Активет"
-def test_change_of_employer_status_from_On_moderation_to_Aktivet_ru(browser):  # изменение статуса работодателя с "На модерации" на "Активет" ru
+    admin_page.change_of_user_status_from_On_moderation_to_Active()  # изменение статуса пользователя с "На модерации" на "Активен"
+    admin_page.check_that_user_has_status_Active()  # проверка что пользователь имеет статус "Активен"
+def test_change_of_employer_status_from_On_moderation_to_Aktivet_ru(browser):  # изменение статуса работодателя с "На модерации" на "Активен" ru
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
     admin_page.go_to_users_page()  # переход на страницу пользователей
     admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
-    admin_page.change_of_user_status_from_On_moderation_to_Active()  # изменение статуса пользователя с "На модерации" на "Активет"
+    admin_page.change_of_user_status_from_On_moderation_to_Active()  # изменение статуса пользователя с "На модерации" на "Активен"
+    admin_page.check_that_user_has_status_Active()  # проверка что пользователь имеет статус "Активен"
 
 
 # @pytest.mark.parametrize('language', ["", "/ua"])
@@ -140,12 +140,11 @@ def test_change_of_employer_status_from_On_moderation_to_Aktivet_ru(browser):  #
 #     page = OllPage(browser, url_Page)
 #     # browser.maximize_window()
 #     page.open()
-#     page.age_confirmation()  # подтверждение возраста больше 21 года
 #     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
 #     page.user_authorization()  # авторизация пользователя
 #     page.check_for_user_authorization()  # проверка на авторизацию пользователя
-
-
+#
+#
 def test_checking_letter_after_first_moderation_ru(browser):  # проверка письма после первой модерации компании ru
     link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
     email_page = EmailPage(browser, link)

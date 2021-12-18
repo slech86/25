@@ -58,8 +58,6 @@ class EmailPage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
 
 
-
-
     def confirmation_of_job_seeker_registration_in_letter_ru(self):  # подтверждение регистрации соискателя в письме ru
         # time.sleep(20)
         # self.browser.refresh()
@@ -71,7 +69,6 @@ class EmailPage(BasePage):
         self.browser.find_element(*EmailPageLocators.LINK_IN_LETTER).click()
         self.browser.switch_to.default_content()  # выход из фрейма
         self.browser.switch_to.window(self.browser.window_handles[1])
-        time.sleep(7)
     def confirmation_of_job_seeker_registration_in_letter_ua(self):  # подтверждение регистрации соискателя в письме ua
         # time.sleep(20)
         # self.browser.refresh()
@@ -83,4 +80,27 @@ class EmailPage(BasePage):
         self.browser.find_element(*EmailPageLocators.LINK_IN_LETTER).click()
         self.browser.switch_to.default_content()  # выход из фрейма
         self.browser.switch_to.window(self.browser.window_handles[1])
-        time.sleep(7)
+
+
+    def letter_after_order_processing_ru(self):  # письмо после проведения заказа ru
+        # time.sleep(20)
+        # self.browser.refresh()
+
+        self.browser.find_element(*EmailPageLocators.LETTER_AFTER_ORDER_PROCESSING_RU).click()
+
+        iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
+        self.browser.switch_to.frame(iframe)  # вход в фрейм
+        letter_text = self.browser.find_element(*EmailPageLocators.TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_RU).text
+        assert "Оплата получена, активируйте услугу на " in letter_text, 'Не верное сообщение'
+        self.browser.switch_to.default_content()  # выход из фрейма
+    def letter_after_order_processing_ua(self):  # письмо после проведения заказа ua
+        # time.sleep(20)
+        # self.browser.refresh()
+
+        self.browser.find_element(*EmailPageLocators.LETTER_AFTER_ORDER_PROCESSING_UA).click()
+
+        iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
+        self.browser.switch_to.frame(iframe)  # вход в фрейм
+        letter_text = self.browser.find_element(*EmailPageLocators.TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_UA).text
+        assert "Оплата отримана, активуйте послугу на " in letter_text, 'Не верное сообщение'
+        self.browser.switch_to.default_content()  # выход из фрейма
