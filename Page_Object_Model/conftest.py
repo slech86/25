@@ -5,24 +5,26 @@ from selenium.webdriver.chrome.options import Options
 
 
 def pytest_addoption(parser):
-    parser.addoption('--browser_name', action='store', default='chrome',
-                     help="Choose browser: chrome or firefox")
-    parser.addoption('--language', action='store', default='en',
-                     help="Choose lang")
+    parser.addoption('--browser_name', action='store', default='chrome', help="Choose browser: chrome or firefox")
+    parser.addoption('--language', action='store', default='ru', help="Choose lang")
 
 @pytest.fixture(scope="function")
 def browser(request):
-    browser_name = request.config.getoption("browser_name")
-    user_language = request.config.getoption("language")
+    browser_name = request.config.getoption("--browser_name")
     if browser_name == "chrome":
-        options = Options()
-        options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
-        browser = webdriver.Chrome(options=options)
+        browser = webdriver.Chrome()
     elif browser_name == "firefox":
-        fp = webdriver.FirefoxProfile()
-        fp.set_preference("intl.accept_languages", user_language)
-        browser = webdriver.Firefox(firefox_profile=fp)
+        browser = webdriver.Firefox()
     else:
         print("--browser_name should be chrome or firefox")
     yield browser
     browser.quit()
+
+@pytest.fixture(scope="function")
+def language(request):
+    user_language = request.config.getoption("--language")
+    if user_language == "ru":
+        language = ''
+    elif user_language == "ua":
+        language = '/ua'
+    yield language

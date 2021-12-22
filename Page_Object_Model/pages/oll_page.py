@@ -40,7 +40,7 @@ class OllPage(BasePage):
     def check_for_non_authorization_of_user(self):  # проверка на не авторизацию пользователя
         self.browser.find_element(*OllPageLocators.BUTTON_POP_UP_FOR_LOGIN)
 
-    def check_for_user_authorization(self):  # проверка на авторизацию пользователя
+    def opening_authorized_user_menu(self):  # нажатие на кнопку для открытия меню авторизированного пользователя
         self.browser.find_element(*OllPageLocators.BUTTON_AUTHORIZED_USER).click()
 
     def go_to_personal_account_page(self):  # нажатие на кнопку для перехода на страницу личного кабинета

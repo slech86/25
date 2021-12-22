@@ -99,8 +99,15 @@ class JobSeekerRegistrationPageLocators():
 
     BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#button-registration'))
 
-class UserPersonalAccountPageLocators():
+class CompanyPersonalCabinetPageLocators():
+    BUTTON_MY_VACANCIES = (By.XPATH, ('//a[contains(@href, "/vacancy/my")]/div[@class="employer-card"]'))
     BUTTON_SERVICES_AND_PRICES = (By.XPATH, ('//a[contains(@href, "/prices")]/div[@class="employer-card"]'))
+
+class MyVacanciesPageLocators():
+    BUTTON_ADD_VACANCY = (By.CSS_SELECTOR, ('#add-vacancy'))
+
+class AddVacancyPageLocators():
+    BUTTON_PUBLISH = (By.CSS_SELECTOR, ('#submit-publish'))
 
 class ServicesAndPricesPageLocators():
     TAB_ACTIVATED_SERVICES = (By.CSS_SELECTOR, ('.labet-activated-servises'))
@@ -109,11 +116,11 @@ class ServicesAndPricesPageLocators():
 
 
 
-
     BUTTON_ORDER_IN_STANDART = (By.CSS_SELECTOR, ('[data-product-id="1"]'))
     BUTTON_5_VACANCY = (By.CSS_SELECTOR, ('[for="vacancies-1-5"]'))
     STANDART_IN_BASKET = (By.CSS_SELECTOR, ('.bascket-list-item > [data-product-id="1"]'))
     # пакеты услуг
+
 
     BUTTON_ORDER_IN_MONTHLY_FREE_VACANCY = (By.CSS_SELECTOR, ('[data-product-id="25"]'))
     MONTHLY_FREE_VACANCY_IN_BASKET = (By.CSS_SELECTOR, ('.bascket-list-item > [data-product-id="25"]'))
@@ -121,6 +128,7 @@ class ServicesAndPricesPageLocators():
     BUTTON_ORDER_IN_1_VACANCY = (By.CSS_SELECTOR, ('[data-product-id="4"]'))
     ONE_VACANCY_IN_BASKET = (By.CSS_SELECTOR, ('.bascket-list-item > [data-product-id="4"]'))
     # пакеты поштучно
+
 
     BUTTON_BUY = (By.CSS_SELECTOR, ('.js-button .btn.btn-blue'))
 

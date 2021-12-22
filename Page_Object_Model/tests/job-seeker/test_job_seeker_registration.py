@@ -89,7 +89,7 @@ def test_confirmation_of_registration_of_applicant_and_authorization_on_site_ru(
     page = OllPage(browser, browser.current_url)
     page.age_confirmation()  # подтверждение возраста больше 21 года
     page.user_authorization()  # авторизация пользователя
-    page.check_for_user_authorization()  # проверка на авторизацию пользователя
+    page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
 def test_confirmation_of_registration_of_applicant_and_authorization_on_site_ua(browser):  # подтверждение регистрации соискателя и авторизация на сайте ua
     link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
     email_page = EmailPage(browser, link)
@@ -104,7 +104,7 @@ def test_confirmation_of_registration_of_applicant_and_authorization_on_site_ua(
     page = OllPage(browser, browser.current_url)
     page.age_confirmation()  # подтверждение возраста больше 21 года
     page.user_authorization()  # авторизация пользователя
-    page.check_for_user_authorization()  # проверка на авторизацию пользователя
+    page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
 
 
 def test_check_that_user_has_status_Active_ru(browser):  # проверка что пользователь имеет статус "Активен" ru
