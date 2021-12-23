@@ -8,7 +8,6 @@ from Page_Object_Model.pages.admin_page import AdminPage
 import time
 
 
-@pytest.mark.parametrize('language', ["", "/ua"])
 def test_job_seeker_registration_with_filling_in_all_fields(browser, language):  # регистрация соискателя с заполнением всех полей
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -25,45 +24,37 @@ def test_job_seeker_registration_with_filling_in_all_fields(browser, language): 
     main_page.confirmation_opening_of_main_page()  # подтверждение открытия главной страницы
     main_page.confirmation_message_for_sending_registration_form()  # проверка сообщения о подтверждении отправки формы регистрации
 
-def test_checking_creation_of_user_in_admin_panel_ru(browser):  # проверка создания пользователя в админке ru
+def test_checking_creation_of_user_in_admin_panel(browser, language):  # проверка создания пользователя в админке
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
     admin_page.go_to_users_page()  # переход на страницу пользователей
-    admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
-    admin_page.checking_that_newly_created_user_has_status_Disabled()  # проверка что новосозданный пользователь имеет статус "Отключено"
-def test_checking_creation_of_user_in_admin_panel_ua(browser):  # проверка создания пользователя в админке ua
-    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
-    admin_page.open()
-    admin_page.admin_authorization()
-    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
-    admin_page.go_to_users_page()  # переход на страницу пользователей
-    admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
+
+    if language == "/ua":
+        admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
+    else:
+        admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
+
     admin_page.checking_that_newly_created_user_has_status_Disabled()  # проверка что новосозданный пользователь имеет статус "Отключено"
 
-def test_changing_user_role_from_User_to_SuperAdmin_ru(browser):  # изменение роли пользователя с "User" на "SuperAdmin" ru
+def test_changing_user_role_from_User_to_SuperAdmin(browser, language):  # изменение роли пользователя с "User" на "SuperAdmin"
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
     admin_page.go_to_users_page()  # переход на страницу пользователей
-    admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
-    admin_page.go_to_object_editing_page()  # переход на страницу пользователя
-    admin_page.changing_role_from_User_to_SuperAdmin()  # изменение роли с "User" на "SuperAdmin"
-    admin_page.saving_user_card()  # сохранение карточки пользователя
-def test_changing_user_role_from_User_to_SuperAdmin_ua(browser):  # изменение роли пользователя с "User" на "SuperAdmin" ua
-    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
-    admin_page.open()
-    admin_page.admin_authorization()
-    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
-    admin_page.go_to_users_page()  # переход на страницу пользователей
-    admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
+
+    if language == "/ua":
+        admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
+    else:
+        admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
+
     admin_page.go_to_object_editing_page()  # переход на страницу пользователя
     admin_page.changing_role_from_User_to_SuperAdmin()  # изменение роли с "User" на "SuperAdmin"
     admin_page.saving_user_card()  # сохранение карточки пользователя
 
-@pytest.mark.parametrize('language', ["", "/ua"])
+
 def test_authorization_of_user_in_Disabled_status(browser, language):  # авторизация пользователя в статусе "Отключен"
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -75,28 +66,17 @@ def test_authorization_of_user_in_Disabled_status(browser, language):  # авт�
     page.info_text_for_authorization_in_user_status_Disabled()  # инфо текст при авторизации в статусе пользователя "Отключен"
 
 
-def test_confirmation_of_registration_of_applicant_and_authorization_on_site_ru(browser):  # подтверждение регистрации соискателя и авторизация на сайте ru
+def test_confirmation_of_registration_of_applicant_and_authorization_on_site(browser, language):  # подтверждение регистрации соискателя и авторизация на сайте
     link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
     email_page = EmailPage(browser, link)
     email_page.open()
     # browser.maximize_window()
     email_page.email_authorization()  # авторизация email
-    email_page.confirmation_of_job_seeker_registration_in_letter_ru()  # подтверждение регистрации соискателя в письме ru
 
-    main_page = MainPage(browser, browser.current_url)
-    main_page.confirmation_opening_of_main_page()  # подтверждение открытия главной страницы
-
-    page = OllPage(browser, browser.current_url)
-    page.age_confirmation()  # подтверждение возраста больше 21 года
-    page.user_authorization()  # авторизация пользователя
-    page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
-def test_confirmation_of_registration_of_applicant_and_authorization_on_site_ua(browser):  # подтверждение регистрации соискателя и авторизация на сайте ua
-    link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
-    email_page = EmailPage(browser, link)
-    email_page.open()
-    # browser.maximize_window()
-    email_page.email_authorization()  # авторизация email
-    email_page.confirmation_of_job_seeker_registration_in_letter_ua()  # подтверждение регистрации соискателя в письме ua
+    if language == "/ua":
+        email_page.confirmation_of_job_seeker_registration_in_letter_ua()  # подтверждение регистрации соискателя в письме ua
+    else:
+        email_page.confirmation_of_job_seeker_registration_in_letter_ru()  # подтверждение регистрации соискателя в письме ru
 
     main_page = MainPage(browser, browser.current_url)
     main_page.confirmation_opening_of_main_page()  # подтверждение открытия главной страницы
@@ -107,19 +87,16 @@ def test_confirmation_of_registration_of_applicant_and_authorization_on_site_ua(
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
 
 
-def test_check_that_user_has_status_Active_ru(browser):  # проверка что пользователь имеет статус "Активен" ru
+def test_check_that_user_has_status_Active(browser, language):  # проверка что пользователь имеет статус "Активен"
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
     admin_page.go_to_users_page()  # переход на страницу пользователей
-    admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
-    admin_page.check_that_user_has_status_Active()  # проверка что пользователь имеет статус "Активен"
-def test_check_that_user_has_status_Active_ua(browser):  # проверка что пользователь имеет статус "Активен" ua
-    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
-    admin_page.open()
-    admin_page.admin_authorization()
-    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
-    admin_page.go_to_users_page()  # переход на страницу пользователей
-    admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
+
+    if language == "/ua":
+        admin_page.search_user_by_email_ua()  # поиск пользователя по e-mail ua
+    else:
+        admin_page.search_user_by_email_ru()  # поиск пользователя по e-mail ru
+
     admin_page.check_that_user_has_status_Active()  # проверка что пользователь имеет статус "Активен"

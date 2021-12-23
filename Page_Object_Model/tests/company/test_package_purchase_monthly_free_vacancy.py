@@ -81,19 +81,16 @@ def test_package_purchase_monthly_free_vacancy_and_activating_it_on_site(browser
 
     add_vacancy_page.submitting_vacancy_for_publication()  # проверка наличия кнопки "Опубликовать"
 
-def test_complete_deletion_of_user_orders_ru(browser):  # полное удаление заказов пользователя ru
+def test_complete_deletion_of_user_orders(browser, language):  # полное удаление заказов пользователя
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
     admin_page.go_to_order_page()  # переход на страницу заказов
-    admin_page.search_for_user_orders_by_email_ru()  # поиск заказов пользователя по e-mail ru
+
+    if language == "/ua":
+        admin_page.search_for_user_orders_by_email_ua()  # поиск заказов пользователя по e-mail ua
+    else:
+        admin_page.search_for_user_orders_by_email_ru()  # поиск заказов пользователя по e-mail ru
+
     admin_page.complete_objects_deletion()  # полное удаление объектов
-# def test_complete_deletion_of_user_orders_ua(browser):  # удаление заказов пользователя ua
-#     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
-#     admin_page.open()
-#     admin_page.admin_authorization()
-#     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
-#     admin_page.go_to_order_page()  # переход на страницу заказов
-#     admin_page.search_for_user_orders_by_email_ua()  # поиск заказов пользователя по e-mail ru
-#     admin_page.complete_objects_deletion()  # полное удаление объектов

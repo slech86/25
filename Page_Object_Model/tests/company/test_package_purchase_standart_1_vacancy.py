@@ -7,7 +7,6 @@ from Page_Object_Model.data_for_testing import UrlStartPage, UrlPageAdmin
 from Page_Object_Model.pages.admin_page import AdminPage
 from Page_Object_Model.pages.email_page import EmailPage
 
-@pytest.mark.parametrize('language', ["", "/ua"])
 def test_package_purchase_standart_and_orders_processing_and_activating_it_on_site(browser, language):  # покупка пакета "Standart: 1 вакансия" и проведение заказа в админке и активация его на сайте
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -60,35 +59,28 @@ def test_package_purchase_standart_and_orders_processing_and_activating_it_on_si
     services_and_prices_page.product_activation(id_purchase)  # активация продукта
     services_and_prices_page.product_availability_in_activated_services(id_product, id_purchase)  # наличие "Standart: 1 вакансия" в активированных услугах
 
-def test_checking_letter_after_order_processing_ru(browser):  # проверка письма после проведения заказа ru
+def test_checking_letter_after_order_processing(browser, language):  # проверка письма после проведения заказа
     link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
     email_page = EmailPage(browser, link)
     email_page.open()
     # browser.maximize_window()
     email_page.email_authorization()  # авторизация email
-    email_page.letter_after_order_processing_ru()  # письмо после проведения заказа ru
-def test_checking_letter_after_order_processing_ua(browser):  # проверка письма после проведения заказа ua
-    link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
-    email_page = EmailPage(browser, link)
-    email_page.open()
-    # browser.maximize_window()
-    email_page.email_authorization()  # авторизация email
-    email_page.letter_after_order_processing_ua()  # письмо после проведения заказа ua
 
+    if language == "/ua":
+        email_page.letter_after_order_processing_ua()  # письмо после проведения заказа ua
+    else:
+        email_page.letter_after_order_processing_ru()  # письмо после проведения заказа ru
 
-def test_complete_deletion_of_user_orders_ru(browser):  # полное удаление заказов пользователя ru
+def test_complete_deletion_of_user_orders(browser, language):  # полное удаление заказов пользователя
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
     admin_page.go_to_order_page()  # переход на страницу заказов
-    admin_page.search_for_user_orders_by_email_ru()  # поиск заказов пользователя по e-mail ru
-    admin_page.complete_objects_deletion()  # полное удаление объектов
-def test_complete_deletion_of_user_orders_ua(browser):  # удаление заказов пользователя ua
-    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
-    admin_page.open()
-    admin_page.admin_authorization()
-    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
-    admin_page.go_to_order_page()  # переход на страницу заказов
-    admin_page.search_for_user_orders_by_email_ua()  # поиск заказов пользователя по e-mail ru
+
+    if language == "/ua":
+        admin_page.search_for_user_orders_by_email_ua()  # поиск заказов пользователя по e-mail ua
+    else:
+        admin_page.search_for_user_orders_by_email_ru()  # поиск заказов пользователя по e-mail ru
+
     admin_page.complete_objects_deletion()  # полное удаление объектов
