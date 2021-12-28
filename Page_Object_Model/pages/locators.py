@@ -60,21 +60,24 @@ class CompanyRegistrationPageLocators():
     FIELD_TWITTER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'twitter'))
     FIELD_VK = (By.CSS_SELECTOR, ('#' + inputPrefix + 'vk'))
 
-    COMPANY_ACTIVITY = "document.getElementsByName('CompanyRegistrationForm[activity][]')[15].click()"  # Сфера деятельности компании
-    NUMBER_OF_COMPANY_EMPLOYEES = (By.CSS_SELECTOR, ('#' + inputPrefix + 'count_employees > option:nth-child(8)'))  # Количество сотрудников компании
+    COMPANY_ACTIVITY = "document.getElementsByName('CompanyRegistrationForm[activity][]')[14].click()"  # Сфера деятельности компании
+    NUMBER_OF_COMPANY_EMPLOYEES = (By.CSS_SELECTOR, ('#' + inputPrefix + 'count_employees > option:nth-child(5)'))  # Количество сотрудников компании
 
-    IFRAME_CKEDITOR = (By.CSS_SELECTOR, ('iframe.cke_wysiwyg_frame'))
-    CKEDITOR = (By.CSS_SELECTOR, ('body.cke_editable'))
+    IFRAME_CKEDITOR_COMPANY_DESCRIPTION = (By.CSS_SELECTOR, ('iframe.cke_wysiwyg_frame'))
+    CKEDITOR_COMPANY_DESCRIPTION = (By.CSS_SELECTOR, ('body.cke_editable'))
     # заполнение блока "Информация о компании"
 
     FIELD_LOGO = (By.CSS_SELECTOR, ('#' + inputPrefix + 'logo'))
     FIELD_COVER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'cover'))
 
-    FIELD_VIDEO1 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video1'))
-    FIELD_VIDEO2 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video2'))
+    FIELD_VIDEO_1 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video1'))
+    FIELD_VIDEO_2 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video2'))
     BUTTON_VIDEO_ADD = (By.CSS_SELECTOR, ('.js-add-video'))
-    FIELD_VIDEO3 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video3'))
+    FIELD_VIDEO_3 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video3'))
     # заполнение блока "Видео"
+
+    CHECKBOX_GET_NEWS = (By.CSS_SELECTOR, ('#' + inputPrefix + 'get_news'))
+    # подписка на новости
 
     BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#submit-button'))
 
@@ -93,8 +96,8 @@ class JobSeekerRegistrationPageLocators():
     FIELD_MONTH = (By.CSS_SELECTOR, ('#' + inputPrefix + 'birthdaym > option:nth-child(12)'))
     FIELD_DAY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'birthdayd > option:nth-child(31)'))
     FIELD_GENDER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'gender [value="2"] + .radio-custom'))
-    FIELD_COUNTRY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option:nth-child(3)'))
-    FIELD_CITY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option:nth-child(7)'))
+    FIELD_COUNTRY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option:nth-child(2)'))
+    FIELD_CITY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option:nth-child(28)'))
     # блок "Личная информация"
 
     BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#button-registration'))
@@ -189,11 +192,45 @@ class AdminPageLocators():
     # страница пользователей
 
 
+
     FIELD_USER_LOGIN = (By.CSS_SELECTOR, ('[name="User[login]"]'))
     FIELD_USER_EMAIL = (By.CSS_SELECTOR, ('[name="User[email]"]'))
+    FIELD_NAME = (By.CSS_SELECTOR, ('[name="User[descriptions][1][name]"]'))
+    FIELD_SURNAME = (By.CSS_SELECTOR, ('[name="User[descriptions][1][surname]"]'))
+    FIELD_COMPANY_NAME = (By.CSS_SELECTOR, ('[name="User[descriptions][1][company_name]"]'))
+    FIELD_DATE_OF_COMPANY_FOUNDATION = (By.CSS_SELECTOR, ('[name="User[descriptions][1][foundation_date]"]'))
+    FIELD_BIRTHDAY = (By.CSS_SELECTOR, ('[name="User[descriptions][1][company_name]"]'))
+    FIELD_GENDER = (By.CSS_SELECTOR, ('#select2-users-descriptions-1-gender-container'))
+    FIELD_POSITION = (By.CSS_SELECTOR, ('[name="User[descriptions][1][position]"]'))
+    FIELD_PHONE = (By.CSS_SELECTOR, ('[name="User[descriptions][1][phone]"]'))
+    FIELD_CONTACT_EMAIL = (By.CSS_SELECTOR, ('[name="User[descriptions][1][contact_email]"]'))
+    FIELD_SKYPE = (By.CSS_SELECTOR, ('[name = "User[descriptions][1][skype]"]'))
+    FIELD_CODE_COMPANY = (By.CSS_SELECTOR, ('[name="User[descriptions][1][code_company]"]'))
+    FIELD_COMPANY_SITE = (By.CSS_SELECTOR, ('[name="User[descriptions][1][company_site]"]'))
+    FIELD_FACEBOOK = (By.CSS_SELECTOR, ('[name="User[descriptions][1][facebook]"]'))
+    FIELD_LINKEDIN = (By.CSS_SELECTOR, ('[name="User[descriptions][1][linkedin]"]'))
+    FIELD_INSTAGRAM = (By.CSS_SELECTOR, ('[name="User[descriptions][1][instagram]"]'))
+    FIELD_TELEGRAM = (By.CSS_SELECTOR, ('[name="User[descriptions][1][telegram]"]'))
+    FIELD_TWITTER = (By.CSS_SELECTOR, ('[name="User[descriptions][1][twitter]"]'))
+    FIELD_VK = (By.CSS_SELECTOR, ('[name="User[descriptions][1][vk]"]'))
+    FIELD_COMPANY_ACTIVITY = (By.CSS_SELECTOR, ('#users-descriptions-1-activity + .select2 .select2-selection__choice'))
+    FIELD_NUMBER_OF_COMPANY_EMPLOYEES = (By.CSS_SELECTOR, ('#select2-users-descriptions-1-count_employees-container'))
+    IFRAME_CKEDITOR_COMPANY_DESCRIPTION_RU = (By.CSS_SELECTOR, ('#cke_1_contents > iframe.cke_wysiwyg_frame.cke_reset'))
+    IFRAME_CKEDITOR_COMPANY_DESCRIPTION_UA = (By.CSS_SELECTOR, ('#cke_2_contents > iframe.cke_wysiwyg_frame.cke_reset'))
+    CKEDITOR_COMPANY_DESCRIPTION = (By.CSS_SELECTOR, ('.cke_editable.cke_editable_themed > p'))  # ??? пока один локатор для двух языков
+    FIELD_VIDEO_1 = (By.CSS_SELECTOR, ('#users-descriptions-1-video-0'))
+    FIELD_VIDEO_2 = (By.CSS_SELECTOR, ('#users-descriptions-1-video-1'))
+    FIELD_VIDEO_3 = (By.CSS_SELECTOR, ('#users-descriptions-1-video-2'))
+    FIELD_COUNTRY_RU = (By.CSS_SELECTOR, ('#select2-users-descriptions-1-country_id-container'))
+    FIELD_CITY_RU = (By.CSS_SELECTOR, ('#select2-users-descriptions-1-city_id-container'))
+    FIELD_STREET_RU = (By.CSS_SELECTOR, ('#users-descriptions-1-street'))
+    CHECKBOX_GET_NEWS_RU = (By.CSS_SELECTOR, ('#users-descriptions-1-get_news'))
+
+
 
     FIELD_WITH_ROLE_USER = (By.CSS_SELECTOR, ('[title="[#4] User"]'))  # поле с ролью "User"
     ROLE_SUPER_ADMIN = (By.XPATH, ('//li[text()="[#1] SuperAdmin"]'))
+
     BUTTON_SAVE_AND_EDIT = (By.CSS_SELECTOR, ('[type="submit"].btn.btn-primary'))
     # страница пользователя
 
@@ -209,10 +246,3 @@ class AdminPageLocators():
     FIELD_SEARCH_IN_DROPDOWN = (By.CSS_SELECTOR, ('.select2-search__field'))  # общее поле ?
     ITEMS_ID_PURCHASE = (By.CSS_SELECTOR, ('#model-grid tbody tr td:nth-child(2)'))
     # страница 'Покупки пользователей'
-
-
-
-
-
-
-

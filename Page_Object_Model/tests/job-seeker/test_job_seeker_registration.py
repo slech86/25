@@ -38,6 +38,7 @@ def test_checking_creation_of_user_in_admin_panel(browser, language):  # про�
 
     admin_page.checking_that_newly_created_user_has_status_Disabled()  # проверка что новосозданный пользователь имеет статус "Отключено"
 
+
 def test_changing_user_role_from_User_to_SuperAdmin(browser, language):  # изменение роли пользователя с "User" на "SuperAdmin"
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()

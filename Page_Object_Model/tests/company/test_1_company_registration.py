@@ -60,6 +60,7 @@ def test_changing_user_role_from_User_to_SuperAdmin(browser, language):  # из�
     admin_page.changing_role_from_User_to_SuperAdmin()  # изменение роли с "User" на "SuperAdmin"
     admin_page.saving_user_card()  # сохранение карточки пользователя
 
+
 def test_authorization_of_user_in_Disabled_status(browser, language):  # авторизация пользователя в статусе "Отключен"
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -115,14 +116,14 @@ def test_change_of_employer_status_from_On_moderation_to_Aktivet_ua(browser, lan
     admin_page.check_that_user_has_status_Active()  # проверка что пользователь имеет статус "Активен"
 
 
-def test_authorization_of_user_in_Active_status(browser, language):  # авторизация пользователя в статусе "Активен"
-    url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
-    page = OllPage(browser, url_Page)
-    # browser.maximize_window()
-    page.open()
-    page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.user_authorization()  # авторизация пользователя
-    page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
+# def test_authorization_of_user_in_Active_status(browser, language):  # авторизация пользователя в статусе "Активен"
+#     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
+#     page = OllPage(browser, url_Page)
+#     # browser.maximize_window()
+#     page.open()
+#     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
+#     page.user_authorization()  # авторизация пользователя
+#     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
 
 
 def test_checking_letter_after_first_moderation_ru(browser, language):  # проверка письма после первой модерации компании ru
