@@ -105,7 +105,7 @@ class AdminPage(BasePage):
         self.browser.find_element(*AdminPageLocators.BUTTON_SAVE_AND_EDIT).click()
         time.sleep(4)
 
-    def verification_of_saving_data_entered_by_user_during_company_registration_ru(self, language):  # проверка сохранения введенных пользователем данных при регистрации компании RU
+    def verification_of_saving_data_entered_by_user_after_company_registration_ru(self, language):  # проверка сохранения введенных пользователем данных после регистрации компании RU
         login = self.browser.find_element(*AdminPageLocators.FIELD_USER_LOGIN)
         login_value = login.get_attribute("value")
         if language == "/ua":
@@ -226,7 +226,48 @@ class AdminPage(BasePage):
         checkbox_get_news_checked = checkbox_get_news.get_attribute("checked")
         assert checkbox_get_news_checked is not None, "Не установлено получение новостей"
 
+    def verification_of_saving_data_entered_by_user_after_job_seeker_registration_ru(self, language):  # проверка сохранения введенных пользователем данных после регистрации соискателя RU
+        login = self.browser.find_element(*AdminPageLocators.FIELD_USER_LOGIN)
+        login_value = login.get_attribute("value")
+        if language == "/ua":
+            assert login_value == TestData.login_ua, "Поле 'Логин' не верно"
+        else:
+            assert login_value == TestData.login_ru, "Поле 'Логин' не верно"
 
+        email = self.browser.find_element(*AdminPageLocators.FIELD_USER_EMAIL)
+        email_value = email.get_attribute("value")
+        if language == "/ua":
+            assert email_value == TestData.email_ua, "Поле 'Email' не верно"
+        else:
+            assert email_value == TestData.email_ru, "Поле 'Email' не верно"
+
+        name = self.browser.find_element(*AdminPageLocators.FIELD_NAME)
+        name_value = name.get_attribute("value")
+        assert name_value == TestData.name, "Поле 'Имя' не верно"
+
+        surname = self.browser.find_element(*AdminPageLocators.FIELD_SURNAME)
+        surname_value = surname.get_attribute("value")
+        assert surname_value == TestData.surname, "Поле 'Фамилия' не верно"
+
+        birthday = self.browser.find_element(*AdminPageLocators.FIELD_BIRTHDAY)
+        birthday_value = birthday.get_attribute("value")
+        assert birthday_value == TestData.birthday, "Поле 'День рождения' не верно"
+
+        gender = self.browser.find_element(*AdminPageLocators.FIELD_GENDER)
+        gender_title = gender.get_attribute("title")
+        assert gender_title == TestData.gender, "Поле 'Пол' не верно"
+
+        country = self.browser.find_element(*AdminPageLocators.FIELD_COUNTRY_RU)
+        country_title = country.get_attribute("title")
+        assert country_title == TestData.country, "Поле 'Страна' не верно"
+
+        city = self.browser.find_element(*AdminPageLocators.FIELD_CITY_RU)
+        city_title = city.get_attribute("title")
+        assert city_title == TestData.city, "Поле 'Город' не верно"
+
+        checkbox_get_news = self.browser.find_element(*AdminPageLocators.CHECKBOX_GET_NEWS_RU)
+        checkbox_get_news_checked = checkbox_get_news.get_attribute("checked")
+        assert checkbox_get_news_checked is not None, "Не установлено получение новостей"
     # страница пользователя
 
 

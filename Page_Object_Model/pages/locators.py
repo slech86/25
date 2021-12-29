@@ -199,7 +199,7 @@ class AdminPageLocators():
     FIELD_SURNAME = (By.CSS_SELECTOR, ('[name="User[descriptions][1][surname]"]'))
     FIELD_COMPANY_NAME = (By.CSS_SELECTOR, ('[name="User[descriptions][1][company_name]"]'))
     FIELD_DATE_OF_COMPANY_FOUNDATION = (By.CSS_SELECTOR, ('[name="User[descriptions][1][foundation_date]"]'))
-    FIELD_BIRTHDAY = (By.CSS_SELECTOR, ('[name="User[descriptions][1][company_name]"]'))
+    FIELD_BIRTHDAY = (By.CSS_SELECTOR, ('#users-descriptions-1-birthday')) #  ????
     FIELD_GENDER = (By.CSS_SELECTOR, ('#select2-users-descriptions-1-gender-container'))
     FIELD_POSITION = (By.CSS_SELECTOR, ('[name="User[descriptions][1][position]"]'))
     FIELD_PHONE = (By.CSS_SELECTOR, ('[name="User[descriptions][1][phone]"]'))

@@ -1,7 +1,7 @@
 import time
 
 class UrlStartPage():
-    prefix = 'https://'  # 'http://preprod.', 'http://master.'. 'https://'
+    prefix = 'http://preprod.'  # 'http://preprod.', 'http://master.'. 'https://'
     if prefix == 'https://':
         suffix = ''
     else:
@@ -41,7 +41,7 @@ class TestData():
     ckeditor_company_description = "CKEditor_company_description_" + time_Now
     skype = 'skype' + time_Now
     country = '[#222] Украина'  # не используется при заполнении полей, только при проверке заполнения полей в админке
-    city = '[#710719] Черновцы'   # не используется при заполнении полей, только при проверке заполнения полей в админке
+    city = '[#710735] Чернигов'  # '[#710735] Чернигов', '[#710719] Черновцы' # не используется при заполнении полей, только при проверке заполнения полей в админке
     street = 'street_' + time_Now
     date_of_company_foundation = '2018-12-31'   # не используется при заполнении полей, только при проверке заполнения полей в админке
     birthday = '1998-11-30'  # не используется при заполнении полей, только при проверке заполнения полей в админке

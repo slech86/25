@@ -21,8 +21,8 @@ class JobSeekerRegistrationPage(BasePage):
         self.browser.find_element(*JobSeekerRegistrationPageLocators.FIELD_REPEAT_PASSWORD).send_keys(TestData.password)
         # заполнение блока "Данные для авторизации"
 
-        self.browser.find_element(*JobSeekerRegistrationPageLocators.FIELD_NAME).send_keys('name' + TestData.time_Now)
-        self.browser.find_element(*JobSeekerRegistrationPageLocators.FIELD_SURNAME).send_keys('surname' + TestData.time_Now)
+        self.browser.find_element(*JobSeekerRegistrationPageLocators.FIELD_NAME).send_keys(TestData.name)
+        self.browser.find_element(*JobSeekerRegistrationPageLocators.FIELD_SURNAME).send_keys(TestData.surname)
         self.browser.find_element(*JobSeekerRegistrationPageLocators.FIELD_YEAR).click()
         self.browser.find_element(*JobSeekerRegistrationPageLocators.FIELD_MONTH).click()
         self.browser.find_element(*JobSeekerRegistrationPageLocators.FIELD_DAY).click()
