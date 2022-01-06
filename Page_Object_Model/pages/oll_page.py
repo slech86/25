@@ -9,7 +9,7 @@ class OllPage(BasePage):
     def age_confirmation(self):
         time.sleep(5)
         WebDriverWait(self.browser, 5).until(EC.element_to_be_clickable(OllPageLocators.BUTTON_YES_WHEN_CHECKING_AGE)).click()
-        time.sleep(1)
+        time.sleep(0.2)
         # подтверждение возраста больше 21 года
 
     def opening_pop_up_for_login(self):  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации

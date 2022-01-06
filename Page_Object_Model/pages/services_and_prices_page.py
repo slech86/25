@@ -50,7 +50,7 @@ class ServicesAndPricesPage(BasePage):
             assert "Наш менеджер зв'яжеться з Вами в найкоротший термін. Після узгодження всіх деталей Ви отримаєте доступ до послуги." == infoText, 'Не верное сообщение'
         else:
             assert "Наш менеджер свяжется с Вами в кратчайшие сроки. После согласования всех деталей Вы получите доступ к услуге." == infoText, 'Не верное сообщение'
-        self.browser.find_element(*ServicesAndPricesPageLocators.CROSS_IN_POP_UP_AFTER_PRESSING_BUTTON_BUY_IN_CART).click()
+        self.browser.find_element(*ServicesAndPricesPageLocators.CROSS_IN_POP_UP_AFTER_PRESSING_BUTTON_BUY_IN_BASKET).click()
 
     def switch_to_tab_Not_activated(self):  # переход на вкладку "Не активированные"
         self.browser.find_element(*ServicesAndPricesPageLocators.TAB_NOT_ACTIVATED_SERVICES).click()

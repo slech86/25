@@ -39,7 +39,7 @@ class CompanyRegistrationPageLocators():
     FIELD_COMPANY_NAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'company_name'))
     FIELD_CODE_COMPANY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'code_company'))
     FIELD_COUNTRY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option:nth-child(2)'))
-    FIELD_CITY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option:nth-child(28)'))
+    FIELD_CITY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option:nth-child(8)'))
     FIELD_STREET = (By.CSS_SELECTOR, ('#' + inputPrefix + 'street'))
     FIELD_YEAR = (By.CSS_SELECTOR, ('#' + inputPrefix + 'foundationdatey > option:nth-child(5)'))
     FIELD_MONTH = (By.CSS_SELECTOR, ('#' + inputPrefix + 'foundationdatem > option:nth-child(13)'))
@@ -65,7 +65,7 @@ class CompanyRegistrationPageLocators():
 
     IFRAME_CKEDITOR_COMPANY_DESCRIPTION = (By.CSS_SELECTOR, ('iframe.cke_wysiwyg_frame'))
     CKEDITOR_COMPANY_DESCRIPTION = (By.CSS_SELECTOR, ('body.cke_editable'))
-    # заполнение блока "Информация о компании"
+    # блок "Информация о компании"
 
     FIELD_LOGO = (By.CSS_SELECTOR, ('#' + inputPrefix + 'logo'))
     FIELD_COVER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'cover'))
@@ -80,6 +80,61 @@ class CompanyRegistrationPageLocators():
     # подписка на новости
 
     BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#submit-button'))
+
+class CompanyEditPageLocators():
+    inputPrefix = 'companyform-'
+
+    BUTTON_EDIT_IN_CONTACT_INFORMATION_BLOCK = (By.CSS_SELECTOR, ('#contact-information .post-resume-title + .btn-edit'))
+    FIELD_NAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'name'))
+    FIELD_SURNAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'surname'))
+    FIELD_POSITION = (By.CSS_SELECTOR, ('#' + inputPrefix + 'position'))
+    FIELD_TELEPHONE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'phone'))
+    FIELD_CONTACT_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'contact_email'))
+    FIELD_SKYPE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'skype'))
+    # блок "Контактная информация"
+
+    BUTTON_EDIT_IN_COMPANY_INFORMATION_BLOCK = (By.CSS_SELECTOR, ('#company-information .post-resume-title + .btn-edit'))
+    FIELD_COMPANY_NAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'company_name'))
+    FIELD_CODE_COMPANY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'code_company'))
+    FIELD_COUNTRY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option:nth-child(4)'))
+    FIELD_CITY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option:nth-child(5)'))
+    FIELD_STREET = (By.CSS_SELECTOR, ('#' + inputPrefix + 'street'))
+    FIELD_YEAR = (By.CSS_SELECTOR, ('#' + inputPrefix + 'foundationdatey > option:nth-child(33)'))
+    FIELD_MONTH = (By.CSS_SELECTOR, ('#' + inputPrefix + 'foundationdatem > option:nth-child(4)'))
+    FIELD_DAY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'foundationdated > option:nth-child(18)'))
+    FIELD_COMPANY_SITE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'company_site'))
+
+    FIELD_FACEBOOK = (By.CSS_SELECTOR, ('#' + inputPrefix + 'facebook'))
+    FIELD_LINKEDIN = (By.CSS_SELECTOR, ('#' + inputPrefix + 'linkedin'))
+    FIELD_INSTAGRAM = (By.CSS_SELECTOR, ('#' + inputPrefix + 'instagram'))
+    FIELD_TELEGRAM = (By.CSS_SELECTOR, ('#' + inputPrefix + 'telegram'))
+    FIELD_TWITTER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'twitter'))
+    FIELD_VK = (By.CSS_SELECTOR, ('#' + inputPrefix + 'vk'))
+
+    COMPANY_ACTIVITY = "document.getElementsByName('CompanyForm[activity][]')[15].click()"  # Сфера деятельности компании
+    NUMBER_OF_COMPANY_EMPLOYEES = (By.CSS_SELECTOR, ('#' + inputPrefix + 'count_employees > option:nth-child(4)'))  # Количество сотрудников компании
+
+    IFRAME_CKEDITOR_COMPANY_DESCRIPTION = (By.CSS_SELECTOR, ('iframe.cke_wysiwyg_frame'))
+    CKEDITOR_COMPANY_DESCRIPTION = (By.CSS_SELECTOR, ('body.cke_editable'))
+    # блок "Информация о компании"
+
+    FIELD_LOGO = (By.CSS_SELECTOR, ('#' + inputPrefix + 'logo'))
+    FIELD_COVER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'cover'))
+
+    FIELD_VIDEO_1 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video1'))
+    FIELD_VIDEO_2 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video2'))
+    BUTTON_VIDEO_ADD = (By.CSS_SELECTOR, ('.js-add-video'))
+    FIELD_VIDEO_3 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video3'))
+    # заполнение блока "Видео"
+
+    BUTTON_EDIT_IN_SETTINGS_BLOCK = (By.CSS_SELECTOR, ('#other-settings .post-resume-title + .btn-edit'))
+    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL = (By.CSS_SELECTOR, ('[data-id="companyform-mail_language"]'))
+    UKRAINIAN_LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL = (By.CSS_SELECTOR, ('.field-companyform-mail_language [data-original-index="1"]'))  # украинский
+
+    BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#submit-button'))
+
+    INFO_TEXT_AFTER_SAVING_PERSONAL_INFORMATION = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст после сохранения изменений личной информации
+    CROSS_IN_POP_UP_AFTER_SAVING_CHANGES_TO_PERSONAL_INFORMATION = (By.CSS_SELECTOR, ('#thanks-modal .close'))
 
 class JobSeekerRegistrationPageLocators():
     inputPrefix = 'jobseekerregistrationform-'
@@ -97,14 +152,15 @@ class JobSeekerRegistrationPageLocators():
     FIELD_DAY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'birthdayd > option:nth-child(31)'))
     FIELD_GENDER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'gender [value="2"] + .radio-custom'))
     FIELD_COUNTRY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option:nth-child(2)'))
-    FIELD_CITY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option:nth-child(28)'))
+    FIELD_CITY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option:nth-child(8)'))
     # блок "Личная информация"
 
     BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#button-registration'))
 
 class CompanyPersonalCabinetPageLocators():
-    BUTTON_MY_VACANCIES = (By.XPATH, ('//a[contains(@href, "/vacancy/my")]/div[@class="employer-card"]'))
-    BUTTON_SERVICES_AND_PRICES = (By.XPATH, ('//a[contains(@href, "/prices")]/div[@class="employer-card"]'))
+    MY_VACANCIES = (By.XPATH, ('//a[contains(@href, "/vacancy/my")]/div[@class="employer-card"]'))
+    PERSONAL_DATA = (By.XPATH, ('//a[contains(@href, "/company/edit")]/div[@class="employer-card"]'))
+    SERVICES_AND_PRICES = (By.XPATH, ('//a[contains(@href, "/prices")]/div[@class="employer-card"]'))
 
 class MyVacanciesPageLocators():
     BUTTON_ADD_VACANCY = (By.CSS_SELECTOR, ('#add-vacancy'))
@@ -136,7 +192,7 @@ class ServicesAndPricesPageLocators():
     BUTTON_BUY = (By.CSS_SELECTOR, ('.js-button .btn.btn-blue'))
 
     INFO_TEXT_AFTER_BUTTON_PRESSED_BUY_IN_CART = (By.CSS_SELECTOR, ('#to-buy-modal .modal-body'))  # информационный текст после нажаия кнопки "Купить" в корзине
-    CROSS_IN_POP_UP_AFTER_PRESSING_BUTTON_BUY_IN_CART = (By.CSS_SELECTOR, ('#to-buy-modal .close'))  # крестик в pop-up окне после нажаия кнопки "Купить" в корзине
+    CROSS_IN_POP_UP_AFTER_PRESSING_BUTTON_BUY_IN_BASKET = (By.CSS_SELECTOR, ('#to-buy-modal .close'))  # крестик в pop-up окне после нажаия кнопки "Купить" в корзине
 
 
 class MainPageLocators():
@@ -217,7 +273,8 @@ class AdminPageLocators():
     FIELD_NUMBER_OF_COMPANY_EMPLOYEES = (By.CSS_SELECTOR, ('#select2-users-descriptions-1-count_employees-container'))
     IFRAME_CKEDITOR_COMPANY_DESCRIPTION_RU = (By.CSS_SELECTOR, ('#cke_1_contents > iframe.cke_wysiwyg_frame.cke_reset'))
     IFRAME_CKEDITOR_COMPANY_DESCRIPTION_UA = (By.CSS_SELECTOR, ('#cke_2_contents > iframe.cke_wysiwyg_frame.cke_reset'))
-    CKEDITOR_COMPANY_DESCRIPTION = (By.CSS_SELECTOR, ('.cke_editable.cke_editable_themed > p'))  # ??? пока один локатор для двух языков
+    CKEDITOR_COMPANY_DESCRIPTION_RU = (By.XPATH, ('//body[contains(@data-title, "users-descriptions-1-description_company")]/p'))
+    CKEDITOR_COMPANY_DESCRIPTION_UA = (By.XPATH, ('//body[contains(@data-title, "users-descriptions-3-description_company")]/p'))
     FIELD_VIDEO_1 = (By.CSS_SELECTOR, ('#users-descriptions-1-video-0'))
     FIELD_VIDEO_2 = (By.CSS_SELECTOR, ('#users-descriptions-1-video-1'))
     FIELD_VIDEO_3 = (By.CSS_SELECTOR, ('#users-descriptions-1-video-2'))

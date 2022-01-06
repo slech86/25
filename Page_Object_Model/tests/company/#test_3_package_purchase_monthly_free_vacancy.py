@@ -9,7 +9,6 @@ from Page_Object_Model.pages.my_vacancies_page import MyVacanciesPage
 from Page_Object_Model.pages.add_vacancy_page import AddVacancyPage
 
 
-# @pytest.mark.parametrize('language', ["", "/ua"])
 def test_package_purchase_monthly_free_vacancy_and_activating_it_on_site(browser, language):  # покупка пакета "Ежемесячная бесплатная вакансия" и активация его на сайте
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)

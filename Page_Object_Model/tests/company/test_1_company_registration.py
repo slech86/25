@@ -27,7 +27,7 @@ def test_company_registration_with_filling_in_all_fields(browser, language):  # 
 
     main_page = MainPage(browser, browser.current_url)
     main_page.confirmation_opening_of_main_page()  # подтверждение открытия главной страницы
-    main_page.confirmation_message_for_sending_registration_form()  # проверка сообщения о подтверждении отправки формы регистрации
+    main_page.checking_message_for_sending_registration_form()  # проверка сообщения о подтверждении отправки формы регистрации
 
 
 def test_checking_creation_of_user_in_admin_panel(browser, language):  # проверка создания пользователя в админке

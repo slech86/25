@@ -12,7 +12,7 @@ class MainPage(BasePage):
         else:
             assert self.browser.current_url == f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/", "Не правильный URL"
 
-    def confirmation_message_for_sending_registration_form(self):  # проверка сообщения о подтверждении отправки формы регистрации работодателя, соискателя
+    def checking_message_for_sending_registration_form(self):  # проверка сообщения о подтверждении отправки формы регистрации работодателя, соискателя
         infoText = self.browser.find_element(*MainPageLocators.INFO_TEXT_ABOUT_SENDING_REGISTRATION_FORM).text
         if "/ua" in self.browser.current_url:
             assert "Для завершення активації облікового запису перейдіть за посиланням у листі, який було надіслано на ваш e-mail." == infoText, 'Не верное сообщение'

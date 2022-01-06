@@ -7,6 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import random
 import time
+from selenium.webdriver.common.by import By
 
 class AdminPage(BasePage):
     def admin_authorization(self):  # авторизация админки
@@ -194,13 +195,13 @@ class AdminPage(BasePage):
 
         iframe = self.browser.find_element(*AdminPageLocators.IFRAME_CKEDITOR_COMPANY_DESCRIPTION_RU)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
-        CKEditor = self.browser.find_element(*AdminPageLocators.CKEDITOR_COMPANY_DESCRIPTION).text
-        assert CKEditor == TestData.ckeditor_company_description, "Поле 'Описание компании*' не верно"
+        CKEditor = self.browser.find_element(*AdminPageLocators.CKEDITOR_COMPANY_DESCRIPTION_RU).text
+        assert CKEditor == TestData.ckeditor_company_description, "Поле 'Описание компании' не верно"
         self.browser.switch_to.default_content()  # выход из фрейма
 
         video_1 = self.browser.find_element(*AdminPageLocators.FIELD_VIDEO_1)
         video_1_value = video_1.get_attribute("value")
-        assert video_1_value == 'https://www.youtube.com/embed/-8tBpQi5cto', "Поле 'Youtube 1' не верно"
+        assert video_1_value == 'https://www.youtube.com/embed/6OBg9Iz7dD0', "Поле 'Youtube 1' не верно"
 
         video_2 = self.browser.find_element(*AdminPageLocators.FIELD_VIDEO_2)
         video_2_value = video_2.get_attribute("value")
@@ -214,6 +215,7 @@ class AdminPage(BasePage):
         country_title = country.get_attribute("title")
         assert country_title == TestData.country, "Поле 'Страна' не верно"
 
+        WebDriverWait(self.browser, 5).until(EC.text_to_be_present_in_element((AdminPageLocators.FIELD_CITY_RU), '[#703448] Киев'))
         city = self.browser.find_element(*AdminPageLocators.FIELD_CITY_RU)
         city_title = city.get_attribute("title")
         assert city_title == TestData.city, "Поле 'Город' не верно"
@@ -261,6 +263,7 @@ class AdminPage(BasePage):
         country_title = country.get_attribute("title")
         assert country_title == TestData.country, "Поле 'Страна' не верно"
 
+        WebDriverWait(self.browser, 5).until(EC.text_to_be_present_in_element((AdminPageLocators.FIELD_CITY_RU), '[#703448] Киев'))
         city = self.browser.find_element(*AdminPageLocators.FIELD_CITY_RU)
         city_title = city.get_attribute("title")
         assert city_title == TestData.city, "Поле 'Город' не верно"

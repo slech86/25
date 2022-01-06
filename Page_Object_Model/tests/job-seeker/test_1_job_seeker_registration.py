@@ -7,7 +7,6 @@ from Page_Object_Model.data_for_testing import UrlStartPage, UrlPageAdmin
 from Page_Object_Model.pages.admin_page import AdminPage
 import time
 
-@pytest.mark.s_r_c
 def test_job_seeker_registration_with_filling_in_all_fields(browser, language):  # регистрация соискателя с заполнением всех полей
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -22,7 +21,7 @@ def test_job_seeker_registration_with_filling_in_all_fields(browser, language): 
 
     main_page = MainPage(browser, browser.current_url)
     main_page.confirmation_opening_of_main_page()  # подтверждение открытия главной страницы
-    main_page.confirmation_message_for_sending_registration_form()  # проверка сообщения о подтверждении отправки формы регистрации
+    main_page.checking_message_for_sending_registration_form()  # проверка сообщения о подтверждении отправки формы регистрации
 
 def test_checking_creation_of_user_in_admin_panel(browser, language):  # проверка создания пользователя в админке
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
@@ -66,7 +65,6 @@ def test_authorization_of_user_in_Disabled_status(browser, language):  # авт�
     page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
     page.info_text_for_authorization_in_user_status_Disabled()  # инфо текст при авторизации в статусе пользователя "Отключен"
 
-@pytest.mark.s_r_c
 def test_confirmation_of_registration_of_applicant_and_authorization_on_site(browser, language):  # подтверждение регистрации соискателя и авторизация на сайте
     link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
     email_page = EmailPage(browser, link)

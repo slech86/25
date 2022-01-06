@@ -3,7 +3,7 @@ from Page_Object_Model.data_for_testing import UrlPageAdmin
 from Page_Object_Model.pages.admin_page import AdminPage
 import time
 
-@pytest.mark.s_r_c
+
 def test_verification_of_saving_data_entered_by_user_after_job_seeker_registration(browser, language):  # проверка сохранения введенных пользователем данных после регистрации соискателя
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
