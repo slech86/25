@@ -17,7 +17,7 @@ def test_delete_user(browser, language):  # удаление пользоват�
 
     admin_page.changing_user_status_to_Deleted()  # изменение статуса пользователя на "Удалено"
 
-@pytest.mark.s_r_c
+
 def test_change_field_Login_and_Email(browser, language):  # изменение поля "Login" и "Электронный адрес"
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()

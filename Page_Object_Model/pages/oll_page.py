@@ -43,7 +43,7 @@ class OllPage(BasePage):
     def opening_authorized_user_menu(self):  # нажатие на кнопку для открытия меню авторизированного пользователя
         self.browser.find_element(*OllPageLocators.BUTTON_AUTHORIZED_USER).click()
 
-    def go_to_personal_account_page(self):  # нажатие на кнопку для перехода на страницу личного кабинета
+    def go_to_personal_cabinet_page(self):  # нажатие на кнопку для перехода на страницу личного кабинета
         self.browser.find_element(*OllPageLocators.LINK_PERSONAL_ACCOUNT).click()
 
 

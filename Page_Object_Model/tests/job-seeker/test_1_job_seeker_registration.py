@@ -7,6 +7,8 @@ from Page_Object_Model.data_for_testing import UrlStartPage, UrlPageAdmin
 from Page_Object_Model.pages.admin_page import AdminPage
 import time
 
+
+
 def test_job_seeker_registration_with_filling_in_all_fields(browser, language):  # регистрация соискателя с заполнением всех полей
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -65,12 +67,14 @@ def test_authorization_of_user_in_Disabled_status(browser, language):  # авт�
     page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
     page.info_text_for_authorization_in_user_status_Disabled()  # инфо текст при авторизации в статусе пользователя "Отключен"
 
+
 def test_confirmation_of_registration_of_applicant_and_authorization_on_site(browser, language):  # подтверждение регистрации соискателя и авторизация на сайте
     link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
     email_page = EmailPage(browser, link)
     email_page.open()
     # browser.maximize_window()
     email_page.email_authorization()  # авторизация email
+
 
     if language == "/ua":
         email_page.confirmation_of_job_seeker_registration_in_letter_ua()  # подтверждение регистрации соискателя в письме ua

@@ -125,16 +125,18 @@ class CompanyEditPageLocators():
     FIELD_VIDEO_2 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video2'))
     BUTTON_VIDEO_ADD = (By.CSS_SELECTOR, ('.js-add-video'))
     FIELD_VIDEO_3 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video3'))
-    # заполнение блока "Видео"
+    # блок "Видео"
 
     BUTTON_EDIT_IN_SETTINGS_BLOCK = (By.CSS_SELECTOR, ('#other-settings .post-resume-title + .btn-edit'))
-    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL = (By.CSS_SELECTOR, ('[data-id="companyform-mail_language"]'))
-    UKRAINIAN_LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL = (By.CSS_SELECTOR, ('.field-companyform-mail_language [data-original-index="1"]'))  # украинский
+    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'mail_language"]'))
+    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'mail_language [data-original-index="0"]'))  # русский
+    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'mail_language [data-original-index="1"]'))  # украинский
+    # блок "Настройки"
 
     BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#submit-button'))
 
     INFO_TEXT_AFTER_SAVING_PERSONAL_INFORMATION = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст после сохранения изменений личной информации
-    CROSS_IN_POP_UP_AFTER_SAVING_CHANGES_TO_PERSONAL_INFORMATION = (By.CSS_SELECTOR, ('#thanks-modal .close'))
+    CROSS_IN_POP_UP_AFTER_SAVING_CHANGES_TO_PERSONAL_INFORMATION = (By.CSS_SELECTOR, ('#thanks-modal .close'))  # крестик в pop-up окне после сохранения изменений личной информации
 
 class JobSeekerRegistrationPageLocators():
     inputPrefix = 'jobseekerregistrationform-'
@@ -157,10 +159,38 @@ class JobSeekerRegistrationPageLocators():
 
     BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#button-registration'))
 
+class JobSeekerEditPageLocators():
+    inputPrefix = 'jobseekereditform-'
+
+    BUTTON_EDIT_IN_PERSONAL_INFORMATION_BLOCK = (By.CSS_SELECTOR, ('#personal-information .post-resume-title + .btn-edit'))
+    FIELD_NAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'name'))
+    FIELD_SURNAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'surname'))
+    FIELD_YEAR = (By.CSS_SELECTOR, ('#' + inputPrefix + 'birthdayy > option:nth-child(2)'))
+    FIELD_MONTH = (By.CSS_SELECTOR, ('#' + inputPrefix + 'birthdaym > option:nth-child(2)'))
+    FIELD_DAY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'birthdayd > option:nth-child(2)'))
+    FIELD_GENDER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'gender [value="1"] + .radio-custom'))
+    FIELD_COUNTRY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option:nth-child(4)'))
+    FIELD_CITY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option:nth-child(5)'))
+    # блок "Личная информация"
+
+    BUTTON_EDIT_IN_SETTINGS_BLOCK = (By.CSS_SELECTOR, ('#other-settings .post-resume-title + .btn-edit'))
+    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'mail_language"]'))
+    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'mail_language [data-original-index="0"]'))  # русский
+    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'mail_language [data-original-index="1"]'))  # украинский
+    # блок "Настройки"
+
+    BUTTON_SAVE_CHANGES = (By.CSS_SELECTOR, ('#submit-publish'))
+
+    INFO_TEXT_AFTER_SAVING_PERSONAL_INFORMATION = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст после сохранения изменений личной информации
+    CROSS_IN_POP_UP_AFTER_SAVING_CHANGES_TO_PERSONAL_INFORMATION = (By.CSS_SELECTOR, ('#thanks-modal .close'))  # крестик в pop-up окне после сохранения изменений личной информации
+
 class CompanyPersonalCabinetPageLocators():
     MY_VACANCIES = (By.XPATH, ('//a[contains(@href, "/vacancy/my")]/div[@class="employer-card"]'))
     PERSONAL_DATA = (By.XPATH, ('//a[contains(@href, "/company/edit")]/div[@class="employer-card"]'))
     SERVICES_AND_PRICES = (By.XPATH, ('//a[contains(@href, "/prices")]/div[@class="employer-card"]'))
+
+class JobSeekerPersonalCabinetPageLocators():
+    PERSONAL_DATA = (By.XPATH, ('//a[contains(@href, "/job-seeker/edit")]/div[@class="employer-card"]'))
 
 class MyVacanciesPageLocators():
     BUTTON_ADD_VACANCY = (By.CSS_SELECTOR, ('#add-vacancy'))
@@ -251,6 +281,8 @@ class AdminPageLocators():
 
     FIELD_USER_LOGIN = (By.CSS_SELECTOR, ('[name="User[login]"]'))
     FIELD_USER_EMAIL = (By.CSS_SELECTOR, ('[name="User[email]"]'))
+    FIELD_EMAIL_LANGUAGE = (By.XPATH, ('//span[contains(@id, "select2-user-mail_language-")]'))
+
     FIELD_NAME = (By.CSS_SELECTOR, ('[name="User[descriptions][1][name]"]'))
     FIELD_SURNAME = (By.CSS_SELECTOR, ('[name="User[descriptions][1][surname]"]'))
     FIELD_COMPANY_NAME = (By.CSS_SELECTOR, ('[name="User[descriptions][1][company_name]"]'))

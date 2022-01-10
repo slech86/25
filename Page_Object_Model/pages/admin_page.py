@@ -106,7 +106,7 @@ class AdminPage(BasePage):
         self.browser.find_element(*AdminPageLocators.BUTTON_SAVE_AND_EDIT).click()
         time.sleep(4)
 
-    def verification_of_saving_data_entered_by_user_after_company_registration_ru(self, language):  # проверка сохранения введенных пользователем данных после регистрации компании RU
+    def verification_of_saving_data_entered_by_user_after_company_registration(self, language):  # проверка сохранения введенных пользователем данных после регистрации компании
         login = self.browser.find_element(*AdminPageLocators.FIELD_USER_LOGIN)
         login_value = login.get_attribute("value")
         if language == "/ua":
@@ -120,6 +120,13 @@ class AdminPage(BasePage):
             assert email_value == TestData.email_ua, "Поле 'Email' не верно"
         else:
             assert email_value == TestData.email_ru, "Поле 'Email' не верно"
+
+        email_language = self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_LANGUAGE)
+        email_language_title = email_language.get_attribute("title")
+        if language == "/ua":
+            assert email_language_title == TestData.email_language_ua, "Поле 'Язык уведомлений на e-mail' не верно"
+        else:
+            assert email_language_title == TestData.email_language_ru, "Поле 'Язык уведомлений на e-mail' не верно"
 
         name = self.browser.find_element(*AdminPageLocators.FIELD_NAME)
         name_value = name.get_attribute("value")
@@ -228,7 +235,7 @@ class AdminPage(BasePage):
         checkbox_get_news_checked = checkbox_get_news.get_attribute("checked")
         assert checkbox_get_news_checked is not None, "Не установлено получение новостей"
 
-    def verification_of_saving_data_entered_by_user_after_job_seeker_registration_ru(self, language):  # проверка сохранения введенных пользователем данных после регистрации соискателя RU
+    def verification_of_saving_data_entered_by_user_after_job_seeker_registration(self, language):  # проверка сохранения введенных пользователем данных после регистрации соискателя
         login = self.browser.find_element(*AdminPageLocators.FIELD_USER_LOGIN)
         login_value = login.get_attribute("value")
         if language == "/ua":
@@ -242,6 +249,13 @@ class AdminPage(BasePage):
             assert email_value == TestData.email_ua, "Поле 'Email' не верно"
         else:
             assert email_value == TestData.email_ru, "Поле 'Email' не верно"
+
+        email_language = self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_LANGUAGE)
+        email_language_title = email_language.get_attribute("title")
+        if language == "/ua":
+            assert email_language_title == TestData.email_language_ua, "Поле 'Язык уведомлений на e-mail' не верно"
+        else:
+            assert email_language_title == TestData.email_language_ru, "Поле 'Язык уведомлений на e-mail' не верно"
 
         name = self.browser.find_element(*AdminPageLocators.FIELD_NAME)
         name_value = name.get_attribute("value")

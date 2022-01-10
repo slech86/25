@@ -7,7 +7,7 @@ import time
 import os
 
 class CompanyEditPage(BasePage):
-    def change_data_in_all_fields(self):  # изменение данных во всех полях
+    def change_data_in_all_fields(self, language):  # изменение данных во всех полях
         self.browser.find_element(*CompanyEditPageLocators.BUTTON_EDIT_IN_CONTACT_INFORMATION_BLOCK).click()
         self.browser.find_element(*CompanyEditPageLocators.FIELD_NAME).send_keys('_editing')
         self.browser.find_element(*CompanyEditPageLocators.FIELD_SURNAME).send_keys('_editing')
@@ -51,7 +51,7 @@ class CompanyEditPage(BasePage):
         CKEditor.send_keys('editing_')
         self.browser.switch_to.default_content()  # выход из фрейма
         # ввод данных в CKEditor (поле " Описание компании")
-        # заполнение блока "Информация о компании"
+        # редактирование блока "Информация о компании"
 
         current_dir = os.path.abspath(os.path.dirname(__file__))
         file_path = os.path.join(current_dir, 'логотип 2 170х85.png')
@@ -59,7 +59,7 @@ class CompanyEditPage(BasePage):
 
         file_path = os.path.join(current_dir, 'обложка 2 1920х230.jpg')
         self.browser.find_element(*CompanyEditPageLocators.FIELD_COVER).send_keys(file_path)
-        # заполнение блока "Оформление профиля"
+        # редактирование блока "Оформление профиля"
 
         self.browser.find_element(*CompanyEditPageLocators.FIELD_VIDEO_1).clear()
         self.browser.find_element(*CompanyEditPageLocators.FIELD_VIDEO_1).send_keys(TestData.video_1_editing)
@@ -67,13 +67,17 @@ class CompanyEditPage(BasePage):
         self.browser.find_element(*CompanyEditPageLocators.FIELD_VIDEO_2).send_keys(TestData.video_2_editing)
         self.browser.find_element(*CompanyEditPageLocators.FIELD_VIDEO_3).clear()
         self.browser.find_element(*CompanyEditPageLocators.FIELD_VIDEO_3).send_keys(TestData.video_3_editing)
-        # заполнение блока "Видео"
+        # редактирование блока "Видео"
 
         self.browser.find_element(*CompanyEditPageLocators.BUTTON_EDIT_IN_SETTINGS_BLOCK).click()
         self.browser.find_element(*CompanyEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL).click()
-        self.browser.find_element(*CompanyEditPageLocators.UKRAINIAN_LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL).click()
+        if language == "/ua":
+            self.browser.find_element(*CompanyEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU).click()
+        else:
+            self.browser.find_element(*CompanyEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA).click()
+        # редактирование блока "Настройки"
 
-    def submitting_form_for_registration(self):  # отправка формы на регистрацию
+    def submitting_form_for_moderation_after_changing_data(self):  # отправка формы на модерацию после изменения данных
         self.browser.find_element(*CompanyEditPageLocators.BUTTON_SUBMIT).click()
         # time.sleep(4)
 
@@ -84,4 +88,3 @@ class CompanyEditPage(BasePage):
         else:
             assert "Изменения личной информации сохранены" == infoText, 'Не верное сообщение'
         self.browser.find_element(*CompanyEditPageLocators.CROSS_IN_POP_UP_AFTER_SAVING_CHANGES_TO_PERSONAL_INFORMATION).click()
-        time.sleep(30)

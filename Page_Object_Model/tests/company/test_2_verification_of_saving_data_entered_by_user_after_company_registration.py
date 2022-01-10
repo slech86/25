@@ -17,4 +17,4 @@ def test_verification_of_saving_data_entered_by_user_after_company_registration(
 
     admin_page.go_to_object_editing_page()  # переход на страницу пользователя
 
-    admin_page.verification_of_saving_data_entered_by_user_after_company_registration_ru(language)  # проверка сохранения введенных пользователем данных после регистрации компании RU
+    admin_page.verification_of_saving_data_entered_by_user_after_company_registration(language)  # проверка сохранения введенных пользователем данных после регистрации компании

@@ -15,7 +15,7 @@ def test_package_purchase_standart_and_orders_processing_and_activating_it_on_si
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
     page.user_authorization()  # авторизация пользователя
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
-    page.go_to_personal_account_page()  # нажатие на кнопку для перехода на страницу личного кабинета
+    page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 
     company_personal_cabinet_page = CompanyPersonalCabinetPage(browser, browser.current_url)
     company_personal_cabinet_page.go_to_services_and_prices_page()  # переход на страницу "Услуги и цены"
@@ -48,7 +48,7 @@ def test_package_purchase_standart_and_orders_processing_and_activating_it_on_si
     # browser.maximize_window()
     page.open()
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
-    page.go_to_personal_account_page()  # нажатие на кнопку для перехода на страницу личного кабинета
+    page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 
     company_personal_cabinet_page = CompanyPersonalCabinetPage(browser, browser.current_url)
     company_personal_cabinet_page.go_to_services_and_prices_page()  # переход на страницу "Услуги и цены"

@@ -30,6 +30,9 @@ class TestData():
     email_ru = email[0] + time_Now + email[1]
     email_ua = email[0] + time_Now + 'ua' + email[1]
 
+    email_language_ru = '[#1] Русский'
+    email_language_ua = '[#3] Українська'
+
     name = 'name_' + time_Now
     surname = 'surname_' + time_Now
     position = 'position_' + time_Now

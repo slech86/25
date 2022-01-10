@@ -18,4 +18,4 @@ def test_verification_of_saving_data_entered_by_user_after_job_seeker_registrati
 
     admin_page.go_to_object_editing_page()  # переход на страницу пользователя
 
-    admin_page.verification_of_saving_data_entered_by_user_after_job_seeker_registration_ru(language)  # проверка сохранения введенных пользователем данных после регистрации соискателя RU
+    admin_page.verification_of_saving_data_entered_by_user_after_job_seeker_registration(language)  # проверка сохранения введенных пользователем данных после регистрации соискателя
