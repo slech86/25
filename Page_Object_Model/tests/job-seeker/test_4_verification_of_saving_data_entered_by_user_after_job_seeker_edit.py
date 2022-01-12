@@ -4,7 +4,7 @@ from Page_Object_Model.pages.admin_page import AdminPage
 import time
 
 
-def test_verification_of_saving_data_entered_by_user_after_company_registration(browser, language):  # проверка сохранения введенных пользователем данных после регистрации компании
+def test_verification_of_saving_data_entered_by_user_after_job_seeker_edit(browser, language):  # проверка сохранения введенных пользователем данных после редактирования соискателя
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
@@ -18,4 +18,4 @@ def test_verification_of_saving_data_entered_by_user_after_company_registration(
 
     admin_page.go_to_object_editing_page()  # переход на страницу пользователя
 
-    admin_page.verification_of_saving_data_entered_by_user_after_company_registration_ru(language)  # проверка сохранения введенных пользователем данных после регистрации компании RU
+    admin_page.verification_of_saving_data_entered_by_user_after_job_seeker_edit_ru(language)  # проверка сохранения введенных пользователем данных после редактирования соискателя RU

@@ -1,6 +1,6 @@
 from .base_page import BasePage
 from .locators import AdminPageLocators
-from Page_Object_Model.data_for_testing import TestData, Accounts
+from Page_Object_Model.data_for_testing import TestData, TestDataEditing, Accounts
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
@@ -106,7 +106,7 @@ class AdminPage(BasePage):
         self.browser.find_element(*AdminPageLocators.BUTTON_SAVE_AND_EDIT).click()
         time.sleep(4)
 
-    def verification_of_saving_data_entered_by_user_after_company_registration(self, language):  # проверка сохранения введенных пользователем данных после регистрации компании
+    def verification_of_saving_data_entered_by_user_after_company_registration_ru(self, language):  # проверка сохранения введенных пользователем данных после регистрации компании RU
         login = self.browser.find_element(*AdminPageLocators.FIELD_USER_LOGIN)
         login_value = login.get_attribute("value")
         if language == "/ua":
@@ -235,7 +235,7 @@ class AdminPage(BasePage):
         checkbox_get_news_checked = checkbox_get_news.get_attribute("checked")
         assert checkbox_get_news_checked is not None, "Не установлено получение новостей"
 
-    def verification_of_saving_data_entered_by_user_after_job_seeker_registration(self, language):  # проверка сохранения введенных пользователем данных после регистрации соискателя
+    def verification_of_saving_data_entered_by_user_after_job_seeker_registration_ru(self, language):  # проверка сохранения введенных пользователем данных после регистрации соискателя RU
         login = self.browser.find_element(*AdminPageLocators.FIELD_USER_LOGIN)
         login_value = login.get_attribute("value")
         if language == "/ua":
@@ -257,6 +257,20 @@ class AdminPage(BasePage):
         else:
             assert email_language_title == TestData.email_language_ru, "Поле 'Язык уведомлений на e-mail' не верно"
 
+        self.verification_of_saving_data_entered_job_seeker(language, TestData)
+
+    def verification_of_saving_data_entered_by_user_after_job_seeker_edit_ru(self, language):  # проверка сохранения введенных пользователем данных после редактирования соискателя RU
+        email_language = self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_LANGUAGE)
+        email_language_title = email_language.get_attribute("title")
+        if language == "/ua":
+            assert email_language_title == TestDataEditing.email_language_ru, "Поле 'Язык уведомлений на e-mail' не верно"
+        else:
+            assert email_language_title == TestDataEditing.email_language_ua, "Поле 'Язык уведомлений на e-mail' не верно"
+
+        self.verification_of_saving_data_entered_job_seeker(language, TestDataEditing)
+
+
+    def verification_of_saving_data_entered_job_seeker(self,language, TestData):  # проверка сохранения введенных данных соискателя
         name = self.browser.find_element(*AdminPageLocators.FIELD_NAME)
         name_value = name.get_attribute("value")
         assert name_value == TestData.name, "Поле 'Имя' не верно"
@@ -277,7 +291,7 @@ class AdminPage(BasePage):
         country_title = country.get_attribute("title")
         assert country_title == TestData.country, "Поле 'Страна' не верно"
 
-        WebDriverWait(self.browser, 5).until(EC.text_to_be_present_in_element((AdminPageLocators.FIELD_CITY_RU), '[#703448] Киев'))
+        WebDriverWait(self.browser, 5).until(EC.text_to_be_present_in_element((AdminPageLocators.FIELD_CITY_RU), TestData.city))
         city = self.browser.find_element(*AdminPageLocators.FIELD_CITY_RU)
         city_title = city.get_attribute("title")
         assert city_title == TestData.city, "Поле 'Город' не верно"

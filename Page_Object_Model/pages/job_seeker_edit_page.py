@@ -1,10 +1,7 @@
 from .base_page import BasePage
 from .locators import JobSeekerEditPageLocators
-from Page_Object_Model.data_for_testing import TestData
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 import time
-import os
+
 
 class JobSeekerEditPage(BasePage):
     def change_data_in_all_fields(self, language):  # изменение данных во всех полях

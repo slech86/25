@@ -1,7 +1,7 @@
 import time
 
 class UrlStartPage():
-    prefix = 'http://preprod.'  # 'http://preprod.', 'http://master.'. 'https://'
+    prefix = 'http://master.'  # 'http://preprod.', 'http://master.'. 'https://'
     if prefix == 'https://':
         suffix = ''
     else:
@@ -37,11 +37,9 @@ class TestData():
     surname = 'surname_' + time_Now
     position = 'position_' + time_Now
     phone = '+01(010)101-01-01'
-    phone_editing = '+1(234)567-89-10'
     contact_email = 'contact_email_' + time_Now + email[1]
     company_name = 'company_name_' + time_Now
     code_company = 'qы10000001'
-    code_company_editing = '01111110'
     company_activity = '[#146] Финансы'  # (Сфера деятельности компании) не используется при заполнении полей, только при проверке заполнения полей в админке
     ckeditor_company_description = "CKEditor_company_description_" + time_Now
     skype = 'skype' + time_Now
@@ -50,7 +48,7 @@ class TestData():
     street = 'street_' + time_Now
     date_of_company_foundation = '2019-12-31'   # не используется при заполнении полей, только при проверке заполнения полей в админке
     birthday = '1999-11-30'  # не используется при заполнении полей, только при проверке заполнения полей в админке
-    gender = 'Женский'
+    gender = 'Женский'  # не используется при заполнении полей, только при проверке заполнения полей в админке
 
     company_site = 'http://company_site_' + time_Now + '.com'
     facebook = 'http://facebook_' + time_Now + '.com'
@@ -61,11 +59,42 @@ class TestData():
     vk = 'http://vk_' + time_Now + '.com'
     number_of_company_employees = 'от 100 до 250'  # (Количество сотрудников компании) не используется при заполнении полей, только при проверке заполнения полей в админке
     video_1 = 'https://www.youtube.com/watch?v=6OBg9Iz7dD0'
-    video_1_editing = 'https://www.youtube.com/watch?v=jLwvMlvkBv0'
     video_2 = 'https://www.youtube.com/watch?v=ZsMKc7EecNs'
-    video_2_editing = 'https://www.youtube.com/watch?v=j0F8PXnP9yY'
     video_3 = 'https://www.youtube.com/watch?v=kCunPyM8AQ0'
-    video_3_editing = 'https://www.youtube.com/watch?v=-DKCkibqulU'
+
+class TestDataEditing():
+    email_language_ru = '[#1] Русский'
+    email_language_ua = '[#3] Українська'
+
+    name = 'name_' + TestData.time_Now + '_editing'
+    surname = 'surname_' + TestData.time_Now + '_editing'
+    position = 'position_' + TestData.time_Now + '_editing'
+    phone = '+1(234)567-89-10'
+    contact_email = 'contact_email_' + TestData.time_Now + TestData.email[1] + 'editing'
+    company_name = 'company_name_' + TestData.time_Now + '_editing'
+    code_company = '01111110'
+    company_activity = '[#146] Финансы' + '[#188] Гемблинг'  # ??? (Сфера деятельности компании) не используется при заполнении полей, только при проверке заполнения полей в админке
+    ckeditor_company_description = "CKEditor_company_description_" + TestData.time_Now
+    skype = 'skype' + TestData.time_Now + '_editing'
+    country = '[#122] Казахстан'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    city = '[#609655] Караганда'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    street = 'street_' + TestData.time_Now
+    date_of_company_foundation = '1991-03-17'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    birthday = '2001-01-01'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    gender = 'Мужской'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+
+    company_site = 'http://company_site_' + TestData.time_Now + '.com' + '_editing'
+    facebook = 'http://facebook_' + TestData.time_Now + '.com' + '_editing'
+    linkedin = 'http://linkedin_' + TestData.time_Now + '.com' + '_editing'
+    instagram = 'http://instagram_' + TestData.time_Now + '.com' + '_editing'
+    telegram = 'http://telegram_' + TestData.time_Now + '.com' + '_editing'
+    twitter = 'http://twitter_' + TestData.time_Now + '.com' + '_editing'
+    vk = 'http://vk_' + TestData.time_Now + '.com' + '_editing'
+    number_of_company_employees = 'от 50 до 100'  # (Количество сотрудников компании) не используется при заполнении полей, только при проверке заполнения полей в админке
+    video_1 = 'https://www.youtube.com/watch?v=jLwvMlvkBv0'
+    video_2 = 'https://www.youtube.com/watch?v=j0F8PXnP9yY'
+    video_3 = 'https://www.youtube.com/watch?v=-DKCkibqulU'
+
 
 
 class Accounts():

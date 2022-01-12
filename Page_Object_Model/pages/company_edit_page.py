@@ -1,8 +1,6 @@
 from .base_page import BasePage
 from .locators import CompanyEditPageLocators
-from Page_Object_Model.data_for_testing import TestData
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from Page_Object_Model.data_for_testing import TestDataEditing
 import time
 import os
 
@@ -13,7 +11,7 @@ class CompanyEditPage(BasePage):
         self.browser.find_element(*CompanyEditPageLocators.FIELD_SURNAME).send_keys('_editing')
         self.browser.find_element(*CompanyEditPageLocators.FIELD_POSITION).send_keys('_editing')
         self.browser.find_element(*CompanyEditPageLocators.FIELD_TELEPHONE).clear()
-        self.browser.find_element(*CompanyEditPageLocators.FIELD_TELEPHONE).send_keys(TestData.phone_editing)
+        self.browser.find_element(*CompanyEditPageLocators.FIELD_TELEPHONE).send_keys(TestDataEditing.phone)
         self.browser.find_element(*CompanyEditPageLocators.FIELD_CONTACT_EMAIL).send_keys('editing')
         self.browser.find_element(*CompanyEditPageLocators.FIELD_SKYPE).send_keys('_editing')
         # редактирование блока "Контактная информация"
@@ -21,7 +19,7 @@ class CompanyEditPage(BasePage):
         self.browser.find_element(*CompanyEditPageLocators.BUTTON_EDIT_IN_COMPANY_INFORMATION_BLOCK).click()
         self.browser.find_element(*CompanyEditPageLocators.FIELD_COMPANY_NAME).send_keys('_editing')
         self.browser.find_element(*CompanyEditPageLocators.FIELD_CODE_COMPANY).clear()
-        self.browser.find_element(*CompanyEditPageLocators.FIELD_CODE_COMPANY).send_keys(TestData.code_company_editing)
+        self.browser.find_element(*CompanyEditPageLocators.FIELD_CODE_COMPANY).send_keys(TestDataEditing.code_company)
 
         self.browser.find_element(*CompanyEditPageLocators.FIELD_COUNTRY).click()
         time.sleep(0.2)
@@ -62,11 +60,11 @@ class CompanyEditPage(BasePage):
         # редактирование блока "Оформление профиля"
 
         self.browser.find_element(*CompanyEditPageLocators.FIELD_VIDEO_1).clear()
-        self.browser.find_element(*CompanyEditPageLocators.FIELD_VIDEO_1).send_keys(TestData.video_1_editing)
+        self.browser.find_element(*CompanyEditPageLocators.FIELD_VIDEO_1).send_keys(TestDataEditing.video_1)
         self.browser.find_element(*CompanyEditPageLocators.FIELD_VIDEO_2).clear()
-        self.browser.find_element(*CompanyEditPageLocators.FIELD_VIDEO_2).send_keys(TestData.video_2_editing)
+        self.browser.find_element(*CompanyEditPageLocators.FIELD_VIDEO_2).send_keys(TestDataEditing.video_2)
         self.browser.find_element(*CompanyEditPageLocators.FIELD_VIDEO_3).clear()
-        self.browser.find_element(*CompanyEditPageLocators.FIELD_VIDEO_3).send_keys(TestData.video_3_editing)
+        self.browser.find_element(*CompanyEditPageLocators.FIELD_VIDEO_3).send_keys(TestDataEditing.video_3)
         # редактирование блока "Видео"
 
         self.browser.find_element(*CompanyEditPageLocators.BUTTON_EDIT_IN_SETTINGS_BLOCK).click()

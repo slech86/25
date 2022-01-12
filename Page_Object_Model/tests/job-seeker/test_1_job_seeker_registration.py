@@ -8,7 +8,7 @@ from Page_Object_Model.pages.admin_page import AdminPage
 import time
 
 
-
+@pytest.mark.s_r_c
 def test_job_seeker_registration_with_filling_in_all_fields(browser, language):  # регистрация соискателя с заполнением всех полей
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -74,7 +74,6 @@ def test_confirmation_of_registration_of_applicant_and_authorization_on_site(bro
     email_page.open()
     # browser.maximize_window()
     email_page.email_authorization()  # авторизация email
-
 
     if language == "/ua":
         email_page.confirmation_of_job_seeker_registration_in_letter_ua()  # подтверждение регистрации соискателя в письме ua
