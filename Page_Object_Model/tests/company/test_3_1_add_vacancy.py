@@ -47,7 +47,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     id_vacancies = admin_page.getting_vacancies_id()  # получение id вакансии
     admin_page.checking_that_vacancy_status_is_on_moderated()  # проверка что статус вакансии 'На модерацию'
 
-    url_Vacancy_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}/vacancy/{id_vacancies}"
+    url_Vacancy_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/vacancy/{id_vacancies}"
     vacancy_page = VacancyPage(browser, url_Vacancy_Page)
     vacancy_page.open()
     vacancy_page.checking_opening_of_page_of_an_unpublished_vacancy(language)  # проверка открытия страницы не опубликованой вакансии
@@ -65,8 +65,31 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     vacancy_page.open()
     vacancy_page.checking_opening_of_page_of_published_vacancy()  # проверка открытия страницы опубликованой вакансии
 
+@pytest.mark.s_r_c
+def test_verification_of_letter_after_publication_of_vacancy(browser, language):  # проверка письма после публикации вакансии
+    link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
+    email_page = EmailPage(browser, link)
+    email_page.open()
+    # browser.maximize_window()
+    email_page.email_authorization()  # авторизация email
+
+    if language == "/ua":
+        email_page.verification_of_letter_after_publication_of_vacancy_ua()  # проверка письма после публикации вакансии ua
+    else:
+        email_page.verification_of_letter_after_publication_of_vacancy_ru()  # проверка письма после публикации вакансии ru
+
+@pytest.mark.s_r_c
+def test_complete_deletion_of_vacancy(browser, language):  # полное удаление вакансии
+    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page.open()
+    admin_page.admin_authorization()
+    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+    admin_page.go_to_vacancies_page()  # переход на страницу вакансий
+    admin_page.vacancies_search_by_job_title()  # поиск вакансии по названию должности
+    admin_page.complete_objects_deletion()  # полное удаление объектов
 
 
+# удаление пакета созданного в прошлом тесте
 def test_complete_deletion_of_user_orders(browser, language):  # полное удаление заказов пользователя
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()

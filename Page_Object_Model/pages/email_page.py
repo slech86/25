@@ -1,6 +1,7 @@
 from .base_page import BasePage
 from .locators import EmailPageLocators
 from Page_Object_Model.data_for_testing import Accounts
+from Page_Object_Model.data_for_testing import TestData
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
@@ -103,4 +104,28 @@ class EmailPage(BasePage):
         self.browser.switch_to.frame(iframe)  # вход в фрейм
         letter_text = self.browser.find_element(*EmailPageLocators.TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_UA).text
         assert "Оплата отримана, активуйте послугу на " in letter_text, 'Не верное сообщение'
+        self.browser.switch_to.default_content()  # выход из фрейма
+
+
+    def verification_of_letter_after_publication_of_vacancy_ru(self):  # проверка письма после публикации вакансии ru
+        # time.sleep(20)
+        # self.browser.refresh()
+
+        self.browser.find_element(*EmailPageLocators.LETTER_AFTER_PUBLISHING_VACANCY_RU).click()
+
+        iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
+        self.browser.switch_to.frame(iframe)  # вход в фрейм
+        letter_text = self.browser.find_element(*EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_RU).text
+        assert TestData.job_title + ' добавлена на сайт.' in letter_text, 'Не верное сообщение'
+        self.browser.switch_to.default_content()  # выход из фрейма
+    def verification_of_letter_after_publication_of_vacancy_ua(self):  # проверка письма после публикации вакансии ua
+        # time.sleep(20)
+        # self.browser.refresh()
+
+        self.browser.find_element(*EmailPageLocators.LETTER_AFTER_PUBLISHING_VACANCY_UA).click()
+
+        iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
+        self.browser.switch_to.frame(iframe)  # вход в фрейм
+        letter_text = self.browser.find_element(*EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_UA).text
+        assert TestData.job_title + ' вже на сайті!' in letter_text, 'Не верное сообщение'
         self.browser.switch_to.default_content()  # выход из фрейма

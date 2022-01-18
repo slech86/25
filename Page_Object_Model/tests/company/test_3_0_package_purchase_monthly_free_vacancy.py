@@ -80,6 +80,7 @@ def test_package_purchase_monthly_free_vacancy_and_activating_it_on_site(browser
 
     add_vacancy_page.submitting_vacancy_for_publication()  # проверка наличия кнопки "Опубликовать"
 
+# закомментировано здесь чтоб в следующем тесте проверить создание вакансии, после чего там и происходит удаление этого пакета
 # def test_complete_deletion_of_user_orders(browser, language):  # полное удаление заказов пользователя
 #     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
 #     admin_page.open()

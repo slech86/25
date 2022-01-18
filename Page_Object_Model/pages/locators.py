@@ -318,7 +318,7 @@ class EmailPageLocators():
     LETTER_AFTER_ORDER_PROCESSING_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Оплата подтверждена, активируйте услугу на сайте"]'))  # письмо после проведения заказа ru
     LETTER_AFTER_ORDER_PROCESSING_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Оплата отримана, активуйте послугу на сайті"]'))  # письмо после проведения заказа ua
     LETTER_AFTER_PUBLISHING_VACANCY_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваша вакансия добавлена на сайт"]'))  # письмо после публикации вакансии ru
-    LETTER_AFTER_PUBLISHING_VACANCY_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваша вакансия добавлена на сайт"]'))  # письмо после публикации вакансии ua
+    LETTER_AFTER_PUBLISHING_VACANCY_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваша вакансія вже на сайті"]'))  # письмо после публикации вакансии ua
 
 
     IFRAME_LETTER = (By.CSS_SELECTOR, ('#messagecontframe'))
@@ -327,8 +327,8 @@ class EmailPageLocators():
     TEXT_IN_LETTER_AFTER_FIRST_MODERATION_UA = (By.XPATH, ('//div[text()="Ура! Ваш акаунт пройшов модерацiю."]'))
     TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_RU = (By.XPATH, ('//div[contains(text(), "Оплата получена, активируйте услугу на ")]'))
     TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_UA = (By.XPATH, ('//div[contains(text(), "Оплата отримана, активуйте послугу на ")]'))
-    TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_RU = (By.XPATH, ('//div[contains(text(), "' + TestData.job_title + ' добавлена на сайт.")]'))
-    TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_UA = (By.XPATH, ('//div[contains(text(), "' + TestData.job_title + ' добавлена на сайт.")]'))
+    TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_RU = (By.XPATH, ('//p[contains(text(), "' + TestData.job_title + ' добавлена на сайт.")]'))
+    TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_UA = (By.XPATH, ('//p[contains(text(), "' + TestData.job_title + ' вже на сайті!")]'))
 
 class AdminPageLocators():
     FIELD_LOGIN = (By.CSS_SELECTOR, ('#loginform-username'))
