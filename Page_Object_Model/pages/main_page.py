@@ -3,9 +3,17 @@ import time
 from .base_page import BasePage
 from .locators import MainPageLocators
 from Page_Object_Model.data_for_testing import UrlStartPage
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class MainPage(BasePage):
+    def waiting_for_main_page_to_open(self, language):  # ожидание открытия главной страницы
+        if language == "/ua":
+            WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Робота у гральному бізнесі та IT'))
+        else:
+            WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Работа в игорном бизнесе и IT'))
+
     def confirmation_opening_of_main_page(self):  # подтверждение открытия главной страницы
         if "/ua" in self.browser.current_url:
             assert self.browser.current_url == f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/ua", "Не правильный URL"

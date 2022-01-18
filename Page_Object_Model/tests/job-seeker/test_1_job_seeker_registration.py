@@ -8,7 +8,7 @@ from Page_Object_Model.pages.admin_page import AdminPage
 import time
 
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 def test_job_seeker_registration_with_filling_in_all_fields(browser, language):  # регистрация соискателя с заполнением всех полей
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -22,6 +22,7 @@ def test_job_seeker_registration_with_filling_in_all_fields(browser, language): 
     job_seeker_registration_page.submitting_form_for_registration()  # отправка формы на регистрацию
 
     main_page = MainPage(browser, browser.current_url)
+    main_page.waiting_for_main_page_to_open(language)  # ожидание открытия главной страницы
     main_page.confirmation_opening_of_main_page()  # подтверждение открытия главной страницы
     main_page.checking_message_for_sending_registration_form()  # проверка сообщения о подтверждении отправки формы регистрации
 

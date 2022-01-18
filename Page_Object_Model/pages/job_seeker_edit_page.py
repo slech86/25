@@ -19,7 +19,7 @@ class JobSeekerEditPage(BasePage):
         # редактирование блока "Личная информация"
 
         self.browser.find_element(*JobSeekerEditPageLocators.BUTTON_EDIT_IN_SETTINGS_BLOCK).click()
-        self.browser.find_element(*JobSeekerEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL).click()
+        self.browser.find_element(*JobSeekerEditPageLocators.DROPDOWN_LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL).click()
         if language == "/ua":
             self.browser.find_element(*JobSeekerEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU).click()
         else:

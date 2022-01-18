@@ -23,6 +23,9 @@ class AdminPage(BasePage):
     def go_to_users_page(self):  # переход на страницу пользователей
         self.browser.find_element(*AdminPageLocators.USERS).click()
 
+    def go_to_vacancies_page(self):  # переход на страницу вакансий
+        self.browser.find_element(*AdminPageLocators.VACANCIES).click()
+
     def go_to_order_page(self):  # переход на страницу заказов
         self.browser.find_element(*AdminPageLocators.ORDERS).click()
 
@@ -222,7 +225,7 @@ class AdminPage(BasePage):
         country_title = country.get_attribute("title")
         assert country_title == TestData.country, "Поле 'Страна' не верно"
 
-        WebDriverWait(self.browser, 5).until(EC.text_to_be_present_in_element((AdminPageLocators.FIELD_CITY_RU), '[#703448] Киев'))
+        WebDriverWait(self.browser, 5).until(EC.text_to_be_present_in_element((AdminPageLocators.FIELD_CITY_RU), TestData.city))
         city = self.browser.find_element(*AdminPageLocators.FIELD_CITY_RU)
         city_title = city.get_attribute("title")
         assert city_title == TestData.city, "Поле 'Город' не верно"
@@ -302,6 +305,30 @@ class AdminPage(BasePage):
     # страница пользователя
 
 
+    def waiting_for_vacancies_page_to_open(self):  # ожидание открытия страницы вакансий
+        WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((AdminPageLocators.H1), 'Вакансии'))
+
+
+    def vacancies_search_by_job_title(self):  # поиск вакансии по названию должности
+        self.browser.find_element(*AdminPageLocators.FIELD_JOB_TITLE_SEARCH_VACANCIES).send_keys(TestData.job_title, Keys.ENTER)
+        time.sleep(2)
+        self.browser.find_element(*AdminPageLocators.VACANCY_BY_JOB_TITLE)
+
+    def getting_vacancies_id(self):  # получение id вакансии
+        id_vacancies = self.browser.find_element(*AdminPageLocators.ID_VACANCY).text
+        return id_vacancies
+
+    def checking_that_vacancy_status_is_on_moderated(self):  # проверка что статус вакансии 'На модерацию'
+        status = self.browser.find_element(*AdminPageLocators.VACANCY_STATUS).text
+        assert status == 'На модерацию', 'Статус не "На модерацию"'
+    # страница вакансий
+
+    def change_vacancy_status_to_published(self):  # изменение статуса вакансии на 'Опубликовано'
+        self.browser.find_element(*AdminPageLocators.FIELD_VACANCY_STATUS).click()
+        self.browser.find_element(*AdminPageLocators.STATUS_PUBLISHED).click()
+        time.sleep(2)
+        self.browser.find_element(*AdminPageLocators.BUTTON_SAVE).click()
+    # страница карточки вакансии
 
 
     def search_for_user_orders_by_email_ru(self):  # поиск заказов пользователя по e-mail ru

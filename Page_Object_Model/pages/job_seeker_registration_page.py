@@ -33,4 +33,3 @@ class JobSeekerRegistrationPage(BasePage):
 
     def submitting_form_for_registration(self):  # отправка формы на регистрацию
         self.browser.find_element(*JobSeekerRegistrationPageLocators.BUTTON_SUBMIT).click()
-        time.sleep(12)

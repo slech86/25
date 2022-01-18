@@ -10,8 +10,8 @@ class CompanyEditPage(BasePage):
         self.browser.find_element(*CompanyEditPageLocators.FIELD_NAME).send_keys('_editing')
         self.browser.find_element(*CompanyEditPageLocators.FIELD_SURNAME).send_keys('_editing')
         self.browser.find_element(*CompanyEditPageLocators.FIELD_POSITION).send_keys('_editing')
-        self.browser.find_element(*CompanyEditPageLocators.FIELD_TELEPHONE).clear()
-        self.browser.find_element(*CompanyEditPageLocators.FIELD_TELEPHONE).send_keys(TestDataEditing.phone)
+        self.browser.find_element(*CompanyEditPageLocators.FIELD_PHONE).clear()
+        self.browser.find_element(*CompanyEditPageLocators.FIELD_PHONE).send_keys(TestDataEditing.phone)
         self.browser.find_element(*CompanyEditPageLocators.FIELD_CONTACT_EMAIL).send_keys('editing')
         self.browser.find_element(*CompanyEditPageLocators.FIELD_SKYPE).send_keys('_editing')
         # редактирование блока "Контактная информация"
@@ -77,7 +77,6 @@ class CompanyEditPage(BasePage):
 
     def submitting_form_for_moderation_after_changing_data(self):  # отправка формы на модерацию после изменения данных
         self.browser.find_element(*CompanyEditPageLocators.BUTTON_SUBMIT).click()
-        # time.sleep(4)
 
     def checking_message_after_saving_changes_to_personal_information(self):  # проверка сообщения после сохранения изменений личной информации
         infoText = self.browser.find_element(*CompanyEditPageLocators.INFO_TEXT_AFTER_SAVING_PERSONAL_INFORMATION).text

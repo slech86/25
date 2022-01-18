@@ -1,7 +1,16 @@
 import time
 
+
+class Accounts():
+    main_login_admin = 'p.verbenets'
+    main_password_admin = 'l6FOt9tvJT'
+
+    main_login_email = 'test_automation@smileexpo.com.ua'
+    main_password_email = 'BwX37KJyiw02Cl'
+
+
 class UrlStartPage():
-    prefix = 'http://master.'  # 'http://preprod.', 'http://master.'. 'https://'
+    prefix = 'http://preprod.'  # 'http://preprod.', 'http://master.'. 'https://'
     if prefix == 'https://':
         suffix = ''
     else:
@@ -10,6 +19,7 @@ class UrlStartPage():
     suffix_page = ''
 
     url_start_page = f"{prefix}logincasino.work{suffix}{suffix_page}"
+
 
 class UrlPageAdmin():
     if UrlStartPage.suffix == '.preprod.pw':
@@ -61,6 +71,37 @@ class TestData():
     video_1 = 'https://www.youtube.com/watch?v=6OBg9Iz7dD0'
     video_2 = 'https://www.youtube.com/watch?v=ZsMKc7EecNs'
     video_3 = 'https://www.youtube.com/watch?v=kCunPyM8AQ0'
+    # пользователи
+
+    job_title = 'test_job_title_' + time_Now
+    category = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    subcategories = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    salary_min = '700'
+    salary_max = '1000'
+    currency = 'USD'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    country_vacancy = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    city_vacancy = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    street_vacancy = 'street_vacancy_' + time_Now
+
+    phone_vacancy = '+38(101)010-10-10'
+    email_vacancy = 'email_vacancy_' + time_Now + email[1]
+    skype_vacancy = 'skype_vacancy_' + time_Now
+    contact_person = 'contact_person_' + time_Now
+    employment = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    work_experience = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    education = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    benefits = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    additionally = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    language_1 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    language_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    description_vacancy = 'description_vacancy_' + time_Now
+    about_company = 'about_company_' + time_Now
+    working_conditions = 'working_conditions_' + time_Now
+    tasks = 'tasks_' + time_Now
+    requirements = 'requirements_' + time_Now
+    additionally_information = 'additionally_information' + time_Now
+    # вакансия
+
 
 class TestDataEditing():
     email_language_ru = '[#1] Русский'
@@ -94,12 +135,4 @@ class TestDataEditing():
     video_1 = 'https://www.youtube.com/watch?v=jLwvMlvkBv0'
     video_2 = 'https://www.youtube.com/watch?v=j0F8PXnP9yY'
     video_3 = 'https://www.youtube.com/watch?v=-DKCkibqulU'
-
-
-
-class Accounts():
-    main_login_admin = 'p.verbenets'
-    main_password_admin = 'l6FOt9tvJT'
-
-    main_login_email = 'test_automation@smileexpo.com.ua'
-    main_password_email = 'BwX37KJyiw02Cl'
+    # пользователи

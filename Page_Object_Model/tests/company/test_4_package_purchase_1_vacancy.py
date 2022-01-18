@@ -9,6 +9,7 @@ from Page_Object_Model.pages.email_page import EmailPage
 from Page_Object_Model.pages.my_vacancies_page import MyVacanciesPage
 from Page_Object_Model.pages.add_vacancy_page import AddVacancyPage
 
+
 def test_package_purchase_1_vacancy_and_orders_processing_and_activating_it_on_site(browser, language):  # покупка пакета "1 вакансия" и проведение заказа в админке и активация его на сайте
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)

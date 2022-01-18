@@ -31,7 +31,7 @@ class CompanyRegistrationPageLocators():
     FIELD_NAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'name'))
     FIELD_SURNAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'surname'))
     FIELD_POSITION = (By.CSS_SELECTOR, ('#' + inputPrefix + 'position'))
-    FIELD_TELEPHONE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'phone'))
+    FIELD_PHONE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'phone'))
     FIELD_CONTACT_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'contact_email'))
     FIELD_SKYPE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'skype'))
     # блок "Контактная информация"
@@ -88,7 +88,7 @@ class CompanyEditPageLocators():
     FIELD_NAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'name'))
     FIELD_SURNAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'surname'))
     FIELD_POSITION = (By.CSS_SELECTOR, ('#' + inputPrefix + 'position'))
-    FIELD_TELEPHONE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'phone'))
+    FIELD_PHONE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'phone'))
     FIELD_CONTACT_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'contact_email'))
     FIELD_SKYPE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'skype'))
     # блок "Контактная информация"
@@ -174,7 +174,7 @@ class JobSeekerEditPageLocators():
     # блок "Личная информация"
 
     BUTTON_EDIT_IN_SETTINGS_BLOCK = (By.CSS_SELECTOR, ('#other-settings .post-resume-title + .btn-edit'))
-    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'mail_language"]'))
+    DROPDOWN_LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'mail_language"]'))
     LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'mail_language [data-original-index="0"]'))  # русский
     LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'mail_language [data-original-index="1"]'))  # украинский
     # блок "Настройки"
@@ -193,10 +193,84 @@ class JobSeekerPersonalCabinetPageLocators():
     PERSONAL_DATA = (By.XPATH, ('//a[contains(@href, "/job-seeker/edit")]/div[@class="employer-card"]'))
 
 class MyVacanciesPageLocators():
+    H1 = (By.CSS_SELECTOR, ('h1'))
     BUTTON_ADD_VACANCY = (By.CSS_SELECTOR, ('#add-vacancy'))
 
+    INFO_TEXT_AFTER_SUBMITTING_VACANCY_FOR_MODERATION = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст после отправки вакансии на модерауии
+    CROSS_IN_POP_UP_AFTER_SUBMITTING_VACANCY_FOR_MODERATION = (By.CSS_SELECTOR, ('#thanks-modal .close'))  # крестик в pop-up окне после отправки вакансии на модерауии
+
+
 class AddVacancyPageLocators():
+    inputPrefix = 'vacancyaddform-'
+
+    FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'job_title'))
+    CATEGORY_VACANCIES = "document.getElementsByName('VacancyAddForm[category_id][]')[1].click()"
+    SUBCATEGORIES = "document.getElementsByName('VacancyAddForm[subcategories_id][]')[2].click()"
+    FIELD_MINIMAL_SALARY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'salary_min'))
+    FIELD_MAXIMUM_SALARY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'salary_max'))
+    DROPDOWN_CURRENCY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'currency"]'))
+    CURRENCY_USD = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'currency [data-original-index="2"]'))
+    DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'country_id"]'))
+    COUNTRY_RUSSIA = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'country_id [data-original-index="2"]'))
+    DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'city_id"]'))
+    CITI_MOSCOW = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'city_id [data-original-index="25"]'))
+    FIELD_STREET = (By.CSS_SELECTOR, ('#' + inputPrefix + 'street'))
+    FIELD_PHONE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'phone'))
+    FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'email'))
+    FIELD_SKYPE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'skype'))
+    FIELD_CONTACT_PERSON = (By.CSS_SELECTOR, ('#' + inputPrefix + 'contact_person'))
+    FULL_EMPLOYMENT = (By.CSS_SELECTOR, ('#' + inputPrefix + 'employment > .checkbox:nth-child(1) > label'))
+    WORK_EXPERIENCE_1_YEAR = (By.CSS_SELECTOR, ('#' + inputPrefix + 'work_experience > .checkbox:nth-child(2) > label'))
+    DROPDOWN_EDUCATION = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'education"]'))
+    HIGHER_EDUCATION = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'education [data-original-index="2"]'))
+    DROPDOWN_VACANCY_BENEFITS = (By.CSS_SELECTOR, ('[data-id="job-benefits-select"]'))
+    TRANSPORTATION = (By.CSS_SELECTOR, ('#job-benefits [data-original-index="12"]'))
+    READY_TO_TAKE_STUDENT = (By.CSS_SELECTOR, ('#' + inputPrefix + 'additionally > .checkbox:nth-child(1) > label'))
+    # блок "Основная информация"
+
+    BUTTON_ADD_LANGUAGE = (By.CSS_SELECTOR, ('#addLanguages'))
+    DROPDOWN_LANGUAGE_1 = (By.CSS_SELECTOR, ('[data-id="languageaddform-language"]'))
+    ENGLISH_LANGUAGE_1 = (By.CSS_SELECTOR, ('.field-languageaddform-language [data-original-index="1"]'))
+    DROPDOWN_LEVEL_OF_LANGUAGE_1 = (By.CSS_SELECTOR, ('[data-id="languageaddform-level"]'))
+    MIDDLE_LEVEL_1 = (By.CSS_SELECTOR, ('.field-languageaddform-level [data-original-index="3"]'))
+    ADD_LANGUAGE = (By.CSS_SELECTOR, ('.resume-item-link.js-add-languages'))
+    DROPDOWN_LANGUAGE_2 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) [data-id="languageaddform-language"]'))
+    ENGLISH_LANGUAGE_2 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) .field-languageaddform-language [data-original-index="37"]'))
+    DROPDOWN_LEVEL_OF_LANGUAGE_2 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) [data-id="languageaddform-level"]'))
+    MIDDLE_LEVEL_2 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) .field-languageaddform-level [data-original-index="7"]'))
+    # блок "Знание языков"
+
+    ADD_DESCRIPTION_OF_VACANCIES = (By.CSS_SELECTOR, ('#vacancy-description .btn-disabled'))
+    IFRAME_CKEDITOR_DESCRIPTION_OF_VACANCIES = (By.CSS_SELECTOR, ('#cke_vacancyaddform-description iframe'))
+    # блок "Описание вакансии"
+
+    ADD_ABOUT_COMPANY = (By.CSS_SELECTOR, ('#about-company .btn-disabled'))
+    IFRAME_CKEDITOR_ABOUT_COMPANY = (By.CSS_SELECTOR, ('#cke_vacancyaddform-about_company iframe'))
+    # блок "О компании"
+
+    ADD_WORKING_CONDITIONS = (By.CSS_SELECTOR, ('#working-conditions .btn-disabled'))
+    IFRAME_CKEDITOR_WORKING_CONDITIONS = (By.CSS_SELECTOR, ('#cke_vacancyaddform-working_conditions iframe'))
+    # блок "Условия работы"
+
+    ADD_TASKS = (By.CSS_SELECTOR, ('#tasks .btn-disabled'))
+    IFRAME_CKEDITOR_TASKS = (By.CSS_SELECTOR, ('#cke_vacancyaddform-tasks iframe'))
+    # блок "Задачи"
+
+    ADD_REQUIREMENTS = (By.CSS_SELECTOR, ('#requirements-candidate .btn-disabled'))
+    IFRAME_CKEDITOR_REQUIREMENTS = (By.CSS_SELECTOR, ('#cke_vacancyaddform-requirements iframe'))
+    # блок "Требования к соискателю"
+
+    ADD_ADDITIONAL_INFORMATION = (By.CSS_SELECTOR, ('#additional-information .btn-disabled'))
+    IFRAME_CKEDITOR_ADDITIONAL_INFORMATION = (By.CSS_SELECTOR, ('#cke_vacancyaddform-additionally_information iframe'))
+    # блок "Дополнительная информация"
+
+    CKEDITOR = (By.CSS_SELECTOR, ('body.cke_editable'))  # общий для всех блоков
     BUTTON_PUBLISH = (By.CSS_SELECTOR, ('#submit-publish'))
+
+
+class VacancyPageLocators():
+    H1 = (By.CSS_SELECTOR, ('h1'))
+
 
 class ServicesAndPricesPageLocators():
     TAB_ACTIVATED_SERVICES = (By.CSS_SELECTOR, ('.labet-activated-servises'))
@@ -226,6 +300,7 @@ class ServicesAndPricesPageLocators():
 
 
 class MainPageLocators():
+    H1 = (By.CSS_SELECTOR, ('h1'))
     INFO_TEXT_ABOUT_SENDING_REGISTRATION_FORM = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст о подтверждении отправки формы регистрации
     INFO_TEXT_ABOUT_CONFIRMATION_OF_COMPANY_EMAIL_AFTER_REGISTRATION = (By.CSS_SELECTOR, ('#to-publish-modal h2'))  # информационный текст о подтверждении електронной почты работодателя после регистрации
 
@@ -242,6 +317,9 @@ class EmailPageLocators():
     LETTER_WELCOME_TO_LCWORK_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ласкаво просимо на LCwork"]'))  # письмо после первой модерации для работодателя и подтверждение регистрации для соискателя ua
     LETTER_AFTER_ORDER_PROCESSING_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Оплата подтверждена, активируйте услугу на сайте"]'))  # письмо после проведения заказа ru
     LETTER_AFTER_ORDER_PROCESSING_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Оплата отримана, активуйте послугу на сайті"]'))  # письмо после проведения заказа ua
+    LETTER_AFTER_PUBLISHING_VACANCY_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваша вакансия добавлена на сайт"]'))  # письмо после публикации вакансии ru
+    LETTER_AFTER_PUBLISHING_VACANCY_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваша вакансия добавлена на сайт"]'))  # письмо после публикации вакансии ua
+
 
     IFRAME_LETTER = (By.CSS_SELECTOR, ('#messagecontframe'))
     LINK_IN_LETTER = (By.CSS_SELECTOR, ('[rel="noreferrer"]'))
@@ -249,6 +327,8 @@ class EmailPageLocators():
     TEXT_IN_LETTER_AFTER_FIRST_MODERATION_UA = (By.XPATH, ('//div[text()="Ура! Ваш акаунт пройшов модерацiю."]'))
     TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_RU = (By.XPATH, ('//div[contains(text(), "Оплата получена, активируйте услугу на ")]'))
     TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_UA = (By.XPATH, ('//div[contains(text(), "Оплата отримана, активуйте послугу на ")]'))
+    TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_RU = (By.XPATH, ('//div[contains(text(), "' + TestData.job_title + ' добавлена на сайт.")]'))
+    TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_UA = (By.XPATH, ('//div[contains(text(), "' + TestData.job_title + ' добавлена на сайт.")]'))
 
 class AdminPageLocators():
     FIELD_LOGIN = (By.CSS_SELECTOR, ('#loginform-username'))
@@ -258,6 +338,7 @@ class AdminPageLocators():
 
     DROPDOWN_WORK = (By.CSS_SELECTOR, ('.dropdown:nth-child(4)'))
     USERS = (By.CSS_SELECTOR, ('[href="/x/user"]'))
+    VACANCIES = (By.CSS_SELECTOR, ('[href="/x/vacancies"]'))
     ORDERS = (By.CSS_SELECTOR, ('[href="/x/orders"]'))
     USER_PURCHASES = (By.CSS_SELECTOR, ('[href="/x/purchases"]'))
     # шапка
@@ -267,6 +348,8 @@ class AdminPageLocators():
     BUTTON_OBJECT_MENU = (By.CSS_SELECTOR, ('div > .fa.fa-bars'))
     BUTTON_COMPLETE_OBJECT_DELETED = (By.CSS_SELECTOR, ('.table-delete.fa.fa-trash'))
     BUTTON_OBJECT_DELETE_CONFIRMATION = (By.XPATH, ('//button[text()="Да"]'))
+    BUTTON_SAVE = (By.CSS_SELECTOR, ('[type="submit"].btn.btn-success'))
+    BUTTON_SAVE_AND_EDIT = (By.CSS_SELECTOR, ('[type="submit"].btn.btn-primary'))
     # общие
 
 
@@ -319,9 +402,18 @@ class AdminPageLocators():
 
     FIELD_WITH_ROLE_USER = (By.CSS_SELECTOR, ('[title="[#4] User"]'))  # поле с ролью "User"
     ROLE_SUPER_ADMIN = (By.XPATH, ('//li[text()="[#1] SuperAdmin"]'))
-
-    BUTTON_SAVE_AND_EDIT = (By.CSS_SELECTOR, ('[type="submit"].btn.btn-primary'))
     # страница пользователя
+
+    H1 = (By.CSS_SELECTOR, ('h1'))
+    FIELD_JOB_TITLE_SEARCH_VACANCIES = (By.CSS_SELECTOR, ('[name="Vacancies[job_title]"]'))
+    VACANCY_BY_JOB_TITLE = (By.XPATH, ('//a[text()="' + TestData.job_title + '"]'))
+    ID_VACANCY = (By.CSS_SELECTOR, ('#pjax-list-container tbody > tr > td:nth-child(2)'))
+    VACANCY_STATUS = (By.CSS_SELECTOR, ('#pjax-list-container tbody > tr > td:nth-child(3) > p'))
+    # страница вакансий
+
+    FIELD_VACANCY_STATUS = (By.XPATH, ('//span[contains(@id, "select2-vacancies-status-")]'))
+    STATUS_PUBLISHED = (By.XPATH, ('//ul[contains(@id, "select2-vacancies-status-")]/li[text()="Опубликовано"]'))
+    # страница карточки вакансии
 
     # SEARCH_STATUS_NEW = (By.CSS_SELECTOR, ('[name="Orders[status]"] > [value="1"]'))
     FIELD_EMAIL_SEARCH_ORDERS = (By.CSS_SELECTOR, ('[name="Orders[userEmail]"]'))
