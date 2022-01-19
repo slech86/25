@@ -1,12 +1,12 @@
 import pytest
 
 from Page_Object_Model.data_for_testing import UrlStartPage, UrlPageAdmin
-from Page_Object_Model.pages.admin_page import AdminPage
-from Page_Object_Model.pages.oll_page import OllPage
-from Page_Object_Model.pages.services_and_prices_page import ServicesAndPricesPage
-from Page_Object_Model.pages.company_personal_cabinet_page import CompanyPersonalCabinetPage
-from Page_Object_Model.pages.my_vacancies_page import MyVacanciesPage
-from Page_Object_Model.pages.add_vacancy_page import AddVacancyPage
+from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
+from Page_Object_Model.pages.site.oll_page import OllPage
+from Page_Object_Model.pages.site.services_and_prices_page import ServicesAndPricesPage
+from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
+from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
+from Page_Object_Model.pages.site.add_vacancy_page import AddVacancyPage
 
 @pytest.mark.s_r_c
 def test_package_purchase_monthly_free_vacancy_and_activating_it_on_site(browser, language):  # покупка пакета "Ежемесячная бесплатная вакансия" и активация его на сайте

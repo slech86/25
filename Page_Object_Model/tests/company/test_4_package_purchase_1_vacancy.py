@@ -1,13 +1,11 @@
-import time
-import pytest
-from Page_Object_Model.pages.oll_page import OllPage
-from Page_Object_Model.pages.company_personal_cabinet_page import CompanyPersonalCabinetPage
-from Page_Object_Model.pages.services_and_prices_page import ServicesAndPricesPage
+from Page_Object_Model.pages.site.oll_page import OllPage
+from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
+from Page_Object_Model.pages.site.services_and_prices_page import ServicesAndPricesPage
 from Page_Object_Model.data_for_testing import UrlStartPage, UrlPageAdmin
-from Page_Object_Model.pages.admin_page import AdminPage
+from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.email_page import EmailPage
-from Page_Object_Model.pages.my_vacancies_page import MyVacanciesPage
-from Page_Object_Model.pages.add_vacancy_page import AddVacancyPage
+from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
+from Page_Object_Model.pages.site.add_vacancy_page import AddVacancyPage
 
 
 def test_package_purchase_1_vacancy_and_orders_processing_and_activating_it_on_site(browser, language):  # покупка пакета "1 вакансия" и проведение заказа в админке и активация его на сайте

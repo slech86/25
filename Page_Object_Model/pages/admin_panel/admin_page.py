@@ -1,5 +1,5 @@
-from .base_page import BasePage
-from .locators import AdminPageLocators
+from Page_Object_Model.pages.base_page import BasePage
+from Page_Object_Model.pages.locators import AdminPageLocators
 from Page_Object_Model.data_for_testing import TestData, TestDataEditing, Accounts
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
@@ -305,7 +305,7 @@ class AdminPage(BasePage):
     # страница пользователя
 
 
-    def waiting_for_vacancies_page_to_open(self):  # ожидание открытия страницы вакансий
+    def waiting_to_save_status_and_open_vacansies_page(self):  # ожидание сохранения статуса и открытия страницы вакансий
         WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((AdminPageLocators.H1), 'Вакансии'))
 
 

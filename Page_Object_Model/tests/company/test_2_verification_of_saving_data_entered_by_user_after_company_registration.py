@@ -1,7 +1,5 @@
-import pytest
 from Page_Object_Model.data_for_testing import UrlPageAdmin
-from Page_Object_Model.pages.admin_page import AdminPage
-import time
+from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 
 
 def test_verification_of_saving_data_entered_by_user_after_company_registration(browser, language):  # проверка сохранения введенных пользователем данных после регистрации компании

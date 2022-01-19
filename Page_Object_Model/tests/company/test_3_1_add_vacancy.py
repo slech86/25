@@ -1,14 +1,12 @@
-import time
 import pytest
-from Page_Object_Model.pages.oll_page import OllPage
-from Page_Object_Model.pages.company_personal_cabinet_page import CompanyPersonalCabinetPage
-from Page_Object_Model.pages.services_and_prices_page import ServicesAndPricesPage
+from Page_Object_Model.pages.site.oll_page import OllPage
+from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
 from Page_Object_Model.data_for_testing import UrlStartPage, UrlPageAdmin
-from Page_Object_Model.pages.admin_page import AdminPage
+from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.email_page import EmailPage
-from Page_Object_Model.pages.my_vacancies_page import MyVacanciesPage
-from Page_Object_Model.pages.add_vacancy_page import AddVacancyPage
-from Page_Object_Model.pages.vacancy_page import VacancyPage
+from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
+from Page_Object_Model.pages.site.add_vacancy_page import AddVacancyPage
+from Page_Object_Model.pages.site.vacancy_page import VacancyPage
 
 
 @pytest.mark.s_r_c
@@ -50,7 +48,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     url_Vacancy_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/vacancy/{id_vacancies}"
     vacancy_page = VacancyPage(browser, url_Vacancy_Page)
     vacancy_page.open()
-    vacancy_page.checking_opening_of_page_of_an_unpublished_vacancy(language)  # проверка открытия страницы не опубликованой вакансии
+    vacancy_page.checking_opening_of_page_of_an_unpublished_vacancy(language)  # проверка открытия страницы не опубликованной вакансии
 
     admin_page.open()
     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
@@ -58,12 +56,12 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     admin_page.vacancies_search_by_job_title()  # поиск вакансии по названию должности
     admin_page.go_to_object_editing_page()  # переход на страницу редактирования вакансии
     admin_page.change_vacancy_status_to_published()  # изменение статуса вакансии на 'Опубликовано'
-    admin_page.waiting_for_vacancies_page_to_open()  # ожидание сохрания и открытия страницы вакансий
+    admin_page.waiting_to_save_status_and_open_vacansies_page()  # ожидание сохранения статуса и открытия страницы вакансий
 
     url_Vacancy_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}/vacancy/{id_vacancies}"
     vacancy_page = VacancyPage(browser, url_Vacancy_Page)
     vacancy_page.open()
-    vacancy_page.checking_opening_of_page_of_published_vacancy()  # проверка открытия страницы опубликованой вакансии
+    vacancy_page.checking_opening_of_page_of_published_vacancy()  # проверка открытия страницы опубликованной вакансии
 
 @pytest.mark.s_r_c
 def test_verification_of_letter_after_publication_of_vacancy(browser, language):  # проверка письма после публикации вакансии

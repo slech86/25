@@ -1,5 +1,5 @@
-from .base_page import BasePage
-from .locators import CompanyPersonalCabinetPageLocators
+from Page_Object_Model.pages.base_page import BasePage
+from Page_Object_Model.pages.locators import CompanyPersonalCabinetPageLocators
 
 class CompanyPersonalCabinetPage(BasePage):
     def go_to_my_vacancies_page(self):  # переход на страницу "Мои вакансии"

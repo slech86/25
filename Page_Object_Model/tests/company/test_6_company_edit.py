@@ -1,10 +1,7 @@
-import pytest
-import time
-
 from Page_Object_Model.data_for_testing import UrlStartPage
-from Page_Object_Model.pages.oll_page import OllPage
-from Page_Object_Model.pages.company_edit_page import CompanyEditPage
-from Page_Object_Model.pages.company_personal_cabinet_page import CompanyPersonalCabinetPage
+from Page_Object_Model.pages.site.oll_page import OllPage
+from Page_Object_Model.pages.site.company_edit_page import CompanyEditPage
+from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
 
 
 

@@ -1,5 +1,5 @@
-from .base_page import BasePage
-from .locators import OllPageLocators
+from Page_Object_Model.pages.base_page import BasePage
+from Page_Object_Model.pages.locators import OllPageLocators
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from Page_Object_Model.data_for_testing import TestData
