@@ -9,7 +9,7 @@ from Page_Object_Model.pages.site.add_vacancy_page import AddVacancyPage
 from Page_Object_Model.pages.site.vacancy_page import VacancyPage
 
 
-@pytest.mark.s_r_c
+
 def test_adding_vacancies(browser, language):  # добавление вакансии
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -41,8 +41,8 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
     admin_page.go_to_vacancies_page()  # переход на страницу вакансий
-    admin_page.vacancies_search_by_job_title()  # поиск вакансии по названию должности
-    id_vacancies = admin_page.getting_vacancies_id()  # получение id вакансии
+    admin_page.vacancy_search_by_job_title()  # поиск вакансии по названию должности
+    id_vacancies = admin_page.getting_vacancy_id()  # получение id вакансии
     admin_page.checking_that_vacancy_status_is_on_moderated()  # проверка что статус вакансии 'На модерацию'
 
     url_Vacancy_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/vacancy/{id_vacancies}"
@@ -53,7 +53,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     admin_page.open()
     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
     admin_page.go_to_vacancies_page()  # переход на страницу вакансий
-    admin_page.vacancies_search_by_job_title()  # поиск вакансии по названию должности
+    admin_page.vacancy_search_by_job_title()  # поиск вакансии по названию должности
     admin_page.go_to_object_editing_page()  # переход на страницу редактирования вакансии
     admin_page.change_vacancy_status_to_published()  # изменение статуса вакансии на 'Опубликовано'
     admin_page.waiting_to_save_status_and_open_vacansies_page()  # ожидание сохранения статуса и открытия страницы вакансий
@@ -63,7 +63,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     vacancy_page.open()
     vacancy_page.checking_opening_of_page_of_published_vacancy()  # проверка открытия страницы опубликованной вакансии
 
-@pytest.mark.s_r_c
+
 def test_verification_of_letter_after_publication_of_vacancy(browser, language):  # проверка письма после публикации вакансии
     link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
     email_page = EmailPage(browser, link)
@@ -76,14 +76,14 @@ def test_verification_of_letter_after_publication_of_vacancy(browser, language):
     else:
         email_page.verification_of_letter_after_publication_of_vacancy_ru()  # проверка письма после публикации вакансии ru
 
-@pytest.mark.s_r_c
-def test_complete_deletion_of_vacancy(browser, language):  # полное удаление вакансии
+
+def test_complete_deletion_of_vacancy(browser):  # полное удаление вакансии
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
     admin_page.go_to_vacancies_page()  # переход на страницу вакансий
-    admin_page.vacancies_search_by_job_title()  # поиск вакансии по названию должности
+    admin_page.vacancy_search_by_job_title()  # поиск вакансии по названию должности
     admin_page.complete_objects_deletion()  # полное удаление объектов
 
 

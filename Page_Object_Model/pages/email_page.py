@@ -1,10 +1,8 @@
 from .base_page import BasePage
-from .locators import EmailPageLocators
+from Page_Object_Model.locators.locators import EmailPageLocators
 from Page_Object_Model.data_for_testing import Accounts
 from Page_Object_Model.data_for_testing import TestData
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import time
+
 
 class EmailPage(BasePage):
     def email_authorization(self):  # авторизация email
@@ -116,7 +114,7 @@ class EmailPage(BasePage):
         iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
         letter_text = self.browser.find_element(*EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_RU).text
-        assert TestData.job_title + ' добавлена на сайт.' in letter_text, 'Не верное сообщение'
+        assert 'Ваша вакансия ' + TestData.job_title_vacancy + ' добавлена на сайт.' in letter_text, 'Не верное сообщение'
         self.browser.switch_to.default_content()  # выход из фрейма
     def verification_of_letter_after_publication_of_vacancy_ua(self):  # проверка письма после публикации вакансии ua
         # time.sleep(20)
@@ -127,5 +125,26 @@ class EmailPage(BasePage):
         iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
         letter_text = self.browser.find_element(*EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_UA).text
-        assert TestData.job_title + ' вже на сайті!' in letter_text, 'Не верное сообщение'
+        assert 'Ваша вакансія ' + TestData.job_title_vacancy + ' вже на сайті!' in letter_text, 'Не верное сообщение'
         self.browser.switch_to.default_content()  # выход из фрейма
+
+    def verification_of_letter_after_publication_of_resume(self, language):  # проверка письма после публикации резюме
+        # time.sleep(20)
+        # self.browser.refresh()
+
+        if language == "/ua":
+            self.browser.find_element(*EmailPageLocators.LETTER_AFTER_PUBLISHING_RESUME_UA).click()
+
+            iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
+            self.browser.switch_to.frame(iframe)  # вход в фрейм
+            letter_text = self.browser.find_element(*EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_UA).text
+            assert 'Ваше резюме опубліковане на ' in letter_text, 'Не верное сообщение'
+            self.browser.switch_to.default_content()  # выход из фрейма
+        else:
+            self.browser.find_element(*EmailPageLocators.LETTER_AFTER_PUBLISHING_RESUME_RU).click()
+
+            iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
+            self.browser.switch_to.frame(iframe)  # вход в фреймTEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_RU).text
+            letter_text = self.browser.find_element(*EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_RU).text
+            assert 'Ваше резюме опубликовано на logincasino.work!' in letter_text, 'Не верное сообщение'
+            self.browser.switch_to.default_content()  # выход из фрейма

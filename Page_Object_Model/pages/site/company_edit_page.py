@@ -1,5 +1,5 @@
 from Page_Object_Model.pages.base_page import BasePage
-from Page_Object_Model.pages.locators import CompanyEditPageLocators
+from Page_Object_Model.locators.company_locators import CompanyEditPageLocators
 from Page_Object_Model.data_for_testing import TestDataEditing
 import time
 import os

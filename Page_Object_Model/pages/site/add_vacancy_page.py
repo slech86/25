@@ -1,10 +1,7 @@
-import pytest
 import time
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from Page_Object_Model.data_for_testing import TestData
 from Page_Object_Model.pages.base_page import BasePage
-from Page_Object_Model.pages.locators import AddVacancyPageLocators
+from Page_Object_Model.locators.company_locators import AddVacancyPageLocators
 
 
 class AddVacancyPage(BasePage):
@@ -12,7 +9,7 @@ class AddVacancyPage(BasePage):
         assert self.is_not_element_present(*AddVacancyPageLocators.BUTTON_PUBLISH), "Не должно быть кнопки 'Опубликовать'"
 
     def filling_in_required_fields(self):  # заполнение обязательных полей
-        self.browser.find_element(*AddVacancyPageLocators.FIELD_JOB_TITLE).send_keys(TestData.job_title)
+        self.browser.find_element(*AddVacancyPageLocators.FIELD_JOB_TITLE).send_keys(TestData.job_title_vacancy)
         self.browser.execute_script(AddVacancyPageLocators.CATEGORY_VACANCIES)  # "Категория размещения вакансии" передается параметр уже с ".click()"
         time.sleep(0.2)
         self.browser.execute_script(AddVacancyPageLocators.SUBCATEGORIES)  # "Подкатегории" передается параметр уже с ".click()"
@@ -47,11 +44,12 @@ class AddVacancyPage(BasePage):
         self.browser.find_element(*AddVacancyPageLocators.ENGLISH_LANGUAGE_1).click()
         self.browser.find_element(*AddVacancyPageLocators.DROPDOWN_LEVEL_OF_LANGUAGE_1).click()
         self.browser.find_element(*AddVacancyPageLocators.MIDDLE_LEVEL_1).click()
-        self.browser.find_element(*AddVacancyPageLocators.ADD_LANGUAGE).click()
+
+        self.browser.find_element(*AddVacancyPageLocators.BUTTON_ADD_LANGUAGE_2).click()
         self.browser.find_element(*AddVacancyPageLocators.DROPDOWN_LANGUAGE_2).click()
-        self.browser.find_element(*AddVacancyPageLocators.ENGLISH_LANGUAGE_2).click()
+        self.browser.find_element(*AddVacancyPageLocators.RUSSIAN_LANGUAGE_2).click()
         self.browser.find_element(*AddVacancyPageLocators.DROPDOWN_LEVEL_OF_LANGUAGE_2).click()
-        self.browser.find_element(*AddVacancyPageLocators.MIDDLE_LEVEL_2).click()
+        self.browser.find_element(*AddVacancyPageLocators.NATIVE_LEVEL_2).click()
         # блок "Знание языков"
 
         self.browser.find_element(*AddVacancyPageLocators.ADD_DESCRIPTION_OF_VACANCIES).click()

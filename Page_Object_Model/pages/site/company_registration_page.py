@@ -1,7 +1,6 @@
 from Page_Object_Model.pages.base_page import BasePage
-from Page_Object_Model.pages.locators import CompanyRegistrationPageLocators
+from Page_Object_Model.locators.company_locators import CompanyRegistrationPageLocators
 from Page_Object_Model.data_for_testing import TestData
-import time
 import os
 
 

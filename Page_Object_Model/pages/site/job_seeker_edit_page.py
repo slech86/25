@@ -1,5 +1,5 @@
 from Page_Object_Model.pages.base_page import BasePage
-from Page_Object_Model.pages.locators import JobSeekerEditPageLocators
+from Page_Object_Model.locators.job_seeker_locators import JobSeekerEditPageLocators
 import time
 
 

@@ -1,8 +1,6 @@
 from Page_Object_Model.pages.base_page import BasePage
-from Page_Object_Model.pages.locators import JobSeekerRegistrationPageLocators
+from Page_Object_Model.locators.job_seeker_locators import JobSeekerRegistrationPageLocators
 from Page_Object_Model.data_for_testing import TestData
-import time
-
 
 
 class JobSeekerRegistrationPage(BasePage):

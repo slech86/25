@@ -1,5 +1,5 @@
 from Page_Object_Model.pages.base_page import BasePage
-from Page_Object_Model.pages.locators import AdminPageLocators
+from Page_Object_Model.locators.admin_panel_locators import AdminPageLocators
 from Page_Object_Model.data_for_testing import TestData, TestDataEditing, Accounts
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import random
 import time
-from selenium.webdriver.common.by import By
+
 
 class AdminPage(BasePage):
     def admin_authorization(self):  # авторизация админки
@@ -25,6 +25,9 @@ class AdminPage(BasePage):
 
     def go_to_vacancies_page(self):  # переход на страницу вакансий
         self.browser.find_element(*AdminPageLocators.VACANCIES).click()
+
+    def go_to_resumes_page(self):  # переход на страницу резюме
+        self.browser.find_element(*AdminPageLocators.RESUMES).click()
 
     def go_to_order_page(self):  # переход на страницу заказов
         self.browser.find_element(*AdminPageLocators.ORDERS).click()
@@ -306,15 +309,15 @@ class AdminPage(BasePage):
 
 
     def waiting_to_save_status_and_open_vacansies_page(self):  # ожидание сохранения статуса и открытия страницы вакансий
-        WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((AdminPageLocators.H1), 'Вакансии'))
+        WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((AdminPageLocators.H1_VACANCIES), 'Вакансии'))
 
 
-    def vacancies_search_by_job_title(self):  # поиск вакансии по названию должности
-        self.browser.find_element(*AdminPageLocators.FIELD_JOB_TITLE_SEARCH_VACANCIES).send_keys(TestData.job_title, Keys.ENTER)
+    def vacancy_search_by_job_title(self):  # поиск вакансии по названию должности
+        self.browser.find_element(*AdminPageLocators.FIELD_JOB_TITLE_SEARCH_VACANCIES).send_keys(TestData.job_title_vacancy, Keys.ENTER)
         time.sleep(2)
         self.browser.find_element(*AdminPageLocators.VACANCY_BY_JOB_TITLE)
 
-    def getting_vacancies_id(self):  # получение id вакансии
+    def getting_vacancy_id(self):  # получение id вакансии
         id_vacancies = self.browser.find_element(*AdminPageLocators.ID_VACANCY).text
         return id_vacancies
 
@@ -328,7 +331,7 @@ class AdminPage(BasePage):
         self.browser.find_element(*AdminPageLocators.STATUS_PUBLISHED).click()
         time.sleep(2)
         self.browser.find_element(*AdminPageLocators.BUTTON_SAVE).click()
-    # страница карточки вакансии
+    # страница редактирования вакансии
 
 
     def search_for_user_orders_by_email_ru(self):  # поиск заказов пользователя по e-mail ru

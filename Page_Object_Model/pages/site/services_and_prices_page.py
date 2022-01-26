@@ -1,5 +1,5 @@
 from Page_Object_Model.pages.base_page import BasePage
-from Page_Object_Model.pages.locators import ServicesAndPricesPageLocators
+from Page_Object_Model.locators.company_locators import ServicesAndPricesPageLocators
 from selenium.webdriver.common.by import By
 import time
 

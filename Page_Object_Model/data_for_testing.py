@@ -60,12 +60,12 @@ class TestData():
     birthday = '1999-11-30'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     gender = 'Женский'  # не используется при заполнении полей, только при проверке заполнения полей в админке
 
-    company_site = 'http://company_site_' + time_Now + '.com'
-    facebook = 'http://facebook_' + time_Now + '.com'
+    company_site = 'https://company_site_' + time_Now + '.com'
+    facebook = 'https://facebook_' + time_Now + '.com'
     linkedin = 'http://linkedin_' + time_Now + '.com'
     instagram = 'http://instagram_' + time_Now + '.com'
     telegram = 'http://telegram_' + time_Now + '.com'
-    twitter = 'http://twitter_' + time_Now + '.com'
+    twitter = 'https://twitter_' + time_Now + '.com'
     vk = 'http://vk_' + time_Now + '.com'
     number_of_company_employees = 'от 100 до 250'  # (Количество сотрудников компании) не используется при заполнении полей, только при проверке заполнения полей в админке
     video_1 = 'https://www.youtube.com/watch?v=6OBg9Iz7dD0'
@@ -73,12 +73,12 @@ class TestData():
     video_3 = 'https://www.youtube.com/watch?v=kCunPyM8AQ0'
     # пользователи
 
-    job_title = 'test_job_title_' + time_Now
-    category = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
-    subcategories = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    job_title_vacancy = 'test_job_title_vacancy_' + time_Now
+    category_vacancy = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    subcategories_vacancy = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     salary_min = '700'
     salary_max = '1000'
-    currency = 'USD'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    currency_vacancy = 'USD'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     country_vacancy = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     city_vacancy = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     street_vacancy = 'street_vacancy_' + time_Now
@@ -87,13 +87,15 @@ class TestData():
     email_vacancy = 'email_vacancy_' + time_Now + email[1]
     skype_vacancy = 'skype_vacancy_' + time_Now
     contact_person = 'contact_person_' + time_Now
-    employment = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
-    work_experience = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    employment_vacancy = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    work_experience_vacancy = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     education = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     benefits = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     additionally = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
-    language_1 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
-    language_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    language_vacancy_1 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    level_language_vacancy_1 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    language_vacancy_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    level_language_vacancy_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     description_vacancy = 'description_vacancy_' + time_Now
     about_company = 'about_company_' + time_Now
     working_conditions = 'working_conditions_' + time_Now
@@ -101,6 +103,93 @@ class TestData():
     requirements = 'requirements_' + time_Now
     additionally_information = 'additionally_information' + time_Now
     # вакансия
+
+    name_resume = 'name_resume_' + time_Now
+    surname_resume = 'surname_resume_' + time_Now
+    birthday_resume = '????-09-05'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    gender_resume = 'Женский'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    country_resume = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    city_resume = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    willing_to_relocate = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+
+    phone_1_resume = '+77(666)555-44-33'
+    phone_2_resume = '+88(999)222-11-00'
+    email_resume = 'email_resume_' + time_Now + email[1]
+    skype_resume = 'skype_resume_' + time_Now
+    portfolio = 'https://portfolio_' + time_Now + '.com'
+
+    facebook_resume = 'https://facebook_resume_' + time_Now + '.com'
+    linkedin_resume = 'https://linkedin_resume_' + time_Now + '.com'
+    instagram_resume = 'http://instagram_resume_' + time_Now + '.com'
+    telegram_resume = 'http://telegram_resume_' + time_Now + '.com'
+    twitter_resume = 'http://twitter_resume_' + time_Now + '.com'
+    vk_resume = 'http://vk_resume_' + time_Now + '.com'
+
+    job_title_resume = 'test_job_title_resume_' + time_Now
+    category_resume = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    subcategories_resume = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+
+    employment_resume = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    salary_resume = '25123'
+    currency_resume = 'UAH'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+
+    skills_and_achievements = 'skills_and_achievements_' + time_Now
+
+    company_name_resume = 'company_name_resume_' + time_Now
+    company_site_resume = 'https://company_site_resume_' + time_Now + '.com'
+    scope_of_company = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    position_resume = 'position_resume_' + time_Now
+    work_period_start = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    work_period_finish = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    responsibilities_and_achievements = 'responsibilities_and_achievements_' + time_Now
+
+    company_name_resume_2 = 'company_name_resume_2_' + time_Now
+    company_site_resume_2 = 'https://company_site_resume_2_' + time_Now + '.com'
+    scope_of_company_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    position_resume_2 = 'position_resume_2_' + time_Now
+    work_period_start_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    work_period_finish_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    responsibilities_and_achievements_2 = 'responsibilities_and_achievements_2_' + time_Now
+
+    experience_in_gambling_industry = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+
+    name_of_institution = 'name_of_institution_' + time_Now
+    level_of_education = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    country_education = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    city_education = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    department_and_speciality = 'department_and_speciality_' + time_Now
+    education_period_start = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    education_period_finish = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+
+    name_of_institution_2 = 'name_of_institution_2_' + time_Now
+    level_of_education_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    country_education_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    city_education_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    department_and_speciality_2 = 'department_and_speciality_2_' + time_Now
+    education_period_start_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    education_period_finish_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+
+    name_of_certificate = 'name_of_certificate_' + time_Now
+    course_period_start = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    course_period_finish = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    course_description = 'course_description_' + time_Now
+
+    name_of_certificate_2 = 'name_of_certificate_2_' + time_Now
+    course_period_start_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    course_period_finish_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    course_description_2 = 'course_description_2_' + time_Now
+
+    language_resume_1 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    level_language_resume_1 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    language_resume_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    level_language_resume_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+
+    disability = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+
+    additional_information = 'additional_information_' + time_Now
+
+    job_search_status = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    # резюме
 
 
 class TestDataEditing():
