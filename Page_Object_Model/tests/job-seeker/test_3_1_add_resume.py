@@ -12,7 +12,7 @@ from Page_Object_Model.pages.site.add_resume_page import AddResumePage
 from Page_Object_Model.pages.site.resume_page import ResumePage
 
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 def test_adding_resume(browser, language):  # добавление резюме
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -39,6 +39,9 @@ def test_adding_resume(browser, language):  # добавление резюме
     my_resume_page.confirmation_of_opening_of_page_my_resumes()  # подтверждение открытия страницы 'Мои резюме'
     my_resume_page.checking_message_confirming_submission_of_resume_for_moderation()  # проверка сообщения о подтверждении отправки резюме на модерацию
 
+
+# @pytest.mark.s_r_c
+def change_resume_status_to_published(browser, language):  # изменение статуса резюме на 'Опубликовано'
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
@@ -74,7 +77,7 @@ def test_adding_resume(browser, language):  # добавление резюме
     resume_page.open()
     resume_page.checking_opening_of_page_of_published_resume()  # проверка открытия страницы опубликованного резюме
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 def test_verification_of_letter_after_publication_of_resume(browser, language):  # проверка письма после публикации резюме
     link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
     email_page = EmailPage(browser, link)
@@ -84,7 +87,7 @@ def test_verification_of_letter_after_publication_of_resume(browser, language): 
     email_page.verification_of_letter_after_publication_of_resume(language)  # проверка письма после публикации резюме
 
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 def test_complete_deletion_of_resume(browser):  # полное удаление резюме
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()

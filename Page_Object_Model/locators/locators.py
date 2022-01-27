@@ -60,3 +60,6 @@ class EmailPageLocators():
     TEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_RU = (By.XPATH, ('//div[contains(text(), "Ваше резюме опубликовано на logincasino.work!")]'))
     TEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_UA = (By.XPATH, ('//div[contains(text(), "Ваше резюме опубліковане на ")]'))
 
+
+class SitemapPageLocators():
+    SECTIONS = (By.CSS_SELECTOR, ('.folder .folder .opened > span:nth-child(1) + .line > span:nth-child(1) + span'))

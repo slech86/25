@@ -10,7 +10,7 @@ class Accounts():
 
 
 class UrlStartPage():
-    prefix = 'http://preprod.'  # 'http://preprod.', 'http://master.'. 'https://'
+    prefix = 'https://'  # 'http://preprod.', 'http://master.'. 'https://'
     if prefix == 'https://':
         suffix = ''
     else:

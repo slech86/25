@@ -36,6 +36,8 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     my_vacancies_page.confirmation_of_opening_of_page_my_vacancies()  # подтверждение открытия страницы 'Мои вакансии'
     my_vacancies_page.checking_message_confirming_submission_of_vacancy_for_moderation()  # проверка сообщения о подтверждении отправки вакансии на модерацию
 
+
+def change_vacancy_status_to_published(browser, language):  # изменение статуса вакансии на 'Опубликовано'
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
