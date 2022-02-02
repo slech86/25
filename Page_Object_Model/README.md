@@ -1,0 +1,20 @@
+    Для запуска тестов нужно
+    1) Установка Python3
+        - Установка Python3 в Windows
+            - Нужно скачать установочный файл для Python3. Для этого на официальной странице ( https://www.python.org/downloads/windows/ ) Python выберите подходящую версию для Windows, и скачайте файл для вашей системы (64-разрядная или 32-разрядная)
+            - Важно! Во время установки убедитесь в том, что вы поставили галочку в разделе "Add Python 3.x to PATH". В этом случае вызов интерпретатора Python будет доступен вам из командной строки.
+            - Чтобы проверить правильность установки, откройте командную строку Windows. В консоли введите "python --version" если все было сделано правильно будет выедена актуальная версия python, например "Python 3.7.3"
+            - Если Python не найден более подробно об установке Python3 в Windows можно найти здесь ( https://stepik.org/lesson/25969/step/2 )
+        - Установка Python3 в Ubuntu https://stepik.org/lesson/25969/step/3
+        - Установка Python3 в macOS https://stepik.org/lesson/25969/step/4
+    2) Установка ChromeDriver
+        - Установка ChromeDriver в Windows https://stepik.org/lesson/25969/step/8
+        - Установка ChromeDriver в Linux https://stepik.org/lesson/25969/step/9
+        - Установка ChromeDriver в macOS https://stepik.org/lesson/25969/step/10
+    3) Установка всех остальных необходимых библиотек происходит с файла requirements.txt, в терминале нужно перейти в директорию "/tests/auto/Page_Object_Model" и выполнить команду "pip install -r requirements.txt"
+    4) Для запуска тестов, в терминале нужно перейти в директорию "/tests/auto/Page_Object_Model" и выполнить команду "pytest --reruns 2 --html=./reports/report.html"
+       Где: 
+       "pytest" - это команда для поиска и запуска всех тестов находящихся в директории /Page_Object_Model
+       "--reruns 2" - команда для перезапуска тестов которые по какой-то причине упали (где 2 - это количество перезапусков)
+       "--html=./reports/report.html" - команда для сохранения отчета тестирования в файле /tests/auto/Page_Object_Model/reports/report.html (файл открывать нужно в браузере)
+       для запуска тестов на укр. версии сайта нужно добавить команду "--language=ua"

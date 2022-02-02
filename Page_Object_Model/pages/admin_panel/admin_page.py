@@ -46,7 +46,7 @@ class AdminPage(BasePage):
             ActionChains(self.browser).move_to_element(element_to_hover_over).perform()
             self.browser.find_element(*AdminPageLocators.BUTTON_COMPLETE_OBJECT_DELETED).click()
             self.browser.find_element(*AdminPageLocators.BUTTON_OBJECT_DELETE_CONFIRMATION).click()
-            time.sleep(2)
+            assert self.is_element_present(*AdminPageLocators.ALERT_CONFIRMATION_OF_OBJECT_DELETION), 'Нет сообщения о удалении объекта'
 
     def go_to_object_editing_page(self):  # переход на страницу редактирования объекта
         self.browser.find_element(*AdminPageLocators.BUTTON_OBJECT_MENU).click()  # костыль из-за ховер эффекта на кнопке меню пользователя
@@ -325,14 +325,6 @@ class AdminPage(BasePage):
         status = self.browser.find_element(*AdminPageLocators.VACANCY_STATUS).text
         assert status == 'На модерацию', 'Статус не "На модерацию"'
     # страница вакансий
-
-    def change_vacancy_status_to_published(self):  # изменение статуса вакансии на 'Опубликовано'
-        self.browser.find_element(*AdminPageLocators.FIELD_VACANCY_STATUS).click()
-        self.browser.find_element(*AdminPageLocators.STATUS_PUBLISHED).click()
-        time.sleep(2)
-        self.browser.find_element(*AdminPageLocators.BUTTON_SAVE).click()
-    # страница редактирования вакансии
-
 
     def search_for_user_orders_by_email_ru(self):  # поиск заказов пользователя по e-mail ru
         self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_SEARCH_ORDERS).send_keys(TestData.email_ru, Keys.ENTER)

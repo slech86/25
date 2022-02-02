@@ -27,7 +27,7 @@ class CompanyEditPage(BasePage):
         self.browser.find_element(*CompanyEditPageLocators.FIELD_STREET).send_keys('_editing')
         self.browser.find_element(*CompanyEditPageLocators.FIELD_YEAR).click()
         self.browser.find_element(*CompanyEditPageLocators.FIELD_MONTH).click()
-        time.sleep(0.2)
+        time.sleep(0.5)
         self.browser.find_element(*CompanyEditPageLocators.FIELD_DAY).click()
 
         self.browser.find_element(*CompanyEditPageLocators.FIELD_COMPANY_SITE).send_keys('_editing')

@@ -229,11 +229,16 @@ class AddResumePage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
         # блок "Дополнительная информация"
 
-    # def percentage_check_of_resume_completion(self):  # проверка заполнения резюме в процентах
-    #     self.browser.find_element(*AddResumePageLocators.RESUME_COMPLETED_ON)
-    #
-    # def checking_status_level_filling_resume(self):  # проверка статуса уровня заполнения резюме
-    #     self.browser.find_element(*AddResumePageLocators.STATUS_OF_YOUR_RESUME)
+    def percentage_check_of_resume_completion(self):  # проверка заполнения резюме в процентах
+        percent = self.browser.find_element(*AddResumePageLocators.RESUME_COMPLETED_ON).text
+        assert percent == '100', 'Не верный процент заполнения резюме'
 
-    def submitting_resume_for_publication(self):  # отправка резюме на публикацию
+    def checking_status_level_filling_resume(self, language):  # проверка статуса уровня заполнения резюме
+        status_level_filling = self.browser.find_element(*AddResumePageLocators.STATUS_OF_YOUR_RESUME).text
+        if language == "/ua":
+            assert status_level_filling == 'Професійне', 'Не верный статус уровня заполнения'
+        else:
+            assert status_level_filling == 'Профессиональное', 'Не верный статус уровня заполнения'
+
+    def submitting_resume_for_publication(self,):  # отправка резюме на публикацию
         self.browser.find_element(*AddResumePageLocators.BUTTON_PUBLISH).click()

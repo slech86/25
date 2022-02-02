@@ -8,9 +8,10 @@ inputPrefix = 'vacancyaddform-'
 login = 'admincompany'
 email = ['test.p.verbenec+', '@gmail.com']
 urlPage = "http://master2.logincasino.work.preprod.pw/"
+driver = webdriver.Chrome()
 
 try:
-    driver = webdriver.Chrome()
+
     driver.implicitly_wait(5)
     driver.get(urlPage)
 

@@ -33,15 +33,14 @@ def test_adding_resume(browser, language):  # добавление резюме
     add_resume_page.filling_in_required_fields()  # заполнение обязательных полей
     browser.execute_script("window.scrollBy(0, -4000);")
     add_resume_page.filling_in_optional_fields()  # заполнение не обязательных полей
+    add_resume_page.percentage_check_of_resume_completion()  # проверка заполнения резюме в процентах
+    add_resume_page.checking_status_level_filling_resume(language)  # проверка статуса уровня заполнения резюме
     add_resume_page.submitting_resume_for_publication()  # отправка резюме на публикацию
 
     my_resume_page.waiting_for_my_resumes_page_to_open(language)  # ожидание открытия страницы 'Мои резюме'
     my_resume_page.confirmation_of_opening_of_page_my_resumes()  # подтверждение открытия страницы 'Мои резюме'
     my_resume_page.checking_message_confirming_submission_of_resume_for_moderation()  # проверка сообщения о подтверждении отправки резюме на модерацию
 
-
-# @pytest.mark.s_r_c
-def change_resume_status_to_published(browser, language):  # изменение статуса резюме на 'Опубликовано'
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()

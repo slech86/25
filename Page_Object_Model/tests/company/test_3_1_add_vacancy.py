@@ -6,10 +6,11 @@ from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.email_page import EmailPage
 from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
 from Page_Object_Model.pages.site.add_vacancy_page import AddVacancyPage
+from Page_Object_Model.pages.admin_panel.admin_vacancy_edit_page import AdminVacancyEditPage
 from Page_Object_Model.pages.site.vacancy_page import VacancyPage
 
 
-
+@pytest.mark.s_r_c
 def test_adding_vacancies(browser, language):  # добавление вакансии
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -36,8 +37,6 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     my_vacancies_page.confirmation_of_opening_of_page_my_vacancies()  # подтверждение открытия страницы 'Мои вакансии'
     my_vacancies_page.checking_message_confirming_submission_of_vacancy_for_moderation()  # проверка сообщения о подтверждении отправки вакансии на модерацию
 
-
-def change_vacancy_status_to_published(browser, language):  # изменение статуса вакансии на 'Опубликовано'
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
@@ -57,7 +56,11 @@ def change_vacancy_status_to_published(browser, language):  # изменение
     admin_page.go_to_vacancies_page()  # переход на страницу вакансий
     admin_page.vacancy_search_by_job_title()  # поиск вакансии по названию должности
     admin_page.go_to_object_editing_page()  # переход на страницу редактирования вакансии
-    admin_page.change_vacancy_status_to_published()  # изменение статуса вакансии на 'Опубликовано'
+
+    admin_vacancy_edit_page = AdminVacancyEditPage(browser, url_Vacancy_Page)
+    admin_vacancy_edit_page.change_vacancy_status_to_published()  # изменение статуса вакансии на 'Опубликовано'
+    # admin_page.change_vacancy_status_to_published()  # изменение статуса вакансии на 'Опубликовано'
+
     admin_page.waiting_to_save_status_and_open_vacansies_page()  # ожидание сохранения статуса и открытия страницы вакансий
 
     url_Vacancy_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}/vacancy/{id_vacancies}"
@@ -78,7 +81,7 @@ def test_verification_of_letter_after_publication_of_vacancy(browser, language):
     else:
         email_page.verification_of_letter_after_publication_of_vacancy_ru()  # проверка письма после публикации вакансии ru
 
-
+# @pytest.mark.s_r_c
 def test_complete_deletion_of_vacancy(browser):  # полное удаление вакансии
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()

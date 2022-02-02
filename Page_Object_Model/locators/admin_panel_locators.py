@@ -21,6 +21,7 @@ class AdminPageLocators():
     BUTTON_OBJECT_MENU = (By.CSS_SELECTOR, ('div > .fa.fa-bars'))
     BUTTON_COMPLETE_OBJECT_DELETED = (By.CSS_SELECTOR, ('.table-delete.fa.fa-trash'))
     BUTTON_OBJECT_DELETE_CONFIRMATION = (By.XPATH, ('//button[text()="Да"]'))
+    ALERT_CONFIRMATION_OF_OBJECT_DELETION = (By.XPATH, ('//div[@class="feedback"]/div[contains(@id, "alert-")]'))
     BUTTON_SAVE = (By.CSS_SELECTOR, ('[type="submit"].btn.btn-success'))
     BUTTON_SAVE_AND_EDIT = (By.CSS_SELECTOR, ('[type="submit"].btn.btn-primary'))
     # общие
@@ -84,10 +85,6 @@ class AdminPageLocators():
     VACANCY_STATUS = (By.CSS_SELECTOR, ('#pjax-list-container tbody > tr > td:nth-child(3) > p'))
     # страница вакансий
 
-    FIELD_VACANCY_STATUS = (By.XPATH, ('//span[contains(@id, "select2-vacancies-status-")]'))
-    STATUS_PUBLISHED = (By.XPATH, ('//ul[contains(@id, "select2-vacancies-status-")]/li[text()="Опубликовано"]'))
-    # страница карточки вакансии
-
     # SEARCH_STATUS_NEW = (By.CSS_SELECTOR, ('[name="Orders[status]"] > [value="1"]'))
     FIELD_EMAIL_SEARCH_ORDERS = (By.CSS_SELECTOR, ('[name="Orders[userEmail]"]'))
     USER_EMAIL_ORDERS_RU = (By.XPATH, ('//span[text()="' + TestData.email_ru + '"]'))
@@ -102,6 +99,49 @@ class AdminPageLocators():
     # страница 'Покупки пользователей'
 
 
+class AdminVacancyEditPageLocators():
+    H1_VACANCY = (By.CSS_SELECTOR, ('h1'))
+    FIELD_VACANCY_STATUS = (By.XPATH, ('//span[contains(@id, "select2-vacancies-status-")]'))
+    STATUS_PUBLISHED = (By.XPATH, ('//ul[contains(@id, "select2-vacancies-status-")]/li[text()="Опубликовано"]'))
+
+    FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#vacancies-descriptions-1job_title'))
+    FIELD_JOB_CATEGORY = (By.CSS_SELECTOR, ('#select2-vacancies-descriptions-1-category_id-container'))
+    FIELD_JOB_SUBCATEGORIES = (By.CSS_SELECTOR, ('#vacancies-descriptions-1-subcategories_id + span .select2-selection__choice'))
+    FIELD_SALARY_MIN = (By.CSS_SELECTOR, ('#vacancies-descriptions-1salary_min'))
+    FIELD_SALARY_MAX = (By.CSS_SELECTOR, ('#vacancies-descriptions-1salary_max'))
+    FIELD_CURRENCY_VACANCY = (By.CSS_SELECTOR, ('#select2-vacancies-descriptions-1currency-container'))
+    FIELD_COUNTRY_VACANCY_RU = (By.CSS_SELECTOR, ('#select2-vacancies-descriptions-1-country_id-container'))
+    FIELD_CITY_VACANCY_RU = (By.CSS_SELECTOR, ('#select2-users-descriptions-1-city_id-container'))
+    FIELD_STREET_VACANCY_RU = (By.CSS_SELECTOR, ('#vacancies-descriptions-1street'))
+    FIELD_PHONE = (By.CSS_SELECTOR, ('[name="Vacancies[descriptions][1][phone]"'))
+    FIELD_EMAIL = (By.CSS_SELECTOR, ('[name="Vacancies[descriptions][1][email]"]'))
+    FIELD_SKYPE = (By.CSS_SELECTOR, ('[name = "Vacancies[descriptions][1][skype]"]'))
+    FIELD_CONTACT_PERSON = (By.CSS_SELECTOR, ('#vacancies-descriptions-1skype'))
+    FIELD_TYPE_EMPLOYMENT = (By.CSS_SELECTOR, ('#vacancies-descriptions-1employment + span .select2-selection__choice'))
+    FIELD_WORK_EXPERIENCE = (By.CSS_SELECTOR, ('#select2-vacancies-descriptions-1work_experience-container'))
+    FIELD_EDUCATION = (By.CSS_SELECTOR, ('#select2-vacancies-descriptions-1education-container'))
+    FIELD_BENEFITS = (By.CSS_SELECTOR, ('#vacancies-descriptions-1advantages + span .select2-selection__choice'))
+    FIELD_ADDITIONALLY = (By.CSS_SELECTOR, ('#vacancies-descriptions-1additionally + span .select2-selection__choice'))
+    FIELD_LANGUAGE_1 = (By.CSS_SELECTOR, ('.panel-body.container-items-1 .item:nth-child(1) [name="KnowledgeOfLanguages[0][language]"] + span .select2-selection__rendered'))
+    FIELD_LEVEL_LANGUAGE_1 = (By.CSS_SELECTOR, ('panel-body.container-items-1 .item:nth-child(1) [name="KnowledgeOfLanguages[0][level]"] + span .select2-selection__rendered'))
+    FIELD_LANGUAGE_2 = (By.CSS_SELECTOR, ('.panel-body.container-items-1 .item:nth-child(2) [name="KnowledgeOfLanguages[1][language]"] + span .select2-selection__rendered'))
+    FIELD_LEVEL_LANGUAGE_2 = (By.CSS_SELECTOR, ('.panel-body.container-items-1 .item:nth-child(2) [name="KnowledgeOfLanguages[1][level]"] + span .select2-selection__rendered'))
+    IFRAME_CKEDITOR_VACANCY_DESCRIPTION_RU = (By.CSS_SELECTOR, ('#cke_vacancies-descriptions-1description iframe.cke_wysiwyg_frame.cke_reset'))
+    IFRAME_CKEDITOR_VACANCY_DESCRIPTION_UA = (By.CSS_SELECTOR, ('#cke_vacancies-descriptions-3description iframe.cke_wysiwyg_frame.cke_reset'))
+
+    IFRAME_CKEDITOR_ABOUT_COMPANY_RU = (By.CSS_SELECTOR, ('#cke_vacancies-descriptions-1description iframe.cke_wysiwyg_frame.cke_reset'))
+    IFRAME_CKEDITOR_VACANCY_DESCRIPTION_UA = (By.CSS_SELECTOR, ('#cke_vacancies-descriptions-3description iframe.cke_wysiwyg_frame.cke_reset'))
+
+
+
+
+
+    CKEDITOR = (By.CSS_SELECTOR, ('body.cke_editable'))  # общий для всех блоков
+    BUTTON_SAVE = (By.CSS_SELECTOR, ('[type="submit"].btn.btn-success'))
+    BUTTON_SAVE_AND_EDIT = (By.CSS_SELECTOR, ('[type="submit"].btn.btn-primary'))
+
+
+
 class AdminResumesPageLocators():
     H1_RESUMES = (By.CSS_SELECTOR, ('h1'))
     FIELD_JOB_TITLE_SEARCH_RESUME = (By.CSS_SELECTOR, ('[name="Resume[job_title]"]'))
@@ -114,7 +154,7 @@ class AdminResumesPageLocators():
 
 
 class AdminResumeEditPageLocators():
-    H1_RESUME = (By.CSS_SELECTOR, ('h1'))
+    H1_RESUME_EDIT = (By.CSS_SELECTOR, ('h1'))
     FIELD_RESUME_STATUS = (By.XPATH, ('//span[contains(@id, "select2-resume-status-")]'))
     STATUS_PUBLISHED = (By.XPATH, ('//ul[contains(@id, "select2-resume-status-")]/li[text()="Опубликовано"]'))
     BUTTON_SAVE = (By.CSS_SELECTOR, ('[type="submit"].btn.btn-success'))
