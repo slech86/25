@@ -1,5 +1,5 @@
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
-from Page_Object_Model.data_for_testing import UrlPageAdmin
+from Page_Object_Model.сonfiguration import UrlPageAdmin
 
 
 def test_delete_user(browser, language):  # удаление пользователя

@@ -1,6 +1,6 @@
 import pytest
 from Page_Object_Model.pages.site.sitemap_xml_page import SitemapXmlPage
-from Page_Object_Model.data_for_testing import UrlStartPage
+from Page_Object_Model.сonfiguration import UrlStartPage
 
 
 # @pytest.mark.s_r_c

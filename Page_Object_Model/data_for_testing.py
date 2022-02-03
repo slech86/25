@@ -9,25 +9,6 @@ class Accounts():
     main_password_email = 'BwX37KJyiw02Cl'
 
 
-class UrlStartPage():
-    prefix = 'http://preprod.'  # 'http://preprod.', 'http://master.'. 'https://'
-    if prefix == 'https://':
-        suffix = ''
-    else:
-        suffix = '.preprod.pw'
-
-    suffix_page = ''
-
-    url_start_page = f"{prefix}logincasino.work{suffix}{suffix_page}"
-
-
-class UrlPageAdmin():
-    if UrlStartPage.suffix == '.preprod.pw':
-        url_page_admin = "http://admin-work.pw.preprod.pw/x"
-    else:
-        url_page_admin = "https://admin-work.work/x"
-
-
 class TestData():
     time_Now = str(int(time.time()))
 

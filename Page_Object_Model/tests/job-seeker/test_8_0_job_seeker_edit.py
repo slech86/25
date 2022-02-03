@@ -1,4 +1,4 @@
-from Page_Object_Model.data_for_testing import UrlStartPage
+from Page_Object_Model.сonfiguration import UrlStartPage
 from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.job_seeker_edit_page import JobSeekerEditPage
 from Page_Object_Model.pages.site.job_seeker_personal_cabinet_page import JobSeekerPersonalCabinetPage

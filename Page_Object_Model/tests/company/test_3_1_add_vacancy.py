@@ -1,7 +1,7 @@
 import pytest
 from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
-from Page_Object_Model.data_for_testing import UrlStartPage, UrlPageAdmin
+from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.email_page import EmailPage
 from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
@@ -57,7 +57,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     admin_page.vacancy_search_by_job_title()  # поиск вакансии по названию должности
     admin_page.go_to_object_editing_page()  # переход на страницу редактирования вакансии
 
-    admin_vacancy_edit_page = AdminVacancyEditPage(browser, url_Vacancy_Page)
+    admin_vacancy_edit_page = AdminVacancyEditPage(browser, browser.current_url)
     admin_vacancy_edit_page.change_vacancy_status_to_published()  # изменение статуса вакансии на 'Опубликовано'
     # admin_page.change_vacancy_status_to_published()  # изменение статуса вакансии на 'Опубликовано'
 
@@ -82,14 +82,14 @@ def test_verification_of_letter_after_publication_of_vacancy(browser, language):
         email_page.verification_of_letter_after_publication_of_vacancy_ru()  # проверка письма после публикации вакансии ru
 
 # @pytest.mark.s_r_c
-def test_complete_deletion_of_vacancy(browser):  # полное удаление вакансии
-    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
-    admin_page.open()
-    admin_page.admin_authorization()
-    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
-    admin_page.go_to_vacancies_page()  # переход на страницу вакансий
-    admin_page.vacancy_search_by_job_title()  # поиск вакансии по названию должности
-    admin_page.complete_objects_deletion()  # полное удаление объектов
+# def test_complete_deletion_of_vacancy(browser):  # полное удаление вакансии
+#     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+#     admin_page.open()
+#     admin_page.admin_authorization()
+#     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+#     admin_page.go_to_vacancies_page()  # переход на страницу вакансий
+#     admin_page.vacancy_search_by_job_title()  # поиск вакансии по названию должности
+#     admin_page.complete_objects_deletion()  # полное удаление объектов
 
 
 # удаление пакета созданного в прошлом тесте

@@ -3,7 +3,7 @@ from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.job_seeker_registration_page import JobSeekerRegistrationPage
 from Page_Object_Model.pages.site.main_page import MainPage
 from Page_Object_Model.pages.email_page import EmailPage
-from Page_Object_Model.data_for_testing import UrlStartPage, UrlPageAdmin
+from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 
 
