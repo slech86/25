@@ -23,14 +23,14 @@ class ServicesAndPricesPage(BasePage):
 
 
     def adding_to_cart_Monthly_free_vacancy(self):  # добавление в корзину "Ежемесячная бесплатная вакансия" и получение id продукта
-        self.browser.execute_script("window.scrollBy(0, 500);")
+        self.browser.execute_script("window.scrollBy(0, 600);")
         self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_ORDER_IN_MONTHLY_FREE_VACANCY).click()
         self.browser.find_element(*ServicesAndPricesPageLocators.MONTHLY_FREE_VACANCY_IN_BASKET)  # наличие в корзине
         id_product = "25"
         return id_product
 
     def adding_to_cart_1_vacancy_and_getting_product_id(self):  # добавление в корзину "1 вакансия" и получение id продукта
-        self.browser.execute_script("window.scrollBy(0, 500);")
+        self.browser.execute_script("window.scrollBy(0, 600);")
         self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_ORDER_IN_1_VACANCY).click()
         self.browser.find_element(*ServicesAndPricesPageLocators.ONE_VACANCY_IN_BASKET)  # наличие в корзине
         id_product = "4"

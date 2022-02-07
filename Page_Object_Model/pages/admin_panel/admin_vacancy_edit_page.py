@@ -17,7 +17,7 @@ class AdminVacancyEditPage(BasePage):
         self.browser.find_element(*AdminVacancyEditPageLocators.BUTTON_SAVE).click()
 
     def verification_of_saving_data_entered_by_user_after_vacancy_is_created_ru(self, language):  # проверка сохранения введенных пользователем данных после создания вакансии RU
-        user = self.browser.find_element(*AdminVacancyEditPageLocators.USER)
+        user = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_USER)
         user_title = user.get_attribute("title")
         if language == '/ua':
             assert '(' + TestData.login_ua + ')' in user_title, "Поле 'Пользователь' не верно"
@@ -80,7 +80,7 @@ class AdminVacancyEditPage(BasePage):
 
         employment_vacancy = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_TYPE_EMPLOYMENT)
         employment_vacancy_title = employment_vacancy.get_attribute("title")
-        assert employment_vacancy_title == TestData.employment_vacancy, "Поле 'Тип занятости' не верно"
+        assert employment_vacancy_title == TestData.employment_type_vacancy, "Поле 'Тип занятости' не верно"
 
         work_experience_vacancy = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_WORK_EXPERIENCE)
         work_experience_vacancy_title = work_experience_vacancy.get_attribute("title")

@@ -10,7 +10,7 @@ from Page_Object_Model.pages.admin_panel.admin_vacancy_edit_page import AdminVac
 from Page_Object_Model.pages.site.vacancy_page import VacancyPage
 
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 def test_adding_vacancies(browser, language):  # добавление вакансии
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)

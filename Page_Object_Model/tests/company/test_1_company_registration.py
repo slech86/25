@@ -7,7 +7,7 @@ from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 def test_company_registration_with_filling_in_all_fields(browser, language):  # регистрация работодателя с заполнением всех полей
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -71,7 +71,7 @@ def test_authorization_of_user_in_Disabled_status(browser, language):  # авт�
     page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
     page.info_text_for_authorization_in_user_status_Disabled()  # инфо текст при авторизации в статусе пользователя "Отключен"
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 def test_email_verification_after_company_registration(browser, language):  # верификация почты после регистрации работодателя
     link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
     email_page = EmailPage(browser, link)
@@ -99,7 +99,7 @@ def test_authorization_of_user_in_On_moderation_status(browser, language):  # а
     page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
     page.info_text_for_authorization_in_user_status_On_moderation()  # инфо текст при авторизации в статусе пользователя "На модерации"
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 def test_change_of_employer_status_from_On_moderation_to_Aktivet_ua(browser, language):  # изменение статуса работодателя с "На модерации" на "Активен" ua
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()

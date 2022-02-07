@@ -263,7 +263,7 @@ class AdminPage(BasePage):
         else:
             assert email_language_title == TestData.email_language_ru, "Поле 'Язык уведомлений на e-mail' не верно"
 
-        self.verification_of_saving_data_entered_job_seeker(language, TestData)
+        self.verification_of_saving_data_entered_job_seeker(TestData)
 
     def verification_of_saving_data_entered_by_user_after_job_seeker_edit_ru(self, language):  # проверка сохранения введенных пользователем данных после редактирования соискателя RU
         email_language = self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_LANGUAGE)
@@ -273,10 +273,10 @@ class AdminPage(BasePage):
         else:
             assert email_language_title == TestDataEditing.email_language_ua, "Поле 'Язык уведомлений на e-mail' не верно"
 
-        self.verification_of_saving_data_entered_job_seeker(language, TestDataEditing)
+        self.verification_of_saving_data_entered_job_seeker(TestDataEditing)
 
 
-    def verification_of_saving_data_entered_job_seeker(self,language, TestData):  # проверка сохранения введенных данных соискателя
+    def verification_of_saving_data_entered_job_seeker(self, TestData):  # проверка сохранения введенных данных соискателя
         name = self.browser.find_element(*AdminPageLocators.FIELD_NAME)
         name_value = name.get_attribute("value")
         assert name_value == TestData.name, "Поле 'Имя' не верно"

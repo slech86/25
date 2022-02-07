@@ -168,7 +168,7 @@ class AddResumePage(BasePage):
         # блок "Образование"
 
         self.browser.find_element(*AddResumePageLocators.BUTTON_ADD_COURSES_AND_CERTIFICATES).click()
-        self.browser.find_element(*AddResumePageLocators.FIELD_NAME_OF_INSTITUTION_OR_CERTIFICATE).send_keys(TestData.name_of_certificate)
+        self.browser.find_element(*AddResumePageLocators.FIELD_NAME_OF_INSTITUTION_OR_CERTIFICATE).send_keys(TestData.name_course)
         self.browser.find_element(*AddResumePageLocators.DROPDOWN_MONTH_COURSES_START).click()
         self.browser.find_element(*AddResumePageLocators.MONTH_JUNE_COURSES_START).click()
         self.browser.find_element(*AddResumePageLocators.DROPDOWN_YEAR_COURSES_START).click()
@@ -185,7 +185,7 @@ class AddResumePage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
 
         self.browser.find_element(*AddResumePageLocators.BUTTON_ADD_COURSES_AND_CERTIFICATES_2).click()
-        self.browser.find_element(*AddResumePageLocators.FIELD_NAME_OF_INSTITUTION_OR_CERTIFICATE_2).send_keys(TestData.name_of_certificate_2)
+        self.browser.find_element(*AddResumePageLocators.FIELD_NAME_OF_INSTITUTION_OR_CERTIFICATE_2).send_keys(TestData.name_course_2)
         self.browser.find_element(*AddResumePageLocators.DROPDOWN_MONTH_COURSES_START_2).click()
         self.browser.find_element(*AddResumePageLocators.MONTH_OCTOBER_COURSES_START_2).click()
         self.browser.find_element(*AddResumePageLocators.DROPDOWN_YEAR_COURSES_START_2).click()

@@ -3,7 +3,7 @@ from Page_Object_Model.сonfiguration import UrlPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_vacancy_edit_page import AdminVacancyEditPage
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 def test_verification_of_saving_data_entered_by_user_after_vacancy_is_created(browser, language):  # проверка сохранения введенных пользователем данных после создания вакансии
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()

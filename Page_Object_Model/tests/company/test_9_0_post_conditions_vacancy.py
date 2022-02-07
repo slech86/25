@@ -9,4 +9,4 @@ def test_complete_deletion_of_vacancy(browser):  # полное удаление
     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
     admin_page.go_to_vacancies_page()  # переход на страницу вакансий
     admin_page.vacancy_search_by_job_title()  # поиск вакансии по названию должности
-    admin_page.complete_objects_deletion()  # полное удаление объектов
+    admin_page.complete_objects_deletion()  # полное удаление вакансии

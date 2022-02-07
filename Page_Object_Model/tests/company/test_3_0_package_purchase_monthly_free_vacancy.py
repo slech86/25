@@ -8,7 +8,7 @@ from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPe
 from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
 from Page_Object_Model.pages.site.add_vacancy_page import AddVacancyPage
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 def test_package_purchase_monthly_free_vacancy_and_activating_it_on_site(browser, language):  # покупка пакета "Ежемесячная бесплатная вакансия" и активация его на сайте
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)

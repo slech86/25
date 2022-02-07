@@ -7,7 +7,7 @@ from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 
 
-# @pytest.mark.s_r_c
+@pytest.mark.s_r_c
 def test_job_seeker_registration_with_filling_in_all_fields(browser, language):  # регистрация соискателя с заполнением всех полей
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -66,6 +66,7 @@ def test_authorization_of_user_in_Disabled_status(browser, language):  # авт�
     page.user_authorization()  # авторизация пользователя
     page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
     page.info_text_for_authorization_in_user_status_Disabled()  # инфо текст при авторизации в статусе пользователя "Отключен"
+
 
 # @pytest.mark.s_r_c
 def test_confirmation_of_registration_of_applicant_and_authorization_on_site(browser, language):  # подтверждение регистрации соискателя и авторизация на сайте
