@@ -10,8 +10,11 @@
     2) Установка ChromeDriver
         - Установка ChromeDriver в Windows https://stepik.org/lesson/25969/step/8
         - Установка ChromeDriver в Linux https://stepik.org/lesson/25969/step/9
-        - Установка ChromeDriver в macOS https://stepik.org/lesson/25969/step/10
+        - Установка ChromeDriver в macOS  
+            - если табличка запрещающая доступ? то дать розрешение в "настройках > Зашита и безопасность > основные"
     3) Установка всех остальных необходимых библиотек происходит с файла requirements.txt, в терминале нужно перейти в директорию "/tests/auto/Page_Object_Model" и выполнить команду "pip install -r requirements.txt"
+            - если zsh: command not found: pip то выполнить "sudo python -m ensurepip "
+            - если ошибка версионности и по умолчанию версия "python --version" 2.х а 3.х на "python3 --version" то выполнить "pip3 install -r requirements.txt"
     4) Для запуска тестов, в терминале нужно перейти в директорию "/tests/auto/Page_Object_Model" и выполнить команду "pytest --reruns 2 --html=./reports/report.html"
        Где: 
        "pytest" - это команда для поиска и запуска всех тестов находящихся в директории /Page_Object_Model

@@ -11,7 +11,7 @@ class AddVacancyPage(BasePage):
     def filling_in_required_fields(self):  # заполнение обязательных полей
         self.browser.find_element(*AddVacancyPageLocators.FIELD_JOB_TITLE).send_keys(TestData.job_title_vacancy)
         self.browser.execute_script(AddVacancyPageLocators.CATEGORY_VACANCIES)  # "Категория размещения вакансии" передается параметр уже с ".click()"
-        time.sleep(0.2)
+        time.sleep(1)
         self.browser.execute_script(AddVacancyPageLocators.SUBCATEGORIES)  # "Подкатегории" передается параметр уже с ".click()"
         self.browser.find_element(*AddVacancyPageLocators.DROPDOWN_COUNTRY).click()
         self.browser.find_element(*AddVacancyPageLocators.COUNTRY_RUSSIA).click()

@@ -122,10 +122,6 @@ class AdminResumeEditPage(BasePage):
         education_period_finish_2_value = education_period_finish_2.get_attribute("value")
         assert education_period_finish_2_value == TestData.education_period_finish_2, "Поле 'Образование: Срок обучения - finish 2' не верно"
 
-
-
-
-
         company_name_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_COMPANY_NAME_RESUME_1)
         company_name_resume_value = company_name_resume.get_attribute("value")
         assert company_name_resume_value == TestData.company_name_resume, "Поле 'Опыт работы: Компания 1' не верно"
@@ -156,12 +152,6 @@ class AdminResumeEditPage(BasePage):
         assert CKEditor == TestData.responsibilities_and_achievements, "Поле 'Опыт работы: Обязанности и достижения 1' не верно"
         self.browser.switch_to.default_content()  # выход из фрейма
 
-
-
-
-
-
-
         company_name_resume_2 = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_COMPANY_NAME_RESUME_2)
         company_name_resume_2_value = company_name_resume_2.get_attribute("value")
         assert company_name_resume_2_value == TestData.company_name_resume_2, "Поле 'Опыт работы: Компания 2' не верно"
@@ -191,4 +181,140 @@ class AdminResumeEditPage(BasePage):
         CKEditor = self.browser.find_element(*AdminResumeEditPageLocators.CKEDITOR).text
         assert CKEditor == TestData.responsibilities_and_achievements_2, "Поле 'Опыт работы: Обязанности и достижения 2' не верно"
         self.browser.switch_to.default_content()  # выход из фрейма
+
+        language_resume_1 = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_LANGUAGE_RESUME_1)
+        language_resume_1_title = language_resume_1.get_attribute("title")
+        assert language_resume_1_title == TestData.language_resume_1, "Поле 'Язык 1' не верно"
+
+        level_language_resume_1 = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_LEVEL_LANGUAGE_RESUME_1)
+        level_language_resume_1_title = level_language_resume_1.get_attribute("title")
+        assert level_language_resume_1_title == TestData.level_language_resume_1, "Поле 'Уровень владения 1' не верно"
+
+        language_resume_2 = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_LANGUAGE_RESUME_2)
+        language_resume_2_title = language_resume_2.get_attribute("title")
+        assert language_resume_2_title == TestData.language_resume_2, "Поле 'Язык 2' не верно"
+
+        level_language_resume_2 = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_LEVEL_LANGUAGE_RESUME_2)
+        level_language_resume_2_title = level_language_resume_2.get_attribute("title")
+        assert level_language_resume_2_title == TestData.level_language_resume_2, "Поле 'Уровень владения 2' не верно"
+
+        name_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_NAME)
+        name_resume_value = name_resume.get_attribute("value")
+        assert name_resume_value == TestData.name_resume, "Поле 'Ваше имя' не верно"
+
+        surname_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_SURNAME)
+        surname_resume_value = surname_resume.get_attribute("value")
+        assert surname_resume_value == TestData.surname_resume, "Поле 'Фамилия' не верно"
+
+        birthday_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_BIRTHDAY)
+        birthday_resume_value = birthday_resume.get_attribute("value")
+        assert birthday_resume_value == TestData.birthday_resume, "Поле 'Дата рождения' не верно"
+
+        gender_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_GENDER)
+        gender_resume_title = gender_resume.get_attribute("title")
+        assert gender_resume_title == TestData.gender_resume, "Поле 'Пол' не верно"
+
+        country_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_COUNTRY_RESUME)
+        country_resume_title = country_resume.get_attribute("title")
+        assert country_resume_title == TestData.country_resume, "Поле 'Страна' не верно"
+
+        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element((AdminResumeEditPageLocators.FIELD_CITY_RESUME), TestData.city_resume))
+        city_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_CITY_RESUME)
+        city_resume_title = city_resume.get_attribute("title")
+        assert city_resume_title == TestData.city_resume, "Поле 'Город' не верно"
+
+        willing_to_relocate = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_WILLING_TO_RELOCATE)
+        willing_to_relocate_title = willing_to_relocate.get_attribute("title")
+        assert willing_to_relocate_title == TestData.willing_to_relocate, "Поле 'Готовность к переезду' не верно"
+
+        phone_1_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_PHONE_1)
+        phone_1_resume_value = phone_1_resume.get_attribute("value")
+        assert phone_1_resume_value == TestData.phone_1_resume, "Поле 'Телефон 1' не верно"
+
+        phone_2_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_PHONE_2)
+        phone_2_resume_value = phone_2_resume.get_attribute("value")
+        assert phone_2_resume_value == TestData.phone_2_resume, "Поле 'Телефон 2' не верно"
+
+        email_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_EMAIL)
+        email_resume_value = email_resume.get_attribute("value")
+        assert email_resume_value == TestData.email_resume, "Поле 'Email' не верно"
+
+        skype_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_SKYPE)
+        skype_resume_value = skype_resume.get_attribute("value")
+        assert skype_resume_value == TestData.skype_resume, "Поле 'Skype' не верно"
+
+        portfolio = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_PORTFOLIO)
+        portfolio_value = portfolio.get_attribute("value")
+        assert portfolio_value == TestData.portfolio, "Поле 'Портфолио' не верно"
+
+        facebook_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_FACEBOOK)
+        facebook_resume_value = facebook_resume.get_attribute("value")
+        assert facebook_resume_value == TestData.facebook_resume, "Поле 'Facebook' не верно"
+
+        linkedin_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_LINKEDIN)
+        linkedin_resume_value = linkedin_resume.get_attribute("value")
+        assert linkedin_resume_value == TestData.linkedin_resume, "Поле 'Linkedin' не верно"
+
+        instagram_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_INSTAGRAM)
+        instagram_resume_value = instagram_resume.get_attribute("value")
+        assert instagram_resume_value == TestData.instagram_resume, "Поле 'Instagram' не верно"
+
+        telegram_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_TELEGRAM)
+        telegram_resume_value = telegram_resume.get_attribute("value")
+        assert telegram_resume_value == TestData.telegram_resume, "Поле 'Telegram' не верно"
+
+        twitter_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_TWITTER)
+        twitter_resume_value = twitter_resume.get_attribute("value")
+        assert twitter_resume_value == TestData.twitter_resume, "Поле 'Twitter' не верно"
+
+        vk_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_VK)
+        vk_resume_value = vk_resume.get_attribute("value")
+        assert vk_resume_value == TestData.vk_resume, "Поле 'VK' не верно"
+
+        job_title_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_JOB_TITLE)
+        job_title_resume_value = job_title_resume.get_attribute("value")
+        assert job_title_resume_value == TestData.job_title_resume, "Поле 'Название должности' не верно"
+
+        category_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_CATEGORY_RESUME)
+        category_resume_title = category_resume.get_attribute("title")
+        assert category_resume_title == TestData.category_resume, "Поле 'Категория резюме' не верно"
+
+        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element((AdminResumeEditPageLocators.FIELD_SUBCATEGORIES_RESUME), TestData.subcategories_resume))
+        subcategories_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_SUBCATEGORIES_RESUME)
+        subcategories_resume_title = subcategories_resume.get_attribute("title")
+        assert subcategories_resume_title == TestData.subcategories_resume, "Поле 'Подкатегории' не верно"
+
+        employment_type_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_EMPLOYMENT_TYPE_RESUME)
+        employment_type_resume_title = employment_type_resume.get_attribute("title")
+        assert employment_type_resume_title == TestData.employment_type_resume, "Поле 'Тип занятости' не верно"
+
+        salary_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_SALARY_RESUME)
+        salary_resume = salary_resume.get_attribute("value")
+        assert salary_resume == TestData.salary_resume, "Поле 'Желаемый уровень заработной' не верно"
+
+        currency_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_CURRENCY_RESUME)
+        currency_resume_title = currency_resume.get_attribute("title")
+        assert TestData.currency_resume in currency_resume_title, "Поле 'Валюта желаемого уровня зар. платы' не верно"
+
+        iframe = self.browser.find_element(*AdminResumeEditPageLocators.IFRAME_CKEDITOR_SKILLS_AND_ACHIEVEMENTS)
+        self.browser.switch_to.frame(iframe)  # вход в фрейм
+        CKEditor = self.browser.find_element(*AdminResumeEditPageLocators.CKEDITOR).text
+        assert CKEditor == TestData.skills_and_achievements, "Поле 'Навыки и достижения' не верно"
+        self.browser.switch_to.default_content()  # выход из фрейма
+
+        disability = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_DISABILITY)
+        disability_title = disability.get_attribute("title")
+        assert disability_title == TestData.disability, "Поле 'Инвалидность' не верно"
+
+        iframe = self.browser.find_element(*AdminResumeEditPageLocators.IFRAME_CKEDITOR_ADDITIONAL_INFORMATION)
+        self.browser.switch_to.frame(iframe)  # вход в фрейм
+        CKEditor = self.browser.find_element(*AdminResumeEditPageLocators.CKEDITOR).text
+        assert CKEditor == TestData.additional_information, "Поле 'Дополнительная информация' не верно"
+        self.browser.switch_to.default_content()  # выход из фрейма
+
+        experience_in_gambling_industry = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_EXPERIENCE_IN_GAMBLING_INDUSTRY)
+        experience_in_gambling_industry_title = experience_in_gambling_industry.get_attribute("title")
+        assert experience_in_gambling_industry_title == TestData.experience_in_gambling_industry, "Поле 'Общий опыт работы в игорной индустрии' не верно"
+
+
 

@@ -1,7 +1,8 @@
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
-from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
+from Page_Object_Model.сonfiguration import UrlPageAdmin
 
 
+# @pytest.mark.s_r_c
 def test_complete_deletion_of_vacancy(browser):  # полное удаление вакансии
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()

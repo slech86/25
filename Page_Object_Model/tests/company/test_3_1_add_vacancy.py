@@ -59,7 +59,6 @@ def test_adding_vacancies(browser, language):  # добавление вакан
 
     admin_vacancy_edit_page = AdminVacancyEditPage(browser, browser.current_url)
     admin_vacancy_edit_page.change_vacancy_status_to_published()  # изменение статуса вакансии на 'Опубликовано'
-    # admin_page.change_vacancy_status_to_published()  # изменение статуса вакансии на 'Опубликовано'
 
     admin_page.waiting_to_save_status_and_open_vacansies_page()  # ожидание сохранения статуса и открытия страницы вакансий
 
@@ -80,16 +79,6 @@ def test_verification_of_letter_after_publication_of_vacancy(browser, language):
         email_page.verification_of_letter_after_publication_of_vacancy_ua()  # проверка письма после публикации вакансии ua
     else:
         email_page.verification_of_letter_after_publication_of_vacancy_ru()  # проверка письма после публикации вакансии ru
-
-# @pytest.mark.s_r_c
-# def test_complete_deletion_of_vacancy(browser):  # полное удаление вакансии
-#     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
-#     admin_page.open()
-#     admin_page.admin_authorization()
-#     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
-#     admin_page.go_to_vacancies_page()  # переход на страницу вакансий
-#     admin_page.vacancy_search_by_job_title()  # поиск вакансии по названию должности
-#     admin_page.complete_objects_deletion()  # полное удаление объектов
 
 
 # удаление пакета созданного в прошлом тесте

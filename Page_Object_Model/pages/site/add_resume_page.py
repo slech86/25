@@ -126,7 +126,7 @@ class AddResumePage(BasePage):
         iframe = self.browser.find_element(*AddResumePageLocators.IFRAME_CKEDITOR_RESPONSIBILITIES_AND_ACHIEVEMENTS_2)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
         CKEditor = self.browser.find_element(*AddResumePageLocators.CKEDITOR)
-        CKEditor.send_keys(TestData.responsibilities_and_achievements)
+        CKEditor.send_keys(TestData.responsibilities_and_achievements_2)
         self.browser.switch_to.default_content()  # выход из фрейма
         # блок "Навыки и достижения"
 
