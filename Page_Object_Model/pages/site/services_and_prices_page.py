@@ -7,14 +7,14 @@ class ServicesAndPricesPage(BasePage):
     def adding_to_cart_standart_1_vacancy_and_getting_product_id(self):  # добавление в корзину "Standart" и получение id продукта
         self.browser.execute_script("window.scrollBy(0, 100);")
         self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_ORDER_IN_STANDART).click()
-        self.browser.find_element(*ServicesAndPricesPageLocators.STANDART_IN_BASKET)  # наличие в корзине
+        self.browser.find_element(*ServicesAndPricesPageLocators.STANDARD_IN_BASKET)  # наличие в корзине
         id_product = "1"
         return id_product
     def adding_to_cart_standart_5_vacancy_and_getting_product_id(self):  # добавление в корзину "Standart" и получение id продукта
         self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_5_VACANCY).click()
         self.browser.execute_script("window.scrollBy(0, 100);")
         self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_ORDER_IN_STANDART).click()
-        self.browser.find_element(*ServicesAndPricesPageLocators.STANDART_IN_BASKET)  # наличие в корзине
+        self.browser.find_element(*ServicesAndPricesPageLocators.STANDARD_IN_BASKET)  # наличие в корзине
         id_product = "1"
         return id_product
     # пакеты услуг
@@ -22,7 +22,7 @@ class ServicesAndPricesPage(BasePage):
 
 
 
-    def adding_to_cart_Monthly_free_vacancy(self):  # добавление в корзину "Ежемесячная бесплатная вакансия" и получение id продукта
+    def adding_to_cart_monthly_free_vacancy(self):  # добавление в корзину "Ежемесячная бесплатная вакансия" и получение id продукта
         self.browser.execute_script("window.scrollBy(0, 600);")
         self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_ORDER_IN_MONTHLY_FREE_VACANCY).click()
         self.browser.find_element(*ServicesAndPricesPageLocators.MONTHLY_FREE_VACANCY_IN_BASKET)  # наличие в корзине
@@ -52,12 +52,12 @@ class ServicesAndPricesPage(BasePage):
             assert "Наш менеджер свяжется с Вами в кратчайшие сроки. После согласования всех деталей Вы получите доступ к услуге." == infoText, 'Не верное сообщение'
         self.browser.find_element(*ServicesAndPricesPageLocators.CROSS_IN_POP_UP_AFTER_PRESSING_BUTTON_BUY_IN_BASKET).click()
 
-    def switch_to_tab_Not_activated(self):  # переход на вкладку "Не активированные"
+    def switch_to_tab_not_activated(self):  # переход на вкладку "Не активированные"
         self.browser.find_element(*ServicesAndPricesPageLocators.TAB_NOT_ACTIVATED_SERVICES).click()
 
     def availability_of_product_in_not_activated_services(self, id_product, id_purchase):  # наличие продукта в не активированных услугах
         for id in id_purchase:
-            self.browser.find_element(By.CSS_SELECTOR, ('.tab-deactivate-servises .packages-wrap[data-product-id="' + id_product + '"][data-purchases-id="' + id + '"]'))
+            assert self.is_element_present(By.CSS_SELECTOR, ('.tab-deactivate-servises .packages-wrap[data-product-id="' + id_product + '"][data-purchases-id="' + id + '"]')), "Продукта нет в не активированных услугах"
 
     def product_activation(self, id_purchase):  # активация продукта
         for id in id_purchase:
@@ -67,4 +67,13 @@ class ServicesAndPricesPage(BasePage):
 
     def product_availability_in_activated_services(self, id_product, id_purchase):  # наличие продукта в активированных услугах
         for id in id_purchase:
-            self.browser.find_element(By.CSS_SELECTOR, ('.tab-activated-servises .packages-wrap[data-product-id="' + id_product + '"][data-purchases-id="' + id + '"]'))
+            assert self.is_element_present(By.CSS_SELECTOR, ('.tab-activated-servises .packages-wrap[data-product-id="' + id_product + '"][data-purchases-id="' + id + '"]')), "Продукта нет в активированных услугах"
+
+    def checking_decrease_in_number_of_available_vacancies_for_publication_in_monthly_free_vacancy_package(self, id_product, id_purchase):  # проверка уменьшения количества доступных вакансий для публикации в пакете "Ежемесячная бесплатная вакансия"
+        for id in id_purchase:
+            self.browser.find_element(By.CSS_SELECTOR, ('.tab-activated-servises .packages-wrap[data-product-id="' + id_product + '"][data-purchases-id="' + id + '"]  .more')).click()
+            text = self.browser.find_element(By.CSS_SELECTOR, ('.tab-activated-servises .packages-wrap[data-product-id="' + id_product + '"][data-purchases-id="' + id + '"] p.small-text')).text
+            index = text.find('/')
+            print(index)
+            assert int(text[index - 2]) + 1 == int(text[index + 2]), 'В пакете осталось не верное количество вакансий'
+

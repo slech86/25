@@ -69,7 +69,7 @@ def test_adding_resume(browser, language):  # добавление резюме
     admin_resume_edit_page.change_resume_status_to_published()  # изменение статуса резюме на 'Опубликовано'
 
     admin_resumes_page = AdminResumesPage(browser, browser.current_url)
-    admin_resumes_page.waiting_to_save_status_and_open_resume_page()  # ожидание сохранения статуса и открытия страницы рузюме
+    admin_resumes_page.waiting_to_save_status_and_open_resume_page()  # ожидание сохранения статуса и открытия страницы всех рузюме
 
     url_Resume_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{id_resume}"
     resume_page = ResumePage(browser, url_Resume_Page)
@@ -84,19 +84,3 @@ def test_verification_of_letter_after_publication_of_resume(browser, language): 
     # browser.maximize_window()
     email_page.email_authorization()  # авторизация email
     email_page.verification_of_letter_after_publication_of_resume(language)  # проверка письма после публикации резюме
-
-
-# # @pytest.mark.s_r_c
-# def test_complete_deletion_of_resume(browser):  # полное удаление резюме
-#     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
-#     admin_page.open()
-#     admin_page.admin_authorization()
-#     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
-#     admin_page.go_to_resumes_page()  # переход на страницу всех резюме
-#
-#     admin_resumes_page = AdminResumesPage(browser, browser.current_url)
-#     admin_resumes_page.resume_search_by_job_title()  # поиск резюме по названию должности
-#     admin_resumes_page.complete_objects_deletion()  # полное удаление резюме
-
-
-

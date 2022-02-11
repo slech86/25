@@ -142,7 +142,7 @@ class AddVacancyPageLocators():
 
     FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'job_title'))
     CATEGORY_VACANCIES = "document.getElementsByName('VacancyAddForm[category_id][]')[1].click()"
-    SUBCATEGORIES = "document.getElementsByName('VacancyAddForm[subcategories_id][]')[2].click()"
+    SUBCATEGORIES = (By.CSS_SELECTOR, ('[for="subcategories_id-29"]'))
     FIELD_MINIMAL_SALARY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'salary_min'))
     FIELD_MAXIMUM_SALARY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'salary_max'))
     DROPDOWN_CURRENCY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'currency"]'))
@@ -214,7 +214,7 @@ class ServicesAndPricesPageLocators():
 
     BUTTON_ORDER_IN_STANDART = (By.CSS_SELECTOR, ('[data-product-id="1"]'))
     BUTTON_5_VACANCY = (By.CSS_SELECTOR, ('[for="vacancies-1-5"]'))
-    STANDART_IN_BASKET = (By.CSS_SELECTOR, ('.bascket-list-item > [data-product-id="1"]'))
+    STANDARD_IN_BASKET = (By.CSS_SELECTOR, ('.bascket-list-item > [data-product-id="1"]'))
     # пакеты услуг
 
 

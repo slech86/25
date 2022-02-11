@@ -26,7 +26,7 @@ class AdminResumesPage(BasePage):
     def go_to_object_editing_page(self):  # переход на страницу редактирования объекта
         self.browser.find_element(*AdminResumesPageLocators.BUTTON_OBJECT_MENU).click()  # костыль из-за ховер эффекта на кнопке меню пользователя
 
-    def waiting_to_save_status_and_open_resume_page(self):  # ожидание сохранения статуса и открытия страницы рузюме
+    def waiting_to_save_status_and_open_resume_page(self):  # ожидание сохранения статуса и открытия страницы всех рузюме
         WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((AdminResumesPageLocators.H1_RESUMES), 'Резюме'))
 
     def complete_objects_deletion(self):  # полное удаление объектов (кроме пользователя)

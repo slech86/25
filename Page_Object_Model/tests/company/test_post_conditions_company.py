@@ -1,3 +1,4 @@
+import pytest
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.сonfiguration import UrlPageAdmin
 

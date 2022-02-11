@@ -29,7 +29,7 @@ class AddResumePage(BasePage):
 
         self.browser.find_element(*AddResumePageLocators.FIELD_JOB_TITLE).send_keys(TestData.job_title_resume)
         self.browser.execute_script(AddResumePageLocators.CATEGORY_RESUME)  # "Категория размещения вакансии" передается параметр уже с ".click()"
-        time.sleep(0.2)
+        # time.sleep(0.2)
         self.browser.find_element(*AddResumePageLocators.SUBCATEGORIES).click()  # "Подкатегории"
         # блок "Желаемая должность"
 

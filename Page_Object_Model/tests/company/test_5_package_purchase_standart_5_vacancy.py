@@ -75,7 +75,7 @@ def test_package_purchase_standart_and_orders_processing_and_activating_it_on_si
     company_personal_cabinet_page.go_to_services_and_prices_page()  # переход на страницу "Услуги и цены"
 
     services_and_prices_page = ServicesAndPricesPage(browser, browser.current_url)
-    # services_and_prices_page.switch_to_tab_Not_activated()  # переход на вкладку "Не активированные"
+    # services_and_prices_page.switch_to_tab_not_activated()  # переход на вкладку "Не активированные"
     services_and_prices_page.availability_of_product_in_not_activated_services(id_product, id_purchase)  # наличие "Standart: 5 вакансия" в не активированных услугах
     services_and_prices_page.product_activation(id_purchase)  # активация продукта
     services_and_prices_page.product_availability_in_activated_services(id_product, id_purchase)  # наличие "Standart: 5 вакансия" в активированных услугах
