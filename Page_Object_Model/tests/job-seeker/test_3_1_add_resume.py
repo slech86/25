@@ -12,7 +12,7 @@ from Page_Object_Model.pages.site.add_resume_page import AddResumePage
 from Page_Object_Model.pages.site.resume_page import ResumePage
 
 
-# @pytest.mark.s_r_c
+@pytest.mark.s_r_c
 def test_adding_resume(browser, language):  # добавление резюме
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -44,7 +44,7 @@ def test_adding_resume(browser, language):  # добавление резюме
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
-    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+    admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_resumes_page()  # переход на страницу резюме
 
     admin_resumes_page = AdminResumesPage(browser, browser.current_url)
@@ -58,7 +58,7 @@ def test_adding_resume(browser, language):  # добавление резюме
     resume_page.checking_opening_of_page_of_an_unpublished_resume(language)  # проверка открытия страницы не опубликованного резюме
 
     admin_page.open()
-    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+    admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_resumes_page()  # переход на страницу всех резюме
 
     admin_resumes_page = AdminResumesPage(browser, browser.current_url)

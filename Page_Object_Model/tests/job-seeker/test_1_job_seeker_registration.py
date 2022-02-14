@@ -7,7 +7,7 @@ from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 
 
-# @pytest.mark.s_r_c
+@pytest.mark.s_r_c
 def test_job_seeker_registration_with_filling_in_all_fields(browser, language):  # регистрация соискателя с заполнением всех полей
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -29,7 +29,7 @@ def test_checking_creation_of_user_in_admin_panel(browser, language):  # про�
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
-    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+    admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_users_page()  # переход на страницу пользователей
 
     if language == "/ua":
@@ -44,7 +44,7 @@ def test_changing_user_role_from_User_to_SuperAdmin(browser, language):  # из�
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
-    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+    admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_users_page()  # переход на страницу пользователей
 
     if language == "/ua":
@@ -68,7 +68,7 @@ def test_authorization_of_user_in_Disabled_status(browser, language):  # авт�
     page.info_text_for_authorization_in_user_status_Disabled()  # инфо текст при авторизации в статусе пользователя "Отключен"
 
 
-# @pytest.mark.s_r_c
+@pytest.mark.s_r_c
 def test_confirmation_of_registration_of_applicant_and_authorization_on_site(browser, language):  # подтверждение регистрации соискателя и авторизация на сайте
     link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
     email_page = EmailPage(browser, link)
@@ -94,7 +94,7 @@ def test_check_that_user_has_status_Active(browser, language):  # проверк
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
-    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+    admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_users_page()  # переход на страницу пользователей
 
     if language == "/ua":

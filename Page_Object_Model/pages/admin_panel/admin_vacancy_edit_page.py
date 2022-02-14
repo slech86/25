@@ -41,9 +41,17 @@ class AdminVacancyEditPage(BasePage):
         salary_min_value = salary_min.get_attribute("value")
         assert salary_min_value == TestData.salary_min, "Поле 'Диапазон зарплаты - min' не верно"
 
+        salary_min_usd = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_SALARY_MIN_USD)
+        salary_min_usd_value = salary_min_usd.get_attribute("value")
+        assert salary_min_usd_value == TestData.salary_min, "Поле 'Диапазон зарплаты - min (USD)' не верно"
+
         salary_max = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_SALARY_MAX)
         salary_max_value = salary_max.get_attribute("value")
         assert salary_max_value == TestData.salary_max, "Поле 'Диапазон зарплаты - max' не верно"
+
+        salary_max_usd = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_SALARY_MAX_USD)
+        salary_max_usd_value = salary_max_usd.get_attribute("value")
+        assert salary_max_usd_value == TestData.salary_max, "Поле 'Диапазон зарплаты - max (USD)' не верно"
 
         currency_vacancy = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_CURRENCY_VACANCY)
         currency_vacancy_title = currency_vacancy.get_attribute("title")

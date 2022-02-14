@@ -9,7 +9,7 @@ from Page_Object_Model.pages.site.add_vacancy_page import AddVacancyPage
 from Page_Object_Model.singleton import Singleton
 
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 class TestPackagePurchaseMonthlyFreeVacancy():
     def test_package_purchase_monthly_free_vacancy_and_activating_it_on_site(self, browser, language):  # покупка пакета "Ежемесячная бесплатная вакансия" и активация его на сайте
         url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
@@ -44,7 +44,7 @@ class TestPackagePurchaseMonthlyFreeVacancy():
         admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
         admin_page.open()
         admin_page.admin_authorization()
-        admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+        admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_order_page()  # переход на страницу заказов
 
         if language == "/ua":
@@ -54,7 +54,7 @@ class TestPackagePurchaseMonthlyFreeVacancy():
 
         id_order = admin_page.getting_last_order_id_of_user()  # получение последнего id заказа пользователя
 
-        admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+        admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_user_purchases_page()  # переход на страницу "Покупки пользователей"
         singleton.id_purchase = admin_page.getting_id_of_purchase(id_order)  # получение id покупки
 
@@ -90,7 +90,7 @@ class TestPackagePurchaseMonthlyFreeVacancy():
 #     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
 #     admin_page.open()
 #     admin_page.admin_authorization()
-#     admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+#     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
 #     admin_page.go_to_order_page()  # переход на страницу заказов
 #
 #     if language == "/ua":

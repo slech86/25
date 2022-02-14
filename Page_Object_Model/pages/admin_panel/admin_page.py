@@ -16,8 +16,13 @@ class AdminPage(BasePage):
         self.browser.find_element(*AdminPageLocators.BUTTON_LOG_IN).click()
     # авторизация админки
 
+    def opening_dropdown_list_reference_books(self):  # открытие выпадающего списка "Справочники"
+        self.browser.find_element(*AdminPageLocators.DROPDOWN_REFERENCE_BOOKS).click()
 
-    def opening_dropdown_list_Work(self):  # открытие выпадающего списка "Work"
+    def go_to_currency_rates_page(self):  # переход на страницу курса валют
+        self.browser.find_element(*AdminPageLocators.CURRENCY_RATES).click()
+
+    def opening_dropdown_list_work(self):  # открытие выпадающего списка "Work"
         self.browser.find_element(*AdminPageLocators.DROPDOWN_WORK).click()
 
     def go_to_users_page(self):  # переход на страницу пользователей

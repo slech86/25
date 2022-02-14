@@ -8,6 +8,9 @@ class AdminPageLocators():
     BUTTON_LOG_IN = (By.CSS_SELECTOR, ('[type="submit"]'))
     # авторизация админки
 
+    DROPDOWN_REFERENCE_BOOKS = (By.CSS_SELECTOR, ('.dropdown:nth-child(3)'))
+    CURRENCY_RATES = (By.CSS_SELECTOR, ('[href="/x/currency-rates"]'))
+
     DROPDOWN_WORK = (By.CSS_SELECTOR, ('.dropdown:nth-child(4)'))
     USERS = (By.CSS_SELECTOR, ('[href="/x/user"]'))
     VACANCIES = (By.CSS_SELECTOR, ('[href="/x/vacancies"]'))
@@ -99,6 +102,11 @@ class AdminPageLocators():
     # страница 'Покупки пользователей'
 
 
+class AdminCurrencyRatesPageLocators():
+    RUB_RATE = (By.CSS_SELECTOR, ('[id="2"] > td:nth-child(6)'))
+    UAH_RATE = (By.CSS_SELECTOR, ('[id="1"] > td:nth-child(6)'))
+
+
 class AdminVacancyEditPageLocators():
     H1_VACANCY = (By.CSS_SELECTOR, ('h1'))
     FIELD_VACANCY_STATUS = (By.XPATH, ('//span[contains(@id, "select2-vacancies-status-")]'))
@@ -109,7 +117,9 @@ class AdminVacancyEditPageLocators():
     FIELD_JOB_CATEGORY = (By.CSS_SELECTOR, ('#select2-vacancies-descriptions-1-category_id-container'))
     FIELD_JOB_SUBCATEGORIES = (By.CSS_SELECTOR, ('#vacancies-descriptions-1-subcategories_id + span .select2-selection__choice'))
     FIELD_SALARY_MIN = (By.CSS_SELECTOR, ('#vacancies-descriptions-1salary_min'))
+    FIELD_SALARY_MIN_USD = (By.CSS_SELECTOR, ('#vacancies-descriptions-1base_salary_min'))
     FIELD_SALARY_MAX = (By.CSS_SELECTOR, ('#vacancies-descriptions-1salary_max'))
+    FIELD_SALARY_MAX_USD = (By.CSS_SELECTOR, ('#vacancies-descriptions-1base_salary_max'))
     FIELD_CURRENCY_VACANCY = (By.CSS_SELECTOR, ('#select2-vacancies-descriptions-1currency-container'))
     FIELD_COUNTRY_VACANCY = (By.CSS_SELECTOR, ('#select2-vacancies-descriptions-1-country_id-container'))
     FIELD_CITY_VACANCY = (By.CSS_SELECTOR, ('#select2-vacancies-descriptions-1-city_id-container'))
@@ -237,6 +247,7 @@ class AdminResumeEditPageLocators():
     FIELD_SUBCATEGORIES_RESUME = (By.CSS_SELECTOR, ('#resume-descriptions-1-subcategories_id + span .select2-selection__choice'))
     FIELD_EMPLOYMENT_TYPE_RESUME = (By.CSS_SELECTOR, ('#resume-descriptions-1-employment + span .select2-selection__choice'))
     FIELD_SALARY_RESUME = (By.CSS_SELECTOR, ('#resume-descriptions-1-salary'))
+    FIELD_SALARY_RESUME_USD = (By.CSS_SELECTOR, ('#resume-descriptions-1-base_salary'))
     FIELD_CURRENCY_RESUME = (By.CSS_SELECTOR, ('#select2-resume-descriptions-1-currency-container'))
     IFRAME_CKEDITOR_SKILLS_AND_ACHIEVEMENTS = (By.CSS_SELECTOR, ('#cke_resume-descriptions-1-skills iframe'))
     FIELD_DISABILITY = (By.CSS_SELECTOR, ('#select2-resume-descriptions-1-disability-container'))

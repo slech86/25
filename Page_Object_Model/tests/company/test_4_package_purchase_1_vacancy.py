@@ -50,7 +50,7 @@ def test_package_purchase_1_vacancy_and_orders_processing_and_activating_it_on_s
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
-    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+    admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_order_page()  # переход на страницу заказов
 
     if language == "/ua":
@@ -61,7 +61,7 @@ def test_package_purchase_1_vacancy_and_orders_processing_and_activating_it_on_s
     admin_page.order_processing()  # проведение заказа, изменение статуса заказа с "Новый" на "Проведенный"
     id_order = admin_page.getting_last_order_id_of_user()  # получение последнего id заказа пользователя
 
-    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+    admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_user_purchases_page()  # переход на страницу "Покупки пользователей"
     id_purchase = admin_page.getting_id_of_purchase(id_order)  # получение id покупки
 
@@ -116,7 +116,7 @@ def test_complete_deletion_of_user_orders(browser, language):  # полное у
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
-    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+    admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_order_page()  # переход на страницу заказов
 
     if language == "/ua":

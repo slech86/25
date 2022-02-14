@@ -9,7 +9,7 @@ def test_complete_deletion_of_resume(browser):  # полное удаление 
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
-    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+    admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_resumes_page()  # переход на страницу всех резюме
 
     admin_resumes_page = AdminResumesPage(browser, browser.current_url)

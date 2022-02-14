@@ -7,14 +7,14 @@ class ServicesAndPricesPage(BasePage):
     def adding_to_cart_standart_1_vacancy_and_getting_product_id(self):  # добавление в корзину "Standart" и получение id продукта
         self.browser.execute_script("window.scrollBy(0, 100);")
         self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_ORDER_IN_STANDART).click()
-        self.browser.find_element(*ServicesAndPricesPageLocators.STANDARD_IN_BASKET)  # наличие в корзине
+        self.browser.find_element(*ServicesAndPricesPageLocators.STANDART_IN_BASKET)  # наличие в корзине
         id_product = "1"
         return id_product
     def adding_to_cart_standart_5_vacancy_and_getting_product_id(self):  # добавление в корзину "Standart" и получение id продукта
         self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_5_VACANCY).click()
         self.browser.execute_script("window.scrollBy(0, 100);")
         self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_ORDER_IN_STANDART).click()
-        self.browser.find_element(*ServicesAndPricesPageLocators.STANDARD_IN_BASKET)  # наличие в корзине
+        self.browser.find_element(*ServicesAndPricesPageLocators.STANDART_IN_BASKET)  # наличие в корзине
         id_product = "1"
         return id_product
     # пакеты услуг

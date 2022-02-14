@@ -14,7 +14,7 @@ from Page_Object_Model.pages.site.services_and_prices_page import ServicesAndPri
 from Page_Object_Model.singleton import Singleton
 
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 def test_adding_vacancies(browser, language):  # добавление вакансии
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -44,7 +44,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
-    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+    admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_vacancies_page()  # переход на страницу вакансий
     admin_page.vacancy_search_by_job_title()  # поиск вакансии по названию должности
     id_vacancies = admin_page.getting_vacancy_id()  # получение id вакансии
@@ -56,7 +56,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     vacancy_page.checking_opening_of_page_of_an_unpublished_vacancy(language)  # проверка открытия страницы не опубликованной вакансии
 
     admin_page.open()
-    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+    admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_vacancies_page()  # переход на страницу вакансий
     admin_page.vacancy_search_by_job_title()  # поиск вакансии по названию должности
     admin_page.go_to_object_editing_page()  # переход на страницу редактирования вакансии
@@ -109,7 +109,7 @@ def test_complete_deletion_of_user_orders(browser, language):  # полное у
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
-    admin_page.opening_dropdown_list_Work()  # открытие выпадающего списка "Work"
+    admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_order_page()  # переход на страницу заказов
 
     if language == "/ua":

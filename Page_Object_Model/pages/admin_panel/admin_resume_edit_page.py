@@ -16,7 +16,7 @@ class AdminResumeEditPage(BasePage):
         time.sleep(2)
         self.browser.find_element(*AdminResumeEditPageLocators.BUTTON_SAVE).click()
 
-    def verification_of_saving_data_entered_by_user_after_resume_creation_ru(self, language):  # проверка сохранения введенных пользователем данных после создания резюме RU
+    def verification_of_saving_data_entered_by_user_after_resume_creation_ru(self, language, uah_rate):  # проверка сохранения введенных пользователем данных после создания резюме RU
         user = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_USER)
         user_title = user.get_attribute("title")
         if language == '/ua':
@@ -289,8 +289,12 @@ class AdminResumeEditPage(BasePage):
         assert employment_type_resume_title == TestData.employment_type_resume, "Поле 'Тип занятости' не верно"
 
         salary_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_SALARY_RESUME)
-        salary_resume = salary_resume.get_attribute("value")
-        assert salary_resume == TestData.salary_resume, "Поле 'Желаемый уровень заработной' не верно"
+        salary_resume_value = salary_resume.get_attribute("value")
+        assert salary_resume_value == TestData.salary_resume, "Поле 'Желаемый уровень заработной' не верно"
+
+        salary_resume_usd = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_SALARY_RESUME_USD)
+        salary_resume_usd_value = salary_resume_usd.get_attribute("value")
+        assert int(salary_resume_usd_value) == round(int(TestData.salary_resume) / uah_rate), "Поле 'Желаемый уровень заработной (USD)' не верно"
 
         currency_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_CURRENCY_RESUME)
         currency_resume_title = currency_resume.get_attribute("title")
