@@ -137,7 +137,7 @@ class MyVacanciesPageLocators():
     CROSS_IN_POP_UP_AFTER_SUBMITTING_VACANCY_FOR_MODERATION = (By.CSS_SELECTOR, ('#thanks-modal .close'))  # крестик в pop-up окне после отправки вакансии на модерацию
 
 
-class AddVacancyPageLocators():
+class VacancyAddPageLocators():
     inputPrefix = 'vacancyaddform-'
 
     FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'job_title'))
@@ -178,31 +178,81 @@ class AddVacancyPageLocators():
     # блок "Знание языков"
 
     ADD_DESCRIPTION_OF_VACANCIES = (By.CSS_SELECTOR, ('#vacancy-description .btn-disabled'))
-    IFRAME_CKEDITOR_DESCRIPTION_OF_VACANCIES = (By.CSS_SELECTOR, ('#cke_vacancyaddform-description iframe'))
+    IFRAME_CKEDITOR_DESCRIPTION_OF_VACANCIES = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'description iframe'))
     # блок "Описание вакансии"
 
     ADD_ABOUT_COMPANY = (By.CSS_SELECTOR, ('#about-company .btn-disabled'))
-    IFRAME_CKEDITOR_ABOUT_COMPANY = (By.CSS_SELECTOR, ('#cke_vacancyaddform-about_company iframe'))
+    IFRAME_CKEDITOR_ABOUT_COMPANY = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'about_company iframe'))
     # блок "О компании"
 
     ADD_WORKING_CONDITIONS = (By.CSS_SELECTOR, ('#working-conditions .btn-disabled'))
-    IFRAME_CKEDITOR_WORKING_CONDITIONS = (By.CSS_SELECTOR, ('#cke_vacancyaddform-working_conditions iframe'))
+    IFRAME_CKEDITOR_WORKING_CONDITIONS = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'working_conditions iframe'))
     # блок "Условия работы"
 
     ADD_TASKS = (By.CSS_SELECTOR, ('#tasks .btn-disabled'))
-    IFRAME_CKEDITOR_TASKS = (By.CSS_SELECTOR, ('#cke_vacancyaddform-tasks iframe'))
+    IFRAME_CKEDITOR_TASKS = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'tasks iframe'))
     # блок "Задачи"
 
     ADD_REQUIREMENTS = (By.CSS_SELECTOR, ('#requirements-candidate .btn-disabled'))
-    IFRAME_CKEDITOR_REQUIREMENTS = (By.CSS_SELECTOR, ('#cke_vacancyaddform-requirements iframe'))
+    IFRAME_CKEDITOR_REQUIREMENTS = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'requirements iframe'))
     # блок "Требования к соискателю"
 
     ADD_ADDITIONAL_INFORMATION = (By.CSS_SELECTOR, ('#additional-information .btn-disabled'))
-    IFRAME_CKEDITOR_ADDITIONAL_INFORMATION = (By.CSS_SELECTOR, ('#cke_vacancyaddform-additionally_information iframe'))
+    IFRAME_CKEDITOR_ADDITIONAL_INFORMATION = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'additionally_information iframe'))
     # блок "Дополнительная информация"
 
     CKEDITOR = (By.CSS_SELECTOR, ('body.cke_editable'))  # общий для всех блоков
     BUTTON_PUBLISH = (By.CSS_SELECTOR, ('#submit-publish'))
+
+
+class VacancyEditPageLocators():
+    inputPrefix = 'vacancyeditform-'
+
+    BUTTON_EDIT_IN_BASIC_INFORMATION_BLOCK = (By.CSS_SELECTOR, ('#general-information .post-resume-title + .btn-edit'))
+    FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'job_title'))
+    CATEGORY_VACANCIES = "document.getElementsByName('VacancyEditForm[category_id][]')[9].click()"
+    SUBCATEGORIES = (By.CSS_SELECTOR, ('[for="subcategories_id-90"]'))
+    FIELD_MINIMAL_SALARY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'salary_min'))
+    FIELD_MAXIMUM_SALARY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'salary_max'))
+    DROPDOWN_CURRENCY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'currency"]'))
+    CURRENCY_USD = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'currency [data-original-index="3"]'))
+    DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'country_id"]'))
+    COUNTRY_UKRAINE = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'country_id [data-original-index="1"]'))
+    DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'city_id"]'))
+    CITI_DNIPRO = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'city_id [data-original-index="2"]'))
+    FIELD_STREET = (By.CSS_SELECTOR, ('#' + inputPrefix + 'street'))
+    FIELD_PHONE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'phone'))
+    FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'email'))
+    FIELD_SKYPE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'skype'))
+    FIELD_CONTACT_PERSON = (By.CSS_SELECTOR, ('#' + inputPrefix + 'contact_person'))
+    FULL_EMPLOYMENT = (By.CSS_SELECTOR, ('#' + inputPrefix + 'employment > .checkbox:nth-child(3) > label'))
+    WORK_EXPERIENCE_1_YEAR = (By.CSS_SELECTOR, ('#' + inputPrefix + 'work_experience > .checkbox:nth-child(3) > label'))
+    DROPDOWN_EDUCATION = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'education"]'))
+    SECONDARY_EDUCATION = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'education [data-original-index="5"]'))
+    DROPDOWN_VACANCY_BENEFITS = (By.CSS_SELECTOR, ('[data-id="job-benefits-select"]'))
+    FOREIGN_LANGUAGE_COURSES = (By.CSS_SELECTOR, ('#job-benefits [data-original-index="7"]'))
+    READY_TO_TAKE_PERSON_WITH_DISABILITY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'additionally > .checkbox:nth-child(2) > label'))
+    # блок "Основная информация"
+
+    BUTTON_EDIT_IN_KNOWLEDGE_OF_LANGUAGES_BLOCK = (By.CSS_SELECTOR, ('#knowledge-of-languages [class="btn-edit"]'))
+    BUTTON_TO_DELETE_FIRST_LANGUAGE = (By.CSS_SELECTOR, ('#knowledge-of-languages #lang-form-del-0 .del-block-link'))
+
+    DROPDOWN_LANGUAGE_1 = (By.CSS_SELECTOR, ('#knowledge-of-languages #lang-form-del-1 [data-id="languageaddform-language"]'))
+    ENGLISH_LANGUAGE_1 = (By.CSS_SELECTOR, ('#knowledge-of-languages #lang-form-del-1 .field-languageaddform-language [data-original-index="1"]'))
+    DROPDOWN_LEVEL_OF_LANGUAGE_1 = (By.CSS_SELECTOR, ('#knowledge-of-languages #lang-form-del-1 [data-id="languageaddform-level"]'))
+    ABOVE_AVERAGE_LEVEL_1 = (By.CSS_SELECTOR, ('#knowledge-of-languages #lang-form-del-1 .field-languageaddform-level [data-original-index="4"]'))
+    # блок "Знание языков"
+
+    BUTTON_EDIT_IN_VACANCY_DESCRIPTION_BLOCK = (By.CSS_SELECTOR, ('#vacancy-description .right .btn-edit'))
+    IFRAME_CKEDITOR_DESCRIPTION_OF_VACANCIES = (By.CSS_SELECTOR, ('#cke' + inputPrefix + 'description iframe'))
+    # блок "Описание вакансии"
+
+
+
+
+
+
+
 
 
 class ServicesAndPricesPageLocators():

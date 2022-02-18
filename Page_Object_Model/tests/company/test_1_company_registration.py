@@ -7,7 +7,7 @@ from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 
 
-# @pytest.mark.s_r_c
+@pytest.mark.s_r_c
 def test_company_registration_with_filling_in_all_fields(browser, language):  # регистрация работодателя с заполнением всех полей
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)

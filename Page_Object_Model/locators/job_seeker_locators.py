@@ -63,7 +63,7 @@ class MyResumePageLocators():
     CROSS_IN_POP_UP_AFTER_SUBMITTING_RESUME_FOR_MODERATION = (By.CSS_SELECTOR, ('#thanks-modal .close'))  # крестик в pop-up окне после отправки резюме на модерацию
 
 
-class AddResumePageLocators():
+class ResumeAddPageLocators():
     inputPrefix = 'resumeaddform-'
 
     FIELD_PHOTO = (By.CSS_SELECTOR, ('#' + inputPrefix + 'photo'))

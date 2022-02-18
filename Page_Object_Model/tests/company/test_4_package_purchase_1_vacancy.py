@@ -5,7 +5,7 @@ from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.email_page import EmailPage
 from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
-from Page_Object_Model.pages.site.add_vacancy_page import AddVacancyPage
+from Page_Object_Model.pages.site.vacancy_add_page import VacancyAddPage
 
 
 def test_package_purchase_1_vacancy_and_orders_processing_and_activating_it_on_site(browser, language):  # покупка пакета "1 вакансия" и проведение заказа в админке и активация его на сайте
@@ -24,7 +24,7 @@ def test_package_purchase_1_vacancy_and_orders_processing_and_activating_it_on_s
     my_vacancies_page = MyVacanciesPage(browser, browser.current_url)
     my_vacancies_page.go_to_add_vacancy_page()  # переход на страницу "Добавить вакансию"
 
-    add_vacancy_page = AddVacancyPage(browser, browser.current_url)
+    add_vacancy_page = VacancyAddPage(browser, browser.current_url)
     add_vacancy_page.absence_of_button_to_publish()  # проверка отсутствия кнопки "Опубликовать"
 
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя

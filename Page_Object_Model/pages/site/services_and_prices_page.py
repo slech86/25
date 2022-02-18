@@ -72,8 +72,8 @@ class ServicesAndPricesPage(BasePage):
     def checking_decrease_in_number_of_available_vacancies_for_publication_in_monthly_free_vacancy_package(self, id_product, id_purchase):  # проверка уменьшения количества доступных вакансий для публикации в пакете "Ежемесячная бесплатная вакансия"
         for id in id_purchase:
             self.browser.find_element(By.CSS_SELECTOR, ('.tab-activated-servises .packages-wrap[data-product-id="' + id_product + '"][data-purchases-id="' + id + '"]  .more')).click()
+            time.sleep(0.3)
             text = self.browser.find_element(By.CSS_SELECTOR, ('.tab-activated-servises .packages-wrap[data-product-id="' + id_product + '"][data-purchases-id="' + id + '"] p.small-text')).text
             index = text.find('/')
-            print(index)
             assert int(text[index - 2]) + 1 == int(text[index + 2]), 'В пакете осталось не верное количество вакансий'
 

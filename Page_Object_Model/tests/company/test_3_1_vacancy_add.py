@@ -7,7 +7,7 @@ from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.email_page import EmailPage
 from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
-from Page_Object_Model.pages.site.add_vacancy_page import AddVacancyPage
+from Page_Object_Model.pages.site.vacancy_add_page import VacancyAddPage
 from Page_Object_Model.pages.admin_panel.admin_vacancy_edit_page import AdminVacancyEditPage
 from Page_Object_Model.pages.site.vacancy_page import VacancyPage
 from Page_Object_Model.pages.site.services_and_prices_page import ServicesAndPricesPage
@@ -31,7 +31,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     my_vacancies_page = MyVacanciesPage(browser, browser.current_url)
     my_vacancies_page.go_to_add_vacancy_page()  # переход на страницу "Добавить вакансию"
 
-    add_vacancy_page = AddVacancyPage(browser, browser.current_url)
+    add_vacancy_page = VacancyAddPage(browser, browser.current_url)
     add_vacancy_page.filling_in_required_fields()  # заполнение обязательных полей
     browser.execute_script("window.scrollBy(0, -300);")
     add_vacancy_page.filling_in_optional_fields()  # заполнение не обязательных полей

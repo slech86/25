@@ -5,7 +5,7 @@ from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.services_and_prices_page import ServicesAndPricesPage
 from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
 from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
-from Page_Object_Model.pages.site.add_vacancy_page import AddVacancyPage
+from Page_Object_Model.pages.site.vacancy_add_page import VacancyAddPage
 from Page_Object_Model.singleton import Singleton
 
 
@@ -38,7 +38,7 @@ class TestPackagePurchaseMonthlyFreeVacancy():
         my_vacancies_page = MyVacanciesPage(browser, browser.current_url)
         my_vacancies_page.go_to_add_vacancy_page()  # переход на страницу "Добавить вакансию"
 
-        add_vacancy_page = AddVacancyPage(browser, browser.current_url)
+        add_vacancy_page = VacancyAddPage(browser, browser.current_url)
         add_vacancy_page.absence_of_button_to_publish()  # проверка отсутствия кнопки "Опубликовать"
 
         admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)

@@ -8,11 +8,11 @@ from Page_Object_Model.pages.admin_panel.admin_resumes_page import AdminResumesP
 from Page_Object_Model.pages.admin_panel.admin_resume_edit_page import AdminResumeEditPage
 from Page_Object_Model.pages.email_page import EmailPage
 from Page_Object_Model.pages.site.my_resume_page import MyResumePage
-from Page_Object_Model.pages.site.add_resume_page import AddResumePage
+from Page_Object_Model.pages.site.resume_add_page import ResumeAddPage
 from Page_Object_Model.pages.site.resume_page import ResumePage
 
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 def test_adding_resume(browser, language):  # добавление резюме
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -29,7 +29,7 @@ def test_adding_resume(browser, language):  # добавление резюме
     my_resume_page = MyResumePage(browser, browser.current_url)
     my_resume_page.go_to_add_resume_page()  # переход на страницу "Разместить резюме"
 
-    add_resume_page = AddResumePage(browser, browser.current_url)
+    add_resume_page = ResumeAddPage(browser, browser.current_url)
     add_resume_page.filling_in_required_fields()  # заполнение обязательных полей
     browser.execute_script("window.scrollBy(0, -4000);")
     add_resume_page.filling_in_optional_fields()  # заполнение не обязательных полей
