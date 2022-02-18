@@ -12,7 +12,7 @@ def pytest_addoption(parser):
 def browser(request):
     browser_name = request.config.getoption("--browser_name")
     if browser_name == "chrome":
-        browser = webdriver.Chrome()
+        browser = webdriver.Chrome('/Page_Object_Model/drivers/chromedriver')
     elif browser_name == "firefox":
         browser = webdriver.Firefox()
     else:
