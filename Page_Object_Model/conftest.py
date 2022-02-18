@@ -1,6 +1,7 @@
 import pytest
 import time
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 
 
@@ -12,7 +13,8 @@ def pytest_addoption(parser):
 def browser(request):
     browser_name = request.config.getoption("--browser_name")
     if browser_name == "chrome":
-        browser = webdriver.Chrome(executable_path='drivers/chromedriver')
+        s = Service('drivers/chromedriver')
+        browser = webdriver.Chrome(service=s)
     elif browser_name == "firefox":
         browser = webdriver.Firefox()
     else:
