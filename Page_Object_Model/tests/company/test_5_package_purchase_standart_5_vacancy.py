@@ -31,7 +31,7 @@ def test_package_purchase_standart_and_orders_processing_and_activating_it_on_si
     company_personal_cabinet_page.go_to_my_vacancies_page()  # переход на страницу "Мои вакансии"
 
     my_vacancies_page = MyVacanciesPage(browser, browser.current_url)
-    my_vacancies_page.go_to_add_vacancy_page()  # переход на страницу "Добавить вакансию"
+    my_vacancies_page.go_to_vacancy_add_page()  # переход на страницу "Добавить вакансию"
 
     add_vacancy_page = VacancyAddPage(browser, browser.current_url)
     add_vacancy_page.absence_of_button_to_publish()  # проверка отсутствия кнопки "Опубликовать"
@@ -64,7 +64,7 @@ def test_package_purchase_standart_and_orders_processing_and_activating_it_on_si
 
     company_personal_cabinet_page.go_to_my_vacancies_page()  # переход на страницу "Мои вакансии"
 
-    my_vacancies_page.go_to_add_vacancy_page()  # переход на страницу "Добавить вакансию"
+    my_vacancies_page.go_to_vacancy_add_page()  # переход на страницу "Добавить вакансию"
 
     add_vacancy_page.absence_of_button_to_publish()  # проверка отсутствия кнопки "Опубликовать"
 
@@ -85,7 +85,7 @@ def test_package_purchase_standart_and_orders_processing_and_activating_it_on_si
 
     company_personal_cabinet_page.go_to_my_vacancies_page()  # переход на страницу "Мои вакансии"
 
-    my_vacancies_page.go_to_add_vacancy_page()  # переход на страницу "Добавить вакансию"
+    my_vacancies_page.go_to_vacancy_add_page()  # переход на страницу "Добавить вакансию"
 
     add_vacancy_page.submitting_vacancy_for_publication()  # проверка наличия кнопки "Опубликовать"
 

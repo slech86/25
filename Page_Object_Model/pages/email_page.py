@@ -138,7 +138,7 @@ class EmailPage(BasePage):
             iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
             self.browser.switch_to.frame(iframe)  # вход в фрейм
             letter_text = self.browser.find_element(*EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_UA).text
-            assert 'Ваше резюме опубліковане на ' in letter_text, 'Не верное сообщение'
+            assert 'Ваше резюме опубліковано на ' in letter_text, 'Не верное сообщение'
             self.browser.switch_to.default_content()  # выход из фрейма
         else:
             self.browser.find_element(*EmailPageLocators.LETTER_AFTER_PUBLISHING_RESUME_RU).click()
@@ -146,5 +146,5 @@ class EmailPage(BasePage):
             iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
             self.browser.switch_to.frame(iframe)  # вход в фреймTEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_RU).text
             letter_text = self.browser.find_element(*EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_RU).text
-            assert 'Ваше резюме опубликовано на logincasino.work!' in letter_text, 'Не верное сообщение'
+            assert 'Ваше резюме опубликовано на ' in letter_text, 'Не верное сообщение'
             self.browser.switch_to.default_content()  # выход из фрейма

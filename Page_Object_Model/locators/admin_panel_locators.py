@@ -84,6 +84,7 @@ class AdminPageLocators():
     H1_VACANCIES = (By.CSS_SELECTOR, ('h1'))
     FIELD_JOB_TITLE_SEARCH_VACANCIES = (By.CSS_SELECTOR, ('[name="Vacancies[job_title]"]'))
     VACANCY_BY_JOB_TITLE = (By.XPATH, ('//a[text()="' + TestData.job_title_vacancy + '"]'))
+    VACANCY_BY_JOB_TITLE_AFTER_EDITING = (By.XPATH, ('//a[text()="' + TestData.job_title_vacancy + '_editing"]'))
     ID_VACANCY = (By.CSS_SELECTOR, ('#pjax-list-container tbody > tr > td:nth-child(2)'))
     VACANCY_STATUS = (By.CSS_SELECTOR, ('#pjax-list-container tbody > tr > td:nth-child(3) > p'))
     # страница вакансий

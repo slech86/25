@@ -177,32 +177,63 @@ class TestDataEditing():
     email_language_ru = '[#1] Русский'
     email_language_ua = '[#3] Українська'
 
-    name = 'name_' + TestData.time_Now + '_editing'
-    surname = 'surname_' + TestData.time_Now + '_editing'
-    position = 'position_' + TestData.time_Now + '_editing'
+    name = TestData.name + '_editing'
+    surname = TestData.surname + '_editing'
+    position = TestData.position + '_editing'
     phone = '+1(234)567-89-10'
-    contact_email = 'contact_email_' + TestData.time_Now + TestData.email[1] + 'editing'
-    company_name = 'company_name_' + TestData.time_Now + '_editing'
+    contact_email = TestData.contact_email + 'editing'
+    company_name = TestData.company_name + '_editing'
     code_company = '01111110'
     company_activity = '[#146] Финансы' + '[#188] Гемблинг'  # ??? (Сфера деятельности компании) не используется при заполнении полей, только при проверке заполнения полей в админке
-    ckeditor_company_description = "CKEditor_company_description_" + TestData.time_Now
-    skype = 'skype' + TestData.time_Now + '_editing'
+    ckeditor_company_description = "editing_" + TestData.ckeditor_company_description
+    skype = TestData.skype + '_editing'
     country = '[#122] Казахстан'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     city = '[#609655] Караганда'  # не используется при заполнении полей, только при проверке заполнения полей в админке
-    street = 'street_' + TestData.time_Now
+    street = TestData.street + '_editing'
     date_of_company_foundation = '1991-03-17'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     birthday = '2001-01-01'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     gender = 'Мужской'  # не используется при заполнении полей, только при проверке заполнения полей в админке
 
-    company_site = 'http://company_site_' + TestData.time_Now + '.com' + '_editing'
-    facebook = 'http://facebook_' + TestData.time_Now + '.com' + '_editing'
-    linkedin = 'http://linkedin_' + TestData.time_Now + '.com' + '_editing'
-    instagram = 'http://instagram_' + TestData.time_Now + '.com' + '_editing'
-    telegram = 'http://telegram_' + TestData.time_Now + '.com' + '_editing'
-    twitter = 'http://twitter_' + TestData.time_Now + '.com' + '_editing'
-    vk = 'http://vk_' + TestData.time_Now + '.com' + '_editing'
+    company_site = TestData.company_site + '_editing'
+    facebook = TestData.facebook + '_editing'
+    linkedin = TestData.linkedin + '_editing'
+    instagram = TestData.instagram + '_editing'
+    telegram = TestData.telegram + '_editing'
+    twitter = TestData.twitter + '_editing'
+    vk = TestData.vk + '_editing'
     number_of_company_employees = 'от 50 до 100'  # (Количество сотрудников компании) не используется при заполнении полей, только при проверке заполнения полей в админке
     video_1 = 'https://www.youtube.com/watch?v=jLwvMlvkBv0'
     video_2 = 'https://www.youtube.com/watch?v=j0F8PXnP9yY'
     video_3 = 'https://www.youtube.com/watch?v=-DKCkibqulU'
     # пользователи
+
+    job_title_vacancy = TestData.job_title_vacancy + '_editing'
+    category_vacancy = '[#4] Отдел кадров'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    subcategories_vacancy = '[#29] HR-менеджер'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    salary_min = '8000'
+    salary_max = '15000'
+    currency_vacancy = '(USD) Доллар'  # (нужно искать как часть title) не используется при заполнении полей, только при проверке заполнения полей в админке
+    country_vacancy = '[#185] Россия'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    city_vacancy = '[#524901] Москва'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    street_vacancy = TestData.street_vacancy + '_editing'
+
+    phone_vacancy = '+38(111)213-14-15'
+    email_vacancy = TestData.street_vacancy + 'editing'
+    skype_vacancy = TestData.street_vacancy + '_editing'
+    contact_person = TestData.street_vacancy + '_editing'
+    employment_type_vacancy = 'Полная'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    work_experience_vacancy = 'от 1 года'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    education = 'Высшее'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    benefits = 'Развозка'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    additionally = 'Готовы взять студента'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    language_vacancy_1 = 'Английский'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    level_language_vacancy_1 = 'Средний'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    language_vacancy_2 = 'Русский'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    level_language_vacancy_2 = 'Родной'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    description_vacancy = "editing_" + TestData.description_vacancy
+    about_company = "editing_" + TestData.about_company
+    working_conditions = "editing_" + TestData.working_conditions
+    tasks = "editing_" + TestData.tasks
+    requirements = "editing_" + TestData.requirements
+    additionally_information = "editing_" + TestData.additionally_information
+    # вакансия

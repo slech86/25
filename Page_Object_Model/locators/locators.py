@@ -47,7 +47,7 @@ class EmailPageLocators():
     LETTER_AFTER_PUBLISHING_VACANCY_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваша вакансия добавлена на сайт"]'))  # письмо после публикации вакансии ru
     LETTER_AFTER_PUBLISHING_VACANCY_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваша вакансія вже на сайті"]'))  # письмо после публикации вакансии ua
     LETTER_AFTER_PUBLISHING_RESUME_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваше резюме опубликовано"]'))  # письмо после публикации резюме ru
-    LETTER_AFTER_PUBLISHING_RESUME_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваше резюме опубліковано на на сайті"]'))  # письмо после публикации резюме ua
+    LETTER_AFTER_PUBLISHING_RESUME_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваше резюме опубліковано"]'))  # письмо после публикации резюме ua
 
     IFRAME_LETTER = (By.CSS_SELECTOR, ('#messagecontframe'))
     LINK_IN_LETTER = (By.CSS_SELECTOR, ('[rel="noreferrer"]'))
@@ -57,8 +57,8 @@ class EmailPageLocators():
     TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_UA = (By.XPATH, ('//div[contains(text(), "Оплата отримана, активуйте послугу на ")]'))
     TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_RU = (By.XPATH, ('//div[text()="Ваша вакансия ' + TestData.job_title_vacancy + ' добавлена на сайт."]'))
     TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_UA = (By.XPATH, ('//div[text()="Ваша вакансія ' + TestData.job_title_vacancy + ' вже на сайті!"]'))
-    TEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_RU = (By.XPATH, ('//div[contains(text(), "Ваше резюме опубликовано на logincasino.work!")]'))
-    TEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_UA = (By.XPATH, ('//div[contains(text(), "Ваше резюме опубліковане на ")]'))
+    TEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_RU = (By.XPATH, ('//div[contains(text(), "Ваше резюме опубликовано на ")]'))
+    TEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_UA = (By.XPATH, ('//div[contains(text(), "Ваше резюме опубліковано на ")]'))
 
 
 class SitemapPageLocators():

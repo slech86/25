@@ -1,3 +1,5 @@
+import time
+
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.company_locators import MyVacanciesPageLocators
 from Page_Object_Model.сonfiguration import UrlStartPage
@@ -6,8 +8,15 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class MyVacanciesPage(BasePage):
-    def go_to_add_vacancy_page(self):  # переход на страницу "Добавить вакансию"
+    def go_to_vacancy_add_page(self):  # переход на страницу "Добавить вакансию"
         self.browser.find_element(*MyVacanciesPageLocators.BUTTON_ADD_VACANCY).click()
+
+    def go_to_vacancy_editing_page(self):  # переход на страницу редактирования вакансии
+        locators_with_id_vacancies = MyVacanciesPageLocators()
+        locators = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies()  # сборка локатов с id вакансии
+        self.browser.find_element(*locators[0]).click()
+        time.sleep(0.2)
+        self.browser.find_element(*locators[1]).click()
 
     def waiting_for_my_vacancies_page_to_open(self, language):  # ожидание открытия страницы 'Мои вакансии'
         if language == "/ua":

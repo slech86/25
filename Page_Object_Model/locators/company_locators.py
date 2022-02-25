@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from Page_Object_Model.data_for_testing import TestData
+from Page_Object_Model.singleton import Singleton
 
 
 class CompanyRegistrationPageLocators():
@@ -133,6 +133,14 @@ class MyVacanciesPageLocators():
     H1 = (By.CSS_SELECTOR, ('h1'))
     BUTTON_ADD_VACANCY = (By.CSS_SELECTOR, ('#add-vacancy'))
 
+    def assembly_of_locators_with_id_vacancies(self):  # сборка локатов с id вакансии
+        singleton = Singleton()
+        button_vacancy_menu = (By.CSS_SELECTOR, ('#my-vacancy-' + singleton.id_vacancies + ' .share-btn'))
+
+        button_edit = (By.XPATH, ('//div[@id="my-vacancy-' + singleton.id_vacancies + '"]//a[contains(@href, "/vacancy/' + singleton.id_vacancies + '/edit")]'))
+        locators = [button_vacancy_menu, button_edit]
+        return locators
+
     INFO_TEXT_AFTER_SUBMITTING_VACANCY_FOR_MODERATION = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст после отправки вакансии на модерацию
     CROSS_IN_POP_UP_AFTER_SUBMITTING_VACANCY_FOR_MODERATION = (By.CSS_SELECTOR, ('#thanks-modal .close'))  # крестик в pop-up окне после отправки вакансии на модерацию
 
@@ -215,7 +223,7 @@ class VacancyEditPageLocators():
     FIELD_MINIMAL_SALARY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'salary_min'))
     FIELD_MAXIMUM_SALARY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'salary_max'))
     DROPDOWN_CURRENCY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'currency"]'))
-    CURRENCY_USD = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'currency [data-original-index="3"]'))
+    CURRENCY_RUB = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'currency [data-original-index="3"]'))
     DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'country_id"]'))
     COUNTRY_UKRAINE = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'country_id [data-original-index="1"]'))
     DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'city_id"]'))
@@ -225,8 +233,8 @@ class VacancyEditPageLocators():
     FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'email'))
     FIELD_SKYPE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'skype'))
     FIELD_CONTACT_PERSON = (By.CSS_SELECTOR, ('#' + inputPrefix + 'contact_person'))
-    FULL_EMPLOYMENT = (By.CSS_SELECTOR, ('#' + inputPrefix + 'employment > .checkbox:nth-child(3) > label'))
-    WORK_EXPERIENCE_1_YEAR = (By.CSS_SELECTOR, ('#' + inputPrefix + 'work_experience > .checkbox:nth-child(3) > label'))
+    REMOTE_WORK = (By.CSS_SELECTOR, ('#' + inputPrefix + 'employment > .checkbox:nth-child(3) > label'))
+    WORK_EXPERIENCE_2_YEAR = (By.CSS_SELECTOR, ('#' + inputPrefix + 'work_experience > .checkbox:nth-child(3) > label'))
     DROPDOWN_EDUCATION = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'education"]'))
     SECONDARY_EDUCATION = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'education [data-original-index="5"]'))
     DROPDOWN_VACANCY_BENEFITS = (By.CSS_SELECTOR, ('[data-id="job-benefits-select"]'))
@@ -244,15 +252,31 @@ class VacancyEditPageLocators():
     # блок "Знание языков"
 
     BUTTON_EDIT_IN_VACANCY_DESCRIPTION_BLOCK = (By.CSS_SELECTOR, ('#vacancy-description .right .btn-edit'))
-    IFRAME_CKEDITOR_DESCRIPTION_OF_VACANCIES = (By.CSS_SELECTOR, ('#cke' + inputPrefix + 'description iframe'))
+    IFRAME_CKEDITOR_DESCRIPTION_OF_VACANCIES = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'description iframe'))
     # блок "Описание вакансии"
 
+    BUTTON_EDIT_IN_ABOUT_COMPANY_BLOCK = (By.CSS_SELECTOR, ('#about-company .right .btn-edit'))
+    IFRAME_CKEDITOR_ABOUT_COMPANY = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'about_company iframe'))
+    # блок "О компании"
 
+    BUTTON_EDIT_IN_WORKING_CONDITIONS_BLOCK = (By.CSS_SELECTOR, ('#working-conditions .right .btn-edit'))
+    IFRAME_CKEDITOR_WORKING_CONDITIONS = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'working_conditions iframe'))
+    # блок "Условия работы"
 
+    BUTTON_EDIT_IN_TASKS_BLOCK = (By.CSS_SELECTOR, ('#tasks .right .btn-edit'))
+    IFRAME_CKEDITOR_TASKS = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'tasks iframe'))
+    # блок "Задачи"
 
+    BUTTON_EDIT_IN_REQUIREMENTS_BLOCK = (By.CSS_SELECTOR, ('#requirements-candidate .right .btn-edit'))
+    IFRAME_CKEDITOR_REQUIREMENTS = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'requirements iframe'))
+    # блок "Требования к соискателю"
 
+    BUTTON_EDIT_IN_ADDITIONAL_INFORMATION_BLOCK = (By.CSS_SELECTOR, ('#additional-information .right .btn-edit'))
+    IFRAME_CKEDITOR_ADDITIONAL_INFORMATION = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'additionally_information iframe'))
+    # блок "Дополнительная информация"
 
-
+    CKEDITOR = (By.CSS_SELECTOR, ('body.cke_editable'))  # общий для всех блоков
+    BUTTON_PUBLISH = (By.CSS_SELECTOR, ('#submit-publish'))
 
 
 class ServicesAndPricesPageLocators():

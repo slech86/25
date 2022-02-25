@@ -14,7 +14,7 @@ from Page_Object_Model.pages.site.services_and_prices_page import ServicesAndPri
 from Page_Object_Model.singleton import Singleton
 
 
-# @pytest.mark.s_r_c
+@pytest.mark.s_r_c
 def test_adding_vacancies(browser, language):  # добавление вакансии
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -29,7 +29,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     company_personal_cabinet_page.go_to_my_vacancies_page()  # переход на страницу "Мои вакансии"
 
     my_vacancies_page = MyVacanciesPage(browser, browser.current_url)
-    my_vacancies_page.go_to_add_vacancy_page()  # переход на страницу "Добавить вакансию"
+    my_vacancies_page.go_to_vacancy_add_page()  # переход на страницу "Добавить вакансию"
 
     add_vacancy_page = VacancyAddPage(browser, browser.current_url)
     add_vacancy_page.filling_in_required_fields()  # заполнение обязательных полей
@@ -47,10 +47,12 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_vacancies_page()  # переход на страницу вакансий
     admin_page.vacancy_search_by_job_title()  # поиск вакансии по названию должности
-    id_vacancies = admin_page.getting_vacancy_id()  # получение id вакансии
+
+    singleton = Singleton()
+    singleton.id_vacancies = admin_page.getting_vacancy_id()  # получение id вакансии
     admin_page.checking_that_vacancy_status_is_on_moderated()  # проверка что статус вакансии 'На модерацию'
 
-    url_Vacancy_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/vacancy/{id_vacancies}"
+    url_Vacancy_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/vacancy/{singleton.id_vacancies}"
     vacancy_page = VacancyPage(browser, url_Vacancy_Page)
     vacancy_page.open()
     vacancy_page.checking_opening_of_page_of_an_unpublished_vacancy(language)  # проверка открытия страницы не опубликованной вакансии
@@ -66,7 +68,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
 
     admin_page.waiting_to_save_status_and_open_vacansies_page()  # ожидание сохранения статуса и открытия страницы вакансий
 
-    url_Vacancy_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}/vacancy/{id_vacancies}"
+    url_Vacancy_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}/vacancy/{singleton.id_vacancies}"
     vacancy_page = VacancyPage(browser, url_Vacancy_Page)
     vacancy_page.open()
     vacancy_page.checking_opening_of_page_of_published_vacancy()  # проверка открытия страницы опубликованной вакансии
@@ -76,7 +78,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
 
     company_personal_cabinet_page.go_to_my_vacancies_page()  # переход на страницу "Мои вакансии"
 
-    my_vacancies_page.go_to_add_vacancy_page()  # переход на страницу "Добавить вакансию"
+    my_vacancies_page.go_to_vacancy_add_page()  # переход на страницу "Добавить вакансию"
 
     add_vacancy_page.absence_of_button_to_publish()  # проверка отсутствия кнопки "Опубликовать"
 
@@ -102,20 +104,4 @@ def test_verification_of_letter_after_publication_of_vacancy(browser, language):
         email_page.verification_of_letter_after_publication_of_vacancy_ua()  # проверка письма после публикации вакансии ua
     else:
         email_page.verification_of_letter_after_publication_of_vacancy_ru()  # проверка письма после публикации вакансии ru
-
-
-# удаление пакета созданного в прошлом тесте
-def test_complete_deletion_of_user_orders(browser, language):  # полное удаление заказов пользователя
-    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
-    admin_page.open()
-    admin_page.admin_authorization()
-    admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
-    admin_page.go_to_order_page()  # переход на страницу заказов
-
-    if language == "/ua":
-        admin_page.search_for_user_orders_by_email_ua()  # поиск заказов пользователя по e-mail ua
-    else:
-        admin_page.search_for_user_orders_by_email_ru()  # поиск заказов пользователя по e-mail ru
-
-    admin_page.complete_objects_deletion()  # полное удаление объектов
 

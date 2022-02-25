@@ -9,7 +9,7 @@ from Page_Object_Model.pages.site.vacancy_add_page import VacancyAddPage
 from Page_Object_Model.singleton import Singleton
 
 
-# @pytest.mark.s_r_c
+@pytest.mark.s_r_c
 class TestPackagePurchaseMonthlyFreeVacancy():
     def test_package_purchase_monthly_free_vacancy_and_activating_it_on_site(self, browser, language):  # покупка пакета "Ежемесячная бесплатная вакансия" и активация его на сайте
         url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
@@ -36,7 +36,7 @@ class TestPackagePurchaseMonthlyFreeVacancy():
         company_personal_cabinet_page.go_to_my_vacancies_page()  # переход на страницу "Мои вакансии"
 
         my_vacancies_page = MyVacanciesPage(browser, browser.current_url)
-        my_vacancies_page.go_to_add_vacancy_page()  # переход на страницу "Добавить вакансию"
+        my_vacancies_page.go_to_vacancy_add_page()  # переход на страницу "Добавить вакансию"
 
         add_vacancy_page = VacancyAddPage(browser, browser.current_url)
         add_vacancy_page.absence_of_button_to_publish()  # проверка отсутствия кнопки "Опубликовать"
@@ -79,7 +79,7 @@ class TestPackagePurchaseMonthlyFreeVacancy():
 
         company_personal_cabinet_page.go_to_my_vacancies_page()  # переход на страницу "Мои вакансии"
 
-        my_vacancies_page.go_to_add_vacancy_page()  # переход на страницу "Добавить вакансию"
+        my_vacancies_page.go_to_vacancy_add_page()  # переход на страницу "Добавить вакансию"
 
         add_vacancy_page.submitting_vacancy_for_publication()  # проверка наличия кнопки "Опубликовать"
 

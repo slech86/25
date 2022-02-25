@@ -320,7 +320,14 @@ class AdminPage(BasePage):
     def vacancy_search_by_job_title(self):  # поиск вакансии по названию должности
         self.browser.find_element(*AdminPageLocators.FIELD_JOB_TITLE_SEARCH_VACANCIES).send_keys(TestData.job_title_vacancy, Keys.ENTER)
         time.sleep(2)
-        self.browser.find_element(*AdminPageLocators.VACANCY_BY_JOB_TITLE)
+        assert self.is_element_present(*AdminPageLocators.VACANCY_BY_JOB_TITLE), 'Вакансия не найдена'
+
+
+    def vacancy_search_by_job_title_after_editing(self):  # поиск вакансии по названию должности после редактирования
+        self.browser.find_element(*AdminPageLocators.FIELD_JOB_TITLE_SEARCH_VACANCIES).send_keys(TestData.job_title_vacancy + '_editing', Keys.ENTER)
+        time.sleep(2)
+        assert self.is_element_present(*AdminPageLocators.VACANCY_BY_JOB_TITLE_AFTER_EDITING), 'Вакансия не найдена'
+
 
     def getting_vacancy_id(self):  # получение id вакансии
         id_vacancies = self.browser.find_element(*AdminPageLocators.ID_VACANCY).text
