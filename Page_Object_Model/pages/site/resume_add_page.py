@@ -128,7 +128,7 @@ class ResumeAddPage(BasePage):
         CKEditor = self.browser.find_element(*ResumeAddPageLocators.CKEDITOR)
         CKEditor.send_keys(TestData.responsibilities_and_achievements_2)
         self.browser.switch_to.default_content()  # выход из фрейма
-        # блок "Навыки и достижения"
+        # блок "Опыт работы"
 
         self.browser.find_element(*ResumeAddPageLocators.BUTTON_ADD_EDUCATION).click()
         self.browser.find_element(*ResumeAddPageLocators.FIELD_NAME_OF_INSTITUTION).send_keys(TestData.name_of_institution)

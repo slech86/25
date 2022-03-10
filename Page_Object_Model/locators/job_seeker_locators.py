@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from Page_Object_Model.data_for_testing import TestData
+from Page_Object_Model.singleton import Singleton
 
 
 class JobSeekerRegistrationPageLocators():
@@ -58,6 +58,14 @@ class JobSeekerPersonalCabinetPageLocators():
 class MyResumePageLocators():
     H1 = (By.CSS_SELECTOR, ('h1'))
     BUTTON_ADD_RESUME = (By.CSS_SELECTOR, ('.btn-wrap > .btn.btn-blue'))
+
+    BUTTON_RESUME_MENU = (By.CSS_SELECTOR, ('.lc-card.my-cv-card .lc-card-bookmarks'))
+
+    def assembly_of_locators_with_id_resume(self):  # сборка локатов с id резюме
+        singleton = Singleton()
+
+        button_edit = (By.XPATH, ('//a[contains(@href, "/resume/' + singleton.id_resume + '/edit")]'))
+        return button_edit
 
     INFO_TEXT_AFTER_SUBMITTING_RESUME_FOR_MODERATION = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст после отправки резюме на модерацию
     CROSS_IN_POP_UP_AFTER_SUBMITTING_RESUME_FOR_MODERATION = (By.CSS_SELECTOR, ('#thanks-modal .close'))  # крестик в pop-up окне после отправки резюме на модерацию
@@ -284,9 +292,9 @@ class ResumeEditPageLocators():
     DROPDOWN_YEAR = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'birthdayy"]'))
     YEAR_OF_BIRTH = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'birthdayy [data-original-index="26"]'))
     DROPDOWN_MONTH = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'birthdaym"]'))
-    MONTH_SEPTEMBER = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'birthdaym [data-original-index="3"]'))
+    MONTH_MARCH = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'birthdaym [data-original-index="3"]'))
     DROPDOWN_DAY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'birthdayd"]'))
-    DAY_5 = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'birthdayd [data-original-index="8"]'))
+    DAY_8 = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'birthdayd [data-original-index="8"]'))
 
     FIELD_GENDER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'gender [value="1"] + .radio-custom'))
 
@@ -316,9 +324,9 @@ class ResumeEditPageLocators():
 
     BUTTON_EDIT_IN_POSITION_DESIRED_BLOCK = (By.CSS_SELECTOR, ('#desired-job-title .post-resume-title + .btn-edit'))
     FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'job_title'))
-    CATEGORY_RESUME = "document.getElementsByName('ResumeAddForm[category_id][]')[13].click()"
+    CATEGORY_RESUME = "document.getElementsByName('ResumeEditForm[category_id][]')[13].click()"
     SUBCATEGORIES = (By.CSS_SELECTOR, ('[for="subcategories_id-168"]'))
-    UNDEREMPLOYMENT = (By.CSS_SELECTOR, ('#' + inputPrefix + 'employment > .checkbox:nth-child(2) > label'))  # удаленная работа
+    UNDEREMPLOYMENT = (By.CSS_SELECTOR, ('#' + inputPrefix + 'employment > .checkbox:nth-child(2) > label'))  # Неполная занятость
     SALARY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'salary'))
     DROPDOWN_CURRENCY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'currency"]'))
     CURRENCY_USD = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'currency [data-original-index="2"]'))
@@ -509,14 +517,14 @@ class ResumeEditPageLocators():
     DROPDOWN_LANGUAGE_2 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) [data-id="languageaddform-language"]'))
     FRENCH_LANGUAGE_2 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) .field-languageaddform-language [data-original-index="5"]'))
     DROPDOWN_LEVEL_OF_LANGUAGE_2 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) [data-id="languageaddform-level"]'))
-    FREE_LEVEL_2 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) .field-languageaddform-level [data-original-index="3"]'))
+    MIDDLE_LEVEL_2 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) .field-languageaddform-level [data-original-index="3"]'))
 
     BUTTON_ADD_LANGUAGE_NUMBER_3 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) .resume-item-link.js-add-languages'))
 
     DROPDOWN_LANGUAGE_3 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(5) [data-id="languageaddform-language"]'))
     HEBREW_LANGUAGE_3 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(5) .field-languageaddform-language [data-original-index="20"]'))
     DROPDOWN_LEVEL_OF_LANGUAGE_3 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(5) [data-id="languageaddform-level"]'))
-    ABOVE_AVERAGE_LEVEL_2 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(5) .field-languageaddform-level [data-original-index="4"]'))
+    ABOVE_AVERAGE_LEVEL_3 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(5) .field-languageaddform-level [data-original-index="4"]'))
     # блок "Знание языков"
 
     I_HAVE_DISABILITY = (By.CSS_SELECTOR, ('#disability #' + inputPrefix + 'disability > label:nth-child(2)'))

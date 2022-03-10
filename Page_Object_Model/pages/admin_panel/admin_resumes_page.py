@@ -13,7 +13,12 @@ class AdminResumesPage(BasePage):
     def resume_search_by_job_title(self):  # поиск резюме по названию должности
         self.browser.find_element(*AdminResumesPageLocators.FIELD_JOB_TITLE_SEARCH_RESUME).send_keys(TestData.job_title_resume, Keys.ENTER)
         time.sleep(2)
-        self.browser.find_element(*AdminResumesPageLocators.RESUME_BY_JOB_TITLE)
+        assert self.is_element_present(*AdminResumesPageLocators.RESUME_BY_JOB_TITLE), 'Резюме не найдено'
+
+    def resume_search_by_job_title_after_editing(self):  # поиск резюме по названию должности после редактирования
+        self.browser.find_element(*AdminResumesPageLocators.FIELD_JOB_TITLE_SEARCH_RESUME).send_keys(TestData.job_title_resume + '_editing', Keys.ENTER)
+        time.sleep(2)
+        assert self.is_element_present(*AdminResumesPageLocators.RESUME_BY_JOB_TITLE_AFTER_EDITING), 'Резюме не найдено'
 
     def getting_resume_id(self):  # получение id резюме
         id_vacancies = self.browser.find_element(*AdminResumesPageLocators.ID_RESUME).text

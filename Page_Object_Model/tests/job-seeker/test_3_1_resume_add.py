@@ -10,9 +10,11 @@ from Page_Object_Model.pages.email_page import EmailPage
 from Page_Object_Model.pages.site.my_resume_page import MyResumePage
 from Page_Object_Model.pages.site.resume_add_page import ResumeAddPage
 from Page_Object_Model.pages.site.resume_page import ResumePage
+from Page_Object_Model.singleton import Singleton
+from Page_Object_Model.data_for_testing import Accounts
 
 
-# @pytest.mark.s_r_c
+@pytest.mark.s_r_c
 def test_adding_resume(browser, language):  # добавление резюме
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -49,10 +51,11 @@ def test_adding_resume(browser, language):  # добавление резюме
 
     admin_resumes_page = AdminResumesPage(browser, browser.current_url)
     admin_resumes_page.resume_search_by_job_title()  # поиск резюме по названию должности
-    id_resume = admin_resumes_page.getting_resume_id()  # получение id резюме
+    singleton = Singleton()
+    singleton.id_resume = admin_resumes_page.getting_resume_id()  # получение id резюме
     admin_resumes_page.checking_that_resume_status_is_on_moderated()  # проверка что статус резюме 'На модерацию'
 
-    url_Resume_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{id_resume}"
+    url_Resume_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{singleton.id_resume}"
     resume_page = ResumePage(browser, url_Resume_Page)
     resume_page.open()
     resume_page.checking_opening_of_page_of_an_unpublished_resume(language)  # проверка открытия страницы не опубликованного резюме
@@ -71,14 +74,14 @@ def test_adding_resume(browser, language):  # добавление резюме
     admin_resumes_page = AdminResumesPage(browser, browser.current_url)
     admin_resumes_page.waiting_to_save_status_and_open_resume_page()  # ожидание сохранения статуса и открытия страницы всех рузюме
 
-    url_Resume_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{id_resume}"
+    url_Resume_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{singleton.id_resume}"
     resume_page = ResumePage(browser, url_Resume_Page)
     resume_page.open()
     resume_page.checking_opening_of_page_of_published_resume()  # проверка открытия страницы опубликованного резюме
 
 # @pytest.mark.s_r_c
 def test_verification_of_letter_after_publication_of_resume(browser, language):  # проверка письма после публикации резюме
-    link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
+    link = Accounts.url_email
     email_page = EmailPage(browser, link)
     email_page.open()
     # browser.maximize_window()

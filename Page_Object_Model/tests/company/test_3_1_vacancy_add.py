@@ -12,9 +12,10 @@ from Page_Object_Model.pages.admin_panel.admin_vacancy_edit_page import AdminVac
 from Page_Object_Model.pages.site.vacancy_page import VacancyPage
 from Page_Object_Model.pages.site.services_and_prices_page import ServicesAndPricesPage
 from Page_Object_Model.singleton import Singleton
+from Page_Object_Model.data_for_testing import Accounts
 
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 def test_adding_vacancies(browser, language):  # добавление вакансии
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -94,7 +95,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
 
 
 def test_verification_of_letter_after_publication_of_vacancy(browser, language):  # проверка письма после публикации вакансии
-    link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
+    link = Accounts.url_email
     email_page = EmailPage(browser, link)
     email_page.open()
     # browser.maximize_window()

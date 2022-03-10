@@ -161,6 +161,7 @@ class AdminResumesPageLocators():
     H1_RESUMES = (By.CSS_SELECTOR, ('h1'))
     FIELD_JOB_TITLE_SEARCH_RESUME = (By.CSS_SELECTOR, ('[name="Resume[job_title]"]'))
     RESUME_BY_JOB_TITLE = (By.XPATH, ('//a[text()="' + TestData.job_title_resume + '"]'))
+    RESUME_BY_JOB_TITLE_AFTER_EDITING = (By.XPATH, ('//a[text()="' + TestData.job_title_resume + '_editing"]'))
     ID_RESUME = (By.CSS_SELECTOR, ('#pjax-list-container tbody > tr > td:nth-child(2)'))
     RESUME_STATUS = (By.CSS_SELECTOR, ('#pjax-list-container tbody > tr > td:nth-child(3) > p'))
     BUTTON_OBJECT_MENU = (By.CSS_SELECTOR, ('div > .fa.fa-bars'))

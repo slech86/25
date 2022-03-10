@@ -5,8 +5,12 @@ class Accounts():
     main_login_admin = 'p.verbenets'
     main_password_admin = 'l6FOt9tvJT'
 
-    main_login_email = 'test_automation@smileexpo.com.ua'
-    main_password_email = 'BwX37KJyiw02Cl'
+    url_email = 'https://mail.qazz.pw/'  # "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
+    main_login_email = 'test_automation@qazz.pw'
+    main_password_email = 'VzbxybY0Q7yOzwKDibTUdPli'
+
+    # main_login_email = 'test_automation@smileexpo.com.ua'
+    # main_password_email = 'BwX37KJyiw02Cl'
 
 
 class TestData():
@@ -17,7 +21,7 @@ class TestData():
 
     password = 'password_' + time_Now
 
-    email = ['test_automation+', '@smileexpo.com.ua']
+    email = ['test_automation+', '@qazz.pw']
     email_ru = email[0] + time_Now + email[1]
     email_ua = email[0] + time_Now + 'ua' + email[1]
 
@@ -218,9 +222,9 @@ class TestDataEditing():
     street_vacancy = TestData.street_vacancy + '_editing'
 
     phone_vacancy = '+38(111)213-14-15'
-    email_vacancy = TestData.street_vacancy + 'editing'
-    skype_vacancy = TestData.street_vacancy + '_editing'
-    contact_person = TestData.street_vacancy + '_editing'
+    email_vacancy = TestData.email_vacancy + 'editing'
+    skype_vacancy = TestData.skype_vacancy + '_editing'
+    contact_person = TestData.contact_person + '_editing'
     employment_type_vacancy = 'Полная'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     work_experience_vacancy = 'от 1 года'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     education = 'Высшее'  # не используется при заполнении полей, только при проверке заполнения полей в админке
@@ -237,3 +241,114 @@ class TestDataEditing():
     requirements = "editing_" + TestData.requirements
     additionally_information = "editing_" + TestData.additionally_information
     # вакансия
+
+    name_resume = TestData.name_resume + '_editing'
+    surname_resume = TestData.surname_resume + '_edit'
+    birthday_resume = '1976-03-08'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    gender_resume = 'Мужской'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    country_resume = '[#122] Казахстан'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    city_resume = '[#1526384] Алматы'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    willing_to_relocate = 'Готов к переезду'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+
+    phone_1_resume = '+33(444)555-66-77'
+    phone_2_resume = '+00(111)222-33-44'
+    email_resume = TestData.email_resume + 'editing'
+    skype_resume = TestData.skype_resume + '_editing'
+    portfolio = TestData.portfolio + '_editing'
+
+    facebook_resume = TestData.facebook_resume + '_editing'
+    linkedin_resume = TestData.linkedin_resume + '_editing'
+    instagram_resume = TestData.instagram_resume + '_editing'
+    telegram_resume = TestData.portfolio + '_editing'
+    twitter_resume = TestData.portfolio + '_editing'
+    vk_resume = TestData.portfolio + '_editing'
+
+    job_title_resume = TestData.job_title_resume + '_editing'
+    category_resume = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    subcategories_resume = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+
+    employment_type_resume = 'Удаленная???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    salary_resume = '1200'
+    currency_resume = '(USD) Доллар'  # (нужно искать как часть title) не используется при заполнении полей, только при проверке заполнения полей в админке
+
+    skills_and_achievements = 'editing_' + TestData.skills_and_achievements
+
+    company_name_resume = TestData.company_name_resume + '_editing'
+    company_site_resume = TestData.company_site_resume + '_editing'
+    scope_of_company = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    position_resume = TestData.position_resume + '_editing'
+    work_period_start = '???01.08.2018'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    work_period_finish = '???01.03.2020'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    responsibilities_and_achievements = "editing_" + TestData.responsibilities_and_achievements
+
+    company_name_resume_2 = TestData.company_name_resume_2 + '_editing'
+    company_site_resume_2 = TestData.company_site_resume_2 + '_editing'
+    scope_of_company_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    position_resume_2 = TestData.position_resume_2 + '_editing'
+    work_period_start_2 = '???01.04.2020'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    work_period_finish_2 = '???01.03.2020'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    responsibilities_and_achievements_2 = 'editing_' + TestData.responsibilities_and_achievements_2
+
+    company_name_resume_3 = 'company_name_resume_3 ' + TestData.time_Now + '_editing'
+    company_site_resume_3 = 'https://company_site_resume_3_' + TestData.time_Now + '.com' + '_editing'
+    scope_of_company_3 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    position_resume_3 = 'position_resume_3 ' + TestData.time_Now + '_editing'
+    work_period_start_3 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    work_period_finish_3 = None  # проверка наличия атрибута "checked" в следующем поле, так как было выбрано "По насоящее время", не используется при заполнении полей, только при проверке заполнения полей в админке
+    responsibilities_and_achievements_3 = 'editing_' + 'responsibilities_and_achievements_3 ' + TestData.time_Now
+
+    experience_in_gambling_industry = 'от 2 до 5 лет'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+
+    name_of_institution = TestData.name_of_institution + '_editing'
+    level_of_education = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    country_education = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    city_education = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    department_and_speciality = TestData.department_and_speciality + '_editing'
+    education_period_start = '???01.09.2010'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    education_period_finish = '???01.05.2015'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+
+    name_of_institution_2 = TestData.name_of_institution_2 + '_editing'
+    level_of_education_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    country_education_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    city_education_2 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    department_and_speciality_2 = TestData.department_and_speciality_2 + '_editing'
+    education_period_start_2 = '???01.11.2018'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    education_period_finish_2 = '???01.01.2020'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+
+    name_of_institution_3 = 'name_of_institution_3 ' + TestData.time_Now + '_editing'
+    level_of_education_3 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    country_education_3 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    city_education_3 = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    department_and_speciality_3 = 'department_and_speciality_3 ' + TestData.time_Now + '_editing'
+    education_period_start_3 = '???01.11.2018'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    education_period_finish_3 = '???01.01.2020'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+
+    name_course = TestData.name_course + '_editing'
+    course_period_start = '???01.06.2020'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    course_period_finish = '???01.06.2021'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    course_description = 'editing_' + TestData.course_description
+
+    name_course_2 = TestData.name_course_2 + '_editing'
+    course_period_start_2 = '???01.10.2014'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    course_period_finish_2 = '???01.10.2015'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    course_description_2 = 'editing_' + TestData.course_description_2
+
+    name_course_3 = 'name_course_3 ' + TestData.time_Now + '_editing'
+    course_period_start_3 = '???01.10.2014'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    course_period_finish_3 = '???01.10.2015'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    course_description_3 = '_editing' + 'course_description_3 ' + TestData.time_Now
+
+    language_resume_1 = '???Польский'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    level_language_resume_1 = '???Продвинутый'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    language_resume_2 = '???Немецкий'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    level_language_resume_2 = '???Свободно'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    language_resume_3 = '???Немецкий'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    level_language_resume_3 = '???Свободно'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+
+    disability = '???У меня нет инвалидности'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    description_of_disability = 'description_of_disability ' + TestData.time_Now + '_editing'
+
+    additional_information = 'editing_' + TestData.additional_information
+
+    job_search_status = '???'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    # резюме

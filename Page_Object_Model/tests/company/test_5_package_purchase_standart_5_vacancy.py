@@ -6,6 +6,8 @@ from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.email_page import EmailPage
 from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
 from Page_Object_Model.pages.site.vacancy_add_page import VacancyAddPage
+from Page_Object_Model.data_for_testing import Accounts
+
 
 def test_package_purchase_standart_and_orders_processing_and_activating_it_on_site(browser, language):  # покупка пакета "Standart: 5 вакансия" и проведение заказа в админке и активация его на сайте
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
@@ -90,7 +92,7 @@ def test_package_purchase_standart_and_orders_processing_and_activating_it_on_si
     add_vacancy_page.submitting_vacancy_for_publication()  # проверка наличия кнопки "Опубликовать"
 
 def test_checking_letter_after_order_processing(browser, language):  # проверка письма после проведения заказа
-    link = "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
+    link = Accounts.url_email
     email_page = EmailPage(browser, link)
     email_page.open()
     # browser.maximize_window()

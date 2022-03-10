@@ -19,6 +19,7 @@ class VacancyEditPage(BasePage):
         self.browser.find_element(*VacancyEditPageLocators.DROPDOWN_COUNTRY).click()
         self.browser.find_element(*VacancyEditPageLocators.COUNTRY_UKRAINE).click()
         self.browser.find_element(*VacancyEditPageLocators.DROPDOWN_CITI).click()
+        time.sleep(0.3)
         self.browser.find_element(*VacancyEditPageLocators.CITI_DNIPRO).click()
         self.browser.find_element(*VacancyEditPageLocators.FIELD_STREET).send_keys('_editing')
         self.browser.find_element(*VacancyEditPageLocators.FIELD_PHONE).clear()

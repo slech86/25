@@ -13,5 +13,5 @@ def test_complete_deletion_of_resume(browser):  # полное удаление 
     admin_page.go_to_resumes_page()  # переход на страницу всех резюме
 
     admin_resumes_page = AdminResumesPage(browser, browser.current_url)
-    admin_resumes_page.resume_search_by_job_title()  # поиск резюме по названию должности
+    admin_resumes_page.resume_search_by_job_title_after_editing()  # поиск резюме по названию должности после редактирования
     admin_resumes_page.complete_objects_deletion()  # полное удаление резюме

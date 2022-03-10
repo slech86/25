@@ -1,3 +1,4 @@
+import time
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.job_seeker_locators import MyResumePageLocators
 from Page_Object_Model.сonfiguration import UrlStartPage
@@ -8,6 +9,13 @@ from selenium.webdriver.support import expected_conditions as EC
 class MyResumePage(BasePage):
     def go_to_add_resume_page(self):  # переход на страницу "Разместить резюме"
         self.browser.find_element(*MyResumePageLocators.BUTTON_ADD_RESUME).click()
+
+    def go_to_resume_editing_page(self):  # переход на страницу редактирования резюме
+        self.browser.find_element(*MyResumePageLocators.BUTTON_RESUME_MENU).click()
+        time.sleep(0.2)
+        locators_with_id_resume = MyResumePageLocators()
+        locator = locators_with_id_resume.assembly_of_locators_with_id_resume()  # сборка локатов с id резюме
+        self.browser.find_element(*locator).click()
 
     def waiting_for_my_resumes_page_to_open(self, language):  # ожидание открытия страницы 'Мои резюме'
         if language == "/ua":
