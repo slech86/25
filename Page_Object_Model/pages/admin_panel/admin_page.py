@@ -280,32 +280,31 @@ class AdminPage(BasePage):
 
         self.verification_of_saving_data_entered_job_seeker(TestDataEditing)
 
-
-    def verification_of_saving_data_entered_job_seeker(self, TestData):  # проверка сохранения введенных данных соискателя
+    def verification_of_saving_data_entered_job_seeker(self, test_data):  # проверка сохранения введенных данных соискателя
         name = self.browser.find_element(*AdminPageLocators.FIELD_NAME)
         name_value = name.get_attribute("value")
-        assert name_value == TestData.name, "Поле 'Имя' не верно"
+        assert name_value == test_data.name, "Поле 'Имя' не верно"
 
         surname = self.browser.find_element(*AdminPageLocators.FIELD_SURNAME)
         surname_value = surname.get_attribute("value")
-        assert surname_value == TestData.surname, "Поле 'Фамилия' не верно"
+        assert surname_value == test_data.surname, "Поле 'Фамилия' не верно"
 
         birthday = self.browser.find_element(*AdminPageLocators.FIELD_BIRTHDAY)
         birthday_value = birthday.get_attribute("value")
-        assert birthday_value == TestData.birthday, "Поле 'День рождения' не верно"
+        assert birthday_value == test_data.birthday, "Поле 'День рождения' не верно"
 
         gender = self.browser.find_element(*AdminPageLocators.FIELD_GENDER)
         gender_title = gender.get_attribute("title")
-        assert gender_title == TestData.gender, "Поле 'Пол' не верно"
+        assert gender_title == test_data.gender, "Поле 'Пол' не верно"
 
         country = self.browser.find_element(*AdminPageLocators.FIELD_COUNTRY)
         country_title = country.get_attribute("title")
-        assert country_title == TestData.country, "Поле 'Страна' не верно"
+        assert country_title == test_data.country, "Поле 'Страна' не верно"
 
-        WebDriverWait(self.browser, 5).until(EC.text_to_be_present_in_element((AdminPageLocators.FIELD_CITY), TestData.city))
+        WebDriverWait(self.browser, 5).until(EC.text_to_be_present_in_element((AdminPageLocators.FIELD_CITY), test_data.city))
         city = self.browser.find_element(*AdminPageLocators.FIELD_CITY)
         city_title = city.get_attribute("title")
-        assert city_title == TestData.city, "Поле 'Город' не верно"
+        assert city_title == test_data.city, "Поле 'Город' не верно"
 
         checkbox_get_news = self.browser.find_element(*AdminPageLocators.CHECKBOX_GET_NEWS)
         checkbox_get_news_checked = checkbox_get_news.get_attribute("checked")

@@ -9,6 +9,7 @@ def pytest_addoption(parser):
     parser.addoption('--browser_name', action='store', default='chrome', help="Choose browser: chrome or firefox")
     parser.addoption('--language', action='store', default='ru', help="Choose lang")
 
+
 @pytest.fixture
 def chrome_options():
     options = Options()
@@ -16,6 +17,7 @@ def chrome_options():
     # options.add_argument('--start-maximized')
     options.add_argument('--window-size=1600,900')
     return options
+
 
 @pytest.fixture(scope="function")
 def browser(request, chrome_options):
@@ -31,6 +33,7 @@ def browser(request, chrome_options):
     yield browser
     browser.quit()
 
+
 @pytest.fixture(scope="function")
 def language(request):
     user_language = request.config.getoption("--language")
@@ -38,4 +41,6 @@ def language(request):
         language = ''
     elif user_language == "ua":
         language = '/ua'
+    elif user_language == "en":
+        language = '/en'
     yield language

@@ -18,15 +18,15 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeEditPageLocators.YEAR_OF_BIRTH).click()
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_MONTH).click()
         self.browser.find_element(*ResumeEditPageLocators.MONTH_MARCH).click()
+        time.sleep(0.5)
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_DAY).click()
-        time.sleep(0.3)
         self.browser.find_element(*ResumeEditPageLocators.DAY_8).click()
 
         self.browser.find_element(*ResumeEditPageLocators.FIELD_GENDER).click()
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_COUNTRY).click()
         self.browser.find_element(*ResumeEditPageLocators.COUNTRY_KAZAKHSTAN).click()
+        time.sleep(0.5)
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_CITI).click()
-        time.sleep(0.3)
         self.browser.find_element(*ResumeEditPageLocators.CITI_ALMATY).click()
 
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_WILLING_TO_RELOCATE).click()

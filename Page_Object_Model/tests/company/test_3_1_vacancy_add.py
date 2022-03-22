@@ -91,7 +91,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     services_and_prices_page = ServicesAndPricesPage(browser, browser.current_url)
     singleton = Singleton()
 
-    services_and_prices_page.checking_decrease_in_number_of_available_vacancies_for_publication_in_monthly_free_vacancy_package(singleton.id_product, singleton.id_purchase)  # проверка уменьшения количества доступных вакансий для публикации в пакете "Ежемесячная бесплатная вакансия"
+    services_and_prices_page.checking_decrease_in_number_of_available_vacancies_for_publication_in_monthly_free_vacancy_package()  # проверка уменьшения количества доступных вакансий для публикации в пакете "Ежемесячная бесплатная вакансия"
 
 
 def test_verification_of_letter_after_publication_of_vacancy(browser, language):  # проверка письма после публикации вакансии

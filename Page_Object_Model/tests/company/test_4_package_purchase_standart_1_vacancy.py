@@ -5,6 +5,7 @@ from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.email_page import EmailPage
 from Page_Object_Model.data_for_testing import Accounts
+from Page_Object_Model.singleton import Singleton
 
 
 def test_package_purchase_standart_and_orders_processing_and_activating_it_on_site(browser, language):  # покупка пакета "Standart: 1 вакансия" и проведение заказа в админке и активация его на сайте
@@ -21,7 +22,8 @@ def test_package_purchase_standart_and_orders_processing_and_activating_it_on_si
     company_personal_cabinet_page.go_to_services_and_prices_page()  # переход на страницу "Услуги и цены"
 
     services_and_prices_page = ServicesAndPricesPage(browser, browser.current_url)
-    id_product = services_and_prices_page.adding_to_cart_standart_1_vacancy_and_getting_product_id()  # добавление в корзину "Standart: 1 вакансия" и получение id продукта
+    singleton = Singleton()
+    singleton.id_product = services_and_prices_page.adding_to_cart_standart_1_vacancy_and_getting_product_id()  # добавление в корзину "Standart: 1 вакансия" и получение id продукта
     services_and_prices_page.click_button_buy_in_basket()  # нажатие кнопки "Курить" в корзине
     services_and_prices_page.verification_of_message_after_purchase()  # проверка сообщения после покупки
 
@@ -41,7 +43,7 @@ def test_package_purchase_standart_and_orders_processing_and_activating_it_on_si
 
     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_user_purchases_page()  # переход на страницу "Покупки пользователей"
-    id_purchase = admin_page.getting_id_of_purchase(id_order)  # получение id покупки
+    singleton.id_purchase = admin_page.getting_id_of_purchase(id_order)  # получение id покупки
 
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -55,9 +57,9 @@ def test_package_purchase_standart_and_orders_processing_and_activating_it_on_si
 
     services_and_prices_page = ServicesAndPricesPage(browser, browser.current_url)
     # services_and_prices_page.switch_to_tab_not_activated()  # переход на вкладку "Не активированные"
-    services_and_prices_page.availability_of_product_in_not_activated_services(id_product, id_purchase)  # наличие "Standart: 1 вакансия" в не активированных услугах
-    services_and_prices_page.product_activation(id_purchase)  # активация продукта
-    services_and_prices_page.product_availability_in_activated_services(id_product, id_purchase)  # наличие "Standart: 1 вакансия" в активированных услугах
+    services_and_prices_page.availability_of_product_in_not_activated_services()  # наличие "Standart: 1 вакансия" в не активированных услугах
+    services_and_prices_page.product_activation()  # активация продукта
+    services_and_prices_page.product_availability_in_activated_services()  # наличие "Standart: 1 вакансия" в активированных услугах
 
 def test_checking_letter_after_order_processing(browser, language):  # проверка письма после проведения заказа
     link = Accounts.url_email

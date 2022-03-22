@@ -19,9 +19,6 @@ class ServicesAndPricesPage(BasePage):
         return id_product
     # пакеты услуг
 
-
-
-
     def adding_to_cart_monthly_free_vacancy(self):  # добавление в корзину "Ежемесячная бесплатная вакансия" и получение id продукта
         self.browser.execute_script("window.scrollBy(0, 600);")
         self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_ORDER_IN_MONTHLY_FREE_VACANCY).click()
@@ -36,9 +33,6 @@ class ServicesAndPricesPage(BasePage):
         id_product = "4"
         return id_product
     # пакеты поштучно
-
-
-
 
     def click_button_buy_in_basket(self):  # нажатие кнопки "Курить" в корзине
         self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_BUY).click()
@@ -55,25 +49,32 @@ class ServicesAndPricesPage(BasePage):
     def switch_to_tab_not_activated(self):  # переход на вкладку "Не активированные"
         self.browser.find_element(*ServicesAndPricesPageLocators.TAB_NOT_ACTIVATED_SERVICES).click()
 
-    def availability_of_product_in_not_activated_services(self, id_product, id_purchase):  # наличие продукта в не активированных услугах
-        for id in id_purchase:
-            assert self.is_element_present(By.CSS_SELECTOR, ('.tab-deactivate-servises .packages-wrap[data-product-id="' + id_product + '"][data-purchases-id="' + id + '"]')), "Продукта нет в не активированных услугах"
+    def availability_of_product_in_not_activated_services(self):  # наличие продукта в не активированных услугах
+        locators_with_id_product_and_id_purchase = ServicesAndPricesPageLocators()
+        locators = locators_with_id_product_and_id_purchase.assembly_of_locators_with_id_product_and_id_purchase()
+        for locator in locators[0]:
+            assert self.is_element_present(*locator), "Продукта нет в не активированных услугах"
 
-    def product_activation(self, id_purchase):  # активация продукта
-        for id in id_purchase:
-            self.browser.find_element(*ServicesAndPricesPageLocators.TAB_NOT_ACTIVATED_SERVICES).click() # переход на вкладку "Не активированные"
-            self.browser.find_element(By.XPATH, ('//a[contains(@href, "/cart/active?id=' + id + '")]')).click()
+    def product_activation(self):  # активация продукта
+        locators_with_id_purchase = ServicesAndPricesPageLocators()
+        locators = locators_with_id_purchase.assembly_of_locators_with_id_product_and_id_purchase()
+        for locator in locators[2]:
+            self.browser.find_element(*ServicesAndPricesPageLocators.TAB_NOT_ACTIVATED_SERVICES).click()  # переход на вкладку "Не активированные"
+            self.browser.find_element(*locator).click()
             time.sleep(1)
 
-    def product_availability_in_activated_services(self, id_product, id_purchase):  # наличие продукта в активированных услугах
-        for id in id_purchase:
-            assert self.is_element_present(By.CSS_SELECTOR, ('.tab-activated-servises .packages-wrap[data-product-id="' + id_product + '"][data-purchases-id="' + id + '"]')), "Продукта нет в активированных услугах"
+    def product_availability_in_activated_services(self):  # наличие продукта в активированных услугах
+        locators_with_id_product_and_id_purchase = ServicesAndPricesPageLocators()
+        locators = locators_with_id_product_and_id_purchase.assembly_of_locators_with_id_product_and_id_purchase()
+        for locator in locators[1]:
+            assert self.is_element_present(*locator), "Продукта нет в активированных услугах"
 
-    def checking_decrease_in_number_of_available_vacancies_for_publication_in_monthly_free_vacancy_package(self, id_product, id_purchase):  # проверка уменьшения количества доступных вакансий для публикации в пакете "Ежемесячная бесплатная вакансия"
-        for id in id_purchase:
-            self.browser.find_element(By.CSS_SELECTOR, ('.tab-activated-servises .packages-wrap[data-product-id="' + id_product + '"][data-purchases-id="' + id + '"]  .more')).click()
+    def checking_decrease_in_number_of_available_vacancies_for_publication_in_monthly_free_vacancy_package(self):  # проверка уменьшения количества доступных вакансий для публикации в пакете "Ежемесячная бесплатная вакансия"
+        locators_with_id_product_and_id_purchase = ServicesAndPricesPageLocators()
+        locators = locators_with_id_product_and_id_purchase.assembly_of_locators_with_id_product_and_id_purchase()
+        for i in range(len(locators[3])):
+            self.browser.find_element(*locators[3][i]).click()
             time.sleep(0.3)
-            text = self.browser.find_element(By.CSS_SELECTOR, ('.tab-activated-servises .packages-wrap[data-product-id="' + id_product + '"][data-purchases-id="' + id + '"] p.small-text')).text
+            text = self.browser.find_element(*locators[4][i]).text
             index = text.find('/')
             assert int(text[index - 2]) + 1 == int(text[index + 2]), 'В пакете осталось не верное количество вакансий'
-

@@ -70,9 +70,9 @@ class TestPackagePurchaseMonthlyFreeVacancy():
 
         services_and_prices_page = ServicesAndPricesPage(browser, browser.current_url)
         # services_and_prices_page.switch_to_tab_not_activated()  # переход на вкладку "Не активированные"
-        services_and_prices_page.availability_of_product_in_not_activated_services(singleton.id_product, singleton.id_purchase)  # наличие "Ежемесячная бесплатная вакансия" в не активированных услугах
-        services_and_prices_page.product_activation(singleton.id_purchase)  # активация продукта
-        services_and_prices_page.product_availability_in_activated_services(singleton.id_product, singleton.id_purchase)  # наличие "Ежемесячная бесплатная вакансия" в активированных услугах
+        services_and_prices_page.availability_of_product_in_not_activated_services()  # наличие "Ежемесячная бесплатная вакансия" в не активированных услугах
+        services_and_prices_page.product_activation()  # активация продукта
+        services_and_prices_page.product_availability_in_activated_services()  # наличие "Ежемесячная бесплатная вакансия" в активированных услугах
 
         page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
         page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета

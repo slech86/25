@@ -133,7 +133,7 @@ class MyVacanciesPageLocators():
     H1 = (By.CSS_SELECTOR, ('h1'))
     BUTTON_ADD_VACANCY = (By.CSS_SELECTOR, ('#add-vacancy'))
 
-    def assembly_of_locators_with_id_vacancies(self):  # сборка локатов с id вакансии
+    def assembly_of_locators_with_id_vacancies(self):  # сборка локаторов с id вакансии
         singleton = Singleton()
         button_vacancy_menu = (By.CSS_SELECTOR, ('#my-vacancy-' + singleton.id_vacancies + ' .share-btn'))
 
@@ -284,13 +284,31 @@ class ServicesAndPricesPageLocators():
     TAB_NOT_ACTIVATED_SERVICES = (By.CSS_SELECTOR, ('.labet-deactivate-servises'))
     # вкладки
 
-
+    def assembly_of_locators_with_id_product_and_id_purchase(self):  # сборка локаторов с id продукта и id покупок
+        singleton = Singleton()
+        product_in_non_activated_services = []
+        product_in_activated_services = []
+        button_product_activation = []
+        arrow_for_viewing_options_available_in_package = []
+        number_of_vacancies_available = []
+        locators = []
+        for id in singleton.id_purchase:
+            product_in_non_activated_services.append((By.CSS_SELECTOR, ('.tab-deactivate-servises .packages-wrap[data-product-id="' + singleton.id_product + '"][data-purchases-id="' + id + '"]')))
+            product_in_activated_services.append((By.CSS_SELECTOR, ('.tab-activated-servises .packages-wrap[data-product-id="' + singleton.id_product + '"][data-purchases-id="' + id + '"]')))
+            button_product_activation.append((By.XPATH, ('//a[contains(@href, "/cart/active?id=' + id + '")]')))
+            arrow_for_viewing_options_available_in_package.append((By.CSS_SELECTOR, ('.tab-activated-servises .packages-wrap[data-product-id="' + singleton.id_product + '"][data-purchases-id="' + id + '"] .more')))
+            number_of_vacancies_available.append((By.CSS_SELECTOR, ('.tab-activated-servises .packages-wrap[data-product-id="' + singleton.id_product + '"][data-purchases-id="' + id + '"] p.small-text')))
+        locators.append(product_in_non_activated_services)
+        locators.append(product_in_activated_services)
+        locators.append(button_product_activation)
+        locators.append(arrow_for_viewing_options_available_in_package)
+        locators.append(number_of_vacancies_available)
+        return locators
 
     BUTTON_ORDER_IN_STANDART = (By.CSS_SELECTOR, ('[data-product-id="1"]'))
     BUTTON_5_VACANCY = (By.CSS_SELECTOR, ('[for="vacancies-1-5"]'))
     STANDART_IN_BASKET = (By.CSS_SELECTOR, ('.bascket-list-item > [data-product-id="1"]'))
     # пакеты услуг
-
 
     BUTTON_ORDER_IN_MONTHLY_FREE_VACANCY = (By.CSS_SELECTOR, ('[data-product-id="25"]'))
     MONTHLY_FREE_VACANCY_IN_BASKET = (By.CSS_SELECTOR, ('.bascket-list-item > [data-product-id="25"]'))
@@ -298,7 +316,6 @@ class ServicesAndPricesPageLocators():
     BUTTON_ORDER_IN_1_VACANCY = (By.CSS_SELECTOR, ('[data-product-id="4"]'))
     ONE_VACANCY_IN_BASKET = (By.CSS_SELECTOR, ('.bascket-list-item > [data-product-id="4"]'))
     # пакеты поштучно
-
 
     BUTTON_BUY = (By.CSS_SELECTOR, ('.js-button .btn.btn-blue'))
 

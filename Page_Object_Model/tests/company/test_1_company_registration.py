@@ -10,8 +10,8 @@ from Page_Object_Model.data_for_testing import Accounts
 
 # @pytest.mark.s_r_c
 def test_company_registration_with_filling_in_all_fields(browser, language):  # регистрация работодателя с заполнением всех полей
-    url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
-    page = OllPage(browser, url_Page)
+    url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
+    page = OllPage(browser, url_page)
     # browser.maximize_window()
     page.open(False)
     page.age_confirmation()  # подтверждение возраста больше 21 года
@@ -45,7 +45,7 @@ def test_checking_creation_of_user_in_admin_panel(browser, language):  # про�
     admin_page.checking_that_newly_created_user_has_status_Disabled()  # проверка что новосозданный пользователь имеет статус "Отключено"
 
 
-def test_changing_user_role_from_User_to_SuperAdmin(browser, language):  # изменение роли пользователя с "User" на "SuperAdmin"
+def test_changing_user_role_from_user_to_super_admin(browser, language):  # изменение роли пользователя с "User" на "SuperAdmin"
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
@@ -62,7 +62,7 @@ def test_changing_user_role_from_User_to_SuperAdmin(browser, language):  # из�
     admin_page.saving_user_card()  # сохранение карточки пользователя
 
 
-def test_authorization_of_user_in_Disabled_status(browser, language):  # авторизация пользователя в статусе "Отключен"
+def test_authorization_of_user_in_disabled_status(browser, language):  # авторизация пользователя в статусе "Отключен"
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
     # browser.maximize_window()
@@ -71,6 +71,7 @@ def test_authorization_of_user_in_Disabled_status(browser, language):  # авт�
     page.user_authorization()  # авторизация пользователя
     page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
     page.info_text_for_authorization_in_user_status_Disabled()  # инфо текст при авторизации в статусе пользователя "Отключен"
+
 
 # @pytest.mark.s_r_c
 def test_email_verification_after_company_registration(browser, language):  # верификация почты после регистрации работодателя

@@ -13,7 +13,7 @@ class MyVacanciesPage(BasePage):
 
     def go_to_vacancy_editing_page(self):  # переход на страницу редактирования вакансии
         locators_with_id_vacancies = MyVacanciesPageLocators()
-        locators = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies()  # сборка локатов с id вакансии
+        locators = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies()  # сборка локаторов с id вакансии
         self.browser.find_element(*locators[0]).click()
         time.sleep(0.2)
         self.browser.find_element(*locators[1]).click()
