@@ -22,17 +22,21 @@ class JobSeekerEditPage(BasePage):
         self.browser.find_element(*JobSeekerEditPageLocators.DROPDOWN_LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL).click()
         if language == "/ua":
             self.browser.find_element(*JobSeekerEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU).click()
-        else:
+        elif language == "":
+            self.browser.find_element(*JobSeekerEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_EN).click()
+        elif language == "/en":
             self.browser.find_element(*JobSeekerEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA).click()
         # редактирование блока "Настройки"
 
     def saving_data_after_modification(self):  # сохранение данных после изменений
         self.browser.find_element(*JobSeekerEditPageLocators.BUTTON_SAVE_CHANGES).click()
 
-    def checking_message_after_saving_changes_to_personal_information(self):  # проверка сообщения после сохранения изменений личной информации
-        infoText = self.browser.find_element(*JobSeekerEditPageLocators.INFO_TEXT_AFTER_SAVING_PERSONAL_INFORMATION).text
-        if "/ua" in self.browser.current_url:
-            assert "Зміни особистої інформації збережені" == infoText, 'Не верное сообщение'
-        else:
-            assert "Изменения личной информации сохранены" == infoText, 'Не верное сообщение'
+    def checking_message_after_saving_changes_to_personal_information(self, language):  # проверка сообщения после сохранения изменений личной информации
+        info_text = self.browser.find_element(*JobSeekerEditPageLocators.INFO_TEXT_AFTER_SAVING_PERSONAL_INFORMATION).text
+        if language == "/ua":
+            assert "Зміни особистої інформації збережені" == info_text, 'Не верное сообщение'
+        elif language == "/en":
+            assert "Изменения личной информации сохранены" == info_text, 'Не верное сообщение'
+        elif language == "/en":
+            assert "Changes to personal information saved" == info_text, 'Не верное сообщение'
         self.browser.find_element(*JobSeekerEditPageLocators.CROSS_IN_POP_UP_AFTER_SAVING_CHANGES_TO_PERSONAL_INFORMATION).click()

@@ -1,11 +1,8 @@
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.admin_panel_locators import AdminResumeEditPageLocators
 from Page_Object_Model.data_for_testing import TestData, TestDataEditing, Accounts
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import random
 import time
 
 
@@ -21,8 +18,10 @@ class AdminResumeEditPage(BasePage):
         user_title = user.get_attribute("title")
         if language == '/ua':
             assert '(' + TestData.login_ua + ')' in user_title, "Поле 'Пользователь' не верно"
-        else:
+        elif language == "":
             assert '(' + TestData.login_ru + ')' in user_title, "Поле 'Пользователь' не верно"
+        elif language == "/en":
+            assert '(' + TestData.login_en + ')' in user_title, "Поле 'Пользователь' не верно"
 
         job_search_status = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_JOB_SEARCH_STATUS)
         job_search_status_title = job_search_status.get_attribute("title")

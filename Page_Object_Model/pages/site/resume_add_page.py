@@ -237,8 +237,10 @@ class ResumeAddPage(BasePage):
         status_level_filling = self.browser.find_element(*ResumeAddPageLocators.STATUS_OF_YOUR_RESUME).text
         if language == "/ua":
             assert status_level_filling == 'Професійне', 'Не верный статус уровня заполнения'
-        else:
+        elif language == "":
             assert status_level_filling == 'Профессиональное', 'Не верный статус уровня заполнения'
+        elif language == "/en":
+            assert status_level_filling == 'Professional', 'Не верный статус уровня заполнения'
 
     def submitting_resume_for_publication(self,):  # отправка резюме на публикацию
         self.browser.find_element(*ResumeAddPageLocators.BUTTON_PUBLISH).click()

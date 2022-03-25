@@ -21,8 +21,10 @@ class AdminVacancyEditPage(BasePage):
         user_title = user.get_attribute("title")
         if language == '/ua':
             assert '(' + TestData.login_ua + ')' in user_title, "Поле 'Пользователь' не верно"
-        else:
+        elif language == "":
             assert '(' + TestData.login_ru + ')' in user_title, "Поле 'Пользователь' не верно"
+        elif language == "/en":
+            assert '(' + TestData.login_en + ')' in user_title, "Поле 'Пользователь' не верно"
 
         job_title_vacancy = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_JOB_TITLE)
         job_title_vacancy_value = job_title_vacancy.get_attribute("value")

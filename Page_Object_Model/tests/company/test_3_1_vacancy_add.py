@@ -22,7 +22,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     # browser.maximize_window()
     page.open()
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.user_authorization()  # авторизация пользователя
+    page.user_authorization(language)  # авторизация пользователя
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
     page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 
@@ -39,8 +39,8 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     add_vacancy_page.submitting_vacancy_for_publication()  # отправка вакансии на публикацию
 
     my_vacancies_page.waiting_for_my_vacancies_page_to_open(language)  # ожидание открытия страницы 'Мои вакансии'
-    my_vacancies_page.confirmation_of_opening_of_page_my_vacancies()  # подтверждение открытия страницы 'Мои вакансии'
-    my_vacancies_page.checking_message_confirming_submission_of_vacancy_for_moderation()  # проверка сообщения о подтверждении отправки вакансии на модерацию
+    my_vacancies_page.confirmation_of_opening_of_page_my_vacancies(language)  # подтверждение открытия страницы 'Мои вакансии'
+    my_vacancies_page.checking_message_confirming_submission_of_vacancy_for_moderation(language)  # проверка сообщения о подтверждении отправки вакансии на модерацию
 
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
@@ -100,9 +100,4 @@ def test_verification_of_letter_after_publication_of_vacancy(browser, language):
     email_page.open()
     # browser.maximize_window()
     email_page.email_authorization()  # авторизация email
-
-    if language == "/ua":
-        email_page.verification_of_letter_after_publication_of_vacancy_ua()  # проверка письма после публикации вакансии ua
-    else:
-        email_page.verification_of_letter_after_publication_of_vacancy_ru()  # проверка письма после публикации вакансии ru
-
+    email_page.verification_of_letter_after_publication_of_vacancy(language)  # проверка письма после публикации вакансии

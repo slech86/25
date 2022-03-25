@@ -4,6 +4,7 @@ from Page_Object_Model.data_for_testing import TestDataEditing
 import time
 import os
 
+
 class CompanyEditPage(BasePage):
     def change_data_in_all_fields(self, language):  # изменение данных во всех полях
         self.browser.find_element(*CompanyEditPageLocators.BUTTON_EDIT_IN_CONTACT_INFORMATION_BLOCK).click()
@@ -71,17 +72,21 @@ class CompanyEditPage(BasePage):
         self.browser.find_element(*CompanyEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL).click()
         if language == "/ua":
             self.browser.find_element(*CompanyEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU).click()
-        else:
+        elif language == "":
             self.browser.find_element(*CompanyEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA).click()
+        elif language == "/en":
+            self.browser.find_element(*CompanyEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_EN).click()
         # редактирование блока "Настройки"
 
     def submitting_form_for_moderation_after_changing_data(self):  # отправка формы на модерацию после изменения данных
         self.browser.find_element(*CompanyEditPageLocators.BUTTON_SUBMIT).click()
 
-    def checking_message_after_saving_changes_to_personal_information(self):  # проверка сообщения после сохранения изменений личной информации
+    def checking_message_after_saving_changes_to_personal_information(self, language):  # проверка сообщения после сохранения изменений личной информации
         infoText = self.browser.find_element(*CompanyEditPageLocators.INFO_TEXT_AFTER_SAVING_PERSONAL_INFORMATION).text
-        if "/ua" in self.browser.current_url:
+        if language == "/ua":
             assert "Зміни особистої інформації збережені" == infoText, 'Не верное сообщение'
-        else:
+        elif language == "":
             assert "Изменения личной информации сохранены" == infoText, 'Не верное сообщение'
+        elif language == "/en":
+            assert "Changes to personal information saved" == infoText, 'Не верное сообщение'
         self.browser.find_element(*CompanyEditPageLocators.CROSS_IN_POP_UP_AFTER_SAVING_CHANGES_TO_PERSONAL_INFORMATION).click()

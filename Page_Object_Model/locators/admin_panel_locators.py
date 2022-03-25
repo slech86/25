@@ -33,6 +33,7 @@ class AdminPageLocators():
     FIELD_EMAIL_SEARCH = (By.CSS_SELECTOR, ('[name="User[email]"]'))
     USER_EMAIL_RU = (By.XPATH, ('//td[text()="' + TestData.email_ru + '"]'))
     USER_EMAIL_UA = (By.XPATH, ('//td[text()="' + TestData.email_ua + '"]'))
+    USER_EMAIL_EN = (By.XPATH, ('//td[text()="' + TestData.email_en + '"]'))
     STATUS_ACTIVE = (By.CSS_SELECTOR, ('.form-control.input-sm [value="1"]'))
     STATUS_DELETED = (By.CSS_SELECTOR, ('.form-control.input-sm [value="-1"]'))
     # страница пользователей
@@ -47,7 +48,7 @@ class AdminPageLocators():
     FIELD_SURNAME = (By.CSS_SELECTOR, ('[name="User[descriptions][1][surname]"]'))
     FIELD_COMPANY_NAME = (By.CSS_SELECTOR, ('[name="User[descriptions][1][company_name]"]'))
     FIELD_DATE_OF_COMPANY_FOUNDATION = (By.CSS_SELECTOR, ('[name="User[descriptions][1][foundation_date]"]'))
-    FIELD_BIRTHDAY = (By.CSS_SELECTOR, ('#users-descriptions-1-birthday')) #  ????
+    FIELD_BIRTHDAY = (By.CSS_SELECTOR, ('#users-descriptions-1-birthday'))
     FIELD_GENDER = (By.CSS_SELECTOR, ('#select2-users-descriptions-1-gender-container'))
     FIELD_POSITION = (By.CSS_SELECTOR, ('[name="User[descriptions][1][position]"]'))
     FIELD_PHONE = (By.CSS_SELECTOR, ('[name="User[descriptions][1][phone]"]'))
@@ -75,8 +76,6 @@ class AdminPageLocators():
     FIELD_STREET = (By.CSS_SELECTOR, ('#users-descriptions-1-street'))
     CHECKBOX_GET_NEWS = (By.CSS_SELECTOR, ('#users-descriptions-1-get_news'))
 
-
-
     FIELD_WITH_ROLE_USER = (By.CSS_SELECTOR, ('[title="[#4] User"]'))  # поле с ролью "User"
     ROLE_SUPER_ADMIN = (By.XPATH, ('//li[text()="[#1] SuperAdmin"]'))
     # страница пользователя
@@ -93,6 +92,7 @@ class AdminPageLocators():
     FIELD_EMAIL_SEARCH_ORDERS = (By.CSS_SELECTOR, ('[name="Orders[userEmail]"]'))
     USER_EMAIL_ORDERS_RU = (By.XPATH, ('//span[text()="' + TestData.email_ru + '"]'))
     USER_EMAIL_ORDERS_UA = (By.XPATH, ('//span[text()="' + TestData.email_ua + '"]'))
+    USER_EMAIL_ORDERS_EN = (By.XPATH, ('//span[text()="' + TestData.email_en + '"]'))
     STATUS_COMPLETED = (By.CSS_SELECTOR, ('.form-control.input-sm > [value="3"]'))
     ID_LAST_ORDER = (By.CSS_SELECTOR, ('tbody > tr:nth-child(1) > td:nth-child(2)'))
     # страница заказов

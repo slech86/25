@@ -41,8 +41,6 @@ class AdminPage(BasePage):
         self.browser.find_element(*AdminPageLocators.USER_PURCHASES).click()
     # шапка
 
-
-
     def complete_objects_deletion(self):  # полное удаление объектов (кроме пользователя)
         objects = self.browser.find_elements(*AdminPageLocators.BUTTON_OBJECT_MENU)
 
@@ -57,23 +55,26 @@ class AdminPage(BasePage):
         self.browser.find_element(*AdminPageLocators.BUTTON_OBJECT_MENU).click()  # костыль из-за ховер эффекта на кнопке меню пользователя
     # общие
 
-
-
-
-    def search_user_by_email_ru(self):  # поиск пользователя по e-mail ru
-        self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_SEARCH).send_keys(TestData.email_ru, Keys.ENTER)
+    def search_user_by_email(self, language):  # поиск пользователя по e-mail
+        email, user_email = None, None
+        if language == "/ua":
+            email = TestData.email_ua
+            user_email = AdminPageLocators.USER_EMAIL_UA
+        elif language == "":
+            email = TestData.email_ru
+            user_email = AdminPageLocators.USER_EMAIL_RU
+        elif language == "/en":
+            email = TestData.email_en
+            user_email = AdminPageLocators.USER_EMAIL_EN
+        self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_SEARCH).send_keys(email, Keys.ENTER)
         time.sleep(2)
-        self.browser.find_element(*AdminPageLocators.USER_EMAIL_RU)
-    def search_user_by_email_ua(self):  # поиск пользователя по e-mail ua
-        self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_SEARCH).send_keys(TestData.email_ua, Keys.ENTER)
-        time.sleep(2)
-        self.browser.find_element(*AdminPageLocators.USER_EMAIL_UA)
+        assert self.is_element_present(*user_email), 'Пользователь не найден'
 
-    def checking_that_newly_created_user_has_status_Disabled(self):  # проверка что новосозданный пользователь имеет статус "Отключено"
+    def checking_that_newly_created_user_has_status_disabled(self):  # проверка что новосозданный пользователь имеет статус "Отключено"
         status = self.browser.find_element(*AdminPageLocators.STATUS).text
         assert status == 'Отключен', 'Статус не "Отключен"'
 
-    def change_of_user_status_from_On_moderation_to_Active(self):  # изменение статуса пользователя с "На модерации" на "Активен"
+    def change_of_user_status_from_on_moderation_to_active(self):  # изменение статуса пользователя с "На модерации" на "Активен"
         status = self.browser.find_element(*AdminPageLocators.STATUS).text
         assert status == 'На модерации', 'Статус не "На модерации"'
         self.browser.find_element(*AdminPageLocators.STATUS).click()
@@ -83,7 +84,7 @@ class AdminPage(BasePage):
         self.browser.find_element(*AdminPageLocators.STATUS_SAVING).click()
         time.sleep(5)
 
-    def changing_user_status_to_Deleted(self):  # изменение статуса пользователя на "Удалено"
+    def changing_user_status_to_deleted(self):  # изменение статуса пользователя на "Удалено"
         self.browser.find_element(*AdminPageLocators.STATUS).click()
         time.sleep(1)
         self.browser.find_element(*AdminPageLocators.STATUS_DELETED).click()
@@ -94,20 +95,17 @@ class AdminPage(BasePage):
         status = self.browser.find_element(*AdminPageLocators.STATUS).text
         assert status == 'Удалено', 'Статус не "Удалено"'
 
-    def check_that_user_has_status_Active(self):  # проверка что пользователь имеет статус "Активен"
+    def check_that_user_has_status_active(self):  # проверка что пользователь имеет статус "Активен"
         self.browser.refresh()
         status = self.browser.find_element(*AdminPageLocators.STATUS).text
         assert status == 'Активен', 'Статус не "Активен"'
     # страница пользователей
 
-
-
-
-    def changing_role_from_User_to_SuperAdmin(self):  # изменение роли с "User" на "SuperAdmin"
+    def changing_role_from_user_to_super_admin(self):  # изменение роли с "User" на "SuperAdmin"
         self.browser.find_element(*AdminPageLocators.FIELD_WITH_ROLE_USER).click()
         self.browser.find_element(*AdminPageLocators.ROLE_SUPER_ADMIN).click()
 
-    def adding_unique_values_to_Login_and_Email_fields(self):  # внесение в поля "Login" и "Электронный адрес" уникальные значения
+    def adding_unique_values_to_login_and_email_fields(self):  # внесение в поля "Login" и "Электронный адрес" уникальные значения
         self.browser.find_element(*AdminPageLocators.FIELD_USER_LOGIN).send_keys(str(random.random()))
         field_user_email = self.browser.find_element(*AdminPageLocators.FIELD_USER_EMAIL)
         field_user_email.clear()
@@ -122,22 +120,28 @@ class AdminPage(BasePage):
         login_value = login.get_attribute("value")
         if language == "/ua":
             assert login_value == TestData.login_ua, "Поле 'Логин' не верно"
-        else:
+        elif language == "":
             assert login_value == TestData.login_ru, "Поле 'Логин' не верно"
+        elif language == "/en":
+            assert login_value == TestData.login_en, "Поле 'Логин' не верно"
 
         email = self.browser.find_element(*AdminPageLocators.FIELD_USER_EMAIL)
         email_value = email.get_attribute("value")
         if language == "/ua":
             assert email_value == TestData.email_ua, "Поле 'Email' не верно"
-        else:
+        elif language == "":
             assert email_value == TestData.email_ru, "Поле 'Email' не верно"
+        elif language == "/en":
+            assert email_value == TestData.email_en, "Поле 'Email' не верно"
 
         email_language = self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_LANGUAGE)
         email_language_title = email_language.get_attribute("title")
         if language == "/ua":
             assert email_language_title == TestData.email_language_ua, "Поле 'Язык уведомлений на e-mail' не верно"
-        else:
+        elif language == "":
             assert email_language_title == TestData.email_language_ru, "Поле 'Язык уведомлений на e-mail' не верно"
+        elif language == "/en":
+            assert email_language_title == TestData.email_language_en, "Поле 'Язык уведомлений на e-mail' не верно"
 
         name = self.browser.find_element(*AdminPageLocators.FIELD_NAME)
         name_value = name.get_attribute("value")
@@ -251,22 +255,28 @@ class AdminPage(BasePage):
         login_value = login.get_attribute("value")
         if language == "/ua":
             assert login_value == TestData.login_ua, "Поле 'Логин' не верно"
-        else:
+        elif language == "":
             assert login_value == TestData.login_ru, "Поле 'Логин' не верно"
+        elif language == "/en":
+            assert login_value == TestData.login_en, "Поле 'Логин' не верно"
 
         email = self.browser.find_element(*AdminPageLocators.FIELD_USER_EMAIL)
         email_value = email.get_attribute("value")
         if language == "/ua":
             assert email_value == TestData.email_ua, "Поле 'Email' не верно"
-        else:
+        elif language == "":
             assert email_value == TestData.email_ru, "Поле 'Email' не верно"
+        elif language == "/en":
+            assert email_value == TestData.email_en, "Поле 'Email' не верно"
 
         email_language = self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_LANGUAGE)
         email_language_title = email_language.get_attribute("title")
         if language == "/ua":
             assert email_language_title == TestData.email_language_ua, "Поле 'Язык уведомлений на e-mail' не верно"
-        else:
+        elif language == "":
             assert email_language_title == TestData.email_language_ru, "Поле 'Язык уведомлений на e-mail' не верно"
+        elif language == "/en":
+            assert email_language_title == TestData.email_language_en, "Поле 'Язык уведомлений на e-mail' не верно"
 
         self.verification_of_saving_data_entered_job_seeker(TestData)
 
@@ -275,7 +285,9 @@ class AdminPage(BasePage):
         email_language_title = email_language.get_attribute("title")
         if language == "/ua":
             assert email_language_title == TestDataEditing.email_language_ru, "Поле 'Язык уведомлений на e-mail' не верно"
-        else:
+        elif language == "":
+            assert email_language_title == TestDataEditing.email_language_en, "Поле 'Язык уведомлений на e-mail' не верно"
+        elif language == "/en":
             assert email_language_title == TestDataEditing.email_language_ua, "Поле 'Язык уведомлений на e-mail' не верно"
 
         self.verification_of_saving_data_entered_job_seeker(TestDataEditing)
@@ -311,22 +323,18 @@ class AdminPage(BasePage):
         assert checkbox_get_news_checked is not None, "Не установлено получение новостей"
     # страница пользователя
 
-
     def waiting_to_save_status_and_open_vacansies_page(self):  # ожидание сохранения статуса и открытия страницы вакансий
         WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((AdminPageLocators.H1_VACANCIES), 'Вакансии'))
-
 
     def vacancy_search_by_job_title(self):  # поиск вакансии по названию должности
         self.browser.find_element(*AdminPageLocators.FIELD_JOB_TITLE_SEARCH_VACANCIES).send_keys(TestData.job_title_vacancy, Keys.ENTER)
         time.sleep(2)
         assert self.is_element_present(*AdminPageLocators.VACANCY_BY_JOB_TITLE), 'Вакансия не найдена'
 
-
     def vacancy_search_by_job_title_after_editing(self):  # поиск вакансии по названию должности после редактирования
         self.browser.find_element(*AdminPageLocators.FIELD_JOB_TITLE_SEARCH_VACANCIES).send_keys(TestData.job_title_vacancy + '_editing', Keys.ENTER)
         time.sleep(2)
         assert self.is_element_present(*AdminPageLocators.VACANCY_BY_JOB_TITLE_AFTER_EDITING), 'Вакансия не найдена'
-
 
     def getting_vacancy_id(self):  # получение id вакансии
         id_vacancies = self.browser.find_element(*AdminPageLocators.ID_VACANCY).text
@@ -337,14 +345,20 @@ class AdminPage(BasePage):
         assert status == 'На модерацию', 'Статус не "На модерацию"'
     # страница вакансий
 
-    def search_for_user_orders_by_email_ru(self):  # поиск заказов пользователя по e-mail ru
-        self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_SEARCH_ORDERS).send_keys(TestData.email_ru, Keys.ENTER)
+    def search_for_user_orders_by_email(self, language):  # поиск заказов пользователя по e-mail
+        email, user_email_orders = None, None
+        if language == "/ua":
+            email = TestData.email_ua
+            user_email_orders = AdminPageLocators.USER_EMAIL_ORDERS_UA
+        elif language == "":
+            email = TestData.email_ru
+            user_email_orders = AdminPageLocators.USER_EMAIL_ORDERS_RU
+        elif language == "/en":
+            email = TestData.email_en
+            user_email_orders = AdminPageLocators.USER_EMAIL_ORDERS_EN
+        self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_SEARCH_ORDERS).send_keys(email, Keys.ENTER)
         time.sleep(2)
-        self.browser.find_element(*AdminPageLocators.USER_EMAIL_ORDERS_RU)
-    def search_for_user_orders_by_email_ua(self):  # поиск заказов пользователя по e-mail ua
-        self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_SEARCH_ORDERS).send_keys(TestData.email_ua, Keys.ENTER)
-        time.sleep(2)
-        self.browser.find_element(*AdminPageLocators.USER_EMAIL_ORDERS_UA)
+        assert self.is_element_present(*user_email_orders), 'Заказ пользователя не найден'
 
     # def search_for_user_orders_by_status(self):  # поиск заказов пользователя по статусу "Новый"
     #     self.browser.find_element(*AdminPageLocators.SEARCH_STATUS_NEW).click()
@@ -353,7 +367,6 @@ class AdminPage(BasePage):
     def getting_last_order_id_of_user(self):  # получение последнего id заказа пользователя
         id_order = self.browser.find_element(*AdminPageLocators.ID_LAST_ORDER).text
         return id_order
-
 
     def order_processing(self):  # проведение заказа, изменение статуса заказа с "Новый" на "Проведенный"
         status = self.browser.find_element(*AdminPageLocators.STATUS).text
@@ -367,9 +380,6 @@ class AdminPage(BasePage):
         status = self.browser.find_element(*AdminPageLocators.STATUS).text
         assert status == 'Проведенный', 'Статус не "Проведенный"'
     # страница заказов
-
-
-
 
     def getting_id_of_purchase(self, id_order):  # получение id покупки
         self.browser.find_element(*AdminPageLocators.DROPDOWN_SEARCH_ORDERS).click()

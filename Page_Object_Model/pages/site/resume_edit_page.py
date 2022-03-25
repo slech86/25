@@ -141,7 +141,7 @@ class ResumeEditPage(BasePage):
 
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_WORK_EXPERIENCE_GAMBLING_INDUSTRY).click()
         self.browser.find_element(*ResumeEditPageLocators.EXPERIENCE_2_TO_5_YEARS).click()
-        # блок "Опыт работы в игорной идустрии"
+        # блок "Опыт работы в игорной индустрии"
 
         self.browser.find_element(*ResumeEditPageLocators.BUTTON_EDIT_IN_EDUCATION_BLOCK).click()
         self.browser.find_element(*ResumeEditPageLocators.FIELD_NAME_OF_INSTITUTION).send_keys('_editing')
@@ -295,8 +295,10 @@ class ResumeEditPage(BasePage):
         status_level_filling = self.browser.find_element(*ResumeEditPageLocators.STATUS_OF_YOUR_RESUME).text
         if language == "/ua":
             assert status_level_filling == 'Професійне', 'Не верный статус уровня заполнения'
-        else:
+        elif language == "":
             assert status_level_filling == 'Профессиональное', 'Не верный статус уровня заполнения'
+        elif language == "/en":
+            assert status_level_filling == 'Professional', 'Не верный статус уровня заполнения'
 
     def submitting_resume_change_for_publication(self,):  # отправка изменений резюме на публикацию
         self.browser.find_element(*ResumeEditPageLocators.BUTTON_PUBLISH).click()

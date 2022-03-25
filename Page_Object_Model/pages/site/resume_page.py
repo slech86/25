@@ -8,8 +8,10 @@ class ResumePage(BasePage):
         h1 = self.browser.find_element(*ResumePageLocators.H1).text
         if language == "/ua":
             assert h1 == 'Резюме приховано', "Не корректный h1"
-        else:
+        elif language == "":
             assert h1 == 'Резюме скрыто', "Не корректный h1"
+        elif language == "/en":
+            assert h1 == 'CV is hidden', "Не корректный h1"
 
     def checking_opening_of_page_of_published_resume(self):  # проверка открытия страницы опубликованного резюме
         h1 = self.browser.find_element(*ResumePageLocators.H1).text

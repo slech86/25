@@ -16,7 +16,7 @@ def test_editing_vacancies(browser, language):  # редактирование �
     # browser.maximize_window()
     page.open()
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.user_authorization()  # авторизация пользователя
+    page.user_authorization(language)  # авторизация пользователя
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
     page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 
@@ -30,8 +30,8 @@ def test_editing_vacancies(browser, language):  # редактирование �
     vacancy_edit_page.change_data_in_all_fields()  # изменение данных во всех полях
     vacancy_edit_page.submitting_vacancy_change_for_publication()  # отправка изменений вакансии на публикацию
     my_vacancies_page.waiting_for_my_vacancies_page_to_open(language)  # ожидание открытия страницы 'Мои вакансии'
-    my_vacancies_page.confirmation_of_opening_of_page_my_vacancies()  # подтверждение открытия страницы 'Мои вакансии'
-    my_vacancies_page.checking_message_confirming_submission_of_vacancy_for_moderation()  # проверка сообщения о подтверждении отправки вакансии на модерацию
+    my_vacancies_page.confirmation_of_opening_of_page_my_vacancies(language)  # подтверждение открытия страницы 'Мои вакансии'
+    my_vacancies_page.checking_message_confirming_submission_of_vacancy_for_moderation(language)  # проверка сообщения о подтверждении отправки вакансии на модерацию
 
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
@@ -49,10 +49,5 @@ def test_complete_deletion_of_user_orders(browser, language):  # полное у
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_order_page()  # переход на страницу заказов
-
-    if language == "/ua":
-        admin_page.search_for_user_orders_by_email_ua()  # поиск заказов пользователя по e-mail ua
-    else:
-        admin_page.search_for_user_orders_by_email_ru()  # поиск заказов пользователя по e-mail ru
-
+    admin_page.search_for_user_orders_by_email(language)  # поиск заказов пользователя по e-mail
     admin_page.complete_objects_deletion()  # полное удаление объектов

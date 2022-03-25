@@ -11,12 +11,12 @@ from Page_Object_Model.pages.site.resume_edit_page import ResumeEditPage
 
 @pytest.mark.s_r_c
 def test_editing_resume(browser, language):  # редактирование резюме
-    url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
-    page = OllPage(browser, url_Page)
+    url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
+    page = OllPage(browser, url_page)
     # browser.maximize_window()
     page.open()
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.user_authorization()  # авторизация пользователя
+    page.user_authorization(language)  # авторизация пользователя
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
     page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 
@@ -33,8 +33,8 @@ def test_editing_resume(browser, language):  # редактирование ре
     resume_edit_page.submitting_resume_change_for_publication()  # отправка изменений резюме на публикацию
 
     my_resume_page.waiting_for_my_resumes_page_to_open(language)  # ожидание открытия страницы 'Мои резюме'
-    my_resume_page.confirmation_of_opening_of_page_my_resumes()  # подтверждение открытия страницы 'Мои резюме'
-    my_resume_page.checking_message_confirming_submission_of_resume_for_moderation()  # проверка сообщения о подтверждении отправки резюме на модерацию
+    my_resume_page.confirmation_of_opening_of_page_my_resumes(language)  # подтверждение открытия страницы 'Мои резюме'
+    my_resume_page.checking_message_confirming_submission_of_resume_for_moderation(language)  # проверка сообщения о подтверждении отправки резюме на модерацию
 
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()

@@ -5,16 +5,20 @@ import os
 
 
 class CompanyRegistrationPage(BasePage):
-    def filling_in_required_fields(self):  # заполнение обязательных полей
-        if "/ua" in self.browser.current_url:
+    def filling_in_required_fields(self, language):  # заполнение обязательных полей
+        if language == "/ua":
             self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_LOGIN).send_keys(TestData.login_ua)
-        else:
+        elif language == "":
             self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_LOGIN).send_keys(TestData.login_ru)
+        elif language == "/en":
+            self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_LOGIN).send_keys(TestData.login_en)
 
-        if "/ua" in self.browser.current_url:
+        if language == "/ua":
             self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_EMAIL).send_keys(TestData.email_ua)
-        else:
+        elif language == "":
             self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_EMAIL).send_keys(TestData.email_ru)
+        elif language == "/en":
+            self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_EMAIL).send_keys(TestData.email_en)
 
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_PASSWORD).send_keys(TestData.password)
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_REPEAT_PASSWORD).send_keys(TestData.password)

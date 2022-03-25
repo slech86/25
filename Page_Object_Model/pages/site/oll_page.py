@@ -22,13 +22,15 @@ class OllPage(BasePage):
         self.browser.find_element(*OllPageLocators.JOB_SEEKER_TAB).click()
         self.browser.find_element(*OllPageLocators.JOB_SEEKER_REGISTRATION_LINK).click()
 
-    def user_authorization(self):  # авторизация пользователя
-        if "ua" in self.browser.current_url:
+    def user_authorization(self, language):  # авторизация пользователя
+        if language == "/ua":
             self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(TestData.login_ua)
             # self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys('p.verbenets')
-
-        else:
+        elif language == "":
             self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(TestData.login_ru)
+            # self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys('p.verbenets')
+        elif language == "/en":
+            self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(TestData.login_en)
             # self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys('p.verbenets')
 
         self.browser.find_element(*OllPageLocators.FIELD_PASSWORD).send_keys(TestData.password)
@@ -46,18 +48,20 @@ class OllPage(BasePage):
     def go_to_personal_cabinet_page(self):  # нажатие на кнопку для перехода на страницу личного кабинета
         self.browser.find_element(*OllPageLocators.LINK_PERSONAL_ACCOUNT).click()
 
+    def info_text_for_authorization_in_user_status_disabled(self, language):  # инфо текст при авторизации в статусе пользователя "Отключен"
+        info_text = self.browser.find_element(*OllPageLocators.INFO_TEXT_IN_POP_UP_WINDOW).text
+        if language == "/ua":
+            assert "Користувач ще не активований. Для завершення активації облікового запису перейдіть за посиланням у листі, який було надіслано на ваш e-mail." == info_text, 'Не верное сообщение'
+        elif language == "":
+            assert "Пользователь еще не активирован. Для завершения активации своего аккаунта перейдите по ссылке в письме, которое было отправлено на ваш e-mail." == info_text, 'Не верное сообщение'
+        elif language == "/en":
+            assert "???" == info_text, 'Не верное сообщение'
 
-
-    def info_text_for_authorization_in_user_status_Disabled(self):  # инфо текст при авторизации в статусе пользователя "Отключен"
-        infoText = self.browser.find_element(*OllPageLocators.INFO_TEXT_IN_POP_UP_WINDOW).text
-        if "ua" in self.browser.current_url:
-            assert "Користувач ще не активований. Для завершення активації облікового запису перейдіть за посиланням у листі, який було надіслано на ваш e-mail." == infoText, 'Не верное сообщение'
-        else:
-            assert "Пользователь еще не активирован. Для завершения активации своего аккаунта перейдите по ссылке в письме, которое было отправлено на ваш e-mail." == infoText, 'Не верное сообщение'
-
-    def info_text_for_authorization_in_user_status_On_moderation(self):  # инфо текст при авторизации в статусе пользователя "На модерации"
-        infoText = self.browser.find_element(*OllPageLocators.INFO_TEXT_IN_POP_UP_WINDOW).text
-        if "ua" in self.browser.current_url:
-            assert "Модерація вашого облікового запису завершиться впродовж 24 годин" == infoText, 'Не верное сообщение'
-        else:
-            assert "Модерация вашего аккаунта завершится в течение 24 часов." == infoText, 'Не верное сообщение'
+    def info_text_for_authorization_in_user_status_on_moderation(self, language):  # инфо текст при авторизации в статусе пользователя "На модерации"
+        info_text = self.browser.find_element(*OllPageLocators.INFO_TEXT_IN_POP_UP_WINDOW).text
+        if language == "/ua":
+            assert "Модерація вашого облікового запису завершиться впродовж 24 годин" == info_text, 'Не верное сообщение'
+        elif language == "":
+            assert "Модерация вашего аккаунта завершится в течение 24 часов." == info_text, 'Не верное сообщение'
+        elif language == "/en":
+            assert "???" == info_text, 'Не верное сообщение'

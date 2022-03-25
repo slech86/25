@@ -3,7 +3,6 @@ from Page_Object_Model.сonfiguration import UrlPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_resumes_page import AdminResumesPage
 
 
-
 # @pytest.mark.s_r_c
 def test_complete_deletion_of_resume(browser):  # полное удаление резюме
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)

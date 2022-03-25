@@ -38,12 +38,14 @@ class ServicesAndPricesPage(BasePage):
         self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_BUY).click()
         time.sleep(1)
 
-    def verification_of_message_after_purchase(self):  # проверка сообщения после покупки
+    def verification_of_message_after_purchase(self, language):  # проверка сообщения после покупки
         infoText = self.browser.find_element(*ServicesAndPricesPageLocators.INFO_TEXT_AFTER_BUTTON_PRESSED_BUY_IN_CART).text
-        if "ua" in self.browser.current_url:
+        if language == "/ua":
             assert "Наш менеджер зв'яжеться з Вами в найкоротший термін. Після узгодження всіх деталей Ви отримаєте доступ до послуги." == infoText, 'Не верное сообщение'
-        else:
+        elif language == "":
             assert "Наш менеджер свяжется с Вами в кратчайшие сроки. После согласования всех деталей Вы получите доступ к услуге." == infoText, 'Не верное сообщение'
+        elif language == "/en":
+            assert "Our manager will contact you as soon as possible. After agreeing on all the details, you will get access to the service." == infoText, 'Не верное сообщение'
         self.browser.find_element(*ServicesAndPricesPageLocators.CROSS_IN_POP_UP_AFTER_PRESSING_BUTTON_BUY_IN_BASKET).click()
 
     def switch_to_tab_not_activated(self):  # переход на вкладку "Не активированные"

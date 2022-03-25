@@ -22,6 +22,7 @@ class OllPageLocators():
 class VacancyPageLocators():
     H1 = (By.CSS_SELECTOR, ('h1'))
 
+
 class ResumePageLocators():
     H1 = (By.CSS_SELECTOR, ('h1'))
 
@@ -40,25 +41,34 @@ class EmailPageLocators():
 
     LETTER_OF_REGISTRATION_CONFIRMATION_COMPANY_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Регистрация работодателя на LCwork"]'))
     LETTER_OF_REGISTRATION_CONFIRMATION_COMPANY_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Реєстрація роботодавця на LCwork"]'))
+    LETTER_OF_REGISTRATION_CONFIRMATION_COMPANY_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="???"]'))
     LETTER_WELCOME_TO_LCWORK_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Добро пожаловать на LСwork"]'))  # письмо после первой модерации для работодателя и подтверждение регистрации для соискателя ru
     LETTER_WELCOME_TO_LCWORK_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ласкаво просимо на LCwork"]'))  # письмо после первой модерации для работодателя и подтверждение регистрации для соискателя ua
+    LETTER_WELCOME_TO_LCWORK_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="???"]'))  # письмо после первой модерации для работодателя и подтверждение регистрации для соискателя en
     LETTER_AFTER_ORDER_PROCESSING_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Оплата подтверждена, активируйте услугу на сайте"]'))  # письмо после проведения заказа ru
     LETTER_AFTER_ORDER_PROCESSING_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Оплата отримана, активуйте послугу на сайті"]'))  # письмо после проведения заказа ua
+    LETTER_AFTER_ORDER_PROCESSING_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="???"]'))  # письмо после проведения заказа en
     LETTER_AFTER_PUBLISHING_VACANCY_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваша вакансия добавлена на сайт"]'))  # письмо после публикации вакансии ru
-    LETTER_AFTER_PUBLISHING_VACANCY_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваша вакансія вже на сайті"]'))  # письмо после публикации вакансии ua
+    LETTER_AFTER_PUBLISHING_VACANCY_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваша вакансія вже на сайті"]'))
+    LETTER_AFTER_PUBLISHING_VACANCY_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="???"]')) # письмо после публикации вакансии en
     LETTER_AFTER_PUBLISHING_RESUME_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваше резюме опубликовано"]'))  # письмо после публикации резюме ru
     LETTER_AFTER_PUBLISHING_RESUME_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваше резюме опубліковано"]'))  # письмо после публикации резюме ua
+    LETTER_AFTER_PUBLISHING_RESUME_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="???"]'))  # письмо после публикации резюме
 
     IFRAME_LETTER = (By.CSS_SELECTOR, ('#messagecontframe'))
     LINK_IN_LETTER = (By.CSS_SELECTOR, ('[rel="noreferrer"]'))
     TEXT_IN_LETTER_AFTER_FIRST_MODERATION_RU = (By.XPATH, ('//div[text()="Ура! Ваш аккаунт прошел модерацию."]'))
     TEXT_IN_LETTER_AFTER_FIRST_MODERATION_UA = (By.XPATH, ('//div[text()="Ура! Ваш акаунт пройшов модерацiю."]'))
+    TEXT_IN_LETTER_AFTER_FIRST_MODERATION_EN = (By.XPATH, ('//div[text()="???"]'))
     TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_RU = (By.XPATH, ('//div[contains(text(), "Оплата получена, активируйте услугу на ")]'))
     TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_UA = (By.XPATH, ('//div[contains(text(), "Оплата отримана, активуйте послугу на ")]'))
+    TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_EN = (By.XPATH, ('//div[contains(text(), "???")]'))
     TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_RU = (By.XPATH, ('//div[text()="Ваша вакансия ' + TestData.job_title_vacancy + ' добавлена на сайт."]'))
     TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_UA = (By.XPATH, ('//div[text()="Ваша вакансія ' + TestData.job_title_vacancy + ' вже на сайті!"]'))
+    TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_EN = (By.XPATH, ('//div[text()="Ваша вакансия ' + TestData.job_title_vacancy + '???"]'))
     TEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_RU = (By.XPATH, ('//div[contains(text(), "Ваше резюме опубликовано на ")]'))
     TEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_UA = (By.XPATH, ('//div[contains(text(), "Ваше резюме опубліковано на ")]'))
+    TEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_EN = (By.XPATH, ('//div[contains(text(), "???")]'))
 
 
 class SitemapPageLocators():

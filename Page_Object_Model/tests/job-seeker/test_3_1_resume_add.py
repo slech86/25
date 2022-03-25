@@ -16,12 +16,12 @@ from Page_Object_Model.data_for_testing import Accounts
 
 @pytest.mark.s_r_c
 def test_adding_resume(browser, language):  # добавление резюме
-    url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
-    page = OllPage(browser, url_Page)
+    url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
+    page = OllPage(browser, url_page)
     # browser.maximize_window()
     page.open()
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.user_authorization()  # авторизация пользователя
+    page.user_authorization(language)  # авторизация пользователя
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
     page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 
@@ -40,8 +40,8 @@ def test_adding_resume(browser, language):  # добавление резюме
     add_resume_page.submitting_resume_for_publication()  # отправка резюме на публикацию
 
     my_resume_page.waiting_for_my_resumes_page_to_open(language)  # ожидание открытия страницы 'Мои резюме'
-    my_resume_page.confirmation_of_opening_of_page_my_resumes()  # подтверждение открытия страницы 'Мои резюме'
-    my_resume_page.checking_message_confirming_submission_of_resume_for_moderation()  # проверка сообщения о подтверждении отправки резюме на модерацию
+    my_resume_page.confirmation_of_opening_of_page_my_resumes(language)  # подтверждение открытия страницы 'Мои резюме'
+    my_resume_page.checking_message_confirming_submission_of_resume_for_moderation(language)  # проверка сообщения о подтверждении отправки резюме на модерацию
 
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
@@ -55,8 +55,8 @@ def test_adding_resume(browser, language):  # добавление резюме
     singleton.id_resume = admin_resumes_page.getting_resume_id()  # получение id резюме
     admin_resumes_page.checking_that_resume_status_is_on_moderated()  # проверка что статус резюме 'На модерацию'
 
-    url_Resume_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{singleton.id_resume}"
-    resume_page = ResumePage(browser, url_Resume_Page)
+    url_resume_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{singleton.id_resume}"
+    resume_page = ResumePage(browser, url_resume_page)
     resume_page.open()
     resume_page.checking_opening_of_page_of_an_unpublished_resume(language)  # проверка открытия страницы не опубликованного резюме
 
@@ -74,10 +74,11 @@ def test_adding_resume(browser, language):  # добавление резюме
     admin_resumes_page = AdminResumesPage(browser, browser.current_url)
     admin_resumes_page.waiting_to_save_status_and_open_resume_page()  # ожидание сохранения статуса и открытия страницы всех рузюме
 
-    url_Resume_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{singleton.id_resume}"
-    resume_page = ResumePage(browser, url_Resume_Page)
+    url_resume_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{singleton.id_resume}"
+    resume_page = ResumePage(browser, url_resume_page)
     resume_page.open()
     resume_page.checking_opening_of_page_of_published_resume()  # проверка открытия страницы опубликованного резюме
+
 
 # @pytest.mark.s_r_c
 def test_verification_of_letter_after_publication_of_resume(browser, language):  # проверка письма после публикации резюме
