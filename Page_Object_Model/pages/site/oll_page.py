@@ -3,7 +3,9 @@ from Page_Object_Model.locators.locators import OllPageLocators
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from Page_Object_Model.data_for_testing import TestData
+from Page_Object_Model.singleton import Singleton
 import time
+
 
 class OllPage(BasePage):
     def age_confirmation(self):
@@ -11,6 +13,10 @@ class OllPage(BasePage):
         WebDriverWait(self.browser, 5).until(EC.element_to_be_clickable(OllPageLocators.BUTTON_YES_WHEN_CHECKING_AGE)).click()
         time.sleep(0.2)
         # подтверждение возраста больше 21 года
+
+    def go_to_vacancies_page_through_header(self):  # переход на страницу вакансий через хедер
+        self.browser.find_element(*OllPageLocators.DROPDOWN_LIST_APPLICANT).click()
+        self.browser.find_element(*OllPageLocators.VACANCIES_IN_HEDER).click()
 
     def opening_pop_up_for_login(self):  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
         self.browser.find_element(*OllPageLocators.BUTTON_POP_UP_FOR_LOGIN).click()
@@ -22,15 +28,15 @@ class OllPage(BasePage):
         self.browser.find_element(*OllPageLocators.JOB_SEEKER_TAB).click()
         self.browser.find_element(*OllPageLocators.JOB_SEEKER_REGISTRATION_LINK).click()
 
-    def user_authorization(self, language):  # авторизация пользователя
+    def user_authorization(self, language, key):  # авторизация пользователя
         if language == "/ua":
-            self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(TestData.login_ua)
+            self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key][1][0])
             # self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys('p.verbenets')
         elif language == "":
-            self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(TestData.login_ru)
+            self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key][0][0])
             # self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys('p.verbenets')
         elif language == "/en":
-            self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(TestData.login_en)
+            self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key][2][0])
             # self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys('p.verbenets')
 
         self.browser.find_element(*OllPageLocators.FIELD_PASSWORD).send_keys(TestData.password)
@@ -40,7 +46,7 @@ class OllPage(BasePage):
         time.sleep(2)
 
     def check_for_non_authorization_of_user(self):  # проверка на не авторизацию пользователя
-        self.browser.find_element(*OllPageLocators.BUTTON_POP_UP_FOR_LOGIN)
+        assert self.is_element_present(*OllPageLocators.BUTTON_POP_UP_FOR_LOGIN), 'Пользователь авторизирован, но не должен'
 
     def opening_authorized_user_menu(self):  # нажатие на кнопку для открытия меню авторизированного пользователя
         self.browser.find_element(*OllPageLocators.BUTTON_AUTHORIZED_USER).click()
@@ -55,7 +61,7 @@ class OllPage(BasePage):
         elif language == "":
             assert "Пользователь еще не активирован. Для завершения активации своего аккаунта перейдите по ссылке в письме, которое было отправлено на ваш e-mail." == info_text, 'Не верное сообщение'
         elif language == "/en":
-            assert "???" == info_text, 'Не верное сообщение'
+            assert "The user has not yet been activated. To complete the activation of your account, follow the link in the letter that was sent to your e-mail." == info_text, 'Не верное сообщение'
 
     def info_text_for_authorization_in_user_status_on_moderation(self, language):  # инфо текст при авторизации в статусе пользователя "На модерации"
         info_text = self.browser.find_element(*OllPageLocators.INFO_TEXT_IN_POP_UP_WINDOW).text
@@ -64,4 +70,4 @@ class OllPage(BasePage):
         elif language == "":
             assert "Модерация вашего аккаунта завершится в течение 24 часов." == info_text, 'Не верное сообщение'
         elif language == "/en":
-            assert "???" == info_text, 'Не верное сообщение'
+            assert "Your account will be moderated within 24 hours." == info_text, 'Не верное сообщение'

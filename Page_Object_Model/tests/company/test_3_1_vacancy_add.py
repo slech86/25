@@ -15,14 +15,14 @@ from Page_Object_Model.singleton import Singleton
 from Page_Object_Model.data_for_testing import Accounts
 
 
-# @pytest.mark.s_r_c
+@pytest.mark.s_r_c
 def test_adding_vacancies(browser, language):  # добавление вакансии
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
     # browser.maximize_window()
     page.open()
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.user_authorization(language)  # авторизация пользователя
+    page.user_authorization(language, 1)  # авторизация пользователя
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
     page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 
@@ -89,11 +89,11 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     company_personal_cabinet_page.go_to_services_and_prices_page()  # переход на страницу "Услуги и цены"
 
     services_and_prices_page = ServicesAndPricesPage(browser, browser.current_url)
-    singleton = Singleton()
 
     services_and_prices_page.checking_decrease_in_number_of_available_vacancies_for_publication_in_monthly_free_vacancy_package()  # проверка уменьшения количества доступных вакансий для публикации в пакете "Ежемесячная бесплатная вакансия"
 
 
+# @pytest.mark.s_r_c
 def test_verification_of_letter_after_publication_of_vacancy(browser, language):  # проверка письма после публикации вакансии
     link = Accounts.url_email
     email_page = EmailPage(browser, link)

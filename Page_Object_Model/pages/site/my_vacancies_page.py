@@ -18,6 +18,16 @@ class MyVacanciesPage(BasePage):
         time.sleep(0.2)
         self.browser.find_element(*locators[1]).click()
 
+    def checking_for_availability_icon_new_response_to_vacancy(self):  # проверка наличия иконки нового отклика на вакансию
+        locators_with_id_vacancies = MyVacanciesPageLocators()
+        locator = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies()  # сборка локаторов с id вакансии
+        assert self.is_element_present(*locator[3]), 'Нет иконки нового отклика на вакансию'
+
+    def go_to_responses_to_vacancy_page(self):  # переход на страницу 'Отклики на вакансию'
+        locators_with_id_vacancies = MyVacanciesPageLocators()
+        locator = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies()  # сборка локаторов с id вакансии
+        self.browser.find_element(*locator[2]).click()
+
     def waiting_for_my_vacancies_page_to_open(self, language):  # ожидание открытия страницы 'Мои вакансии'
         if language == "/ua":
             WebDriverWait(self.browser, 15).until(EC.text_to_be_present_in_element((MyVacanciesPageLocators.H1), 'Мої вакансії'))

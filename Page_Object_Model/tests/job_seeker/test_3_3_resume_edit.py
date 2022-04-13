@@ -15,8 +15,9 @@ def test_editing_resume(browser, language):  # редактирование ре
     page = OllPage(browser, url_page)
     # browser.maximize_window()
     page.open()
+    browser.refresh()
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.user_authorization(language)  # авторизация пользователя
+    page.user_authorization(language, 2)  # авторизация пользователя
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
     page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 

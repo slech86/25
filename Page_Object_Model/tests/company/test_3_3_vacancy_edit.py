@@ -1,5 +1,3 @@
-import time
-
 import pytest
 from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
@@ -16,7 +14,7 @@ def test_editing_vacancies(browser, language):  # редактирование �
     # browser.maximize_window()
     page.open()
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.user_authorization(language)  # авторизация пользователя
+    page.user_authorization(language, 1)  # авторизация пользователя
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
     page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 
@@ -42,12 +40,12 @@ def test_editing_vacancies(browser, language):  # редактирование �
     admin_page.checking_that_vacancy_status_is_on_moderated()  # проверка что статус вакансии 'На модерацию'
 
 
-# удаление пакета к которому была привязана вакансия
-def test_complete_deletion_of_user_orders(browser, language):  # полное удаление заказов пользователя
-    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
-    admin_page.open()
-    admin_page.admin_authorization()
-    admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
-    admin_page.go_to_order_page()  # переход на страницу заказов
-    admin_page.search_for_user_orders_by_email(language)  # поиск заказов пользователя по e-mail
-    admin_page.complete_objects_deletion()  # полное удаление объектов
+# # удаление пакета к которому была привязана вакансия
+# def test_complete_deletion_of_user_orders(browser, language):  # полное удаление заказов пользователя
+#     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+#     admin_page.open()
+#     admin_page.admin_authorization()
+#     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
+#     admin_page.go_to_order_page()  # переход на страницу заказов
+#     admin_page.search_for_user_orders_by_email(language, 1)  # поиск заказов пользователя по e-mail
+#     admin_page.complete_objects_deletion()  # полное удаление объектов

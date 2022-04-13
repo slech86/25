@@ -1,8 +1,9 @@
 from selenium.webdriver.common.by import By
 from Page_Object_Model.data_for_testing import TestData
+from Page_Object_Model.singleton import Singleton
 
 
-class AdminPageLocators():
+class AdminPageLocators:
     FIELD_LOGIN = (By.CSS_SELECTOR, ('#loginform-username'))
     FIELD_PASSWORD = (By.CSS_SELECTOR, ('#loginform-password'))
     BUTTON_LOG_IN = (By.CSS_SELECTOR, ('[type="submit"]'))
@@ -29,16 +30,19 @@ class AdminPageLocators():
     BUTTON_SAVE_AND_EDIT = (By.CSS_SELECTOR, ('[type="submit"].btn.btn-primary'))
     # общие
 
-
     FIELD_EMAIL_SEARCH = (By.CSS_SELECTOR, ('[name="User[email]"]'))
-    USER_EMAIL_RU = (By.XPATH, ('//td[text()="' + TestData.email_ru + '"]'))
-    USER_EMAIL_UA = (By.XPATH, ('//td[text()="' + TestData.email_ua + '"]'))
-    USER_EMAIL_EN = (By.XPATH, ('//td[text()="' + TestData.email_en + '"]'))
+
+    def generating_user_email_locators(self, key):
+        user_email_ru = (By.XPATH, ('//td[text()="' + Singleton.logins_and_mails[key][0][1] + '"]'))
+        user_email_ua = (By.XPATH, ('//td[text()="' + Singleton.logins_and_mails[key][1][1] + '"]'))
+        user_email_en = (By.XPATH, ('//td[text()="' + Singleton.logins_and_mails[key][2][1] + '"]'))
+        user_email = [user_email_ru, user_email_ua, user_email_en]
+        return user_email
+
+
     STATUS_ACTIVE = (By.CSS_SELECTOR, ('.form-control.input-sm [value="1"]'))
     STATUS_DELETED = (By.CSS_SELECTOR, ('.form-control.input-sm [value="-1"]'))
     # страница пользователей
-
-
 
     FIELD_USER_LOGIN = (By.CSS_SELECTOR, ('[name="User[login]"]'))
     FIELD_USER_EMAIL = (By.CSS_SELECTOR, ('[name="User[email]"]'))
@@ -68,9 +72,9 @@ class AdminPageLocators():
     IFRAME_CKEDITOR_COMPANY_DESCRIPTION_UA = (By.CSS_SELECTOR, ('#cke_2_contents > iframe.cke_wysiwyg_frame.cke_reset'))
     CKEDITOR_COMPANY_DESCRIPTION_RU = (By.XPATH, ('//body[contains(@data-title, "users-descriptions-1-description_company")]/p'))
     CKEDITOR_COMPANY_DESCRIPTION_UA = (By.XPATH, ('//body[contains(@data-title, "users-descriptions-3-description_company")]/p'))
-    FIELD_VIDEO_1 = (By.CSS_SELECTOR, ('#users-descriptions-1-video-0'))
-    FIELD_VIDEO_2 = (By.CSS_SELECTOR, ('#users-descriptions-1-video-1'))
-    FIELD_VIDEO_3 = (By.CSS_SELECTOR, ('#users-descriptions-1-video-2'))
+    FIELD_VIDEO_1 = (By.CSS_SELECTOR, ('#users-descriptions-1-video-1'))
+    FIELD_VIDEO_2 = (By.CSS_SELECTOR, ('#users-descriptions-1-video-2'))
+    FIELD_VIDEO_3 = (By.CSS_SELECTOR, ('#users-descriptions-1-video-3'))
     FIELD_COUNTRY = (By.CSS_SELECTOR, ('#select2-users-descriptions-1-country_id-container'))
     FIELD_CITY = (By.CSS_SELECTOR, ('#select2-users-descriptions-1-city_id-container'))
     FIELD_STREET = (By.CSS_SELECTOR, ('#users-descriptions-1-street'))
@@ -90,9 +94,14 @@ class AdminPageLocators():
 
     # SEARCH_STATUS_NEW = (By.CSS_SELECTOR, ('[name="Orders[status]"] > [value="1"]'))
     FIELD_EMAIL_SEARCH_ORDERS = (By.CSS_SELECTOR, ('[name="Orders[userEmail]"]'))
-    USER_EMAIL_ORDERS_RU = (By.XPATH, ('//span[text()="' + TestData.email_ru + '"]'))
-    USER_EMAIL_ORDERS_UA = (By.XPATH, ('//span[text()="' + TestData.email_ua + '"]'))
-    USER_EMAIL_ORDERS_EN = (By.XPATH, ('//span[text()="' + TestData.email_en + '"]'))
+
+    def generating_user_email_orders_locators(self, key):
+        user_email_orders_ru = (By.XPATH, ('//span[text()="' + Singleton.logins_and_mails[key][0][1] + '"]'))
+        user_email_orders_ua = (By.XPATH, ('//span[text()="' + Singleton.logins_and_mails[key][1][1] + '"]'))
+        user_email_orders_en = (By.XPATH, ('//span[text()="' + Singleton.logins_and_mails[key][2][1] + '"]'))
+        user_email_orders = [user_email_orders_ru, user_email_orders_ua, user_email_orders_en]
+        return user_email_orders
+
     STATUS_COMPLETED = (By.CSS_SELECTOR, ('.form-control.input-sm > [value="3"]'))
     ID_LAST_ORDER = (By.CSS_SELECTOR, ('tbody > tr:nth-child(1) > td:nth-child(2)'))
     # страница заказов
@@ -156,7 +165,6 @@ class AdminVacancyEditPageLocators():
     BUTTON_SAVE_AND_EDIT = (By.CSS_SELECTOR, ('[type="submit"].btn.btn-primary'))
 
 
-
 class AdminResumesPageLocators():
     H1_RESUMES = (By.CSS_SELECTOR, ('h1'))
     FIELD_JOB_TITLE_SEARCH_RESUME = (By.CSS_SELECTOR, ('[name="Resume[job_title]"]'))
@@ -164,9 +172,10 @@ class AdminResumesPageLocators():
     RESUME_BY_JOB_TITLE_AFTER_EDITING = (By.XPATH, ('//a[text()="' + TestData.job_title_resume + '_editing"]'))
     ID_RESUME = (By.CSS_SELECTOR, ('#pjax-list-container tbody > tr > td:nth-child(2)'))
     RESUME_STATUS = (By.CSS_SELECTOR, ('#pjax-list-container tbody > tr > td:nth-child(3) > p'))
-    BUTTON_OBJECT_MENU = (By.CSS_SELECTOR, ('div > .fa.fa-bars'))
-    BUTTON_COMPLETE_OBJECT_DELETED = (By.CSS_SELECTOR, ('.table-delete.fa.fa-trash'))
-    BUTTON_OBJECT_DELETE_CONFIRMATION = (By.XPATH, ('//button[text()="Да"]'))
+    BUTTON_RESUME_MENU = (By.CSS_SELECTOR, ('div > .fa.fa-bars'))
+    BUTTON_COMPLETE_RESUME_DELETED = (By.CSS_SELECTOR, ('.table-delete.fa.fa-trash'))
+    BUTTON_RESUME_DELETE_CONFIRMATION = (By.XPATH, ('//button[text()="Да"]'))
+    ALERT_CONFIRMATION_OF_RESUME_DELETION = (By.XPATH, ('//div[@class="feedback"]/div[contains(@id, "alert-")]'))
 
 
 class AdminResumeEditPageLocators():

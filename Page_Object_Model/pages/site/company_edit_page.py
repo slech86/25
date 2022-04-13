@@ -73,9 +73,9 @@ class CompanyEditPage(BasePage):
         if language == "/ua":
             self.browser.find_element(*CompanyEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU).click()
         elif language == "":
-            self.browser.find_element(*CompanyEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA).click()
-        elif language == "/en":
             self.browser.find_element(*CompanyEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_EN).click()
+        elif language == "/en":
+            self.browser.find_element(*CompanyEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA).click()
         # редактирование блока "Настройки"
 
     def submitting_form_for_moderation_after_changing_data(self):  # отправка формы на модерацию после изменения данных

@@ -115,7 +115,7 @@ class CompanyEditPageLocators():
     LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'mail_language"]'))
     LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'mail_language [data-original-index="0"]'))  # русский
     LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'mail_language [data-original-index="1"]'))  # украинский
-    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_EN = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'mail_language [data-original-index="3"]'))  # английский
+    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_EN = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'mail_language [data-original-index="2"]'))  # английский
     # блок "Настройки"
 
     BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#submit-button'))
@@ -130,23 +130,36 @@ class CompanyPersonalCabinetPageLocators():
     SERVICES_AND_PRICES = (By.XPATH, ('//a[contains(@href, "/prices")]/div[@class="employer-card"]'))
 
 
-class MyVacanciesPageLocators():
+class MyVacanciesPageLocators:
     H1 = (By.CSS_SELECTOR, ('h1'))
     BUTTON_ADD_VACANCY = (By.CSS_SELECTOR, ('#add-vacancy'))
 
     def assembly_of_locators_with_id_vacancies(self):  # сборка локаторов с id вакансии
         singleton = Singleton()
         button_vacancy_menu = (By.CSS_SELECTOR, ('#my-vacancy-' + singleton.id_vacancies + ' .share-btn'))
-
         button_edit = (By.XPATH, ('//div[@id="my-vacancy-' + singleton.id_vacancies + '"]//a[contains(@href, "/vacancy/' + singleton.id_vacancies + '/edit")]'))
-        locators = [button_vacancy_menu, button_edit]
+        button_show_responses = (By.XPATH, ('//a[contains(@href, "/vacancy/' + singleton.id_vacancies + '/feedback")]'))
+        new_response_icon = (By.CSS_SELECTOR, ('#my-vacancy-' + singleton.id_vacancies + ' .counter.red'))
+        locators = [button_vacancy_menu,
+                    button_edit,
+                    button_show_responses,
+                    new_response_icon]
         return locators
 
     INFO_TEXT_AFTER_SUBMITTING_VACANCY_FOR_MODERATION = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст после отправки вакансии на модерацию
     CROSS_IN_POP_UP_AFTER_SUBMITTING_VACANCY_FOR_MODERATION = (By.CSS_SELECTOR, ('#thanks-modal .close'))  # крестик в pop-up окне после отправки вакансии на модерацию
 
 
-class VacancyAddPageLocators():
+class ResponsesToVacancyPageLocators:
+    H1 = (By.CSS_SELECTOR, ('h1'))
+    MARK_NOT_VIEWED_RESPONSE = (By.CSS_SELECTOR, ('.lc-card:nth-child(1) .lc-card-time > svg'))
+
+    def assembly_of_locators_with_id_resume(self):  # сборка локаторов с id резюме
+        resume_in_responses_to_vacancy = (By.XPATH, ('//a[contains(@href, "/resume/' + Singleton.id_resume + '")]'))
+        return resume_in_responses_to_vacancy
+
+
+class VacancyAddPageLocators:
     inputPrefix = 'vacancyaddform-'
 
     FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'job_title'))
@@ -322,3 +335,8 @@ class ServicesAndPricesPageLocators():
 
     INFO_TEXT_AFTER_BUTTON_PRESSED_BUY_IN_CART = (By.CSS_SELECTOR, ('#to-buy-modal .modal-body'))  # информационный текст после нажаия кнопки "Купить" в корзине
     CROSS_IN_POP_UP_AFTER_PRESSING_BUTTON_BUY_IN_BASKET = (By.CSS_SELECTOR, ('#to-buy-modal .close'))  # крестик в pop-up окне после нажаия кнопки "Купить" в корзине
+
+
+class ResumePageLocators:
+    H1 = (By.CSS_SELECTOR, ('h1'))
+    COVER_LETTER_TEXT = (By.CSS_SELECTOR, ('.covering-letter-description'))

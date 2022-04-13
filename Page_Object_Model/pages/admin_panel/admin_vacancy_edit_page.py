@@ -1,11 +1,9 @@
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.admin_panel_locators import AdminVacancyEditPageLocators
-from Page_Object_Model.data_for_testing import TestData, TestDataEditing, Accounts
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
+from Page_Object_Model.data_for_testing import TestData
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import random
+from Page_Object_Model.singleton import Singleton
 import time
 
 
@@ -13,18 +11,18 @@ class AdminVacancyEditPage(BasePage):
     def change_vacancy_status_to_published(self):  # изменение статуса вакансии на 'Опубликовано'
         self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_VACANCY_STATUS).click()
         self.browser.find_element(*AdminVacancyEditPageLocators.STATUS_PUBLISHED).click()
-        time.sleep(2)
+        time.sleep(20)
         self.browser.find_element(*AdminVacancyEditPageLocators.BUTTON_SAVE).click()
 
-    def verification_of_saving_data_entered_by_user_after_vacancy_is_created_ru(self, language):  # проверка сохранения введенных пользователем данных после создания вакансии RU
+    def verification_of_saving_data_entered_by_user_after_vacancy_is_created_ru(self, language, key):  # проверка сохранения введенных пользователем данных после создания вакансии RU
         user = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_USER)
         user_title = user.get_attribute("title")
         if language == '/ua':
-            assert '(' + TestData.login_ua + ')' in user_title, "Поле 'Пользователь' не верно"
+            assert '(' + Singleton.logins_and_mails[key][1][0] + ')' in user_title, "Поле 'Пользователь' не верно"
         elif language == "":
-            assert '(' + TestData.login_ru + ')' in user_title, "Поле 'Пользователь' не верно"
+            assert '(' + Singleton.logins_and_mails[key][0][0] + ')' in user_title, "Поле 'Пользователь' не верно"
         elif language == "/en":
-            assert '(' + TestData.login_en + ')' in user_title, "Поле 'Пользователь' не верно"
+            assert '(' + Singleton.logins_and_mails[key][2][0] + ')' in user_title, "Поле 'Пользователь' не верно"
 
         job_title_vacancy = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_JOB_TITLE)
         job_title_vacancy_value = job_title_vacancy.get_attribute("value")
@@ -63,10 +61,10 @@ class AdminVacancyEditPage(BasePage):
         country_vacancy_title = country_vacancy.get_attribute("title")
         assert country_vacancy_title == TestData.country_vacancy, "Поле 'Расположение вакансии - country' не верно"
 
-        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element((AdminVacancyEditPageLocators.FIELD_CITY_VACANCY), TestData.city_vacancy))
-        city_vacancy = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_CITY_VACANCY)
-        city_vacancy_title = city_vacancy.get_attribute("title")
-        assert city_vacancy_title == TestData.city_vacancy, "Поле 'Расположение вакансии - city' не верно"
+        # WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element((AdminVacancyEditPageLocators.FIELD_CITY_VACANCY), TestData.city_vacancy))
+        # city_vacancy = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_CITY_VACANCY)
+        # city_vacancy_title = city_vacancy.get_attribute("title")
+        # assert city_vacancy_title == TestData.city_vacancy, "Поле 'Расположение вакансии - city' не верно"
 
         street_vacancy = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_STREET_VACANCY)
         street_vacancy_value = street_vacancy.get_attribute("value")

@@ -20,8 +20,9 @@ def test_adding_resume(browser, language):  # добавление резюме
     page = OllPage(browser, url_page)
     # browser.maximize_window()
     page.open()
+    browser.refresh()
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.user_authorization(language)  # авторизация пользователя
+    page.user_authorization(language, 2)  # авторизация пользователя
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
     page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 
@@ -80,7 +81,7 @@ def test_adding_resume(browser, language):  # добавление резюме
     resume_page.checking_opening_of_page_of_published_resume()  # проверка открытия страницы опубликованного резюме
 
 
-# @pytest.mark.s_r_c
+@pytest.mark.s_r_c
 def test_verification_of_letter_after_publication_of_resume(browser, language):  # проверка письма после публикации резюме
     link = Accounts.url_email
     email_page = EmailPage(browser, link)

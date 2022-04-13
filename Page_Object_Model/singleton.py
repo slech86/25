@@ -3,9 +3,9 @@ class Singleton(object):
     id_purchase = None
     id_vacancies = None
     id_resume = None
+    logins_and_mails = {}
 
     def __new__(cls):
         if not hasattr(cls, 'instance'):
             cls.instance = super(Singleton, cls).__new__(cls)
         return cls.instance
-

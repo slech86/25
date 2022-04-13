@@ -1,4 +1,5 @@
 import time
+from Page_Object_Model.singleton import Singleton
 
 
 class Accounts():
@@ -13,19 +14,27 @@ class Accounts():
     # main_password_email = 'BwX37KJyiw02Cl'
 
 
-class TestData():
+class TestData:
     time_Now = str(int(time.time()))
-
-    login_ru = 'testLogin_' + time_Now
-    login_ua = login_ru + 'ua'
-    login_en = login_ru + 'en'
-
+    email = ['test_automation+', '@qazz.pw']
     password = 'password_' + time_Now
 
-    email = ['test_automation+', '@qazz.pw']
-    email_ru = email[0] + time_Now + email[1]
-    email_ua = email[0] + time_Now + 'ua' + email[1]
-    email_en = email[0] + time_Now + 'en' + email[1]
+    def login_and_mail_generation(self, key):
+        time_now = str(int(time.time()))
+        login_ru = 'testLogin_' + time_now
+        login_ua = login_ru + 'ua'
+        login_en = login_ru + 'en'
+
+        email_ru = TestData.email[0] + time_now + TestData.email[1]
+        email_ua = TestData.email[0] + time_now + 'ua' + TestData.email[1]
+        email_en = TestData.email[0] + time_now + 'en' + TestData.email[1]
+
+        singleton = Singleton()
+        singleton.logins_and_mails[key] = [
+            [login_ru, email_ru],
+            [login_ua, email_ua],
+            [login_en, email_en]
+        ]
 
     email_language_ru = '[#1] Русский'
     email_language_ua = '[#3] Українська'
@@ -42,7 +51,7 @@ class TestData():
     ckeditor_company_description = "CKEditor_company_description_" + time_Now
     skype = 'skype' + time_Now
     country = '[#222] Украина'  # не используется при заполнении полей, только при проверке заполнения полей в админке
-    city = '[#703448] Киев'  # не используется при заполнении полей, только при проверке заполнения полей в админке
+    city = '[#713259] Антрацит'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     street = 'street_' + time_Now
     date_of_company_foundation = '2019-12-31'   # не используется при заполнении полей, только при проверке заполнения полей в админке
     birthday = '1999-11-30'  # не используется при заполнении полей, только при проверке заполнения полей в админке
@@ -179,8 +188,10 @@ class TestData():
     job_search_status = 'Активно ищу работу'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     # резюме
 
+    cover_letter = 'cover_letter_' + time_Now
 
-class TestDataEditing():
+
+class TestDataEditing:
     email_language_ru = '[#1] Русский'
     email_language_ua = '[#3] Українська'
     email_language_en = '[#4] English'

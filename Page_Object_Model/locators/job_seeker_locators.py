@@ -53,6 +53,7 @@ class JobSeekerEditPageLocators():
 
 class JobSeekerPersonalCabinetPageLocators():
     MY_RESUME = (By.XPATH, ('//a[contains(@href, "/resume/my")]/div[@class="employer-card"]'))
+    MY_RESPONSES = (By.XPATH, ('//a[contains(@href, "/vacancy/feedback")]/div[@class="employer-card"]'))
     PERSONAL_DATA = (By.XPATH, ('//a[contains(@href, "/job-seeker/edit")]/div[@class="employer-card"]'))
 
 
@@ -62,9 +63,8 @@ class MyResumePageLocators():
 
     BUTTON_RESUME_MENU = (By.CSS_SELECTOR, ('.lc-card.my-cv-card .lc-card-bookmarks'))
 
-    def assembly_of_locators_with_id_resume(self):  # сборка локатов с id резюме
+    def assembly_of_locators_with_id_resume(self):  # сборка локаторов с id резюме
         singleton = Singleton()
-
         button_edit = (By.XPATH, ('//a[contains(@href, "/resume/' + singleton.id_resume + '/edit")]'))
         return button_edit
 
@@ -546,3 +546,32 @@ class ResumeEditPageLocators():
     CKEDITOR = (By.CSS_SELECTOR, ('body.cke_editable'))  # общий для всех блоков
 
     BUTTON_PUBLISH = (By.CSS_SELECTOR, ('#submit-button'))
+
+
+class MyResponsesPageLocators:
+    H1 = (By.CSS_SELECTOR, ('h1'))
+
+    def assembly_of_locators_with_id_vacancies(self):  # сборка локаторов с id вакансии
+        vacancy = (By.XPATH, ('//a[contains(@href, "/vacancy/' + Singleton.id_vacancies + '")]'))
+        return vacancy
+
+
+class VacancyPageLocators:
+    H1 = (By.CSS_SELECTOR, ('h1'))
+    BUTTON_RESPONSE_1 = (By.CSS_SELECTOR, ('.company-respond > #response'))
+    BUTTON_RESPONSE_2 = (By.CSS_SELECTOR, ('.btn-wrap > #response'))
+    NOT_ACTIVE_BUTTON_RESUME_POSTED_1 = (By.CSS_SELECTOR, ('.company-respond > [data-target="#respond-modal"][disabled="disabled"]'))
+    NOT_ACTIVE_BUTTON_RESUME_POSTED_2 = (By.CSS_SELECTOR, ('.btn-wrap > [data-target="#respond-modal"][disabled="disabled"]'))
+
+    def assembly_of_locators_with_id_resume(self):  # сборка локаторов с id резюме
+        resume_in_response_popup_window = (By.CSS_SELECTOR, ('label[for="resume-' + Singleton.id_resume + '"]'))
+        return resume_in_response_popup_window
+
+    BUTTON_ADD_COVER_LETTER = (By.CSS_SELECTOR, ('.required + .form-group > .cover-letter-btn'))
+    FIELD_COVER_LETTER = (By.CSS_SELECTOR, ('.required + .form-group #response-description'))
+    BUTTON_SEND_CV = (By.CSS_SELECTOR, ('.field-responses-resume_id + .form-group [type="submit"]'))
+    # pop-up окно отклика на вакансию
+
+    INFO_TEXT_AFTER_SENDING_RESPONSE_TO_VACANCY = (By.CSS_SELECTOR, ('#to-publish-modal h2'))  # информационный текст после отправки отклика на вакансию
+    CROSS_IN_POP_UP_AFTER_SENDING_RESPONSE_TO_VACANCY = (By.CSS_SELECTOR, ('#to-publish-modal .close'))  # крестик в pop-up окне после отправки отклика на вакансию
+

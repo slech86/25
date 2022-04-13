@@ -2,23 +2,26 @@ from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.company_locators import CompanyRegistrationPageLocators
 from Page_Object_Model.data_for_testing import TestData
 import os
+from Page_Object_Model.singleton import Singleton
 
 
 class CompanyRegistrationPage(BasePage):
-    def filling_in_required_fields(self, language):  # заполнение обязательных полей
+    def filling_in_required_fields(self, language, key):  # заполнение обязательных полей
+        login_and_mail = TestData()
+        login_and_mail.login_and_mail_generation(key)
         if language == "/ua":
-            self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_LOGIN).send_keys(TestData.login_ua)
+            self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key][1][0])
         elif language == "":
-            self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_LOGIN).send_keys(TestData.login_ru)
+            self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key][0][0])
         elif language == "/en":
-            self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_LOGIN).send_keys(TestData.login_en)
+            self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key][2][0])
 
         if language == "/ua":
-            self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_EMAIL).send_keys(TestData.email_ua)
+            self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_EMAIL).send_keys(Singleton.logins_and_mails[key][1][1])
         elif language == "":
-            self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_EMAIL).send_keys(TestData.email_ru)
+            self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_EMAIL).send_keys(Singleton.logins_and_mails[key][0][1])
         elif language == "/en":
-            self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_EMAIL).send_keys(TestData.email_en)
+            self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_EMAIL).send_keys(Singleton.logins_and_mails[key][2][1])
 
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_PASSWORD).send_keys(TestData.password)
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_REPEAT_PASSWORD).send_keys(TestData.password)

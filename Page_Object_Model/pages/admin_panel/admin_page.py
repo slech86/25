@@ -5,6 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from Page_Object_Model.singleton import Singleton
 import random
 import time
 
@@ -42,30 +43,29 @@ class AdminPage(BasePage):
     # шапка
 
     def complete_objects_deletion(self):  # полное удаление объектов (кроме пользователя)
-        objects = self.browser.find_elements(*AdminPageLocators.BUTTON_OBJECT_MENU)
-
-        for object in objects:
-            element_to_hover_over = object
-            ActionChains(self.browser).move_to_element(element_to_hover_over).perform()
-            self.browser.find_element(*AdminPageLocators.BUTTON_COMPLETE_OBJECT_DELETED).click()
-            self.browser.find_element(*AdminPageLocators.BUTTON_OBJECT_DELETE_CONFIRMATION).click()
-            assert self.is_element_present(*AdminPageLocators.ALERT_CONFIRMATION_OF_OBJECT_DELETION), 'Нет сообщения о удалении объекта'
+        element_to_hover_over = self.browser.find_element(*AdminPageLocators.BUTTON_OBJECT_MENU)
+        ActionChains(self.browser).move_to_element(element_to_hover_over).perform()
+        self.browser.find_element(*AdminPageLocators.BUTTON_COMPLETE_OBJECT_DELETED).click()
+        self.browser.find_element(*AdminPageLocators.BUTTON_OBJECT_DELETE_CONFIRMATION).click()
+        assert self.is_element_present(*AdminPageLocators.ALERT_CONFIRMATION_OF_OBJECT_DELETION), 'Нет сообщения о удалении объекта'
 
     def go_to_object_editing_page(self):  # переход на страницу редактирования объекта
         self.browser.find_element(*AdminPageLocators.BUTTON_OBJECT_MENU).click()  # костыль из-за ховер эффекта на кнопке меню пользователя
     # общие
 
-    def search_user_by_email(self, language):  # поиск пользователя по e-mail
+    def search_user_by_email(self, language, key):  # поиск пользователя по e-mail
+        user_email_locators = AdminPageLocators()
+        locators = user_email_locators.generating_user_email_locators(key)
         email, user_email = None, None
         if language == "/ua":
-            email = TestData.email_ua
-            user_email = AdminPageLocators.USER_EMAIL_UA
+            email = Singleton.logins_and_mails[key][1][1]
+            user_email = locators[1]
         elif language == "":
-            email = TestData.email_ru
-            user_email = AdminPageLocators.USER_EMAIL_RU
+            email = Singleton.logins_and_mails[key][0][1]
+            user_email = locators[0]
         elif language == "/en":
-            email = TestData.email_en
-            user_email = AdminPageLocators.USER_EMAIL_EN
+            email = Singleton.logins_and_mails[key][2][1]
+            user_email = locators[2]
         self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_SEARCH).send_keys(email, Keys.ENTER)
         time.sleep(2)
         assert self.is_element_present(*user_email), 'Пользователь не найден'
@@ -115,24 +115,24 @@ class AdminPage(BasePage):
         self.browser.find_element(*AdminPageLocators.BUTTON_SAVE_AND_EDIT).click()
         time.sleep(4)
 
-    def verification_of_saving_data_entered_by_user_after_company_registration_ru(self, language):  # проверка сохранения введенных пользователем данных после регистрации компании RU
+    def verification_of_saving_data_entered_by_user_after_company_registration_ru(self, language, key):  # проверка сохранения введенных пользователем данных после регистрации компании RU
         login = self.browser.find_element(*AdminPageLocators.FIELD_USER_LOGIN)
         login_value = login.get_attribute("value")
         if language == "/ua":
-            assert login_value == TestData.login_ua, "Поле 'Логин' не верно"
+            assert login_value == Singleton.logins_and_mails[key][1][0], "Поле 'Логин' не верно"
         elif language == "":
-            assert login_value == TestData.login_ru, "Поле 'Логин' не верно"
+            assert login_value == Singleton.logins_and_mails[key][0][0], "Поле 'Логин' не верно"
         elif language == "/en":
-            assert login_value == TestData.login_en, "Поле 'Логин' не верно"
+            assert login_value == Singleton.logins_and_mails[key][2][0], "Поле 'Логин' не верно"
 
         email = self.browser.find_element(*AdminPageLocators.FIELD_USER_EMAIL)
         email_value = email.get_attribute("value")
         if language == "/ua":
-            assert email_value == TestData.email_ua, "Поле 'Email' не верно"
+            assert email_value == Singleton.logins_and_mails[key][1][1], "Поле 'Email' не верно"
         elif language == "":
-            assert email_value == TestData.email_ru, "Поле 'Email' не верно"
+            assert email_value == Singleton.logins_and_mails[key][0][1], "Поле 'Email' не верно"
         elif language == "/en":
-            assert email_value == TestData.email_en, "Поле 'Email' не верно"
+            assert email_value == Singleton.logins_and_mails[key][2][1], "Поле 'Email' не верно"
 
         email_language = self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_LANGUAGE)
         email_language_title = email_language.get_attribute("title")
@@ -237,10 +237,10 @@ class AdminPage(BasePage):
         country_title = country.get_attribute("title")
         assert country_title == TestData.country, "Поле 'Страна' не верно"
 
-        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element((AdminPageLocators.FIELD_CITY), TestData.city))
-        city = self.browser.find_element(*AdminPageLocators.FIELD_CITY)
-        city_title = city.get_attribute("title")
-        assert city_title == TestData.city, "Поле 'Город' не верно"
+        # WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element((AdminPageLocators.FIELD_CITY), TestData.city))
+        # city = self.browser.find_element(*AdminPageLocators.FIELD_CITY)
+        # city_title = city.get_attribute("title")
+        # assert city_title == TestData.city, "Поле 'Город' не верно"
 
         street = self.browser.find_element(*AdminPageLocators.FIELD_STREET)
         street_value = street.get_attribute("value")
@@ -250,24 +250,24 @@ class AdminPage(BasePage):
         checkbox_get_news_checked = checkbox_get_news.get_attribute("checked")
         assert checkbox_get_news_checked is not None, "Не установлено получение новостей"
 
-    def verification_of_saving_data_entered_by_user_after_job_seeker_registration_ru(self, language):  # проверка сохранения введенных пользователем данных после регистрации соискателя RU
+    def verification_of_saving_data_entered_by_user_after_job_seeker_registration_ru(self, language, key):  # проверка сохранения введенных пользователем данных после регистрации соискателя RU
         login = self.browser.find_element(*AdminPageLocators.FIELD_USER_LOGIN)
         login_value = login.get_attribute("value")
         if language == "/ua":
-            assert login_value == TestData.login_ua, "Поле 'Логин' не верно"
+            assert login_value == Singleton.logins_and_mails[key][1][0], "Поле 'Логин' не верно"
         elif language == "":
-            assert login_value == TestData.login_ru, "Поле 'Логин' не верно"
+            assert login_value == Singleton.logins_and_mails[key][0][0], "Поле 'Логин' не верно"
         elif language == "/en":
-            assert login_value == TestData.login_en, "Поле 'Логин' не верно"
+            assert login_value == Singleton.logins_and_mails[key][2][0], "Поле 'Логин' не верно"
 
         email = self.browser.find_element(*AdminPageLocators.FIELD_USER_EMAIL)
         email_value = email.get_attribute("value")
         if language == "/ua":
-            assert email_value == TestData.email_ua, "Поле 'Email' не верно"
+            assert email_value == Singleton.logins_and_mails[key][1][1], "Поле 'Email' не верно"
         elif language == "":
-            assert email_value == TestData.email_ru, "Поле 'Email' не верно"
+            assert email_value == Singleton.logins_and_mails[key][0][1], "Поле 'Email' не верно"
         elif language == "/en":
-            assert email_value == TestData.email_en, "Поле 'Email' не верно"
+            assert email_value == Singleton.logins_and_mails[key][2][1], "Поле 'Email' не верно"
 
         email_language = self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_LANGUAGE)
         email_language_title = email_language.get_attribute("title")
@@ -313,10 +313,10 @@ class AdminPage(BasePage):
         country_title = country.get_attribute("title")
         assert country_title == test_data.country, "Поле 'Страна' не верно"
 
-        WebDriverWait(self.browser, 5).until(EC.text_to_be_present_in_element((AdminPageLocators.FIELD_CITY), test_data.city))
-        city = self.browser.find_element(*AdminPageLocators.FIELD_CITY)
-        city_title = city.get_attribute("title")
-        assert city_title == test_data.city, "Поле 'Город' не верно"
+        # WebDriverWait(self.browser, 5).until(EC.text_to_be_present_in_element((AdminPageLocators.FIELD_CITY), test_data.city))
+        # city = self.browser.find_element(*AdminPageLocators.FIELD_CITY)
+        # city_title = city.get_attribute("title")
+        # assert city_title == test_data.city, "Поле 'Город' не верно"
 
         checkbox_get_news = self.browser.find_element(*AdminPageLocators.CHECKBOX_GET_NEWS)
         checkbox_get_news_checked = checkbox_get_news.get_attribute("checked")
@@ -345,17 +345,19 @@ class AdminPage(BasePage):
         assert status == 'На модерацию', 'Статус не "На модерацию"'
     # страница вакансий
 
-    def search_for_user_orders_by_email(self, language):  # поиск заказов пользователя по e-mail
+    def search_for_user_orders_by_email(self, language, key):  # поиск заказов пользователя по e-mail
+        user_email_locators_orders = AdminPageLocators()
+        locators = user_email_locators_orders.generating_user_email_orders_locators(key)
         email, user_email_orders = None, None
         if language == "/ua":
-            email = TestData.email_ua
-            user_email_orders = AdminPageLocators.USER_EMAIL_ORDERS_UA
+            email = Singleton.logins_and_mails[key][1][1]
+            user_email_orders = locators[1]
         elif language == "":
-            email = TestData.email_ru
-            user_email_orders = AdminPageLocators.USER_EMAIL_ORDERS_RU
+            email = Singleton.logins_and_mails[key][0][1]
+            user_email_orders = locators[0]
         elif language == "/en":
-            email = TestData.email_en
-            user_email_orders = AdminPageLocators.USER_EMAIL_ORDERS_EN
+            email = Singleton.logins_and_mails[key][2][1]
+            user_email_orders = locators[2]
         self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_SEARCH_ORDERS).send_keys(email, Keys.ENTER)
         time.sleep(2)
         assert self.is_element_present(*user_email_orders), 'Заказ пользователя не найден'

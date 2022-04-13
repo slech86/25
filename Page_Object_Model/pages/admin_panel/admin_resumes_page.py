@@ -29,17 +29,14 @@ class AdminResumesPage(BasePage):
         assert status == 'На модерацию', 'Статус не "На модерацию"'
 
     def go_to_object_editing_page(self):  # переход на страницу редактирования объекта
-        self.browser.find_element(*AdminResumesPageLocators.BUTTON_OBJECT_MENU).click()  # костыль из-за ховер эффекта на кнопке меню пользователя
+        self.browser.find_element(*AdminResumesPageLocators.BUTTON_RESUME_MENU).click()  # костыль из-за ховер эффекта на кнопке меню пользователя
 
     def waiting_to_save_status_and_open_resume_page(self):  # ожидание сохранения статуса и открытия страницы всех рузюме
         WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((AdminResumesPageLocators.H1_RESUMES), 'Резюме'))
 
     def complete_objects_deletion(self):  # полное удаление объектов (кроме пользователя)
-        objects = self.browser.find_elements(*AdminResumesPageLocators.BUTTON_OBJECT_MENU)
-
-        for object in objects:
-            element_to_hover_over = object
-            ActionChains(self.browser).move_to_element(element_to_hover_over).perform()
-            self.browser.find_element(*AdminResumesPageLocators.BUTTON_COMPLETE_OBJECT_DELETED).click()
-            self.browser.find_element(*AdminResumesPageLocators.BUTTON_OBJECT_DELETE_CONFIRMATION).click()
-            time.sleep(2)
+        element_to_hover_over = self.browser.find_element(*AdminResumesPageLocators.BUTTON_RESUME_MENU)
+        ActionChains(self.browser).move_to_element(element_to_hover_over).perform()
+        self.browser.find_element(*AdminResumesPageLocators.BUTTON_COMPLETE_RESUME_DELETED).click()
+        self.browser.find_element(*AdminResumesPageLocators.BUTTON_RESUME_DELETE_CONFIRMATION).click()
+        assert self.is_element_present(*AdminResumesPageLocators.ALERT_CONFIRMATION_OF_RESUME_DELETION), 'Нет сообщения о удалении резюме'

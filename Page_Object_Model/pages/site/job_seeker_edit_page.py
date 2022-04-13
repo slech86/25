@@ -35,7 +35,7 @@ class JobSeekerEditPage(BasePage):
         info_text = self.browser.find_element(*JobSeekerEditPageLocators.INFO_TEXT_AFTER_SAVING_PERSONAL_INFORMATION).text
         if language == "/ua":
             assert "Зміни особистої інформації збережені" == info_text, 'Не верное сообщение'
-        elif language == "/en":
+        elif language == "":
             assert "Изменения личной информации сохранены" == info_text, 'Не верное сообщение'
         elif language == "/en":
             assert "Changes to personal information saved" == info_text, 'Не верное сообщение'

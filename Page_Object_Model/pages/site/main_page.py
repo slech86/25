@@ -18,11 +18,12 @@ class MainPage(BasePage):
 
     def confirmation_opening_of_main_page(self, language):  # подтверждение открытия главной страницы
         if language == "/ua":
-            assert self.browser.current_url == f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/ua", "Не правильный URL"
-        elif language == "":
-            assert self.browser.current_url == f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/", "Не правильный URL"
-        elif language == "/en":
-            assert self.browser.current_url == f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/en", "Не правильный URL"
+            if language == '/ua':
+                assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/ua', 'Не правильный URL'
+            elif language == '':
+                assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/', 'Не правильный URL'
+            elif language == '/en':
+                assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/en', 'Не правильный URL'
 
     def checking_message_for_sending_registration_form(self, language):  # проверка сообщения о подтверждении отправки формы регистрации работодателя, соискателя
         info_text = self.browser.find_element(*MainPageLocators.INFO_TEXT_ABOUT_SENDING_REGISTRATION_FORM).text
@@ -31,7 +32,7 @@ class MainPage(BasePage):
         elif language == "":
             assert "Для завершения активации своего аккаунта перейдите по ссылке в письме, которое было отправлено на ваш e-mail." == info_text, 'Не верное сообщение'
         elif language == "/en":
-            assert "???" == info_text, 'Не верное сообщение'
+            assert "To complete account activation, follow the link in the letter sent to your email." == info_text, 'Не верное сообщение'
 
     def checking_employer_email_confirmation_message_after_registration(self, language):  # проверка сообщения о подтверждении электронной почты работодателя после регистрации
         time.sleep(1)
@@ -41,7 +42,7 @@ class MainPage(BasePage):
         elif language == "":
             assert "Профиль Вашей компании был отправлен на модерацию, ожидайте подтверждения!" == info_text, 'Не верное сообщение'
         elif language == "/en":
-            assert "???" == info_text, 'Не верное сообщение'
+            assert "Your company profile has been sent for moderation, wait for confirmation!" == info_text, 'Не верное сообщение'
 
 
 

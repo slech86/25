@@ -9,15 +9,16 @@ from Page_Object_Model.pages.site.vacancy_add_page import VacancyAddPage
 from Page_Object_Model.singleton import Singleton
 
 
-# @pytest.mark.s_r_c
-class TestPackagePurchaseMonthlyFreeVacancy():
+@pytest.mark.s_r_c
+class TestPackagePurchaseMonthlyFreeVacancy:
     def test_package_purchase_monthly_free_vacancy_and_activating_it_on_site(self, browser, language):  # покупка пакета "Ежемесячная бесплатная вакансия" и активация его на сайте
         url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
         page = OllPage(browser, url_Page)
         # browser.maximize_window()
         page.open()
+        browser.refresh()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.user_authorization(language)  # авторизация пользователя
+        page.user_authorization(language, 1)  # авторизация пользователя
         page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
         page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 
@@ -46,7 +47,7 @@ class TestPackagePurchaseMonthlyFreeVacancy():
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_order_page()  # переход на страницу заказов
-        admin_page.search_for_user_orders_by_email(language)  # поиск заказов пользователя по e-mail
+        admin_page.search_for_user_orders_by_email(language, 1)  # поиск заказов пользователя по e-mail
         id_order = admin_page.getting_last_order_id_of_user()  # получение последнего id заказа пользователя
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_user_purchases_page()  # переход на страницу "Покупки пользователей"
@@ -76,7 +77,6 @@ class TestPackagePurchaseMonthlyFreeVacancy():
         my_vacancies_page.go_to_vacancy_add_page()  # переход на страницу "Добавить вакансию"
 
         add_vacancy_page.submitting_vacancy_for_publication()  # проверка наличия кнопки "Опубликовать"
-
 
 
 # закомментировано здесь чтоб в следующем тесте проверить создание вакансии, после чего там и происходит удаление этого пакета

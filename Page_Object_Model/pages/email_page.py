@@ -13,7 +13,6 @@ class EmailPage(BasePage):
     def confirmation_of_company_registration_in_letter(self, language):  # подтверждение регистрации работодателя в письме
         # time.sleep(20)
         # self.browser.refresh()
-
         letter_of_registration_confirmation_company = None
         if language == "/ua":
             letter_of_registration_confirmation_company = EmailPageLocators.LETTER_OF_REGISTRATION_CONFIRMATION_COMPANY_UA
@@ -34,23 +33,26 @@ class EmailPage(BasePage):
         # time.sleep(20)
         # self.browser.refresh()
 
-        letter_welcome_to_lcwork, text_in_letter_after_first_moderation = None, None
+        letter_welcome_to_lcwork, text_in_letter_after_first_moderation, text = None, None, None
         if language == "/ua":
             letter_welcome_to_lcwork = EmailPageLocators.LETTER_WELCOME_TO_LCWORK_UA
             text_in_letter_after_first_moderation = EmailPageLocators.TEXT_IN_LETTER_AFTER_FIRST_MODERATION_UA
+            text = 'Ура! Ваш акаунт пройшов модерацiю.'
         elif language == "":
             letter_welcome_to_lcwork = EmailPageLocators.LETTER_WELCOME_TO_LCWORK_RU
             text_in_letter_after_first_moderation = EmailPageLocators.TEXT_IN_LETTER_AFTER_FIRST_MODERATION_RU
+            text = 'Ура! Ваш аккаунт прошел модерацию.'
         elif language == "/en":
             letter_welcome_to_lcwork = EmailPageLocators.LETTER_WELCOME_TO_LCWORK_EN
             text_in_letter_after_first_moderation = EmailPageLocators.TEXT_IN_LETTER_AFTER_FIRST_MODERATION_EN
+            text = 'Your account has been moderated.'
 
         self.browser.find_element(*letter_welcome_to_lcwork).click()
 
         iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
         letter_text = self.browser.find_element(*text_in_letter_after_first_moderation).text
-        assert "Ура! Ваш аккаунт прошел модерацию." == letter_text, 'Не верное сообщение'
+        assert text == letter_text, 'Не верное сообщение'
         self.browser.switch_to.default_content()  # выход из фрейма
 
     def confirmation_of_job_seeker_registration_in_letter(self, language):  # подтверждение регистрации соискателя в письме
@@ -89,7 +91,7 @@ class EmailPage(BasePage):
         elif language == "/en":
             letter_after_order_processing = EmailPageLocators.LETTER_AFTER_ORDER_PROCESSING_EN
             text_in_letter_after_order_processing = EmailPageLocators.TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_EN
-            expected_email_text = '???'
+            expected_email_text = 'Payment received, activate the service on the '
 
         self.browser.find_element(*letter_after_order_processing).click()
 
@@ -105,17 +107,17 @@ class EmailPage(BasePage):
 
         letter_after_publishing_vacancy, text_in_letter_after_publishing_vacancy, expected_email_text = None, None, None
         if language == "/ua":
-            letter_after_publishing_vacancy = EmailPageLocators.LETTER_AFTER_PUBLISHING_VACANCY_RU
-            text_in_letter_after_publishing_vacancy = EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_RU
+            letter_after_publishing_vacancy = EmailPageLocators.LETTER_AFTER_PUBLISHING_VACANCY_UA
+            text_in_letter_after_publishing_vacancy = EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_UA
             expected_email_text = ['Ваша вакансія ', ' вже на сайті!']
         elif language == "":
             letter_after_publishing_vacancy = EmailPageLocators.LETTER_AFTER_PUBLISHING_VACANCY_RU
             text_in_letter_after_publishing_vacancy = EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_RU
             expected_email_text = ['Ваша вакансия ', ' добавлена на сайт.']
         elif language == "/en":
-            letter_after_publishing_vacancy = EmailPageLocators.LETTER_AFTER_PUBLISHING_VACANCY_RU
-            text_in_letter_after_publishing_vacancy = EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_RU
-            expected_email_text = ['???', '???']
+            letter_after_publishing_vacancy = EmailPageLocators.LETTER_AFTER_PUBLISHING_VACANCY_EN
+            text_in_letter_after_publishing_vacancy = EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_EN
+            expected_email_text = ['Your vacancy ', ' is already on website!']
 
         self.browser.find_element(*letter_after_publishing_vacancy).click()
 
@@ -141,7 +143,7 @@ class EmailPage(BasePage):
         elif language == "/en":
             letter_after_publishing_resume = EmailPageLocators.LETTER_AFTER_PUBLISHING_RESUME_EN
             text_in_letter_after_publishing_resume = EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_EN
-            expected_email_text = '???'
+            expected_email_text = 'Your resume is published on the '
 
         self.browser.find_element(*letter_after_publishing_resume).click()
 

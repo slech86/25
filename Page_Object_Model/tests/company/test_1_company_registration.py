@@ -8,7 +8,7 @@ from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.data_for_testing import Accounts
 
 
-# @pytest.mark.s_r_c
+@pytest.mark.s_r_c
 def test_company_registration_with_filling_in_all_fields(browser, language):  # регистрация работодателя с заполнением всех полей
     url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_page)
@@ -19,7 +19,7 @@ def test_company_registration_with_filling_in_all_fields(browser, language):  # 
     page.go_to_company_registration_page()  # нажатие на кнопку для перехода на страницу регистрации работодателя
 
     company_registration_page = CompanyRegistrationPage(browser, browser.current_url)
-    company_registration_page.filling_in_required_fields(language)  # заполнение обязательных полей
+    company_registration_page.filling_in_required_fields(language, 1)  # заполнение обязательных полей
     company_registration_page.filling_in_optional_fields()  # заполнение не обязательных полей
     company_registration_page.browser.execute_script("window.scrollBy(0, 1300);")
     company_registration_page.submitting_form_for_registration()  # отправка формы на регистрацию
@@ -36,7 +36,7 @@ def test_checking_creation_of_user_in_admin_panel(browser, language):  # про�
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_users_page()  # переход на страницу пользователей
-    admin_page.search_user_by_email(language)  # поиск пользователя по e-mail
+    admin_page.search_user_by_email(language, 1)  # поиск пользователя по e-mail
     admin_page.checking_that_newly_created_user_has_status_disabled()  # проверка что новосозданный пользователь имеет статус "Отключено"
 
 
@@ -46,7 +46,7 @@ def test_changing_user_role_from_user_to_super_admin(browser, language):  # из
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_users_page()  # переход на страницу пользователей
-    admin_page.search_user_by_email(language)  # поиск пользователя по e-mail
+    admin_page.search_user_by_email(language, 1)  # поиск пользователя по e-mail
     admin_page.go_to_object_editing_page()  # переход на страницу пользователя
     admin_page.changing_role_from_user_to_super_admin()  # изменение роли с "User" на "SuperAdmin"
     admin_page.saving_user_card()  # сохранение карточки пользователя
@@ -58,12 +58,12 @@ def test_authorization_of_user_in_disabled_status(browser, language):  # авт�
     # browser.maximize_window()
     page.open()
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.user_authorization(language)  # авторизация пользователя
+    page.user_authorization(language, 1)  # авторизация пользователя
     page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
     page.info_text_for_authorization_in_user_status_disabled(language)  # инфо текст при авторизации в статусе пользователя "Отключен"
 
 
-# @pytest.mark.s_r_c
+@pytest.mark.s_r_c
 def test_email_verification_after_company_registration(browser, language):  # верификация почты после регистрации работодателя
     link = Accounts.url_email
     email_page = EmailPage(browser, link)
@@ -82,19 +82,19 @@ def test_authorization_of_user_in_on_moderation_status(browser, language):  # а
     # browser.maximize_window()
     page.open()
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.user_authorization(language)  # авторизация пользователя
+    page.user_authorization(language, 1)  # авторизация пользователя
     page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
     page.info_text_for_authorization_in_user_status_on_moderation(language)  # инфо текст при авторизации в статусе пользователя "На модерации"
 
 
-# @pytest.mark.s_r_c
+@pytest.mark.s_r_c
 def test_change_of_employer_status_from_on_moderation_to_aktivet_ua(browser, language):  # изменение статуса работодателя с "На модерации" на "Активен" ua
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_users_page()  # переход на страницу пользователей
-    admin_page.search_user_by_email(language)  # поиск пользователя по e-mail
+    admin_page.search_user_by_email(language, 1)  # поиск пользователя по e-mail
 
     admin_page.change_of_user_status_from_on_moderation_to_active()  # изменение статуса пользователя с "На модерации" на "Активен"
     admin_page.check_that_user_has_status_active()  # проверка что пользователь имеет статус "Активен"
