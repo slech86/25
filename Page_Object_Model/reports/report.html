@@ -241,7 +241,7 @@ function filter_table(elem) {
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 13-Apr-2022 at 23:30:03 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
+    <p>Report generated on 14-Apr-2022 at 18:16:49 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -257,8 +257,8 @@ function filter_table(elem) {
         <td>Python</td>
         <td>3.8.9</td></tr></table>
     <h2>Summary</h2>
-    <p>35 tests ran in 663.36 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">34 passed</span>, <input checked="true" class="filter" data-test-result="skipped" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">12 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">2 rerun</span>
+    <p>5 tests ran in 173.11 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">5 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">0 rerun</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -269,173 +269,11 @@ function filter_table(elem) {
           <th>Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
-      <tbody class="failed results-table-row">
-        <tr>
-          <td class="col-result">Failed</td>
-          <td class="col-name">tests/company/test_6_company_edit.py::test_changing_all_company_data</td>
-          <td class="col-duration">16.05</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;1d91fb958d753bcaafc28a539a809de4&quot;)&gt;, language = &#x27;&#x27;<br/><br/>    def test_changing_all_company_data(browser, language):  # изменение всех данных компании<br/>        url_page = f&quot;{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}&quot;<br/>        page = OllPage(browser, url_page)<br/>        # browser.maximize_window()<br/>        page.open()<br/>        page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации<br/>        page.user_authorization(language, 1)  # авторизация пользователя<br/>        page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя<br/>        page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета<br/>    <br/>        company_personal_cabinet_page = CompanyPersonalCabinetPage(browser, browser.current_url)<br/>        company_personal_cabinet_page.go_to_personal_data_page()  # переход на страницу &quot;Личные данные&quot;<br/>    <br/>        company_edit_page = CompanyEditPage(browser, browser.current_url)<br/>&gt;       company_edit_page.change_data_in_all_fields(language)  # изменение данных во всех полях<br/><br/>tests/company/test_6_company_edit.py:23: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>pages/site/company_edit_page.py:76: in change_data_in_all_fields<br/>    self.browser.find_element(*CompanyEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_EN).click()<br/>../../one/venv/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py:1244: in find_element<br/>    return self.execute(Command.FIND_ELEMENT, {<br/>../../one/venv/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py:424: in execute<br/>    self.error_handler.check_response(response)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x104548250&gt;<br/>response = {&#x27;status&#x27;: 404, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;no such element&quot;,&quot;message&quot;:&quot;no such element: Unable to locate element: {\...0001a540a26c _pthread_start + 148\\n15  libsystem_pthread.dylib             0x00000001a540508c thread_start + 8\\n&quot;}}&#x27;}<br/><br/>    def check_response(self, response: Dict[str, Any]) -&gt; None:<br/>        &quot;&quot;&quot;<br/>        Checks that a JSON response from the WebDriver does not have an error.<br/>    <br/>        :Args:<br/>         - response - The JSON response from the WebDriver server as a dictionary<br/>           object.<br/>    <br/>        :Raises: If the response contains an error message.<br/>        &quot;&quot;&quot;<br/>        status = response.get(&#x27;status&#x27;, None)<br/>        if not status or status == ErrorCode.SUCCESS:<br/>            return<br/>        value = None<br/>        message = response.get(&quot;message&quot;, &quot;&quot;)<br/>        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)<br/>        stacktrace = None<br/>        if isinstance(status, int):<br/>            value_json = response.get(&#x27;value&#x27;, None)<br/>            if value_json and isinstance(value_json, str):<br/>                import json<br/>                try:<br/>                    value = json.loads(value_json)<br/>                    if len(value.keys()) == 1:<br/>                        value = value[&#x27;value&#x27;]<br/>                    status = value.get(&#x27;error&#x27;, None)<br/>                    if not status:<br/>                        status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)<br/>                        message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)<br/>                        if not isinstance(message, str):<br/>                            value = message<br/>                            message = message.get(&#x27;message&#x27;)<br/>                    else:<br/>                        message = value.get(&#x27;message&#x27;, None)<br/>                except ValueError:<br/>                    pass<br/>    <br/>        exception_class: Type[WebDriverException]<br/>        if status in ErrorCode.NO_SUCH_ELEMENT:<br/>            exception_class = NoSuchElementException<br/>        elif status in ErrorCode.NO_SUCH_FRAME:<br/>            exception_class = NoSuchFrameException<br/>        elif status in ErrorCode.NO_SUCH_SHADOW_ROOT:<br/>            exception_class = NoSuchShadowRootException<br/>        elif status in ErrorCode.NO_SUCH_WINDOW:<br/>            exception_class = NoSuchWindowException<br/>        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:<br/>            exception_class = StaleElementReferenceException<br/>        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:<br/>            exception_class = ElementNotVisibleException<br/>        elif status in ErrorCode.INVALID_ELEMENT_STATE:<br/>            exception_class = InvalidElementStateException<br/>        elif status in ErrorCode.INVALID_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:<br/>            exception_class = InvalidSelectorException<br/>        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:<br/>            exception_class = ElementNotSelectableException<br/>        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:<br/>            exception_class = ElementNotInteractableException<br/>        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:<br/>            exception_class = InvalidCookieDomainException<br/>        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:<br/>            exception_class = UnableToSetCookieException<br/>        elif status in ErrorCode.TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.SCRIPT_TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.UNKNOWN_ERROR:<br/>            exception_class = WebDriverException<br/>        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:<br/>            exception_class = UnexpectedAlertPresentException<br/>        elif status in ErrorCode.NO_ALERT_OPEN:<br/>            exception_class = NoAlertPresentException<br/>        elif status in ErrorCode.IME_NOT_AVAILABLE:<br/>            exception_class = ImeNotAvailableException<br/>        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:<br/>            exception_class = ImeActivationFailedException<br/>        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:<br/>            exception_class = MoveTargetOutOfBoundsException<br/>        elif status in ErrorCode.JAVASCRIPT_ERROR:<br/>            exception_class = JavascriptException<br/>        elif status in ErrorCode.SESSION_NOT_CREATED:<br/>            exception_class = SessionNotCreatedException<br/>        elif status in ErrorCode.INVALID_ARGUMENT:<br/>            exception_class = InvalidArgumentException<br/>        elif status in ErrorCode.NO_SUCH_COOKIE:<br/>            exception_class = NoSuchCookieException<br/>        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:<br/>            exception_class = ScreenshotException<br/>        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:<br/>            exception_class = ElementClickInterceptedException<br/>        elif status in ErrorCode.INSECURE_CERTIFICATE:<br/>            exception_class = InsecureCertificateException<br/>        elif status in ErrorCode.INVALID_COORDINATES:<br/>            exception_class = InvalidCoordinatesException<br/>        elif status in ErrorCode.INVALID_SESSION_ID:<br/>            exception_class = InvalidSessionIdException<br/>        elif status in ErrorCode.UNKNOWN_METHOD:<br/>            exception_class = UnknownMethodException<br/>        else:<br/>            exception_class = WebDriverException<br/>        if not value:<br/>            value = response[&#x27;value&#x27;]<br/>        if isinstance(value, str):<br/>            raise exception_class(value)<br/>        if message == &quot;&quot; and &#x27;message&#x27; in value:<br/>            message = value[&#x27;message&#x27;]<br/>    <br/>        screen = None  # type: ignore[assignment]<br/>        if &#x27;screen&#x27; in value:<br/>            screen = value[&#x27;screen&#x27;]<br/>    <br/>        stacktrace = None<br/>        st_value = value.get(&#x27;stackTrace&#x27;) or value.get(&#x27;stacktrace&#x27;)<br/>        if st_value:<br/>            if isinstance(st_value, str):<br/>                stacktrace = st_value.split(&#x27;\n&#x27;)<br/>            else:<br/>                stacktrace = []<br/>                try:<br/>                    for frame in st_value:<br/>                        line = self._value_or_default(frame, &#x27;lineNumber&#x27;, &#x27;&#x27;)<br/>                        file = self._value_or_default(frame, &#x27;fileName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                        if line:<br/>                            file = &quot;%s:%s&quot; % (file, line)<br/>                        meth = self._value_or_default(frame, &#x27;methodName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                        if &#x27;className&#x27; in frame:<br/>                            meth = &quot;%s.%s&quot; % (frame[&#x27;className&#x27;], meth)<br/>                        msg = &quot;    at %s (%s)&quot;<br/>                        msg = msg % (meth, file)<br/>                        stacktrace.append(msg)<br/>                except TypeError:<br/>                    pass<br/>        if exception_class == UnexpectedAlertPresentException:<br/>            alert_text = None<br/>            if &#x27;data&#x27; in value:<br/>                alert_text = value[&#x27;data&#x27;].get(&#x27;text&#x27;)<br/>            elif &#x27;alert&#x27; in value:<br/>                alert_text = value[&#x27;alert&#x27;].get(&#x27;text&#x27;)<br/>            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here<br/>&gt;       raise exception_class(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;.field-companyform-mail_language [data-original-index=&quot;3&quot;]&quot;}</span><br/><span class="error">E         (Session info: chrome=100.0.4896.75)</span><br/><span class="error">E       Stacktrace:</span><br/><span class="error">E       0   chromedriver                        0x00000001007f3370 chromedriver + 4420464</span><br/><span class="error">E       1   chromedriver                        0x000000010078a940 chromedriver + 3991872</span><br/><span class="error">E       2   chromedriver                        0x00000001003ea548 chromedriver + 189768</span><br/><span class="error">E       3   chromedriver                        0x0000000100418ef8 chromedriver + 380664</span><br/><span class="error">E       4   chromedriver                        0x0000000100441bfc chromedriver + 547836</span><br/><span class="error">E       5   chromedriver                        0x000000010040e248 chromedriver + 336456</span><br/><span class="error">E       6   chromedriver                        0x00000001007b7548 chromedriver + 4175176</span><br/><span class="error">E       7   chromedriver                        0x00000001007cd95c chromedriver + 4266332</span><br/><span class="error">E       8   chromedriver                        0x00000001007d2660 chromedriver + 4286048</span><br/><span class="error">E       9   chromedriver                        0x00000001007ce124 chromedriver + 4268324</span><br/><span class="error">E       10  chromedriver                        0x00000001007ad53c chromedriver + 4134204</span><br/><span class="error">E       11  chromedriver                        0x00000001007e5eb0 chromedriver + 4366000</span><br/><span class="error">E       12  chromedriver                        0x00000001007e6014 chromedriver + 4366356</span><br/><span class="error">E       13  chromedriver                        0x00000001007f9a6c chromedriver + 4446828</span><br/><span class="error">E       14  libsystem_pthread.dylib             0x00000001a540a26c _pthread_start + 148</span><br/><span class="error">E       15  libsystem_pthread.dylib             0x00000001a540508c thread_start + 8</span><br/><br/>../../one/venv/lib/python3.8/site-packages/selenium/webdriver/remote/errorhandler.py:247: NoSuchElementException<br/></div></td></tr></tbody>
-      <tbody class="rerun results-table-row">
-        <tr>
-          <td class="col-result">Rerun</td>
-          <td class="col-name">tests/company/test_6_company_edit.py::test_changing_all_company_data</td>
-          <td class="col-duration">15.97</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;5d1bef51bb224a0c10f32bf6fd44e2ee&quot;)&gt;, language = &#x27;&#x27;<br/><br/>    def test_changing_all_company_data(browser, language):  # изменение всех данных компании<br/>        url_page = f&quot;{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}&quot;<br/>        page = OllPage(browser, url_page)<br/>        # browser.maximize_window()<br/>        page.open()<br/>        page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации<br/>        page.user_authorization(language, 1)  # авторизация пользователя<br/>        page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя<br/>        page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета<br/>    <br/>        company_personal_cabinet_page = CompanyPersonalCabinetPage(browser, browser.current_url)<br/>        company_personal_cabinet_page.go_to_personal_data_page()  # переход на страницу &quot;Личные данные&quot;<br/>    <br/>        company_edit_page = CompanyEditPage(browser, browser.current_url)<br/>&gt;       company_edit_page.change_data_in_all_fields(language)  # изменение данных во всех полях<br/><br/>tests/company/test_6_company_edit.py:23: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>pages/site/company_edit_page.py:76: in change_data_in_all_fields<br/>    self.browser.find_element(*CompanyEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_EN).click()<br/>../../one/venv/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py:1244: in find_element<br/>    return self.execute(Command.FIND_ELEMENT, {<br/>../../one/venv/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py:424: in execute<br/>    self.error_handler.check_response(response)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x1044c22b0&gt;<br/>response = {&#x27;status&#x27;: 404, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;no such element&quot;,&quot;message&quot;:&quot;no such element: Unable to locate element: {\...0001a540a26c _pthread_start + 148\\n15  libsystem_pthread.dylib             0x00000001a540508c thread_start + 8\\n&quot;}}&#x27;}<br/><br/>    def check_response(self, response: Dict[str, Any]) -&gt; None:<br/>        &quot;&quot;&quot;<br/>        Checks that a JSON response from the WebDriver does not have an error.<br/>    <br/>        :Args:<br/>         - response - The JSON response from the WebDriver server as a dictionary<br/>           object.<br/>    <br/>        :Raises: If the response contains an error message.<br/>        &quot;&quot;&quot;<br/>        status = response.get(&#x27;status&#x27;, None)<br/>        if not status or status == ErrorCode.SUCCESS:<br/>            return<br/>        value = None<br/>        message = response.get(&quot;message&quot;, &quot;&quot;)<br/>        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)<br/>        stacktrace = None<br/>        if isinstance(status, int):<br/>            value_json = response.get(&#x27;value&#x27;, None)<br/>            if value_json and isinstance(value_json, str):<br/>                import json<br/>                try:<br/>                    value = json.loads(value_json)<br/>                    if len(value.keys()) == 1:<br/>                        value = value[&#x27;value&#x27;]<br/>                    status = value.get(&#x27;error&#x27;, None)<br/>                    if not status:<br/>                        status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)<br/>                        message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)<br/>                        if not isinstance(message, str):<br/>                            value = message<br/>                            message = message.get(&#x27;message&#x27;)<br/>                    else:<br/>                        message = value.get(&#x27;message&#x27;, None)<br/>                except ValueError:<br/>                    pass<br/>    <br/>        exception_class: Type[WebDriverException]<br/>        if status in ErrorCode.NO_SUCH_ELEMENT:<br/>            exception_class = NoSuchElementException<br/>        elif status in ErrorCode.NO_SUCH_FRAME:<br/>            exception_class = NoSuchFrameException<br/>        elif status in ErrorCode.NO_SUCH_SHADOW_ROOT:<br/>            exception_class = NoSuchShadowRootException<br/>        elif status in ErrorCode.NO_SUCH_WINDOW:<br/>            exception_class = NoSuchWindowException<br/>        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:<br/>            exception_class = StaleElementReferenceException<br/>        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:<br/>            exception_class = ElementNotVisibleException<br/>        elif status in ErrorCode.INVALID_ELEMENT_STATE:<br/>            exception_class = InvalidElementStateException<br/>        elif status in ErrorCode.INVALID_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:<br/>            exception_class = InvalidSelectorException<br/>        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:<br/>            exception_class = ElementNotSelectableException<br/>        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:<br/>            exception_class = ElementNotInteractableException<br/>        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:<br/>            exception_class = InvalidCookieDomainException<br/>        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:<br/>            exception_class = UnableToSetCookieException<br/>        elif status in ErrorCode.TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.SCRIPT_TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.UNKNOWN_ERROR:<br/>            exception_class = WebDriverException<br/>        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:<br/>            exception_class = UnexpectedAlertPresentException<br/>        elif status in ErrorCode.NO_ALERT_OPEN:<br/>            exception_class = NoAlertPresentException<br/>        elif status in ErrorCode.IME_NOT_AVAILABLE:<br/>            exception_class = ImeNotAvailableException<br/>        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:<br/>            exception_class = ImeActivationFailedException<br/>        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:<br/>            exception_class = MoveTargetOutOfBoundsException<br/>        elif status in ErrorCode.JAVASCRIPT_ERROR:<br/>            exception_class = JavascriptException<br/>        elif status in ErrorCode.SESSION_NOT_CREATED:<br/>            exception_class = SessionNotCreatedException<br/>        elif status in ErrorCode.INVALID_ARGUMENT:<br/>            exception_class = InvalidArgumentException<br/>        elif status in ErrorCode.NO_SUCH_COOKIE:<br/>            exception_class = NoSuchCookieException<br/>        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:<br/>            exception_class = ScreenshotException<br/>        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:<br/>            exception_class = ElementClickInterceptedException<br/>        elif status in ErrorCode.INSECURE_CERTIFICATE:<br/>            exception_class = InsecureCertificateException<br/>        elif status in ErrorCode.INVALID_COORDINATES:<br/>            exception_class = InvalidCoordinatesException<br/>        elif status in ErrorCode.INVALID_SESSION_ID:<br/>            exception_class = InvalidSessionIdException<br/>        elif status in ErrorCode.UNKNOWN_METHOD:<br/>            exception_class = UnknownMethodException<br/>        else:<br/>            exception_class = WebDriverException<br/>        if not value:<br/>            value = response[&#x27;value&#x27;]<br/>        if isinstance(value, str):<br/>            raise exception_class(value)<br/>        if message == &quot;&quot; and &#x27;message&#x27; in value:<br/>            message = value[&#x27;message&#x27;]<br/>    <br/>        screen = None  # type: ignore[assignment]<br/>        if &#x27;screen&#x27; in value:<br/>            screen = value[&#x27;screen&#x27;]<br/>    <br/>        stacktrace = None<br/>        st_value = value.get(&#x27;stackTrace&#x27;) or value.get(&#x27;stacktrace&#x27;)<br/>        if st_value:<br/>            if isinstance(st_value, str):<br/>                stacktrace = st_value.split(&#x27;\n&#x27;)<br/>            else:<br/>                stacktrace = []<br/>                try:<br/>                    for frame in st_value:<br/>                        line = self._value_or_default(frame, &#x27;lineNumber&#x27;, &#x27;&#x27;)<br/>                        file = self._value_or_default(frame, &#x27;fileName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                        if line:<br/>                            file = &quot;%s:%s&quot; % (file, line)<br/>                        meth = self._value_or_default(frame, &#x27;methodName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                        if &#x27;className&#x27; in frame:<br/>                            meth = &quot;%s.%s&quot; % (frame[&#x27;className&#x27;], meth)<br/>                        msg = &quot;    at %s (%s)&quot;<br/>                        msg = msg % (meth, file)<br/>                        stacktrace.append(msg)<br/>                except TypeError:<br/>                    pass<br/>        if exception_class == UnexpectedAlertPresentException:<br/>            alert_text = None<br/>            if &#x27;data&#x27; in value:<br/>                alert_text = value[&#x27;data&#x27;].get(&#x27;text&#x27;)<br/>            elif &#x27;alert&#x27; in value:<br/>                alert_text = value[&#x27;alert&#x27;].get(&#x27;text&#x27;)<br/>            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here<br/>&gt;       raise exception_class(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;.field-companyform-mail_language [data-original-index=&quot;3&quot;]&quot;}</span><br/><span class="error">E         (Session info: chrome=100.0.4896.75)</span><br/><span class="error">E       Stacktrace:</span><br/><span class="error">E       0   chromedriver                        0x0000000102fe7370 chromedriver + 4420464</span><br/><span class="error">E       1   chromedriver                        0x0000000102f7e940 chromedriver + 3991872</span><br/><span class="error">E       2   chromedriver                        0x0000000102bde548 chromedriver + 189768</span><br/><span class="error">E       3   chromedriver                        0x0000000102c0cef8 chromedriver + 380664</span><br/><span class="error">E       4   chromedriver                        0x0000000102c35bfc chromedriver + 547836</span><br/><span class="error">E       5   chromedriver                        0x0000000102c02248 chromedriver + 336456</span><br/><span class="error">E       6   chromedriver                        0x0000000102fab548 chromedriver + 4175176</span><br/><span class="error">E       7   chromedriver                        0x0000000102fc195c chromedriver + 4266332</span><br/><span class="error">E       8   chromedriver                        0x0000000102fc6660 chromedriver + 4286048</span><br/><span class="error">E       9   chromedriver                        0x0000000102fc2124 chromedriver + 4268324</span><br/><span class="error">E       10  chromedriver                        0x0000000102fa153c chromedriver + 4134204</span><br/><span class="error">E       11  chromedriver                        0x0000000102fd9eb0 chromedriver + 4366000</span><br/><span class="error">E       12  chromedriver                        0x0000000102fda014 chromedriver + 4366356</span><br/><span class="error">E       13  chromedriver                        0x0000000102feda6c chromedriver + 4446828</span><br/><span class="error">E       14  libsystem_pthread.dylib             0x00000001a540a26c _pthread_start + 148</span><br/><span class="error">E       15  libsystem_pthread.dylib             0x00000001a540508c thread_start + 8</span><br/><br/>../../one/venv/lib/python3.8/site-packages/selenium/webdriver/remote/errorhandler.py:247: NoSuchElementException<br/></div></td></tr></tbody>
-      <tbody class="rerun results-table-row">
-        <tr>
-          <td class="col-result">Rerun</td>
-          <td class="col-name">tests/job_seeker/test_3_3_resume_edit.py::test_editing_resume</td>
-          <td class="col-duration">13.06</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;773f0e465b575068d80fa6efc89607db&quot;)&gt;, language = &#x27;&#x27;<br/><br/>    @pytest.mark.s_r_c<br/>    def test_editing_resume(browser, language):  # редактирование резюме<br/>        url_page = f&quot;{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}&quot;<br/>        page = OllPage(browser, url_page)<br/>        # browser.maximize_window()<br/>        page.open()<br/>        page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации<br/>        page.user_authorization(language, 2)  # авторизация пользователя<br/>        page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя<br/>        page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета<br/>    <br/>        job_seeker_personal_cabinet_page = JobSeekerPersonalCabinetPage(browser, browser.current_url)<br/>        job_seeker_personal_cabinet_page.go_to_my_resume_page()  # переход на страницу &quot;Мои резюме&quot;<br/>    <br/>        my_resume_page = MyResumePage(browser, browser.current_url)<br/>        my_resume_page.go_to_resume_editing_page()  # переход на страницу редактирования резюме<br/>    <br/>        resume_edit_page = ResumeEditPage(browser, browser.current_url)<br/>&gt;       resume_edit_page.change_data_in_all_fields()  # изменение данных во всех полях<br/><br/>tests/job_seeker/test_3_3_resume_edit.py:30: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>pages/site/resume_edit_page.py:47: in change_data_in_all_fields<br/>    self.browser.find_element(*ResumeEditPageLocators.FIELD_LINKEDIN).send_keys(&#x27;_editing&#x27;)<br/>../../one/venv/lib/python3.8/site-packages/selenium/webdriver/remote/webelement.py:540: in send_keys<br/>    self._execute(Command.SEND_KEYS_TO_ELEMENT,<br/>../../one/venv/lib/python3.8/site-packages/selenium/webdriver/remote/webelement.py:710: in _execute<br/>    return self._parent.execute(command, params)<br/>../../one/venv/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py:424: in execute<br/>    self.error_handler.check_response(response)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x1044fe5e0&gt;<br/>response = {&#x27;status&#x27;: 404, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;target frame detached&quot;,&quot;message&quot;:&quot;target frame detached\\n  (Session info...0001a540a26c _pthread_start + 148\\n33  libsystem_pthread.dylib             0x00000001a540508c thread_start + 8\\n&quot;}}&#x27;}<br/><br/>    def check_response(self, response: Dict[str, Any]) -&gt; None:<br/>        &quot;&quot;&quot;<br/>        Checks that a JSON response from the WebDriver does not have an error.<br/>    <br/>        :Args:<br/>         - response - The JSON response from the WebDriver server as a dictionary<br/>           object.<br/>    <br/>        :Raises: If the response contains an error message.<br/>        &quot;&quot;&quot;<br/>        status = response.get(&#x27;status&#x27;, None)<br/>        if not status or status == ErrorCode.SUCCESS:<br/>            return<br/>        value = None<br/>        message = response.get(&quot;message&quot;, &quot;&quot;)<br/>        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)<br/>        stacktrace = None<br/>        if isinstance(status, int):<br/>            value_json = response.get(&#x27;value&#x27;, None)<br/>            if value_json and isinstance(value_json, str):<br/>                import json<br/>                try:<br/>                    value = json.loads(value_json)<br/>                    if len(value.keys()) == 1:<br/>                        value = value[&#x27;value&#x27;]<br/>                    status = value.get(&#x27;error&#x27;, None)<br/>                    if not status:<br/>                        status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)<br/>                        message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)<br/>                        if not isinstance(message, str):<br/>                            value = message<br/>                            message = message.get(&#x27;message&#x27;)<br/>                    else:<br/>                        message = value.get(&#x27;message&#x27;, None)<br/>                except ValueError:<br/>                    pass<br/>    <br/>        exception_class: Type[WebDriverException]<br/>        if status in ErrorCode.NO_SUCH_ELEMENT:<br/>            exception_class = NoSuchElementException<br/>        elif status in ErrorCode.NO_SUCH_FRAME:<br/>            exception_class = NoSuchFrameException<br/>        elif status in ErrorCode.NO_SUCH_SHADOW_ROOT:<br/>            exception_class = NoSuchShadowRootException<br/>        elif status in ErrorCode.NO_SUCH_WINDOW:<br/>            exception_class = NoSuchWindowException<br/>        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:<br/>            exception_class = StaleElementReferenceException<br/>        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:<br/>            exception_class = ElementNotVisibleException<br/>        elif status in ErrorCode.INVALID_ELEMENT_STATE:<br/>            exception_class = InvalidElementStateException<br/>        elif status in ErrorCode.INVALID_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:<br/>            exception_class = InvalidSelectorException<br/>        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:<br/>            exception_class = ElementNotSelectableException<br/>        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:<br/>            exception_class = ElementNotInteractableException<br/>        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:<br/>            exception_class = InvalidCookieDomainException<br/>        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:<br/>            exception_class = UnableToSetCookieException<br/>        elif status in ErrorCode.TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.SCRIPT_TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.UNKNOWN_ERROR:<br/>            exception_class = WebDriverException<br/>        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:<br/>            exception_class = UnexpectedAlertPresentException<br/>        elif status in ErrorCode.NO_ALERT_OPEN:<br/>            exception_class = NoAlertPresentException<br/>        elif status in ErrorCode.IME_NOT_AVAILABLE:<br/>            exception_class = ImeNotAvailableException<br/>        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:<br/>            exception_class = ImeActivationFailedException<br/>        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:<br/>            exception_class = MoveTargetOutOfBoundsException<br/>        elif status in ErrorCode.JAVASCRIPT_ERROR:<br/>            exception_class = JavascriptException<br/>        elif status in ErrorCode.SESSION_NOT_CREATED:<br/>            exception_class = SessionNotCreatedException<br/>        elif status in ErrorCode.INVALID_ARGUMENT:<br/>            exception_class = InvalidArgumentException<br/>        elif status in ErrorCode.NO_SUCH_COOKIE:<br/>            exception_class = NoSuchCookieException<br/>        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:<br/>            exception_class = ScreenshotException<br/>        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:<br/>            exception_class = ElementClickInterceptedException<br/>        elif status in ErrorCode.INSECURE_CERTIFICATE:<br/>            exception_class = InsecureCertificateException<br/>        elif status in ErrorCode.INVALID_COORDINATES:<br/>            exception_class = InvalidCoordinatesException<br/>        elif status in ErrorCode.INVALID_SESSION_ID:<br/>            exception_class = InvalidSessionIdException<br/>        elif status in ErrorCode.UNKNOWN_METHOD:<br/>            exception_class = UnknownMethodException<br/>        else:<br/>            exception_class = WebDriverException<br/>        if not value:<br/>            value = response[&#x27;value&#x27;]<br/>        if isinstance(value, str):<br/>            raise exception_class(value)<br/>        if message == &quot;&quot; and &#x27;message&#x27; in value:<br/>            message = value[&#x27;message&#x27;]<br/>    <br/>        screen = None  # type: ignore[assignment]<br/>        if &#x27;screen&#x27; in value:<br/>            screen = value[&#x27;screen&#x27;]<br/>    <br/>        stacktrace = None<br/>        st_value = value.get(&#x27;stackTrace&#x27;) or value.get(&#x27;stacktrace&#x27;)<br/>        if st_value:<br/>            if isinstance(st_value, str):<br/>                stacktrace = st_value.split(&#x27;\n&#x27;)<br/>            else:<br/>                stacktrace = []<br/>                try:<br/>                    for frame in st_value:<br/>                        line = self._value_or_default(frame, &#x27;lineNumber&#x27;, &#x27;&#x27;)<br/>                        file = self._value_or_default(frame, &#x27;fileName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                        if line:<br/>                            file = &quot;%s:%s&quot; % (file, line)<br/>                        meth = self._value_or_default(frame, &#x27;methodName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                        if &#x27;className&#x27; in frame:<br/>                            meth = &quot;%s.%s&quot; % (frame[&#x27;className&#x27;], meth)<br/>                        msg = &quot;    at %s (%s)&quot;<br/>                        msg = msg % (meth, file)<br/>                        stacktrace.append(msg)<br/>                except TypeError:<br/>                    pass<br/>        if exception_class == UnexpectedAlertPresentException:<br/>            alert_text = None<br/>            if &#x27;data&#x27; in value:<br/>                alert_text = value[&#x27;data&#x27;].get(&#x27;text&#x27;)<br/>            elif &#x27;alert&#x27; in value:<br/>                alert_text = value[&#x27;alert&#x27;].get(&#x27;text&#x27;)<br/>            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here<br/>&gt;       raise exception_class(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.WebDriverException: Message: target frame detached</span><br/><span class="error">E         (Session info: chrome=100.0.4896.75)</span><br/><span class="error">E       Stacktrace:</span><br/><span class="error">E       0   chromedriver                        0x00000001052cb370 chromedriver + 4420464</span><br/><span class="error">E       1   chromedriver                        0x0000000105262940 chromedriver + 3991872</span><br/><span class="error">E       2   chromedriver                        0x0000000104ec2418 chromedriver + 189464</span><br/><span class="error">E       3   chromedriver                        0x0000000104eaf614 chromedriver + 112148</span><br/><span class="error">E       4   chromedriver                        0x0000000104eae8f8 chromedriver + 108792</span><br/><span class="error">E       5   chromedriver                        0x0000000104eaed94 chromedriver + 109972</span><br/><span class="error">E       6   chromedriver                        0x0000000104eb5030 chromedriver + 135216</span><br/><span class="error">E       7   chromedriver                        0x0000000104eafe24 chromedriver + 114212</span><br/><span class="error">E       8   chromedriver                        0x0000000104eb0374 chromedriver + 115572</span><br/><span class="error">E       9   chromedriver                        0x0000000104eb0168 chromedriver + 115048</span><br/><span class="error">E       10  chromedriver                        0x0000000104eaf7ec chromedriver + 112620</span><br/><span class="error">E       11  chromedriver                        0x0000000104eae8f8 chromedriver + 108792</span><br/><span class="error">E       12  chromedriver                        0x0000000104eaed94 chromedriver + 109972</span><br/><span class="error">E       13  chromedriver                        0x0000000104ecaf38 chromedriver + 225080</span><br/><span class="error">E       14  chromedriver                        0x0000000104ec4948 chromedriver + 198984</span><br/><span class="error">E       15  chromedriver                        0x0000000104ec4674 chromedriver + 198260</span><br/><span class="error">E       16  chromedriver                        0x0000000104ec4cc0 chromedriver + 199872</span><br/><span class="error">E       17  chromedriver                        0x0000000104ec4f40 chromedriver + 200512</span><br/><span class="error">E       18  chromedriver                        0x0000000104ef1904 chromedriver + 383236</span><br/><span class="error">E       19  chromedriver                        0x0000000104ef19cc chromedriver + 383436</span><br/><span class="error">E       20  chromedriver                        0x0000000104eeaa04 chromedriver + 354820</span><br/><span class="error">E       21  chromedriver                        0x0000000104ee73bc chromedriver + 340924</span><br/><span class="error">E       22  chromedriver                        0x0000000104f19bfc chromedriver + 547836</span><br/><span class="error">E       23  chromedriver                        0x0000000104ee6248 chromedriver + 336456</span><br/><span class="error">E       24  chromedriver                        0x000000010528f548 chromedriver + 4175176</span><br/><span class="error">E       25  chromedriver                        0x00000001052a595c chromedriver + 4266332</span><br/><span class="error">E       26  chromedriver                        0x00000001052aa660 chromedriver + 4286048</span><br/><span class="error">E       27  chromedriver                        0x00000001052a6124 chromedriver + 4268324</span><br/><span class="error">E       28  chromedriver                        0x000000010528553c chromedriver + 4134204</span><br/><span class="error">E       29  chromedriver                        0x00000001052bdeb0 chromedriver + 4366000</span><br/><span class="error">E       30  chromedriver                        0x00000001052be014 chromedriver + 4366356</span><br/><span class="error">E       31  chromedriver                        0x00000001052d1a6c chromedriver + 4446828</span><br/><span class="error">E       32  libsystem_pthread.dylib             0x00000001a540a26c _pthread_start + 148</span><br/><span class="error">E       33  libsystem_pthread.dylib             0x00000001a540508c thread_start + 8</span><br/><br/>../../one/venv/lib/python3.8/site-packages/selenium/webdriver/remote/errorhandler.py:247: WebDriverException<br/></div></td></tr></tbody>
-      <tbody class="skipped results-table-row">
-        <tr>
-          <td class="col-result">Skipped</td>
-          <td class="col-name">tests/test_sitemap_xml.py::test_checking_response_statuses_of_all_pages_in_sitemap_xml::setup</td>
-          <td class="col-duration">0.00</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">(&#x27;/Users/sl./PycharmProjects/smileexpo/Page_Object_Model/tests/test_sitemap_xml.py&#x27;, 7, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
-      <tbody class="skipped results-table-row">
-        <tr>
-          <td class="col-result">Skipped</td>
-          <td class="col-name">tests/company/test_4_package_purchase_1_vacancy.py::TestPackagePurchase1Vacancy::test_package_purchase_1_vacancy_and_orders_processing_and_activating_it_on_site::setup</td>
-          <td class="col-duration">0.00</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">(&#x27;/Users/sl./PycharmProjects/smileexpo/Page_Object_Model/tests/company/test_4_package_purchase_1_vacancy.py&#x27;, 16, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
-      <tbody class="skipped results-table-row">
-        <tr>
-          <td class="col-result">Skipped</td>
-          <td class="col-name">tests/company/test_4_package_purchase_1_vacancy.py::TestPackagePurchase1Vacancy::test_checking_letter_after_order_processing::setup</td>
-          <td class="col-duration">0.00</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">(&#x27;/Users/sl./PycharmProjects/smileexpo/Page_Object_Model/tests/company/test_4_package_purchase_1_vacancy.py&#x27;, 104, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
-      <tbody class="skipped results-table-row">
-        <tr>
-          <td class="col-result">Skipped</td>
-          <td class="col-name">tests/company/test_4_package_purchase_1_vacancy.py::TestPackagePurchase1Vacancy::test_complete_deletion_of_user_orders::setup</td>
-          <td class="col-duration">0.00</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">(&#x27;/Users/sl./PycharmProjects/smileexpo/Page_Object_Model/tests/company/test_4_package_purchase_1_vacancy.py&#x27;, 112, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
-      <tbody class="skipped results-table-row">
-        <tr>
-          <td class="col-result">Skipped</td>
-          <td class="col-name">tests/company/test_4_package_purchase_standart_1_vacancy.py::TestPackagePurchaseStandart1Vacancy::test_package_purchase_standart_and_orders_processing_and_activating_it_on_site::setup</td>
-          <td class="col-duration">0.00</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">(&#x27;/Users/sl./PycharmProjects/smileexpo/Page_Object_Model/tests/company/test_4_package_purchase_standart_1_vacancy.py&#x27;, 14, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
-      <tbody class="skipped results-table-row">
-        <tr>
-          <td class="col-result">Skipped</td>
-          <td class="col-name">tests/company/test_4_package_purchase_standart_1_vacancy.py::TestPackagePurchaseStandart1Vacancy::test_checking_letter_after_order_processing::setup</td>
-          <td class="col-duration">0.00</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">(&#x27;/Users/sl./PycharmProjects/smileexpo/Page_Object_Model/tests/company/test_4_package_purchase_standart_1_vacancy.py&#x27;, 62, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
-      <tbody class="skipped results-table-row">
-        <tr>
-          <td class="col-result">Skipped</td>
-          <td class="col-name">tests/company/test_4_package_purchase_standart_1_vacancy.py::TestPackagePurchaseStandart1Vacancy::test_complete_deletion_of_user_orders::setup</td>
-          <td class="col-duration">0.00</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">(&#x27;/Users/sl./PycharmProjects/smileexpo/Page_Object_Model/tests/company/test_4_package_purchase_standart_1_vacancy.py&#x27;, 70, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
-      <tbody class="skipped results-table-row">
-        <tr>
-          <td class="col-result">Skipped</td>
-          <td class="col-name">tests/company/test_5_package_purchase_standart_5_vacancy.py::TestPackagePurchaseStandart5Vacancy::test_package_purchase_standart_and_orders_processing_and_activating_it_on_site::setup</td>
-          <td class="col-duration">0.00</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">(&#x27;/Users/sl./PycharmProjects/smileexpo/Page_Object_Model/tests/company/test_5_package_purchase_standart_5_vacancy.py&#x27;, 16, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
-      <tbody class="skipped results-table-row">
-        <tr>
-          <td class="col-result">Skipped</td>
-          <td class="col-name">tests/company/test_5_package_purchase_standart_5_vacancy.py::TestPackagePurchaseStandart5Vacancy::test_checking_letter_after_order_processing::setup</td>
-          <td class="col-duration">0.00</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">(&#x27;/Users/sl./PycharmProjects/smileexpo/Page_Object_Model/tests/company/test_5_package_purchase_standart_5_vacancy.py&#x27;, 94, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
-      <tbody class="skipped results-table-row">
-        <tr>
-          <td class="col-result">Skipped</td>
-          <td class="col-name">tests/company/test_5_package_purchase_standart_5_vacancy.py::TestPackagePurchaseStandart5Vacancy::test_complete_deletion_of_user_orders::setup</td>
-          <td class="col-duration">0.00</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">(&#x27;/Users/sl./PycharmProjects/smileexpo/Page_Object_Model/tests/company/test_5_package_purchase_standart_5_vacancy.py&#x27;, 102, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
-      <tbody class="skipped results-table-row">
-        <tr>
-          <td class="col-result">Skipped</td>
-          <td class="col-name">tests/job_seeker_and_company/test_4_0_feedback_to_vacancy.py::TestResponseToVacancy::test_response_to_vacancy::setup</td>
-          <td class="col-duration">0.00</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">(&#x27;/Users/sl./PycharmProjects/smileexpo/Page_Object_Model/tests/job_seeker_and_company/test_4_0_feedback_to_vacancy.py&#x27;, 19, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
-      <tbody class="skipped results-table-row">
-        <tr>
-          <td class="col-result">Skipped</td>
-          <td class="col-name">tests/job_seeker_and_company/test_4_0_feedback_to_vacancy.py::TestResponseToVacancy::test_company_response_opening::setup</td>
-          <td class="col-duration">0.00</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">(&#x27;/Users/sl./PycharmProjects/smileexpo/Page_Object_Model/tests/job_seeker_and_company/test_4_0_feedback_to_vacancy.py&#x27;, 50, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/company/test_1_company_registration.py::test_company_registration_with_filling_in_all_fields</td>
-          <td class="col-duration">21.84</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/test_1_company_registration.py::test_checking_creation_of_user_in_admin_panel</td>
-          <td class="col-duration">4.45</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/test_1_company_registration.py::test_changing_user_role_from_user_to_super_admin</td>
-          <td class="col-duration">10.09</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/test_1_company_registration.py::test_authorization_of_user_in_disabled_status</td>
-          <td class="col-duration">5.31</td>
+          <td class="col-duration">19.55</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -444,16 +282,7 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/company/test_1_company_registration.py::test_email_verification_after_company_registration</td>
-          <td class="col-duration">8.27</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/test_1_company_registration.py::test_authorization_of_user_in_on_moderation_status</td>
-          <td class="col-duration">5.15</td>
+          <td class="col-duration">6.41</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -462,25 +291,7 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/company/test_1_company_registration.py::test_change_of_employer_status_from_on_moderation_to_aktivet_ua</td>
-          <td class="col-duration">12.32</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/test_1_company_registration.py::test_checking_letter_after_first_moderation_ru</td>
-          <td class="col-duration">1.77</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/test_2_verification_of_saving_data_entered_by_user_after_company_registration.py::test_verification_of_saving_data_entered_by_user_after_company_registration</td>
-          <td class="col-duration">8.23</td>
+          <td class="col-duration">11.88</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -489,7 +300,7 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/company/test_3_0_package_purchase_monthly_free_vacancy.py::TestPackagePurchaseMonthlyFreeVacancy::test_package_purchase_monthly_free_vacancy_and_activating_it_on_site</td>
-          <td class="col-duration">39.60</td>
+          <td class="col-duration">34.49</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -498,214 +309,7 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/company/test_3_1_vacancy_add.py::test_adding_vacancies</td>
-          <td class="col-duration">64.18</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/test_3_1_vacancy_add.py::test_verification_of_letter_after_publication_of_vacancy</td>
-          <td class="col-duration">2.23</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/test_3_2_verification_of_saving_data_entered_by_user_after_vacancy_is_created.py::test_verification_of_saving_data_entered_by_user_after_vacancy_is_created</td>
-          <td class="col-duration">8.21</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/test_3_3_vacancy_edit.py::test_editing_vacancies</td>
-          <td class="col-duration">20.98</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/job_seeker/test_1_job_seeker_registration.py::test_job_seeker_registration_with_filling_in_all_fields</td>
-          <td class="col-duration">13.44</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/job_seeker/test_1_job_seeker_registration.py::test_checking_creation_of_user_in_admin_panel</td>
-          <td class="col-duration">4.60</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/job_seeker/test_1_job_seeker_registration.py::test_changing_user_role_from_user_to_super_admin</td>
-          <td class="col-duration">9.32</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/job_seeker/test_1_job_seeker_registration.py::test_authorization_of_user_in_disabled_status</td>
-          <td class="col-duration">5.14</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/job_seeker/test_1_job_seeker_registration.py::test_confirmation_of_registration_of_applicant_and_authorization_on_site</td>
-          <td class="col-duration">14.83</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/job_seeker/test_1_job_seeker_registration.py::test_check_that_user_has_status_active</td>
-          <td class="col-duration">5.94</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/job_seeker/test_2_verification_of_saving_data_entered_by_user_after_job_seeker_registration.py::test_verification_of_saving_data_entered_by_user_after_job_seeker_registration</td>
-          <td class="col-duration">6.25</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/job_seeker/test_3_1_resume_add.py::test_adding_resume</td>
-          <td class="col-duration">56.80</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/job_seeker/test_3_1_resume_add.py::test_verification_of_letter_after_publication_of_resume</td>
-          <td class="col-duration">2.45</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/job_seeker/test_3_2_verification_of_saving_data_entered_by_user_after_resume_creation.py::test_verification_of_saving_data_entered_by_user_after_resume_creation</td>
-          <td class="col-duration">10.50</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/job_seeker/test_3_3_resume_edit.py::test_editing_resume</td>
-          <td class="col-duration">36.21</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/job_seeker/test_8_0_job_seeker_edit.py::test_changing_all_job_seeker_data</td>
-          <td class="col-duration">8.77</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/job_seeker/test_8_1_verification_of_saving_data_entered_by_user_after_job_seeker_edit.py::test_verification_of_saving_data_entered_by_user_after_job_seeker_edit</td>
-          <td class="col-duration">5.53</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/post_conditions/test_1_0_post_conditions_resume.py::test_complete_deletion_of_resume</td>
-          <td class="col-duration">6.46</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/post_conditions/test_1_0_post_conditions_vacancy.py::test_complete_deletion_of_vacancy</td>
-          <td class="col-duration">5.82</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/post_conditions/test_1_0_post_conditions_vacancy.py::test_complete_deletion_of_user_orders</td>
-          <td class="col-duration">5.42</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/post_conditions/test_post_conditions_company.py::test_delete_user</td>
-          <td class="col-duration">12.35</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/post_conditions/test_post_conditions_company.py::test_change_field_login_and_email</td>
-          <td class="col-duration">10.97</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/post_conditions/test_post_conditions_job_seeker.py::test_delete_user</td>
-          <td class="col-duration">12.55</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/post_conditions/test_post_conditions_job_seeker.py::test_change_field_login_and_email</td>
-          <td class="col-duration">9.31</td>
+          <td class="col-duration">62.72</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">

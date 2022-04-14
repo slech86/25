@@ -38,7 +38,7 @@ def test_checking_creation_of_user_in_admin_panel(browser, language):  # про�
 
 
 # @pytest.mark.skip
-# @pytest.mark.s_r_c
+@pytest.mark.s_r_c
 def test_changing_user_role_from_user_to_super_admin(browser, language):  # изменение роли пользователя с "User" на "SuperAdmin"
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()

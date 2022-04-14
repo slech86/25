@@ -6,14 +6,13 @@ from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
 from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
 from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
 from Page_Object_Model.pages.site.resume_page import ResumePage
-
 from Page_Object_Model.pages.site.vacancies_page import VacanciesPage
 from Page_Object_Model.pages.site.vacancy_page import VacancyPage
 from Page_Object_Model.pages.site.my_responses_page import MyResponsesPage
 from Page_Object_Model.pages.site.responses_to_vacancy_page import ResponsesToVacancyPage
 
 
-# @pytest.mark.s_r_c
+@pytest.mark.s_r_c
 @pytest.mark.skip
 class TestResponseToVacancy:
     def test_response_to_vacancy(self, browser, language):  # отклик на вакансию
@@ -21,15 +20,18 @@ class TestResponseToVacancy:
         page = OllPage(browser, url_page)
         # browser.maximize_window()
         page.open()
+        browser.refresh()
         page.go_to_vacancies_page_through_header()  # переход на страницу вакансий через хедер
 
         vacancies_page = VacanciesPage(browser, browser.current_url)
+        page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
+        page.user_authorization(language, 2)  # авторизация пользователя
         vacancies_page.search_vacancy_by_job_title()  # поиск вакансии по названию
         vacancies_page.go_to_vacancy_page()  # нажатие на блок вакансии для перехода на ее страницу
 
         vacancy_page = VacancyPage(browser, browser.current_url)
-        vacancy_page.pressing_button_responds_1()  # нажатие на кнопку "Откликнуться" # 1
-        page.user_authorization(language, 2)  # авторизация пользователя
+        # vacancy_page.pressing_button_responds_1()  # нажатие на кнопку "Откликнуться" # 1
+        # page.user_authorization(language, 2)  # авторизация пользователя
         vacancy_page.presence_of_button_responds_2()  # наличие кнопки "Откликнуться" # 2
         vacancy_page.pressing_button_responds_1()  # нажатие на кнопку "Откликнуться" # 1
         vacancy_page.filling_and_sending_response_with_selected_active_resume()  # заполнение и отправка отклика с выбранным активным резюме

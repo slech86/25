@@ -81,7 +81,7 @@ def test_adding_resume(browser, language):  # добавление резюме
     resume_page.checking_opening_of_page_of_published_resume()  # проверка открытия страницы опубликованного резюме
 
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 def test_verification_of_letter_after_publication_of_resume(browser, language):  # проверка письма после публикации резюме
     link = Accounts.url_email
     email_page = EmailPage(browser, link)

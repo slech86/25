@@ -10,6 +10,6 @@ class UrlStartPage():
 
 class UrlPageAdmin():
     if UrlStartPage.suffix == '.preprod.pw':
-        url_page_admin = "http://admin-work.pw.preprod.pw/x"
+        url_page_admin = "http://admin-work.pw.preprod.pw/x" # 'https://fixvacancy.admin-work.pw.preprod.pw/x', 'http://admin-work.pw.preprod.pw/x'
     else:
         url_page_admin = "https://admin-work.work/x"
