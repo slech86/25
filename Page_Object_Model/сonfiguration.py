@@ -1,4 +1,4 @@
-class UrlStartPage():
+class UrlStartPage:
     prefix = 'http://master.'  # 'http://preprod.', 'http://master.', 'https://'
     if prefix == 'https://':
         suffix = ''
@@ -8,7 +8,7 @@ class UrlStartPage():
     url_start_page = f"{prefix}logincasino.work{suffix}{suffix_page}"
 
 
-class UrlPageAdmin():
+class UrlPageAdmin:
     if UrlStartPage.suffix == '.preprod.pw':
         url_page_admin = "http://admin-work.pw.preprod.pw/x" # 'https://fixvacancy.admin-work.pw.preprod.pw/x', 'http://admin-work.pw.preprod.pw/x'
     else:
