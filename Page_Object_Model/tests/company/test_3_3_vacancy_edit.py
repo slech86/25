@@ -5,6 +5,7 @@ from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPe
 from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
 from Page_Object_Model.pages.site.vacancy_edit_page import VacancyEditPage
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
+from Page_Object_Model.pages.admin_panel.admin_vacancy_edit_page import AdminVacancyEditPage
 
 
 @pytest.mark.s_r_c
@@ -13,6 +14,7 @@ def test_editing_vacancies(browser, language):  # редактирование �
     page = OllPage(browser, url_Page)
     # browser.maximize_window()
     page.open()
+    browser.refresh()
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
     page.user_authorization(language, 1)  # авторизация пользователя
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
@@ -38,6 +40,12 @@ def test_editing_vacancies(browser, language):  # редактирование �
     admin_page.go_to_vacancies_page()  # переход на страницу вакансий
     admin_page.vacancy_search_by_job_title_after_editing()  # поиск вакансии по названию должности после редактирования
     admin_page.checking_that_vacancy_status_is_on_moderated()  # проверка что статус вакансии 'На модерацию'
+    admin_page.go_to_object_editing_page()  # переход на страницу редактирования вакансии
+
+    admin_vacancy_edit_page = AdminVacancyEditPage(browser, browser.current_url)
+    admin_vacancy_edit_page.change_vacancy_status_to_published()  # изменение статуса вакансии на 'Опубликовано'
+
+    admin_page.waiting_to_save_status_and_open_vacansies_page()  # ожидание сохранения статуса и открытия страницы вакансий
 
 
 # # удаление пакета к которому была привязана вакансия

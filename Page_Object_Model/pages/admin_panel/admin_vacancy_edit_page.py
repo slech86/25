@@ -9,9 +9,10 @@ import time
 
 class AdminVacancyEditPage(BasePage):
     def change_vacancy_status_to_published(self):  # изменение статуса вакансии на 'Опубликовано'
+        time.sleep(2)
         self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_VACANCY_STATUS).click()
         self.browser.find_element(*AdminVacancyEditPageLocators.STATUS_PUBLISHED).click()
-        time.sleep(20)
+        time.sleep(3)
         self.browser.find_element(*AdminVacancyEditPageLocators.BUTTON_SAVE).click()
 
     def verification_of_saving_data_entered_by_user_after_vacancy_is_created_ru(self, language, key):  # проверка сохранения введенных пользователем данных после создания вакансии RU

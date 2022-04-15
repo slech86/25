@@ -552,7 +552,8 @@ class MyResponsesPageLocators:
     H1 = (By.CSS_SELECTOR, ('h1'))
 
     def assembly_of_locators_with_id_vacancies(self):  # сборка локаторов с id вакансии
-        vacancy = (By.XPATH, ('//a[contains(@href, "/vacancy/' + Singleton.id_vacancies + '")]'))
+        singleton = Singleton()
+        vacancy = (By.XPATH, ('//a[contains(@href, "/vacancy/' + singleton.id_vacancies + '")]'))
         return vacancy
 
 
@@ -564,7 +565,8 @@ class VacancyPageLocators:
     NOT_ACTIVE_BUTTON_RESUME_POSTED_2 = (By.CSS_SELECTOR, ('.btn-wrap > [data-target="#respond-modal"][disabled="disabled"]'))
 
     def assembly_of_locators_with_id_resume(self):  # сборка локаторов с id резюме
-        resume_in_response_popup_window = (By.CSS_SELECTOR, ('label[for="resume-' + Singleton.id_resume + '"]'))
+        singleton = Singleton()
+        resume_in_response_popup_window = (By.CSS_SELECTOR, ('label[for="resume-' + singleton.id_resume + '"]'))
         return resume_in_response_popup_window
 
     BUTTON_ADD_COVER_LETTER = (By.CSS_SELECTOR, ('.required + .form-group > .cover-letter-btn'))
@@ -572,6 +574,6 @@ class VacancyPageLocators:
     BUTTON_SEND_CV = (By.CSS_SELECTOR, ('.field-responses-resume_id + .form-group [type="submit"]'))
     # pop-up окно отклика на вакансию
 
-    INFO_TEXT_AFTER_SENDING_RESPONSE_TO_VACANCY = (By.CSS_SELECTOR, ('#to-publish-modal h2'))  # информационный текст после отправки отклика на вакансию
+    INFO_TEXT_AFTER_SENDING_RESPONSE_TO_VACANCY = (By.CSS_SELECTOR, ('#to-publish-modal div>h2'))  # информационный текст после отправки отклика на вакансию
     CROSS_IN_POP_UP_AFTER_SENDING_RESPONSE_TO_VACANCY = (By.CSS_SELECTOR, ('#to-publish-modal .close'))  # крестик в pop-up окне после отправки отклика на вакансию
 

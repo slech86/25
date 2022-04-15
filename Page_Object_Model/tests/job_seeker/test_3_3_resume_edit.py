@@ -7,6 +7,7 @@ from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_resumes_page import AdminResumesPage
 from Page_Object_Model.pages.site.my_resume_page import MyResumePage
 from Page_Object_Model.pages.site.resume_edit_page import ResumeEditPage
+from Page_Object_Model.pages.admin_panel.admin_resume_edit_page import AdminResumeEditPage
 
 
 @pytest.mark.s_r_c
@@ -46,3 +47,9 @@ def test_editing_resume(browser, language):  # редактирование ре
     admin_resumes_page = AdminResumesPage(browser, browser.current_url)
     admin_resumes_page.resume_search_by_job_title_after_editing()  # поиск резюме по названию должности после редактирования
     admin_resumes_page.checking_that_resume_status_is_on_moderated()  # проверка что статус резюме 'На модерацию'
+    admin_resumes_page.go_to_object_editing_page()  # переход на страницу редактирования резюме
+
+    admin_resume_edit_page = AdminResumeEditPage(browser, browser.current_url)
+    admin_resume_edit_page.change_resume_status_to_published()  # изменение статуса резюме на 'Опубликовано'
+
+    admin_resumes_page.waiting_to_save_status_and_open_resume_page()  # ожидание сохранения статуса и открытия страницы всех рузюме

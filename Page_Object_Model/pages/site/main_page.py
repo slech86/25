@@ -17,13 +17,12 @@ class MainPage(BasePage):
             WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Work in the Gambling Business and IT'))
 
     def confirmation_opening_of_main_page(self, language):  # подтверждение открытия главной страницы
-        if language == "/ua":
-            if language == '/ua':
-                assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/ua', 'Не правильный URL'
-            elif language == '':
-                assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/', 'Не правильный URL'
-            elif language == '/en':
-                assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/en', 'Не правильный URL'
+        if language == '/ua':
+            assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/ua', 'Не правильный URL'
+        elif language == '':
+            assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/', 'Не правильный URL'
+        elif language == '/en':
+            assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/en', 'Не правильный URL'
 
     def checking_message_for_sending_registration_form(self, language):  # проверка сообщения о подтверждении отправки формы регистрации работодателя, соискателя
         info_text = self.browser.find_element(*MainPageLocators.INFO_TEXT_ABOUT_SENDING_REGISTRATION_FORM).text

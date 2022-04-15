@@ -72,7 +72,6 @@ def test_adding_resume(browser, language):  # добавление резюме
     admin_resume_edit_page = AdminResumeEditPage(browser, browser.current_url)
     admin_resume_edit_page.change_resume_status_to_published()  # изменение статуса резюме на 'Опубликовано'
 
-    admin_resumes_page = AdminResumesPage(browser, browser.current_url)
     admin_resumes_page.waiting_to_save_status_and_open_resume_page()  # ожидание сохранения статуса и открытия страницы всех рузюме
 
     url_resume_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{singleton.id_resume}"

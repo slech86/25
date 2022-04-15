@@ -155,7 +155,8 @@ class ResponsesToVacancyPageLocators:
     MARK_NOT_VIEWED_RESPONSE = (By.CSS_SELECTOR, ('.lc-card:nth-child(1) .lc-card-time > svg'))
 
     def assembly_of_locators_with_id_resume(self):  # сборка локаторов с id резюме
-        resume_in_responses_to_vacancy = (By.XPATH, ('//a[contains(@href, "/resume/' + Singleton.id_resume + '")]'))
+        singleton = Singleton()
+        resume_in_responses_to_vacancy = (By.XPATH, ('//a[contains(@href, "/resume/' + singleton.id_resume + '")]'))
         return resume_in_responses_to_vacancy
 
 

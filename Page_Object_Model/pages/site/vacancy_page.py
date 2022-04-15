@@ -1,18 +1,23 @@
+import time
+
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.job_seeker_locators import VacancyPageLocators
-from Page_Object_Model.data_for_testing import TestData
+from Page_Object_Model.data_for_testing import TestData, TestDataEditing
 from Page_Object_Model.сonfiguration import UrlStartPage
 from Page_Object_Model.singleton import Singleton
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class VacancyPage(BasePage):
     def confirmation_opening_of_vacancy_page(self, language):  # подтверждение открытия страницы вакансии
+        singleton = Singleton()
         if language == '/ua':
-            assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/ua/vacancy/' + Singleton.id_vacancies, 'Не правильный URL'
+            assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/ua/vacancy/' + singleton.id_vacancies, 'Не правильный URL'
         elif language == '':
-            assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/vacancy/' + Singleton.id_vacancies, 'Не правильный URL'
+            assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/vacancy/' + singleton.id_vacancies, 'Не правильный URL'
         elif language == '/en':
-            assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/en/vacancy/' + Singleton.id_vacancies, 'Не правильный URL'
+            assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/en/vacancy/' + singleton.id_vacancies, 'Не правильный URL'
 
     def checking_opening_of_page_of_an_unpublished_vacancy(self, language):  # проверка открытия страницы не опубликованной вакансии
         h1 = self.browser.find_element(*VacancyPageLocators.H1).text
@@ -26,6 +31,10 @@ class VacancyPage(BasePage):
     def checking_opening_of_page_of_published_vacancy(self):  # проверка открытия страницы опубликованной вакансии
         h1 = self.browser.find_element(*VacancyPageLocators.H1).text
         assert h1 == TestData.job_title_vacancy, "Вакансия не опубликована"
+
+    def checking_opening_of_page_of_published_vacancy_after_editing(self):  # проверка открытия страницы опубликованной вакансии после редактирования
+        h1 = self.browser.find_element(*VacancyPageLocators.H1).text
+        assert h1 == TestDataEditing.job_title_vacancy, "Вакансия не опубликована"
 
     def pressing_button_responds_1(self):  # нажатие на кнопку "Откликнуться" # 1
         self.browser.find_element(*VacancyPageLocators.BUTTON_RESPONSE_1).click()
@@ -42,14 +51,19 @@ class VacancyPage(BasePage):
         self.browser.find_element(*VacancyPageLocators.BUTTON_SEND_CV).click()
 
     def checking_confirmation_message_for_sending_resume_of_company(self, language):  # проверка сообщения о подтверждении отправки резюме компании
-        infoText = self.browser.find_element(*VacancyPageLocators.INFO_TEXT_AFTER_SENDING_RESPONSE_TO_VACANCY).text
+        # time.sleep(1)
+        info_text = WebDriverWait(self.browser, 20).until(EC.visibility_of_element_located(VacancyPageLocators.INFO_TEXT_AFTER_SENDING_RESPONSE_TO_VACANCY)).text
+        print(info_text)
+        print('info_text')
         if language == "/ua":
-            assert "Ваше резюме відправлено роботодавцю!" == infoText, 'Не верное сообщение'
+            assert "Ваше резюме відправлено роботодавцю!" == info_text, 'Не верное сообщение'
         elif language == "":
-            assert "Ваше резюме отправлено работодателю!" == infoText, 'Не верное сообщение'
+            assert "Ваше резюме отправлено работодателю!" == info_text, 'Не верное сообщение'
         elif language == "/en":
-            assert "Your CV has been sent to an employer!" == infoText, 'Не верное сообщение'
+            assert "Your CV has been sent to an employer!" == info_text, 'Не верное сообщение'
         self.browser.find_element(*VacancyPageLocators.CROSS_IN_POP_UP_AFTER_SENDING_RESPONSE_TO_VACANCY).click()
+        time.sleep(0.5)
+
 
     def presence_of_buttons_resume_posted(self):  # наличие не активных кнопок "Резюме отправлено"
         assert self.is_element_present(*VacancyPageLocators.NOT_ACTIVE_BUTTON_RESUME_POSTED_1), 'Нет  кнопки "Резюме отправлено" №1'

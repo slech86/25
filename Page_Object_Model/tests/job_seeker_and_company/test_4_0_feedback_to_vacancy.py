@@ -13,7 +13,7 @@ from Page_Object_Model.pages.site.responses_to_vacancy_page import ResponsesToVa
 
 
 @pytest.mark.s_r_c
-@pytest.mark.skip
+# @pytest.mark.skip
 class TestResponseToVacancy:
     def test_response_to_vacancy(self, browser, language):  # отклик на вакансию
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
@@ -46,7 +46,7 @@ class TestResponseToVacancy:
         my_responses_page = MyResponsesPage(browser, browser.current_url)
         my_responses_page.go_to_vacancy_page_of_response()  # нажатие на блок вакансии отклика для перехода на ее страницу
 
-        vacancy_page.checking_opening_of_page_of_published_vacancy()  # проверка открытия страницы опубликованной вакансии
+        vacancy_page.checking_opening_of_page_of_published_vacancy_after_editing()  # проверка открытия страницы опубликованной вакансии после редактирования
         vacancy_page.confirmation_opening_of_vacancy_page(language)  # подтверждение открытия страницы вакансии
 
     def test_company_response_opening(self, browser, language):  # открытие отклика компанией
@@ -54,6 +54,7 @@ class TestResponseToVacancy:
         page = OllPage(browser, url_page)
         # browser.maximize_window()
         page.open()
+        browser.refresh()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
         page.user_authorization(language, 1)  # авторизация пользователя
         page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
@@ -70,6 +71,6 @@ class TestResponseToVacancy:
         responses_to_vacancy_page.go_to_resume_page_of_response()  # нажатие резюме отклика для перехода на его страницу
 
         resume_page = ResumePage(browser, browser.current_url)
-        resume_page.checking_opening_of_page_of_published_resume()  # проверка открытия страницы опубликованного резюме
+        resume_page.checking_opening_of_page_of_published_resume_after_editing()  # проверка открытия страницы опубликованного резюме после редактирования
         resume_page.confirmation_opening_of_vacancy_page(language)  # подтверждение открытия страницы вакансии
         resume_page.checking_cover_letter_text()  # проверка текста сопроводительного письма

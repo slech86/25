@@ -9,9 +9,10 @@ import time
 
 class AdminResumeEditPage(BasePage):
     def change_resume_status_to_published(self):  # изменение статуса резюме на 'Опубликовано'
+        time.sleep(2)
         self.browser.find_element(*AdminResumeEditPageLocators.FIELD_RESUME_STATUS).click()
         self.browser.find_element(*AdminResumeEditPageLocators.STATUS_PUBLISHED).click()
-        time.sleep(12)
+        time.sleep(3)
         self.browser.find_element(*AdminResumeEditPageLocators.BUTTON_SAVE).click()
 
     def verification_of_saving_data_entered_by_user_after_resume_creation_ru(self, language, uah_rate, key):  # проверка сохранения введенных пользователем данных после создания резюме RU
