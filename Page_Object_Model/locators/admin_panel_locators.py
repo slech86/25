@@ -30,6 +30,7 @@ class AdminPageLocators:
     BUTTON_SAVE_AND_EDIT = (By.CSS_SELECTOR, ('[type="submit"].btn.btn-primary'))
     # общие
 
+    H1_USERS = (By.CSS_SELECTOR, ('h1'))
     FIELD_EMAIL_SEARCH = (By.CSS_SELECTOR, ('[name="User[email]"]'))
 
     def generating_user_email_locators(self, key):
@@ -47,6 +48,7 @@ class AdminPageLocators:
     FIELD_USER_LOGIN = (By.CSS_SELECTOR, ('[name="User[login]"]'))
     FIELD_USER_EMAIL = (By.CSS_SELECTOR, ('[name="User[email]"]'))
     FIELD_EMAIL_LANGUAGE = (By.XPATH, ('//span[contains(@id, "select2-user-mail_language-")]'))
+    FIELD_SLUG = (By.CSS_SELECTOR, ('[name="User[slug]"]'))
 
     FIELD_NAME = (By.CSS_SELECTOR, ('[name="User[descriptions][1][name]"]'))
     FIELD_SURNAME = (By.CSS_SELECTOR, ('[name="User[descriptions][1][surname]"]'))
@@ -95,7 +97,7 @@ class AdminPageLocators:
     # SEARCH_STATUS_NEW = (By.CSS_SELECTOR, ('[name="Orders[status]"] > [value="1"]'))
     FIELD_EMAIL_SEARCH_ORDERS = (By.CSS_SELECTOR, ('[name="Orders[userEmail]"]'))
 
-    def generating_user_email_orders_locators(self, key):
+    def assembly_of_locators_with_user_email(self, key):
         user_email_orders_ru = (By.XPATH, ('//span[text()="' + Singleton.logins_and_mails[key][0][1] + '"]'))
         user_email_orders_ua = (By.XPATH, ('//span[text()="' + Singleton.logins_and_mails[key][1][1] + '"]'))
         user_email_orders_en = (By.XPATH, ('//span[text()="' + Singleton.logins_and_mails[key][2][1] + '"]'))
@@ -106,8 +108,14 @@ class AdminPageLocators:
     ID_LAST_ORDER = (By.CSS_SELECTOR, ('tbody > tr:nth-child(1) > td:nth-child(2)'))
     # страница заказов
 
-    DROPDOWN_SEARCH_ORDERS = (By.CSS_SELECTOR, ('[data-select2-id="7"]'))
+    DROPDOWN_SEARCH_ORDERS = (By.CSS_SELECTOR, ('[data-select2-id="8"]'))
     FIELD_SEARCH_IN_DROPDOWN = (By.CSS_SELECTOR, ('.select2-search__field'))  # общее поле ?
+
+    def assembly_of_locators_with_id_order(self):
+        singleton = Singleton()
+        found_order = (By.XPATH, ('//li[text()=" Заказ #' + singleton.id_order + '"]'))
+        return found_order
+
     ITEMS_ID_PURCHASE = (By.CSS_SELECTOR, ('#model-grid tbody tr td:nth-child(2)'))
     # страница 'Покупки пользователей'
 

@@ -46,6 +46,7 @@ class TestData:
     phone = '+01(010)101-01-01'
     contact_email = 'contact_email_' + time_Now + email[1]
     company_name = 'company_name_' + time_Now
+    company_slug = 'company_slug_' + time_Now
     code_company = 'qы10000001'
     company_activity = '[#146] Финансы'  # (Сфера деятельности компании) не используется при заполнении полей, только при проверке заполнения полей в админке
     ckeditor_company_description = "CKEditor_company_description_" + time_Now
@@ -192,6 +193,7 @@ class TestData:
 
 
 class TestDataEditing:
+    # пользователи
     email_language_ru = '[#1] Русский'
     email_language_ua = '[#3] Українська'
     email_language_en = '[#4] English'
@@ -202,6 +204,7 @@ class TestDataEditing:
     phone = '+1(234)567-89-10'
     contact_email = TestData.contact_email + 'editing'
     company_name = TestData.company_name + '_editing'
+    company_slug = TestData.company_slug + '_edit'
     code_company = '01111110'
     company_activity = '[#146] Финансы' + '[#188] Гемблинг'  # ?!? (Сфера деятельности компании) не используется при заполнении полей, только при проверке заполнения полей в админке
     ckeditor_company_description = "editing_" + TestData.ckeditor_company_description
@@ -226,6 +229,7 @@ class TestDataEditing:
     video_3 = 'https://www.youtube.com/watch?v=-DKCkibqulU'
     # пользователи
 
+    # вакансия
     job_title_vacancy = TestData.job_title_vacancy + '_editing'
     category_vacancy = '[#4] Отдел кадров'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     subcategories_vacancy = '[#29] HR-менеджер'  # не используется при заполнении полей, только при проверке заполнения полей в админке
@@ -257,6 +261,7 @@ class TestDataEditing:
     additionally_information = "editing_" + TestData.additionally_information
     # вакансия
 
+    # резюме
     name_resume = TestData.name_resume + '_editing'
     surname_resume = TestData.surname_resume + '_edit'
     birthday_resume = '1976-03-08'  # не используется при заполнении полей, только при проверке заполнения полей в админке

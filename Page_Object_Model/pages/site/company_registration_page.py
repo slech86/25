@@ -1,3 +1,5 @@
+import time
+
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.company_locators import CompanyRegistrationPageLocators
 from Page_Object_Model.data_for_testing import TestData
@@ -35,6 +37,10 @@ class CompanyRegistrationPage(BasePage):
         # заполнение блока "Контактная информация"
 
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_COMPANY_NAME).send_keys(TestData.company_name)
+        self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_COMPANY_SLUG).click()
+        time.sleep(1)
+        self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_COMPANY_SLUG).clear()
+        self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_COMPANY_SLUG).send_keys(TestData.company_slug)
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_CODE_COMPANY).send_keys(TestData.code_company)
 
         self.browser.execute_script(CompanyRegistrationPageLocators.COMPANY_ACTIVITY)  # "Сфера деятельности компании" передается параметр уже с ".click()"

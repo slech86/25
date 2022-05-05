@@ -48,10 +48,11 @@ class TestPackagePurchaseMonthlyFreeVacancy:
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_order_page()  # переход на страницу заказов
         admin_page.search_for_user_orders_by_email(language, 1)  # поиск заказов пользователя по e-mail
-        id_order = admin_page.getting_last_order_id_of_user()  # получение последнего id заказа пользователя
+        singleton = Singleton()
+        singleton.id_order = admin_page.getting_last_order_id_of_user()  # получение последнего id заказа пользователя
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_user_purchases_page()  # переход на страницу "Покупки пользователей"
-        singleton.id_purchase = admin_page.getting_id_of_purchase(id_order)  # получение id покупки
+        singleton.id_purchase = admin_page.getting_id_of_purchase(singleton.id_order)  # получение id покупки
 
         url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
         page = OllPage(browser, url_Page)

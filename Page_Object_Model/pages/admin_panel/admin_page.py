@@ -112,8 +112,10 @@ class AdminPage(BasePage):
         field_user_email.send_keys(TestData.time_Now + '@test.com' + str(random.random()))
 
     def saving_user_card(self):  # сохранение карточки пользователя
-        self.browser.find_element(*AdminPageLocators.BUTTON_SAVE_AND_EDIT).click()
-        time.sleep(4)
+        self.browser.find_element(*AdminPageLocators.BUTTON_SAVE).click()
+
+    def waiting_to_save_status_and_open_users_page(self):  # ожидание сохранения статуса и открытия страницы всех пользователей
+        WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((AdminPageLocators.H1_USERS), 'Пользователи'))
 
     def verification_of_saving_data_entered_by_user_after_company_registration_ru(self, language, key):  # проверка сохранения введенных пользователем данных после регистрации компании RU
         login = self.browser.find_element(*AdminPageLocators.FIELD_USER_LOGIN)
@@ -142,6 +144,10 @@ class AdminPage(BasePage):
             assert email_language_title == TestData.email_language_ru, "Поле 'Язык уведомлений на e-mail' не верно"
         elif language == "/en":
             assert email_language_title == TestData.email_language_en, "Поле 'Язык уведомлений на e-mail' не верно"
+
+        slug = self.browser.find_element(*AdminPageLocators.FIELD_SLUG)
+        slug_value = slug.get_attribute("value")
+        assert slug_value == TestData.company_slug, "Поле 'Slug' не верно"
 
         name = self.browser.find_element(*AdminPageLocators.FIELD_NAME)
         name_value = name.get_attribute("value")
@@ -347,7 +353,7 @@ class AdminPage(BasePage):
 
     def search_for_user_orders_by_email(self, language, key):  # поиск заказов пользователя по e-mail
         user_email_locators_orders = AdminPageLocators()
-        locators = user_email_locators_orders.generating_user_email_orders_locators(key)
+        locators = user_email_locators_orders.assembly_of_locators_with_user_email(key)
         email, user_email_orders = None, None
         if language == "/ua":
             email = Singleton.logins_and_mails[key][1][1]
@@ -385,8 +391,11 @@ class AdminPage(BasePage):
 
     def getting_id_of_purchase(self, id_order):  # получение id покупки
         self.browser.find_element(*AdminPageLocators.DROPDOWN_SEARCH_ORDERS).click()
-        self.browser.find_element(*AdminPageLocators.FIELD_SEARCH_IN_DROPDOWN).send_keys('#' + id_order, Keys.ENTER)
-        time.sleep(2)
+        self.browser.find_element(*AdminPageLocators.FIELD_SEARCH_IN_DROPDOWN).send_keys(id_order)
+        locators_with_id_order = AdminPageLocators()
+        locator = locators_with_id_order.assembly_of_locators_with_id_order()
+        WebDriverWait(self.browser, 20).until(EC.visibility_of_element_located(locator)).click()
+        time.sleep(1)
         items_id_purchase = self.browser.find_elements(*AdminPageLocators.ITEMS_ID_PURCHASE)
         id_purchase = []
         for id in items_id_purchase:

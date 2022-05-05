@@ -49,6 +49,7 @@ def test_changing_user_role_from_user_to_super_admin(browser, language):  # из
     admin_page.go_to_object_editing_page()  # переход на страницу пользователя
     admin_page.changing_role_from_user_to_super_admin()  # изменение роли с "User" на "SuperAdmin"
     admin_page.saving_user_card()  # сохранение карточки пользователя
+    admin_page.waiting_to_save_status_and_open_users_page()  # ожидание сохранения статуса и открытия страницы всех пользователей
 
 
 def test_authorization_of_user_in_disabled_status(browser, language):  # авторизация пользователя в статусе "Отключен"

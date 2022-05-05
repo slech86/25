@@ -518,14 +518,14 @@ class ResumeEditPageLocators():
     DROPDOWN_LANGUAGE_2 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) [data-id="languageaddform-language"]'))
     FRENCH_LANGUAGE_2 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) .field-languageaddform-language [data-original-index="5"]'))
     DROPDOWN_LEVEL_OF_LANGUAGE_2 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) [data-id="languageaddform-level"]'))
-    MIDDLE_LEVEL_2 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) .field-languageaddform-level [data-original-index="3"]'))
+    ABOVE_AVERAGE_LEVEL_2 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) .field-languageaddform-level [data-original-index="4"]'))
 
     BUTTON_ADD_LANGUAGE_NUMBER_3 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) .resume-item-link.js-add-languages'))
 
     DROPDOWN_LANGUAGE_3 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(5) [data-id="languageaddform-language"]'))
     HEBREW_LANGUAGE_3 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(5) .field-languageaddform-language [data-original-index="20"]'))
     DROPDOWN_LEVEL_OF_LANGUAGE_3 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(5) [data-id="languageaddform-level"]'))
-    ABOVE_AVERAGE_LEVEL_3 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(5) .field-languageaddform-level [data-original-index="4"]'))
+    MIDDLE_LEVEL_3 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(5) .field-languageaddform-level [data-original-index="3"]'))
     # блок "Знание языков"
 
     I_HAVE_DISABILITY = (By.CSS_SELECTOR, ('#disability #' + inputPrefix + 'disability > label:nth-child(2)'))

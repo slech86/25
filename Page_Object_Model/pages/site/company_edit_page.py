@@ -19,6 +19,12 @@ class CompanyEditPage(BasePage):
 
         self.browser.find_element(*CompanyEditPageLocators.BUTTON_EDIT_IN_COMPANY_INFORMATION_BLOCK).click()
         self.browser.find_element(*CompanyEditPageLocators.FIELD_COMPANY_NAME).send_keys('_editing')
+
+        self.browser.find_element(*CompanyEditPageLocators.FIELD_COMPANY_SLUG).click()
+        time.sleep(1)
+        self.browser.find_element(*CompanyEditPageLocators.FIELD_COMPANY_SLUG).clear()
+        self.browser.find_element(*CompanyEditPageLocators.FIELD_COMPANY_SLUG).send_keys(TestDataEditing.company_slug)
+
         self.browser.find_element(*CompanyEditPageLocators.FIELD_CODE_COMPANY).clear()
         self.browser.find_element(*CompanyEditPageLocators.FIELD_CODE_COMPANY).send_keys(TestDataEditing.code_company)
 

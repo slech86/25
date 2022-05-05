@@ -1,6 +1,7 @@
 class Singleton(object):
     id_product = None
     id_purchase = None
+    id_order = None
     id_vacancies = None
     id_resume = None
     logins_and_mails = {}

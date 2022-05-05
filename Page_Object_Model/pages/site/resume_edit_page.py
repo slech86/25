@@ -260,14 +260,14 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_LANGUAGE_2).click()
         self.browser.find_element(*ResumeEditPageLocators.FRENCH_LANGUAGE_2).click()
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_LEVEL_OF_LANGUAGE_2).click()
-        self.browser.find_element(*ResumeEditPageLocators.MIDDLE_LEVEL_2).click()
+        self.browser.find_element(*ResumeEditPageLocators.ABOVE_AVERAGE_LEVEL_2).click()
 
         self.browser.find_element(*ResumeEditPageLocators.BUTTON_ADD_LANGUAGE_NUMBER_3).click()
 
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_LANGUAGE_3).click()
         self.browser.find_element(*ResumeEditPageLocators.HEBREW_LANGUAGE_3).click()
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_LEVEL_OF_LANGUAGE_3).click()
-        self.browser.find_element(*ResumeEditPageLocators.ABOVE_AVERAGE_LEVEL_3).click()
+        self.browser.find_element(*ResumeEditPageLocators.MIDDLE_LEVEL_3).click()
         # блок "Знание языков"
 
         self.browser.find_element(*ResumeEditPageLocators.I_HAVE_DISABILITY).click()
