@@ -11,7 +11,7 @@ from Page_Object_Model.data_for_testing import Accounts
 # @pytest.mark.s_r_c
 # @pytest.mark.skip
 class TestCompanyRegistration:
-    @pytest.mark.s_r_c
+    # @pytest.mark.s_r_c
     def test_company_registration_with_filling_in_all_fields(self, browser, language):  # регистрация работодателя с заполнением всех полей
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
         page = OllPage(browser, url_page)
@@ -41,7 +41,7 @@ class TestCompanyRegistration:
         admin_page.search_user_by_email(language, 1)  # поиск пользователя по e-mail
         admin_page.checking_that_newly_created_user_has_status_disabled()  # проверка что новосозданный пользователь имеет статус "Отключено"
 
-    @pytest.mark.s_r_c
+    # @pytest.mark.s_r_c
     def test_changing_user_role_from_user_to_super_admin(self, browser, language):  # изменение роли пользователя с "User" на "SuperAdmin"
         admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
         admin_page.open()
@@ -64,7 +64,7 @@ class TestCompanyRegistration:
         page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
         page.info_text_for_authorization_in_user_status_disabled(language)  # инфо текст при авторизации в статусе пользователя "Отключен"
 
-    @pytest.mark.s_r_c
+    # @pytest.mark.s_r_c
     def test_email_verification_after_company_registration(self, browser, language):  # верификация почты после регистрации работодателя
         link = Accounts.url_email
         email_page = EmailPage(browser, link)
@@ -86,7 +86,7 @@ class TestCompanyRegistration:
         page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
         page.info_text_for_authorization_in_user_status_on_moderation(language)  # инфо текст при авторизации в статусе пользователя "На модерации"
 
-    @pytest.mark.s_r_c
+    # @pytest.mark.s_r_c
     def test_change_of_employer_status_from_on_moderation_to_aktivet_ua(self, browser, language):  # изменение статуса работодателя с "На модерации" на "Активен" ua
         admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
         admin_page.open()

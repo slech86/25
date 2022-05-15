@@ -1,8 +1,11 @@
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.company_locators import CompanyEditPageLocators
 from Page_Object_Model.data_for_testing import TestDataEditing
+from Page_Object_Model.utility.utility import determining_position_of_object_in_drop_down_list
 import time
 import os
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class CompanyEditPage(BasePage):
@@ -28,9 +31,27 @@ class CompanyEditPage(BasePage):
         self.browser.find_element(*CompanyEditPageLocators.FIELD_CODE_COMPANY).clear()
         self.browser.find_element(*CompanyEditPageLocators.FIELD_CODE_COMPANY).send_keys(TestDataEditing.code_company)
 
-        self.browser.find_element(*CompanyEditPageLocators.FIELD_COUNTRY).click()
+        self.browser.find_element(*CompanyEditPageLocators.DROPDOWN_COUNTRY).click()
+        country_list = self.browser.find_elements(*CompanyEditPageLocators.COUNTRY_LIST)
+
+        determining_position_of_object_in_drop_down_list(country_list, '122')  # 122 - id Казахстан
+
+        locator_with_position_country = CompanyEditPageLocators()
+        country_kazakhstan = locator_with_position_country.assembly_of_locators_with_position_country()  # сборка локаторов с позицией страны
+        self.browser.find_element(*country_kazakhstan).click()
+
+        self.browser.find_element(*CompanyEditPageLocators.DROPDOWN_CITI).click()
         time.sleep(0.2)
-        self.browser.find_element(*CompanyEditPageLocators.FIELD_CITY).click()
+        city_list = self.browser.find_elements(*CompanyEditPageLocators.CITY_LIST)
+
+        determining_position_of_object_in_drop_down_list(city_list, '609655')  # 609655 - id Караганда
+
+        locator_with_position_city = CompanyEditPageLocators()
+        city_karaganda = locator_with_position_city.assembly_of_locators_with_position_city()  # сборка локаторов с позицией города
+
+        self.browser.find_element(*city_karaganda).click()
+        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element_attribute((CompanyEditPageLocators.DROPDOWN_CITI), 'aria-expanded', 'false'))
+
         self.browser.find_element(*CompanyEditPageLocators.FIELD_STREET).send_keys('_editing')
         self.browser.find_element(*CompanyEditPageLocators.FIELD_YEAR).click()
         self.browser.find_element(*CompanyEditPageLocators.FIELD_MONTH).click()

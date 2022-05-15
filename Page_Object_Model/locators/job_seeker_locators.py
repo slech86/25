@@ -17,14 +17,27 @@ class JobSeekerRegistrationPageLocators():
     FIELD_MONTH = (By.CSS_SELECTOR, ('#' + inputPrefix + 'birthdaym > option:nth-child(12)'))
     FIELD_DAY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'birthdayd > option:nth-child(31)'))
     FIELD_GENDER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'gender [value="2"] + .radio-custom'))
-    FIELD_COUNTRY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option:nth-child(2)'))
-    FIELD_CITY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option:nth-child(8)'))
+    DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'country_id"]'))
+    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option'))
+
+    def assembly_of_locators_with_position_country(self):  # сборка локаторов с позицией страны
+        singleton = Singleton()
+        country_ukraine = (By.CSS_SELECTOR, ('.field-' + JobSeekerRegistrationPageLocators.inputPrefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
+        return country_ukraine
+
+    DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'city_id"]'))
+    CITY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option'))
+
+    def assembly_of_locators_with_position_city(self):  # сборка локаторов с позицией города
+        singleton = Singleton()
+        city_kyiv = (By.CSS_SELECTOR, ('.field-' + JobSeekerRegistrationPageLocators.inputPrefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
+        return city_kyiv
     # блок "Личная информация"
 
     BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#button-registration'))
 
 
-class JobSeekerEditPageLocators():
+class JobSeekerEditPageLocators:
     inputPrefix = 'jobseekereditform-'
 
     BUTTON_EDIT_IN_PERSONAL_INFORMATION_BLOCK = (By.CSS_SELECTOR, ('#personal-information .post-resume-title + .btn-edit'))
@@ -34,8 +47,21 @@ class JobSeekerEditPageLocators():
     FIELD_MONTH = (By.CSS_SELECTOR, ('#' + inputPrefix + 'birthdaym > option:nth-child(2)'))
     FIELD_DAY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'birthdayd > option:nth-child(2)'))
     FIELD_GENDER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'gender [value="1"] + .radio-custom'))
-    FIELD_COUNTRY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option:nth-child(4)'))
-    FIELD_CITY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option:nth-child(5)'))
+    DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'country_id"]'))
+    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option'))
+
+    def assembly_of_locators_with_position_country(self):  # сборка локаторов с позицией страны
+        singleton = Singleton()
+        country_kazakhstan = (By.CSS_SELECTOR, ('.field-' + JobSeekerEditPageLocators.inputPrefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
+        return country_kazakhstan
+
+    DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'city_id"]'))
+    CITY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option'))
+
+    def assembly_of_locators_with_position_city(self):  # сборка локаторов с позицией города
+        singleton = Singleton()
+        city_karaganda = (By.CSS_SELECTOR, ('.field-' + JobSeekerEditPageLocators.inputPrefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
+        return city_karaganda
     # блок "Личная информация"
 
     BUTTON_EDIT_IN_SETTINGS_BLOCK = (By.CSS_SELECTOR, ('#other-settings .post-resume-title + .btn-edit'))
@@ -51,13 +77,13 @@ class JobSeekerEditPageLocators():
     CROSS_IN_POP_UP_AFTER_SAVING_CHANGES_TO_PERSONAL_INFORMATION = (By.CSS_SELECTOR, ('#thanks-modal .close'))  # крестик в pop-up окне после сохранения изменений личной информации
 
 
-class JobSeekerPersonalCabinetPageLocators():
+class JobSeekerPersonalCabinetPageLocators:
     MY_RESUME = (By.XPATH, ('//a[contains(@href, "/resume/my")]/div[@class="employer-card"]'))
     MY_RESPONSES = (By.XPATH, ('//a[contains(@href, "/vacancy/feedback")]/div[@class="employer-card"]'))
     PERSONAL_DATA = (By.XPATH, ('//a[contains(@href, "/job-seeker/edit")]/div[@class="employer-card"]'))
 
 
-class MyResumePageLocators():
+class MyResumePageLocators:
     H1 = (By.CSS_SELECTOR, ('h1'))
     BUTTON_ADD_RESUME = (By.CSS_SELECTOR, ('.btn-wrap > .btn.btn-blue'))
 
@@ -72,7 +98,7 @@ class MyResumePageLocators():
     CROSS_IN_POP_UP_AFTER_SUBMITTING_RESUME_FOR_MODERATION = (By.CSS_SELECTOR, ('#thanks-modal .close'))  # крестик в pop-up окне после отправки резюме на модерацию
 
 
-class ResumeAddPageLocators():
+class ResumeAddPageLocators:
     inputPrefix = 'resumeaddform-'
 
     FIELD_PHOTO = (By.CSS_SELECTOR, ('#' + inputPrefix + 'photo'))
@@ -89,9 +115,21 @@ class ResumeAddPageLocators():
     FIELD_GENDER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'gender [value="2"] + .radio-custom'))
 
     DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'country_id"]'))
-    COUNTRY_UKRAINE = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'country_id [data-original-index="1"]'))
+    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option'))
+
+    def assembly_of_locators_with_position_country(self):  # сборка локаторов с позицией страны
+        singleton = Singleton()
+        country_ukraine = (By.CSS_SELECTOR, ('.field-' + ResumeAddPageLocators.inputPrefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
+        return country_ukraine
+
     DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'city_id"]'))
-    CITI_ODESSA = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'city_id [data-original-index="14"]'))
+    CITY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option'))
+
+    def assembly_of_locators_with_position_city(self):  # сборка локаторов с позицией города
+        singleton = Singleton()
+        city_odessa = (By.CSS_SELECTOR, ('.field-' + ResumeAddPageLocators.inputPrefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
+        return city_odessa
+
     DROPDOWN_WILLING_TO_RELOCATE = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'willing_relocate"]'))
     NOT_READY_TO_RELOCATE = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'willing_relocate [data-original-index="2"]'))
     # блок "Личная информация"
@@ -179,9 +217,22 @@ class ResumeAddPageLocators():
     HIGHER_EDUCATION = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[2]//li[2]/a'))
 
     DROPDOWN_COUNTRY_EDUCATION = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[3]//button'))
-    COUNTRY_UKRAINE_EDUCATION = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[3]//li[2]/a'))
+    COUNTRY_EDUCATION_LIST = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[3]//option'))
+
+    def assembly_of_locators_with_position_country_education(self):  # сборка локаторов с позицией страны
+        singleton = Singleton()
+        position_object = int(singleton.position_object) + 1
+        country_ukraine_education = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[3]//li[' + str(position_object) + ']/a'))
+        return country_ukraine_education
+
     DROPDOWN_CITI_EDUCATION = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[4]//button'))
-    CITI_KHARKOV_EDUCATION = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[4]//li[24]/a'))
+    CITY_EDUCATION_LIST = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[4]//option'))
+
+    def assembly_of_locators_with_position_city_education(self):  # сборка локаторов с позицией города
+        singleton = Singleton()
+        position_object = int(singleton.position_object) + 1
+        city_kharkov_education = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[4]//li[' + str(position_object) + ']/a'))
+        return city_kharkov_education
 
     FIELD_DEPARTMENT_AND_SPECIALITY = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[5]//input[contains(@id, "resumeeducationform")]'))
 
@@ -201,9 +252,22 @@ class ResumeAddPageLocators():
     SECONDARY_SPECIAL_EDUCATION_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[2]//li[4]/a'))
 
     DROPDOWN_COUNTRY_EDUCATION_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[3]//button'))
-    COUNTRY_BELARUS_EDUCATION_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[3]//li[5]/a'))
+    COUNTRY_EDUCATION_LIST_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[3]//option'))
+
+    def assembly_of_locators_with_position_country_education_2(self):  # сборка локаторов с позицией страны
+        singleton = Singleton()
+        position_object = int(singleton.position_object) + 1
+        country_belarus_education = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[3]//li[' + str(position_object) + ']/a'))
+        return country_belarus_education
+
     DROPDOWN_CITI_EDUCATION_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[4]//button'))
-    CITI_MINSK_EDUCATION_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[4]//li[6]/a'))
+    CITY_EDUCATION_LIST_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[4]//option'))
+
+    def assembly_of_locators_with_position_city_education_2(self):  # сборка локаторов с позицией города
+        singleton = Singleton()
+        position_object = int(singleton.position_object) + 1
+        city_minsk_education = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[4]//li[' + str(position_object) + ']/a'))
+        return city_minsk_education
 
     FIELD_DEPARTMENT_AND_SPECIALITY_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[5]//input[contains(@id, "resumeeducationform")]'))
 
@@ -300,9 +364,21 @@ class ResumeEditPageLocators():
     FIELD_GENDER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'gender [value="1"] + .radio-custom'))
 
     DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'country_id"]'))
-    COUNTRY_KAZAKHSTAN = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'country_id [data-original-index="3"]'))
+    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option'))
+
+    def assembly_of_locators_with_position_country(self):  # сборка локаторов с позицией страны
+        singleton = Singleton()
+        country_poland = (By.CSS_SELECTOR, ('.field-' + ResumeEditPageLocators.inputPrefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
+        return country_poland
+
     DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'city_id"]'))
-    CITI_ALMATY = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'city_id [data-original-index="3"]'))
+    CITY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option'))
+
+    def assembly_of_locators_with_position_city(self):  # сборка локаторов с позицией города
+        singleton = Singleton()
+        city_poznan = (By.CSS_SELECTOR, ('.field-' + ResumeEditPageLocators.inputPrefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
+        return city_poznan
+
     DROPDOWN_WILLING_TO_RELOCATE = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'willing_relocate"]'))
     READY_TO_RELOCATE = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'willing_relocate [data-original-index="1"]'))
     # блок "Личная информация"
@@ -423,9 +499,22 @@ class ResumeEditPageLocators():
     SECONDARY_EDUCATION_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[2]//li[5]/a'))
 
     DROPDOWN_COUNTRY_EDUCATION_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[3]//button'))
-    COUNTRY_UKRAINE_EDUCATION_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[3]//li[2]/a'))
+    COUNTRY_EDUCATION_LIST_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[3]//option'))
+
+    def assembly_of_locators_with_position_country_education_2(self):  # сборка локаторов с позицией страны
+        singleton = Singleton()
+        position_object = int(singleton.position_object) + 1
+        country_ukraine_education = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[3]//li[' + str(position_object) + ']/a'))
+        return country_ukraine_education
+
     DROPDOWN_CITI_EDUCATION_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[4]//button'))
-    CITI_CHERKASY_EDUCATION_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[4]//li[27]/a'))
+    CITY_EDUCATION_LIST_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[4]//option'))
+
+    def assembly_of_locators_with_position_city_education_2(self):  # сборка локаторов с позицией города
+        singleton = Singleton()
+        position_object = int(singleton.position_object) + 1
+        city_cherkasy_education = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[4]//li[' + str(position_object) + ']/a'))
+        return city_cherkasy_education
 
     FIELD_DEPARTMENT_AND_SPECIALITY_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[5]//input[contains(@id, "resumeeducationform")]'))
 
@@ -446,9 +535,22 @@ class ResumeEditPageLocators():
     HIGHER_EDUCATION_3 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][3]//form[contains(@id, "education-form")]/div[2]//li[2]/a'))
 
     DROPDOWN_COUNTRY_EDUCATION_3 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][3]//form[contains(@id, "education-form")]/div[3]//button'))
-    COUNTRY_UKRAINE_EDUCATION_3 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][3]//form[contains(@id, "education-form")]/div[3]//li[2]/a'))
+    COUNTRY_EDUCATION_LIST_3 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][3]//form[contains(@id, "education-form")]/div[3]//option'))
+
+    def assembly_of_locators_with_position_country_education_3(self):  # сборка локаторов с позицией страны
+        singleton = Singleton()
+        position_object = int(singleton.position_object) + 1
+        country_cyprus_education = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][3]//form[contains(@id, "education-form")]/div[3]//li[' + str(position_object) + ']/a'))
+        return country_cyprus_education
+
     DROPDOWN_CITI_EDUCATION_3 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][3]//form[contains(@id, "education-form")]/div[4]//button'))
-    CITI_ODESSA_EDUCATION_3 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][3]//form[contains(@id, "education-form")]/div[4]//li[15]/a'))
+    CITY_EDUCATION_LIST_3 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][3]//form[contains(@id, "education-form")]/div[4]//option'))
+
+    def assembly_of_locators_with_position_city_education_3(self):  # сборка локаторов с позицией города
+        singleton = Singleton()
+        position_object = int(singleton.position_object) + 1
+        city_limassol_education = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][3]//form[contains(@id, "education-form")]/div[4]//li[' + str(position_object) + ']/a'))
+        return city_limassol_education
 
     FIELD_DEPARTMENT_AND_SPECIALITY_3 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][3]//form[contains(@id, "education-form")]/div[5]//input[contains(@id, "resumeeducationform")]'))
 

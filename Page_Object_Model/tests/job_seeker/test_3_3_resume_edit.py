@@ -11,6 +11,7 @@ from Page_Object_Model.pages.admin_panel.admin_resume_edit_page import AdminResu
 
 
 @pytest.mark.s_r_c
+@pytest.mark.job_seeker
 def test_editing_resume(browser, language):  # редактирование резюме
     url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_page)

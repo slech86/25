@@ -6,7 +6,8 @@ from Page_Object_Model.pages.admin_panel.admin_resume_edit_page import AdminResu
 from Page_Object_Model.pages.admin_panel.admin_currency_rates_page import AdminCurrencyRatesPage
 
 
-# @pytest.mark.s_r_c
+@pytest.mark.s_r_c
+@pytest.mark.job_seeker
 def test_verification_of_saving_data_entered_by_user_after_resume_creation(browser, language):  # проверка сохранения введенных пользователем данных после создания резюме
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()

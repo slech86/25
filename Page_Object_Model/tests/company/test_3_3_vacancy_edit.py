@@ -8,7 +8,7 @@ from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_vacancy_edit_page import AdminVacancyEditPage
 
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 def test_editing_vacancies(browser, language):  # редактирование вакансии
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)

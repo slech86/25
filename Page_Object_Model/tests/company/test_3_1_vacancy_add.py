@@ -15,7 +15,7 @@ from Page_Object_Model.singleton import Singleton
 from Page_Object_Model.data_for_testing import Accounts
 
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 def test_adding_vacancies(browser, language):  # добавление вакансии
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)

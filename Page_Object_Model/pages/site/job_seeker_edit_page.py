@@ -1,6 +1,9 @@
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.job_seeker_locators import JobSeekerEditPageLocators
 import time
+from Page_Object_Model.utility.utility import determining_position_of_object_in_drop_down_list
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class JobSeekerEditPage(BasePage):
@@ -13,9 +16,27 @@ class JobSeekerEditPage(BasePage):
         time.sleep(0.2)
         self.browser.find_element(*JobSeekerEditPageLocators.FIELD_DAY).click()
         self.browser.find_element(*JobSeekerEditPageLocators.FIELD_GENDER).click()
-        self.browser.find_element(*JobSeekerEditPageLocators.FIELD_COUNTRY).click()
+
+        self.browser.find_element(*JobSeekerEditPageLocators.DROPDOWN_COUNTRY).click()
+        country_list = self.browser.find_elements(*JobSeekerEditPageLocators.COUNTRY_LIST)
+
+        determining_position_of_object_in_drop_down_list(country_list, '122')  # 122 - id Казахстан
+
+        locator_with_position_country = JobSeekerEditPageLocators()
+        country_kazakhstan = locator_with_position_country.assembly_of_locators_with_position_country()  # сборка локаторов с позицией страны
+        self.browser.find_element(*country_kazakhstan).click()
+
+        self.browser.find_element(*JobSeekerEditPageLocators.DROPDOWN_CITI).click()
         time.sleep(0.2)
-        self.browser.find_element(*JobSeekerEditPageLocators.FIELD_CITY).click()
+        city_list = self.browser.find_elements(*JobSeekerEditPageLocators.CITY_LIST)
+
+        determining_position_of_object_in_drop_down_list(city_list, '609655')  # 609655 - id Караганда
+
+        locator_with_position_city = JobSeekerEditPageLocators()
+        city_karaganda = locator_with_position_city.assembly_of_locators_with_position_city()  # сборка локаторов с позицией города
+
+        self.browser.find_element(*city_karaganda).click()
+        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element_attribute((JobSeekerEditPageLocators.DROPDOWN_CITI), 'aria-expanded', 'false'))
         # редактирование блока "Личная информация"
 
         self.browser.find_element(*JobSeekerEditPageLocators.BUTTON_EDIT_IN_SETTINGS_BLOCK).click()

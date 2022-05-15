@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from Page_Object_Model.singleton import Singleton
 
 
-class CompanyRegistrationPageLocators():
+class CompanyRegistrationPageLocators:
     inputPrefix = 'companyregistrationform-'
 
     FIELD_LOGIN = (By.CSS_SELECTOR, ('#' + inputPrefix + 'login'))
@@ -22,8 +22,23 @@ class CompanyRegistrationPageLocators():
     FIELD_COMPANY_NAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'company_name'))
     FIELD_COMPANY_SLUG = (By.CSS_SELECTOR, ('#' + inputPrefix + 'slug'))
     FIELD_CODE_COMPANY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'code_company'))
-    FIELD_COUNTRY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option:nth-child(2)'))
-    FIELD_CITY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option:nth-child(8)'))
+
+    DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'country_id"]'))
+    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option'))
+
+    def assembly_of_locators_with_position_country(self):  # сборка локаторов с позицией страны
+        singleton = Singleton()
+        country_ukraine = (By.CSS_SELECTOR, ('.field-' + CompanyRegistrationPageLocators.inputPrefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
+        return country_ukraine
+
+    DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'city_id"]'))
+    CITY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option'))
+
+    def assembly_of_locators_with_position_city(self):  # сборка локаторов с позицией города
+        singleton = Singleton()
+        city_kyiv = (By.CSS_SELECTOR, ('.field-' + CompanyRegistrationPageLocators.inputPrefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
+        return city_kyiv
+
     FIELD_STREET = (By.CSS_SELECTOR, ('#' + inputPrefix + 'street'))
     FIELD_YEAR = (By.CSS_SELECTOR, ('#' + inputPrefix + 'foundationdatey > option:nth-child(5)'))
     FIELD_MONTH = (By.CSS_SELECTOR, ('#' + inputPrefix + 'foundationdatem > option:nth-child(13)'))
@@ -66,7 +81,7 @@ class CompanyRegistrationPageLocators():
     BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#submit-button'))
 
 
-class CompanyEditPageLocators():
+class CompanyEditPageLocators:
     inputPrefix = 'companyform-'
 
     BUTTON_EDIT_IN_CONTACT_INFORMATION_BLOCK = (By.CSS_SELECTOR, ('#contact-information .post-resume-title + .btn-edit'))
@@ -82,8 +97,23 @@ class CompanyEditPageLocators():
     FIELD_COMPANY_NAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'company_name'))
     FIELD_COMPANY_SLUG = (By.CSS_SELECTOR, ('#' + inputPrefix + 'slug'))
     FIELD_CODE_COMPANY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'code_company'))
-    FIELD_COUNTRY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option:nth-child(4)'))
-    FIELD_CITY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option:nth-child(5)'))
+
+    DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'country_id"]'))
+    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option'))
+
+    def assembly_of_locators_with_position_country(self):  # сборка локаторов с позицией страны
+        singleton = Singleton()
+        country_kazakhstan = (By.CSS_SELECTOR, ('.field-' + CompanyEditPageLocators.inputPrefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
+        return country_kazakhstan
+
+    DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'city_id"]'))
+    CITY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option'))
+
+    def assembly_of_locators_with_position_city(self):  # сборка локаторов с позицией города
+        singleton = Singleton()
+        city_karaganda = (By.CSS_SELECTOR, ('.field-' + CompanyEditPageLocators.inputPrefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
+        return city_karaganda
+
     FIELD_STREET = (By.CSS_SELECTOR, ('#' + inputPrefix + 'street'))
     FIELD_YEAR = (By.CSS_SELECTOR, ('#' + inputPrefix + 'foundationdatey > option:nth-child(33)'))
     FIELD_MONTH = (By.CSS_SELECTOR, ('#' + inputPrefix + 'foundationdatem > option:nth-child(4)'))
@@ -173,9 +203,21 @@ class VacancyAddPageLocators:
     DROPDOWN_CURRENCY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'currency"]'))
     CURRENCY_USD = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'currency [data-original-index="2"]'))
     DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'country_id"]'))
-    COUNTRY_RUSSIA = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'country_id [data-original-index="2"]'))
+    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option'))
+
+    def assembly_of_locators_with_position_country(self):  # сборка локаторов с позицией страны
+        singleton = Singleton()
+        country_georgia = (By.CSS_SELECTOR, ('.field-' + VacancyAddPageLocators.inputPrefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
+        return country_georgia
+
     DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'city_id"]'))
-    CITI_MOSCOW = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'city_id [data-original-index="25"]'))
+    CITY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option'))
+
+    def assembly_of_locators_with_position_city(self):  # сборка локаторов с позицией города
+        singleton = Singleton()
+        city_batumi = (By.CSS_SELECTOR, ('.field-' + VacancyAddPageLocators.inputPrefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
+        return city_batumi
+
     FIELD_STREET = (By.CSS_SELECTOR, ('#' + inputPrefix + 'street'))
     FIELD_PHONE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'phone'))
     FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'email'))
@@ -240,11 +282,23 @@ class VacancyEditPageLocators():
     FIELD_MINIMAL_SALARY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'salary_min'))
     FIELD_MAXIMUM_SALARY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'salary_max'))
     DROPDOWN_CURRENCY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'currency"]'))
-    CURRENCY_RUB = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'currency [data-original-index="3"]'))
+    CURRENCY_UAH = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'currency [data-original-index="1"]'))
     DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'country_id"]'))
-    COUNTRY_UKRAINE = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'country_id [data-original-index="1"]'))
+    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option'))
+
+    def assembly_of_locators_with_position_country(self):  # сборка локаторов с позицией страны
+        singleton = Singleton()
+        country_ukraine = (By.CSS_SELECTOR, ('.field-' + VacancyEditPageLocators.inputPrefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
+        return country_ukraine
+
     DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'city_id"]'))
-    CITI_DNIPRO = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'city_id [data-original-index="2"]'))
+    CITY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option'))
+
+    def assembly_of_locators_with_position_city(self):  # сборка локаторов с позицией города
+        singleton = Singleton()
+        city_dnipro = (By.CSS_SELECTOR, ('.field-' + VacancyEditPageLocators.inputPrefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
+        return city_dnipro
+
     FIELD_STREET = (By.CSS_SELECTOR, ('#' + inputPrefix + 'street'))
     FIELD_PHONE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'phone'))
     FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'email'))

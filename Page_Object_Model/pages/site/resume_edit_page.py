@@ -3,6 +3,9 @@ import os
 from Page_Object_Model.data_for_testing import TestDataEditing
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.job_seeker_locators import ResumeEditPageLocators
+from Page_Object_Model.utility.utility import determining_position_of_object_in_drop_down_list
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class ResumeEditPage(BasePage):
@@ -24,10 +27,26 @@ class ResumeEditPage(BasePage):
 
         self.browser.find_element(*ResumeEditPageLocators.FIELD_GENDER).click()
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_COUNTRY).click()
-        self.browser.find_element(*ResumeEditPageLocators.COUNTRY_KAZAKHSTAN).click()
-        time.sleep(0.5)
+
+        country_list = self.browser.find_elements(*ResumeEditPageLocators.COUNTRY_LIST)
+
+        determining_position_of_object_in_drop_down_list(country_list, '174')  # 174 - id Poland
+
+        locator_with_position_country = ResumeEditPageLocators()
+        country_poland = locator_with_position_country.assembly_of_locators_with_position_country()  # сборка локаторов с позицией страны
+        self.browser.find_element(*country_poland).click()
+
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_CITI).click()
-        self.browser.find_element(*ResumeEditPageLocators.CITI_ALMATY).click()
+        time.sleep(0.5)
+        city_list = self.browser.find_elements(*ResumeEditPageLocators.CITY_LIST)
+
+        determining_position_of_object_in_drop_down_list(city_list, '3088171')  # 3088171 - id Poznan
+
+        locator_with_position_city = ResumeEditPageLocators()
+        city_poznan = locator_with_position_city.assembly_of_locators_with_position_city()  # сборка локаторов с позицией города
+
+        self.browser.find_element(*city_poznan).click()
+        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element_attribute(ResumeEditPageLocators.DROPDOWN_CITI, 'aria-expanded', 'false'))
 
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_WILLING_TO_RELOCATE).click()
         self.browser.find_element(*ResumeEditPageLocators.READY_TO_RELOCATE).click()
@@ -54,7 +73,6 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeEditPageLocators.BUTTON_EDIT_IN_POSITION_DESIRED_BLOCK).click()
         self.browser.find_element(*ResumeEditPageLocators.FIELD_JOB_TITLE).send_keys('_editing')
         self.browser.execute_script(ResumeEditPageLocators.CATEGORY_RESUME)  # "Категория размещения вакансии" передается параметр уже с ".click()"
-        # time.sleep(0.2)
         self.browser.find_element(*ResumeEditPageLocators.SUBCATEGORIES).click()  # "Подкатегории"
 
         self.browser.find_element(*ResumeEditPageLocators.UNDEREMPLOYMENT).click()
@@ -165,9 +183,27 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_LEVEL_OF_EDUCATION_2).click()
         self.browser.find_element(*ResumeEditPageLocators.SECONDARY_EDUCATION_2).click()
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_COUNTRY_EDUCATION_2).click()
-        self.browser.find_element(*ResumeEditPageLocators.COUNTRY_UKRAINE_EDUCATION_2).click()
+
+        country_list_education = self.browser.find_elements(*ResumeEditPageLocators.COUNTRY_EDUCATION_LIST_2)
+
+        determining_position_of_object_in_drop_down_list(country_list_education, '222')  # 222 - id Ukraine
+
+        locator_with_position_country = ResumeEditPageLocators()
+        country_ukraine_education = locator_with_position_country.assembly_of_locators_with_position_country_education_2()  # сборка локаторов с позицией страны
+        self.browser.find_element(*country_ukraine_education).click()
+
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_CITI_EDUCATION_2).click()
-        self.browser.find_element(*ResumeEditPageLocators.CITI_CHERKASY_EDUCATION_2).click()
+        time.sleep(0.5)
+        city_list_education = self.browser.find_elements(*ResumeEditPageLocators.CITY_EDUCATION_LIST_2)
+
+        determining_position_of_object_in_drop_down_list(city_list_education, '710791')  # 710791 - id Cherkasy
+
+        locator_with_position_city = ResumeEditPageLocators()
+        city_cherkasy_education = locator_with_position_city.assembly_of_locators_with_position_city_education_2()  # сборка локаторов с позицией города
+
+        self.browser.find_element(*city_cherkasy_education).click()
+        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element_attribute(ResumeEditPageLocators.DROPDOWN_CITI_EDUCATION_2, 'aria-expanded', 'false'))
+
         self.browser.find_element(*ResumeEditPageLocators.FIELD_DEPARTMENT_AND_SPECIALITY_2).send_keys('_editing')
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_MONTH_EDUCATION_START_2).click()
         self.browser.find_element(*ResumeEditPageLocators.MONTH_JUNE_EDUCATION_START_2).click()
@@ -184,9 +220,27 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_LEVEL_OF_EDUCATION_3).click()
         self.browser.find_element(*ResumeEditPageLocators.HIGHER_EDUCATION_3).click()
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_COUNTRY_EDUCATION_3).click()
-        self.browser.find_element(*ResumeEditPageLocators.COUNTRY_UKRAINE_EDUCATION_3).click()
+
+        country_list_education = self.browser.find_elements(*ResumeEditPageLocators.COUNTRY_EDUCATION_LIST_3)
+
+        determining_position_of_object_in_drop_down_list(country_list_education, '54')  # 54 - id cyprus
+
+        locator_with_position_country = ResumeEditPageLocators()
+        country_cyprus_education = locator_with_position_country.assembly_of_locators_with_position_country_education_3()  # сборка локаторов с позицией страны
+        self.browser.find_element(*country_cyprus_education).click()
+
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_CITI_EDUCATION_3).click()
-        self.browser.find_element(*ResumeEditPageLocators.CITI_ODESSA_EDUCATION_3).click()
+        time.sleep(0.5)
+        city_list_education = self.browser.find_elements(*ResumeEditPageLocators.CITY_EDUCATION_LIST_3)
+
+        determining_position_of_object_in_drop_down_list(city_list_education, '146384')  # 146384 - id Limassol
+
+        locator_with_position_city = ResumeEditPageLocators()
+        city_limassol_education = locator_with_position_city.assembly_of_locators_with_position_city_education_3()  # сборка локаторов с позицией города
+
+        self.browser.find_element(*city_limassol_education).click()
+        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element_attribute(ResumeEditPageLocators.DROPDOWN_CITI_EDUCATION_3, 'aria-expanded', 'false'))
+
         self.browser.find_element(*ResumeEditPageLocators.FIELD_DEPARTMENT_AND_SPECIALITY_3).send_keys(TestDataEditing.department_and_speciality_3)
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_MONTH_EDUCATION_START_3).click()
         self.browser.find_element(*ResumeEditPageLocators.MONTH_AUGUST_EDUCATION_START_3).click()

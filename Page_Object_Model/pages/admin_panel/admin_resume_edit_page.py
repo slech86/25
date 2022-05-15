@@ -77,10 +77,10 @@ class AdminResumeEditPage(BasePage):
         country_education_title = country_education.get_attribute("title")
         assert country_education_title == TestData.country_education, "Поле 'Образование: Страна 1' не верно"
 
-        # WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element((AdminResumeEditPageLocators.FIELD_CITY_EDUCATION_1), TestData.city_education))
-        # city_education = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_CITY_EDUCATION_1)
-        # city_education_title = city_education.get_attribute("title")
-        # assert city_education_title == TestData.city_education, "Поле 'Образование: Город 1' не верно"
+        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element((AdminResumeEditPageLocators.FIELD_CITY_EDUCATION_1), TestData.city_education))
+        city_education = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_CITY_EDUCATION_1)
+        city_education_title = city_education.get_attribute("title")
+        assert city_education_title == TestData.city_education, "Поле 'Образование: Город 1' не верно"
 
         department_and_speciality = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_DEPARTMENT_AND_SPECIALITY_1)
         department_and_speciality_value = department_and_speciality.get_attribute("value")
@@ -106,10 +106,10 @@ class AdminResumeEditPage(BasePage):
         country_education_2_title = country_education_2.get_attribute("title")
         assert country_education_2_title == TestData.country_education_2, "Поле 'Образование: Страна 2' не верно"
 
-        # WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element((AdminResumeEditPageLocators.FIELD_CITY_EDUCATION_2), TestData.city_education_2))
-        # city_education_2 = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_CITY_EDUCATION_2)
-        # city_education_2_title = city_education_2.get_attribute("title")
-        # assert city_education_2_title == TestData.city_education_2, "Поле 'Образование: Город 2' не верно"
+        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element((AdminResumeEditPageLocators.FIELD_CITY_EDUCATION_2), TestData.city_education_2))
+        city_education_2 = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_CITY_EDUCATION_2)
+        city_education_2_title = city_education_2.get_attribute("title")
+        assert city_education_2_title == TestData.city_education_2, "Поле 'Образование: Город 2' не верно"
 
         department_and_speciality_2 = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_DEPARTMENT_AND_SPECIALITY_2)
         department_and_speciality_2_value = department_and_speciality_2.get_attribute("value")
@@ -219,10 +219,10 @@ class AdminResumeEditPage(BasePage):
         country_resume_title = country_resume.get_attribute("title")
         assert country_resume_title == TestData.country_resume, "Поле 'Страна' не верно"
 
-        # WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element((AdminResumeEditPageLocators.FIELD_CITY_RESUME), TestData.city_resume))
-        # city_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_CITY_RESUME)
-        # city_resume_title = city_resume.get_attribute("title")
-        # assert city_resume_title == TestData.city_resume, "Поле 'Город' не верно"
+        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element((AdminResumeEditPageLocators.FIELD_CITY_RESUME), TestData.city_resume))
+        city_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_CITY_RESUME)
+        city_resume_title = city_resume.get_attribute("title")
+        assert city_resume_title == TestData.city_resume, "Поле 'Город' не верно"
 
         willing_to_relocate = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_WILLING_TO_RELOCATE)
         willing_to_relocate_title = willing_to_relocate.get_attribute("title")
@@ -320,6 +320,3 @@ class AdminResumeEditPage(BasePage):
         experience_in_gambling_industry = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_EXPERIENCE_IN_GAMBLING_INDUSTRY)
         experience_in_gambling_industry_title = experience_in_gambling_industry.get_attribute("title")
         assert experience_in_gambling_industry_title == TestData.experience_in_gambling_industry, "Поле 'Общий опыт работы в игорной индустрии' не верно"
-
-
-

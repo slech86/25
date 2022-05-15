@@ -1,10 +1,12 @@
 import time
-
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.company_locators import CompanyRegistrationPageLocators
 from Page_Object_Model.data_for_testing import TestData
 import os
 from Page_Object_Model.singleton import Singleton
+from Page_Object_Model.utility.utility import determining_position_of_object_in_drop_down_list
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class CompanyRegistrationPage(BasePage):
@@ -60,8 +62,27 @@ class CompanyRegistrationPage(BasePage):
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_SKYPE).send_keys(TestData.skype)
         # заполнение блока "Контактная информация"
 
-        self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_COUNTRY).click()
-        self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_CITY).click()
+        self.browser.find_element(*CompanyRegistrationPageLocators.DROPDOWN_COUNTRY).click()
+        country_list = self.browser.find_elements(*CompanyRegistrationPageLocators.COUNTRY_LIST)
+
+        determining_position_of_object_in_drop_down_list(country_list, '222')  # 222 - id Ukraine
+
+        locator_with_position_country = CompanyRegistrationPageLocators()
+        country_ukraine = locator_with_position_country.assembly_of_locators_with_position_country()  # сборка локаторов с позицией страны
+        self.browser.find_element(*country_ukraine).click()
+
+        self.browser.find_element(*CompanyRegistrationPageLocators.DROPDOWN_CITI).click()
+        time.sleep(0.5)
+        city_list = self.browser.find_elements(*CompanyRegistrationPageLocators.CITY_LIST)
+
+        determining_position_of_object_in_drop_down_list(city_list, '703448')  # 703448 - id Kyiv
+
+        locator_with_position_city = CompanyRegistrationPageLocators()
+        city_kyiv = locator_with_position_city.assembly_of_locators_with_position_city()  # сборка локаторов с позицией города
+
+        self.browser.find_element(*city_kyiv).click()
+        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element_attribute(CompanyRegistrationPageLocators.DROPDOWN_CITI, 'aria-expanded', 'false'))
+
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_STREET).send_keys(TestData.street)
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_YEAR).click()
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_MONTH).click()

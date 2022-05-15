@@ -6,6 +6,7 @@ from Page_Object_Model.pages.site.job_seeker_personal_cabinet_page import JobSee
 
 
 # @pytest.mark.s_r_c
+@pytest.mark.job_seeker
 def test_changing_all_job_seeker_data(browser, language):  # изменение всех данных соискателя
     url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_page)

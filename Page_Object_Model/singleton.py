@@ -5,6 +5,7 @@ class Singleton(object):
     id_vacancies = None
     id_resume = None
     logins_and_mails = {}
+    position_object = None
 
     def __new__(cls):
         if not hasattr(cls, 'instance'):

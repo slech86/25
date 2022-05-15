@@ -243,10 +243,10 @@ class AdminPage(BasePage):
         country_title = country.get_attribute("title")
         assert country_title == TestData.country, "Поле 'Страна' не верно"
 
-        # WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element((AdminPageLocators.FIELD_CITY), TestData.city))
-        # city = self.browser.find_element(*AdminPageLocators.FIELD_CITY)
-        # city_title = city.get_attribute("title")
-        # assert city_title == TestData.city, "Поле 'Город' не верно"
+        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element((AdminPageLocators.FIELD_CITY), TestData.city))
+        city = self.browser.find_element(*AdminPageLocators.FIELD_CITY)
+        city_title = city.get_attribute("title")
+        assert city_title == TestData.city, "Поле 'Город' не верно"
 
         street = self.browser.find_element(*AdminPageLocators.FIELD_STREET)
         street_value = street.get_attribute("value")
@@ -319,10 +319,10 @@ class AdminPage(BasePage):
         country_title = country.get_attribute("title")
         assert country_title == test_data.country, "Поле 'Страна' не верно"
 
-        # WebDriverWait(self.browser, 5).until(EC.text_to_be_present_in_element((AdminPageLocators.FIELD_CITY), test_data.city))
-        # city = self.browser.find_element(*AdminPageLocators.FIELD_CITY)
-        # city_title = city.get_attribute("title")
-        # assert city_title == test_data.city, "Поле 'Город' не верно"
+        WebDriverWait(self.browser, 5).until(EC.text_to_be_present_in_element((AdminPageLocators.FIELD_CITY), test_data.city))
+        city = self.browser.find_element(*AdminPageLocators.FIELD_CITY)
+        city_title = city.get_attribute("title")
+        assert city_title == test_data.city, "Поле 'Город' не верно"
 
         checkbox_get_news = self.browser.find_element(*AdminPageLocators.CHECKBOX_GET_NEWS)
         checkbox_get_news_checked = checkbox_get_news.get_attribute("checked")

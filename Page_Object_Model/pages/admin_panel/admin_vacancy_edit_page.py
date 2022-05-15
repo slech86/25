@@ -62,10 +62,10 @@ class AdminVacancyEditPage(BasePage):
         country_vacancy_title = country_vacancy.get_attribute("title")
         assert country_vacancy_title == TestData.country_vacancy, "Поле 'Расположение вакансии - country' не верно"
 
-        # WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element((AdminVacancyEditPageLocators.FIELD_CITY_VACANCY), TestData.city_vacancy))
-        # city_vacancy = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_CITY_VACANCY)
-        # city_vacancy_title = city_vacancy.get_attribute("title")
-        # assert city_vacancy_title == TestData.city_vacancy, "Поле 'Расположение вакансии - city' не верно"
+        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element((AdminVacancyEditPageLocators.FIELD_CITY_VACANCY), TestData.city_vacancy))
+        city_vacancy = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_CITY_VACANCY)
+        city_vacancy_title = city_vacancy.get_attribute("title")
+        assert city_vacancy_title == TestData.city_vacancy, "Поле 'Расположение вакансии - city' не верно"
 
         street_vacancy = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_STREET_VACANCY)
         street_vacancy_value = street_vacancy.get_attribute("value")
@@ -158,7 +158,3 @@ class AdminVacancyEditPage(BasePage):
         CKEditor = self.browser.find_element(*AdminVacancyEditPageLocators.CKEDITOR).text
         assert CKEditor == TestData.additionally_information, "Поле 'Дополнительная информация' не верно"
         self.browser.switch_to.default_content()  # выход из фрейма
-
-
-
-

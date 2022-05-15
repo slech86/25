@@ -2,6 +2,9 @@ import time
 from Page_Object_Model.data_for_testing import TestData
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.company_locators import VacancyAddPageLocators
+from Page_Object_Model.utility.utility import determining_position_of_object_in_drop_down_list
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class VacancyAddPage(BasePage):
@@ -13,9 +16,27 @@ class VacancyAddPage(BasePage):
         self.browser.execute_script(VacancyAddPageLocators.CATEGORY_VACANCIES)  # "Категория размещения вакансии" передается параметр уже с ".click()"
         self.browser.find_element(*VacancyAddPageLocators.SUBCATEGORIES).click()
         self.browser.find_element(*VacancyAddPageLocators.DROPDOWN_COUNTRY).click()
-        self.browser.find_element(*VacancyAddPageLocators.COUNTRY_RUSSIA).click()
+
+        country_list = self.browser.find_elements(*VacancyAddPageLocators.COUNTRY_LIST)
+
+        determining_position_of_object_in_drop_down_list(country_list, '79')  # 79 - id Georgia
+
+        locator_with_position_country = VacancyAddPageLocators()
+        country_georgia = locator_with_position_country.assembly_of_locators_with_position_country()  # сборка локаторов с позицией страны
+        self.browser.find_element(*country_georgia).click()
+
         self.browser.find_element(*VacancyAddPageLocators.DROPDOWN_CITI).click()
-        self.browser.find_element(*VacancyAddPageLocators.CITI_MOSCOW).click()
+        time.sleep(0.5)
+        city_list = self.browser.find_elements(*VacancyAddPageLocators.CITY_LIST)
+
+        determining_position_of_object_in_drop_down_list(city_list, '9000009')  # 9000009 - id Batumi
+
+        locator_with_position_city = VacancyAddPageLocators()
+        city_batumi = locator_with_position_city.assembly_of_locators_with_position_city()  # сборка локаторов с позицией города
+
+        self.browser.find_element(*city_batumi).click()
+        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element_attribute(VacancyAddPageLocators.DROPDOWN_CITI, 'aria-expanded', 'false'))
+
         self.browser.find_element(*VacancyAddPageLocators.FULL_EMPLOYMENT).click()
         self.browser.find_element(*VacancyAddPageLocators.WORK_EXPERIENCE_1_YEAR).click()
         # блок 'Основная информация'

@@ -3,6 +3,9 @@ import os
 from Page_Object_Model.data_for_testing import TestData
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.job_seeker_locators import ResumeAddPageLocators
+from Page_Object_Model.utility.utility import determining_position_of_object_in_drop_down_list
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class ResumeAddPage(BasePage):
@@ -18,9 +21,26 @@ class ResumeAddPage(BasePage):
 
         self.browser.find_element(*ResumeAddPageLocators.FIELD_GENDER).click()
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_COUNTRY).click()
-        self.browser.find_element(*ResumeAddPageLocators.COUNTRY_UKRAINE).click()
+
+        country_list = self.browser.find_elements(*ResumeAddPageLocators.COUNTRY_LIST)
+
+        determining_position_of_object_in_drop_down_list(country_list, '222')  # 222 - id Ukraine
+
+        locator_with_position_country = ResumeAddPageLocators()
+        country_ukraine = locator_with_position_country.assembly_of_locators_with_position_country()  # сборка локаторов с позицией страны
+        self.browser.find_element(*country_ukraine).click()
+
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_CITI).click()
-        self.browser.find_element(*ResumeAddPageLocators.CITI_ODESSA).click()
+        time.sleep(0.5)
+        city_list = self.browser.find_elements(*ResumeAddPageLocators.CITY_LIST)
+
+        determining_position_of_object_in_drop_down_list(city_list, '698740')  # 698740 - id Odessa
+
+        locator_with_position_city = ResumeAddPageLocators()
+        city_odessa = locator_with_position_city.assembly_of_locators_with_position_city()  # сборка локаторов с позицией города
+
+        self.browser.find_element(*city_odessa).click()
+        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element_attribute(ResumeAddPageLocators.DROPDOWN_CITI, 'aria-expanded', 'false'))
         # блок "Личная информация"
 
         self.browser.find_element(*ResumeAddPageLocators.FIELD_PHONE_1).send_keys(TestData.phone_1_resume)
@@ -134,10 +154,29 @@ class ResumeAddPage(BasePage):
         self.browser.find_element(*ResumeAddPageLocators.FIELD_NAME_OF_INSTITUTION).send_keys(TestData.name_of_institution)
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_LEVEL_OF_EDUCATION).click()
         self.browser.find_element(*ResumeAddPageLocators.HIGHER_EDUCATION).click()
+
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_COUNTRY_EDUCATION).click()
-        self.browser.find_element(*ResumeAddPageLocators.COUNTRY_UKRAINE_EDUCATION).click()
+
+        country_list_education = self.browser.find_elements(*ResumeAddPageLocators.COUNTRY_EDUCATION_LIST)
+
+        determining_position_of_object_in_drop_down_list(country_list_education, '222')  # 222 - id Ukraine
+
+        locator_with_position_country = ResumeAddPageLocators()
+        country_ukraine_education = locator_with_position_country.assembly_of_locators_with_position_country_education()  # сборка локаторов с позицией страны
+        self.browser.find_element(*country_ukraine_education).click()
+
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_CITI_EDUCATION).click()
-        self.browser.find_element(*ResumeAddPageLocators.CITI_KHARKOV_EDUCATION).click()
+        time.sleep(0.5)
+        city_list_education = self.browser.find_elements(*ResumeAddPageLocators.CITY_EDUCATION_LIST)
+
+        determining_position_of_object_in_drop_down_list(city_list_education, '706483')  # 706483 - id Kharkov
+
+        locator_with_position_city = ResumeAddPageLocators()
+        city_kharkov_education = locator_with_position_city.assembly_of_locators_with_position_city_education()  # сборка локаторов с позицией города
+
+        self.browser.find_element(*city_kharkov_education).click()
+        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element_attribute(ResumeAddPageLocators.DROPDOWN_CITI_EDUCATION, 'aria-expanded', 'false'))
+
         self.browser.find_element(*ResumeAddPageLocators.FIELD_DEPARTMENT_AND_SPECIALITY).send_keys(TestData.department_and_speciality)
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_MONTH_EDUCATION_START).click()
         self.browser.find_element(*ResumeAddPageLocators.MONTH_SEPTEMBER_EDUCATION_START).click()
@@ -153,9 +192,27 @@ class ResumeAddPage(BasePage):
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_LEVEL_OF_EDUCATION_2).click()
         self.browser.find_element(*ResumeAddPageLocators.SECONDARY_SPECIAL_EDUCATION_2).click()
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_COUNTRY_EDUCATION_2).click()
-        self.browser.find_element(*ResumeAddPageLocators.COUNTRY_BELARUS_EDUCATION_2).click()
+
+        country_list_education = self.browser.find_elements(*ResumeAddPageLocators.COUNTRY_EDUCATION_LIST_2)
+
+        determining_position_of_object_in_drop_down_list(country_list_education, '36')  # 36 - id Belarus
+
+        locator_with_position_country = ResumeAddPageLocators()
+        country_belarus_education = locator_with_position_country.assembly_of_locators_with_position_country_education_2()  # сборка локаторов с позицией страны
+        self.browser.find_element(*country_belarus_education).click()
+
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_CITI_EDUCATION_2).click()
-        self.browser.find_element(*ResumeAddPageLocators.CITI_MINSK_EDUCATION_2).click()
+        time.sleep(0.5)
+        city_list_education = self.browser.find_elements(*ResumeAddPageLocators.CITY_EDUCATION_LIST_2)
+
+        determining_position_of_object_in_drop_down_list(city_list_education, '625144')  # 625144 - id Minsk
+
+        locator_with_position_city = ResumeAddPageLocators()
+        city_minsk_education = locator_with_position_city.assembly_of_locators_with_position_city_education_2()  # сборка локаторов с позицией города
+
+        self.browser.find_element(*city_minsk_education).click()
+        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element_attribute(ResumeAddPageLocators.DROPDOWN_CITI_EDUCATION_2, 'aria-expanded', 'false'))
+
         self.browser.find_element(*ResumeAddPageLocators.FIELD_DEPARTMENT_AND_SPECIALITY_2).send_keys(TestData.department_and_speciality_2)
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_MONTH_EDUCATION_START_2).click()
         self.browser.find_element(*ResumeAddPageLocators.MONTH_NOVEMBER_EDUCATION_START_2).click()

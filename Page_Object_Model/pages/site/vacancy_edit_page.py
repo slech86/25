@@ -2,6 +2,9 @@ import time
 from Page_Object_Model.data_for_testing import TestDataEditing
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.company_locators import VacancyEditPageLocators
+from Page_Object_Model.utility.utility import determining_position_of_object_in_drop_down_list
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class VacancyEditPage(BasePage):
@@ -15,12 +18,28 @@ class VacancyEditPage(BasePage):
         self.browser.find_element(*VacancyEditPageLocators.FIELD_MAXIMUM_SALARY).clear()
         self.browser.find_element(*VacancyEditPageLocators.FIELD_MAXIMUM_SALARY).send_keys(TestDataEditing.salary_max)
         self.browser.find_element(*VacancyEditPageLocators.DROPDOWN_CURRENCY).click()
-        self.browser.find_element(*VacancyEditPageLocators.CURRENCY_RUB).click()
+        self.browser.find_element(*VacancyEditPageLocators.CURRENCY_UAH).click()
         self.browser.find_element(*VacancyEditPageLocators.DROPDOWN_COUNTRY).click()
-        self.browser.find_element(*VacancyEditPageLocators.COUNTRY_UKRAINE).click()
+        country_list = self.browser.find_elements(*VacancyEditPageLocators.COUNTRY_LIST)
+
+        determining_position_of_object_in_drop_down_list(country_list, '222')  # 222 - id Ukraine
+
+        locator_with_position_country = VacancyEditPageLocators()
+        country_ukraine = locator_with_position_country.assembly_of_locators_with_position_country()  # сборка локаторов с позицией страны
+        self.browser.find_element(*country_ukraine).click()
+
         self.browser.find_element(*VacancyEditPageLocators.DROPDOWN_CITI).click()
-        time.sleep(0.3)
-        self.browser.find_element(*VacancyEditPageLocators.CITI_DNIPRO).click()
+        time.sleep(0.5)
+        city_list = self.browser.find_elements(*VacancyEditPageLocators.CITY_LIST)
+
+        determining_position_of_object_in_drop_down_list(city_list, '709930')  # 709930 - id Dnipro
+
+        locator_with_position_city = VacancyEditPageLocators()
+        city_dnipro = locator_with_position_city.assembly_of_locators_with_position_city()  # сборка локаторов с позицией города
+
+        self.browser.find_element(*city_dnipro).click()
+        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element_attribute((VacancyEditPageLocators.DROPDOWN_CITI), 'aria-expanded', 'false'))
+
         self.browser.find_element(*VacancyEditPageLocators.FIELD_STREET).send_keys('_editing')
         self.browser.find_element(*VacancyEditPageLocators.FIELD_PHONE).clear()
         self.browser.find_element(*VacancyEditPageLocators.FIELD_PHONE).send_keys(TestDataEditing.phone_vacancy)
