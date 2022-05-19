@@ -44,7 +44,7 @@ class TestResumeAdd:
 
         my_resume_page.waiting_for_my_resumes_page_to_open(language)  # ожидание открытия страницы 'Мои резюме'
         my_resume_page.confirmation_of_opening_of_page_my_resumes(language)  # подтверждение открытия страницы 'Мои резюме'
-        my_resume_page.checking_message_confirming_submission_of_resume_for_moderation(language)  # проверка сообщения о подтверждении отправки резюме на модерацию
+        my_resume_page.checking_message_confirming_of_creation_of_resume(language)  # проверка сообщения о создании нового резюме
 
         admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
         admin_page.open()

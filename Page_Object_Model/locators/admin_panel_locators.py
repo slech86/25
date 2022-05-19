@@ -4,11 +4,13 @@ from Page_Object_Model.singleton import Singleton
 
 
 class AdminPageLocators:
+    # авторизация админки
     FIELD_LOGIN = (By.CSS_SELECTOR, ('#loginform-username'))
     FIELD_PASSWORD = (By.CSS_SELECTOR, ('#loginform-password'))
     BUTTON_LOG_IN = (By.CSS_SELECTOR, ('[type="submit"]'))
     # авторизация админки
 
+    # шапка
     DROPDOWN_REFERENCE_BOOKS = (By.CSS_SELECTOR, ('.dropdown:nth-child(3)'))
     CURRENCY_RATES = (By.CSS_SELECTOR, ('[href="/x/currency-rates"]'))
 
@@ -20,6 +22,7 @@ class AdminPageLocators:
     USER_PURCHASES = (By.CSS_SELECTOR, ('[href="/x/purchases"]'))
     # шапка
 
+    # общие
     STATUS = (By.CSS_SELECTOR, ('[data-name="status"]'))
     STATUS_SAVING = (By.CSS_SELECTOR, ('.editable-buttons > [type="submit"]'))
     BUTTON_OBJECT_MENU = (By.CSS_SELECTOR, ('div > .fa.fa-bars'))
@@ -30,8 +33,10 @@ class AdminPageLocators:
     BUTTON_SAVE_AND_EDIT = (By.CSS_SELECTOR, ('[type="submit"].btn.btn-primary'))
     # общие
 
-    H1_USERS = (By.CSS_SELECTOR, ('h1'))
-    FIELD_EMAIL_SEARCH = (By.CSS_SELECTOR, ('[name="User[email]"]'))
+    # страница пользователей
+    H1_USERS = (By.CSS_SELECTOR, 'h1')
+    USER_STATUS = (By.XPATH, '//tr[1]/td[3]/p')
+    FIELD_EMAIL_SEARCH = (By.CSS_SELECTOR, '[name="User[email]"]')
 
     def generating_user_email_locators(self, key):
         user_email_ru = (By.XPATH, ('//td[text()="' + Singleton.logins_and_mails[key][0][1] + '"]'))
@@ -39,12 +44,12 @@ class AdminPageLocators:
         user_email_en = (By.XPATH, ('//td[text()="' + Singleton.logins_and_mails[key][2][1] + '"]'))
         user_email = [user_email_ru, user_email_ua, user_email_en]
         return user_email
-
-
-    STATUS_ACTIVE = (By.CSS_SELECTOR, ('.form-control.input-sm [value="1"]'))
-    STATUS_DELETED = (By.CSS_SELECTOR, ('.form-control.input-sm [value="-1"]'))
     # страница пользователей
 
+    # страница пользователя
+    FIELD_USER_STATUS = (By.XPATH, ('//span[contains(@id, "select2-user-status-")]'))
+    STATUS_USER_ACTIVE = (By.XPATH, ('//ul[contains(@id, "select2-user-status-")]/li[text()="Активен"]'))
+    STATUS_USER_DELETE = (By.XPATH, ('//ul[contains(@id, "select2-user-status-")]/li[text()="Удалено"]'))
     FIELD_USER_LOGIN = (By.CSS_SELECTOR, ('[name="User[login]"]'))
     FIELD_USER_EMAIL = (By.CSS_SELECTOR, ('[name="User[email]"]'))
     FIELD_EMAIL_LANGUAGE = (By.XPATH, ('//span[contains(@id, "select2-user-mail_language-")]'))
@@ -120,12 +125,12 @@ class AdminPageLocators:
     # страница 'Покупки пользователей'
 
 
-class AdminCurrencyRatesPageLocators():
+class AdminCurrencyRatesPageLocators:
     RUB_RATE = (By.CSS_SELECTOR, ('[id="2"] > td:nth-child(6)'))
     UAH_RATE = (By.CSS_SELECTOR, ('[id="1"] > td:nth-child(6)'))
 
 
-class AdminVacancyEditPageLocators():
+class AdminVacancyEditPageLocators:
     H1_VACANCY = (By.CSS_SELECTOR, ('h1'))
     FIELD_VACANCY_STATUS = (By.XPATH, ('//span[contains(@id, "select2-vacancies-status-")]'))
     STATUS_PUBLISHED = (By.XPATH, ('//ul[contains(@id, "select2-vacancies-status-")]/li[text()="Опубликовано"]'))

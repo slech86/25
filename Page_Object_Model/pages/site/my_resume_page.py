@@ -33,6 +33,16 @@ class MyResumePage(BasePage):
         elif language == "/en":
             assert self.browser.current_url == f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/en/resume/my", "Не правильный URL"
 
+    def checking_message_confirming_of_creation_of_resume(self, language):  # проверка сообщения о создании нового резюме
+        infoText = self.browser.find_element(*MyResumePageLocators.INFO_TEXT_AFTER_CREATING_RESUME).text
+        if language == "/ua":
+            assert "Створене вами резюме прийнято і відправлено на модерацію. Резюме буде доступним на сайті протягом 12 годин." == infoText, 'Не верное сообщение'
+        elif language == "":
+            assert "Созданное вами резюме принято и отправлено на модерацию. Резюме будет доступно на сайте в течение 12 часов." == infoText, 'Не верное сообщение'
+        elif language == "/en":
+            assert "Your resume has been accepted and sent for moderation. The summary will be available on the site within 12 hours." == infoText, 'Не верное сообщение'
+        self.browser.find_element(*MyResumePageLocators.CROSS_IN_POP_UP_AFTER_CREATING_RESUME).click()
+
     def checking_message_confirming_submission_of_resume_for_moderation(self, language):  # проверка сообщения о подтверждении отправки резюме на модерацию
         infoText = self.browser.find_element(*MyResumePageLocators.INFO_TEXT_AFTER_SUBMITTING_RESUME_FOR_MODERATION).text
         if language == "/ua":

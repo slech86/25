@@ -41,7 +41,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
 
     my_vacancies_page.waiting_for_my_vacancies_page_to_open(language)  # ожидание открытия страницы 'Мои вакансии'
     my_vacancies_page.confirmation_of_opening_of_page_my_vacancies(language)  # подтверждение открытия страницы 'Мои вакансии'
-    my_vacancies_page.checking_message_confirming_submission_of_vacancy_for_moderation(language)  # проверка сообщения о подтверждении отправки вакансии на модерацию
+    my_vacancies_page.checking_message_confirming_of_creation_of_vacancy(language)  # проверка сообщения о создании новой вакансии
 
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()

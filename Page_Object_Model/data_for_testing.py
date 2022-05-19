@@ -277,14 +277,14 @@ class TestDataEditing:
     phone_2_resume = '+00(111)222-33-44'
     email_resume = TestData.email_resume + 'editing'
     skype_resume = TestData.skype_resume + '_editing'
-    portfolio = TestData.portfolio + '_editing'
+    portfolio = TestData.portfolio + '_editing/'
 
-    facebook_resume = TestData.facebook_resume + '_editing'
-    linkedin_resume = TestData.linkedin_resume + '_editing'
-    instagram_resume = TestData.instagram_resume + '_editing'
-    telegram_resume = TestData.portfolio + '_editing'
-    twitter_resume = TestData.portfolio + '_editing'
-    vk_resume = TestData.portfolio + '_editing'
+    facebook_resume = TestData.facebook_resume + '_editing/'
+    linkedin_resume = TestData.linkedin_resume + '_editing/'
+    instagram_resume = TestData.instagram_resume + '_editing/'
+    telegram_resume = TestData.telegram_resume + '_editing/'
+    twitter_resume = TestData.twitter_resume + '_editing/'
+    vk_resume = TestData.vk_resume + '_editing/'
 
     job_title_resume = TestData.job_title_resume + '_editing'
     category_resume = '?!?'  # не используется при заполнении полей, только при проверке заполнения полей в админке
@@ -359,7 +359,7 @@ class TestDataEditing:
     name_course_3 = 'name_course_3 ' + TestData.time_Now + '_editing'
     course_period_start_3 = '?!?01.10.2014'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     course_period_finish_3 = '?!?01.10.2015'  # не используется при заполнении полей, только при проверке заполнения полей в админке
-    course_description_3 = '_editing' + 'course_description_3 ' + TestData.time_Now
+    course_description_3 = 'editing_' + 'course_description_3 ' + TestData.time_Now
 
     language_resume_1 = '?!?Польский'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     level_language_resume_1 = '?!?Продвинутый'  # не используется при заполнении полей, только при проверке заполнения полей в админке

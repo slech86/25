@@ -6,8 +6,10 @@ from Page_Object_Model.singleton import Singleton
 class OllPageLocators:
     BUTTON_YES_WHEN_CHECKING_AGE = (By.CSS_SELECTOR, ".modal-content .btn.btn-blue.age-validation")
 
-    DROPDOWN_LIST_APPLICANT = (By.CSS_SELECTOR, ('.header_nav>.dropdown-nav-link:nth-child(3) .flex-row'))  # только при не авторизированом пользователе
-    VACANCIES_IN_HEDER = (By.XPATH, ('//div[@class="dropdown-nav-menu"]//a[contains(@href, "/vacancy")]'))  # только при не авторизированом пользователе
+    DROPDOWN_LIST_EMPLOYER = (By.CSS_SELECTOR, '.header_nav>.dropdown-nav-link:nth-child(2) .flex-row')  # только при не авторизированом пользователе
+    RESUME_IN_HEDER = (By.XPATH, '//div[@class="dropdown-nav-menu"]//a[contains(@href, "/resume")]')
+    DROPDOWN_LIST_APPLICANT = (By.CSS_SELECTOR, '.header_nav>.dropdown-nav-link:nth-child(3) .flex-row')  # только при не авторизированом пользователе
+    VACANCIES_IN_HEDER = (By.XPATH, '//div[@class="dropdown-nav-menu"]//a[contains(@href, "/vacancy")]')
     BUTTON_POP_UP_FOR_LOGIN = (By.CSS_SELECTOR, ('.login.flex-row'))
     BUTTON_AUTHORIZED_USER = (By.CSS_SELECTOR, ('.logout.flex-row'))
     LINK_PERSONAL_ACCOUNT = (By.XPATH, ('//a[@class="dropdown-item"][contains(@href, "/cabinet")]'))
@@ -36,9 +38,24 @@ class VacanciesPageLocators:
         return vacancy
 
 
+class ResumesPageLocators:
+    inputPrefix = 'resumesortform-'
+
+    H1 = (By.CSS_SELECTOR, ('h1'))
+    FIELD_JOB_TITLE_TO_SEARCH = (By.CSS_SELECTOR, ('#' + inputPrefix + 'job_title'))
+    BUTTON_SEARCH = (By.CSS_SELECTOR, ('#top-sort-form-btn'))
+
+    def assembly_of_locators_with_id_resume(self):  # сборка локаторов с id резюме
+        singleton = Singleton()
+        resume = (By.XPATH, ('//a[contains(@href, "/resume/' + singleton.id_resume + '")]'))
+        return resume
+
+    FIRST_RESUME_IN_LIST = (By.CSS_SELECTOR, ('.lc-card:nth-child(1)'))
+
+
 class MainPageLocators:
     H1 = (By.CSS_SELECTOR, ('h1'))
-    INFO_TEXT_ABOUT_SENDING_REGISTRATION_FORM = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст о подтверждении отправки формы регистрации
+    INFO_TEXT_ABOUT_SENDING_REGISTRATION_FORM = (By.CSS_SELECTOR, ('#lc-popup-registration .text'))  # информационный текст о подтверждении отправки формы регистрации
     INFO_TEXT_ABOUT_CONFIRMATION_OF_COMPANY_EMAIL_AFTER_REGISTRATION = (By.CSS_SELECTOR, ('#to-publish-modal h2'))  # информационный текст о подтверждении електронной почты работодателя после регистрации
 
 

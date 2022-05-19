@@ -223,7 +223,7 @@ class ResumeEditPage(BasePage):
 
         country_list_education = self.browser.find_elements(*ResumeEditPageLocators.COUNTRY_EDUCATION_LIST_3)
 
-        determining_position_of_object_in_drop_down_list(country_list_education, '54')  # 54 - id cyprus
+        determining_position_of_object_in_drop_down_list(country_list_education, '54')  # 54 - id Cyprus
 
         locator_with_position_country = ResumeEditPageLocators()
         country_cyprus_education = locator_with_position_country.assembly_of_locators_with_position_country_education_3()  # сборка локаторов с позицией страны
@@ -287,7 +287,7 @@ class ResumeEditPage(BasePage):
 
         self.browser.find_element(*ResumeEditPageLocators.BUTTON_ADD_COURSES_NUMBER_3).click()
 
-        self.browser.find_element(*ResumeEditPageLocators.FIELD_NAME_OF_INSTITUTION_OR_CERTIFICATE_3).send_keys('_editing')
+        self.browser.find_element(*ResumeEditPageLocators.FIELD_NAME_OF_INSTITUTION_OR_CERTIFICATE_3).send_keys(TestDataEditing.name_course_3)
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_MONTH_COURSES_START_3).click()
         self.browser.find_element(*ResumeEditPageLocators.MONTH_DECEMBER_COURSES_START_3).click()
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_YEAR_COURSES_START_3).click()

@@ -178,8 +178,11 @@ class MyVacanciesPageLocators:
                     new_response_icon]
         return locators
 
-    INFO_TEXT_AFTER_SUBMITTING_VACANCY_FOR_MODERATION = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст после отправки вакансии на модерацию
-    CROSS_IN_POP_UP_AFTER_SUBMITTING_VACANCY_FOR_MODERATION = (By.CSS_SELECTOR, ('#thanks-modal .close'))  # крестик в pop-up окне после отправки вакансии на модерацию
+    INFO_TEXT_AFTER_CREATING_VACANCY = (By.CSS_SELECTOR, ('#lc-popup-vacancy-new .text'))  # информационный текст после создания вакансии
+    CROSS_IN_POP_UP_AFTER_CREATING_VACANCY = (By.CSS_SELECTOR, ('#lc-popup-vacancy-new .close'))  # крестик в pop-up окне после создания вакансии
+
+    INFO_TEXT_AFTER_SUBMITTING_VACANCY_FOR_MODERATION = (By.CSS_SELECTOR, ('#lc-popup-vacancy-moderation .text'))  # информационный текст после отправки вакансии на модерацию
+    CROSS_IN_POP_UP_AFTER_SUBMITTING_VACANCY_FOR_MODERATION = (By.CSS_SELECTOR, ('#lc-popup-vacancy-moderation .close'))  # крестик в pop-up окне после отправки вакансии на модерацию
 
 
 class ResponsesToVacancyPageLocators:
@@ -395,5 +398,17 @@ class ServicesAndPricesPageLocators():
 
 
 class ResumePageLocators:
-    H1 = (By.CSS_SELECTOR, ('h1'))
-    COVER_LETTER_TEXT = (By.CSS_SELECTOR, ('.covering-letter-description'))
+    H1 = (By.CSS_SELECTOR, 'h1')
+    COVER_LETTER_TEXT = (By.CSS_SELECTOR, '.covering-letter-description')
+
+    PHONE_1_IN_CONTACT_INFORMATION = (By.CSS_SELECTOR, '.contacts-block-items > .item:nth-child(1) span')  # очередность сохраняется при условии наличия всех контактов
+    PHONE_2_IN_CONTACT_INFORMATION = (By.CSS_SELECTOR, '.contacts-block-items > .item:nth-child(2) span')  # очередность сохраняется при условии наличия всех контактов
+    EMAIL_IN_CONTACT_INFORMATION = (By.CSS_SELECTOR, '.contacts-block-items > .item:nth-child(3) span')  # очередность сохраняется при условии наличия всех контактов
+    SKYPE_IN_CONTACT_INFORMATION = (By.CSS_SELECTOR, '.contacts-block-items > .item:nth-child(4) span')  # очередность сохраняется при условии наличия всех контактов
+    PORTFOLIO_IN_CONTACT_INFORMATION = (By.CSS_SELECTOR, '.socials-list .site')  # очередность сохраняется при условии наличия всех контактов
+    FACEBOOK_IN_CONTACT_INFORMATION = (By.CSS_SELECTOR, '.socials-list .fb')  # очередность сохраняется при условии наличия всех контактов
+    LINKEDIN_IN_CONTACT_INFORMATION = (By.CSS_SELECTOR, '.socials-list .in')  # очередность сохраняется при условии наличия всех контактов
+    INSTAGRAM_IN_CONTACT_INFORMATION = (By.CSS_SELECTOR, '.socials-list .inst')  # очередность сохраняется при условии наличия всех контактов
+    TELEGRAM_IN_CONTACT_INFORMATION = (By.CSS_SELECTOR, '.socials-list .tel')  # очередность сохраняется при условии наличия всех контактов
+    TWITTER_IN_CONTACT_INFORMATION = (By.CSS_SELECTOR, '.socials-list .twit')  # очередность сохраняется при условии наличия всех контактов
+    VK_IN_CONTACT_INFORMATION = (By.CSS_SELECTOR, '.socials-list .vk')  # очередность сохраняется при условии наличия всех контактов

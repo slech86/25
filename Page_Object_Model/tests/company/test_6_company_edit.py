@@ -24,3 +24,5 @@ def test_changing_all_company_data(browser, language):  # изменение в�
     company_edit_page.change_data_in_all_fields(language)  # изменение данных во всех полях
     company_edit_page.submitting_form_for_moderation_after_changing_data()  # отправка формы на модерацию после изменения данных
     company_edit_page.checking_message_after_saving_changes_to_personal_information(language)  # проверка сообщения после сохранения изменений личной информации
+
+    # нужно добавить проверку статуса "Редактирование данных"

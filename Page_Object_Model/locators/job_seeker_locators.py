@@ -94,8 +94,11 @@ class MyResumePageLocators:
         button_edit = (By.XPATH, ('//a[contains(@href, "/resume/' + singleton.id_resume + '/edit")]'))
         return button_edit
 
-    INFO_TEXT_AFTER_SUBMITTING_RESUME_FOR_MODERATION = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст после отправки резюме на модерацию
-    CROSS_IN_POP_UP_AFTER_SUBMITTING_RESUME_FOR_MODERATION = (By.CSS_SELECTOR, ('#thanks-modal .close'))  # крестик в pop-up окне после отправки резюме на модерацию
+    INFO_TEXT_AFTER_CREATING_RESUME = (By.CSS_SELECTOR, ('#lc-popup-resume-new .text'))  # информационный текст после создания резюме
+    CROSS_IN_POP_UP_AFTER_CREATING_RESUME = (By.CSS_SELECTOR, ('#lc-popup-resume-new .close'))  # крестик в pop-up окне после создания резюме
+
+    INFO_TEXT_AFTER_SUBMITTING_RESUME_FOR_MODERATION = (By.CSS_SELECTOR, ('#lc-popup-resume-moderation .text'))  # информационный текст после отправки резюме на модерацию
+    CROSS_IN_POP_UP_AFTER_SUBMITTING_RESUME_FOR_MODERATION = (By.CSS_SELECTOR, ('#lc-popup-resume-moderation .close'))  # крестик в pop-up окне после отправки резюме на модерацию
 
 
 class ResumeAddPageLocators:

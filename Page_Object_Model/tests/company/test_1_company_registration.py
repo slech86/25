@@ -94,8 +94,10 @@ class TestCompanyRegistration:
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_users_page()  # переход на страницу пользователей
         admin_page.search_user_by_email(language, 1)  # поиск пользователя по e-mail
-
+        admin_page.go_to_object_editing_page()  # переход на страницу пользователя
         admin_page.change_of_user_status_from_on_moderation_to_active()  # изменение статуса пользователя с "На модерации" на "Активен"
+        admin_page.saving_user_card()  # сохранение карточки пользователя
+        admin_page.waiting_to_save_status_and_open_users_page()  # ожидание сохранения статуса и открытия страницы всех пользователей
         admin_page.check_that_user_has_status_active()  # проверка что пользователь имеет статус "Активен"
 
 

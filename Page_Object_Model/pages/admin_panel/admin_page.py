@@ -71,35 +71,45 @@ class AdminPage(BasePage):
         assert self.is_element_present(*user_email), 'Пользователь не найден'
 
     def checking_that_newly_created_user_has_status_disabled(self):  # проверка что новосозданный пользователь имеет статус "Отключено"
-        status = self.browser.find_element(*AdminPageLocators.STATUS).text
+        status = self.browser.find_element(*AdminPageLocators.USER_STATUS).text
         assert status == 'Отключен', 'Статус не "Отключен"'
 
-    def change_of_user_status_from_on_moderation_to_active(self):  # изменение статуса пользователя с "На модерации" на "Активен"
-        status = self.browser.find_element(*AdminPageLocators.STATUS).text
-        assert status == 'На модерации', 'Статус не "На модерации"'
-        self.browser.find_element(*AdminPageLocators.STATUS).click()
-        time.sleep(1)
-        self.browser.find_element(*AdminPageLocators.STATUS_ACTIVE).click()
-        time.sleep(1)
-        self.browser.find_element(*AdminPageLocators.STATUS_SAVING).click()
-        time.sleep(5)
-
     def changing_user_status_to_deleted(self):  # изменение статуса пользователя на "Удалено"
-        self.browser.find_element(*AdminPageLocators.STATUS).click()
+        self.browser.find_element(*AdminPageLocators.FIELD_USER_STATUS).click()
+        self.browser.find_element(*AdminPageLocators.STATUS_USER_DELETE).click()
         time.sleep(1)
-        self.browser.find_element(*AdminPageLocators.STATUS_DELETED).click()
-        time.sleep(1)
-        self.browser.find_element(*AdminPageLocators.STATUS_SAVING).click()
-        time.sleep(5)
-        self.browser.refresh()
-        status = self.browser.find_element(*AdminPageLocators.STATUS).text
-        assert status == 'Удалено', 'Статус не "Удалено"'
+
+
+
+    # def changing_user_status_to_deleted(self):  # изменение статуса пользователя на "Удалено"
+    #     self.browser.find_element(*AdminPageLocators.STATUS).click()
+    #     time.sleep(1)
+    #     self.browser.find_element(*AdminPageLocators.STATUS_DELETED).click()
+    #     time.sleep(1)
+    #     self.browser.find_element(*AdminPageLocators.STATUS_SAVING).click()
+    #     time.sleep(5)
+    #     self.browser.refresh()
+    #     status = self.browser.find_element(*AdminPageLocators.STATUS).text
+    #     assert status == 'Удалено', 'Статус не "Удалено"'
 
     def check_that_user_has_status_active(self):  # проверка что пользователь имеет статус "Активен"
         self.browser.refresh()
-        status = self.browser.find_element(*AdminPageLocators.STATUS).text
+        status = self.browser.find_element(*AdminPageLocators.USER_STATUS).text
         assert status == 'Активен', 'Статус не "Активен"'
+
+    def check_that_user_has_status_delete(self):  # проверка что пользователь имеет статус "Удалено"
+        self.browser.refresh()
+        status = self.browser.find_element(*AdminPageLocators.USER_STATUS).text
+        assert status == 'Удалено', 'Статус не "Удалено"'
     # страница пользователей
+
+    # страница пользователя
+    def change_of_user_status_from_on_moderation_to_active(self):  # изменение статуса пользователя с "На модерации" на "Активен"
+        status = self.browser.find_element(*AdminPageLocators.FIELD_USER_STATUS).text
+        assert status == 'На модерации', 'Статус не "На модерации"'
+        self.browser.find_element(*AdminPageLocators.FIELD_USER_STATUS).click()
+        self.browser.find_element(*AdminPageLocators.STATUS_USER_ACTIVE).click()
+        time.sleep(1)
 
     def changing_role_from_user_to_super_admin(self):  # изменение роли с "User" на "SuperAdmin"
         self.browser.find_element(*AdminPageLocators.FIELD_WITH_ROLE_USER).click()

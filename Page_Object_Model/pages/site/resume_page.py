@@ -35,3 +35,44 @@ class ResumePage(BasePage):
     def checking_cover_letter_text(self):  # проверка текста сопроводительного письма
         cover_letter_text = self.browser.find_element(*ResumePageLocators.COVER_LETTER_TEXT).text
         assert cover_letter_text == TestData.cover_letter, "Сопроводительное письмо не совпадает"
+
+    def checking_contact_display(self):  # проверка отображения контактов
+        phone1 = self.browser.find_element(*ResumePageLocators.PHONE_1_IN_CONTACT_INFORMATION).text
+        assert phone1 == TestDataEditing.phone_1_resume, f"Первый телефон в контактах резюме, expected result: '{TestDataEditing.phone_1_resume}', actual result: '{phone1}'"
+
+        phone2 = self.browser.find_element(*ResumePageLocators.PHONE_2_IN_CONTACT_INFORMATION).text
+        assert phone2 == TestDataEditing.phone_2_resume, f"Второй телефон в контактах резюме, expected result: '{TestDataEditing.phone_2_resume}', actual result: '{phone2}'"
+
+        email = self.browser.find_element(*ResumePageLocators.EMAIL_IN_CONTACT_INFORMATION).text
+        assert email == TestDataEditing.email_resume, f"Email в контактах резюме, expected result: '{TestDataEditing.email_resume}', actual result: '{email}'"
+
+        skype = self.browser.find_element(*ResumePageLocators.SKYPE_IN_CONTACT_INFORMATION).text
+        assert skype == TestDataEditing.skype_resume, f"Skype в контактах резюме, expected result: '{TestDataEditing.skype_resume}', actual result: '{skype}'"
+
+        portfolio = self.browser.find_element(*ResumePageLocators.PORTFOLIO_IN_CONTACT_INFORMATION)
+        portfolio_href = portfolio.get_attribute("href")
+        assert portfolio_href == TestDataEditing.portfolio, f"Portfolio в контактах резюме, expected result: '{TestDataEditing.portfolio}', actual result: '{portfolio_href}'"
+
+        facebook = self.browser.find_element(*ResumePageLocators.FACEBOOK_IN_CONTACT_INFORMATION)
+        facebook_href = facebook.get_attribute("href")
+        assert facebook_href == TestDataEditing.facebook_resume, f"Facebook в контактах резюме, expected result: '{TestDataEditing.facebook_resume}', actual result: '{facebook_href}'"
+
+        linkedin = self.browser.find_element(*ResumePageLocators.LINKEDIN_IN_CONTACT_INFORMATION)
+        linkedin_href = linkedin.get_attribute("href")
+        assert linkedin_href == TestDataEditing.linkedin_resume, f"Linkedin в контактах резюме, expected result: '{TestDataEditing.linkedin_resume}', actual result: '{linkedin_href}'"
+
+        instagram = self.browser.find_element(*ResumePageLocators.INSTAGRAM_IN_CONTACT_INFORMATION)
+        instagram_href = instagram.get_attribute("href")
+        assert instagram_href == TestDataEditing.instagram_resume, f"Instagram в контактах резюме, expected result: '{TestDataEditing.instagram_resume}', actual result: '{instagram_href}'"
+
+        telegram = self.browser.find_element(*ResumePageLocators.TELEGRAM_IN_CONTACT_INFORMATION)
+        telegram_href = telegram.get_attribute("href")
+        assert telegram_href == TestDataEditing.telegram_resume, f"Telegram в контактах резюме, expected result: '{TestDataEditing.telegram_resume}', actual result: '{telegram_href}'"
+
+        twitter = self.browser.find_element(*ResumePageLocators.TWITTER_IN_CONTACT_INFORMATION)
+        twitter_href = twitter.get_attribute("href")
+        assert twitter_href == TestDataEditing.twitter_resume, f"Twitter в контактах резюме, expected result: '{TestDataEditing.twitter_resume}', actual result: '{twitter_href}'"
+
+        vk = self.browser.find_element(*ResumePageLocators.VK_IN_CONTACT_INFORMATION)
+        vk_href = vk.get_attribute("href")
+        assert vk_href == TestDataEditing.vk_resume, f"VK в контактах резюме, expected result: '{TestDataEditing.vk_resume}', actual result: '{vk_href}'"

@@ -74,3 +74,4 @@ class TestResponseToVacancy:
         resume_page.checking_opening_of_page_of_published_resume_after_editing()  # проверка открытия страницы опубликованного резюме после редактирования
         resume_page.confirmation_opening_of_vacancy_page(language)  # подтверждение открытия страницы вакансии
         resume_page.checking_cover_letter_text()  # проверка текста сопроводительного письма
+        resume_page.checking_contact_display()  # проверка отображения контактов

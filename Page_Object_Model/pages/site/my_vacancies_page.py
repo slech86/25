@@ -44,6 +44,16 @@ class MyVacanciesPage(BasePage):
         elif language == "/en":
             assert self.browser.current_url == f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/en/vacancy/my", "Не правильный URL"
 
+    def checking_message_confirming_of_creation_of_vacancy(self, language):  # проверка сообщения о создании новой вакансии
+        infoText = self.browser.find_element(*MyVacanciesPageLocators.INFO_TEXT_AFTER_CREATING_VACANCY).text
+        if language == "/ua":
+            assert "Створена вами вакансія прийнята і відправлена на модерацію. Вакансія буде доступна на сайті впродовж 24 годин." == infoText, 'Не верное сообщение'
+        elif language == "":
+            assert "Созданная вами вакансия принята и отправлена на модерацию. Вакансия будет доступна на сайте в течение 24 часов." == infoText, 'Не верное сообщение'
+        elif language == "/en":
+            assert "The vacancy you have created has been accepted and sent for moderation. The vacancy will be available on the website within 12 hours." == infoText, 'Не верное сообщение'
+        self.browser.find_element(*MyVacanciesPageLocators.CROSS_IN_POP_UP_AFTER_CREATING_VACANCY).click()
+
     def checking_message_confirming_submission_of_vacancy_for_moderation(self, language):  # проверка сообщения о подтверждении отправки вакансии на модерацию
         infoText = self.browser.find_element(*MyVacanciesPageLocators.INFO_TEXT_AFTER_SUBMITTING_VACANCY_FOR_MODERATION).text
         if language == "/ua":
