@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class ResumeAddPage(BasePage):
-    def filling_in_required_fields(self):  # заполнение обязательных полей
+    def filling_in_required_fields(self, job_title):  # заполнение обязательных полей
         self.browser.find_element(*ResumeAddPageLocators.FIELD_NAME).send_keys(TestData.name_resume)
         self.browser.find_element(*ResumeAddPageLocators.FIELD_SURNAME).send_keys(TestData.surname_resume)
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_YEAR).click()
@@ -47,15 +47,14 @@ class ResumeAddPage(BasePage):
         self.browser.find_element(*ResumeAddPageLocators.FIELD_EMAIL).send_keys(TestData.email_resume)
         # блок "Контактная информация"
 
-        self.browser.find_element(*ResumeAddPageLocators.FIELD_JOB_TITLE).send_keys(TestData.job_title_resume)
+        self.browser.find_element(*ResumeAddPageLocators.FIELD_JOB_TITLE).send_keys(job_title)
         self.browser.execute_script(ResumeAddPageLocators.CATEGORY_RESUME)  # "Категория размещения вакансии" передается параметр уже с ".click()"
-        # time.sleep(0.2)
         self.browser.find_element(*ResumeAddPageLocators.SUBCATEGORIES).click()  # "Подкатегории"
         # блок "Желаемая должность"
 
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_WORK_EXPERIENCE_GAMBLING_INDUSTRY).click()
         self.browser.find_element(*ResumeAddPageLocators.WITHOUT_EXPERIENCE).click()
-        # блок "Опыт работы в игорной идустрии"
+        # блок "Опыт работы в игорной индустрии"
 
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_JOB_SEARCH_STATUS).click()
         self.browser.find_element(*ResumeAddPageLocators.ACTIVELY_LOOKING_FOR_JOB).click()

@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from Page_Object_Model.data_for_testing import TestData
+from Page_Object_Model.data_for_testing import TestData, TestDataEditing
 from Page_Object_Model.singleton import Singleton
 
 
@@ -178,21 +178,25 @@ class AdminVacancyEditPageLocators:
     BUTTON_SAVE_AND_EDIT = (By.CSS_SELECTOR, ('[type="submit"].btn.btn-primary'))
 
 
-class AdminResumesPageLocators():
-    H1_RESUMES = (By.CSS_SELECTOR, ('h1'))
-    FIELD_JOB_TITLE_SEARCH_RESUME = (By.CSS_SELECTOR, ('[name="Resume[job_title]"]'))
-    RESUME_BY_JOB_TITLE = (By.XPATH, ('//a[text()="' + TestData.job_title_resume + '"]'))
-    RESUME_BY_JOB_TITLE_AFTER_EDITING = (By.XPATH, ('//a[text()="' + TestData.job_title_resume + '_editing"]'))
-    ID_RESUME = (By.CSS_SELECTOR, ('#pjax-list-container tbody > tr > td:nth-child(2)'))
-    RESUME_STATUS = (By.CSS_SELECTOR, ('#pjax-list-container tbody > tr > td:nth-child(3) > p'))
-    BUTTON_RESUME_MENU = (By.CSS_SELECTOR, ('div > .fa.fa-bars'))
-    BUTTON_COMPLETE_RESUME_DELETED = (By.CSS_SELECTOR, ('.table-delete.fa.fa-trash'))
-    BUTTON_RESUME_DELETE_CONFIRMATION = (By.XPATH, ('//button[text()="Да"]'))
-    ALERT_CONFIRMATION_OF_RESUME_DELETION = (By.XPATH, ('//div[@class="feedback"]/div[contains(@id, "alert-")]'))
+class AdminResumesPageLocators:
+    H1_RESUMES = (By.CSS_SELECTOR, 'h1')
+    FIELD_JOB_TITLE_SEARCH_RESUME = (By.CSS_SELECTOR, '[name="Resume[job_title]"]')
+
+    def assembly_of_locators_with_job_title_resume(self, job_title):
+        resume_by_job_title = (By.XPATH, '//a[text()="' + job_title + '"]')
+        return resume_by_job_title
+
+    RESUME_BY_JOB_TITLE_AFTER_EDITING = (By.XPATH, ('//a[text()="' + TestDataEditing.job_title_resume + '"]'))
+    ID_RESUME = (By.CSS_SELECTOR, '#pjax-list-container tbody > tr > td:nth-child(2)')
+    RESUME_STATUS = (By.CSS_SELECTOR, '#pjax-list-container tbody > tr > td:nth-child(3) > p')
+    BUTTON_RESUME_MENU = (By.CSS_SELECTOR, 'div > .fa.fa-bars')
+    BUTTON_COMPLETE_RESUME_DELETED = (By.CSS_SELECTOR, '.table-delete.fa.fa-trash')
+    BUTTON_RESUME_DELETE_CONFIRMATION = (By.XPATH, '//button[text()="Да"]')
+    ALERT_CONFIRMATION_OF_RESUME_DELETION = (By.XPATH, '//div[@class="feedback"]/div[contains(@id, "alert-")]')
 
 
-class AdminResumeEditPageLocators():
-    H1_RESUME_EDIT = (By.CSS_SELECTOR, ('h1'))
+class AdminResumeEditPageLocators:
+    H1_RESUME_EDIT = (By.CSS_SELECTOR, 'h1')
     FIELD_RESUME_STATUS = (By.XPATH, ('//span[contains(@id, "select2-resume-status-")]'))
     STATUS_PUBLISHED = (By.XPATH, ('//ul[contains(@id, "select2-resume-status-")]/li[text()="Опубликовано"]'))
     FIELD_USER = (By.XPATH, ('//span[contains(@id, "select2-resume-user_id-")]'))

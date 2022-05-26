@@ -47,7 +47,7 @@ class ResumesPageLocators:
 
     def assembly_of_locators_with_id_resume(self):  # сборка локаторов с id резюме
         singleton = Singleton()
-        resume = (By.XPATH, ('//a[contains(@href, "/resume/' + singleton.id_resume + '")]'))
+        resume = (By.XPATH, ('//a[contains(@href, "/resume/' + singleton.id_resume[1] + '")]'))
         return resume
 
     FIRST_RESUME_IN_LIST = (By.CSS_SELECTOR, ('.lc-card:nth-child(1)'))

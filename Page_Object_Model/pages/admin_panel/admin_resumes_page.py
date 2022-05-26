@@ -1,6 +1,6 @@
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.admin_panel_locators import AdminResumesPageLocators
-from Page_Object_Model.data_for_testing import TestData
+from Page_Object_Model.data_for_testing import TestData, TestDataEditing
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
@@ -10,13 +10,15 @@ import time
 
 
 class AdminResumesPage(BasePage):
-    def resume_search_by_job_title(self):  # поиск резюме по названию должности
-        self.browser.find_element(*AdminResumesPageLocators.FIELD_JOB_TITLE_SEARCH_RESUME).send_keys(TestData.job_title_resume, Keys.ENTER)
+    def resume_search_by_job_title(self, job_title):  # поиск резюме по названию должности
+        self.browser.find_element(*AdminResumesPageLocators.FIELD_JOB_TITLE_SEARCH_RESUME).send_keys(job_title, Keys.ENTER)
         time.sleep(2)
-        assert self.is_element_present(*AdminResumesPageLocators.RESUME_BY_JOB_TITLE), 'Резюме не найдено'
+        admin_resumes_page_locators = AdminResumesPageLocators()
+        resume_by_job_title = admin_resumes_page_locators.assembly_of_locators_with_job_title_resume(job_title)
+        assert self.is_element_present(*resume_by_job_title), 'Резюме не найдено'
 
     def resume_search_by_job_title_after_editing(self):  # поиск резюме по названию должности после редактирования
-        self.browser.find_element(*AdminResumesPageLocators.FIELD_JOB_TITLE_SEARCH_RESUME).send_keys(TestData.job_title_resume + '_editing', Keys.ENTER)
+        self.browser.find_element(*AdminResumesPageLocators.FIELD_JOB_TITLE_SEARCH_RESUME).send_keys(TestDataEditing.job_title_resume, Keys.ENTER)
         time.sleep(2)
         assert self.is_element_present(*AdminResumesPageLocators.RESUME_BY_JOB_TITLE_AFTER_EDITING), 'Резюме не найдено'
 
@@ -32,7 +34,7 @@ class AdminResumesPage(BasePage):
         self.browser.find_element(*AdminResumesPageLocators.BUTTON_RESUME_MENU).click()  # костыль из-за ховер эффекта на кнопке меню пользователя
 
     def waiting_to_save_status_and_open_resume_page(self):  # ожидание сохранения статуса и открытия страницы всех рузюме
-        WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((AdminResumesPageLocators.H1_RESUMES), 'Резюме'))
+        WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element(AdminResumesPageLocators.H1_RESUMES, 'Резюме'))
 
     def complete_objects_deletion(self):  # полное удаление объектов (кроме пользователя)
         element_to_hover_over = self.browser.find_element(*AdminResumesPageLocators.BUTTON_RESUME_MENU)

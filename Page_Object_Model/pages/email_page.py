@@ -1,3 +1,4 @@
+import time
 from .base_page import BasePage
 from Page_Object_Model.locators.locators import EmailPageLocators
 from Page_Object_Model.data_for_testing import Accounts
@@ -30,8 +31,8 @@ class EmailPage(BasePage):
         self.browser.switch_to.window(self.browser.window_handles[1])
 
     def letter_after_first_moderation_of_company(self, language):  # письмо после первой модерации компании
-        # time.sleep(20)
-        # self.browser.refresh()
+        time.sleep(4)
+        self.browser.refresh()
 
         letter_welcome_to_lcwork, text_in_letter_after_first_moderation, text = None, None, None
         if language == "/ua":

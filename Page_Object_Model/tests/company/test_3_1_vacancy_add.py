@@ -75,14 +75,15 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     vacancy_page.open()
     vacancy_page.checking_opening_of_page_of_published_vacancy()  # проверка открытия страницы опубликованной вакансии
 
-    page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
-    page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
-
-    company_personal_cabinet_page.go_to_my_vacancies_page()  # переход на страницу "Мои вакансии"
-
-    my_vacancies_page.go_to_vacancy_add_page()  # переход на страницу "Добавить вакансию"
-
-    add_vacancy_page.absence_of_button_to_publish()  # проверка отсутствия кнопки "Опубликовать"
+    #  убрал проверку, так как в пакете две вакансии
+    # page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
+    # page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
+    #
+    # company_personal_cabinet_page.go_to_my_vacancies_page()  # переход на страницу "Мои вакансии"
+    #
+    # my_vacancies_page.go_to_vacancy_add_page()  # переход на страницу "Добавить вакансию"
+    #
+    # add_vacancy_page.absence_of_button_to_publish()  # проверка отсутствия кнопки "Опубликовать"
 
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
     page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
@@ -91,7 +92,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
 
     services_and_prices_page = ServicesAndPricesPage(browser, browser.current_url)
 
-    services_and_prices_page.checking_decrease_in_number_of_available_vacancies_for_publication_in_monthly_free_vacancy_package()  # проверка уменьшения количества доступных вакансий для публикации в пакете "Ежемесячная бесплатная вакансия"
+    services_and_prices_page.checking_decrease_in_number_of_available_vacancies_for_publication_in_service_package()  # проверка уменьшения количества доступных вакансий для публикации в пакете услуг
 
 
 # @pytest.mark.s_r_c

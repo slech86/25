@@ -91,7 +91,7 @@ class MyResumePageLocators:
 
     def assembly_of_locators_with_id_resume(self):  # сборка локаторов с id резюме
         singleton = Singleton()
-        button_edit = (By.XPATH, ('//a[contains(@href, "/resume/' + singleton.id_resume + '/edit")]'))
+        button_edit = (By.XPATH, ('//a[contains(@href, "/resume/' + singleton.id_resume[0] + '/edit")]'))
         return button_edit
 
     INFO_TEXT_AFTER_CREATING_RESUME = (By.CSS_SELECTOR, ('#lc-popup-resume-new .text'))  # информационный текст после создания резюме
@@ -671,7 +671,7 @@ class VacancyPageLocators:
 
     def assembly_of_locators_with_id_resume(self):  # сборка локаторов с id резюме
         singleton = Singleton()
-        resume_in_response_popup_window = (By.CSS_SELECTOR, ('label[for="resume-' + singleton.id_resume + '"]'))
+        resume_in_response_popup_window = (By.CSS_SELECTOR, ('label[for="resume-' + singleton.id_resume[0] + '"]'))
         return resume_in_response_popup_window
 
     BUTTON_ADD_COVER_LETTER = (By.CSS_SELECTOR, ('.required + .form-group > .cover-letter-btn'))

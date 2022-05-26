@@ -191,7 +191,7 @@ class ResponsesToVacancyPageLocators:
 
     def assembly_of_locators_with_id_resume(self):  # сборка локаторов с id резюме
         singleton = Singleton()
-        resume_in_responses_to_vacancy = (By.XPATH, ('//a[contains(@href, "/resume/' + singleton.id_resume + '")]'))
+        resume_in_responses_to_vacancy = (By.XPATH, ('//a[contains(@href, "/resume/' + singleton.id_resume[0] + '")]'))
         return resume_in_responses_to_vacancy
 
 
@@ -365,19 +365,23 @@ class ServicesAndPricesPageLocators():
         button_product_activation = []
         arrow_for_viewing_options_available_in_package = []
         number_of_vacancies_available = []
-        locators = []
         for id in singleton.id_purchase:
             product_in_non_activated_services.append((By.CSS_SELECTOR, ('.tab-deactivate-servises .packages-wrap[data-product-id="' + singleton.id_product + '"][data-purchases-id="' + id + '"]')))
             product_in_activated_services.append((By.CSS_SELECTOR, ('.tab-activated-servises .packages-wrap[data-product-id="' + singleton.id_product + '"][data-purchases-id="' + id + '"]')))
             button_product_activation.append((By.XPATH, ('//a[contains(@href, "/cart/active?id=' + id + '")]')))
             arrow_for_viewing_options_available_in_package.append((By.CSS_SELECTOR, ('.tab-activated-servises .packages-wrap[data-product-id="' + singleton.id_product + '"][data-purchases-id="' + id + '"] .more')))
-            number_of_vacancies_available.append((By.CSS_SELECTOR, ('.tab-activated-servises .packages-wrap[data-product-id="' + singleton.id_product + '"][data-purchases-id="' + id + '"] p.small-text')))
-        locators.append(product_in_non_activated_services)
-        locators.append(product_in_activated_services)
-        locators.append(button_product_activation)
-        locators.append(arrow_for_viewing_options_available_in_package)
-        locators.append(number_of_vacancies_available)
+            number_of_vacancies_available.append((By.CSS_SELECTOR, '.tab-activated-servises .packages-wrap[data-product-id="' + singleton.id_product + '"][data-purchases-id="' + id + '"] p.small-text'))
+
+        locators = [product_in_non_activated_services,
+                    product_in_activated_services,
+                    button_product_activation,
+                    arrow_for_viewing_options_available_in_package,
+                    number_of_vacancies_available]
+
         return locators
+
+    BUTTON_ORDER_IN_HELP_REFUGEE_WITH_HIS_WORK = (By.CSS_SELECTOR, ('[data-product-id="15"]'))
+    HELP_REFUGEE_WITH_HIS_WORK_IN_BASKET = (By.CSS_SELECTOR, ('.bascket-list-item > [data-product-id="15"]'))
 
     BUTTON_ORDER_IN_STANDART = (By.CSS_SELECTOR, ('[data-product-id="1"]'))
     BUTTON_5_VACANCY = (By.CSS_SELECTOR, ('[for="vacancies-1-5"]'))
@@ -400,6 +404,13 @@ class ServicesAndPricesPageLocators():
 class ResumePageLocators:
     H1 = (By.CSS_SELECTOR, 'h1')
     COVER_LETTER_TEXT = (By.CSS_SELECTOR, '.covering-letter-description')
+
+    CONTACT_INFORMATION_BLOCK = (By.CSS_SELECTOR, '.cv-card .danger')
+    CONTACT_BLOCK = (By.CSS_SELECTOR, '.contacts-block')
+    BUTTON_VIEW_CONTACTS = (By.CSS_SELECTOR, '.contacts-block [data-target="#open-contacts"]')
+    BUTTON_OPEN_CONTACT_IN_POP_UP = (By.CSS_SELECTOR, '#open-contacts .open-contact')
+    TEXT_OF_CONTACT_BLOCK_BEFORE_AUTHORIZATION = (By.CSS_SELECTOR, '.cv-card .danger p')
+    TEXT_OF_CONTACT_BLOCK_BEFORE_BUYING_PACKAGE_OF_SERVICES = (By.CSS_SELECTOR, '.cv-card .danger h4')
 
     PHONE_1_IN_CONTACT_INFORMATION = (By.CSS_SELECTOR, '.contacts-block-items > .item:nth-child(1) span')  # очередность сохраняется при условии наличия всех контактов
     PHONE_2_IN_CONTACT_INFORMATION = (By.CSS_SELECTOR, '.contacts-block-items > .item:nth-child(2) span')  # очередность сохраняется при условии наличия всех контактов

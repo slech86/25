@@ -10,6 +10,7 @@ from Page_Object_Model.pages.site.vacancies_page import VacanciesPage
 from Page_Object_Model.pages.site.vacancy_page import VacancyPage
 from Page_Object_Model.pages.site.my_responses_page import MyResponsesPage
 from Page_Object_Model.pages.site.responses_to_vacancy_page import ResponsesToVacancyPage
+from Page_Object_Model.data_for_testing import TestDataEditing
 
 
 @pytest.mark.s_r_c
@@ -72,6 +73,6 @@ class TestResponseToVacancy:
 
         resume_page = ResumePage(browser, browser.current_url)
         resume_page.checking_opening_of_page_of_published_resume_after_editing()  # проверка открытия страницы опубликованного резюме после редактирования
-        resume_page.confirmation_opening_of_vacancy_page(language)  # подтверждение открытия страницы вакансии
+        resume_page.confirmation_opening_of_resume_page(language)  # подтверждение открытия страницы резюме
         resume_page.checking_cover_letter_text()  # проверка текста сопроводительного письма
-        resume_page.checking_contact_display()  # проверка отображения контактов
+        resume_page.checking_contact_display(TestDataEditing)  # проверка отображения контактов

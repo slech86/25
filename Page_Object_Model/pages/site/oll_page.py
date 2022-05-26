@@ -15,8 +15,8 @@ class OllPage(BasePage):
         # подтверждение возраста больше 21 года
 
     def go_to_resume_page_through_header(self):  # переход на страницу всех резюме через хедер
-        self.browser.find_element(*OllPageLocators.DROPDOWN_LIST_APPLICANT).click()
-        self.browser.find_element(*OllPageLocators.VACANCIES_IN_HEDER).click()
+        self.browser.find_element(*OllPageLocators.DROPDOWN_LIST_EMPLOYER).click()
+        self.browser.find_element(*OllPageLocators.RESUME_IN_HEDER).click()
 
     def go_to_vacancies_page_through_header(self):  # переход на страницу вакансий через хедер
         self.browser.find_element(*OllPageLocators.DROPDOWN_LIST_APPLICANT).click()

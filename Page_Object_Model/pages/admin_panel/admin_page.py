@@ -32,7 +32,7 @@ class AdminPage(BasePage):
     def go_to_vacancies_page(self):  # переход на страницу вакансий
         self.browser.find_element(*AdminPageLocators.VACANCIES).click()
 
-    def go_to_resumes_page(self):  # переход на страницу резюме
+    def go_to_resumes_page(self):  # переход на страницу всех резюме
         self.browser.find_element(*AdminPageLocators.RESUMES).click()
 
     def go_to_order_page(self):  # переход на страницу заказов

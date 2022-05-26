@@ -60,14 +60,14 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeEditPageLocators.FIELD_EMAIL).send_keys('editing')
 
         self.browser.find_element(*ResumeEditPageLocators.FIELD_SKYPE).send_keys('_editing')
-        self.browser.find_element(*ResumeEditPageLocators.FIELD_PORTFOLIO).send_keys('_editing')
+        self.browser.find_element(*ResumeEditPageLocators.FIELD_PORTFOLIO).send_keys('_editing/')
 
-        self.browser.find_element(*ResumeEditPageLocators.FIELD_FACEBOOK).send_keys('_editing')
-        self.browser.find_element(*ResumeEditPageLocators.FIELD_LINKEDIN).send_keys('_editing')
-        self.browser.find_element(*ResumeEditPageLocators.FIELD_INSTAGRAM).send_keys('_editing')
-        self.browser.find_element(*ResumeEditPageLocators.FIELD_TELEGRAM).send_keys('_editing')
-        self.browser.find_element(*ResumeEditPageLocators.FIELD_TWITTER).send_keys('_editing')
-        self.browser.find_element(*ResumeEditPageLocators.FIELD_VK).send_keys('_editing')
+        self.browser.find_element(*ResumeEditPageLocators.FIELD_FACEBOOK).send_keys('_editing/')
+        self.browser.find_element(*ResumeEditPageLocators.FIELD_LINKEDIN).send_keys('_editing/')
+        self.browser.find_element(*ResumeEditPageLocators.FIELD_INSTAGRAM).send_keys('_editing/')
+        self.browser.find_element(*ResumeEditPageLocators.FIELD_TELEGRAM).send_keys('_editing/')
+        self.browser.find_element(*ResumeEditPageLocators.FIELD_TWITTER).send_keys('_editing/')
+        self.browser.find_element(*ResumeEditPageLocators.FIELD_VK).send_keys('_editing/')
         # блок "Контактная информация"
 
         self.browser.find_element(*ResumeEditPageLocators.BUTTON_EDIT_IN_POSITION_DESIRED_BLOCK).click()

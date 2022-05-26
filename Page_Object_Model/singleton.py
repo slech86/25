@@ -3,7 +3,7 @@ class Singleton(object):
     id_purchase = None
     id_order = None
     id_vacancies = None
-    id_resume = None
+    id_resume = []
     logins_and_mails = {}
     position_object = None
 

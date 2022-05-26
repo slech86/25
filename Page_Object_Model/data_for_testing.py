@@ -117,16 +117,17 @@ class TestData:
     phone_2_resume = '+88(999)222-11-00'
     email_resume = 'email_resume_' + time_Now + email[1]
     skype_resume = 'skype_resume_' + time_Now
-    portfolio = 'https://portfolio_' + time_Now + '.com'
+    portfolio = 'https://portfolio_' + time_Now + '.com/'
 
-    facebook_resume = 'https://facebook_resume_' + time_Now + '.com'
-    linkedin_resume = 'https://linkedin_resume_' + time_Now + '.com'
-    instagram_resume = 'http://instagram_resume_' + time_Now + '.com'
-    telegram_resume = 'http://telegram_resume_' + time_Now + '.com'
-    twitter_resume = 'http://twitter_resume_' + time_Now + '.com'
-    vk_resume = 'http://vk_resume_' + time_Now + '.com'
+    facebook_resume = 'https://facebook_resume_' + time_Now + '.com/'
+    linkedin_resume = 'https://linkedin_resume_' + time_Now + '.com/'
+    instagram_resume = 'http://instagram_resume_' + time_Now + '.com/'
+    telegram_resume = 'http://telegram_resume_' + time_Now + '.com/'
+    twitter_resume = 'http://twitter_resume_' + time_Now + '.com/'
+    vk_resume = 'http://vk_resume_' + time_Now + '.com/'
 
-    job_title_resume = 'test_job_title_resume_' + time_Now
+    job_title_resume = 'test_job_title_resume ' + time_Now
+    job_title_resume_2 = 'test_job_title_resume_2 ' + time_Now
     category_resume = '[#123] Дизайн, графика, анимация'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     subcategories_resume = '[#70] UX-дизайнер'  # не используется при заполнении полей, только при проверке заполнения полей в админке
 

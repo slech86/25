@@ -4,6 +4,7 @@ from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_resumes_page import AdminResumesPage
 from Page_Object_Model.pages.admin_panel.admin_resume_edit_page import AdminResumeEditPage
 from Page_Object_Model.pages.admin_panel.admin_currency_rates_page import AdminCurrencyRatesPage
+from Page_Object_Model.data_for_testing import TestData
 
 
 @pytest.mark.s_r_c
@@ -23,7 +24,7 @@ def test_verification_of_saving_data_entered_by_user_after_resume_creation(brows
     admin_page.go_to_resumes_page()  # переход на страницу резюме
 
     admin_resumes_page = AdminResumesPage(browser, browser.current_url)
-    admin_resumes_page.resume_search_by_job_title()  # поиск резюме по названию должности
+    admin_resumes_page.resume_search_by_job_title(TestData.job_title_resume)  # поиск резюме по названию должности
     admin_resumes_page.go_to_object_editing_page()  # переход на страницу редактирования резюме
 
     admin_resume_edit_page = AdminResumeEditPage(browser, browser.current_url)

@@ -1,10 +1,6 @@
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.locators import VacanciesPageLocators
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from Page_Object_Model.data_for_testing import TestDataEditing
-from Page_Object_Model.singleton import Singleton
-import time
 
 
 class VacanciesPage(BasePage):
@@ -14,5 +10,5 @@ class VacanciesPage(BasePage):
 
     def go_to_vacancy_page(self):  # нажатие на блок вакансии для перехода на ее страницу
         vacancy_locator = VacanciesPageLocators()
-        vacancy = vacancy_locator.assembly_of_locators_with_id_vacancies()
+        vacancy = vacancy_locator.assembly_of_locators_with_id_vacancies()  # сборка локаторов с id вакансии
         self.browser.find_element(*vacancy).click()

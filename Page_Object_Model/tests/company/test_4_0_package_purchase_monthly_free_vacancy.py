@@ -9,6 +9,7 @@ from Page_Object_Model.pages.site.vacancy_add_page import VacancyAddPage
 from Page_Object_Model.singleton import Singleton
 
 
+@pytest.mark.skip
 # @pytest.mark.s_r_c
 class TestPackagePurchaseMonthlyFreeVacancy:
     def test_package_purchase_monthly_free_vacancy_and_activating_it_on_site(self, browser, language):  # покупка пакета "Ежемесячная бесплатная вакансия" и активация его на сайте
@@ -27,7 +28,7 @@ class TestPackagePurchaseMonthlyFreeVacancy:
 
         services_and_prices_page = ServicesAndPricesPage(browser, browser.current_url)
         singleton = Singleton()
-        singleton.id_product = services_and_prices_page.adding_to_cart_monthly_free_vacancy()  # добавление в корзину "Ежемесячная бесплатная вакансия" и получение id продукта
+        singleton.id_product = services_and_prices_page.adding_to_cart_monthly_free_vacancy_and_getting_product_id()  # добавление в корзину "Ежемесячная бесплатная вакансия" и получение id продукта
         services_and_prices_page.click_button_buy_in_basket()  # нажатие кнопки "Курить" в корзине
         services_and_prices_page.verification_of_message_after_purchase(language)  # проверка сообщения после покупки
 

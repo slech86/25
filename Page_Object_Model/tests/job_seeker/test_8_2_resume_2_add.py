@@ -5,12 +5,10 @@ from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_resumes_page import AdminResumesPage
 from Page_Object_Model.pages.admin_panel.admin_resume_edit_page import AdminResumeEditPage
-from Page_Object_Model.pages.email_page import EmailPage
 from Page_Object_Model.pages.site.my_resume_page import MyResumePage
 from Page_Object_Model.pages.site.resume_add_page import ResumeAddPage
 from Page_Object_Model.pages.site.resume_page import ResumePage
 from Page_Object_Model.singleton import Singleton
-from Page_Object_Model.data_for_testing import Accounts
 from Page_Object_Model.data_for_testing import TestData
 
 
@@ -35,7 +33,7 @@ class TestResumeAdd:
         my_resume_page.go_to_add_resume_page()  # переход на страницу "Разместить резюме"
 
         add_resume_page = ResumeAddPage(browser, browser.current_url)
-        add_resume_page.filling_in_required_fields(TestData.job_title_resume)  # заполнение обязательных полей
+        add_resume_page.filling_in_required_fields(TestData.job_title_resume_2)  # заполнение обязательных полей
         browser.execute_script("window.scrollBy(0, -4000);")
         add_resume_page.filling_in_optional_fields()  # заполнение не обязательных полей
         add_resume_page.percentage_check_of_resume_completion()  # проверка заполнения резюме в процентах
@@ -50,15 +48,15 @@ class TestResumeAdd:
         admin_page.open()
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
-        admin_page.go_to_resumes_page()  # переход на страницу резюме
+        admin_page.go_to_resumes_page()  # переход на страницу всех резюме
 
         admin_resumes_page = AdminResumesPage(browser, browser.current_url)
-        admin_resumes_page.resume_search_by_job_title(TestData.job_title_resume)  # поиск резюме по названию должности
+        admin_resumes_page.resume_search_by_job_title(TestData.job_title_resume_2)  # поиск резюме по названию должности
         singleton = Singleton()
         singleton.id_resume.append(admin_resumes_page.getting_resume_id())  # получение id резюме
         admin_resumes_page.checking_that_resume_status_is_on_moderated()  # проверка что статус резюме 'На модерацию'
 
-        url_resume_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{singleton.id_resume[0]}"
+        url_resume_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{singleton.id_resume[1]}"
         resume_page = ResumePage(browser, url_resume_page)
         resume_page.open()
         resume_page.checking_opening_of_page_of_an_unpublished_resume(language)  # проверка открытия страницы не опубликованного резюме
@@ -68,7 +66,7 @@ class TestResumeAdd:
         admin_page.go_to_resumes_page()  # переход на страницу всех резюме
 
         admin_resumes_page = AdminResumesPage(browser, browser.current_url)
-        admin_resumes_page.resume_search_by_job_title(TestData.job_title_resume)  # поиск резюме по названию должности
+        admin_resumes_page.resume_search_by_job_title(TestData.job_title_resume_2)  # поиск резюме по названию должности
         admin_resumes_page.go_to_object_editing_page()  # переход на страницу редактирования резюме
 
         admin_resume_edit_page = AdminResumeEditPage(browser, browser.current_url)
@@ -76,17 +74,7 @@ class TestResumeAdd:
 
         admin_resumes_page.waiting_to_save_status_and_open_resume_page()  # ожидание сохранения статуса и открытия страницы всех рузюме
 
-        url_resume_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{singleton.id_resume[0]}"
+        url_resume_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{singleton.id_resume[1]}"
         resume_page = ResumePage(browser, url_resume_page)
         resume_page.open()
-        resume_page.checking_opening_of_page_of_published_resume(TestData.job_title_resume)  # проверка открытия страницы опубликованного резюме
-
-
-    # @pytest.mark.s_r_c
-    def test_verification_of_letter_after_publication_of_resume(self, browser, language):  # проверка письма после публикации резюме
-        link = Accounts.url_email
-        email_page = EmailPage(browser, link)
-        email_page.open()
-        # browser.maximize_window()
-        email_page.email_authorization()  # авторизация email
-        email_page.verification_of_letter_after_publication_of_resume(language)  # проверка письма после публикации резюме
+        resume_page.checking_opening_of_page_of_published_resume(TestData.job_title_resume_2)  # проверка открытия страницы опубликованного резюме
