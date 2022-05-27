@@ -75,15 +75,14 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     vacancy_page.open()
     vacancy_page.checking_opening_of_page_of_published_vacancy()  # проверка открытия страницы опубликованной вакансии
 
-    #  убрал проверку, так как в пакете две вакансии
-    # page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
-    # page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
-    #
-    # company_personal_cabinet_page.go_to_my_vacancies_page()  # переход на страницу "Мои вакансии"
-    #
-    # my_vacancies_page.go_to_vacancy_add_page()  # переход на страницу "Добавить вакансию"
-    #
-    # add_vacancy_page.absence_of_button_to_publish()  # проверка отсутствия кнопки "Опубликовать"
+    page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
+    page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
+
+    company_personal_cabinet_page.go_to_my_vacancies_page()  # переход на страницу "Мои вакансии"
+
+    my_vacancies_page.go_to_vacancy_add_page()  # переход на страницу "Добавить вакансию"
+
+    add_vacancy_page.absence_of_button_to_publish()  # проверка отсутствия кнопки "Опубликовать"
 
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
     page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета

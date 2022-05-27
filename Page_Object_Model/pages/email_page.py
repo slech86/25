@@ -31,7 +31,7 @@ class EmailPage(BasePage):
         self.browser.switch_to.window(self.browser.window_handles[1])
 
     def letter_after_first_moderation_of_company(self, language):  # письмо после первой модерации компании
-        time.sleep(4)
+        time.sleep(4.5)
         self.browser.refresh()
 
         letter_welcome_to_lcwork, text_in_letter_after_first_moderation, text = None, None, None
