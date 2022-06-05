@@ -397,6 +397,20 @@ class AdminPage(BasePage):
         time.sleep(5)
         status = self.browser.find_element(*AdminPageLocators.STATUS).text
         assert status == 'Проведенный', 'Статус не "Проведенный"'
+
+    def order_processing_2(self):  # проведение заказа, изменение статуса заказа с "Оплачено" на "Проведенный"
+        status = self.browser.find_element(*AdminPageLocators.STATUS).text
+        assert status == 'Оплачено', 'Статус не "Оплачено"'
+        self.browser.find_element(*AdminPageLocators.STATUS).click()
+        time.sleep(1)
+        self.browser.find_element(*AdminPageLocators.STATUS_COMPLETED).click()
+        time.sleep(1)
+        self.browser.find_element(*AdminPageLocators.STATUS_SAVING).click()
+        time.sleep(5)
+        status = self.browser.find_element(*AdminPageLocators.STATUS).text
+        assert status == 'Проведенный', 'Статус не "Проведенный"'
+
+
     # страница заказов
 
     def getting_id_of_purchase(self, id_order):  # получение id покупки

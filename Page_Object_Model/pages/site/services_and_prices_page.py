@@ -48,13 +48,13 @@ class ServicesAndPricesPage(BasePage):
         time.sleep(1)
 
     def verification_of_message_after_purchase(self, language):  # проверка сообщения после покупки
-        infoText = self.browser.find_element(*ServicesAndPricesPageLocators.INFO_TEXT_AFTER_BUTTON_PRESSED_BUY_IN_CART).text
+        info_text = self.browser.find_element(*ServicesAndPricesPageLocators.INFO_TEXT_AFTER_BUTTON_PRESSED_BUY_IN_CART).text
         if language == "/ua":
-            assert "Наш менеджер зв'яжеться з Вами в найкоротший термін. Після узгодження всіх деталей Ви отримаєте доступ до послуги." == infoText, 'Не верное сообщение'
+            assert "Після активації послуги в особистому кабінеті, ви можете запропонувати вакансію здобувачам!" == info_text, 'Не верное сообщение'
         elif language == "":
-            assert "Наш менеджер свяжется с Вами в кратчайшие сроки. После согласования всех деталей Вы получите доступ к услуге." == infoText, 'Не верное сообщение'
+            assert "После активации услуги в личном кабинете, вы можете предложить вакансию соискателям!" == info_text, 'Не верное сообщение'
         elif language == "/en":
-            assert "Our manager will contact you as soon as possible. After agreeing on all the details, you will get access to the service." == infoText, 'Не верное сообщение'
+            assert "You will be able to offer a vacancy to job seekers after activating the service in your account!" == info_text, 'Не верное сообщение'
         self.browser.find_element(*ServicesAndPricesPageLocators.CROSS_IN_POP_UP_AFTER_PRESSING_BUTTON_BUY_IN_BASKET).click()
 
     def switch_to_tab_not_activated(self):  # переход на вкладку "Не активированные"
@@ -106,3 +106,34 @@ class ServicesAndPricesPage(BasePage):
         print(text)
         index = text.find('/')
         assert int(text[index - 2]) + 1 == int(text[index + 2]), 'В пакете осталось не верное количество вакансий'
+
+    def checking_message_about_creating_test_payment(self, language):  # проверка сообщения о создании тестового платежа
+        info_text = self.browser.find_element(*ServicesAndPricesPageLocators.INFO_TEXT_AFTER_OPERATIONS_IN_INTERKASSA).text
+        if language == "/ua":
+            assert "Платіж успішно пройшов! Чекайте на модерацію облікового запису!" == info_text, 'Не верное сообщение'
+        elif language == "":
+            assert "Платеж успешно прошел! Ожидайте модерации аккаунта!" == info_text, 'Не верное сообщение'
+        elif language == "/en":
+            assert "Payment successfully completed! Wait for account moderation!" == info_text, 'Не верное сообщение'
+        self.browser.find_element(*ServicesAndPricesPageLocators.CROSS_IN_POP_UP_AFTER_OPERATIONS_IN_INTERKASSA).click()
+
+    def checking_message_about_create_cancel_test_payment(self, language):  # проверка сообщения о создании отмененного тестового платежа
+        info_text = self.browser.find_element(*ServicesAndPricesPageLocators.INFO_TEXT_AFTER_OPERATIONS_IN_INTERKASSA).text
+        if language == "/ua":
+            assert "Щось пішло не так! Спробуйте сплатити знову!" == info_text, 'Не верное сообщение'
+        elif language == "":
+            assert "Что-то пошло не так! Попробуйте оплатить снова!" == info_text, 'Не верное сообщение'
+        elif language == "/en":
+            assert "Something went wrong! Try to pay again!" == info_text, 'Не верное сообщение'
+        self.browser.find_element(*ServicesAndPricesPageLocators.CROSS_IN_POP_UP_AFTER_OPERATIONS_IN_INTERKASSA).click()
+
+    def checking_message_about_create_pending_payment(self, language):  # проверка сообщения о создании платежа в ожидании
+        info_text = self.browser.find_element(*ServicesAndPricesPageLocators.INFO_TEXT_AFTER_OPERATIONS_IN_INTERKASSA).text
+        if language == "/ua":
+            assert "Платіж знаходиться в обробці!" == info_text, 'Не верное сообщение'
+        elif language == "":
+            assert "Платеж находится в обработке!" == info_text, 'Не верное сообщение'
+        elif language == "/en":
+            assert "Payment is being processed!" == info_text, 'Не верное сообщение'
+        self.browser.find_element(
+            *ServicesAndPricesPageLocators.CROSS_IN_POP_UP_AFTER_OPERATIONS_IN_INTERKASSA).click()

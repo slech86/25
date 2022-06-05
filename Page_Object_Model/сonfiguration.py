@@ -1,5 +1,5 @@
 class UrlStartPage:
-    prefix = 'http://master.'  # 'http://preprod.', 'http://master.', 'https://'
+    prefix = 'https://master.'  # 'http://preprod.', 'https://master.', 'https://'
     if prefix == 'https://':
         suffix = ''
     else:

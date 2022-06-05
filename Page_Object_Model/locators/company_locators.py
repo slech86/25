@@ -353,7 +353,7 @@ class VacancyEditPageLocators():
     BUTTON_PUBLISH = (By.CSS_SELECTOR, ('#submit-publish'))
 
 
-class ServicesAndPricesPageLocators():
+class ServicesAndPricesPageLocators:
     TAB_ACTIVATED_SERVICES = (By.CSS_SELECTOR, ('.labet-activated-servises'))
     TAB_NOT_ACTIVATED_SERVICES = (By.CSS_SELECTOR, ('.labet-deactivate-servises'))
     # вкладки
@@ -377,7 +377,6 @@ class ServicesAndPricesPageLocators():
                     button_product_activation,
                     arrow_for_viewing_options_available_in_package,
                     number_of_vacancies_available]
-
         return locators
 
     BUTTON_ORDER_IN_HELP_REFUGEE_WITH_HIS_WORK = (By.CSS_SELECTOR, ('[data-product-id="15"]'))
@@ -399,6 +398,8 @@ class ServicesAndPricesPageLocators():
 
     INFO_TEXT_AFTER_BUTTON_PRESSED_BUY_IN_CART = (By.CSS_SELECTOR, ('#to-buy-modal .modal-body'))  # информационный текст после нажаия кнопки "Купить" в корзине
     CROSS_IN_POP_UP_AFTER_PRESSING_BUTTON_BUY_IN_BASKET = (By.CSS_SELECTOR, ('#to-buy-modal .close'))  # крестик в pop-up окне после нажаия кнопки "Купить" в корзине
+    INFO_TEXT_AFTER_OPERATIONS_IN_INTERKASSA = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст после операций в interkassa
+    CROSS_IN_POP_UP_AFTER_OPERATIONS_IN_INTERKASSA = (By.CSS_SELECTOR, ('#thanks-modal .close'))  # крестик в pop-up окне после операций в interkassa
 
 
 class ResumePageLocators:
@@ -423,3 +424,14 @@ class ResumePageLocators:
     TELEGRAM_IN_CONTACT_INFORMATION = (By.CSS_SELECTOR, '.socials-list .tel')  # очередность сохраняется при условии наличия всех контактов
     TWITTER_IN_CONTACT_INFORMATION = (By.CSS_SELECTOR, '.socials-list .twit')  # очередность сохраняется при условии наличия всех контактов
     VK_IN_CONTACT_INFORMATION = (By.CSS_SELECTOR, '.socials-list .vk')  # очередность сохраняется при условии наличия всех контактов
+
+
+class InterkassaPageLocators:
+    H1 = (By.CSS_SELECTOR, 'h1')
+
+    BUTTON_TEST_PAYSYSTEM = (By.CSS_SELECTOR, '[class="paysystems-category"] [href="#/paysystem/test"]')
+    CHECKBOX_CONSENT_WITH_INTERKASSA_RULES = (By.CSS_SELECTOR, '#agreement')
+    BUTTON_PAY = (By.CSS_SELECTOR, '.pay-button')
+    BUTTON_CREATE_TEST_PAYMENT = (By.CSS_SELECTOR, '.controls > :nth-child(1)[type="submit"]')
+    BUTTON_CREATE_CANCEL_TEST_PAYMENT = (By.CSS_SELECTOR, '.controls > :nth-child(2)[type="submit"]')
+    BUTTON_PENDING = (By.CSS_SELECTOR, '.controls > :nth-child(4)[type="submit"]')
