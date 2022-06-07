@@ -45,9 +45,8 @@ class ResumesPageLocators:
     FIELD_JOB_TITLE_TO_SEARCH = (By.CSS_SELECTOR, ('#' + inputPrefix + 'job_title'))
     BUTTON_SEARCH = (By.CSS_SELECTOR, ('#top-sort-form-btn'))
 
-    def assembly_of_locators_with_id_resume(self):  # сборка локаторов с id резюме
-        singleton = Singleton()
-        resume = (By.XPATH, ('//a[contains(@href, "/resume/' + singleton.id_resume[1] + '")]'))
+    def assembly_of_locators_with_id_resume(self, id_resume):  # сборка локаторов с id резюме
+        resume = (By.XPATH, ('//a[contains(@href, "/resume/' + id_resume + '")]'))
         return resume
 
     FIRST_RESUME_IN_LIST = (By.CSS_SELECTOR, ('.lc-card:nth-child(1)'))

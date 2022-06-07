@@ -48,7 +48,7 @@ class ResumePage(BasePage):
             assert text_in_contact_block == 'Register now or sign in to read all or offer a vacancy.', "Текст в блоке контактов до авторизации, не верный"
 
     def checking_contact_block_before_buying_package_of_services(self, language):  # проверка блока контактов до покупки пакета услуг
-        text_in_contact_block = self.browser.find_element(*ResumePageLocators.TEXT_OF_CONTACT_BLOCK_BEFORE_BUYING_PACKAGE_OF_SERVICES).text
+        text_in_contact_block = self.browser.find_element(*ResumePageLocators.TEXT_OF_CONTACT_BLOCK).text
         if language == "":
             assert text_in_contact_block == 'Заинтересовал кандидат? Выберите подходящий пакет услуг.', "Текст в блоке контактов до покупки пакета услуг, не верный"
         elif language == "/ua":
@@ -65,6 +65,17 @@ class ResumePage(BasePage):
     def opening_contacts_in_resume(self):  # открытие контактов в резюме
         self.browser.find_element(*ResumePageLocators.BUTTON_VIEW_CONTACTS).click()
         WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(ResumePageLocators.BUTTON_OPEN_CONTACT_IN_POP_UP)).click()
+
+    def checking_message_about_using_ability_to_open_contacts(self, language):  # проверка сообщения о использовании возможности открывать контакты
+        self.browser.find_element(*ResumePageLocators.BUTTON_VIEW_CONTACTS).click()
+        text_in_contact_block = self.browser.find_element(*ResumePageLocators.TEXT_OF_CONTACT_BLOCK).text
+        if language == "":
+            assert text_in_contact_block == 'Внимание! Вы использовали возможность открывать контакты соискателей в рамках своего пакета услуг.', "Текст в блоке контактов после спользования возможности открывать контакты, не верный"
+        elif language == "/ua":
+            assert text_in_contact_block == 'Увага! Ви використали можливість відкривати контакти здобувачів в рамках свого пакету послуг.', "Текст в блоке контактов после спользования возможности открывать контакты, не верный"
+        elif language == "/en":
+            assert text_in_contact_block == 'Attention! You have used the ability to open job seeker contacts within your service package', "Текст в блоке контактов после спользования возможности открывать контакты, не верный"
+
 
     def checking_contact_display(self, test_data):  # проверка отображения контактов
         phone1 = self.browser.find_element(*ResumePageLocators.PHONE_1_IN_CONTACT_INFORMATION).text

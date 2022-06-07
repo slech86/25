@@ -6,6 +6,7 @@ from Page_Object_Model.сonfiguration import UrlStartPage
 from Page_Object_Model.data_for_testing import TestData
 from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
 from Page_Object_Model.pages.site.services_and_prices_page import ServicesAndPricesPage
+from Page_Object_Model.singleton import Singleton
 
 
 class TestBlockOfContactsOnResumePage:
@@ -25,10 +26,11 @@ class TestBlockOfContactsOnResumePage:
         page.user_authorization(language, 1)  # авторизация пользователя
 
         resumes_page.search_resume_by_job_title(TestData.job_title_resume_2)  # поиск резюме по названию
-        resumes_page.go_to_resume_page()  # нажатие на блок резюме для перехода на его страницу
+        singleton = Singleton()
+        resumes_page.go_to_resume_page(singleton.id_resume[1])  # нажатие на блок резюме для перехода на его страницу
 
         resume_page = ResumePage(browser, browser.current_url)
-        resume_page.opening_contacts_in_resume()
+        resume_page.opening_contacts_in_resume()  # открытие контактов в резюме
         resume_page.checking_contact_display(TestData)  # проверка отображения контактов
 
     def test_checking_reduction_in_number_of_contact_views_in_service_package(self, browser, language):  # проверка уменьшения в пакете услуг количества просмотров контактов

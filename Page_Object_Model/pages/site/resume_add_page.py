@@ -31,7 +31,7 @@ class ResumeAddPage(BasePage):
         self.browser.find_element(*country_ukraine).click()
 
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_CITI).click()
-        time.sleep(0.5)
+        time.sleep(0.7)
         city_list = self.browser.find_elements(*ResumeAddPageLocators.CITY_LIST)
 
         determining_position_of_object_in_drop_down_list(city_list, '698740')  # 698740 - id Odessa

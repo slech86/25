@@ -411,7 +411,7 @@ class ResumePageLocators:
     BUTTON_VIEW_CONTACTS = (By.CSS_SELECTOR, '.contacts-block [data-target="#open-contacts"]')
     BUTTON_OPEN_CONTACT_IN_POP_UP = (By.CSS_SELECTOR, '#open-contacts .open-contact')
     TEXT_OF_CONTACT_BLOCK_BEFORE_AUTHORIZATION = (By.CSS_SELECTOR, '.cv-card .danger p')
-    TEXT_OF_CONTACT_BLOCK_BEFORE_BUYING_PACKAGE_OF_SERVICES = (By.CSS_SELECTOR, '.cv-card .danger h4')
+    TEXT_OF_CONTACT_BLOCK = (By.CSS_SELECTOR, '.cv-card .danger h4')
 
     PHONE_1_IN_CONTACT_INFORMATION = (By.CSS_SELECTOR, '.contacts-block-items > .item:nth-child(1) span')  # очередность сохраняется при условии наличия всех контактов
     PHONE_2_IN_CONTACT_INFORMATION = (By.CSS_SELECTOR, '.contacts-block-items > .item:nth-child(2) span')  # очередность сохраняется при условии наличия всех контактов

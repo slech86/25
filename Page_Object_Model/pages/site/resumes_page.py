@@ -11,7 +11,7 @@ class ResumesPage(BasePage):
     def go_to_first_resume_page_in_list(self):  # нажатие на блок первого резюме в списке для перехода на его страницу
         self.browser.find_element(*ResumesPageLocators.FIRST_RESUME_IN_LIST).click()
 
-    def go_to_resume_page(self):  # нажатие на блок резюме для перехода на его страницу
+    def go_to_resume_page(self, id_resume):  # нажатие на блок резюме для перехода на его страницу
         resume_locator = ResumesPageLocators()
-        resume = resume_locator.assembly_of_locators_with_id_resume()  # сборка локаторов с id резюме
+        resume = resume_locator.assembly_of_locators_with_id_resume(id_resume)  # сборка локаторов с id резюме
         self.browser.find_element(*resume).click()

@@ -27,7 +27,7 @@ class JobSeekerEditPage(BasePage):
         self.browser.find_element(*country_kazakhstan).click()
 
         self.browser.find_element(*JobSeekerEditPageLocators.DROPDOWN_CITI).click()
-        time.sleep(0.2)
+        time.sleep(0.5)
         city_list = self.browser.find_elements(*JobSeekerEditPageLocators.CITY_LIST)
 
         determining_position_of_object_in_drop_down_list(city_list, '609655')  # 609655 - id Караганда

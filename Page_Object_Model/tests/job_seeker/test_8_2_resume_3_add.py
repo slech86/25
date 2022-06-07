@@ -13,9 +13,9 @@ from Page_Object_Model.data_for_testing import TestData
 
 
 @pytest.mark.job_seeker
-class TestResume2Add:
+class TestResume3Add:
     @pytest.mark.s_r_c
-    def test_adding_resume_2(self, browser, language):  # добавление второго резюме
+    def test_adding_resume_3(self, browser, language):  # добавление третьего резюме
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
         page = OllPage(browser, url_page)
         # browser.maximize_window()
@@ -33,11 +33,11 @@ class TestResume2Add:
         my_resume_page.go_to_add_resume_page()  # переход на страницу "Разместить резюме"
 
         add_resume_page = ResumeAddPage(browser, browser.current_url)
-        add_resume_page.filling_in_required_fields(TestData.job_title_resume_2)  # заполнение обязательных полей
-        browser.execute_script("window.scrollBy(0, -4000);")
-        add_resume_page.filling_in_optional_fields()  # заполнение не обязательных полей
-        add_resume_page.percentage_check_of_resume_completion()  # проверка заполнения резюме в процентах
-        add_resume_page.checking_status_level_filling_resume(language)  # проверка статуса уровня заполнения резюме
+        add_resume_page.filling_in_required_fields(TestData.job_title_resume_3)  # заполнение обязательных полей
+        # browser.execute_script("window.scrollBy(0, -4000);")
+        # add_resume_page.filling_in_optional_fields()  # заполнение не обязательных полей
+        # add_resume_page.percentage_check_of_resume_completion()  # проверка заполнения резюме в процентах
+        # add_resume_page.checking_status_level_filling_resume(language)  # проверка статуса уровня заполнения резюме
         add_resume_page.submitting_resume_for_publication()  # отправка резюме на публикацию
 
         my_resume_page.waiting_for_my_resumes_page_to_open(language)  # ожидание открытия страницы 'Мои резюме'
@@ -51,12 +51,12 @@ class TestResume2Add:
         admin_page.go_to_resumes_page()  # переход на страницу всех резюме
 
         admin_resumes_page = AdminResumesPage(browser, browser.current_url)
-        admin_resumes_page.resume_search_by_job_title(TestData.job_title_resume_2)  # поиск резюме по названию должности
+        admin_resumes_page.resume_search_by_job_title(TestData.job_title_resume_3)  # поиск резюме по названию должности
         singleton = Singleton()
         singleton.id_resume.append(admin_resumes_page.getting_resume_id())  # получение id резюме
         admin_resumes_page.checking_that_resume_status_is_on_moderated()  # проверка что статус резюме 'На модерацию'
 
-        url_resume_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{singleton.id_resume[1]}"
+        url_resume_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{singleton.id_resume[2]}"
         resume_page = ResumePage(browser, url_resume_page)
         resume_page.open()
         resume_page.checking_opening_of_page_of_an_unpublished_resume(language)  # проверка открытия страницы не опубликованного резюме
@@ -66,7 +66,7 @@ class TestResume2Add:
         admin_page.go_to_resumes_page()  # переход на страницу всех резюме
 
         admin_resumes_page = AdminResumesPage(browser, browser.current_url)
-        admin_resumes_page.resume_search_by_job_title(TestData.job_title_resume_2)  # поиск резюме по названию должности
+        admin_resumes_page.resume_search_by_job_title(TestData.job_title_resume_3)  # поиск резюме по названию должности
         admin_resumes_page.go_to_object_editing_page()  # переход на страницу редактирования резюме
 
         admin_resume_edit_page = AdminResumeEditPage(browser, browser.current_url)
@@ -74,7 +74,7 @@ class TestResume2Add:
 
         admin_resumes_page.waiting_to_save_status_and_open_resume_page()  # ожидание сохранения статуса и открытия страницы всех рузюме
 
-        url_resume_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{singleton.id_resume[1]}"
+        url_resume_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{singleton.id_resume[2]}"
         resume_page = ResumePage(browser, url_resume_page)
         resume_page.open()
-        resume_page.checking_opening_of_page_of_published_resume(TestData.job_title_resume_2)  # проверка открытия страницы опубликованного резюме
+        resume_page.checking_opening_of_page_of_published_resume(TestData.job_title_resume_3)  # проверка открытия страницы опубликованного резюме
