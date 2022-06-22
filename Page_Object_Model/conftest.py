@@ -13,9 +13,9 @@ def pytest_addoption(parser):
 @pytest.fixture
 def chrome_options():
     options = Options()
-    options.add_argument('headless')  # 'headless', 'chrome'
+    options.add_argument('chrome')  # 'headless', 'chrome'
     # options.add_argument('--start-maximized')
-    options.add_argument('--window-size=1600,900')
+    options.add_argument('--window-size=1600,1000')
     return options
 
 

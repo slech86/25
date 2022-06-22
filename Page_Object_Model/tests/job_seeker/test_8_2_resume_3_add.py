@@ -34,8 +34,6 @@ class TestResume3Add:
 
         add_resume_page = ResumeAddPage(browser, browser.current_url)
         add_resume_page.filling_in_required_fields(TestData.job_title_resume_3)  # заполнение обязательных полей
-        # browser.execute_script("window.scrollBy(0, -4000);")
-        # add_resume_page.filling_in_optional_fields()  # заполнение не обязательных полей
         # add_resume_page.percentage_check_of_resume_completion()  # проверка заполнения резюме в процентах
         # add_resume_page.checking_status_level_filling_resume(language)  # проверка статуса уровня заполнения резюме
         add_resume_page.submitting_resume_for_publication()  # отправка резюме на публикацию

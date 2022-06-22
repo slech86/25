@@ -11,10 +11,19 @@ class VacancyAddPage(BasePage):
     def absence_of_button_to_publish(self):  # проверка отсутствия кнопки "Опубликовать"
         assert self.is_not_element_present(*VacancyAddPageLocators.BUTTON_PUBLISH), "Не должно быть кнопки 'Опубликовать'"
 
+    def filling_in_field_job_title_for_draft(self):  # заполнение поля "Название должности" для черновика
+        self.browser.find_element(*VacancyAddPageLocators.FIELD_JOB_TITLE).send_keys(TestData.job_title_vacancy_for_draft)
+
     def filling_in_required_fields(self):  # заполнение обязательных полей
         self.browser.find_element(*VacancyAddPageLocators.FIELD_JOB_TITLE).send_keys(TestData.job_title_vacancy)
         self.browser.execute_script(VacancyAddPageLocators.CATEGORY_VACANCIES)  # "Категория размещения вакансии" передается параметр уже с ".click()"
         self.browser.find_element(*VacancyAddPageLocators.SUBCATEGORIES).click()
+
+        self.browser.find_element(*VacancyAddPageLocators.FULL_EMPLOYMENT).click()
+        self.browser.find_element(*VacancyAddPageLocators.WORK_EXPERIENCE_1_YEAR).click()
+        # блок 'Основная информация'
+
+    def filling_in_optional_fields(self):  # заполнение не обязательных полей
         self.browser.find_element(*VacancyAddPageLocators.DROPDOWN_COUNTRY).click()
 
         country_list = self.browser.find_elements(*VacancyAddPageLocators.COUNTRY_LIST)
@@ -37,11 +46,6 @@ class VacancyAddPage(BasePage):
         self.browser.find_element(*city_batumi).click()
         WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element_attribute(VacancyAddPageLocators.DROPDOWN_CITI, 'aria-expanded', 'false'))
 
-        self.browser.find_element(*VacancyAddPageLocators.FULL_EMPLOYMENT).click()
-        self.browser.find_element(*VacancyAddPageLocators.WORK_EXPERIENCE_1_YEAR).click()
-        # блок 'Основная информация'
-
-    def filling_in_optional_fields(self):  # заполнение не обязательных полей
         self.browser.find_element(*VacancyAddPageLocators.FIELD_MINIMAL_SALARY).send_keys(TestData.salary_min)
         self.browser.find_element(*VacancyAddPageLocators.FIELD_MAXIMUM_SALARY).send_keys(TestData.salary_max)
         self.browser.find_element(*VacancyAddPageLocators.DROPDOWN_CURRENCY).click()
@@ -51,6 +55,7 @@ class VacancyAddPage(BasePage):
         self.browser.find_element(*VacancyAddPageLocators.FIELD_EMAIL).send_keys(TestData.email_vacancy)
         self.browser.find_element(*VacancyAddPageLocators.FIELD_SKYPE).send_keys(TestData.skype_vacancy)
         self.browser.find_element(*VacancyAddPageLocators.FIELD_CONTACT_PERSON).send_keys(TestData.contact_person)
+        self.browser.find_element(*VacancyAddPageLocators.FIELD_TELEGRAM).send_keys(TestData.telegram_vacancy)
         self.browser.find_element(*VacancyAddPageLocators.DROPDOWN_EDUCATION).click()
         self.browser.find_element(*VacancyAddPageLocators.HIGHER_EDUCATION).click()
         self.browser.find_element(*VacancyAddPageLocators.DROPDOWN_VACANCY_BENEFITS).click()
@@ -122,5 +127,17 @@ class VacancyAddPage(BasePage):
 
         self.browser.execute_script("window.scrollBy(0, 600);")
 
+    def checking_field_job_title_validation_message_about_need_to_fill_out(self, language):  # проверка сообщения валидации поля "Название должности" о необходимости его заполнения
+        validation_message = WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(VacancyAddPageLocators.VALIDATION_MESSAGE_FIELD_JOB_TITLE)).text
+        if language == "":
+            assert validation_message == "Необходимо заполнить «Название должности».", f"Не верное сообщение валидации, expected result: 'Необходимо заполнить «Название должности».', actual result: '{validation_message}'"
+        elif language == "/ua":
+            assert validation_message == 'Необхідно заповнити "Назва посади".', f'Не верное сообщение валидации, expected result: "Необхідно заповнити "Назва посади".", actual result: "{validation_message}"'
+        elif language == "/en":
+            assert validation_message == "Job title cannot be blank.", f"Не верное сообщение валидации, expected result: 'Job title cannot be blank.', actual result: '{validation_message}'"
+
     def submitting_vacancy_for_publication(self):  # отправка вакансии на публикацию
         self.browser.find_element(*VacancyAddPageLocators.BUTTON_PUBLISH).click()
+
+    def adding_vacancy_to_draft(self):  # добавление вакансии в черновик
+        self.browser.find_element(*VacancyAddPageLocators.BUTTON_TO_DRAFTS).click()

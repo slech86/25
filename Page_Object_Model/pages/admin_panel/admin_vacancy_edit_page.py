@@ -83,6 +83,10 @@ class AdminVacancyEditPage(BasePage):
         skype_vacancy_value = skype_vacancy.get_attribute("value")
         assert skype_vacancy_value == TestData.skype_vacancy, "Поле 'Skype' не верно"
 
+        telegram_vacancy = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_TELEGRAM)
+        telegram_vacancy_value = telegram_vacancy.get_attribute("value")
+        assert telegram_vacancy_value == TestData.telegram_vacancy, "Поле 'Telegram' не верно"
+
         contact_person = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_CONTACT_PERSON)
         contact_person_value = contact_person.get_attribute("value")
         assert contact_person_value == TestData.contact_person, "Поле 'Контактное лицо' не верно"

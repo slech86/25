@@ -38,7 +38,7 @@ class AdminPageLocators:
     USER_STATUS = (By.XPATH, '//tr[1]/td[3]/p')
     FIELD_EMAIL_SEARCH = (By.CSS_SELECTOR, '[name="User[email]"]')
 
-    def generating_user_email_locators(self, key):
+    def assembly_of_locators_with_email(self, key):
         user_email_ru = (By.XPATH, ('//td[text()="' + Singleton.logins_and_mails[key][0][1] + '"]'))
         user_email_ua = (By.XPATH, ('//td[text()="' + Singleton.logins_and_mails[key][1][1] + '"]'))
         user_email_en = (By.XPATH, ('//td[text()="' + Singleton.logins_and_mails[key][2][1] + '"]'))
@@ -93,7 +93,12 @@ class AdminPageLocators:
 
     H1_VACANCIES = (By.CSS_SELECTOR, ('h1'))
     FIELD_JOB_TITLE_SEARCH_VACANCIES = (By.CSS_SELECTOR, ('[name="Vacancies[job_title]"]'))
-    VACANCY_BY_JOB_TITLE = (By.XPATH, ('//a[text()="' + TestData.job_title_vacancy + '"]'))
+    # VACANCY_BY_JOB_TITLE = (By.XPATH, ('//a[text()="' + TestData.job_title_vacancy + '"]'))
+
+    def assembly_of_locators_with_job_title(self, job_title_vacancy):
+        vacancy_by_job_title = (By.XPATH, ('//a[text()="' + job_title_vacancy + '"]'))
+        return vacancy_by_job_title
+
     VACANCY_BY_JOB_TITLE_AFTER_EDITING = (By.XPATH, ('//a[text()="' + TestData.job_title_vacancy + '_editing"]'))
     ID_VACANCY = (By.CSS_SELECTOR, ('#pjax-list-container tbody > tr > td:nth-child(2)'))
     VACANCY_STATUS = (By.CSS_SELECTOR, ('#pjax-list-container tbody > tr > td:nth-child(3) > p'))
@@ -147,9 +152,10 @@ class AdminVacancyEditPageLocators:
     FIELD_COUNTRY_VACANCY = (By.CSS_SELECTOR, ('#select2-vacancies-descriptions-1-country_id-container'))
     FIELD_CITY_VACANCY = (By.CSS_SELECTOR, ('#select2-vacancies-descriptions-1-city_id-container'))
     FIELD_STREET_VACANCY = (By.CSS_SELECTOR, ('#vacancies-descriptions-1street'))
-    FIELD_PHONE = (By.CSS_SELECTOR, ('[name="Vacancies[descriptions][1][phone]"]'))
-    FIELD_EMAIL = (By.CSS_SELECTOR, ('[name="Vacancies[descriptions][1][email]"]'))
-    FIELD_SKYPE = (By.CSS_SELECTOR, ('[name = "Vacancies[descriptions][1][skype]"]'))
+    FIELD_PHONE = (By.CSS_SELECTOR, '#vacancies-descriptions-1phone')
+    FIELD_EMAIL = (By.CSS_SELECTOR, '#vacancies-descriptions-1email')
+    FIELD_SKYPE = (By.CSS_SELECTOR, '#vacancies-descriptions-1skype')
+    FIELD_TELEGRAM = (By.CSS_SELECTOR, '#vacancies-descriptions-1telegram')
     FIELD_CONTACT_PERSON = (By.CSS_SELECTOR, ('#vacancies-descriptions-1contact_person'))
     FIELD_TYPE_EMPLOYMENT = (By.CSS_SELECTOR, ('#vacancies-descriptions-1employment + span .select2-selection__choice'))
     FIELD_WORK_EXPERIENCE = (By.CSS_SELECTOR, ('#select2-vacancies-descriptions-1work_experience-container'))

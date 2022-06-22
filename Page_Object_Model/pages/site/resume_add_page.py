@@ -9,6 +9,9 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class ResumeAddPage(BasePage):
+    def filling_in_field_job_title_for_draft(self):  # заполнение поля "Название должности" для черновика
+        self.browser.find_element(*ResumeAddPageLocators.FIELD_JOB_TITLE).send_keys(TestData.job_title_resume_for_draft)
+
     def filling_in_required_fields(self, job_title):  # заполнение обязательных полей
         self.browser.find_element(*ResumeAddPageLocators.FIELD_NAME).send_keys(TestData.name_resume)
         self.browser.find_element(*ResumeAddPageLocators.FIELD_SURNAME).send_keys(TestData.surname_resume)
@@ -298,5 +301,17 @@ class ResumeAddPage(BasePage):
         elif language == "/en":
             assert status_level_filling == 'Professional', 'Не верный статус уровня заполнения'
 
+    def checking_field_job_title_validation_message_about_need_to_fill_out(self, language):  # проверка сообщения валидации поля "Название должности" о необходимости его заполнения
+        validation_message = WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(ResumeAddPageLocators.VALIDATION_MESSAGE_FIELD_JOB_TITLE)).text
+        if language == "":
+            assert validation_message == "Необходимо заполнить «Название должности».", f"Не верное сообщение валидации, expected result: 'Необходимо заполнить «Название должности».', actual result: '{validation_message}'"
+        elif language == "/ua":
+            assert validation_message == 'Необхідно заповнити "Назва посади".', f'Не верное сообщение валидации, expected result: "Необхідно заповнити "Назва посади".", actual result: "{validation_message}"'
+        elif language == "/en":
+            assert validation_message == "Job title cannot be blank.", f"Не верное сообщение валидации, expected result: 'Job title cannot be blank.', actual result: '{validation_message}'"
+
     def submitting_resume_for_publication(self,):  # отправка резюме на публикацию
         self.browser.find_element(*ResumeAddPageLocators.BUTTON_PUBLISH).click()
+
+    def adding_resume_to_draft(self):  # добавление резюме в черновик
+        self.browser.find_element(*ResumeAddPageLocators.BUTTON_TO_DRAFTS).click()

@@ -55,17 +55,17 @@ class AdminPage(BasePage):
 
     def search_user_by_email(self, language, key):  # поиск пользователя по e-mail
         user_email_locators = AdminPageLocators()
-        locators = user_email_locators.generating_user_email_locators(key)
+        locator = user_email_locators.assembly_of_locators_with_email(key)
         email, user_email = None, None
         if language == "/ua":
             email = Singleton.logins_and_mails[key][1][1]
-            user_email = locators[1]
+            user_email = locator[1]
         elif language == "":
             email = Singleton.logins_and_mails[key][0][1]
-            user_email = locators[0]
+            user_email = locator[0]
         elif language == "/en":
             email = Singleton.logins_and_mails[key][2][1]
-            user_email = locators[2]
+            user_email = locator[2]
         self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_SEARCH).send_keys(email, Keys.ENTER)
         time.sleep(2)
         assert self.is_element_present(*user_email), 'Пользователь не найден'
@@ -78,8 +78,6 @@ class AdminPage(BasePage):
         self.browser.find_element(*AdminPageLocators.FIELD_USER_STATUS).click()
         self.browser.find_element(*AdminPageLocators.STATUS_USER_DELETE).click()
         time.sleep(1)
-
-
 
     # def changing_user_status_to_deleted(self):  # изменение статуса пользователя на "Удалено"
     #     self.browser.find_element(*AdminPageLocators.STATUS).click()
@@ -339,13 +337,16 @@ class AdminPage(BasePage):
         assert checkbox_get_news_checked is not None, "Не установлено получение новостей"
     # страница пользователя
 
+    # страница вакансий
     def waiting_to_save_status_and_open_vacansies_page(self):  # ожидание сохранения статуса и открытия страницы вакансий
         WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((AdminPageLocators.H1_VACANCIES), 'Вакансии'))
 
-    def vacancy_search_by_job_title(self):  # поиск вакансии по названию должности
-        self.browser.find_element(*AdminPageLocators.FIELD_JOB_TITLE_SEARCH_VACANCIES).send_keys(TestData.job_title_vacancy, Keys.ENTER)
+    def vacancy_search_by_job_title(self, job_title_vacancy):  # поиск вакансии по названию должности
+        self.browser.find_element(*AdminPageLocators.FIELD_JOB_TITLE_SEARCH_VACANCIES).send_keys(job_title_vacancy, Keys.ENTER)
         time.sleep(2)
-        assert self.is_element_present(*AdminPageLocators.VACANCY_BY_JOB_TITLE), 'Вакансия не найдена'
+        job_title_locators = AdminPageLocators()
+        locator = job_title_locators.assembly_of_locators_with_job_title(job_title_vacancy)
+        assert self.is_element_present(*locator), 'Вакансия не найдена'
 
     def vacancy_search_by_job_title_after_editing(self):  # поиск вакансии по названию должности после редактирования
         self.browser.find_element(*AdminPageLocators.FIELD_JOB_TITLE_SEARCH_VACANCIES).send_keys(TestData.job_title_vacancy + '_editing', Keys.ENTER)
@@ -358,7 +359,11 @@ class AdminPage(BasePage):
 
     def checking_that_vacancy_status_is_on_moderated(self):  # проверка что статус вакансии 'На модерацию'
         status = self.browser.find_element(*AdminPageLocators.VACANCY_STATUS).text
-        assert status == 'На модерацию', 'Статус не "На модерацию"'
+        assert status == 'На модерацию', f"Не верный статус, expected result: 'На модерацию', actual result: '{status}'"
+
+    def checking_that_vacancy_status_is_draft(self):  # проверка что статус вакансии 'Черновик'
+        status = self.browser.find_element(*AdminPageLocators.VACANCY_STATUS).text
+        assert status == 'Черновик', f"Не верный статус, expected result: 'Черновик', actual result: '{status}'"
     # страница вакансий
 
     def search_for_user_orders_by_email(self, language, key):  # поиск заказов пользователя по e-mail
@@ -409,8 +414,6 @@ class AdminPage(BasePage):
         time.sleep(5)
         status = self.browser.find_element(*AdminPageLocators.STATUS).text
         assert status == 'Проведенный', 'Статус не "Проведенный"'
-
-
     # страница заказов
 
     def getting_id_of_purchase(self, id_order):  # получение id покупки

@@ -74,6 +74,7 @@ class TestData:
 
     # вакансия
     job_title_vacancy = 'test_job_title_vacancy_' + time_Now
+    job_title_vacancy_for_draft = 'test_job_title_vacancy for_draft_' + time_Now
     category_vacancy = '[#4] Отдел кадров'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     subcategories_vacancy = '[#29] HR-менеджер'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     salary_min = '700'
@@ -87,6 +88,7 @@ class TestData:
     email_vacancy = 'email_vacancy_' + time_Now + email[1]
     skype_vacancy = 'skype_vacancy_' + time_Now
     contact_person = 'contact_person_' + time_Now
+    telegram_vacancy = 'https://telegram_vacancy' + time_Now + '.com/'
     employment_type_vacancy = 'Полная'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     work_experience_vacancy = 'от 1 года'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     education = 'Высшее'  # не используется при заполнении полей, только при проверке заполнения полей в админке
@@ -128,7 +130,8 @@ class TestData:
 
     job_title_resume = 'test_job_title_resume ' + time_Now
     job_title_resume_2 = 'test_job_title_resume_2 ' + time_Now
-    job_title_resume_3 = 'test_job_title_resume_2 ' + time_Now
+    job_title_resume_3 = 'test_job_title_resume_3 ' + time_Now
+    job_title_resume_for_draft = 'test_job_title_resume for_draft_' + time_Now
     category_resume = '[#123] Дизайн, графика, анимация'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     subcategories_resume = '[#70] UX-дизайнер'  # не используется при заполнении полей, только при проверке заполнения полей в админке
 
@@ -249,6 +252,7 @@ class TestDataEditing:
     email_vacancy = TestData.email_vacancy + 'editing'
     skype_vacancy = TestData.skype_vacancy + '_editing'
     contact_person = TestData.contact_person + '_editing'
+    telegram_vacancy = TestData.telegram_vacancy + '_editing'
     employment_type_vacancy = 'Полная'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     work_experience_vacancy = 'от 1 года'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     education = 'Высшее'  # не используется при заполнении полей, только при проверке заполнения полей в админке

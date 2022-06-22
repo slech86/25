@@ -97,6 +97,9 @@ class MyResumePageLocators:
     INFO_TEXT_AFTER_CREATING_RESUME = (By.CSS_SELECTOR, ('#lc-popup-resume-new .text'))  # информационный текст после создания резюме
     CROSS_IN_POP_UP_AFTER_CREATING_RESUME = (By.CSS_SELECTOR, ('#lc-popup-resume-new .close'))  # крестик в pop-up окне после создания резюме
 
+    INFO_TEXT_AFTER_ADDING_RESUME_TO_DRAFT = (By.CSS_SELECTOR, ('#lc-popup-resume-draft h2'))  # информационный текст после добавления вакансии в черновик
+    CROSS_IN_POP_UP_AFTER_ADDING_RESUME_TO_DRAFT = (By.CSS_SELECTOR, ('#lc-popup-resume-draft .close'))  # крестик в pop-up окне после добавления вакансии в черновик
+
     INFO_TEXT_AFTER_SUBMITTING_RESUME_FOR_MODERATION = (By.CSS_SELECTOR, ('#lc-popup-resume-moderation .text'))  # информационный текст после отправки резюме на модерацию
     CROSS_IN_POP_UP_AFTER_SUBMITTING_RESUME_FOR_MODERATION = (By.CSS_SELECTOR, ('#lc-popup-resume-moderation .close'))  # крестик в pop-up окне после отправки резюме на модерацию
 
@@ -161,6 +164,8 @@ class ResumeAddPageLocators:
     # блок "Контактная информация"
 
     FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'job_title'))
+    VALIDATION_MESSAGE_FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'job_title + p'))
+
     CATEGORY_RESUME = "document.getElementsByName('ResumeAddForm[category_id][]')[7].click()"
     SUBCATEGORIES = (By.CSS_SELECTOR, ('[for="subcategories_id-70"]'))
     DISTANT_WORK = (By.CSS_SELECTOR, ('#' + inputPrefix + 'employment > .checkbox:nth-child(3) > label'))  # удаленная работа
@@ -347,6 +352,7 @@ class ResumeAddPageLocators:
     CKEDITOR = (By.CSS_SELECTOR, ('body.cke_editable'))  # общий для всех блоков
 
     BUTTON_PUBLISH = (By.CSS_SELECTOR, ('#submit-button'))
+    BUTTON_TO_DRAFTS = (By.CSS_SELECTOR, ('#draft-button'))
 
 
 class ResumeEditPageLocators():

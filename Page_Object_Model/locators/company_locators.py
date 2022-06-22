@@ -181,6 +181,9 @@ class MyVacanciesPageLocators:
     INFO_TEXT_AFTER_CREATING_VACANCY = (By.CSS_SELECTOR, ('#lc-popup-vacancy-new .text'))  # информационный текст после создания вакансии
     CROSS_IN_POP_UP_AFTER_CREATING_VACANCY = (By.CSS_SELECTOR, ('#lc-popup-vacancy-new .close'))  # крестик в pop-up окне после создания вакансии
 
+    INFO_TEXT_AFTER_ADDING_VACANCY_TO_DRAFT = (By.CSS_SELECTOR, ('#lc-popup-vacancy-draft h2'))  # информационный текст после добавления вакансии в черновик
+    CROSS_IN_POP_UP_AFTER_ADDING_VACANCY_TO_DRAFT = (By.CSS_SELECTOR, ('#lc-popup-vacancy-draft .close'))  # крестик в pop-up окне после добавления вакансии в черновик
+
     INFO_TEXT_AFTER_SUBMITTING_VACANCY_FOR_MODERATION = (By.CSS_SELECTOR, ('#lc-popup-vacancy-moderation .text'))  # информационный текст после отправки вакансии на модерацию
     CROSS_IN_POP_UP_AFTER_SUBMITTING_VACANCY_FOR_MODERATION = (By.CSS_SELECTOR, ('#lc-popup-vacancy-moderation .close'))  # крестик в pop-up окне после отправки вакансии на модерацию
 
@@ -199,6 +202,8 @@ class VacancyAddPageLocators:
     inputPrefix = 'vacancyaddform-'
 
     FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'job_title'))
+    VALIDATION_MESSAGE_FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'job_title + p'))
+
     CATEGORY_VACANCIES = "document.getElementsByName('VacancyAddForm[category_id][]')[1].click()"
     SUBCATEGORIES = (By.CSS_SELECTOR, ('[for="subcategories_id-29"]'))
     FIELD_MINIMAL_SALARY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'salary_min'))
@@ -220,12 +225,12 @@ class VacancyAddPageLocators:
         singleton = Singleton()
         city_batumi = (By.CSS_SELECTOR, ('.field-' + VacancyAddPageLocators.inputPrefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
         return city_batumi
-
     FIELD_STREET = (By.CSS_SELECTOR, ('#' + inputPrefix + 'street'))
     FIELD_PHONE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'phone'))
     FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'email'))
     FIELD_SKYPE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'skype'))
     FIELD_CONTACT_PERSON = (By.CSS_SELECTOR, ('#' + inputPrefix + 'contact_person'))
+    FIELD_TELEGRAM = (By.CSS_SELECTOR, ('#' + inputPrefix + 'telegram'))
     FULL_EMPLOYMENT = (By.CSS_SELECTOR, ('#' + inputPrefix + 'employment > .checkbox:nth-child(1) > label'))
     WORK_EXPERIENCE_1_YEAR = (By.CSS_SELECTOR, ('#' + inputPrefix + 'work_experience > .checkbox:nth-child(2) > label'))
     DROPDOWN_EDUCATION = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'education"]'))
@@ -273,6 +278,7 @@ class VacancyAddPageLocators:
 
     CKEDITOR = (By.CSS_SELECTOR, ('body.cke_editable'))  # общий для всех блоков
     BUTTON_PUBLISH = (By.CSS_SELECTOR, ('#submit-publish'))
+    BUTTON_TO_DRAFTS = (By.CSS_SELECTOR, ('#draft-button'))
 
 
 class VacancyEditPageLocators():
@@ -307,6 +313,7 @@ class VacancyEditPageLocators():
     FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'email'))
     FIELD_SKYPE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'skype'))
     FIELD_CONTACT_PERSON = (By.CSS_SELECTOR, ('#' + inputPrefix + 'contact_person'))
+    FIELD_TELEGRAM = (By.CSS_SELECTOR, ('#' + inputPrefix + 'telegram'))
     REMOTE_WORK = (By.CSS_SELECTOR, ('#' + inputPrefix + 'employment > .checkbox:nth-child(3) > label'))
     WORK_EXPERIENCE_2_YEAR = (By.CSS_SELECTOR, ('#' + inputPrefix + 'work_experience > .checkbox:nth-child(3) > label'))
     DROPDOWN_EDUCATION = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'education"]'))

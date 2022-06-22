@@ -46,6 +46,7 @@ class VacancyEditPage(BasePage):
         self.browser.find_element(*VacancyEditPageLocators.FIELD_EMAIL).send_keys('editing')
         self.browser.find_element(*VacancyEditPageLocators.FIELD_SKYPE).send_keys('_editing')
         self.browser.find_element(*VacancyEditPageLocators.FIELD_CONTACT_PERSON).send_keys('_editing')
+        self.browser.find_element(*VacancyEditPageLocators.FIELD_TELEGRAM).send_keys('_editing')
         self.browser.find_element(*VacancyEditPageLocators.REMOTE_WORK).click()
         self.browser.find_element(*VacancyEditPageLocators.WORK_EXPERIENCE_2_YEAR).click()
         self.browser.find_element(*VacancyEditPageLocators.DROPDOWN_EDUCATION).click()

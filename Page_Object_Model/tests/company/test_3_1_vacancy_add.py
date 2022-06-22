@@ -13,6 +13,7 @@ from Page_Object_Model.pages.site.vacancy_page import VacancyPage
 from Page_Object_Model.pages.site.services_and_prices_page import ServicesAndPricesPage
 from Page_Object_Model.singleton import Singleton
 from Page_Object_Model.data_for_testing import Accounts
+from Page_Object_Model.data_for_testing import TestData
 
 
 # @pytest.mark.s_r_c
@@ -48,7 +49,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_vacancies_page()  # переход на страницу вакансий
-    admin_page.vacancy_search_by_job_title()  # поиск вакансии по названию должности
+    admin_page.vacancy_search_by_job_title(TestData.job_title_vacancy)  # поиск вакансии по названию должности
 
     singleton = Singleton()
     singleton.id_vacancies = admin_page.getting_vacancy_id()  # получение id вакансии
@@ -62,7 +63,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     admin_page.open()
     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_vacancies_page()  # переход на страницу вакансий
-    admin_page.vacancy_search_by_job_title()  # поиск вакансии по названию должности
+    admin_page.vacancy_search_by_job_title(TestData.job_title_vacancy)  # поиск вакансии по названию должности
     admin_page.go_to_object_editing_page()  # переход на страницу редактирования вакансии
 
     admin_vacancy_edit_page = AdminVacancyEditPage(browser, browser.current_url)

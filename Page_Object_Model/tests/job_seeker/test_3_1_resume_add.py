@@ -67,7 +67,6 @@ class TestResumeAdd:
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_resumes_page()  # переход на страницу всех резюме
 
-        admin_resumes_page = AdminResumesPage(browser, browser.current_url)
         admin_resumes_page.resume_search_by_job_title(TestData.job_title_resume)  # поиск резюме по названию должности
         admin_resumes_page.go_to_object_editing_page()  # переход на страницу редактирования резюме
 

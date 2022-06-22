@@ -23,12 +23,17 @@ class AdminResumesPage(BasePage):
         assert self.is_element_present(*AdminResumesPageLocators.RESUME_BY_JOB_TITLE_AFTER_EDITING), 'Резюме не найдено'
 
     def getting_resume_id(self):  # получение id резюме
-        id_vacancies = self.browser.find_element(*AdminResumesPageLocators.ID_RESUME).text
-        return id_vacancies
+        id_resume = self.browser.find_element(*AdminResumesPageLocators.ID_RESUME).text
+        return id_resume
 
     def checking_that_resume_status_is_on_moderated(self):  # проверка что статус резюме 'На модерацию'
         status = self.browser.find_element(*AdminResumesPageLocators.RESUME_STATUS).text
         assert status == 'На модерацию', 'Статус не "На модерацию"'
+
+    def checking_that_resume_status_is_draft(self):  # проверка что статус резюме 'Черновик'
+        status = self.browser.find_element(*AdminResumesPageLocators.RESUME_STATUS).text
+        assert status == 'Черновик', f"Не верный статус, expected result: 'Черновик', actual result: '{status}'"
+    # страница вакансий
 
     def go_to_object_editing_page(self):  # переход на страницу редактирования объекта
         self.browser.find_element(*AdminResumesPageLocators.BUTTON_RESUME_MENU).click()  # костыль из-за ховер эффекта на кнопке меню пользователя

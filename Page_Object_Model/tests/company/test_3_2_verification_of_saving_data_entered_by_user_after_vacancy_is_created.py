@@ -2,6 +2,7 @@ import pytest
 from Page_Object_Model.сonfiguration import UrlPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_vacancy_edit_page import AdminVacancyEditPage
+from Page_Object_Model.data_for_testing import TestData
 
 
 # @pytest.mark.s_r_c
@@ -11,7 +12,7 @@ def test_verification_of_saving_data_entered_by_user_after_vacancy_is_created(br
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_vacancies_page()  # переход на страницу вакансий
-    admin_page.vacancy_search_by_job_title()  # поиск вакансии по названию должности
+    admin_page.vacancy_search_by_job_title(TestData.job_title_vacancy)  # поиск вакансии по названию должности
     admin_page.go_to_object_editing_page()  # переход на страницу редактирования вакансии
 
     admin_vacancy_edit_page = AdminVacancyEditPage(browser, browser.current_url)

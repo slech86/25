@@ -47,7 +47,7 @@ class JobSeekerRegistrationPage(BasePage):
         self.browser.find_element(*country_ukraine).click()
 
         self.browser.find_element(*JobSeekerRegistrationPageLocators.DROPDOWN_CITI).click()
-        time.sleep(0.5)
+        time.sleep(1)
         city_list = self.browser.find_elements(*JobSeekerRegistrationPageLocators.CITY_LIST)
 
         determining_position_of_object_in_drop_down_list(city_list, '703448')  # 703448 - id Kyiv
