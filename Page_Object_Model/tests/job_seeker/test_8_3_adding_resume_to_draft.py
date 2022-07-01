@@ -40,6 +40,7 @@ class TestAddingResumeToDraft:
         my_resume_page.waiting_for_my_resumes_page_to_open(language)  # ожидание открытия страницы 'Мои резюме'
         my_resume_page.confirmation_of_opening_of_page_my_resumes(language)  # подтверждение открытия страницы 'Мои резюме'
         my_resume_page.checking_message_about_adding_resume_to_draft(language)  # проверка сообщения о добавлении резюме в черновик
+        my_resume_page.check_for_reducing_number_of_resumes_for_creations(4)  # проверка уменьшения количества резюме для создания
 
         admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
         admin_page.open()

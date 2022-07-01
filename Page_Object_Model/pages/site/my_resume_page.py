@@ -4,29 +4,33 @@ from Page_Object_Model.locators.job_seeker_locators import MyResumePageLocators
 from Page_Object_Model.сonfiguration import UrlStartPage
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import requests
 
 
 class MyResumePage(BasePage):
-    # def check_for_reducing_number_of_resumes_for_creations(self):  # проверка уменьшения количества резюме для созданий
-    #     locators_with_id_product_and_id_purchase = ServicesAndPricesPageLocators()
-    #     locators = locators_with_id_product_and_id_purchase.assembly_of_locators_with_id_product_and_id_purchase()
-    #     self.browser.find_element(*locators[3][0]).click()
-    #     number_of_vacancies_available = WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(locators[4][0]))
-    #     text = number_of_vacancies_available[0].text
-    #     print(text)
-    #     index = text.find('/')
-    #     assert int(text[index - 2]) + 1 == int(text[index + 2]), 'В пакете осталось не верное количество вакансий'
-
+    def check_for_reducing_number_of_resumes_for_creations(self, expected_number_of_resumes_generated):  # проверка уменьшения количества резюме для создания
+        text = self.browser.find_element(*MyResumePageLocators.TEXT_OF_NUMBER_OF_CREATED_RESUMES).text
+        index = text.find(' ')
+        actual_number_of_resumes_generated = int(text[index + 1])
+        assert actual_number_of_resumes_generated == expected_number_of_resumes_generated, f"Отображается не верное количество созданных резюме, expected result: '{expected_number_of_resumes_generated}', actual result: '{actual_number_of_resumes_generated}'"
 
     def go_to_add_resume_page(self):  # переход на страницу "Разместить резюме"
         self.browser.find_element(*MyResumePageLocators.BUTTON_ADD_RESUME).click()
 
-    def go_to_resume_editing_page(self):  # переход на страницу редактирования резюме
+    def opening_resume_menu(self):  # открытие меню резюме
         self.browser.find_element(*MyResumePageLocators.BUTTON_RESUME_MENU).click()
-        time.sleep(0.2)
+        time.sleep(0.3)
+
+    def go_to_resume_editing_page(self):  # переход на страницу редактирования резюме
         locators_with_id_resume = MyResumePageLocators()
-        locator = locators_with_id_resume.assembly_of_locators_with_id_resume()  # сборка локатов с id резюме
+        locator = locators_with_id_resume.assembly_of_locators_with_id_resume()  # сборка локатора с id резюме
         self.browser.find_element(*locator).click()
+
+    def checking_status_of_page_response_to_print_pdf(self):  # проверка статуса ответа страницы 'распечатать пдф'
+        WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(MyResumePageLocators.BUTTON_PRINT)).click()
+        self.browser.switch_to.window(self.browser.window_handles[2])
+        response = requests.head(self.browser.current_url)
+        assert response.status_code == 200, 'Статус ответа страницы не 200'
 
     def waiting_for_my_resumes_page_to_open(self, language):  # ожидание открытия страницы 'Мои резюме'
         if language == "":

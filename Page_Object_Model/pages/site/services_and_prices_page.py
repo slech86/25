@@ -107,7 +107,6 @@ class ServicesAndPricesPage(BasePage):
         time.sleep(0.3)
         number_of_vacancies_available = self.browser.find_elements(*locators[4][0])
         text = number_of_vacancies_available[0].text
-        print(text)
         index = text.find('/')
         assert int(text[index - 2]) + 1 == int(text[index + 2]), 'В пакете осталось не верное количество вакансий'
 

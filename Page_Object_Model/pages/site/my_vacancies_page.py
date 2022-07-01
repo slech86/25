@@ -5,18 +5,29 @@ from Page_Object_Model.locators.company_locators import MyVacanciesPageLocators
 from Page_Object_Model.сonfiguration import UrlStartPage
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import requests
 
 
 class MyVacanciesPage(BasePage):
     def go_to_vacancy_add_page(self):  # переход на страницу "Добавить вакансию"
         self.browser.find_element(*MyVacanciesPageLocators.BUTTON_ADD_VACANCY).click()
 
-    def go_to_vacancy_editing_page(self):  # переход на страницу редактирования вакансии
+    def opening_vacancy_menu(self):  # открытие меню вакансии
         locators_with_id_vacancies = MyVacanciesPageLocators()
         locators = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies()  # сборка локаторов с id вакансии
         self.browser.find_element(*locators[0]).click()
-        time.sleep(0.2)
+        time.sleep(0.3)
+
+    def go_to_vacancy_editing_page(self):  # переход на страницу редактирования вакансии
+        locators_with_id_vacancies = MyVacanciesPageLocators()
+        locators = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies()  # сборка локаторов с id вакансии
         self.browser.find_element(*locators[1]).click()
+
+    def checking_status_of_page_response_to_print_pdf(self):  # проверка статуса ответа страницы 'распечатать пдф'
+        WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(MyVacanciesPageLocators.BUTTON_PRINT)).click()
+        self.browser.switch_to.window(self.browser.window_handles[2])
+        response = requests.head(self.browser.current_url)
+        assert response.status_code == 200, 'Статус ответа страницы не 200'
 
     def checking_for_availability_icon_new_response_to_vacancy(self):  # проверка наличия иконки нового отклика на вакансию
         locators_with_id_vacancies = MyVacanciesPageLocators()

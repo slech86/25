@@ -13,7 +13,7 @@ from Page_Object_Model.singleton import Singleton
 
 
 # @pytest.mark.skip
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 class TestPackagePurchase1Vacancy:
     def test_package_purchase_1_vacancy_and_orders_processing_and_activating_it_on_site(self, browser, language):  # покупка пакета "1 вакансия" и проведение заказа в админке и активация его на сайте
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"

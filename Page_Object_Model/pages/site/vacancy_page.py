@@ -7,6 +7,7 @@ from Page_Object_Model.сonfiguration import UrlStartPage
 from Page_Object_Model.singleton import Singleton
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import requests
 
 
 class VacancyPage(BasePage):
@@ -35,6 +36,14 @@ class VacancyPage(BasePage):
     def checking_opening_of_page_of_published_vacancy_after_editing(self):  # проверка открытия страницы опубликованной вакансии после редактирования
         h1 = self.browser.find_element(*VacancyPageLocators.H1).text
         assert h1 == TestDataEditing.job_title_vacancy, "Вакансия не опубликована"
+
+    def checking_status_of_page_response_to_print_pdf(self):  # проверка статуса ответа страницы 'распечатать пдф'
+        self.browser.find_element(*VacancyPageLocators.BUTTON_VACANCY_MENU).click()
+        WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(VacancyPageLocators.BUTTON_PRINT)).click()
+        self.browser.switch_to.window(self.browser.window_handles[1])
+        response = requests.head(self.browser.current_url)
+        assert response.status_code == 200, 'Статус ответа страницы не 200'
+        self.browser.switch_to.window(self.browser.window_handles[0])
 
     def pressing_button_responds_1(self):  # нажатие на кнопку "Откликнуться" # 1
         self.browser.find_element(*VacancyPageLocators.BUTTON_RESPONSE_1).click()

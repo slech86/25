@@ -10,7 +10,7 @@ from Page_Object_Model.pages.site.vacancy_page import VacancyPage
 from Page_Object_Model.singleton import Singleton
 
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 class TestAddingVacancyToDraft:
     def test_checking_adding_vacancy_to_draft(self, browser, language):  # проверка добавления вакансии в черновик
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"

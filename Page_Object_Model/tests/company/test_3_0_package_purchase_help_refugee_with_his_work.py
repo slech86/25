@@ -9,7 +9,7 @@ from Page_Object_Model.pages.site.vacancy_add_page import VacancyAddPage
 from Page_Object_Model.singleton import Singleton
 
 
-# @pytest.mark.s_r_c
+@pytest.mark.s_r_c
 class TestPackagePurchaseHelpRefugeeWithHisWork:
     def test_package_purchase_help_refugee_with_his_work_and_activating_it_on_site(self, browser, language):  # покупка пакета "Помоги беженцу с работой" и активация его на сайте
         url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"

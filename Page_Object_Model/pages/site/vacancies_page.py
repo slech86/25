@@ -8,6 +8,9 @@ class VacanciesPage(BasePage):
         self.browser.find_element(*VacanciesPageLocators.FIELD_JOB_TITLE_TO_SEARCH).send_keys(TestDataEditing.job_title_vacancy)
         self.browser.find_element(*VacanciesPageLocators.BUTTON_SEARCH).click()
 
+    def go_to_first_vacancy_page_in_list(self):  # нажатие на блок первой вакансии в списке для перехода на ее страницу
+        self.browser.find_element(*VacanciesPageLocators.FIRST_VACANCY_IN_LIST).click()
+
     def go_to_vacancy_page(self):  # нажатие на блок вакансии для перехода на ее страницу
         vacancy_locator = VacanciesPageLocators()
         vacancy = vacancy_locator.assembly_of_locators_with_id_vacancies()  # сборка локаторов с id вакансии

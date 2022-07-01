@@ -16,6 +16,7 @@ def chrome_options():
     options.add_argument('chrome')  # 'headless', 'chrome'
     # options.add_argument('--start-maximized')
     options.add_argument('--window-size=1600,1000')
+    options.binary_location = "/Applications/Google Chrome Beta.app/Contents/MacOS/Google Chrome Beta"
     return options
 
 

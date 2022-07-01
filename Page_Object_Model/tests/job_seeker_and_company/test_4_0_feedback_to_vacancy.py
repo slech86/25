@@ -31,8 +31,6 @@ class TestResponseToVacancy:
         vacancies_page.go_to_vacancy_page()  # нажатие на блок вакансии для перехода на ее страницу
 
         vacancy_page = VacancyPage(browser, browser.current_url)
-        # vacancy_page.pressing_button_responds_1()  # нажатие на кнопку "Откликнуться" # 1
-        # page.user_authorization(language, 2)  # авторизация пользователя
         vacancy_page.presence_of_button_responds_2()  # наличие кнопки "Откликнуться" # 2
         vacancy_page.pressing_button_responds_1()  # нажатие на кнопку "Откликнуться" # 1
         vacancy_page.filling_and_sending_response_with_selected_active_resume()  # заполнение и отправка отклика с выбранным активным резюме

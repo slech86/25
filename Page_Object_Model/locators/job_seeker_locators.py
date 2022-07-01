@@ -85,9 +85,11 @@ class JobSeekerPersonalCabinetPageLocators:
 
 class MyResumePageLocators:
     H1 = (By.CSS_SELECTOR, ('h1'))
+    TEXT_OF_NUMBER_OF_CREATED_RESUMES = (By.CSS_SELECTOR, ('.page-title p'))
     BUTTON_ADD_RESUME = (By.CSS_SELECTOR, ('.btn-wrap > .btn.btn-blue'))
 
-    BUTTON_RESUME_MENU = (By.CSS_SELECTOR, ('.lc-card.my-cv-card .lc-card-bookmarks'))
+    BUTTON_RESUME_MENU = (By.CSS_SELECTOR, ('.lc-card.my-cv-card:nth-child(1) .lc-card-bookmarks'))
+    BUTTON_PRINT = (By.XPATH, '//a[contains(@href, "/print")]')  # работает для первого резюме в списке
 
     def assembly_of_locators_with_id_resume(self):  # сборка локаторов с id резюме
         singleton = Singleton()
@@ -670,6 +672,8 @@ class MyResponsesPageLocators:
 
 class VacancyPageLocators:
     H1 = (By.CSS_SELECTOR, ('h1'))
+    BUTTON_VACANCY_MENU = (By.CSS_SELECTOR, '.share-btn')
+    BUTTON_PRINT = (By.XPATH, '//a[contains(@href, "/print")]')
     BUTTON_RESPONSE_1 = (By.CSS_SELECTOR, ('.company-respond > #response'))
     BUTTON_RESPONSE_2 = (By.CSS_SELECTOR, ('.btn-wrap > #response'))
     NOT_ACTIVE_BUTTON_RESUME_POSTED_1 = (By.CSS_SELECTOR, ('.company-respond > [data-target="#respond-modal"][disabled="disabled"]'))

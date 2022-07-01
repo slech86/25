@@ -178,6 +178,8 @@ class MyVacanciesPageLocators:
                     new_response_icon]
         return locators
 
+    BUTTON_PRINT = (By.XPATH, '//a[contains(@href, "/print")]')  # работает для первого резюме в списке
+
     INFO_TEXT_AFTER_CREATING_VACANCY = (By.CSS_SELECTOR, ('#lc-popup-vacancy-new .text'))  # информационный текст после создания вакансии
     CROSS_IN_POP_UP_AFTER_CREATING_VACANCY = (By.CSS_SELECTOR, ('#lc-popup-vacancy-new .close'))  # крестик в pop-up окне после создания вакансии
 
@@ -412,6 +414,8 @@ class ServicesAndPricesPageLocators:
 class ResumePageLocators:
     H1 = (By.CSS_SELECTOR, 'h1')
     COVER_LETTER_TEXT = (By.CSS_SELECTOR, '.covering-letter-description')
+    BUTTON_RESUME_MENU = (By.CSS_SELECTOR, '.share-btn')
+    BUTTON_PRINT = (By.XPATH, '//a[contains(@href, "/print")]')
 
     CONTACT_INFORMATION_BLOCK = (By.CSS_SELECTOR, '.cv-card .danger')
     CONTACT_BLOCK = (By.CSS_SELECTOR, '.contacts-block')

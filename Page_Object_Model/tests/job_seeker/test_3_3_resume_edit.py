@@ -27,6 +27,7 @@ def test_editing_resume(browser, language):  # редактирование ре
     job_seeker_personal_cabinet_page.go_to_my_resume_page()  # переход на страницу "Мои резюме"
 
     my_resume_page = MyResumePage(browser, browser.current_url)
+    my_resume_page.opening_resume_menu()  # открытие меню резюме
     my_resume_page.go_to_resume_editing_page()  # переход на страницу редактирования резюме
 
     resume_edit_page = ResumeEditPage(browser, browser.current_url)

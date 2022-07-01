@@ -37,6 +37,8 @@ class VacanciesPageLocators:
         vacancy = (By.XPATH, ('//a[contains(@href, "/vacancy/' + singleton.id_vacancies + '")]'))
         return vacancy
 
+    FIRST_VACANCY_IN_LIST = (By.CSS_SELECTOR, ('.lc-card:nth-child(1)'))
+
 
 class ResumesPageLocators:
     inputPrefix = 'resumesortform-'

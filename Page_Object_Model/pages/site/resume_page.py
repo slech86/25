@@ -5,6 +5,7 @@ from Page_Object_Model.сonfiguration import UrlStartPage
 from Page_Object_Model.singleton import Singleton
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import requests
 
 
 class ResumePage(BasePage):
@@ -38,23 +39,31 @@ class ResumePage(BasePage):
         cover_letter_text = self.browser.find_element(*ResumePageLocators.COVER_LETTER_TEXT).text
         assert cover_letter_text == TestData.cover_letter, "Сопроводительное письмо не совпадает"
 
+    def checking_status_of_page_response_to_print_pdf(self):  # проверка статуса ответа страницы 'распечатать пдф'
+        self.browser.find_element(*ResumePageLocators.BUTTON_RESUME_MENU).click()
+        WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(ResumePageLocators.BUTTON_PRINT)).click()
+        self.browser.switch_to.window(self.browser.window_handles[1])
+        response = requests.head(self.browser.current_url)
+        assert response.status_code == 200, 'Статус ответа страницы не 200'
+        self.browser.switch_to.window(self.browser.window_handles[0])
+
     def checking_contact_block_before_authorization(self, language):  # проверка блока контактов до авторизации
         text_in_contact_block = self.browser.find_element(*ResumePageLocators.TEXT_OF_CONTACT_BLOCK_BEFORE_AUTHORIZATION).text
         if language == "":
-            assert text_in_contact_block == 'Зарегистрируйтесь или войдите, чтобы полностью ознакомиться или предложить вакансию.', "Текст в блоке контактов до авторизации, не верный"
+            assert text_in_contact_block == 'Фамилия и контакты соискателя доступны только зарегистрированным работодателям. Зарегистрируйтесь или войдите для получения доступа к информации.', "Текст в блоке контактов до авторизации, не верный"
         elif language == "/ua":
-            assert text_in_contact_block == 'Зареєструйтеся або увійдіть, щоб повністю ознайомитися або запропонувати вакансію.', "Текст в блоке контактов до авторизации, не верный"
+            assert text_in_contact_block == 'Прізвище та контакти шукача доступні лише зареєстрованим роботодавцям. Зареєструйтесь або увійдіть, щоб отримати доступ до інформації.', "Текст в блоке контактов до авторизации, не верный"
         elif language == "/en":
-            assert text_in_contact_block == 'Register now or sign in to read all or offer a vacancy.', "Текст в блоке контактов до авторизации, не верный"
+            assert text_in_contact_block == 'The surname and contacts of the applicant are available only to registered employers. Register or login to access the information.', "Текст в блоке контактов до авторизации, не верный"
 
     def checking_contact_block_before_buying_package_of_services(self, language):  # проверка блока контактов до покупки пакета услуг
         text_in_contact_block = self.browser.find_element(*ResumePageLocators.TEXT_OF_CONTACT_BLOCK).text
         if language == "":
-            assert text_in_contact_block == 'Заинтересовал кандидат? Выберите подходящий пакет услуг.', "Текст в блоке контактов до покупки пакета услуг, не верный"
+            assert text_in_contact_block == 'Заинтересовал кандидат? Для просмотра фамилии и контактных данных соискателя необходимо использовать пакетные услуги.', "Текст в блоке контактов до покупки пакета услуг, не верный"
         elif language == "/ua":
-            assert text_in_contact_block == 'Зацікавив кандидат? Виберіть відповідний пакет послуг.', "Текст в блоке контактов до покупки пакета услуг, не верный"
+            assert text_in_contact_block == 'Зацікавив кандидат? Для перегляду прізвища та контактних даних шукача необхідно скористатися пакетними послугами.', "Текст в блоке контактов до покупки пакета услуг, не верный"
         elif language == "/en":
-            assert text_in_contact_block == 'Is the candidate interested? Choose the appropriate service package.', "Текст в блоке контактов до покупки пакета услуг, не верный"
+            assert text_in_contact_block == 'Interested in a candidate? Use the package services to view the name and contact details of the applicant.', "Текст в блоке контактов до покупки пакета услуг, не верный"
 
     def checking_absence_of_contact_block_with_information(self):  # проверка отсутствия блока контактов c информацией
         assert self.is_not_element_present(*ResumePageLocators.CONTACT_INFORMATION_BLOCK), "Не должно быть блока контактов с информацией"

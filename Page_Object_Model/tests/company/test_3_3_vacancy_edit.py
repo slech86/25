@@ -24,6 +24,7 @@ def test_editing_vacancies(browser, language):  # редактирование �
     company_personal_cabinet_page.go_to_my_vacancies_page()  # переход на страницу "Мои вакансии"
 
     my_vacancies_page = MyVacanciesPage(browser, browser.current_url)
+    my_vacancies_page.opening_vacancy_menu()  # открытие меню вакансии
     my_vacancies_page.go_to_vacancy_editing_page()  # переход на страницу редактирования вакансии
 
     vacancy_edit_page = VacancyEditPage(browser, browser.current_url)
