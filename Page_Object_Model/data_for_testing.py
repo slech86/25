@@ -44,7 +44,7 @@ class TestData:
     name = 'name_' + time_Now
     surname = 'surname_' + time_Now
     position = 'position_' + time_Now
-    phone = '+01(010)101-01-01'
+    phone = '+01(010)101-01-01'  # '+380(67)000-0000'
     contact_email = 'contact_email_' + time_Now + email[1]
     company_name = 'company_name_' + time_Now
     company_slug = 'company_slug_' + time_Now
@@ -84,7 +84,7 @@ class TestData:
     city_vacancy = '[#9000009] Батуми'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     street_vacancy = 'street_vacancy_' + time_Now
 
-    phone_vacancy = '+38(101)010-10-10'
+    phone_vacancy = '+38(101)010-10-10'  # '+7(777)999-9999'
     email_vacancy = 'email_vacancy_' + time_Now + email[1]
     skype_vacancy = 'skype_vacancy_' + time_Now
     contact_person = 'contact_person_' + time_Now
@@ -115,8 +115,8 @@ class TestData:
     city_resume = '[#698740] Одесса'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     willing_to_relocate = 'Не готов к переезду'  # не используется при заполнении полей, только при проверке заполнения полей в админке
 
-    phone_1_resume = '+77(666)555-44-33'
-    phone_2_resume = '+88(999)222-11-00'
+    phone_1_resume = '+77(666)555-44-33'  # '+420(737)222-333'
+    phone_2_resume = '+88(999)222-11-00'  # '+48(509)111-222'
     email_resume = 'email_resume_' + time_Now + email[1]
     skype_resume = 'skype_resume_' + time_Now
     portfolio = 'https://portfolio_' + time_Now + '.com/'
@@ -209,7 +209,7 @@ class TestDataEditing:
     name = TestData.name + '_editing'
     surname = TestData.surname + '_editing'
     position = TestData.position + '_editing'
-    phone = '+1(234)567-89-10'
+    phone = '+1(234)567-89-10'  # +357(96)000000
     contact_email = TestData.contact_email + 'editing'
     company_name = TestData.company_name + '_editing'
     company_slug = TestData.company_slug + '_edit'
@@ -248,7 +248,7 @@ class TestDataEditing:
     city_vacancy = '[#709930] Днепр'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     street_vacancy = TestData.street_vacancy + '_editing'
 
-    phone_vacancy = '+38(111)213-14-15'
+    phone_vacancy = '+38(111)213-14-15'  # '+380(99)999-9999'
     email_vacancy = TestData.email_vacancy + 'editing'
     skype_vacancy = TestData.skype_vacancy + '_editing'
     contact_person = TestData.contact_person + '_editing'
@@ -279,8 +279,8 @@ class TestDataEditing:
     city_resume = '[#3088171] Познань'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     willing_to_relocate = 'Готов к переезду'  # не используется при заполнении полей, только при проверке заполнения полей в админке
 
-    phone_1_resume = '+33(444)555-66-77'
-    phone_2_resume = '+00(111)222-33-44'
+    phone_1_resume = '+33(444)555-66-77'  # '+380(63)123-4567'
+    phone_2_resume = '+00(111)222-33-44'  # '+380(50)505-0505'
     email_resume = TestData.email_resume + 'editing'
     skype_resume = TestData.skype_resume + '_editing'
     portfolio = TestData.portfolio + '_editing/'

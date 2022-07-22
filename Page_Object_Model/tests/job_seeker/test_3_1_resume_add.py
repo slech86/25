@@ -15,6 +15,7 @@ from Page_Object_Model.data_for_testing import TestData
 
 
 @pytest.mark.job_seeker
+# @pytest.mark.skip
 class TestResumeAdd:
     @pytest.mark.s_r_c
     def test_adding_resume(self, browser, language):  # добавление резюме

@@ -172,13 +172,16 @@ class MyVacanciesPageLocators:
         button_edit = (By.XPATH, ('//div[@id="my-vacancy-' + singleton.id_vacancies + '"]//a[contains(@href, "/vacancy/' + singleton.id_vacancies + '/edit")]'))
         button_show_responses = (By.XPATH, ('//a[contains(@href, "/vacancy/' + singleton.id_vacancies + '/feedback")]'))
         new_response_icon = (By.CSS_SELECTOR, ('#my-vacancy-' + singleton.id_vacancies + ' .counter.red'))
+        button_delete = (By.CSS_SELECTOR, ('#my-vacancy-' + singleton.id_vacancies + ' .open-delete-modal'))
         locators = [button_vacancy_menu,
                     button_edit,
                     button_show_responses,
-                    new_response_icon]
+                    new_response_icon,
+                    button_delete]
         return locators
 
     BUTTON_PRINT = (By.XPATH, '//a[contains(@href, "/print")]')  # работает для первого резюме в списке
+    BUTTON_CONFIRMATION_DELETION_DRAFT_VACANCIES = (By.CSS_SELECTOR, ('[class="btn btn-blue btn-apply update-status"]'))
 
     INFO_TEXT_AFTER_CREATING_VACANCY = (By.CSS_SELECTOR, ('#lc-popup-vacancy-new .text'))  # информационный текст после создания вакансии
     CROSS_IN_POP_UP_AFTER_CREATING_VACANCY = (By.CSS_SELECTOR, ('#lc-popup-vacancy-new .close'))  # крестик в pop-up окне после создания вакансии
@@ -186,12 +189,15 @@ class MyVacanciesPageLocators:
     INFO_TEXT_AFTER_ADDING_VACANCY_TO_DRAFT = (By.CSS_SELECTOR, ('#lc-popup-vacancy-draft h2'))  # информационный текст после добавления вакансии в черновик
     CROSS_IN_POP_UP_AFTER_ADDING_VACANCY_TO_DRAFT = (By.CSS_SELECTOR, ('#lc-popup-vacancy-draft .close'))  # крестик в pop-up окне после добавления вакансии в черновик
 
+    INFO_TEXT_AFTER_DELETING_DRAFT_VACANCY = (By.CSS_SELECTOR, '#thanks-modal h2')  # информационный текст после удаления вакансии
+    CROSS_IN_POP_UP_AFTER_DELETING_DRAFT_VACANCY = (By.CSS_SELECTOR, '#thanks-modal .close')  # крестик в pop-up окне после удаления вакансии
+
     INFO_TEXT_AFTER_SUBMITTING_VACANCY_FOR_MODERATION = (By.CSS_SELECTOR, ('#lc-popup-vacancy-moderation .text'))  # информационный текст после отправки вакансии на модерацию
     CROSS_IN_POP_UP_AFTER_SUBMITTING_VACANCY_FOR_MODERATION = (By.CSS_SELECTOR, ('#lc-popup-vacancy-moderation .close'))  # крестик в pop-up окне после отправки вакансии на модерацию
 
 
 class ResponsesToVacancyPageLocators:
-    H1 = (By.CSS_SELECTOR, ('h1'))
+    H1 = (By.CSS_SELECTOR, 'h1')
     MARK_NOT_VIEWED_RESPONSE = (By.CSS_SELECTOR, ('.lc-card:nth-child(1) .lc-card-time > svg'))
 
     def assembly_of_locators_with_id_resume(self):  # сборка локаторов с id резюме

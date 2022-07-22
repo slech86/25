@@ -9,6 +9,7 @@ from Page_Object_Model.pages.site.my_resume_page import MyResumePage
 
 # @pytest.mark.s_r_c
 @pytest.mark.job_seeker
+# @pytest.mark.skip
 def test_checking_status_of_page_response_to_print_pdf(browser, language):  # проверка статуса ответа страницы 'распечатать пдф'
     url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_page)

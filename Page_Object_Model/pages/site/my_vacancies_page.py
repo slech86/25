@@ -29,6 +29,22 @@ class MyVacanciesPage(BasePage):
         response = requests.head(self.browser.current_url)
         assert response.status_code == 200, 'Статус ответа страницы не 200'
 
+    def deletion_vacancy_draft(self):  # удаление черновика вакансии
+        locators_with_id_vacancies = MyVacanciesPageLocators()
+        locators = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies()  # сборка локаторов с id вакансии
+        self.browser.find_element(*locators[4]).click()
+        self.browser.find_element(*MyVacanciesPageLocators.BUTTON_CONFIRMATION_DELETION_DRAFT_VACANCIES).click()
+
+    def checking_message_after_deleting_vacancy(self, language):  # проверка сообщения после удаления вакансии
+        info_text = self.browser.find_element(*MyVacanciesPageLocators.INFO_TEXT_AFTER_DELETING_DRAFT_VACANCY).text
+        if language == "":
+            assert "Черновик удален." == info_text, 'Не верное сообщение'
+        elif language == "/ua":
+            assert "Чернетка видалена." == info_text, 'Не верное сообщение'
+        elif language == "/en":
+            assert "Draft deleted" == info_text, 'Не верное сообщение'
+        self.browser.find_element(*MyVacanciesPageLocators.CROSS_IN_POP_UP_AFTER_DELETING_DRAFT_VACANCY).click()
+
     def checking_for_availability_icon_new_response_to_vacancy(self):  # проверка наличия иконки нового отклика на вакансию
         locators_with_id_vacancies = MyVacanciesPageLocators()
         locator = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies()  # сборка локаторов с id вакансии

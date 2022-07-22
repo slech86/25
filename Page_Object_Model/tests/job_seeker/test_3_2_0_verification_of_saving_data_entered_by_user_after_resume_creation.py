@@ -9,6 +9,7 @@ from Page_Object_Model.data_for_testing import TestData
 
 @pytest.mark.s_r_c
 @pytest.mark.job_seeker
+# @pytest.mark.skip
 def test_verification_of_saving_data_entered_by_user_after_resume_creation(browser, language):  # проверка сохранения введенных пользователем данных после создания резюме
     admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
     admin_page.open()

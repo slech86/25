@@ -14,6 +14,7 @@ class BasePage:
         self.browser.get(self.url)
         if cookie == True:
             self.browser.add_cookie({'name': 'AgeValidation', 'value': '1'})
+            self.browser.get(self.url)
 
     def is_element_present(self, how, what):  # упадет если нет элемента
         try:

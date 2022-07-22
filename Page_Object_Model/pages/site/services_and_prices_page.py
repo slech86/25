@@ -48,6 +48,7 @@ class ServicesAndPricesPage(BasePage):
     # пакеты поштучно
 
     def click_button_buy_in_basket(self):  # нажатие кнопки "Курить" в корзине
+        self.browser.execute_script("window.scrollBy(0, 10000);")
         self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_BUY).click()
         time.sleep(1)
 

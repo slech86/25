@@ -20,11 +20,11 @@ class TestPostConditionsResume:
         admin_page = AdminPage(browser, browser.current_url)
         admin_page.vacancy_search_by_job_title_after_editing()  # поиск вакансии по названию должности после редактирования
         admin_page.complete_objects_deletion()  # полное удаление вакансии
-
-    def test_complete_deletion_of_draft_vacancy(self, browser, authorization_in_admin):  # полное удаление черновика вакансии
-        admin_page = AdminPage(browser, browser.current_url)
-        admin_page.vacancy_search_by_job_title(TestData.job_title_vacancy_for_draft)  # поиск вакансии по названию должности
-        admin_page.complete_objects_deletion()  # полное удаление вакансии
+    #
+    # def test_complete_deletion_of_draft_vacancy(self, browser, authorization_in_admin):  # полное удаление черновика вакансии
+    #     admin_page = AdminPage(browser, browser.current_url)
+    #     admin_page.vacancy_search_by_job_title(TestData.job_title_vacancy_for_draft)  # поиск вакансии по названию должности
+    #     admin_page.complete_objects_deletion()  # полное удаление вакансии
 
     # удаление пакета к которому была привязана вакансия
     def test_complete_deletion_of_user_orders(self, browser, language):  # полное удаление заказов пользователя

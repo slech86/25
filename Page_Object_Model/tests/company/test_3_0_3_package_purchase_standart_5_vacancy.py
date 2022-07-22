@@ -13,6 +13,7 @@ from Page_Object_Model.pages.site.interkassa_page import InterkassaPage
 
 
 # @pytest.mark.skip
+# @pytest.mark.s_r_c
 class TestPackagePurchaseStandart5Vacancy:
     def test_package_purchase_standart_and_orders_processing_and_activating_it_on_site(self, browser, language):  # покупка пакета "Standart: 5 вакансия" и проведение заказа в админке и активация его на сайте
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"

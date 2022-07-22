@@ -50,7 +50,9 @@ class TestAddingVacancyToDraft:
         singleton.id_vacancies = admin_page.getting_vacancy_id()  # получение id вакансии
         admin_page.checking_that_vacancy_status_is_draft()  # проверка что статус вакансии 'Черновик'
 
-        # url_Vacancy_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/vacancy/{singleton.id_vacancies}"
-        # vacancy_page = VacancyPage(browser, url_Vacancy_Page)
-        # vacancy_page.open()
-        # vacancy_page.checking_opening_of_page_of_an_unpublished_vacancy(language)  # проверка открытия страницы не опубликованной вакансии
+        url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/vacancy/my"
+        my_vacancies_page = MyVacanciesPage(browser, url_page)
+        my_vacancies_page.open()
+        my_vacancies_page.opening_vacancy_menu()  # открытие меню вакансии
+        my_vacancies_page.deletion_vacancy_draft()  # удаление черновика вакансии
+        my_vacancies_page.checking_message_after_deleting_vacancy(language)  # проверка сообщения после удаления вакансии

@@ -87,8 +87,8 @@ class AdminPageLocators:
     FIELD_STREET = (By.CSS_SELECTOR, ('#users-descriptions-1-street'))
     CHECKBOX_GET_NEWS = (By.CSS_SELECTOR, ('#users-descriptions-1-get_news'))
 
-    FIELD_WITH_ROLE_USER = (By.CSS_SELECTOR, ('[title="[#4] User"]'))  # поле с ролью "User"
-    ROLE_SUPER_ADMIN = (By.XPATH, ('//li[text()="[#1] SuperAdmin"]'))
+    FIELD_WITH_ROLE_USER = (By.CSS_SELECTOR, '[title="[#4] User"]')  # поле с ролью "User"
+    ROLE_SUPER_ADMIN = (By.XPATH, '//li[text()="[#1] SuperAdmin"]')
     # страница пользователя
 
     H1_VACANCIES = (By.CSS_SELECTOR, ('h1'))
