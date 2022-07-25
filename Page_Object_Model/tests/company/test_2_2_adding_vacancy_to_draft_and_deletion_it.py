@@ -56,3 +56,8 @@ class TestAddingVacancyToDraft:
         my_vacancies_page.opening_vacancy_menu()  # открытие меню вакансии
         my_vacancies_page.deletion_vacancy_draft()  # удаление черновика вакансии
         my_vacancies_page.checking_message_after_deleting_vacancy(language)  # проверка сообщения после удаления вакансии
+
+        admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin + '/vacancies')
+        admin_page.open()
+        admin_page.vacancy_search_by_job_title(TestData.job_title_vacancy_for_draft)  # поиск вакансии по названию должности
+        admin_page.checking_that_vacancy_status_is_deleted()  # проверка что статус вакансии 'Удалено'

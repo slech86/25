@@ -8,7 +8,7 @@ import requests
 
 
 class MyResumePage(BasePage):
-    def check_for_reducing_number_of_resumes_for_creations(self, expected_number_of_resumes_generated):  # проверка уменьшения количества резюме для создания
+    def checking_number_of_resumes_to_create(self, expected_number_of_resumes_generated):  # проверка количества резюме для создания
         text = self.browser.find_element(*MyResumePageLocators.TEXT_OF_NUMBER_OF_CREATED_RESUMES).text
         index = text.find(' ')
         actual_number_of_resumes_generated = int(text[index + 1])
@@ -21,16 +21,32 @@ class MyResumePage(BasePage):
         self.browser.find_element(*MyResumePageLocators.BUTTON_RESUME_MENU).click()
         time.sleep(0.3)
 
-    def go_to_resume_editing_page(self):  # переход на страницу редактирования резюме
+    def go_to_resume_editing_page(self, index):  # переход на страницу редактирования резюме
         locators_with_id_resume = MyResumePageLocators()
-        locator = locators_with_id_resume.assembly_of_locators_with_id_resume()  # сборка локатора с id резюме
-        self.browser.find_element(*locator).click()
+        locators = locators_with_id_resume.assembly_of_locators_with_id_resume(index)  # сборка локатора с id резюме
+        self.browser.find_element(*locators[0]).click()
 
     def checking_status_of_page_response_to_print_pdf(self):  # проверка статуса ответа страницы 'распечатать пдф'
         WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(MyResumePageLocators.BUTTON_PRINT)).click()
         self.browser.switch_to.window(self.browser.window_handles[2])
         response = requests.head(self.browser.current_url)
         assert response.status_code == 200, 'Статус ответа страницы не 200'
+
+    def deletion_resume_draft(self, index):  # удаление черновика резюме
+        locators_with_id_resume = MyResumePageLocators()
+        locators = locators_with_id_resume.assembly_of_locators_with_id_resume(index)  # сборка локатора с id резюме
+        self.browser.find_element(*locators[1]).click()
+        self.browser.find_element(*MyResumePageLocators.BUTTON_CONFIRMATION_DELETION_DRAFT_RESUME).click()
+
+    def checking_message_after_deleting_resume(self, language):  # проверка сообщения после удаления резюме
+        info_text = self.browser.find_element(*MyResumePageLocators.INFO_TEXT_AFTER_DELETING_DRAFT_RESUME).text
+        if language == "":
+            assert "Черновик удален." == info_text, 'Не верное сообщение'
+        elif language == "/ua":
+            assert "Чернетка видалена." == info_text, 'Не верное сообщение'
+        elif language == "/en":
+            assert "Draft deleted" == info_text, 'Не верное сообщение'
+        self.browser.find_element(*MyResumePageLocators.CROSS_IN_POP_UP_AFTER_DELETING_DRAFT_RESUME).click()
 
     def waiting_for_my_resumes_page_to_open(self, language):  # ожидание открытия страницы 'Мои резюме'
         if language == "":

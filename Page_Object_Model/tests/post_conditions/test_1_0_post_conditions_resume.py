@@ -32,7 +32,7 @@ class TestPostConditionsResume:
         admin_resumes_page.resume_search_by_job_title(TestData.job_title_resume_3)  # поиск резюме по названию должности
         admin_resumes_page.complete_objects_deletion()  # полное удаление резюме
 
-    def test_complete_deletion_of_draft_resume(self, browser):  # полное удаление черновика резюме
-        admin_resumes_page = AdminResumesPage(browser, browser.current_url)
-        admin_resumes_page.resume_search_by_job_title(TestData.job_title_resume_for_draft)  # поиск резюме по названию должности
-        admin_resumes_page.complete_objects_deletion()  # полное удаление резюме
+    # def test_complete_deletion_of_draft_resume(self, browser):  # полное удаление черновика резюме
+    #     admin_resumes_page = AdminResumesPage(browser, browser.current_url)
+    #     admin_resumes_page.resume_search_by_job_title(TestData.job_title_resume_for_draft)  # поиск резюме по названию должности
+    #     admin_resumes_page.complete_objects_deletion()  # полное удаление резюме

@@ -33,6 +33,10 @@ class AdminResumesPage(BasePage):
     def checking_that_resume_status_is_draft(self):  # проверка что статус резюме 'Черновик'
         status = self.browser.find_element(*AdminResumesPageLocators.RESUME_STATUS).text
         assert status == 'Черновик', f"Не верный статус, expected result: 'Черновик', actual result: '{status}'"
+
+    def checking_that_resume_status_is_deleted(self):  # проверка что статус резюме 'Удалено'
+        status = self.browser.find_element(*AdminResumesPageLocators.RESUME_STATUS).text
+        assert status == 'Удалено', f"Не верный статус, expected result: 'Удалено', actual result: '{status}'"
     # страница вакансий
 
     def go_to_object_editing_page(self):  # переход на страницу редактирования объекта

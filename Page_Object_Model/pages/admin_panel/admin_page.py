@@ -364,6 +364,10 @@ class AdminPage(BasePage):
     def checking_that_vacancy_status_is_draft(self):  # проверка что статус вакансии 'Черновик'
         status = self.browser.find_element(*AdminPageLocators.VACANCY_STATUS).text
         assert status == 'Черновик', f"Не верный статус, expected result: 'Черновик', actual result: '{status}'"
+
+    def checking_that_vacancy_status_is_deleted(self):  # проверка что статус вакансии 'Удалено'
+        status = self.browser.find_element(*AdminPageLocators.VACANCY_STATUS).text
+        assert status == 'Удалено', f"Не верный статус, expected result: 'Удалено', actual result: '{status}'"
     # страница вакансий
 
     def search_for_user_orders_by_email(self, language, key):  # поиск заказов пользователя по e-mail

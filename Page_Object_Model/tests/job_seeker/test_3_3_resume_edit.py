@@ -29,7 +29,7 @@ def test_editing_resume(browser, language):  # редактирование ре
 
     my_resume_page = MyResumePage(browser, browser.current_url)
     my_resume_page.opening_resume_menu()  # открытие меню резюме
-    my_resume_page.go_to_resume_editing_page()  # переход на страницу редактирования резюме
+    my_resume_page.go_to_resume_editing_page(0)  # переход на страницу редактирования резюме
 
     resume_edit_page = ResumeEditPage(browser, browser.current_url)
     resume_edit_page.change_data_in_all_fields()  # изменение данных во всех полях

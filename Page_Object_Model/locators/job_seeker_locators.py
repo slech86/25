@@ -88,19 +88,27 @@ class MyResumePageLocators:
     TEXT_OF_NUMBER_OF_CREATED_RESUMES = (By.CSS_SELECTOR, ('.page-title p'))
     BUTTON_ADD_RESUME = (By.CSS_SELECTOR, ('.btn-wrap > .btn.btn-blue'))
 
-    BUTTON_RESUME_MENU = (By.CSS_SELECTOR, ('.lc-card.my-cv-card:nth-child(1) .lc-card-bookmarks'))
-    BUTTON_PRINT = (By.XPATH, '//a[contains(@href, "/print")]')  # работает для первого резюме в списке
+    BUTTON_RESUME_MENU = (By.CSS_SELECTOR, ('.lc-card.my-cv-card:nth-child(1) .lc-card-bookmarks'))  # первый в списке
 
-    def assembly_of_locators_with_id_resume(self):  # сборка локаторов с id резюме
+    def assembly_of_locators_with_id_resume(self, index):  # сборка локаторов с id резюме
         singleton = Singleton()
-        button_edit = (By.XPATH, ('//a[contains(@href, "/resume/' + singleton.id_resume[0] + '/edit")]'))
-        return button_edit
+        button_edit = (By.XPATH, '//a[contains(@href, "/resume/' + singleton.id_resume[index] + '/edit")]')
+        button_delete = (By.CSS_SELECTOR, '.open-delete-modal[data-resume-id="' + singleton.id_resume[index] + '"]')
+        locators = [button_edit,
+                    button_delete]
+        return locators
+
+    BUTTON_PRINT = (By.XPATH, '//a[contains(@href, "/print")]')  # работает для первого резюме в списке
+    BUTTON_CONFIRMATION_DELETION_DRAFT_RESUME = (By.CSS_SELECTOR, ('[class="btn btn-blue btn-apply update-status"]'))
 
     INFO_TEXT_AFTER_CREATING_RESUME = (By.CSS_SELECTOR, ('#lc-popup-resume-new .text'))  # информационный текст после создания резюме
     CROSS_IN_POP_UP_AFTER_CREATING_RESUME = (By.CSS_SELECTOR, ('#lc-popup-resume-new .close'))  # крестик в pop-up окне после создания резюме
 
     INFO_TEXT_AFTER_ADDING_RESUME_TO_DRAFT = (By.CSS_SELECTOR, ('#lc-popup-resume-draft h2'))  # информационный текст после добавления вакансии в черновик
     CROSS_IN_POP_UP_AFTER_ADDING_RESUME_TO_DRAFT = (By.CSS_SELECTOR, ('#lc-popup-resume-draft .close'))  # крестик в pop-up окне после добавления вакансии в черновик
+
+    INFO_TEXT_AFTER_DELETING_DRAFT_RESUME = (By.CSS_SELECTOR, '#thanks-modal h2')  # информационный текст после удаления вакансии
+    CROSS_IN_POP_UP_AFTER_DELETING_DRAFT_RESUME = (By.CSS_SELECTOR, '#thanks-modal .close')  # крестик в pop-up окне после удаления вакансии
 
     INFO_TEXT_AFTER_SUBMITTING_RESUME_FOR_MODERATION = (By.CSS_SELECTOR, ('#lc-popup-resume-moderation .text'))  # информационный текст после отправки резюме на модерацию
     CROSS_IN_POP_UP_AFTER_SUBMITTING_RESUME_FOR_MODERATION = (By.CSS_SELECTOR, ('#lc-popup-resume-moderation .close'))  # крестик в pop-up окне после отправки резюме на модерацию

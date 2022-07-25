@@ -6,7 +6,6 @@ from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_resumes_page import AdminResumesPage
 from Page_Object_Model.pages.site.my_resume_page import MyResumePage
 from Page_Object_Model.pages.site.resume_add_page import ResumeAddPage
-from Page_Object_Model.pages.site.resume_page import ResumePage
 from Page_Object_Model.singleton import Singleton
 from Page_Object_Model.data_for_testing import TestData
 
@@ -40,7 +39,7 @@ class TestAddingResumeToDraft:
         my_resume_page.waiting_for_my_resumes_page_to_open(language)  # ожидание открытия страницы 'Мои резюме'
         my_resume_page.confirmation_of_opening_of_page_my_resumes(language)  # подтверждение открытия страницы 'Мои резюме'
         my_resume_page.checking_message_about_adding_resume_to_draft(language)  # проверка сообщения о добавлении резюме в черновик
-        my_resume_page.check_for_reducing_number_of_resumes_for_creations(4)  # проверка уменьшения количества резюме для создания
+        my_resume_page.checking_number_of_resumes_to_create(4)  # проверка уменьшения количества резюме для создания
 
         admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
         admin_page.open()
@@ -54,7 +53,15 @@ class TestAddingResumeToDraft:
         singleton.id_resume.append(admin_resumes_page.getting_resume_id())  # получение id резюме
         admin_resumes_page.checking_that_resume_status_is_draft()  # проверка что статус резюме 'Черновик'
 
-        # url_resume_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{singleton.id_resume[3]}"
-        # resume_page = ResumePage(browser, url_resume_page)
-        # resume_page.open()
-        # resume_page.checking_opening_of_page_of_an_unpublished_resume(language)  # проверка открытия страницы не опубликованного резюме
+        url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/my"
+        my_resume_page = MyResumePage(browser, url_page)
+        my_resume_page.open()
+        my_resume_page.opening_resume_menu()  # открытие меню резюме
+        my_resume_page.deletion_resume_draft(3)  # удаление черновика резюме
+        my_resume_page.checking_message_after_deleting_resume(language)  # проверка сообщения после удаления резюме
+        my_resume_page.checking_number_of_resumes_to_create(3)  # проверка количества резюме для создания
+
+        admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin + '/resume')
+        admin_page.open()
+        admin_resumes_page.resume_search_by_job_title(TestData.job_title_resume_for_draft)  # поиск резюме по названию должности
+        admin_resumes_page.checking_that_resume_status_is_deleted()  # проверка что статус резюме 'Удалено'
