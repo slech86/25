@@ -15,7 +15,6 @@ def test_checking_status_of_page_response_to_print_pdf(browser, language):  # п
     page = OllPage(browser, url_page)
     # browser.maximize_window()
     page.open()
-    browser.refresh()
     page.go_to_vacancies_page_through_header()  # переход на страницу вакансий через хедер
 
     vacancies_page = VacanciesPage(browser, browser.current_url)

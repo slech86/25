@@ -58,6 +58,11 @@ class CompanyRegistrationPage(BasePage):
 
         self.browser.execute_script("window.scrollBy(0, 1400);")
 
+    def go_to_preview_page(self):  # переход на страницу предпросмотра
+        self.browser.find_element(*CompanyRegistrationPageLocators.BUTTON_PREVIEW).click()
+        time.sleep(3)
+        self.browser.switch_to.window(self.browser.window_handles[1])
+
     def filling_in_optional_fields(self):  # заполнение не обязательных полей
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_SKYPE).send_keys(TestData.skype)
         # заполнение блока "Контактная информация"

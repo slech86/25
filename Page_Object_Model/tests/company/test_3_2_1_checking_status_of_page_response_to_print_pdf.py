@@ -7,13 +7,12 @@ from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPe
 from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
 
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 def test_checking_status_of_page_response_to_print_pdf(browser, language):  # проверка статуса ответа страницы 'распечатать пдф'
     url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_page)
     # browser.maximize_window()
     page.open()
-    browser.refresh()
     page.go_to_resume_page_through_header()  # переход на страницу всех резюме через хедер
 
     resumes_page = ResumesPage(browser, browser.current_url)

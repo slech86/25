@@ -16,13 +16,12 @@ from Page_Object_Model.data_for_testing import Accounts
 from Page_Object_Model.data_for_testing import TestData
 
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 def test_adding_vacancies(browser, language):  # добавление вакансии
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
     # browser.maximize_window()
     page.open()
-    browser.refresh()
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
     page.user_authorization(language, 1)  # авторизация пользователя
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя

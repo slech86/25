@@ -17,7 +17,6 @@ class TestBlockOfContactsOnResumePage:
         page = OllPage(browser, url_page)
         # browser.maximize_window()
         page.open()
-        browser.refresh()
         page.go_to_resume_page_through_header()  # переход на страницу всех резюме через хедер
 
         resumes_page = ResumesPage(browser, browser.current_url)
@@ -38,7 +37,6 @@ class TestBlockOfContactsOnResumePage:
         page = OllPage(browser, url_page)
         # browser.maximize_window()
         page.open()
-        browser.refresh()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
         page.user_authorization(language, 1)  # авторизация пользователя
         page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя

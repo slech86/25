@@ -79,17 +79,6 @@ class AdminPage(BasePage):
         self.browser.find_element(*AdminPageLocators.STATUS_USER_DELETE).click()
         time.sleep(1)
 
-    # def changing_user_status_to_deleted(self):  # изменение статуса пользователя на "Удалено"
-    #     self.browser.find_element(*AdminPageLocators.STATUS).click()
-    #     time.sleep(1)
-    #     self.browser.find_element(*AdminPageLocators.STATUS_DELETED).click()
-    #     time.sleep(1)
-    #     self.browser.find_element(*AdminPageLocators.STATUS_SAVING).click()
-    #     time.sleep(5)
-    #     self.browser.refresh()
-    #     status = self.browser.find_element(*AdminPageLocators.STATUS).text
-    #     assert status == 'Удалено', 'Статус не "Удалено"'
-
     def check_that_user_has_status_active(self):  # проверка что пользователь имеет статус "Активен"
         self.browser.refresh()
         status = self.browser.find_element(*AdminPageLocators.USER_STATUS).text

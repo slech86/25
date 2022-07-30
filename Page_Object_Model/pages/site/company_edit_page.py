@@ -70,7 +70,6 @@ class CompanyEditPage(BasePage):
         self.browser.execute_script(CompanyEditPageLocators.COMPANY_ACTIVITY)  # "Сфера деятельности компании" передается параметр уже с ".click()"
         self.browser.find_element(*CompanyEditPageLocators.NUMBER_OF_COMPANY_EMPLOYEES).click()  # Количество сотрудников компании
 
-
         iframe = self.browser.find_element(*CompanyEditPageLocators.IFRAME_CKEDITOR_COMPANY_DESCRIPTION)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
         CKEditor = self.browser.find_element(*CompanyEditPageLocators.CKEDITOR_COMPANY_DESCRIPTION)
@@ -104,6 +103,11 @@ class CompanyEditPage(BasePage):
         elif language == "/en":
             self.browser.find_element(*CompanyEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA).click()
         # редактирование блока "Настройки"
+
+    def go_to_preview_page(self):  # переход на страницу предпросмотра
+        self.browser.find_element(*CompanyEditPageLocators.BUTTON_PREVIEW).click()
+        time.sleep(3)
+        self.browser.switch_to.window(self.browser.window_handles[1])
 
     def submitting_form_for_moderation_after_changing_data(self):  # отправка формы на модерацию после изменения данных
         self.browser.find_element(*CompanyEditPageLocators.BUTTON_SUBMIT).click()

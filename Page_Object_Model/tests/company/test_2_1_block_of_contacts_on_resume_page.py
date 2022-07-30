@@ -1,3 +1,5 @@
+import time
+
 import pytest
 from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.resumes_page import ResumesPage
@@ -12,7 +14,6 @@ def test_block_of_contacts_on_resume_page(browser, language):  # блок кон
     page = OllPage(browser, url_page)
     # browser.maximize_window()
     page.open()
-    browser.refresh()
     page.go_to_resume_page_through_header()  # переход на страницу всех резюме через хедер
 
     resumes_page = ResumesPage(browser, browser.current_url)

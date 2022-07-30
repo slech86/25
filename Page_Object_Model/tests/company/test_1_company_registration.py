@@ -6,6 +6,8 @@ from Page_Object_Model.pages.email_page import EmailPage
 from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.data_for_testing import Accounts
+from Page_Object_Model.pages.site.company_preview_page import CompanyPreviewPage
+from Page_Object_Model.data_for_testing import TestData
 
 
 @pytest.mark.s_r_c
@@ -24,6 +26,11 @@ class TestCompanyRegistration:
 
         company_registration_page = CompanyRegistrationPage(browser, browser.current_url)
         company_registration_page.filling_in_required_fields(language, 1)  # заполнение обязательных полей
+        company_registration_page.go_to_preview_page()  # переход на страницу предпросмотра
+
+        company_preview_page = CompanyPreviewPage(browser, browser.current_url)
+        company_preview_page.checking_for_preview_page_to_open(TestData.company_name)  # проверка открытия страницы предпросмотра
+
         company_registration_page.filling_in_optional_fields()  # заполнение не обязательных полей
         company_registration_page.browser.execute_script("window.scrollBy(0, 1300);")
         company_registration_page.submitting_form_for_registration()  # отправка формы на регистрацию

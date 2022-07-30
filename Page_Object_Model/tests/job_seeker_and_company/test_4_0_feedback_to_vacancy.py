@@ -21,7 +21,6 @@ class TestResponseToVacancy:
         page = OllPage(browser, url_page)
         # browser.maximize_window()
         page.open()
-        browser.refresh()
         page.go_to_vacancies_page_through_header()  # переход на страницу вакансий через хедер
 
         vacancies_page = VacanciesPage(browser, browser.current_url)
@@ -53,7 +52,6 @@ class TestResponseToVacancy:
         page = OllPage(browser, url_page)
         # browser.maximize_window()
         page.open()
-        browser.refresh()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
         page.user_authorization(language, 1)  # авторизация пользователя
         page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя

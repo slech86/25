@@ -12,7 +12,6 @@ def test_checking_absence_of_block_of_contacts_with_an_authorized_applicant(brow
     page = OllPage(browser, url_page)
     # browser.maximize_window()
     page.open()
-    browser.refresh()
     page.go_to_resume_page_through_header()  # переход на страницу всех резюме через хедер
 
     resumes_page = ResumesPage(browser, browser.current_url)

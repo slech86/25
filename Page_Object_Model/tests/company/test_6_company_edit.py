@@ -3,15 +3,16 @@ from Page_Object_Model.сonfiguration import UrlStartPage
 from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.company_edit_page import CompanyEditPage
 from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
+from Page_Object_Model.pages.site.company_preview_page import CompanyPreviewPage
+from Page_Object_Model.data_for_testing import TestDataEditing
 
 
-# @pytest.mark.s_r_c
+@pytest.mark.s_r_c
 def test_changing_all_company_data(browser, language):  # изменение всех данных компании
     url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_page)
     # browser.maximize_window()
     page.open()
-    browser.refresh()
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
     page.user_authorization(language, 1)  # авторизация пользователя
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
@@ -22,6 +23,11 @@ def test_changing_all_company_data(browser, language):  # изменение в�
 
     company_edit_page = CompanyEditPage(browser, browser.current_url)
     company_edit_page.change_data_in_all_fields(language)  # изменение данных во всех полях
+    company_edit_page.go_to_preview_page()  # переход на страницу предпросмотра
+
+    company_preview_page = CompanyPreviewPage(browser, browser.current_url)
+    company_preview_page.checking_for_preview_page_to_open(TestDataEditing.company_name)  # проверка открытия страницы предпросмотра
+
     company_edit_page.submitting_form_for_moderation_after_changing_data()  # отправка формы на модерацию после изменения данных
     company_edit_page.checking_message_after_saving_changes_to_personal_information(language)  # проверка сообщения после сохранения изменений личной информации
 
