@@ -14,9 +14,11 @@ from Page_Object_Model.pages.site.services_and_prices_page import ServicesAndPri
 from Page_Object_Model.singleton import Singleton
 from Page_Object_Model.data_for_testing import Accounts
 from Page_Object_Model.data_for_testing import TestData
+from Page_Object_Model.pages.site.vacancy_preview_page import VacancyPreviewPage
 
 
-# @pytest.mark.s_r_c
+
+@pytest.mark.s_r_c
 def test_adding_vacancies(browser, language):  # добавление вакансии
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -35,6 +37,11 @@ def test_adding_vacancies(browser, language):  # добавление вакан
 
     add_vacancy_page = VacancyAddPage(browser, browser.current_url)
     add_vacancy_page.filling_in_required_fields()  # заполнение обязательных полей
+    add_vacancy_page.go_to_preview_page()  # переход на страницу предпросмотра
+
+    vacancy_preview_page = VacancyPreviewPage(browser, browser.current_url)
+    vacancy_preview_page.checking_for_preview_page_to_open(TestData.job_title_vacancy)  # проверка открытия страницы предпросмотра
+
     browser.execute_script("window.scrollBy(0, -300);")
     add_vacancy_page.filling_in_optional_fields()  # заполнение не обязательных полей
     add_vacancy_page.submitting_vacancy_for_publication()  # отправка вакансии на публикацию

@@ -1,6 +1,5 @@
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.company_locators import CompanyPreviewPageLocators
-from Page_Object_Model.data_for_testing import TestData
 
 
 class CompanyPreviewPage(BasePage):

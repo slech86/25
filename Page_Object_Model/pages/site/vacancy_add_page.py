@@ -23,6 +23,11 @@ class VacancyAddPage(BasePage):
         self.browser.find_element(*VacancyAddPageLocators.WORK_EXPERIENCE_1_YEAR).click()
         # блок 'Основная информация'
 
+    def go_to_preview_page(self):  # переход на страницу предпросмотра
+        self.browser.find_element(*VacancyAddPageLocators.BUTTON_PREVIEW).click()
+        time.sleep(1)
+        self.browser.switch_to.window(self.browser.window_handles[1])
+
     def filling_in_optional_fields(self):  # заполнение не обязательных полей
         self.browser.find_element(*VacancyAddPageLocators.DROPDOWN_COUNTRY).click()
 

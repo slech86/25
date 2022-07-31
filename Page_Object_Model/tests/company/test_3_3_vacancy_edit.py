@@ -6,9 +6,11 @@ from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
 from Page_Object_Model.pages.site.vacancy_edit_page import VacancyEditPage
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_vacancy_edit_page import AdminVacancyEditPage
+from Page_Object_Model.data_for_testing import TestDataEditing
+from Page_Object_Model.pages.site.vacancy_preview_page import VacancyPreviewPage
 
 
-# @pytest.mark.s_r_c
+@pytest.mark.s_r_c
 def test_editing_vacancies(browser, language):  # редактирование вакансии
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
@@ -28,6 +30,11 @@ def test_editing_vacancies(browser, language):  # редактирование �
 
     vacancy_edit_page = VacancyEditPage(browser, browser.current_url)
     vacancy_edit_page.change_data_in_all_fields()  # изменение данных во всех полях
+    vacancy_edit_page.go_to_preview_page()  # переход на страницу предпросмотра
+
+    vacancy_preview_page = VacancyPreviewPage(browser, browser.current_url)
+    vacancy_preview_page.checking_for_preview_page_to_open(TestDataEditing.job_title_vacancy)  # проверка открытия страницы предпросмотра
+
     vacancy_edit_page.submitting_vacancy_change_for_publication()  # отправка изменений вакансии на публикацию
     my_vacancies_page.waiting_for_my_vacancies_page_to_open(language)  # ожидание открытия страницы 'Мои вакансии'
     my_vacancies_page.confirmation_of_opening_of_page_my_vacancies(language)  # подтверждение открытия страницы 'Мои вакансии'

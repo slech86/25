@@ -115,5 +115,10 @@ class VacancyEditPage(BasePage):
 
         self.browser.execute_script("window.scrollBy(0, 600);")
 
+    def go_to_preview_page(self):  # переход на страницу предпросмотра
+        self.browser.find_element(*VacancyEditPageLocators.BUTTON_PREVIEW).click()
+        time.sleep(1)
+        self.browser.switch_to.window(self.browser.window_handles[1])
+
     def submitting_vacancy_change_for_publication(self):  # отправка изменений вакансии на публикацию
         self.browser.find_element(*VacancyEditPageLocators.BUTTON_PUBLISH).click()
