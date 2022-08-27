@@ -115,9 +115,6 @@ class MyResumePageLocators:
 
 
 class ResumeAddEditPageLocators:
-
-
-class ResumeAddPageLocators:
     id_language = '1'
     input_prefix = 'resumenew-descriptions-' + id_language + '-'
 
@@ -145,7 +142,7 @@ class ResumeAddPageLocators:
 
     def assembly_of_locators_with_position_country(self):  # сборка локаторов с позицией страны
         singleton = Singleton()
-        country_ukraine = (By.CSS_SELECTOR, ('.field-' + ResumeAddPageLocators.input_prefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
+        country_ukraine = (By.CSS_SELECTOR, ('.field-' + ResumeAddEditPageLocators.input_prefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
         return country_ukraine
 
     DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'city_id"]'))
@@ -153,7 +150,7 @@ class ResumeAddPageLocators:
 
     def assembly_of_locators_with_position_city(self):  # сборка локаторов с позицией города
         singleton = Singleton()
-        city_odessa = (By.CSS_SELECTOR, ('.field-' + ResumeAddPageLocators.input_prefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
+        city_odessa = (By.CSS_SELECTOR, ('.field-' + ResumeAddEditPageLocators.input_prefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
         return city_odessa
 
     DROPDOWN_WILLING_TO_RELOCATE = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'willing_relocate"]'))
@@ -211,7 +208,7 @@ class ResumeAddPageLocators:
     DROPDOWN_MONTH_WORK_EXPERIENCE_FINISH = (By.CSS_SELECTOR, '[data-id="resumenew-workexperiencenew-' + id_language + '-0-period_end_m"]')
     MONTH_MARCH_WORK_EXPERIENCE_FINISH = (By.XPATH, '//div[contains(@class, "field-resumenew-workexperiencenew-' + id_language + '-0-period_end_m required")]//li[5]/a')
     DROPDOWN_YEAR_WORK_EXPERIENCE_FINISH = (By.CSS_SELECTOR, '[data-id="resumenew-workexperiencenew-' + id_language + '-0-period_end_y"]')
-    YEAR_WORK_EXPERIENCE_FINISH = (By.XPATH, '//div[contains(@class, "field-resumenew-workexperiencenew-' + id_language + '-0-period_end_y required")]//li[4]/a')
+    YEAR_WORK_EXPERIENCE_FINISH_2020 = (By.XPATH, '//div[contains(@class, "field-resumenew-workexperiencenew-' + id_language + '-0-period_end_y required")]//li[4]/a')
 
     IFRAME_CKEDITOR_RESPONSIBILITIES_AND_ACHIEVEMENTS = (By.CSS_SELECTOR, '#cke_resumenew-workexperiencenew-' + id_language + '-0-responsibilities iframe')
 
@@ -225,7 +222,7 @@ class ResumeAddPageLocators:
     DROPDOWN_MONTH_WORK_EXPERIENCE_START_2 = (By.CSS_SELECTOR, ('[data-id="resumenew-workexperiencenew-' + id_language + '-1-period_start_m"]'))
     MONTH_APRIL_WORK_EXPERIENCE_START_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-workexperiencenew-' + id_language + '-1-period_start_m required")]//li[5]/a'))
     DROPDOWN_YEAR_WORK_EXPERIENCE_START_2 = (By.CSS_SELECTOR, ('[data-id="resumenew-workexperiencenew-' + id_language + '-1-period_start_y"]'))
-    YEAR_WORK_EXPERIENCE_START_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-workexperiencenew-' + id_language + '-1-period_start_y required")]//li[4]/a'))
+    YEAR_WORK_EXPERIENCE_START_2020_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-workexperiencenew-' + id_language + '-1-period_start_y required")]//li[4]/a'))
 
     DROPDOWN_MONTH_WORK_EXPERIENCE_FINISH_2 = (By.CSS_SELECTOR, ('[data-id="resumenew-workexperiencenew-' + id_language + '-1-period_end_m"]'))
     WORKING_NOW_WORK_EXPERIENCE_FINISH_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-workexperiencenew-' + id_language + '-1-period_end_m required")]//li[2]/a'))
@@ -250,7 +247,7 @@ class ResumeAddPageLocators:
     def assembly_of_locators_with_position_country_education(self):  # сборка локаторов с позицией страны
         singleton = Singleton()
         position_object = int(singleton.position_object) + 1
-        country_ukraine_education = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + ResumeAddPageLocators.id_language + '-0-country_id")]//li[' + str(position_object) + ']/a'))
+        country_ukraine_education = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + ResumeAddEditPageLocators.id_language + '-0-country_id")]//li[' + str(position_object) + ']/a'))
         return country_ukraine_education
 
     DROPDOWN_CITI_EDUCATION = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-0-city_id"]')
@@ -259,7 +256,7 @@ class ResumeAddPageLocators:
     def assembly_of_locators_with_position_city_education(self):  # сборка локаторов с позицией города
         singleton = Singleton()
         position_object = int(singleton.position_object) + 1
-        city_kharkov_education = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + ResumeAddPageLocators.id_language + '-0-city_id")]//li[' + str(position_object) + ']/a'))
+        city_kharkov_education = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + ResumeAddEditPageLocators.id_language + '-0-city_id")]//li[' + str(position_object) + ']/a'))
         return city_kharkov_education
 
     FIELD_DEPARTMENT_AND_SPECIALITY = (By.CSS_SELECTOR, ('#resumenew-educationsnew-' + id_language + '-0-specialty'))
@@ -267,12 +264,12 @@ class ResumeAddPageLocators:
     DROPDOWN_MONTH_EDUCATION_START = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-0-period_start_m"]')
     MONTH_SEPTEMBER_EDUCATION_START = (By.XPATH, '//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-0-period_start_m")]//li[10]/a')
     DROPDOWN_YEAR_EDUCATION_START = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-0-period_start_y"]')
-    YEAR_EDUCATION_START = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-0-period_start_y")]//li[14]/a'))
+    YEAR_EDUCATION_START_2010 = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-0-period_start_y")]//li[14]/a'))
 
     DROPDOWN_MONTH_EDUCATION_FINISH = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-0-period_end_m"]')
     MONTH_MAY_EDUCATION_FINISH = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-0-period_end_m")]//li[7]/a'))
     DROPDOWN_YEAR_EDUCATION_FINISH = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-0-period_end_y"]')
-    YEAR_EDUCATION_FINISH = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-0-period_end_y")]//li[9]/a'))
+    YEAR_EDUCATION_FINISH_2015 = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-0-period_end_y")]//li[9]/a'))
 
     BUTTON_ADD_EDUCATION_2 = (By.XPATH, ('(//div[@id="content-' + id_language + '"]//div[@id="education"]//button[contains(@class, "js-add-more")])[1]'))
 
@@ -286,7 +283,7 @@ class ResumeAddPageLocators:
     def assembly_of_locators_with_position_country_education_2(self):  # сборка локаторов с позицией страны
         singleton = Singleton()
         position_object = int(singleton.position_object) + 1
-        country_belarus_education = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + ResumeAddPageLocators.id_language + '-1-country_id")]//li[' + str(position_object) + ']/a'))
+        country_belarus_education = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + ResumeAddEditPageLocators.id_language + '-1-country_id")]//li[' + str(position_object) + ']/a'))
         return country_belarus_education
 
     DROPDOWN_CITI_EDUCATION_2 = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-1-city_id"]')
@@ -295,7 +292,7 @@ class ResumeAddPageLocators:
     def assembly_of_locators_with_position_city_education_2(self):  # сборка локаторов с позицией города
         singleton = Singleton()
         position_object = int(singleton.position_object) + 1
-        city_minsk_education = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + ResumeAddPageLocators.id_language + '-1-city_id")]//li[' + str(position_object) + ']/a'))
+        city_minsk_education = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + ResumeAddEditPageLocators.id_language + '-1-city_id")]//li[' + str(position_object) + ']/a'))
         return city_minsk_education
 
     FIELD_DEPARTMENT_AND_SPECIALITY_2 = (By.CSS_SELECTOR, ('#resumenew-educationsnew-' + id_language + '-1-specialty'))
@@ -303,25 +300,26 @@ class ResumeAddPageLocators:
     DROPDOWN_MONTH_EDUCATION_START_2 = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-1-period_start_m"]')
     MONTH_NOVEMBER_EDUCATION_START_2 = (By.XPATH, '//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-1-period_start_m")]//li[12]/a')
     DROPDOWN_YEAR_EDUCATION_START_2 = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-1-period_start_y"]')
-    YEAR_EDUCATION_START_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-1-period_start_y")]//li[6]/a'))
+    YEAR_EDUCATION_START_2018_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-1-period_start_y")]//li[6]/a'))
 
     DROPDOWN_MONTH_EDUCATION_FINISH_2 = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-1-period_end_m"]')
     MONTH_JANUARY_EDUCATION_FINISH_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-1-period_end_m")]//li[3]/a'))
     DROPDOWN_YEAR_EDUCATION_FINISH_2 = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-1-period_end_y"]')
-    YEAR_EDUCATION_FINISH_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-1-period_end_y")]//li[4]/a'))
+    YEAR_EDUCATION_FINISH_2020_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-1-period_end_y")]//li[4]/a'))
     # блок "Образование"
 
+    # блок "Курсы и сертификаты"
     FIELD_NAME_OF_INSTITUTION_OR_CERTIFICATE = (By.CSS_SELECTOR, ('#resumenew-coursesnew-' + id_language + '-0-name_certificate'))
 
     DROPDOWN_MONTH_COURSES_START = (By.CSS_SELECTOR, '[data-id="resumenew-coursesnew-' + id_language + '-0-period_start_m"]')
     MONTH_JUNE_COURSES_START = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-0-period_start_m")]//li[7]/a'))
     DROPDOWN_YEAR_COURSES_START = (By.CSS_SELECTOR, ('[data-id="resumenew-coursesnew-' + id_language + '-0-period_start_y"]'))
-    YEAR_COURSES_START = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-0-period_start_y")]//li[4]/a'))
+    YEAR_COURSES_START_2020 = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-0-period_start_y")]//li[4]/a'))
 
     DROPDOWN_MONTH_COURSES_FINISH = (By.CSS_SELECTOR, '[data-id="resumenew-coursesnew-' + id_language + '-0-period_end_m"]')
     MONTH_JUNE_COURSES_FINISH = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-0-period_end_m")]//li[8]/a'))
     DROPDOWN_YEAR_COURSES_FINISH = (By.CSS_SELECTOR, '[data-id="resumenew-coursesnew-' + id_language + '-0-period_end_y"]')
-    YEAR_COURSES_FINISH = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-0-period_end_y")]//li[3]/a'))
+    YEAR_COURSES_FINISH_2021 = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-0-period_end_y")]//li[3]/a'))
 
     IFRAME_CKEDITOR_COURSE_DESCRIPTION = (By.XPATH, ('//div[@id="cke_resumenew-coursesnew-' + id_language + '-0-description"]//iframe'))
 
@@ -332,12 +330,12 @@ class ResumeAddPageLocators:
     DROPDOWN_MONTH_COURSES_START_2 = (By.CSS_SELECTOR, '[data-id="resumenew-coursesnew-' + id_language + '-1-period_start_m"]')
     MONTH_OCTOBER_COURSES_START_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-1-period_start_m")]//li[11]/a'))
     DROPDOWN_YEAR_COURSES_START_2 = (By.CSS_SELECTOR, ('[data-id="resumenew-coursesnew-' + id_language + '-1-period_start_y"]'))
-    YEAR_COURSES_START_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-1-period_start_y")]//li[10]/a'))
+    YEAR_COURSES_START_2014_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-1-period_start_y")]//li[10]/a'))
 
     DROPDOWN_MONTH_COURSES_FINISH_2 = (By.CSS_SELECTOR, '[data-id="resumenew-coursesnew-' + id_language + '-1-period_end_m"]')
     MONTH_OCTOBER_COURSES_FINISH_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-1-period_end_m")]//li[12]/a'))
     DROPDOWN_YEAR_COURSES_FINISH_2 = (By.CSS_SELECTOR, '[data-id="resumenew-coursesnew-' + id_language + '-1-period_end_y"]')
-    YEAR_COURSES_FINISH_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-1-period_end_y")]//li[9]/a'))
+    YEAR_COURSES_FINISH_2015_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-1-period_end_y")]//li[9]/a'))
 
     IFRAME_CKEDITOR_COURSE_DESCRIPTION_2 = (By.XPATH, ('//div[@id="cke_resumenew-coursesnew-' + id_language + '-1-description"]//iframe'))
     # блок "Курсы и сертификаты"
@@ -375,71 +373,71 @@ class ResumeAddPageLocators:
     BUTTON_TO_DRAFTS = (By.CSS_SELECTOR, ('#draft-button'))
 
 
-class ResumeEditPageLocators():
-    inputPrefix = 'resumeeditform-'
+class ResumeAddEditPageLocators():
+    input_prefix = 'resumeeditform-'
 
     BUTTON_EDIT_IN_PERSONAL_INFORMATION_BLOCK = (By.CSS_SELECTOR, ('#personal-information .post-resume-title + .btn-edit'))
-    FIELD_PHOTO = (By.CSS_SELECTOR, ('#' + inputPrefix + 'photo'))
-    FIELD_NAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'name'))
-    FIELD_SURNAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'surname'))
+    FIELD_PHOTO = (By.CSS_SELECTOR, ('#' + input_prefix + 'photo'))
+    FIELD_NAME = (By.CSS_SELECTOR, ('#' + input_prefix + 'name'))
+    FIELD_SURNAME = (By.CSS_SELECTOR, ('#' + input_prefix + 'surname'))
 
-    DROPDOWN_YEAR = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'birthdayy"]'))
-    YEAR_OF_BIRTH = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'birthdayy [data-original-index="26"]'))
-    DROPDOWN_MONTH = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'birthdaym"]'))
-    MONTH_MARCH = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'birthdaym [data-original-index="3"]'))
-    DROPDOWN_DAY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'birthdayd"]'))
-    DAY_8 = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'birthdayd [data-original-index="8"]'))
+    DROPDOWN_YEAR = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'birthdayy"]'))
+    YEAR_OF_BIRTH_1976 = (By.CSS_SELECTOR, ('.field-' + input_prefix + 'birthdayy [data-original-index="26"]'))
+    DROPDOWN_MONTH = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'birthdaym"]'))
+    MONTH_MARCH = (By.CSS_SELECTOR, ('.field-' + input_prefix + 'birthdaym [data-original-index="3"]'))
+    DROPDOWN_DAY = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'birthdayd"]'))
+    DAY_8 = (By.CSS_SELECTOR, ('.field-' + input_prefix + 'birthdayd [data-original-index="8"]'))
 
-    FIELD_GENDER_MALE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'gender [value="1"] + .radio-custom'))
+    FIELD_GENDER_MALE = (By.CSS_SELECTOR, ('#' + input_prefix + 'gender [value="1"] + .radio-custom'))
 
-    DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'country_id"]'))
-    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option'))
+    DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'country_id"]'))
+    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + input_prefix + 'country_id > option'))
 
     def assembly_of_locators_with_position_country(self):  # сборка локаторов с позицией страны
         singleton = Singleton()
-        country_poland = (By.CSS_SELECTOR, ('.field-' + ResumeEditPageLocators.inputPrefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
+        country_poland = (By.CSS_SELECTOR, ('.field-' + ResumeAddEditPageLocators.input_prefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
         return country_poland
 
-    DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'city_id"]'))
-    CITY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option'))
+    DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'city_id"]'))
+    CITY_LIST = (By.CSS_SELECTOR, ('#' + input_prefix + 'city_id > option'))
 
     def assembly_of_locators_with_position_city(self):  # сборка локаторов с позицией города
         singleton = Singleton()
-        city_poznan = (By.CSS_SELECTOR, ('.field-' + ResumeEditPageLocators.inputPrefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
+        city_poznan = (By.CSS_SELECTOR, ('.field-' + ResumeAddEditPageLocators.input_prefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
         return city_poznan
 
-    DROPDOWN_WILLING_TO_RELOCATE = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'willing_relocate"]'))
-    READY_TO_RELOCATE = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'willing_relocate [data-original-index="1"]'))
+    DROPDOWN_WILLING_TO_RELOCATE = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'willing_relocate"]'))
+    READY_TO_RELOCATE = (By.CSS_SELECTOR, ('.field-' + input_prefix + 'willing_relocate [data-original-index="1"]'))
     # блок "Личная информация"
 
     BUTTON_EDIT_IN_CONTACT_INFORMATION_BLOCK = (By.CSS_SELECTOR, ('#contact-information .post-resume-title + .btn-edit'))
-    FIELD_PHONE_1 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'phone'))
+    FIELD_PHONE_1 = (By.CSS_SELECTOR, ('#' + input_prefix + 'phone'))
     FIELD_PHONE_2 = (By.CSS_SELECTOR, ('#resume-phone-add1'))
 
-    FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'email'))
-    FIELD_SKYPE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'skype'))
-    FIELD_PORTFOLIO = (By.CSS_SELECTOR, ('#' + inputPrefix + 'portfolio'))
+    FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + input_prefix + 'email'))
+    FIELD_SKYPE = (By.CSS_SELECTOR, ('#' + input_prefix + 'skype'))
+    FIELD_PORTFOLIO = (By.CSS_SELECTOR, ('#' + input_prefix + 'portfolio'))
 
-    FIELD_FACEBOOK = (By.CSS_SELECTOR, ('#' + inputPrefix + 'facebook'))
-    FIELD_LINKEDIN = (By.CSS_SELECTOR, ('#' + inputPrefix + 'linkedin'))
-    FIELD_INSTAGRAM = (By.CSS_SELECTOR, ('#' + inputPrefix + 'instagram'))
-    FIELD_TELEGRAM = (By.CSS_SELECTOR, ('#' + inputPrefix + 'telegram'))
-    FIELD_TWITTER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'twitter'))
-    FIELD_VK = (By.CSS_SELECTOR, ('#' + inputPrefix + 'vk'))
+    FIELD_FACEBOOK = (By.CSS_SELECTOR, ('#' + input_prefix + 'facebook'))
+    FIELD_LINKEDIN = (By.CSS_SELECTOR, ('#' + input_prefix + 'linkedin'))
+    FIELD_INSTAGRAM = (By.CSS_SELECTOR, ('#' + input_prefix + 'instagram'))
+    FIELD_TELEGRAM = (By.CSS_SELECTOR, ('#' + input_prefix + 'telegram'))
+    FIELD_TWITTER = (By.CSS_SELECTOR, ('#' + input_prefix + 'twitter'))
+    FIELD_VK = (By.CSS_SELECTOR, ('#' + input_prefix + 'vk'))
     # блок "Контактная информация"
 
     BUTTON_EDIT_IN_POSITION_DESIRED_BLOCK = (By.CSS_SELECTOR, ('#desired-job-title .post-resume-title + .btn-edit'))
-    FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'job_title'))
+    FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + input_prefix + 'job_title'))
     CATEGORY_RESUME = "document.getElementsByName('ResumeEditForm[category_id][]')[13].click()"
     SUBCATEGORIES = (By.CSS_SELECTOR, ('[for="subcategories_id-168"]'))
-    UNDEREMPLOYMENT = (By.CSS_SELECTOR, ('#' + inputPrefix + 'employment > .checkbox:nth-child(2) > label'))  # Неполная занятость
-    SALARY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'salary'))
-    DROPDOWN_CURRENCY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'currency"]'))
-    CURRENCY_USD = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'currency [data-original-index="2"]'))
+    UNDEREMPLOYMENT = (By.CSS_SELECTOR, ('#' + input_prefix + 'employment > .checkbox:nth-child(2) > label'))  # Неполная занятость
+    SALARY = (By.CSS_SELECTOR, ('#' + input_prefix + 'salary'))
+    DROPDOWN_CURRENCY = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'currency"]'))
+    CURRENCY_USD = (By.CSS_SELECTOR, ('.field-' + input_prefix + 'currency [data-original-index="2"]'))
     # блок "Желаемая должность"
 
     BUTTON_EDIT_IN_SKILLS_AND_ACHIEVEMENTS_BLOCK = (By.CSS_SELECTOR, ('#skills-and-achievements .post-resume-title + .right .btn-edit'))
-    IFRAME_CKEDITOR_SKILLS_AND_ACHIEVEMENTS = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'skills iframe'))
+    IFRAME_CKEDITOR_SKILLS_AND_ACHIEVEMENTS = (By.CSS_SELECTOR, ('#cke_' + input_prefix + 'skills iframe'))
     # блок "Навыки и достижения"
 
     BUTTON_EDIT_IN_WORK_EXPERIENCE_BLOCK = (By.CSS_SELECTOR, ('#work-experience .post-resume-title + .btn-edit'))
@@ -497,8 +495,8 @@ class ResumeEditPageLocators():
     IFRAME_CKEDITOR_RESPONSIBILITIES_AND_ACHIEVEMENTS_3 = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][3]//form[contains(@id, "work-experience-form")]/div[6]//iframe'))
     # блок "Опыт работы"
 
-    DROPDOWN_WORK_EXPERIENCE_GAMBLING_INDUSTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'gambling_experience"]'))
-    EXPERIENCE_2_TO_5_YEARS = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'gambling_experience [data-original-index="4"]'))
+    DROPDOWN_WORK_EXPERIENCE_GAMBLING_INDUSTRY = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'gambling_experience"]'))
+    EXPERIENCE_2_TO_5_YEARS = (By.CSS_SELECTOR, ('.field-' + input_prefix + 'gambling_experience [data-original-index="4"]'))
     # блок "Опыт работы в игорной идустрии"
 
     BUTTON_EDIT_IN_EDUCATION_BLOCK = (By.CSS_SELECTOR, ('#education .post-resume-title + .close-form-card-top-btn-wrap > .btn-edit'))
@@ -659,15 +657,15 @@ class ResumeEditPageLocators():
     MIDDLE_LEVEL_3 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(5) .field-languageaddform-level [data-original-index="3"]'))
     # блок "Знание языков"
 
-    I_HAVE_DISABILITY = (By.CSS_SELECTOR, ('#disability #' + inputPrefix + 'disability > label:nth-child(2)'))
+    I_HAVE_DISABILITY = (By.CSS_SELECTOR, ('#disability #' + input_prefix + 'disability > label:nth-child(2)'))
     FIELD_DESCRIPTION_OF_DISABILITY = (By.CSS_SELECTOR, ('#is-disability'))
     # блок "Инвалидность"
 
     BUTTON_EDIT_IN_ADDITIONAL_INFORMATION_BLOCK = (By.CSS_SELECTOR, ('#additional-information .post-resume-title + .right .btn-edit'))
-    IFRAME_CKEDITOR_ADDITIONAL_INFORMATION = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'additionally_information iframe'))
+    IFRAME_CKEDITOR_ADDITIONAL_INFORMATION = (By.CSS_SELECTOR, ('#cke_' + input_prefix + 'additionally_information iframe'))
     # блок "Дополнительная информация"
 
-    DROPDOWN_JOB_SEARCH_STATUS = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'job_search_status"]'))
+    DROPDOWN_JOB_SEARCH_STATUS = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'job_search_status"]'))
     WORKING_BUT_OPEN_TO_SUGGESTIONS = (By.CSS_SELECTOR, ('#resume-visibility-settings li[data-original-index="1"] > a'))
     # блок "Статус поиска работы"
 
