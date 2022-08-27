@@ -34,6 +34,7 @@ class CompanyRegistrationPage(BasePage):
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_NAME).send_keys(TestData.name)
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_SURNAME).send_keys(TestData.surname)
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_POSITION).send_keys(TestData.position)
+        self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_PHONE).clear()
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_PHONE).send_keys(TestData.phone)
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_CONTACT_EMAIL).send_keys(TestData.contact_email)
         # заполнение блока "Контактная информация"

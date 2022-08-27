@@ -32,15 +32,15 @@ class TestResumeAdd:
         job_seeker_personal_cabinet_page.go_to_my_resume_page()  # переход на страницу "Мои резюме"
 
         my_resume_page = MyResumePage(browser, browser.current_url)
-        my_resume_page.checking_number_of_resumes_to_create(0)  # проверка уменьшения количества резюме для создания
+        my_resume_page.checking_number_of_resumes_to_create(0)  # проверка количества резюме для создания
         my_resume_page.go_to_add_resume_page()  # переход на страницу "Разместить резюме"
 
         add_resume_page = ResumeAddPage(browser, browser.current_url)
         add_resume_page.filling_in_required_fields(TestData.job_title_resume)  # заполнение обязательных полей
         browser.execute_script("window.scrollBy(0, -4000);")
         add_resume_page.filling_in_optional_fields()  # заполнение не обязательных полей
-        add_resume_page.percentage_check_of_resume_completion()  # проверка заполнения резюме в процентах
-        add_resume_page.checking_status_level_filling_resume(language)  # проверка статуса уровня заполнения резюме
+        # add_resume_page.percentage_check_of_resume_completion()  # проверка заполнения резюме в процентах
+        # add_resume_page.checking_status_level_filling_resume(language)  # проверка статуса уровня заполнения резюме
         add_resume_page.submitting_resume_for_publication()  # отправка резюме на публикацию
 
         my_resume_page.waiting_for_my_resumes_page_to_open(language)  # ожидание открытия страницы 'Мои резюме'

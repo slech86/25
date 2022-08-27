@@ -13,16 +13,18 @@ class ResumeAddPage(BasePage):
         self.browser.find_element(*ResumeAddPageLocators.FIELD_JOB_TITLE).send_keys(TestData.job_title_resume_for_draft)
 
     def filling_in_required_fields(self, job_title):  # заполнение обязательных полей
+        self.browser.find_element(*ResumeAddPageLocators.TAB).click()
         self.browser.find_element(*ResumeAddPageLocators.FIELD_NAME).send_keys(TestData.name_resume)
         self.browser.find_element(*ResumeAddPageLocators.FIELD_SURNAME).send_keys(TestData.surname_resume)
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_YEAR).click()
-        self.browser.find_element(*ResumeAddPageLocators.YEAR_OF_BIRTH).click()
+
+        self.browser.find_element(*ResumeAddPageLocators.YEAR_OF_BIRTH_1981).click()
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_MONTH).click()
         self.browser.find_element(*ResumeAddPageLocators.MONTH_SEPTEMBER).click()
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_DAY).click()
         self.browser.find_element(*ResumeAddPageLocators.DAY_5).click()
 
-        self.browser.find_element(*ResumeAddPageLocators.FIELD_GENDER).click()
+        self.browser.find_element(*ResumeAddPageLocators.FIELD_GENDER_FEMALE).click()
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_COUNTRY).click()
 
         country_list = self.browser.find_elements(*ResumeAddPageLocators.COUNTRY_LIST)
@@ -46,12 +48,13 @@ class ResumeAddPage(BasePage):
         WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element_attribute(ResumeAddPageLocators.DROPDOWN_CITI, 'aria-expanded', 'false'))
         # блок "Личная информация"
 
+        self.browser.find_element(*ResumeAddPageLocators.FIELD_PHONE_1).clear()
         self.browser.find_element(*ResumeAddPageLocators.FIELD_PHONE_1).send_keys(TestData.phone_1_resume)
         self.browser.find_element(*ResumeAddPageLocators.FIELD_EMAIL).send_keys(TestData.email_resume)
         # блок "Контактная информация"
 
         self.browser.find_element(*ResumeAddPageLocators.FIELD_JOB_TITLE).send_keys(job_title)
-        self.browser.execute_script(ResumeAddPageLocators.CATEGORY_RESUME)  # "Категория размещения вакансии" передается параметр уже с ".click()"
+        self.browser.find_element(*ResumeAddPageLocators.CATEGORY_RESUME).click()
         self.browser.find_element(*ResumeAddPageLocators.SUBCATEGORIES).click()  # "Подкатегории"
         # блок "Желаемая должность"
 
@@ -99,7 +102,10 @@ class ResumeAddPage(BasePage):
         self.browser.find_element(*ResumeAddPageLocators.CURRENCY_UAH).click()
         # блок "Желаемая должность"
 
-        self.browser.find_element(*ResumeAddPageLocators.BUTTON_ADD_SKILLS).click()
+        locators_from_id_block = ResumeAddPageLocators()
+        button_add_skills = locators_from_id_block.assembly_of_locators_from_id_block('skills-and-achievements')
+        self.browser.find_element(*button_add_skills['button_add_block']).click()
+
         iframe = self.browser.find_element(*ResumeAddPageLocators.IFRAME_CKEDITOR_SKILLS_AND_ACHIEVEMENTS)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
         CKEditor = self.browser.find_element(*ResumeAddPageLocators.CKEDITOR)
@@ -107,7 +113,10 @@ class ResumeAddPage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
         # блок "Навыки и достижения"
 
-        self.browser.find_element(*ResumeAddPageLocators.BUTTON_ADD_WORK_EXPERIENCE).click()
+        # блок "Опыт работы"
+        button_add_work_experience = locators_from_id_block.assembly_of_locators_from_id_block('work-experience')
+        self.browser.find_element(*button_add_work_experience['button_add_block']).click()
+
         self.browser.find_element(*ResumeAddPageLocators.FIELD_COMPANY_NAME).send_keys(TestData.company_name_resume)
         self.browser.find_element(*ResumeAddPageLocators.FIELD_SITE_COMPANY).send_keys(TestData.company_site_resume)
         self.browser.find_element(*ResumeAddPageLocators.SCOPE_OF_COMPANY_CASINO_STAFF).click()
@@ -116,7 +125,7 @@ class ResumeAddPage(BasePage):
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_MONTH_WORK_EXPERIENCE_START).click()
         self.browser.find_element(*ResumeAddPageLocators.MONTH_AUGUST_WORK_EXPERIENCE_START).click()
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_YEAR_WORK_EXPERIENCE_START).click()
-        self.browser.find_element(*ResumeAddPageLocators.YEAR_WORK_EXPERIENCE_START).click()
+        self.browser.find_element(*ResumeAddPageLocators.YEAR_WORK_EXPERIENCE_START_2018).click()
 
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_MONTH_WORK_EXPERIENCE_FINISH).click()
         self.browser.find_element(*ResumeAddPageLocators.MONTH_MARCH_WORK_EXPERIENCE_FINISH).click()
@@ -152,7 +161,9 @@ class ResumeAddPage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
         # блок "Опыт работы"
 
-        self.browser.find_element(*ResumeAddPageLocators.BUTTON_ADD_EDUCATION).click()
+        button_add_education = locators_from_id_block.assembly_of_locators_from_id_block('education')
+        self.browser.find_element(*button_add_education['button_add_block']).click()
+
         self.browser.find_element(*ResumeAddPageLocators.FIELD_NAME_OF_INSTITUTION).send_keys(TestData.name_of_institution)
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_LEVEL_OF_EDUCATION).click()
         self.browser.find_element(*ResumeAddPageLocators.HIGHER_EDUCATION).click()
@@ -226,7 +237,9 @@ class ResumeAddPage(BasePage):
         self.browser.find_element(*ResumeAddPageLocators.YEAR_EDUCATION_FINISH_2).click()
         # блок "Образование"
 
-        self.browser.find_element(*ResumeAddPageLocators.BUTTON_ADD_COURSES_AND_CERTIFICATES).click()
+        button_add_courses_and_certificates = locators_from_id_block.assembly_of_locators_from_id_block('courses-and-certificates')
+        self.browser.find_element(*button_add_courses_and_certificates['button_add_block']).click()
+
         self.browser.find_element(*ResumeAddPageLocators.FIELD_NAME_OF_INSTITUTION_OR_CERTIFICATE).send_keys(TestData.name_course)
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_MONTH_COURSES_START).click()
         self.browser.find_element(*ResumeAddPageLocators.MONTH_JUNE_COURSES_START).click()
@@ -261,7 +274,9 @@ class ResumeAddPage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
         # блок "Курсы и сертификаты"
 
-        self.browser.find_element(*ResumeAddPageLocators.BUTTON_ADD_LANGUAGE).click()
+        button_add_language = locators_from_id_block.assembly_of_locators_from_id_block('knowledge-of-languages')
+        self.browser.find_element(*button_add_language['button_add_block']).click()
+
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_LANGUAGE_1).click()
         self.browser.find_element(*ResumeAddPageLocators.POLISH_LANGUAGE_1).click()
         self.browser.find_element(*ResumeAddPageLocators.DROPDOWN_LEVEL_OF_LANGUAGE_1).click()
@@ -279,7 +294,8 @@ class ResumeAddPage(BasePage):
         assert radio_checked is not None, "Не установлено 'У меня нет инвалидности' по умолчанию"
         # блок "Инвалидность"
 
-        self.browser.find_element(*ResumeAddPageLocators.BUTTON_ADD_ADDITIONAL_INFORMATION).click()
+        button_add_additional_information = locators_from_id_block.assembly_of_locators_from_id_block('additional-information')
+        self.browser.find_element(*button_add_additional_information['button_add_block']).click()
 
         iframe = self.browser.find_element(*ResumeAddPageLocators.IFRAME_CKEDITOR_ADDITIONAL_INFORMATION)
         self.browser.switch_to.frame(iframe)  # вход в фрейм

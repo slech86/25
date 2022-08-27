@@ -101,7 +101,7 @@ class MyResumePageLocators:
     BUTTON_PRINT = (By.XPATH, '//a[contains(@href, "/print")]')  # работает для первого резюме в списке
     BUTTON_CONFIRMATION_DELETION_DRAFT_RESUME = (By.CSS_SELECTOR, ('[class="btn btn-blue btn-apply update-status"]'))
 
-    INFO_TEXT_AFTER_CREATING_RESUME = (By.CSS_SELECTOR, ('#lc-popup-resume-new .text'))  # информационный текст после создания резюме
+    INFO_TEXT_AFTER_CREATING_RESUME = (By.CSS_SELECTOR, '#lc-popup-resume-new .text')  # информационный текст после создания резюме
     CROSS_IN_POP_UP_AFTER_CREATING_RESUME = (By.CSS_SELECTOR, ('#lc-popup-resume-new .close'))  # крестик в pop-up окне после создания резюме
 
     INFO_TEXT_AFTER_ADDING_RESUME_TO_DRAFT = (By.CSS_SELECTOR, ('#lc-popup-resume-draft h2'))  # информационный текст после добавления вакансии в черновик
@@ -114,246 +114,256 @@ class MyResumePageLocators:
     CROSS_IN_POP_UP_AFTER_SUBMITTING_RESUME_FOR_MODERATION = (By.CSS_SELECTOR, ('#lc-popup-resume-moderation .close'))  # крестик в pop-up окне после отправки резюме на модерацию
 
 
+class ResumeAddEditPageLocators:
+
+
 class ResumeAddPageLocators:
-    inputPrefix = 'resumeaddform-'
+    id_language = '1'
+    input_prefix = 'resumenew-descriptions-' + id_language + '-'
 
-    FIELD_PHOTO = (By.CSS_SELECTOR, ('#' + inputPrefix + 'photo'))
-    FIELD_NAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'name'))
-    FIELD_SURNAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'surname'))
+    def assembly_of_locators_from_id_block(self, id_block):  # сборка локаторов с id блока
+        locators = {}
+        locators['button_add_block'] = (By.CSS_SELECTOR, '#' + id_block + ' .icon-plus')
+        return locators
 
-    DROPDOWN_YEAR = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'birthdayy"]'))
-    YEAR_OF_BIRTH = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'birthdayy [data-original-index="21"]'))
-    DROPDOWN_MONTH = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'birthdaym"]'))
-    MONTH_SEPTEMBER = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'birthdaym [data-original-index="9"]'))
-    DROPDOWN_DAY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'birthdayd"]'))
-    DAY_5 = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'birthdayd [data-original-index="5"]'))
+    TAB = (By.CSS_SELECTOR, '[id="' + id_language + '-tab"]')
+    FIELD_PHOTO = (By.CSS_SELECTOR, '#resumenew-photo')
+    FIELD_NAME = (By.CSS_SELECTOR, '#' + input_prefix + 'name')
+    FIELD_SURNAME = (By.CSS_SELECTOR, '#' + input_prefix + 'surname')
 
-    FIELD_GENDER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'gender [value="2"] + .radio-custom'))
+    DROPDOWN_YEAR = (By.CSS_SELECTOR, '[data-id="' + input_prefix + 'birthdayy"]')
+    YEAR_OF_BIRTH_1981 = (By.CSS_SELECTOR, ('.field-' + input_prefix + 'birthdayy [data-original-index="21"]'))
+    DROPDOWN_MONTH = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'birthdaym"]'))
+    MONTH_SEPTEMBER = (By.CSS_SELECTOR, ('.field-' + input_prefix + 'birthdaym [data-original-index="9"]'))
+    DROPDOWN_DAY = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'birthdayd"]'))
+    DAY_5 = (By.CSS_SELECTOR, ('.field-' + input_prefix + 'birthdayd [data-original-index="5"]'))
 
-    DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'country_id"]'))
-    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option'))
+    FIELD_GENDER_FEMALE = (By.CSS_SELECTOR, ('#' + input_prefix + 'gender [value="2"] + .radio-custom'))
+
+    DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'country_id"]'))
+    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + input_prefix + 'country_id > option'))
 
     def assembly_of_locators_with_position_country(self):  # сборка локаторов с позицией страны
         singleton = Singleton()
-        country_ukraine = (By.CSS_SELECTOR, ('.field-' + ResumeAddPageLocators.inputPrefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
+        country_ukraine = (By.CSS_SELECTOR, ('.field-' + ResumeAddPageLocators.input_prefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
         return country_ukraine
 
-    DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'city_id"]'))
-    CITY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option'))
+    DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'city_id"]'))
+    CITY_LIST = (By.CSS_SELECTOR, ('#' + input_prefix + 'city_id > option'))
 
     def assembly_of_locators_with_position_city(self):  # сборка локаторов с позицией города
         singleton = Singleton()
-        city_odessa = (By.CSS_SELECTOR, ('.field-' + ResumeAddPageLocators.inputPrefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
+        city_odessa = (By.CSS_SELECTOR, ('.field-' + ResumeAddPageLocators.input_prefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
         return city_odessa
 
-    DROPDOWN_WILLING_TO_RELOCATE = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'willing_relocate"]'))
-    NOT_READY_TO_RELOCATE = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'willing_relocate [data-original-index="2"]'))
+    DROPDOWN_WILLING_TO_RELOCATE = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'willing_relocate"]'))
+    NOT_READY_TO_RELOCATE = (By.CSS_SELECTOR, ('.field-' + input_prefix + 'willing_relocate [data-original-index="2"]'))
     # блок "Личная информация"
 
-    FIELD_PHONE_1 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'phone'))
-    BUTTON_ADD_PHONE = (By.CSS_SELECTOR, ('.show-addBtn .addPhone'))
-    FIELD_PHONE_2 = (By.CSS_SELECTOR, ('#resume-phone-add1'))
+    FIELD_PHONE_1 = (By.CSS_SELECTOR, ('[name="ResumeNew[descriptions][' + id_language + '][phone]"]'))
+    BUTTON_ADD_PHONE = (By.XPATH, ('(//div[@id = "content-' + id_language + '"]//div[@id = "contact-information"]//button[contains(@class, "addPhone")])[1]'))
+    FIELD_PHONE_2 = (By.CSS_SELECTOR, ('[name="ResumeNew[descriptions][' + id_language + '][phone2]"]'))
 
-    FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'email'))
-    FIELD_SKYPE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'skype'))
-    FIELD_PORTFOLIO = (By.CSS_SELECTOR, ('#' + inputPrefix + 'portfolio'))
+    FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + input_prefix + 'email'))
+    FIELD_SKYPE = (By.CSS_SELECTOR, ('#' + input_prefix + 'skype'))
+    FIELD_PORTFOLIO = (By.CSS_SELECTOR, ('#' + input_prefix + 'portfolio'))
 
-    BUTTON_FACEBOOK = (By.CSS_SELECTOR, ('[aria-controls="facebookCollapse"]'))
-    BUTTON_LINKEDIN = (By.CSS_SELECTOR, ('[aria-controls="lnCollapse"]'))
-    BUTTON_INSTAGRAM = (By.CSS_SELECTOR, ('[aria-controls="inCollapse"]'))
-    BUTTON_TELEGRAM = (By.CSS_SELECTOR, ('[aria-controls="telCollapse"]'))
-    BUTTON_TWITTER = (By.CSS_SELECTOR, ('[aria-controls="twCollapse"]'))
-    BUTTON_VK = (By.CSS_SELECTOR, ('[aria-controls="vkCollapse"]'))
+    BUTTON_FACEBOOK = (By.CSS_SELECTOR, ('#content-' + id_language + ' [aria-controls="facebookCollapse"]'))
+    BUTTON_LINKEDIN = (By.CSS_SELECTOR, ('#content-' + id_language + ' [aria-controls="lnCollapse"]'))
+    BUTTON_INSTAGRAM = (By.CSS_SELECTOR, ('#content-' + id_language + ' [aria-controls="inCollapse"]'))
+    BUTTON_TELEGRAM = (By.CSS_SELECTOR, ('#content-' + id_language + ' [aria-controls="telCollapse"]'))
+    BUTTON_TWITTER = (By.CSS_SELECTOR, ('#content-' + id_language + ' [aria-controls="twCollapse"]'))
+    BUTTON_VK = (By.CSS_SELECTOR, ('#content-' + id_language + ' [aria-controls="vkCollapse"]'))
 
-    FIELD_FACEBOOK = (By.CSS_SELECTOR, ('#' + inputPrefix + 'facebook'))
-    FIELD_LINKEDIN = (By.CSS_SELECTOR, ('#' + inputPrefix + 'linkedin'))
-    FIELD_INSTAGRAM = (By.CSS_SELECTOR, ('#' + inputPrefix + 'instagram'))
-    FIELD_TELEGRAM = (By.CSS_SELECTOR, ('#' + inputPrefix + 'telegram'))
-    FIELD_TWITTER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'twitter'))
-    FIELD_VK = (By.CSS_SELECTOR, ('#' + inputPrefix + 'vk'))
+    FIELD_FACEBOOK = (By.CSS_SELECTOR, ('#' + input_prefix + 'facebook'))
+    FIELD_LINKEDIN = (By.CSS_SELECTOR, ('#' + input_prefix + 'linkedin'))
+    FIELD_INSTAGRAM = (By.CSS_SELECTOR, ('#' + input_prefix + 'instagram'))
+    FIELD_TELEGRAM = (By.CSS_SELECTOR, ('#' + input_prefix + 'telegram'))
+    FIELD_TWITTER = (By.CSS_SELECTOR, ('#' + input_prefix + 'twitter'))
+    FIELD_VK = (By.CSS_SELECTOR, ('#' + input_prefix + 'vk'))
     # блок "Контактная информация"
 
-    FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'job_title'))
-    VALIDATION_MESSAGE_FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'job_title + p'))
+    FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + input_prefix + 'job_title'))
+    VALIDATION_MESSAGE_FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + input_prefix + 'job_title + p'))
 
-    CATEGORY_RESUME = "document.getElementsByName('ResumeAddForm[category_id][]')[7].click()"
-    SUBCATEGORIES = (By.CSS_SELECTOR, ('[for="subcategories_id-70"]'))
-    DISTANT_WORK = (By.CSS_SELECTOR, ('#' + inputPrefix + 'employment > .checkbox:nth-child(3) > label'))  # удаленная работа
-    SALARY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'salary'))
-    DROPDOWN_CURRENCY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'currency"]'))
-    CURRENCY_UAH = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'currency [data-original-index="1"]'))
+    CATEGORY_RESUME = (By.XPATH, '//div[@id="resumenew-descriptions-' + id_language + '-category_id"]//div[@class="custom-control checkbox"][8]/label')
+    SUBCATEGORIES = (By.XPATH, '//div[@id="resumenew-descriptions-' + id_language + '-subcategories_id"]//div[@class="custom-control checkbox"][7]/label[contains(@for, "subcategories") and contains(@for, "-70")]')
+    DISTANT_WORK = (By.CSS_SELECTOR, ('#' + input_prefix + 'employment .checkbox:nth-child(3) > label'))  # удаленная работа
+    SALARY = (By.CSS_SELECTOR, '#' + input_prefix + 'salary')
+    DROPDOWN_CURRENCY = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'currency"]'))
+    CURRENCY_UAH = (By.CSS_SELECTOR, ('.field-' + input_prefix + 'currency [data-original-index="1"]'))
     # блок "Желаемая должность"
 
-    BUTTON_ADD_SKILLS = (By.CSS_SELECTOR, ('#addSkill'))
-    IFRAME_CKEDITOR_SKILLS_AND_ACHIEVEMENTS = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'skills iframe'))
+    IFRAME_CKEDITOR_SKILLS_AND_ACHIEVEMENTS = (By.CSS_SELECTOR, ('#cke_' + input_prefix + 'skills iframe'))
     # блок "Навыки и достижения"
 
-    BUTTON_ADD_WORK_EXPERIENCE = (By.CSS_SELECTOR, ('#addExperiencel'))
-    FIELD_COMPANY_NAME = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "work-experience-form")]/div[1]//input[contains(@id, "resumeworkexperienceform")]'))
-    FIELD_SITE_COMPANY = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "work-experience-form")]/div[2]//input[contains(@id, "resumeworkexperienceform")]'))
-    SCOPE_OF_COMPANY_CASINO_STAFF = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][1]//div[contains(@id, "resumeworkexperienceform")]//div[@class="custom-control checkbox"][3]/label'))
-    FIELD_POSITION = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "work-experience-form")]/div[4]//input[contains(@id, "resumeworkexperienceform")]'))
+    # блок "Опыт работы"
+    FIELD_COMPANY_NAME = (By.CSS_SELECTOR, '#resumenew-workexperiencenew-' + id_language + '-0-company')
+    FIELD_SITE_COMPANY = (By.CSS_SELECTOR, '#resumenew-workexperiencenew-' + id_language + '-0-web_site')
+    SCOPE_OF_COMPANY_CASINO_STAFF = (By.XPATH, '//div[@id="resumenew-workexperiencenew-' + id_language + '-0-category"]//div[@class="custom-control checkbox"][3]/label')
+    FIELD_POSITION = (By.CSS_SELECTOR, '#resumenew-workexperiencenew-' + id_language + '-0-position')
 
-    DROPDOWN_MONTH_WORK_EXPERIENCE_START = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "work-experience-form")]/div[5]//div[@class="d-flex width"]/div[contains(@class, "search-select")][1]//button'))
-    MONTH_AUGUST_WORK_EXPERIENCE_START = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "work-experience-form")]/div[5]//div[@class="d-flex width"]/div[contains(@class, "search-select")][1]//li[9]/a'))
-    DROPDOWN_YEAR_WORK_EXPERIENCE_START = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "work-experience-form")]/div[5]//div[@class="d-flex width"]/div[contains(@class, "search-select")][2]//button'))
-    YEAR_WORK_EXPERIENCE_START = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "work-experience-form")]/div[5]//div[@class="d-flex width"]/div[contains(@class, "search-select")][2]//li[6]/a'))
+    DROPDOWN_MONTH_WORK_EXPERIENCE_START = (By.CSS_SELECTOR, '[data-id="resumenew-workexperiencenew-' + id_language + '-0-period_start_m"]')
+    MONTH_AUGUST_WORK_EXPERIENCE_START = (By.XPATH, '//div[contains(@class, "field-resumenew-workexperiencenew-' + id_language + '-0-period_start_m required")]//li[9]/a')
+    DROPDOWN_YEAR_WORK_EXPERIENCE_START = (By.CSS_SELECTOR, '[data-id="resumenew-workexperiencenew-' + id_language + '-0-period_start_y"]')
+    YEAR_WORK_EXPERIENCE_START_2018 = (By.XPATH, '//div[contains(@class, "field-resumenew-workexperiencenew-' + id_language + '-0-period_start_y required")]//li[6]/a')
 
-    DROPDOWN_MONTH_WORK_EXPERIENCE_FINISH = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "work-experience-form")]/div[5]//div[@class="d-flex"]/div[contains(@class, "search-select")][1]//button'))
-    MONTH_MARCH_WORK_EXPERIENCE_FINISH = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "work-experience-form")]/div[5]//div[@class="d-flex"]/div[contains(@class, "search-select")][1]//li[5]/a'))
-    DROPDOWN_YEAR_WORK_EXPERIENCE_FINISH = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "work-experience-form")]/div[5]//div[@class="d-flex"]/div[contains(@class, "search-select")][2]//button'))
-    YEAR_WORK_EXPERIENCE_FINISH = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "work-experience-form")]/div[5]//div[@class="d-flex"]/div[contains(@class, "search-select")][2]//li[4]/a'))
+    DROPDOWN_MONTH_WORK_EXPERIENCE_FINISH = (By.CSS_SELECTOR, '[data-id="resumenew-workexperiencenew-' + id_language + '-0-period_end_m"]')
+    MONTH_MARCH_WORK_EXPERIENCE_FINISH = (By.XPATH, '//div[contains(@class, "field-resumenew-workexperiencenew-' + id_language + '-0-period_end_m required")]//li[5]/a')
+    DROPDOWN_YEAR_WORK_EXPERIENCE_FINISH = (By.CSS_SELECTOR, '[data-id="resumenew-workexperiencenew-' + id_language + '-0-period_end_y"]')
+    YEAR_WORK_EXPERIENCE_FINISH = (By.XPATH, '//div[contains(@class, "field-resumenew-workexperiencenew-' + id_language + '-0-period_end_y required")]//li[4]/a')
 
-    IFRAME_CKEDITOR_RESPONSIBILITIES_AND_ACHIEVEMENTS = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "work-experience-form")]/div[6]//iframe'))
+    IFRAME_CKEDITOR_RESPONSIBILITIES_AND_ACHIEVEMENTS = (By.CSS_SELECTOR, '#cke_resumenew-workexperiencenew-' + id_language + '-0-responsibilities iframe')
 
-    BUTTON_ADD_WORK_EXPERIENCE_2 = (By.CSS_SELECTOR, ('.resume-item-link.js-add-work-place'))
-    FIELD_COMPANY_NAME_2 = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "work-experience-form")]/div[1]//input[contains(@id, "resumeworkexperienceform")]'))
-    FIELD_SITE_COMPANY_2 = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "work-experience-form")]/div[2]//input[contains(@id, "resumeworkexperienceform")]'))
-    SCOPE_OF_COMPANY_MAINTENANCE_OF_SLOTS_2 = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][2]//div[contains(@id, "resumeworkexperienceform")]//div[@class="custom-control checkbox"][6]/label'))
-    FIELD_POSITION_2 = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "work-experience-form")]/div[4]//input[contains(@id, "resumeworkexperienceform")]'))
+    BUTTON_ADD_WORK_EXPERIENCE_2 = (By.XPATH, '(//div[@id="content-' + id_language + '"]//div[@id="work-experience"]//button[contains(@class, "js-add-more")])[1]')
 
-    DROPDOWN_MONTH_WORK_EXPERIENCE_START_2 = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "work-experience-form")]/div[5]//div[@class="d-flex width"]/div[contains(@class, "search-select")][1]//button'))
-    MONTH_APRIL_WORK_EXPERIENCE_START_2 = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "work-experience-form")]/div[5]//div[@class="d-flex width"]/div[contains(@class, "search-select")][1]//li[5]/a'))
-    DROPDOWN_YEAR_WORK_EXPERIENCE_START_2 = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "work-experience-form")]/div[5]//div[@class="d-flex width"]/div[contains(@class, "search-select")][2]//button'))
-    YEAR_WORK_EXPERIENCE_START_2 = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "work-experience-form")]/div[5]//div[@class="d-flex width"]/div[contains(@class, "search-select")][2]//li[4]/a'))
+    FIELD_COMPANY_NAME_2 = (By.CSS_SELECTOR, '#resumenew-workexperiencenew-' + id_language + '-1-company')
+    FIELD_SITE_COMPANY_2 = (By.CSS_SELECTOR, '#resumenew-workexperiencenew-' + id_language + '-1-web_site')
+    SCOPE_OF_COMPANY_MAINTENANCE_OF_SLOTS_2 = (By.XPATH, '//div[@id="resumenew-workexperiencenew-' + id_language + '-1-category"]//div[@class="custom-control checkbox"][6]/label')
+    FIELD_POSITION_2 = (By.CSS_SELECTOR, '#resumenew-workexperiencenew-' + id_language + '-1-position')
 
-    DROPDOWN_MONTH_WORK_EXPERIENCE_FINISH_2 = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "work-experience-form")]/div[5]//div[@class="d-flex"]/div[contains(@class, "search-select")][1]//button'))
-    WORKING_NOW_WORK_EXPERIENCE_FINISH_2 = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "work-experience-form")]/div[5]//div[@class="d-flex"]/div[contains(@class, "search-select")][1]//li[2]/a'))
+    DROPDOWN_MONTH_WORK_EXPERIENCE_START_2 = (By.CSS_SELECTOR, ('[data-id="resumenew-workexperiencenew-' + id_language + '-1-period_start_m"]'))
+    MONTH_APRIL_WORK_EXPERIENCE_START_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-workexperiencenew-' + id_language + '-1-period_start_m required")]//li[5]/a'))
+    DROPDOWN_YEAR_WORK_EXPERIENCE_START_2 = (By.CSS_SELECTOR, ('[data-id="resumenew-workexperiencenew-' + id_language + '-1-period_start_y"]'))
+    YEAR_WORK_EXPERIENCE_START_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-workexperiencenew-' + id_language + '-1-period_start_y required")]//li[4]/a'))
+
+    DROPDOWN_MONTH_WORK_EXPERIENCE_FINISH_2 = (By.CSS_SELECTOR, ('[data-id="resumenew-workexperiencenew-' + id_language + '-1-period_end_m"]'))
+    WORKING_NOW_WORK_EXPERIENCE_FINISH_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-workexperiencenew-' + id_language + '-1-period_end_m required")]//li[2]/a'))
     # DROPDOWN_YEAR_WORK_EXPERIENCE_FINISH_2 = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "work-experience-form")]/div[5]//div[@class="d-flex"]/div[contains(@class, "search-select")][2]//button'))
     # YEAR_WORK_EXPERIENCE_FINISH_2 = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "work-experience-form")]/div[5]//div[@class="d-flex"]/div[contains(@class, "search-select")][2]//li[4]/a'))
 
-    IFRAME_CKEDITOR_RESPONSIBILITIES_AND_ACHIEVEMENTS_2 = (By.XPATH, ('//div[@id="work-experience"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "work-experience-form")]/div[6]//iframe'))
+    IFRAME_CKEDITOR_RESPONSIBILITIES_AND_ACHIEVEMENTS_2 = (By.CSS_SELECTOR, ('#cke_resumenew-workexperiencenew-' + id_language + '-1-responsibilities iframe'))
     # блок "Опыт работы"
 
-    DROPDOWN_WORK_EXPERIENCE_GAMBLING_INDUSTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'gambling_experience"]'))
-    WITHOUT_EXPERIENCE = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'gambling_experience [data-original-index="1"]'))
-    # блок "Опыт работы в игорной идустрии"
+    DROPDOWN_WORK_EXPERIENCE_GAMBLING_INDUSTRY = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'gambling_experience"]'))
+    WITHOUT_EXPERIENCE = (By.CSS_SELECTOR, ('.field-' + input_prefix + 'gambling_experience [data-original-index="1"]'))
+    # блок "Опыт работы в игорной индустрии"
 
-    BUTTON_ADD_EDUCATION = (By.CSS_SELECTOR, ('#addEducation'))
-    FIELD_NAME_OF_INSTITUTION = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[1]//input[contains(@id, "resumeeducationform")]'))
-    DROPDOWN_LEVEL_OF_EDUCATION = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[2]//button'))
-    HIGHER_EDUCATION = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[2]//li[2]/a'))
+    # блок "Образование"
+    FIELD_NAME_OF_INSTITUTION = (By.CSS_SELECTOR, ('#resumenew-educationsnew-' + id_language + '-0-name_institution'))
+    DROPDOWN_LEVEL_OF_EDUCATION = (By.CSS_SELECTOR, ('[data-id="resumenew-educationsnew-' + id_language + '-0-level_education"]'))
+    HIGHER_EDUCATION = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-0-level_education required")]//li[2]/a'))
 
-    DROPDOWN_COUNTRY_EDUCATION = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[3]//button'))
-    COUNTRY_EDUCATION_LIST = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[3]//option'))
+    DROPDOWN_COUNTRY_EDUCATION = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-0-country_id"]')
+    COUNTRY_EDUCATION_LIST = (By.CSS_SELECTOR, ('#resumenew-educationsnew-' + id_language + '-0-country_id > option'))
 
     def assembly_of_locators_with_position_country_education(self):  # сборка локаторов с позицией страны
         singleton = Singleton()
         position_object = int(singleton.position_object) + 1
-        country_ukraine_education = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[3]//li[' + str(position_object) + ']/a'))
+        country_ukraine_education = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + ResumeAddPageLocators.id_language + '-0-country_id")]//li[' + str(position_object) + ']/a'))
         return country_ukraine_education
 
-    DROPDOWN_CITI_EDUCATION = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[4]//button'))
-    CITY_EDUCATION_LIST = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[4]//option'))
+    DROPDOWN_CITI_EDUCATION = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-0-city_id"]')
+    CITY_EDUCATION_LIST = (By.CSS_SELECTOR, '#resumenew-educationsnew-' + id_language + '-0-city_id > option')
 
     def assembly_of_locators_with_position_city_education(self):  # сборка локаторов с позицией города
         singleton = Singleton()
         position_object = int(singleton.position_object) + 1
-        city_kharkov_education = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[4]//li[' + str(position_object) + ']/a'))
+        city_kharkov_education = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + ResumeAddPageLocators.id_language + '-0-city_id")]//li[' + str(position_object) + ']/a'))
         return city_kharkov_education
 
-    FIELD_DEPARTMENT_AND_SPECIALITY = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[5]//input[contains(@id, "resumeeducationform")]'))
+    FIELD_DEPARTMENT_AND_SPECIALITY = (By.CSS_SELECTOR, ('#resumenew-educationsnew-' + id_language + '-0-specialty'))
 
-    DROPDOWN_MONTH_EDUCATION_START = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[6]//div[@class="d-flex width"]/div[contains(@class, "search-select")][1]//button'))
-    MONTH_SEPTEMBER_EDUCATION_START = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[6]//div[@class="d-flex width"]/div[contains(@class, "search-select")][1]//li[10]/a'))
-    DROPDOWN_YEAR_EDUCATION_START = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[6]//div[@class="d-flex width"]/div[contains(@class, "search-select")][2]//button'))
-    YEAR_EDUCATION_START = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[6]//div[@class="d-flex width"]/div[contains(@class, "search-select")][2]//li[14]/a'))
+    DROPDOWN_MONTH_EDUCATION_START = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-0-period_start_m"]')
+    MONTH_SEPTEMBER_EDUCATION_START = (By.XPATH, '//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-0-period_start_m")]//li[10]/a')
+    DROPDOWN_YEAR_EDUCATION_START = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-0-period_start_y"]')
+    YEAR_EDUCATION_START = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-0-period_start_y")]//li[14]/a'))
 
-    DROPDOWN_MONTH_EDUCATION_FINISH = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[6]//div[@class="d-flex"]/div[contains(@class, "search-select")][1]//button'))
-    MONTH_MAY_EDUCATION_FINISH = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[6]//div[@class="d-flex"]/div[contains(@class, "search-select")][1]//li[7]/a'))
-    DROPDOWN_YEAR_EDUCATION_FINISH = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[6]//div[@class="d-flex"]/div[contains(@class, "search-select")][2]//button'))
-    YEAR_EDUCATION_FINISH = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "education-form")]/div[6]//div[@class="d-flex"]/div[contains(@class, "search-select")][2]//li[9]/a'))
+    DROPDOWN_MONTH_EDUCATION_FINISH = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-0-period_end_m"]')
+    MONTH_MAY_EDUCATION_FINISH = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-0-period_end_m")]//li[7]/a'))
+    DROPDOWN_YEAR_EDUCATION_FINISH = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-0-period_end_y"]')
+    YEAR_EDUCATION_FINISH = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-0-period_end_y")]//li[9]/a'))
 
-    BUTTON_ADD_EDUCATION_2 = (By.CSS_SELECTOR, ('.resume-item-link.js-add-education'))
-    FIELD_NAME_OF_INSTITUTION_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[1]//input[contains(@id, "resumeeducationform")]'))
-    DROPDOWN_LEVEL_OF_EDUCATION_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[2]//button'))
-    SECONDARY_SPECIAL_EDUCATION_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[2]//li[4]/a'))
+    BUTTON_ADD_EDUCATION_2 = (By.XPATH, ('(//div[@id="content-' + id_language + '"]//div[@id="education"]//button[contains(@class, "js-add-more")])[1]'))
 
-    DROPDOWN_COUNTRY_EDUCATION_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[3]//button'))
-    COUNTRY_EDUCATION_LIST_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[3]//option'))
+    FIELD_NAME_OF_INSTITUTION_2 = (By.CSS_SELECTOR, ('#resumenew-educationsnew-' + id_language + '-1-name_institution'))
+    DROPDOWN_LEVEL_OF_EDUCATION_2 = (By.CSS_SELECTOR, ('[data-id="resumenew-educationsnew-' + id_language + '-1-level_education"]'))
+    SECONDARY_SPECIAL_EDUCATION_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-1-level_education required")]//li[4]/a'))
+
+    DROPDOWN_COUNTRY_EDUCATION_2 = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-1-country_id"]')
+    COUNTRY_EDUCATION_LIST_2 = (By.CSS_SELECTOR, ('#resumenew-educationsnew-' + id_language + '-1-country_id > option'))
 
     def assembly_of_locators_with_position_country_education_2(self):  # сборка локаторов с позицией страны
         singleton = Singleton()
         position_object = int(singleton.position_object) + 1
-        country_belarus_education = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[3]//li[' + str(position_object) + ']/a'))
+        country_belarus_education = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + ResumeAddPageLocators.id_language + '-1-country_id")]//li[' + str(position_object) + ']/a'))
         return country_belarus_education
 
-    DROPDOWN_CITI_EDUCATION_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[4]//button'))
-    CITY_EDUCATION_LIST_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[4]//option'))
+    DROPDOWN_CITI_EDUCATION_2 = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-1-city_id"]')
+    CITY_EDUCATION_LIST_2 = (By.CSS_SELECTOR, '#resumenew-educationsnew-' + id_language + '-1-city_id > option')
 
     def assembly_of_locators_with_position_city_education_2(self):  # сборка локаторов с позицией города
         singleton = Singleton()
         position_object = int(singleton.position_object) + 1
-        city_minsk_education = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[4]//li[' + str(position_object) + ']/a'))
+        city_minsk_education = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + ResumeAddPageLocators.id_language + '-1-city_id")]//li[' + str(position_object) + ']/a'))
         return city_minsk_education
 
-    FIELD_DEPARTMENT_AND_SPECIALITY_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[5]//input[contains(@id, "resumeeducationform")]'))
+    FIELD_DEPARTMENT_AND_SPECIALITY_2 = (By.CSS_SELECTOR, ('#resumenew-educationsnew-' + id_language + '-1-specialty'))
 
-    DROPDOWN_MONTH_EDUCATION_START_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[6]//div[@class="d-flex width"]/div[contains(@class, "search-select")][1]//button'))
-    MONTH_NOVEMBER_EDUCATION_START_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[6]//div[@class="d-flex width"]/div[contains(@class, "search-select")][1]//li[12]/a'))
-    DROPDOWN_YEAR_EDUCATION_START_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[6]//div[@class="d-flex width"]/div[contains(@class, "search-select")][2]//button'))
-    YEAR_EDUCATION_START_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[6]//div[@class="d-flex width"]/div[contains(@class, "search-select")][2]//li[6]/a'))
+    DROPDOWN_MONTH_EDUCATION_START_2 = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-1-period_start_m"]')
+    MONTH_NOVEMBER_EDUCATION_START_2 = (By.XPATH, '//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-1-period_start_m")]//li[12]/a')
+    DROPDOWN_YEAR_EDUCATION_START_2 = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-1-period_start_y"]')
+    YEAR_EDUCATION_START_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-1-period_start_y")]//li[6]/a'))
 
-    DROPDOWN_MONTH_EDUCATION_FINISH_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[6]//div[@class="d-flex"]/div[contains(@class, "search-select")][1]//button'))
-    MONTH_JANUARY_EDUCATION_FINISH_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[6]//div[@class="d-flex"]/div[contains(@class, "search-select")][1]//li[3]/a'))
-    DROPDOWN_YEAR_EDUCATION_FINISH_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[6]//div[@class="d-flex"]/div[contains(@class, "search-select")][2]//button'))
-    YEAR_EDUCATION_FINISH_2 = (By.XPATH, ('//div[@id="education"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "education-form")]/div[6]//div[@class="d-flex"]/div[contains(@class, "search-select")][2]//li[4]/a'))
+    DROPDOWN_MONTH_EDUCATION_FINISH_2 = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-1-period_end_m"]')
+    MONTH_JANUARY_EDUCATION_FINISH_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-1-period_end_m")]//li[3]/a'))
+    DROPDOWN_YEAR_EDUCATION_FINISH_2 = (By.CSS_SELECTOR, '[data-id="resumenew-educationsnew-' + id_language + '-1-period_end_y"]')
+    YEAR_EDUCATION_FINISH_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-educationsnew-' + id_language + '-1-period_end_y")]//li[4]/a'))
     # блок "Образование"
 
-    BUTTON_ADD_COURSES_AND_CERTIFICATES = (By.CSS_SELECTOR, ('#addCourses'))
-    FIELD_NAME_OF_INSTITUTION_OR_CERTIFICATE = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "course-form")]/div[1]//input[contains(@id, "resumecourseform")]'))
+    FIELD_NAME_OF_INSTITUTION_OR_CERTIFICATE = (By.CSS_SELECTOR, ('#resumenew-coursesnew-' + id_language + '-0-name_certificate'))
 
-    DROPDOWN_MONTH_COURSES_START = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "course-form")]/div[2]//div[@class="d-flex width"]/div[contains(@class, "search-select")][1]//button'))
-    MONTH_JUNE_COURSES_START = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "course-form")]/div[2]//div[@class="d-flex width"]/div[contains(@class, "search-select")][1]//li[7]/a'))
-    DROPDOWN_YEAR_COURSES_START = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "course-form")]/div[2]//div[@class="d-flex width"]/div[contains(@class, "search-select")][2]//button'))
-    YEAR_COURSES_START = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "course-form")]/div[2]//div[@class="d-flex width"]/div[contains(@class, "search-select")][2]//li[4]/a'))
+    DROPDOWN_MONTH_COURSES_START = (By.CSS_SELECTOR, '[data-id="resumenew-coursesnew-' + id_language + '-0-period_start_m"]')
+    MONTH_JUNE_COURSES_START = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-0-period_start_m")]//li[7]/a'))
+    DROPDOWN_YEAR_COURSES_START = (By.CSS_SELECTOR, ('[data-id="resumenew-coursesnew-' + id_language + '-0-period_start_y"]'))
+    YEAR_COURSES_START = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-0-period_start_y")]//li[4]/a'))
 
-    DROPDOWN_MONTH_COURSES_FINISH = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "course-form")]/div[2]//div[@class="d-flex"]/div[contains(@class, "search-select")][1]//button'))
-    MONTH_JUNE_COURSES_FINISH = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "course-form")]/div[2]//div[@class="d-flex"]/div[contains(@class, "search-select")][1]//li[8]/a'))
-    DROPDOWN_YEAR_COURSES_FINISH = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "course-form")]/div[2]//div[@class="d-flex"]/div[contains(@class, "search-select")][2]//button'))
-    YEAR_COURSES_FINISH = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "course-form")]/div[2]//div[@class="d-flex"]/div[contains(@class, "search-select")][2]//li[3]/a'))
+    DROPDOWN_MONTH_COURSES_FINISH = (By.CSS_SELECTOR, '[data-id="resumenew-coursesnew-' + id_language + '-0-period_end_m"]')
+    MONTH_JUNE_COURSES_FINISH = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-0-period_end_m")]//li[8]/a'))
+    DROPDOWN_YEAR_COURSES_FINISH = (By.CSS_SELECTOR, '[data-id="resumenew-coursesnew-' + id_language + '-0-period_end_y"]')
+    YEAR_COURSES_FINISH = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-0-period_end_y")]//li[3]/a'))
 
-    IFRAME_CKEDITOR_COURSE_DESCRIPTION = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][1]//form[contains(@id, "course-form")]/div[3]//iframe'))
+    IFRAME_CKEDITOR_COURSE_DESCRIPTION = (By.XPATH, ('//div[@id="cke_resumenew-coursesnew-' + id_language + '-0-description"]//iframe'))
 
-    BUTTON_ADD_COURSES_AND_CERTIFICATES_2 = (By.CSS_SELECTOR, ('.resume-item-link.js-add-courses'))
-    FIELD_NAME_OF_INSTITUTION_OR_CERTIFICATE_2 = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "course-form")]/div[1]//input[contains(@id, "resumecourseform")]'))
+    BUTTON_ADD_COURSES_AND_CERTIFICATES_2 = (By.XPATH, ('(//div[@id="content-' + id_language + '"]//div[@id="courses-and-certificates"]//button[contains(@class, "js-add-more")])[1]'))
 
-    DROPDOWN_MONTH_COURSES_START_2 = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "course-form")]/div[2]//div[@class="d-flex width"]/div[contains(@class, "search-select")][1]//button'))
-    MONTH_OCTOBER_COURSES_START_2 = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "course-form")]/div[2]//div[@class="d-flex width"]/div[contains(@class, "search-select")][1]//li[11]/a'))
-    DROPDOWN_YEAR_COURSES_START_2 = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "course-form")]/div[2]//div[@class="d-flex width"]/div[contains(@class, "search-select")][2]//button'))
-    YEAR_COURSES_START_2 = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "course-form")]/div[2]//div[@class="d-flex width"]/div[contains(@class, "search-select")][2]//li[10]/a'))
+    FIELD_NAME_OF_INSTITUTION_OR_CERTIFICATE_2 = (By.CSS_SELECTOR, ('#resumenew-coursesnew-' + id_language + '-1-name_certificate'))
 
-    DROPDOWN_MONTH_COURSES_FINISH_2 = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "course-form")]/div[2]//div[@class="d-flex"]/div[contains(@class, "search-select")][1]//button'))
-    MONTH_OCTOBER_COURSES_FINISH_2 = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "course-form")]/div[2]//div[@class="d-flex"]/div[contains(@class, "search-select")][1]//li[12]/a'))
-    DROPDOWN_YEAR_COURSES_FINISH_2 = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "course-form")]/div[2]//div[@class="d-flex"]/div[contains(@class, "search-select")][2]//button'))
-    YEAR_COURSES_FINISH_2 = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "course-form")]/div[2]//div[@class="d-flex"]/div[contains(@class, "search-select")][2]//li[9]/a'))
+    DROPDOWN_MONTH_COURSES_START_2 = (By.CSS_SELECTOR, '[data-id="resumenew-coursesnew-' + id_language + '-1-period_start_m"]')
+    MONTH_OCTOBER_COURSES_START_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-1-period_start_m")]//li[11]/a'))
+    DROPDOWN_YEAR_COURSES_START_2 = (By.CSS_SELECTOR, ('[data-id="resumenew-coursesnew-' + id_language + '-1-period_start_y"]'))
+    YEAR_COURSES_START_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-1-period_start_y")]//li[10]/a'))
 
-    IFRAME_CKEDITOR_COURSE_DESCRIPTION_2 = (By.XPATH, ('//div[@id="courses-and-certificates"]//div[contains(@class, "additional-block-item")][2]//form[contains(@id, "course-form")]/div[3]//iframe'))
+    DROPDOWN_MONTH_COURSES_FINISH_2 = (By.CSS_SELECTOR, '[data-id="resumenew-coursesnew-' + id_language + '-1-period_end_m"]')
+    MONTH_OCTOBER_COURSES_FINISH_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-1-period_end_m")]//li[12]/a'))
+    DROPDOWN_YEAR_COURSES_FINISH_2 = (By.CSS_SELECTOR, '[data-id="resumenew-coursesnew-' + id_language + '-1-period_end_y"]')
+    YEAR_COURSES_FINISH_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-coursesnew-' + id_language + '-1-period_end_y")]//li[9]/a'))
+
+    IFRAME_CKEDITOR_COURSE_DESCRIPTION_2 = (By.XPATH, ('//div[@id="cke_resumenew-coursesnew-' + id_language + '-1-description"]//iframe'))
     # блок "Курсы и сертификаты"
 
-    BUTTON_ADD_LANGUAGE = (By.CSS_SELECTOR, ('#addLanguages'))
-    DROPDOWN_LANGUAGE_1 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(3) [data-id="languageaddform-language"]'))
-    POLISH_LANGUAGE_1 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(3) .field-languageaddform-language [data-original-index="34"]'))
-    DROPDOWN_LEVEL_OF_LANGUAGE_1 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(3) [data-id="languageaddform-level"]'))
-    HIGH_LEVEL_1 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(3) .field-languageaddform-level [data-original-index="5"]'))
+    DROPDOWN_LANGUAGE_1 = (By.CSS_SELECTOR, '[data-id="resumenew-knowledgeoflanguagesnew-' + id_language + '-0-language"]')
+    POLISH_LANGUAGE_1 = (By.XPATH, ('//div[contains(@class, "field-resumenew-knowledgeoflanguagesnew-' + id_language + '-0-language required")]//li[35]'))
+    DROPDOWN_LEVEL_OF_LANGUAGE_1 = (By.CSS_SELECTOR, '[data-id="resumenew-knowledgeoflanguagesnew-' + id_language + '-0-level"]')
+    HIGH_LEVEL_1 = (By.XPATH, ('//div[contains(@class, "field-resumenew-knowledgeoflanguagesnew-' + id_language + '-0-level required")]//li[6]'))
 
-    BUTTON_ADD_LANGUAGE_2 = (By.CSS_SELECTOR, ('.resume-item-link.js-add-languages'))
-    DROPDOWN_LANGUAGE_2 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) [data-id="languageaddform-language"]'))
-    GERMAN_LANGUAGE_2 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) .field-languageaddform-language [data-original-index="4"]'))
-    DROPDOWN_LEVEL_OF_LANGUAGE_2 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) [data-id="languageaddform-level"]'))
-    FREE_LEVEL_2 = (By.CSS_SELECTOR, ('#knowledge-of-languages .additional-block-item:nth-child(4) .field-languageaddform-level [data-original-index="6"]'))
+    BUTTON_ADD_LANGUAGE_2 = (By.XPATH, ('(//div[@id="content-' + id_language + '"]//div[@id="knowledge-of-languages"]//button[contains(@class, "js-add-more")])[1]'))
+
+    DROPDOWN_LANGUAGE_2 = (By.CSS_SELECTOR, '[data-id="resumenew-knowledgeoflanguagesnew-' + id_language + '-1-language"]')
+    GERMAN_LANGUAGE_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-knowledgeoflanguagesnew-' + id_language + '-1-language required")]//li[5]'))
+    DROPDOWN_LEVEL_OF_LANGUAGE_2 = (By.CSS_SELECTOR, '[data-id="resumenew-knowledgeoflanguagesnew-' + id_language + '-1-level"]')
+    FREE_LEVEL_2 = (By.XPATH, ('//div[contains(@class, "field-resumenew-knowledgeoflanguagesnew-' + id_language + '-1-level required")]//li[7]'))
     # блок "Знание языков"
 
-    RADIO_I_DONT_HAVE_DISABILITY = (By.CSS_SELECTOR, ('#disability #' + inputPrefix + 'disability > label:nth-child(1) > input'))
-    I_HAVE_DISABILITY = (By.CSS_SELECTOR, ('#disability #' + inputPrefix + 'disability > label:nth-child(2)'))
+    RADIO_I_DONT_HAVE_DISABILITY = (By.XPATH, ('//div[@id="resumenew-descriptions-' + id_language + '-disability"]//input[@value="1"]'))
+    I_HAVE_DISABILITY = (By.CSS_SELECTOR, ('//div[@id="resumenew-descriptions-' + id_language + '-disability"]//input[@value="2"]'))
     # блок "Инвалидность"
 
-    BUTTON_ADD_ADDITIONAL_INFORMATION = (By.CSS_SELECTOR, ('#addAdd'))
-    IFRAME_CKEDITOR_ADDITIONAL_INFORMATION = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'additionally_information iframe'))
+    IFRAME_CKEDITOR_ADDITIONAL_INFORMATION = (By.XPATH, ('//div[@id="cke_resumenew-descriptions-' + id_language + '-additionally_information"]//iframe'))
     # блок "Дополнительная информация"
 
-    DROPDOWN_JOB_SEARCH_STATUS = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'job_search_status"]'))
-    ACTIVELY_LOOKING_FOR_JOB = (By.CSS_SELECTOR, ('#resume-visibility-settings li[data-original-index="2"] > a'))
+    DROPDOWN_JOB_SEARCH_STATUS = (By.CSS_SELECTOR, ('[data-id="resumenew-job_search_status"]'))
+    ACTIVELY_LOOKING_FOR_JOB = (By.XPATH, '//div[@class=" field-resumenew-job_search_status required"]//li[3]')
     # блок "Статус поиска работы"
 
     RESUME_COMPLETED_ON = (By.CSS_SELECTOR, ('.post-resume-status span.resume-rate'))
@@ -380,7 +390,7 @@ class ResumeEditPageLocators():
     DROPDOWN_DAY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'birthdayd"]'))
     DAY_8 = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'birthdayd [data-original-index="8"]'))
 
-    FIELD_GENDER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'gender [value="1"] + .radio-custom'))
+    FIELD_GENDER_MALE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'gender [value="1"] + .radio-custom'))
 
     DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'country_id"]'))
     COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option'))

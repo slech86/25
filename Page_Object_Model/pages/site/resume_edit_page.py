@@ -25,7 +25,7 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_DAY).click()
         self.browser.find_element(*ResumeEditPageLocators.DAY_8).click()
 
-        self.browser.find_element(*ResumeEditPageLocators.FIELD_GENDER).click()
+        self.browser.find_element(*ResumeEditPageLocators.FIELD_GENDER_MALE).click()
         self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_COUNTRY).click()
 
         country_list = self.browser.find_elements(*ResumeEditPageLocators.COUNTRY_LIST)
