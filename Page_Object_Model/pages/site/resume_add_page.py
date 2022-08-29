@@ -55,8 +55,7 @@ class ResumeAddPage(BasePage):
 
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_JOB_TITLE).send_keys(job_title)
         self.browser.find_element(*ResumeAddEditPageLocators.CATEGORY_RESUME_DESIGN_GRAPHICS_ANIMATION).click()
-        time.sleep(0.5)
-        self.browser.find_element(*ResumeAddEditPageLocators.SUBCATEGORIES_UX_DESIGNER).click()  # "Подкатегории"
+        WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(ResumeAddEditPageLocators.SUBCATEGORIES_UX_DESIGNER)).click()  # "Подкатегории"
         # блок "Желаемая должность"
 
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_WORK_EXPERIENCE_GAMBLING_INDUSTRY).click()
