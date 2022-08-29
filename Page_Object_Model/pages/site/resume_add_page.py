@@ -54,8 +54,9 @@ class ResumeAddPage(BasePage):
         # блок "Контактная информация"
 
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_JOB_TITLE).send_keys(job_title)
-        self.browser.find_element(*ResumeAddEditPageLocators.CATEGORY_RESUME).click()
-        self.browser.find_element(*ResumeAddEditPageLocators.SUBCATEGORIES).click()  # "Подкатегории"
+        self.browser.find_element(*ResumeAddEditPageLocators.CATEGORY_RESUME_DESIGN_GRAPHICS_ANIMATION).click()
+        time.sleep(0.5)
+        self.browser.find_element(*ResumeAddEditPageLocators.SUBCATEGORIES_UX_DESIGNER).click()  # "Подкатегории"
         # блок "Желаемая должность"
 
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_WORK_EXPERIENCE_GAMBLING_INDUSTRY).click()
@@ -138,7 +139,7 @@ class ResumeAddPage(BasePage):
         CKEditor.send_keys(TestData.responsibilities_and_achievements)
         self.browser.switch_to.default_content()  # выход из фрейма
 
-        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_ADD_WORK_EXPERIENCE_2).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_ADD_WORK_EXPERIENCE_NUMBER_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_COMPANY_NAME_2).send_keys(TestData.company_name_resume_2)
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_SITE_COMPANY_2).send_keys(TestData.company_site_resume_2)
         self.browser.find_element(*ResumeAddEditPageLocators.SCOPE_OF_COMPANY_MAINTENANCE_OF_SLOTS_2).click()
@@ -200,7 +201,7 @@ class ResumeAddPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_YEAR_EDUCATION_FINISH).click()
         self.browser.find_element(*ResumeAddEditPageLocators.YEAR_EDUCATION_FINISH_2015).click()
 
-        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_ADD_EDUCATION_2).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_ADD_EDUCATION_NUMBER_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_NAME_OF_INSTITUTION_2).send_keys(TestData.name_of_institution_2)
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_LEVEL_OF_EDUCATION_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.SECONDARY_SPECIAL_EDUCATION_2).click()
@@ -256,7 +257,7 @@ class ResumeAddPage(BasePage):
         CKEditor.send_keys(TestData.course_description)
         self.browser.switch_to.default_content()  # выход из фрейма
 
-        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_ADD_COURSES_AND_CERTIFICATES_2).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_ADD_COURSES_NUMBER_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_NAME_OF_INSTITUTION_OR_CERTIFICATE_2).send_keys(TestData.name_course_2)
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_MONTH_COURSES_START_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.MONTH_OCTOBER_COURSES_START_2).click()
@@ -282,7 +283,7 @@ class ResumeAddPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_LEVEL_OF_LANGUAGE_1).click()
         self.browser.find_element(*ResumeAddEditPageLocators.HIGH_LEVEL_1).click()
 
-        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_ADD_LANGUAGE_2).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_ADD_LANGUAGE_NUMBER_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_LANGUAGE_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.GERMAN_LANGUAGE_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_LEVEL_OF_LANGUAGE_2).click()

@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class ResumeEditPage(BasePage):
     def change_data_in_all_fields(self):  # изменение данных во всех полях
-        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_PERSONAL_INFORMATION_BLOCK).click()
+        # self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_PERSONAL_INFORMATION_BLOCK).click()
         current_dir = os.path.abspath(os.path.dirname(__file__))
         file_path = os.path.join(current_dir, 'фото 2 120x150.png')
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_PHOTO).send_keys(file_path)
@@ -52,7 +52,7 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.READY_TO_RELOCATE).click()
         # блок "Личная информация"
 
-        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_CONTACT_INFORMATION_BLOCK).click()
+        # self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_CONTACT_INFORMATION_BLOCK).click()
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_PHONE_1).clear()
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_PHONE_1).send_keys(TestDataEditing.phone_1_resume)
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_PHONE_2).clear()
@@ -70,10 +70,10 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_VK).send_keys('_editing/')
         # блок "Контактная информация"
 
-        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_POSITION_DESIRED_BLOCK).click()
+        # self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_POSITION_DESIRED_BLOCK).click()
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_JOB_TITLE).send_keys('_editing')
-        self.browser.execute_script(ResumeAddEditPageLocators.CATEGORY_RESUME)  # "Категория размещения вакансии" передается параметр уже с ".click()"
-        self.browser.find_element(*ResumeAddEditPageLocators.SUBCATEGORIES).click()  # "Подкатегории"
+        self.browser.find_element(*ResumeAddEditPageLocators.CATEGORY_RESUME_SALES_CUSTOMER_MANAGEMENT).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.SUBCATEGORIES_ACCOUNT_MANAGER).click()  # "Подкатегории"
 
         self.browser.find_element(*ResumeAddEditPageLocators.UNDEREMPLOYMENT).click()
         self.browser.find_element(*ResumeAddEditPageLocators.SALARY).clear()
@@ -82,7 +82,7 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.CURRENCY_USD).click()
         # блок "Желаемая должность"
 
-        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_SKILLS_AND_ACHIEVEMENTS_BLOCK).click()
+        # self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_SKILLS_AND_ACHIEVEMENTS_BLOCK).click()
         iframe = self.browser.find_element(*ResumeAddEditPageLocators.IFRAME_CKEDITOR_SKILLS_AND_ACHIEVEMENTS)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
         CKEditor = self.browser.find_element(*ResumeAddEditPageLocators.CKEDITOR)
@@ -90,7 +90,7 @@ class ResumeEditPage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
         # блок "Навыки и достижения"
 
-        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_WORK_EXPERIENCE_BLOCK).click()
+        # self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_WORK_EXPERIENCE_BLOCK).click()
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_COMPANY_NAME).send_keys('_editing')
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_SITE_COMPANY).send_keys('_editing')
         self.browser.find_element(*ResumeAddEditPageLocators.SCOPE_OF_COMPANY_SECURITY_SERVICE).click()
@@ -99,12 +99,12 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_MONTH_WORK_EXPERIENCE_START).click()
         self.browser.find_element(*ResumeAddEditPageLocators.MONTH_DECEMBER_WORK_EXPERIENCE_START).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_YEAR_WORK_EXPERIENCE_START).click()
-        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_WORK_EXPERIENCE_START).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_WORK_EXPERIENCE_START_2010).click()
 
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_MONTH_WORK_EXPERIENCE_FINISH).click()
         self.browser.find_element(*ResumeAddEditPageLocators.MONTH_JANUARY_WORK_EXPERIENCE_FINISH).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_YEAR_WORK_EXPERIENCE_FINISH).click()
-        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_WORK_EXPERIENCE_FINISH).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_WORK_EXPERIENCE_FINISH_2012).click()
 
         iframe = self.browser.find_element(*ResumeAddEditPageLocators.IFRAME_CKEDITOR_RESPONSIBILITIES_AND_ACHIEVEMENTS)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
@@ -120,12 +120,12 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_MONTH_WORK_EXPERIENCE_START_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.MONTH_FEBRUARY_WORK_EXPERIENCE_START_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_YEAR_WORK_EXPERIENCE_START_2).click()
-        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_WORK_EXPERIENCE_START_2).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_WORK_EXPERIENCE_START_1993_2).click()
 
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_MONTH_WORK_EXPERIENCE_FINISH_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.MONTH_MARCH_WORK_EXPERIENCE_FINISH_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_YEAR_WORK_EXPERIENCE_FINISH_2).click()
-        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_WORK_EXPERIENCE_FINISH_2).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_WORK_EXPERIENCE_FINISH_1996_2).click()
 
         iframe = self.browser.find_element(*ResumeAddEditPageLocators.IFRAME_CKEDITOR_RESPONSIBILITIES_AND_ACHIEVEMENTS_2)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
@@ -143,7 +143,7 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_MONTH_WORK_EXPERIENCE_START_3).click()
         self.browser.find_element(*ResumeAddEditPageLocators.MONTH_APRIL_WORK_EXPERIENCE_START_3).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_YEAR_WORK_EXPERIENCE_START_3).click()
-        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_WORK_EXPERIENCE_START_3).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_WORK_EXPERIENCE_START_2003_3).click()
 
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_MONTH_WORK_EXPERIENCE_FINISH_3).click()
         self.browser.find_element(*ResumeAddEditPageLocators.WORKING_NOW_WORK_EXPERIENCE_FINISH_3).click()
@@ -161,10 +161,10 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.EXPERIENCE_2_TO_5_YEARS).click()
         # блок "Опыт работы в игорной индустрии"
 
-        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_EDUCATION_BLOCK).click()
+        # self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_EDUCATION_BLOCK).click()
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_NAME_OF_INSTITUTION).send_keys('_editing')
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_LEVEL_OF_EDUCATION).click()
-        self.browser.find_element(*ResumeAddEditPageLocators.UNFINISHED_HIGHER_EDUCATION).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.INCOMPLETE_HIGHER_EDUCATION).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_COUNTRY_EDUCATION).click()
         self.browser.find_element(*ResumeAddEditPageLocators.COUNTRY_NOT_SELECTED_EDUCATION).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_CITI_EDUCATION).click()
@@ -208,11 +208,11 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_MONTH_EDUCATION_START_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.MONTH_JUNE_EDUCATION_START_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_YEAR_EDUCATION_START_2).click()
-        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_EDUCATION_START_2).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_EDUCATION_START_2005_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_MONTH_EDUCATION_FINISH_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.MONTH_JULY_EDUCATION_FINISH_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_YEAR_EDUCATION_FINISH_2).click()
-        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_EDUCATION_FINISH_2).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_EDUCATION_FINISH_2008_2).click()
 
         self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_ADD_EDUCATION_NUMBER_3).click()
 
@@ -245,23 +245,24 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_MONTH_EDUCATION_START_3).click()
         self.browser.find_element(*ResumeAddEditPageLocators.MONTH_AUGUST_EDUCATION_START_3).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_YEAR_EDUCATION_START_3).click()
-        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_EDUCATION_START_3).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_EDUCATION_START_2020_3).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_MONTH_EDUCATION_FINISH_3).click()
         self.browser.find_element(*ResumeAddEditPageLocators.STUDY_NOW_EDUCATION_FINISH_3).click()
         # self.browser.find_element(*ResumeEditPageLocators.DROPDOWN_YEAR_EDUCATION_FINISH_3).click()
         # self.browser.find_element(*ResumeEditPageLocators.YEAR_EDUCATION_FINISH_3).click()
         # блок "Образование"
 
-        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_COURSES_AND_CERTIFICATES_BLOCK).click()
+        # блок "Курсы и сертификаты"
+        # self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_COURSES_AND_CERTIFICATES_BLOCK).click()
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_NAME_OF_INSTITUTION_OR_CERTIFICATE).send_keys('_editing')
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_MONTH_COURSES_START).click()
         self.browser.find_element(*ResumeAddEditPageLocators.MONTH_SEPTEMBER_COURSES_START).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_YEAR_COURSES_START).click()
-        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_COURSES_START).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_COURSES_START_2016).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_MONTH_COURSES_FINISH).click()
         self.browser.find_element(*ResumeAddEditPageLocators.MONTH_OCTOBER_COURSES_FINISH).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_YEAR_COURSES_FINISH).click()
-        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_COURSES_FINISH).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_COURSES_FINISH_2016).click()
 
         iframe = self.browser.find_element(*ResumeAddEditPageLocators.IFRAME_CKEDITOR_COURSE_DESCRIPTION)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
@@ -273,11 +274,12 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_MONTH_COURSES_START_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.MONTH_NOVEMBER_COURSES_START_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_YEAR_COURSES_START_2).click()
-        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_COURSES_START_2).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_COURSES_START_2020_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_MONTH_COURSES_FINISH_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.MONTH_NOVEMBER_COURSES_FINISH_2).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_YEAR_COURSES_FINISH_2).click()
-        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_COURSES_FINISH_2).click()
+        time.sleep(0.6)
+        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_COURSES_FINISH_2021_2).click()
 
         iframe = self.browser.find_element(*ResumeAddEditPageLocators.IFRAME_CKEDITOR_COURSE_DESCRIPTION_2)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
@@ -291,11 +293,11 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_MONTH_COURSES_START_3).click()
         self.browser.find_element(*ResumeAddEditPageLocators.MONTH_DECEMBER_COURSES_START_3).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_YEAR_COURSES_START_3).click()
-        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_COURSES_START_3).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_COURSES_START_2017_3).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_MONTH_COURSES_FINISH_3).click()
         self.browser.find_element(*ResumeAddEditPageLocators.MONTH_JANUARY_COURSES_FINISH_3).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_YEAR_COURSES_FINISH_3).click()
-        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_COURSES_FINISH_3).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.YEAR_COURSES_FINISH_2018_3).click()
 
         iframe = self.browser.find_element(*ResumeAddEditPageLocators.IFRAME_CKEDITOR_COURSE_DESCRIPTION_3)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
@@ -304,7 +306,7 @@ class ResumeEditPage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
         # блок "Курсы и сертификаты"
 
-        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_KNOWLEDGE_OF_LANGUAGES_BLOCK).click()
+        # self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_KNOWLEDGE_OF_LANGUAGES_BLOCK).click()
 
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_LANGUAGE_1).click()
         self.browser.find_element(*ResumeAddEditPageLocators.ENGLISH_LANGUAGE_1).click()
@@ -324,11 +326,11 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.MIDDLE_LEVEL_3).click()
         # блок "Знание языков"
 
-        self.browser.find_element(*ResumeAddEditPageLocators.I_HAVE_DISABILITY).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.RADIO_I_HAVE_DISABILITY).click()
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_DESCRIPTION_OF_DISABILITY).send_keys(TestDataEditing.description_of_disability)
         # блок "Инвалидность"
 
-        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_ADDITIONAL_INFORMATION_BLOCK).click()
+        # self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_ADDITIONAL_INFORMATION_BLOCK).click()
 
         iframe = self.browser.find_element(*ResumeAddEditPageLocators.IFRAME_CKEDITOR_ADDITIONAL_INFORMATION)
         self.browser.switch_to.frame(iframe)  # вход в фрейм

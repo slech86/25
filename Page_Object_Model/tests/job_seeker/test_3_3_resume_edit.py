@@ -32,8 +32,8 @@ def test_editing_resume(browser, language):  # редактирование ре
 
     resume_edit_page = ResumeEditPage(browser, browser.current_url)
     resume_edit_page.change_data_in_all_fields()  # изменение данных во всех полях
-    resume_edit_page.percentage_check_of_resume_completion()  # проверка заполнения резюме в процентах
-    resume_edit_page.checking_status_level_filling_resume(language)  # проверка статуса уровня заполнения резюме
+    # resume_edit_page.percentage_check_of_resume_completion()  # проверка заполнения резюме в процентах
+    # resume_edit_page.checking_status_level_filling_resume(language)  # проверка статуса уровня заполнения резюме
     resume_edit_page.submitting_resume_change_for_publication()  # отправка изменений резюме на публикацию
 
     my_resume_page.waiting_for_my_resumes_page_to_open(language)  # ожидание открытия страницы 'Мои резюме'
