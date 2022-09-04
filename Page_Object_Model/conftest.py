@@ -16,7 +16,7 @@ def chrome_options():
     options.add_argument('chrome')  # 'headless', 'chrome'
     # options.add_argument('--start-maximized')
     options.add_argument('--window-size=1600,1000')
-    options.binary_location = "/Applications/Google Chrome Beta.app/Contents/MacOS/Google Chrome Beta"
+    # options.binary_location = "/Applications/Google Chrome Beta.app/Contents/MacOS/Google Chrome Beta"
     return options
 
 
@@ -25,8 +25,9 @@ def browser(request, chrome_options):
     options = chrome_options
     browser_name = request.config.getoption("--browser_name")
     if browser_name == "chrome":
-        s = Service('drivers/chromedriver')
-        browser = webdriver.Chrome(service=s, options=options)
+        # s = Service('drivers/chromedriver')
+        # browser = webdriver.Chrome(service=s, options=options)
+        browser = webdriver.Chrome(options=options)
     elif browser_name == "firefox":
         browser = webdriver.Firefox()
     else:

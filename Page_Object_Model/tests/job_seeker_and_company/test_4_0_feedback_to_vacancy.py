@@ -25,7 +25,7 @@ class TestResponseToVacancy:
 
         vacancies_page = VacanciesPage(browser, browser.current_url)
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.user_authorization(language, 2)  # авторизация пользователя
+        page.new_user_authorization(language, 2)  # авторизация пользователя
         vacancies_page.search_vacancy_by_job_title()  # поиск вакансии по названию
         vacancies_page.go_to_vacancy_page()  # нажатие на блок вакансии для перехода на ее страницу
 
@@ -53,7 +53,7 @@ class TestResponseToVacancy:
         # browser.maximize_window()
         page.open()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.user_authorization(language, 1)  # авторизация пользователя
+        page.new_user_authorization(language, 1)  # авторизация пользователя
         page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
         page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 

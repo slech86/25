@@ -24,7 +24,7 @@ def test_block_of_contacts_on_resume_page(browser, language):  # блок кон
     resume_page.checking_absence_of_contact_block()  # проверка отсутствия блока контактов
 
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.user_authorization(language, 1)  # авторизация пользователя
+    page.new_user_authorization(language, 1)  # авторизация пользователя
 
     resume_page.checking_contact_block_before_buying_package_of_services(language)  # проверка блока контактов до покупки пакета услуг
     resume_page.checking_absence_of_contact_block()  # проверка отсутствия блока контактов

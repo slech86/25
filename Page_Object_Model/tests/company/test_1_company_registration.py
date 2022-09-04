@@ -5,7 +5,7 @@ from Page_Object_Model.pages.site.main_page import MainPage
 from Page_Object_Model.pages.email_page import EmailPage
 from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
-from Page_Object_Model.data_for_testing import Accounts
+from Page_Object_Model.users import Accounts
 from Page_Object_Model.pages.site.company_preview_page import CompanyPreviewPage
 from Page_Object_Model.data_for_testing import TestData
 
@@ -68,7 +68,7 @@ class TestCompanyRegistration:
         # browser.maximize_window()
         page.open()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.user_authorization(language, 1)  # авторизация пользователя
+        page.new_user_authorization(language, 1)  # авторизация пользователя
         page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
         page.info_text_for_authorization_in_user_status_disabled(language)  # инфо текст при авторизации в статусе пользователя "Отключен"
 
@@ -90,7 +90,7 @@ class TestCompanyRegistration:
         # browser.maximize_window()
         page.open()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.user_authorization(language, 1)  # авторизация пользователя
+        page.new_user_authorization(language, 1)  # авторизация пользователя
         page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
         page.info_text_for_authorization_in_user_status_on_moderation(language)  # инфо текст при авторизации в статусе пользователя "На модерации"
 
@@ -106,6 +106,7 @@ class TestCompanyRegistration:
         admin_page.change_of_user_status_from_on_moderation_to_active()  # изменение статуса пользователя с "На модерации" на "Активен"
         admin_page.saving_user_card()  # сохранение карточки пользователя
         admin_page.waiting_to_save_status_and_open_users_page()  # ожидание сохранения статуса и открытия страницы всех пользователей
+        admin_page.search_user_by_email(language, 1)  # поиск пользователя по e-mail
         admin_page.check_that_user_has_status_active()  # проверка что пользователь имеет статус "Активен"
 
 
@@ -115,7 +116,7 @@ class TestCompanyRegistration:
     #     # browser.maximize_window()
     #     page.open()
     #     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    #     page.user_authorization()  # авторизация пользователя
+    #     page.new_user_authorization()  # авторизация пользователя
     #     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
 
     def test_checking_letter_after_first_moderation_ru(self, browser, language):  # проверка письма после первой модерации компании ru

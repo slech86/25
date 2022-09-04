@@ -22,7 +22,7 @@ class TestBlockOfContactsOnResumePage:
         resumes_page = ResumesPage(browser, browser.current_url)
 
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.user_authorization(language, 1)  # авторизация пользователя
+        page.new_user_authorization(language, 1)  # авторизация пользователя
 
         resumes_page.search_resume_by_job_title(TestData.job_title_resume_2)  # поиск резюме по названию
         singleton = Singleton()
@@ -38,7 +38,7 @@ class TestBlockOfContactsOnResumePage:
         # browser.maximize_window()
         page.open()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.user_authorization(language, 1)  # авторизация пользователя
+        page.new_user_authorization(language, 1)  # авторизация пользователя
         page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
         page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 

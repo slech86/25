@@ -1,3 +1,5 @@
+import time
+
 import pytest
 from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.job_seeker_personal_cabinet_page import JobSeekerPersonalCabinetPage
@@ -21,7 +23,7 @@ class TestResume3Add:
         # browser.maximize_window()
         page.open()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.user_authorization(language, 2)  # авторизация пользователя
+        page.new_user_authorization(language, 2)  # авторизация пользователя
         page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
         page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 
@@ -35,6 +37,7 @@ class TestResume3Add:
         add_resume_page.filling_in_required_fields(TestData.job_title_resume_3)  # заполнение обязательных полей
         # add_resume_page.percentage_check_of_resume_completion()  # проверка заполнения резюме в процентах
         # add_resume_page.checking_status_level_filling_resume(language)  # проверка статуса уровня заполнения резюме
+        time.sleep(1.5)
         add_resume_page.submitting_resume_for_publication()  # отправка резюме на публикацию
 
         my_resume_page.waiting_for_my_resumes_page_to_open(language)  # ожидание открытия страницы 'Мои резюме'

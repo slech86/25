@@ -2,18 +2,6 @@ import time
 from Page_Object_Model.singleton import Singleton
 
 
-class Accounts():
-    main_login_admin = 'p.verbenets'
-    main_password_admin = 'l6FOt9tvJT'
-
-    url_email = 'https://mail.qazz.pw/'  # "https://mail.smileexpo.com.ua/?_task=mail&_mbox=INBOX"
-    main_login_email = 'test_automation@qazz.pw'
-    main_password_email = 'VzbxybY0Q7yOzwKDibTUdPli'
-
-    # main_login_email = 'test_automation@smileexpo.com.ua'
-    # main_password_email = 'BwX37KJyiw02Cl'
-
-
 class TestData:
     time_Now = str(int(time.time()))
     email = ['test_automation+', '@qazz.pw']

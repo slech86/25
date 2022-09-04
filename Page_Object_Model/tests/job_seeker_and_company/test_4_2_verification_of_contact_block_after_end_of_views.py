@@ -22,7 +22,7 @@ class TestContactBlockAfterEndOfViews:
         resumes_page = ResumesPage(browser, browser.current_url)
 
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.user_authorization(language, 1)  # авторизация пользователя
+        page.new_user_authorization(language, 1)  # авторизация пользователя
 
         resumes_page.search_resume_by_job_title(TestData.job_title_resume_3)  # поиск резюме по названию
         singleton = Singleton()

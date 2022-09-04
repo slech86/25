@@ -1,7 +1,7 @@
 import time
 from .base_page import BasePage
 from Page_Object_Model.locators.locators import EmailPageLocators
-from Page_Object_Model.data_for_testing import Accounts
+from ..users import Accounts
 from Page_Object_Model.data_for_testing import TestData
 
 

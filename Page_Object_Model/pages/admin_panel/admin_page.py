@@ -1,6 +1,7 @@
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.admin_panel_locators import AdminPageLocators
-from Page_Object_Model.data_for_testing import TestData, TestDataEditing, Accounts
+from Page_Object_Model.data_for_testing import TestData, TestDataEditing
+from Page_Object_Model.users import Accounts
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait

@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from Page_Object_Model.data_for_testing import TestData
 from Page_Object_Model.singleton import Singleton
+from Page_Object_Model.users import users_variables
 import time
 
 
@@ -32,7 +33,7 @@ class OllPage(BasePage):
         self.browser.find_element(*OllPageLocators.JOB_SEEKER_TAB).click()
         self.browser.find_element(*OllPageLocators.JOB_SEEKER_REGISTRATION_LINK).click()
 
-    def user_authorization(self, language, key):  # авторизация пользователя
+    def new_user_authorization(self, language, key):  # авторизация нового пользователя
         if language == "":
             self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key][0][0])
             # self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys('p.verbenets')
@@ -46,6 +47,12 @@ class OllPage(BasePage):
         self.browser.find_element(*OllPageLocators.FIELD_PASSWORD).send_keys(TestData.password)
         # self.browser.find_element(*OllPageLocators.FIELD_PASSWORD).send_keys('l6FOt9tvJT')
 
+        self.browser.find_element(*OllPageLocators.BUTTON_LOG_IN).click()
+        time.sleep(2)
+
+    def user_authorization(self, user):  # авторизация пользователя
+        self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(users_variables[user]["login"])
+        self.browser.find_element(*OllPageLocators.FIELD_PASSWORD).send_keys(users_variables[user]["password"])
         self.browser.find_element(*OllPageLocators.BUTTON_LOG_IN).click()
         time.sleep(2)
 
