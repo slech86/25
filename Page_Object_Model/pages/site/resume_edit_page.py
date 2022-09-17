@@ -71,9 +71,9 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_JOB_TITLE).send_keys('_editing')
         self.browser.find_element(*ResumeAddEditPageLocators.CATEGORY_RESUME_SALES_CUSTOMER_MANAGEMENT).click()
         subcategories = WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(ResumeAddEditPageLocators.SUBCATEGORIES_ACCOUNT_MANAGER))  # "Подкатегории"
-        time.sleep(2)
+        time.sleep(3)
         subcategories.click()
-        time.sleep(2)
+        time.sleep(3)
 
         self.browser.find_element(*ResumeAddEditPageLocators.UNDEREMPLOYMENT).click()
         self.browser.find_element(*ResumeAddEditPageLocators.SALARY).clear()
