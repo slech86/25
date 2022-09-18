@@ -2,7 +2,7 @@ import pytest
 from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
 from Page_Object_Model.pages.site.services_and_prices_page import ServicesAndPricesPage
-from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
+from Page_Object_Model.сonfiguration import UrlStartPage, UrlStartPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.email_page import EmailPage
 from Page_Object_Model.users import Accounts
@@ -37,7 +37,7 @@ class TestPackagePurchaseStandart1Vacancy:
 
         services_and_prices_page.checking_message_about_create_cancel_test_payment(language)  # проверка сообщения о создании отмененного тестового платежа
 
-        admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+        admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
         admin_page.open()
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
@@ -76,7 +76,7 @@ class TestPackagePurchaseStandart1Vacancy:
         email_page.letter_after_order_processing(language)  # письмо после проведения заказа
 
     def test_complete_deletion_of_user_orders(self, browser, language):  # полное удаление заказов пользователя
-        admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+        admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
         admin_page.open()
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"

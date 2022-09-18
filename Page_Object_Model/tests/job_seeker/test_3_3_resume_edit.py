@@ -2,7 +2,7 @@ import time
 import pytest
 from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.job_seeker_personal_cabinet_page import JobSeekerPersonalCabinetPage
-from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
+from Page_Object_Model.сonfiguration import UrlStartPage, UrlStartPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_resumes_page import AdminResumesPage
 from Page_Object_Model.pages.site.my_resume_page import MyResumePage
@@ -40,7 +40,7 @@ def test_editing_resume(browser, language):  # редактирование ре
     my_resume_page.confirmation_of_opening_of_page_my_resumes(language)  # подтверждение открытия страницы 'Мои резюме'
     my_resume_page.checking_message_confirming_submission_of_resume_for_moderation(language)  # проверка сообщения о подтверждении отправки резюме на модерацию
 
-    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"

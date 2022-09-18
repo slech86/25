@@ -15,11 +15,13 @@ users_variables = {
         'login': 'employer',
         'password': '65Y2ixdH4F',
         'mail': 'test_automation+employer@qazz.pw',
+        'id': '4719',
         'company_name': 'test_Название компании',
     },
     'job_seeker': {
         'login': 'job_seeker',
         'password': '2284anVvFS',
         'mail': 'test_automation+job_seeker@qazz.pw',
+        'id': '4720',
     },
 }

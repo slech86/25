@@ -126,3 +126,45 @@ class ResumePage(BasePage):
         vk = self.browser.find_element(*ResumePageLocators.VK_IN_CONTACT_INFORMATION)
         vk_href = vk.get_attribute("href")
         assert vk_href == test_data.vk_resume, f"VK в контактах резюме, expected result: '{test_data.vk_resume}', actual result: '{vk_href}'"
+
+
+    def new_checking_contact_display(self, contacts):  # проверка отображения контактов
+        phone1 = self.browser.find_element(*ResumePageLocators.PHONE_1_IN_CONTACT_INFORMATION).text
+        assert phone1 == contacts['phone1'], f"Первый телефон в контактах резюме, expected result: '{contacts['phone1']}', actual result: '{phone1}'"
+
+        phone2 = self.browser.find_element(*ResumePageLocators.PHONE_2_IN_CONTACT_INFORMATION).text
+        assert phone2 == contacts['phone2'], f"Второй телефон в контактах резюме, expected result: '{contacts['phone2']}', actual result: '{phone2}'"
+
+        email = self.browser.find_element(*ResumePageLocators.EMAIL_IN_CONTACT_INFORMATION).text
+        assert email == contacts['email'], f"Email в контактах резюме, expected result: '{contacts['email']}', actual result: '{email}'"
+
+        skype = self.browser.find_element(*ResumePageLocators.SKYPE_IN_CONTACT_INFORMATION).text
+        assert skype == contacts['skype'], f"Skype в контактах резюме, expected result: '{contacts['skype']}', actual result: '{skype}'"
+
+        portfolio = self.browser.find_element(*ResumePageLocators.PORTFOLIO_IN_CONTACT_INFORMATION)
+        portfolio_href = portfolio.get_attribute("href")
+        assert portfolio_href == contacts['portfolio'], f"Portfolio в контактах резюме, expected result: '{contacts['portfolio']}', actual result: '{portfolio_href}'"
+
+        facebook = self.browser.find_element(*ResumePageLocators.FACEBOOK_IN_CONTACT_INFORMATION)
+        facebook_href = facebook.get_attribute("href")
+        assert facebook_href == contacts['facebook'], f"Facebook в контактах резюме, expected result: '{contacts['facebook']}', actual result: '{facebook_href}'"
+
+        linkedin = self.browser.find_element(*ResumePageLocators.LINKEDIN_IN_CONTACT_INFORMATION)
+        linkedin_href = linkedin.get_attribute("href")
+        assert linkedin_href == contacts['linkedin'], f"Linkedin в контактах резюме, expected result: '{contacts['linkedin']}', actual result: '{linkedin_href}'"
+
+        instagram = self.browser.find_element(*ResumePageLocators.INSTAGRAM_IN_CONTACT_INFORMATION)
+        instagram_href = instagram.get_attribute("href")
+        assert instagram_href == contacts['instagram'], f"Instagram в контактах резюме, expected result: '{contacts['instagram']}', actual result: '{instagram_href}'"
+
+        telegram = self.browser.find_element(*ResumePageLocators.TELEGRAM_IN_CONTACT_INFORMATION)
+        telegram_href = telegram.get_attribute("href")
+        assert telegram_href == contacts['telegram'], f"Telegram в контактах резюме, expected result: '{contacts['telegram']}', actual result: '{telegram_href}'"
+
+        twitter = self.browser.find_element(*ResumePageLocators.TWITTER_IN_CONTACT_INFORMATION)
+        twitter_href = twitter.get_attribute("href")
+        assert twitter_href == contacts['twitter'], f"Twitter в контактах резюме, expected result: '{contacts['twitter']}', actual result: '{twitter_href}'"
+
+        vk = self.browser.find_element(*ResumePageLocators.VK_IN_CONTACT_INFORMATION)
+        vk_href = vk.get_attribute("href")
+        assert vk_href == contacts['vk'], f"VK в контактах резюме, expected result: '{contacts['vk']}', actual result: '{vk_href}'"

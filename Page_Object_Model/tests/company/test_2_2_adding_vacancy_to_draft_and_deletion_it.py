@@ -1,6 +1,6 @@
 import pytest
 from Page_Object_Model.pages.site.oll_page import OllPage
-from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
+from Page_Object_Model.сonfiguration import UrlStartPage, UrlStartPageAdmin
 from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
 from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
 from Page_Object_Model.pages.site.vacancy_add_page import VacancyAddPage
@@ -38,7 +38,7 @@ class TestAddingVacancyToDraft:
         my_vacancies_page.confirmation_of_opening_of_page_my_vacancies(language)  # подтверждение открытия страницы 'Мои вакансии'
         my_vacancies_page.checking_message_about_adding_vacancy_to_draft(language)  # проверка сообщения о добавлении вакансии в черновик
 
-        admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+        admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
         admin_page.open()
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
@@ -56,7 +56,7 @@ class TestAddingVacancyToDraft:
         my_vacancies_page.deletion_vacancy_draft()  # удаление черновика вакансии
         my_vacancies_page.checking_message_after_deleting_vacancy(language)  # проверка сообщения после удаления вакансии
 
-        admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin + '/vacancies')
+        admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin + '/vacancies')
         admin_page.open()
         admin_page.vacancy_search_by_job_title(TestData.job_title_vacancy_for_draft)  # поиск вакансии по названию должности
         admin_page.checking_that_vacancy_status_is_deleted()  # проверка что статус вакансии 'Удалено'

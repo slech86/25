@@ -2,7 +2,7 @@ import time
 import pytest
 from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.job_seeker_personal_cabinet_page import JobSeekerPersonalCabinetPage
-from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
+from Page_Object_Model.сonfiguration import UrlStartPage, UrlStartPageAdmin
 from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
 from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
 from Page_Object_Model.pages.site.resume_page import ResumePage

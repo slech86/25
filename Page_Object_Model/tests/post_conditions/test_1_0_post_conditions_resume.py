@@ -1,13 +1,13 @@
 import pytest
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
-from Page_Object_Model.сonfiguration import UrlPageAdmin
+from Page_Object_Model.сonfiguration import UrlStartPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_resumes_page import AdminResumesPage
 from Page_Object_Model.data_for_testing import TestData
 
 
 @pytest.fixture(scope="function", autouse=True)
 def authorization_in_admin(browser):  # авторизация в админку
-    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"

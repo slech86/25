@@ -1,10 +1,10 @@
 import pytest
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
-from Page_Object_Model.сonfiguration import UrlPageAdmin
+from Page_Object_Model.сonfiguration import UrlStartPageAdmin
 
 
 def test_delete_user(browser, language):  # удаление пользователя
-    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"

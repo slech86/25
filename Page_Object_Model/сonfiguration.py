@@ -8,7 +8,7 @@ class UrlStartPage:
     url_start_page = f"{prefix}logincasino.work{suffix}{suffix_page}"
 
 
-class UrlPageAdmin:
+class UrlStartPageAdmin:
     if UrlStartPage.suffix == '.preprod.pw':
         url_page_admin = "http://admin-work.pw.preprod.pw/x" # 'https://fixvacancy.admin-work.pw.preprod.pw/x', 'http://admin-work.pw.preprod.pw/x'
     else:

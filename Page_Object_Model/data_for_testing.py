@@ -369,3 +369,18 @@ class TestDataEditing:
 
     job_search_status = '?!?'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     # резюме
+
+
+contact_display = {
+    'phone1': '+380(45)456-4545',
+    'phone2': '+357(96)999999',
+    'email': 'test@e.h',
+    'skype': 'skype_resume_test',
+    'portfolio': 'https://portfolio_test.com/',
+    'facebook': 'https://facebook_resume_test.com/',
+    'linkedin': 'https://linkedin_resume_test.com/',
+    'instagram': 'https://instagram_resume_test.com/',
+    'telegram': 'https://telegram_resume_test.com/',
+    'twitter': 'https://twitter_resume_test.com/',
+    'vk': 'https://vk_resume_test.com/'
+}

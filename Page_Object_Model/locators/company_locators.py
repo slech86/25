@@ -406,6 +406,13 @@ class ServicesAndPricesPageLocators:
                     number_of_vacancies_available]
         return locators
 
+    def new_assembly_of_locators_with_id_product_and_id_purchase(self, id_product, id_purchase):  # сборка локаторов с id продукта и id покупок
+        locators_with_id_product_and_id_purchase = {
+            'arrow_for_viewing_options_available_in_package': (By.CSS_SELECTOR, '.tab-activated-servises .packages-wrap[data-product-id="' + id_product + '"][data-purchases-id="' + id_purchase + '"] .more'),
+            'number_of_vacancies_available': (By.CSS_SELECTOR, '.tab-activated-servises .packages-wrap[data-product-id="' + id_product + '"][data-purchases-id="' + id_purchase + '"] p.small-text')
+        }
+        return locators_with_id_product_and_id_purchase
+
     BUTTON_ORDER_IN_HELP_REFUGEE_WITH_HIS_WORK = (By.CSS_SELECTOR, ('[data-product-id="15"]'))
     HELP_REFUGEE_WITH_HIS_WORK_IN_BASKET = (By.CSS_SELECTOR, ('.bascket-list-item > [data-product-id="15"]'))
 

@@ -3,7 +3,7 @@ from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.job_seeker_registration_page import JobSeekerRegistrationPage
 from Page_Object_Model.pages.site.main_page import MainPage
 from Page_Object_Model.pages.email_page import EmailPage
-from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
+from Page_Object_Model.сonfiguration import UrlStartPage, UrlStartPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.users import Accounts
 
@@ -29,7 +29,7 @@ class TestJobSeekerRegistration:
         main_page.checking_message_for_sending_registration_form(language)  # проверка сообщения о подтверждении отправки формы регистрации
 
     def test_checking_creation_of_user_in_admin_panel(self, browser, language):  # проверка создания пользователя в админке
-        admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+        admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
         admin_page.open()
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
@@ -40,7 +40,7 @@ class TestJobSeekerRegistration:
     # @pytest.mark.skip
     # @pytest.mark.s_r_c
     def test_changing_user_role_from_user_to_super_admin(self, browser, language):  # изменение роли пользователя с "User" на "SuperAdmin"
-        admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+        admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
         admin_page.open()
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
@@ -78,7 +78,7 @@ class TestJobSeekerRegistration:
         page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
 
     def test_check_that_user_has_status_active(self, browser, language):  # проверка что пользователь имеет статус "Активен"
-        admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+        admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
         admin_page.open()
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"

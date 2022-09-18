@@ -101,12 +101,12 @@ class ServicesAndPricesPage(BasePage):
                 index = text.find('/')
                 assert int(text[index - 2]) + 1 == int(text[index + 2]), 'В пакете осталось не верное количество вакансий'
 
-    def checking_reduction_in_number_of_contact_views_in_service_package(self):  # проверка уменьшения в пакете услуг количества просмотров контактов
+    def checking_reduction_in_number_of_contact_views_in_service_package(self, id_product, id_purchase):  # проверка уменьшения в пакете услуг количества просмотров контактов
         locators_with_id_product_and_id_purchase = ServicesAndPricesPageLocators()
-        locators = locators_with_id_product_and_id_purchase.assembly_of_locators_with_id_product_and_id_purchase()
-        self.browser.find_element(*locators[3][0]).click()
+        locators = locators_with_id_product_and_id_purchase.new_assembly_of_locators_with_id_product_and_id_purchase(id_product, id_purchase)
+        self.browser.find_element(*locators['arrow_for_viewing_options_available_in_package']).click()
         time.sleep(0.3)
-        number_of_vacancies_available = self.browser.find_elements(*locators[4][0])
+        number_of_vacancies_available = self.browser.find_elements(*locators['number_of_vacancies_available'])
         text = number_of_vacancies_available[0].text
         index = text.find('/')
         assert int(text[index - 2]) + 1 == int(text[index + 2]), 'В пакете осталось не верное количество вакансий'

@@ -1,7 +1,7 @@
 import pytest
 from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.job_seeker_personal_cabinet_page import JobSeekerPersonalCabinetPage
-from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
+from Page_Object_Model.сonfiguration import UrlStartPage, UrlStartPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_resumes_page import AdminResumesPage
 from Page_Object_Model.pages.site.my_resume_page import MyResumePage
@@ -40,7 +40,7 @@ class TestAddingResumeToDraft:
         my_resume_page.checking_message_about_adding_resume_to_draft(language)  # проверка сообщения о добавлении резюме в черновик
         my_resume_page.checking_number_of_resumes_to_create(4)  # проверка уменьшения количества резюме для создания
 
-        admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+        admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
         admin_page.open()
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
@@ -60,7 +60,7 @@ class TestAddingResumeToDraft:
         my_resume_page.checking_message_after_deleting_resume(language)  # проверка сообщения после удаления резюме
         my_resume_page.checking_number_of_resumes_to_create(3)  # проверка количества резюме для создания
 
-        admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin + '/resume')
+        admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin + '/resume')
         admin_page.open()
         admin_resumes_page.resume_search_by_job_title(TestData.job_title_resume_for_draft)  # поиск резюме по названию должности
         admin_resumes_page.checking_that_resume_status_is_deleted()  # проверка что статус резюме 'Удалено'

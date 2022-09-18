@@ -292,3 +292,8 @@ class AdminResumeEditPageLocators:
 
     BUTTON_SAVE = (By.CSS_SELECTOR, ('[type="submit"].btn.btn-success'))
     BUTTON_SAVE_AND_EDIT = (By.CSS_SELECTOR, ('[type="submit"].btn.btn-primary'))
+
+
+class AdminSqlPageLocators:
+    FIELD_SQL = (By.CSS_SELECTOR, '#filter-form textarea')
+    BUTTON_EXECUTE = (By.CSS_SELECTOR, '#filter-form [type="submit"]')

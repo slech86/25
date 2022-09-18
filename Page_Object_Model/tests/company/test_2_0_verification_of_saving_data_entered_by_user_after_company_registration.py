@@ -1,11 +1,11 @@
 import pytest
-from Page_Object_Model.сonfiguration import UrlPageAdmin
+from Page_Object_Model.сonfiguration import UrlStartPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 
 
 # @pytest.mark.skip
 def test_verification_of_saving_data_entered_by_user_after_company_registration(browser, language):  # проверка сохранения введенных пользователем данных после регистрации компании
-    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"

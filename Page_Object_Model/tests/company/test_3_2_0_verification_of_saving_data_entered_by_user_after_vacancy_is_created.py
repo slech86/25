@@ -1,5 +1,5 @@
 import pytest
-from Page_Object_Model.сonfiguration import UrlPageAdmin
+from Page_Object_Model.сonfiguration import UrlStartPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_vacancy_edit_page import AdminVacancyEditPage
 from Page_Object_Model.data_for_testing import TestData
@@ -7,7 +7,7 @@ from Page_Object_Model.data_for_testing import TestData
 
 # @pytest.mark.s_r_c
 def test_verification_of_saving_data_entered_by_user_after_vacancy_is_created(browser, language):  # проверка сохранения введенных пользователем данных после создания вакансии
-    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"

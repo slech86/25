@@ -1,5 +1,5 @@
 import pytest
-from Page_Object_Model.сonfiguration import UrlPageAdmin
+from Page_Object_Model.сonfiguration import UrlStartPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_resumes_page import AdminResumesPage
 from Page_Object_Model.pages.admin_panel.admin_resume_edit_page import AdminResumeEditPage
@@ -11,7 +11,7 @@ from Page_Object_Model.data_for_testing import TestData
 # @pytest.mark.job_seeker
 # @pytest.mark.skip
 def test_verification_of_saving_data_entered_by_user_after_resume_creation(browser, language):  # проверка сохранения введенных пользователем данных после создания резюме
-    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
 

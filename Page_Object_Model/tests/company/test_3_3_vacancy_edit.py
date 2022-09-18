@@ -1,6 +1,6 @@
 import pytest
 from Page_Object_Model.pages.site.oll_page import OllPage
-from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
+from Page_Object_Model.сonfiguration import UrlStartPage, UrlStartPageAdmin
 from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
 from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
 from Page_Object_Model.pages.site.vacancy_edit_page import VacancyEditPage
@@ -40,7 +40,7 @@ def test_editing_vacancies(browser, language):  # редактирование �
     my_vacancies_page.confirmation_of_opening_of_page_my_vacancies(language)  # подтверждение открытия страницы 'Мои вакансии'
     my_vacancies_page.checking_message_confirming_submission_of_vacancy_for_moderation(language)  # проверка сообщения о подтверждении отправки вакансии на модерацию
 
-    admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+    admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
     admin_page.open()
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"

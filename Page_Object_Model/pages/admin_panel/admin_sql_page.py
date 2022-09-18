@@ -1,0 +1,18 @@
+import time
+
+from Page_Object_Model.pages.base_page import BasePage
+from Page_Object_Model.locators.admin_panel_locators import AdminSqlPageLocators
+
+
+class AdminSqlPage(BasePage):
+    def sql_change_number_of_contact_views_per_day(self, purchase_id, number='1'):  # изменение количества просмотров контактов в день
+        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).clear()
+        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).send_keys('UPDATE `tbl_purchases` SET `view_contacts_at_day`=' + number + ' WHERE `id`=' + purchase_id + ';')
+        self.browser.find_element(*AdminSqlPageLocators.BUTTON_EXECUTE).click()
+        time.sleep(1)
+
+    def sql_delete_record_opening_contacts(self, user_id, resume_id):  # удаление записи о открытии контакта
+        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).clear()
+        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).send_keys('DELETE FROM `tbl_resume_contacts` WHERE `user_id`=' + user_id + ' AND `resume_id`=' + resume_id + ';')
+        self.browser.find_element(*AdminSqlPageLocators.BUTTON_EXECUTE).click()
+        time.sleep(1)

@@ -1,5 +1,5 @@
 import pytest
-from Page_Object_Model.сonfiguration import UrlStartPage, UrlPageAdmin
+from Page_Object_Model.сonfiguration import UrlStartPage, UrlStartPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.services_and_prices_page import ServicesAndPricesPage
@@ -42,7 +42,7 @@ class TestPackagePurchaseMonthlyFreeVacancy:
         add_vacancy_page = VacancyAddPage(browser, browser.current_url)
         add_vacancy_page.absence_of_button_to_publish()  # проверка отсутствия кнопки "Опубликовать"
 
-        admin_page = AdminPage(browser, UrlPageAdmin.url_page_admin)
+        admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
         admin_page.open()
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
