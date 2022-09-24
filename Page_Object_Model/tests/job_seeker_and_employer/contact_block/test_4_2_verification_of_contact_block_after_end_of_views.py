@@ -3,10 +3,12 @@ from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.resumes_page import ResumesPage
 from Page_Object_Model.pages.site.resume_page import ResumePage
 from Page_Object_Model.сonfiguration import UrlStartPage
-from Page_Object_Model.data_for_testing import TestData
-from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
-from Page_Object_Model.pages.site.services_and_prices_page import ServicesAndPricesPage
-from Page_Object_Model.singleton import Singleton
+
+# тест зависим от "opening_contacts_in_resume"
+
+user = 'employer'
+resume_name = 'qa test проверка контактного блока после использования возможности открывать контакты'
+resume_id = '1268'
 
 
 class TestContactBlockAfterEndOfViews:
@@ -22,11 +24,10 @@ class TestContactBlockAfterEndOfViews:
         resumes_page = ResumesPage(browser, browser.current_url)
 
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.new_user_authorization(language, 1)  # авторизация пользователя
+        page.user_authorization(user)  # авторизация пользователя
 
-        resumes_page.search_resume_by_job_title(TestData.job_title_resume_3)  # поиск резюме по названию
-        singleton = Singleton()
-        resumes_page.go_to_resume_page(singleton.id_resume[2])  # нажатие на блок резюме для перехода на его страницу
+        resumes_page.search_resume_by_job_title(resume_name)  # поиск резюме по названию
+        resumes_page.go_to_resume_page(resume_id)  # нажатие на блок резюме для перехода на его страницу
 
         resume_page = ResumePage(browser, browser.current_url)
         resume_page.checking_message_about_using_ability_to_open_contacts(language)  # проверка сообщения о использовании возможности открывать контакты

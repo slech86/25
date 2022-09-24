@@ -12,13 +12,13 @@ from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_sql_page import AdminSqlPage
 from Page_Object_Model.users import users_variables
 
-# pytest --reruns 1 --html=./reports/report.html -s tests/job_seeker_and_company/test_4_1_opening_contacts_in_resume.py
+# pytest --reruns 1 --html=./reports/report.html -s tests/job_seeker_and_employer/test_4_1_opening_contacts_in_resume.py
 
 user = 'employer'
-purchase_id = '879'
+purchase_id = '850'
 # order_id = '806'
-resume_id = '1266'
-resume_name = 'test проверка открытия контактов в резюме'
+resume_id = '1267'
+resume_name = 'qa test проверка открытия контактов в резюме'
 product_id = '30'
 
 
