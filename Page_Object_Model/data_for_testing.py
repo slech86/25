@@ -371,7 +371,7 @@ class TestDataEditing:
     # резюме
 
 
-contact_display = {
+contact_display_when_opening_contacts = {
     'phone1': '+380(45)456-4545',
     'phone2': '+357(96)999999',
     'email': 'test@e.h',
@@ -383,4 +383,18 @@ contact_display = {
     'telegram': 'https://telegram_resume_test.com/',
     'twitter': 'https://twitter_resume_test.com/',
     'vk': 'https://vk_resume_test.com/'
+}
+
+contact_display_when_response_to_vacancy = {
+    'phone1': '+380(67)456-4545',
+    'phone2': '+357(96)000000',
+    'email': 'test@x.c',
+    'skype': 'skype_res_test',
+    'portfolio': 'https://portfolio1_test.com/',
+    'facebook': 'https://facebook1_resume_test.com/',
+    'linkedin': 'https://linkedin1_resume_test.com/',
+    'instagram': 'https://instagram1_resume_test.com/',
+    'telegram': 'https://telegram1_resume_test.com/',
+    'twitter': 'https://twitter1_resume_test.com/',
+    'vk': 'https://vk1_resume_test.com/'
 }

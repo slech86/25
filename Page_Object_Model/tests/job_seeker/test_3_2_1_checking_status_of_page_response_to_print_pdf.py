@@ -24,7 +24,7 @@ def test_checking_status_of_page_response_to_print_pdf(browser, language):  # п
     vacancy_page.checking_status_of_page_response_to_print_pdf()  # проверка статуса ответа страницы 'распечатать пдф'
 
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.new_user_authorization(language, 2)  # авторизация пользователя
+    page.user_new_authorization(language, 2)  # авторизация пользователя
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
     page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 

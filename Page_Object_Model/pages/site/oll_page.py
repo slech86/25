@@ -33,7 +33,7 @@ class OllPage(BasePage):
         self.browser.find_element(*OllPageLocators.JOB_SEEKER_TAB).click()
         self.browser.find_element(*OllPageLocators.JOB_SEEKER_REGISTRATION_LINK).click()
 
-    def new_user_authorization(self, language, key):  # авторизация нового пользователя
+    def user_new_authorization(self, language, key):  # авторизация нового пользователя
         if language == "":
             self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key][0][0])
             # self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys('p.verbenets')

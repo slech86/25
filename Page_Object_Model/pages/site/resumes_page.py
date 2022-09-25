@@ -1,6 +1,5 @@
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.locators import ResumesPageLocators
-from Page_Object_Model.data_for_testing import TestDataEditing
 
 
 class ResumesPage(BasePage):

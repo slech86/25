@@ -4,21 +4,19 @@ from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.job_seeker_locators import VacancyPageLocators
 from Page_Object_Model.data_for_testing import TestData, TestDataEditing
 from Page_Object_Model.сonfiguration import UrlStartPage
-from Page_Object_Model.singleton import Singleton
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import requests
 
 
 class VacancyPage(BasePage):
-    def confirmation_opening_of_vacancy_page(self, language):  # подтверждение открытия страницы вакансии
-        singleton = Singleton()
+    def confirmation_opening_of_vacancy_page(self, language, vacancy_id):  # подтверждение открытия страницы вакансии
         if language == '/ua':
-            assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/ua/vacancy/' + singleton.id_vacancies, 'Не правильный URL'
+            assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/ua/vacancy/' + vacancy_id, 'Не правильный URL'
         elif language == '':
-            assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/vacancy/' + singleton.id_vacancies, 'Не правильный URL'
+            assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/vacancy/' + vacancy_id, 'Не правильный URL'
         elif language == '/en':
-            assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/en/vacancy/' + singleton.id_vacancies, 'Не правильный URL'
+            assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/en/vacancy/' + vacancy_id, 'Не правильный URL'
 
     def checking_opening_of_page_of_an_unpublished_vacancy(self, language):  # проверка открытия страницы не опубликованной вакансии
         h1 = self.browser.find_element(*VacancyPageLocators.H1).text
@@ -29,13 +27,9 @@ class VacancyPage(BasePage):
         if language == "/en":
             assert h1 == 'Search completed', "Не корректный h1"
 
-    def checking_opening_of_page_of_published_vacancy(self):  # проверка открытия страницы опубликованной вакансии
+    def checking_opening_of_page_of_published_vacancy(self, job_title_vacancy):  # проверка открытия страницы опубликованной вакансии
         h1 = self.browser.find_element(*VacancyPageLocators.H1).text
-        assert h1 == TestData.job_title_vacancy, "Вакансия не опубликована"
-
-    def checking_opening_of_page_of_published_vacancy_after_editing(self):  # проверка открытия страницы опубликованной вакансии после редактирования
-        h1 = self.browser.find_element(*VacancyPageLocators.H1).text
-        assert h1 == TestDataEditing.job_title_vacancy, "Вакансия не опубликована"
+        assert h1 == job_title_vacancy, "Вакансия не опубликована"
 
     def checking_status_of_page_response_to_print_pdf(self):  # проверка статуса ответа страницы 'распечатать пдф'
         self.browser.find_element(*VacancyPageLocators.BUTTON_VACANCY_MENU).click()
@@ -51,9 +45,9 @@ class VacancyPage(BasePage):
     def presence_of_button_responds_2(self):  # наличие кнопки "Откликнуться" # 2
         assert self.is_element_present(*VacancyPageLocators.BUTTON_RESPONSE_2), 'Нет кнопки "Откликнуться" №2'
 
-    def filling_and_sending_response_with_selected_active_resume(self):  # заполнение и отправка отклика с выбранным активным резюме
+    def filling_and_sending_response_with_selected_active_resume(self, resume_id):  # заполнение и отправка отклика с выбранным активным резюме
         resume_locator = VacancyPageLocators()
-        resume = resume_locator.assembly_of_locators_with_id_resume()
+        resume = resume_locator.assembly_of_locators_with_id_resume(resume_id)
         self.browser.find_element(*resume).click()
         self.browser.find_element(*VacancyPageLocators.BUTTON_ADD_COVER_LETTER).click()
         self.browser.find_element(*VacancyPageLocators.FIELD_COVER_LETTER).send_keys(TestData.cover_letter)

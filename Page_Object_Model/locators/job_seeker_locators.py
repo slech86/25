@@ -499,10 +499,9 @@ class ResumeAddEditPageLocators:
 class MyResponsesPageLocators:
     H1 = (By.CSS_SELECTOR, ('h1'))
 
-    def assembly_of_locators_with_id_vacancies(self):  # сборка локаторов с id вакансии
-        singleton = Singleton()
-        vacancy = (By.XPATH, ('//a[contains(@href, "/vacancy/' + singleton.id_vacancies + '")]'))
-        return vacancy
+    def assembly_of_locators_with_id_vacancies(self, id_vacancies):  # сборка локаторов с id вакансии
+        locator = (By.XPATH, ('//a[contains(@href, "/vacancy/' + id_vacancies + '")]'))
+        return locator
 
 
 class VacancyPageLocators:
@@ -514,9 +513,8 @@ class VacancyPageLocators:
     NOT_ACTIVE_BUTTON_RESUME_POSTED_1 = (By.CSS_SELECTOR, ('.company-respond > [data-target="#respond-modal"][disabled="disabled"]'))
     NOT_ACTIVE_BUTTON_RESUME_POSTED_2 = (By.CSS_SELECTOR, ('.btn-wrap > [data-target="#respond-modal"][disabled="disabled"]'))
 
-    def assembly_of_locators_with_id_resume(self):  # сборка локаторов с id резюме
-        singleton = Singleton()
-        resume_in_response_popup_window = (By.CSS_SELECTOR, ('label[for="resume-' + singleton.id_resume[0] + '"]'))
+    def assembly_of_locators_with_id_resume(self, id_resume):  # сборка локаторов с id резюме
+        resume_in_response_popup_window = (By.CSS_SELECTOR, ('label[for="resume-' + id_resume + '"]'))
         return resume_in_response_popup_window
 
     BUTTON_ADD_COVER_LETTER = (By.CSS_SELECTOR, ('.required + .form-group > .cover-letter-btn'))

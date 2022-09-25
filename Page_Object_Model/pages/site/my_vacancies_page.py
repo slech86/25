@@ -45,15 +45,15 @@ class MyVacanciesPage(BasePage):
             assert "Draft deleted" == info_text, 'Не верное сообщение'
         self.browser.find_element(*MyVacanciesPageLocators.CROSS_IN_POP_UP_AFTER_DELETING_DRAFT_VACANCY).click()
 
-    def checking_for_availability_icon_new_response_to_vacancy(self):  # проверка наличия иконки нового отклика на вакансию
+    def checking_for_availability_icon_new_response_to_vacancy(self, vacancy_id):  # проверка наличия иконки нового отклика на вакансию
         locators_with_id_vacancies = MyVacanciesPageLocators()
-        locator = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies()  # сборка локаторов с id вакансии
-        assert self.is_element_present(*locator[3]), 'Нет иконки нового отклика на вакансию'
+        locator = locators_with_id_vacancies.new_assembly_of_locators_with_id_vacancies(vacancy_id)  # сборка локаторов с id вакансии
+        assert self.is_element_present(*locator['new_response_icon']), 'Нет иконки нового отклика на вакансию'
 
-    def go_to_responses_to_vacancy_page(self):  # переход на страницу 'Отклики на вакансию'
+    def go_to_responses_to_vacancy_page(self, vacancy_id):  # переход на страницу 'Отклики на вакансию'
         locators_with_id_vacancies = MyVacanciesPageLocators()
-        locator = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies()  # сборка локаторов с id вакансии
-        self.browser.find_element(*locator[2]).click()
+        locator = locators_with_id_vacancies.new_assembly_of_locators_with_id_vacancies(vacancy_id)  # сборка локаторов с id вакансии
+        self.browser.find_element(*locator['button_show_responses']).click()
 
     def waiting_for_my_vacancies_page_to_open(self, language):  # ожидание открытия страницы 'Мои вакансии'
         if language == "":

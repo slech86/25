@@ -20,7 +20,7 @@ def test_checking_absence_of_block_of_contacts_with_an_authorized_applicant(brow
     resume_page = ResumePage(browser, browser.current_url)
 
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.new_user_authorization(language, 2)  # авторизация пользователя
+    page.user_new_authorization(language, 2)  # авторизация пользователя
 
     resume_page.checking_absence_of_contact_block_with_information()  # проверка отсутствия блока контактов c информацией
     resume_page.checking_absence_of_contact_block()  # проверка отсутствия блока контактов

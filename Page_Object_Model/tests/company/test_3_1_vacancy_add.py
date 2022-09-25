@@ -17,7 +17,6 @@ from Page_Object_Model.data_for_testing import TestData
 from Page_Object_Model.pages.site.vacancy_preview_page import VacancyPreviewPage
 
 
-
 @pytest.mark.s_r_c
 def test_adding_vacancies(browser, language):  # добавление вакансии
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
@@ -25,7 +24,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     # browser.maximize_window()
     page.open()
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.new_user_authorization(language, 1)  # авторизация пользователя
+    page.user_new_authorization(language, 1)  # авторизация пользователя
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
     page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 
@@ -80,7 +79,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     url_Vacancy_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}/vacancy/{singleton.id_vacancies}"
     vacancy_page = VacancyPage(browser, url_Vacancy_Page)
     vacancy_page.open()
-    vacancy_page.checking_opening_of_page_of_published_vacancy()  # проверка открытия страницы опубликованной вакансии
+    vacancy_page.checking_opening_of_page_of_published_vacancy(TestData.job_title_vacancy)  # проверка открытия страницы опубликованной вакансии
 
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
     page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета

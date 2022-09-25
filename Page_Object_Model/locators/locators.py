@@ -32,10 +32,9 @@ class VacanciesPageLocators:
     FIELD_JOB_TITLE_TO_SEARCH = (By.CSS_SELECTOR, ('#' + inputPrefix + 'job_title'))
     BUTTON_SEARCH = (By.CSS_SELECTOR, ('#top-sort-form-btn'))
 
-    def assembly_of_locators_with_id_vacancies(self):  # сборка локаторов с id вакансии
-        singleton = Singleton()
-        vacancy = (By.XPATH, ('//a[contains(@href, "/vacancy/' + singleton.id_vacancies + '")]'))
-        return vacancy
+    def assembly_of_locators_with_id_vacancies(self, id_vacancies):  # сборка локаторов с id вакансии
+        locator = (By.XPATH, ('//a[contains(@href, "/vacancy/' + id_vacancies + '")]'))
+        return locator
 
     FIRST_VACANCY_IN_LIST = (By.CSS_SELECTOR, ('.lc-card:nth-child(1)'))
 

@@ -4,7 +4,7 @@ from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.resumes_page import ResumesPage
 from Page_Object_Model.pages.site.resume_page import ResumePage
 from Page_Object_Model.сonfiguration import UrlStartPage
-from Page_Object_Model.data_for_testing import contact_display
+from Page_Object_Model.data_for_testing import contact_display_when_opening_contacts
 from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
 from Page_Object_Model.pages.site.services_and_prices_page import ServicesAndPricesPage
 from Page_Object_Model.сonfiguration import UrlStartPageAdmin
@@ -12,11 +12,10 @@ from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_sql_page import AdminSqlPage
 from Page_Object_Model.users import users_variables
 
-# pytest --reruns 1 --html=./reports/report.html -s tests/job_seeker_and_employer/test_4_1_opening_contacts_in_resume.py
+# pytest --reruns 1 --html=./reports/report.html -s tests/job_seeker_and_employer/contact_block/test_4_1_opening_contacts_in_resume.py
 
 user = 'employer'
 purchase_id = '850'
-# order_id = '806'
 resume_id = '1267'
 resume_name = 'qa test проверка открытия контактов в резюме'
 product_id = '30'
@@ -25,7 +24,7 @@ product_id = '30'
 class TestBlockOfContactsOnResumePage:
     # @pytest.mark.skip
     # @pytest.mark.s_r_c
-    def test_precondition(self, browser):  # блок контактов на странице резюме
+    def test_precondition(self, browser):
         admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
         admin_page.open()
         admin_page.admin_authorization()
@@ -53,7 +52,7 @@ class TestBlockOfContactsOnResumePage:
 
         resume_page = ResumePage(browser, browser.current_url)
         resume_page.opening_contacts_in_resume()  # открытие контактов в резюме
-        resume_page.new_checking_contact_display(contact_display)  # проверка отображения контактов
+        resume_page.checking_contact_display(contact_display_when_opening_contacts)  # проверка отображения контактов
 
     def test_checking_reduction_in_number_of_contact_views_in_service_package(self, browser, language):  # проверка уменьшения в пакете услуг количества просмотров контактов
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"

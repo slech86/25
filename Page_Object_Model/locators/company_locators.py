@@ -186,6 +186,13 @@ class MyVacanciesPageLocators:
                     button_delete]
         return locators
 
+    def new_assembly_of_locators_with_id_vacancies(self, id_vacancies):  # сборка локаторов с id вакансии
+        locators_with_id_vacancies = {
+            'new_response_icon': (By.CSS_SELECTOR, '#my-vacancy-' + id_vacancies + ' .counter.red'),
+            'button_show_responses': (By.XPATH, ('//a[contains(@href, "/vacancy/' + id_vacancies + '/feedback")]'))
+        }
+        return locators_with_id_vacancies
+
     BUTTON_PRINT = (By.XPATH, '//a[contains(@href, "/print")]')  # работает для первого резюме в списке
     BUTTON_CONFIRMATION_DELETION_DRAFT_VACANCIES = (By.CSS_SELECTOR, ('[class="btn btn-blue btn-apply update-status"]'))
 
@@ -206,9 +213,8 @@ class ResponsesToVacancyPageLocators:
     H1 = (By.CSS_SELECTOR, 'h1')
     MARK_NOT_VIEWED_RESPONSE = (By.CSS_SELECTOR, ('.lc-card:nth-child(1) .lc-card-time > svg'))
 
-    def assembly_of_locators_with_id_resume(self):  # сборка локаторов с id резюме
-        singleton = Singleton()
-        resume_in_responses_to_vacancy = (By.XPATH, ('//a[contains(@href, "/resume/' + singleton.id_resume[0] + '")]'))
+    def assembly_of_locators_with_id_resume(self, id_resume):  # сборка локаторов с id резюме
+        resume_in_responses_to_vacancy = (By.XPATH, ('//a[contains(@href, "/resume/' + id_resume + '")]'))
         return resume_in_responses_to_vacancy
 
 

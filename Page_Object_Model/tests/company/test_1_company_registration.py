@@ -68,7 +68,7 @@ class TestCompanyRegistration:
         # browser.maximize_window()
         page.open()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.new_user_authorization(language, 1)  # авторизация пользователя
+        page.user_new_authorization(language, 1)  # авторизация пользователя
         page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
         page.info_text_for_authorization_in_user_status_disabled(language)  # инфо текст при авторизации в статусе пользователя "Отключен"
 
@@ -90,7 +90,7 @@ class TestCompanyRegistration:
         # browser.maximize_window()
         page.open()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.new_user_authorization(language, 1)  # авторизация пользователя
+        page.user_new_authorization(language, 1)  # авторизация пользователя
         page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
         page.info_text_for_authorization_in_user_status_on_moderation(language)  # инфо текст при авторизации в статусе пользователя "На модерации"
 
@@ -116,7 +116,7 @@ class TestCompanyRegistration:
     #     # browser.maximize_window()
     #     page.open()
     #     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    #     page.new_user_authorization()  # авторизация пользователя
+    #     page.user_new_authorization()  # авторизация пользователя
     #     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
 
     def test_checking_letter_after_first_moderation_ru(self, browser, language):  # проверка письма после первой модерации компании ru
