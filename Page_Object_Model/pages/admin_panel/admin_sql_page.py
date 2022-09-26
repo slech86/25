@@ -16,3 +16,9 @@ class AdminSqlPage(BasePage):
         self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).send_keys('DELETE FROM `tbl_resume_contacts` WHERE `user_id`=' + user_id + ' AND `resume_id`=' + resume_id + ';')
         self.browser.find_element(*AdminSqlPageLocators.BUTTON_EXECUTE).click()
         time.sleep(1)
+
+    def sql_delete_record_response_to_vacancy(self, user_job_seeker, resume_id, vacancy_id):  # удаление записи отклика на вакансию
+        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).clear()
+        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).send_keys('DELETE FROM `tbl_responses` WHERE `user_id`=' + user_job_seeker + ' AND `resume_id`=' + resume_id + ' AND `vacancy_id`=' + vacancy_id + ';')
+        self.browser.find_element(*AdminSqlPageLocators.BUTTON_EXECUTE).click()
+        time.sleep(1)

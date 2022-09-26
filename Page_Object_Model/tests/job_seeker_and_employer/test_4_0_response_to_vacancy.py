@@ -13,6 +13,7 @@ from Page_Object_Model.pages.site.responses_to_vacancy_page import ResponsesToVa
 from Page_Object_Model.data_for_testing import contact_display_when_response_to_vacancy
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_sql_page import AdminSqlPage
+from Page_Object_Model.users import users_variables
 
 # pytest --reruns 1 --html=./reports/report.html -s tests/job_seeker_and_employer/test_4_0_response_to_vacancy.py
 
@@ -27,15 +28,15 @@ user_job_seeker = 'job_seeker'
 @pytest.mark.s_r_c
 # @pytest.mark.skip
 class TestResponseToVacancy:
-    # def test_precondition(self, browser):
-    #     admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
-    #     admin_page.open()
-    #     admin_page.admin_authorization()
-    #     time.sleep(0.5)
-    #
-    #     admin_sql_page = AdminSqlPage(browser, UrlStartPageAdmin.url_page_admin + '/developer/sql')
-    #     admin_sql_page.open()
-    #     admin_sql_page.sql_change_number_of_contact_views_per_day(purchase_id)  # изменение количества просмотров контактов в день
+    def test_precondition(self, browser):
+        admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
+        admin_page.open()
+        admin_page.admin_authorization()
+        time.sleep(0.5)
+
+        admin_sql_page = AdminSqlPage(browser, UrlStartPageAdmin.url_page_admin + '/developer/sql')
+        admin_sql_page.open()
+        admin_sql_page.sql_delete_record_response_to_vacancy(users_variables[user_job_seeker]["id"], resume_id, vacancy_id)  # удаление записи отклика на вакансию
 
     def test_response_to_vacancy(self, browser, language):  # отклик на вакансию
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
