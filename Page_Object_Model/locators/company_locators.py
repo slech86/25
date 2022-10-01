@@ -219,45 +219,48 @@ class ResponsesToVacancyPageLocators:
 
 
 class VacancyAddPageLocators:
-    inputPrefix = 'vacancyaddform-'
+    # id_language = '1'
+    # input_prefix = 'resumenew-descriptions-' + id_language + '-'
 
-    FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'job_title'))
-    VALIDATION_MESSAGE_FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'job_title + p'))
+    input_prefix = 'vacancyaddform-'
+
+    FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + input_prefix + 'job_title'))
+    VALIDATION_MESSAGE_FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + input_prefix + 'job_title + p'))
 
     CATEGORY_VACANCIES = "document.getElementsByName('VacancyAddForm[category_id][]')[1].click()"
     SUBCATEGORIES = (By.CSS_SELECTOR, ('[for="subcategories_id-29"]'))
-    FIELD_MINIMAL_SALARY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'salary_min'))
-    FIELD_MAXIMUM_SALARY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'salary_max'))
-    DROPDOWN_CURRENCY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'currency"]'))
-    CURRENCY_USD = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'currency [data-original-index="2"]'))
-    DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'country_id"]'))
-    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option'))
+    FIELD_MINIMAL_SALARY = (By.CSS_SELECTOR, ('#' + input_prefix + 'salary_min'))
+    FIELD_MAXIMUM_SALARY = (By.CSS_SELECTOR, ('#' + input_prefix + 'salary_max'))
+    DROPDOWN_CURRENCY = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'currency"]'))
+    CURRENCY_USD = (By.CSS_SELECTOR, ('.field-' + input_prefix + 'currency [data-original-index="2"]'))
+    DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'country_id"]'))
+    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + input_prefix + 'country_id > option'))
 
     def assembly_of_locators_with_position_country(self):  # сборка локаторов с позицией страны
         singleton = Singleton()
-        country_georgia = (By.CSS_SELECTOR, ('.field-' + VacancyAddPageLocators.inputPrefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
+        country_georgia = (By.CSS_SELECTOR, ('.field-' + VacancyAddPageLocators.input_prefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
         return country_georgia
 
-    DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'city_id"]'))
-    CITY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option'))
+    DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'city_id"]'))
+    CITY_LIST = (By.CSS_SELECTOR, ('#' + input_prefix + 'city_id > option'))
 
     def assembly_of_locators_with_position_city(self):  # сборка локаторов с позицией города
         singleton = Singleton()
-        city_batumi = (By.CSS_SELECTOR, ('.field-' + VacancyAddPageLocators.inputPrefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
+        city_batumi = (By.CSS_SELECTOR, ('.field-' + VacancyAddPageLocators.input_prefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
         return city_batumi
-    FIELD_STREET = (By.CSS_SELECTOR, ('#' + inputPrefix + 'street'))
-    FIELD_PHONE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'phone'))
-    FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'email'))
-    FIELD_SKYPE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'skype'))
-    FIELD_CONTACT_PERSON = (By.CSS_SELECTOR, ('#' + inputPrefix + 'contact_person'))
-    FIELD_TELEGRAM = (By.CSS_SELECTOR, ('#' + inputPrefix + 'telegram'))
-    FULL_EMPLOYMENT = (By.CSS_SELECTOR, ('#' + inputPrefix + 'employment > .checkbox:nth-child(1) > label'))
-    WORK_EXPERIENCE_1_YEAR = (By.CSS_SELECTOR, ('#' + inputPrefix + 'work_experience > .checkbox:nth-child(2) > label'))
-    DROPDOWN_EDUCATION = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'education"]'))
-    HIGHER_EDUCATION = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'education [data-original-index="2"]'))
+    FIELD_STREET = (By.CSS_SELECTOR, ('#' + input_prefix + 'street'))
+    FIELD_PHONE = (By.CSS_SELECTOR, ('#' + input_prefix + 'phone'))
+    FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + input_prefix + 'email'))
+    FIELD_SKYPE = (By.CSS_SELECTOR, ('#' + input_prefix + 'skype'))
+    FIELD_CONTACT_PERSON = (By.CSS_SELECTOR, ('#' + input_prefix + 'contact_person'))
+    FIELD_TELEGRAM = (By.CSS_SELECTOR, ('#' + input_prefix + 'telegram'))
+    FULL_EMPLOYMENT = (By.CSS_SELECTOR, ('#' + input_prefix + 'employment > .checkbox:nth-child(1) > label'))
+    WORK_EXPERIENCE_1_YEAR = (By.CSS_SELECTOR, ('#' + input_prefix + 'work_experience > .checkbox:nth-child(2) > label'))
+    DROPDOWN_EDUCATION = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'education"]'))
+    HIGHER_EDUCATION = (By.CSS_SELECTOR, ('.field-' + input_prefix + 'education [data-original-index="2"]'))
     DROPDOWN_VACANCY_BENEFITS = (By.CSS_SELECTOR, ('[data-id="job-benefits-select"]'))
     TRANSPORTATION = (By.CSS_SELECTOR, ('#job-benefits [data-original-index="12"]'))
-    READY_TO_TAKE_STUDENT = (By.CSS_SELECTOR, ('#' + inputPrefix + 'additionally > .checkbox:nth-child(1) > label'))
+    READY_TO_TAKE_STUDENT = (By.CSS_SELECTOR, ('#' + input_prefix + 'additionally > .checkbox:nth-child(1) > label'))
     # блок "Основная информация"
 
     BUTTON_ADD_LANGUAGE = (By.CSS_SELECTOR, ('#addLanguages'))
@@ -273,33 +276,33 @@ class VacancyAddPageLocators:
     # блок "Знание языков"
 
     ADD_DESCRIPTION_OF_VACANCIES = (By.CSS_SELECTOR, ('#vacancy-description .btn-disabled'))
-    IFRAME_CKEDITOR_DESCRIPTION_OF_VACANCIES = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'description iframe'))
+    IFRAME_CKEDITOR_DESCRIPTION_OF_VACANCIES = (By.CSS_SELECTOR, ('#cke_' + input_prefix + 'description iframe'))
     # блок "Описание вакансии"
 
     ADD_ABOUT_COMPANY = (By.CSS_SELECTOR, ('#about-company .btn-disabled'))
-    IFRAME_CKEDITOR_ABOUT_COMPANY = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'about_company iframe'))
+    IFRAME_CKEDITOR_ABOUT_COMPANY = (By.CSS_SELECTOR, ('#cke_' + input_prefix + 'about_company iframe'))
     # блок "О компании"
 
     ADD_WORKING_CONDITIONS = (By.CSS_SELECTOR, ('#working-conditions .btn-disabled'))
-    IFRAME_CKEDITOR_WORKING_CONDITIONS = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'working_conditions iframe'))
+    IFRAME_CKEDITOR_WORKING_CONDITIONS = (By.CSS_SELECTOR, ('#cke_' + input_prefix + 'working_conditions iframe'))
     # блок "Условия работы"
 
     ADD_TASKS = (By.CSS_SELECTOR, ('#tasks .btn-disabled'))
-    IFRAME_CKEDITOR_TASKS = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'tasks iframe'))
+    IFRAME_CKEDITOR_TASKS = (By.CSS_SELECTOR, ('#cke_' + input_prefix + 'tasks iframe'))
     # блок "Задачи"
 
     ADD_REQUIREMENTS = (By.CSS_SELECTOR, ('#requirements-candidate .btn-disabled'))
-    IFRAME_CKEDITOR_REQUIREMENTS = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'requirements iframe'))
+    IFRAME_CKEDITOR_REQUIREMENTS = (By.CSS_SELECTOR, ('#cke_' + input_prefix + 'requirements iframe'))
     # блок "Требования к соискателю"
 
     ADD_ADDITIONAL_INFORMATION = (By.CSS_SELECTOR, ('#additional-information .btn-disabled'))
-    IFRAME_CKEDITOR_ADDITIONAL_INFORMATION = (By.CSS_SELECTOR, ('#cke_' + inputPrefix + 'additionally_information iframe'))
+    IFRAME_CKEDITOR_ADDITIONAL_INFORMATION = (By.CSS_SELECTOR, ('#cke_' + input_prefix + 'additionally_information iframe'))
     # блок "Дополнительная информация"
 
     CKEDITOR = (By.CSS_SELECTOR, ('body.cke_editable'))  # общий для всех блоков
     BUTTON_PUBLISH = (By.CSS_SELECTOR, ('#submit-publish'))
     BUTTON_TO_DRAFTS = (By.CSS_SELECTOR, ('#draft-button'))
-    BUTTON_PREVIEW = (By.CSS_SELECTOR, ('#' + inputPrefix + 'preview'))
+    BUTTON_PREVIEW = (By.CSS_SELECTOR, ('#' + input_prefix + 'preview'))
 
 
 class VacancyPreviewPageLocators:
