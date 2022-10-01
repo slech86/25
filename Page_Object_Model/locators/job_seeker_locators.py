@@ -190,10 +190,10 @@ class ResumeAddEditPageLocators:
     FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + input_prefix + 'job_title'))
     VALIDATION_MESSAGE_FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + input_prefix + 'job_title + p'))
 
-    CATEGORY_RESUME_DESIGN_GRAPHICS_ANIMATION = (By.XPATH, '//div[@id="resumenew-descriptions-' + id_language + '-category_id"]//div[@class="custom-control checkbox"][8]/label')
-    CATEGORY_RESUME_SALES_CUSTOMER_MANAGEMENT = (By.XPATH, '//div[@id="resumenew-descriptions-' + id_language + '-category_id"]//div[@class="custom-control checkbox"][14]/label')
-    SUBCATEGORIES_UX_DESIGNER = (By.XPATH, '//div[@id="resumenew-descriptions-' + id_language + '-subcategories_id"]//div[@class="custom-control checkbox"][7]/label[contains(@for, "subcategories") and contains(@for, "-70")]')
-    SUBCATEGORIES_ACCOUNT_MANAGER = (By.XPATH, '//div[@id="resumenew-descriptions-' + id_language + '-subcategories_id"]//div[@class="custom-control checkbox"][3]/label[contains(@for, "subcategories") and contains(@for, "-168")]')
+    CATEGORY_RESUME_DESIGN_GRAPHICS_ANIMATION = (By.XPATH, '//div[@id="' + input_prefix + 'category_id"]//div[@class="custom-control checkbox"][8]/label')
+    CATEGORY_RESUME_SALES_CUSTOMER_MANAGEMENT = (By.XPATH, '//div[@id="' + input_prefix + 'category_id"]//div[@class="custom-control checkbox"][14]/label')
+    SUBCATEGORIES_UX_DESIGNER = (By.XPATH, '//div[@id="' + input_prefix + 'subcategories_id"]//div[@class="custom-control checkbox"][7]/label[contains(@for, "subcategories") and contains(@for, "-70")]')
+    SUBCATEGORIES_ACCOUNT_MANAGER = (By.XPATH, '//div[@id="' + input_prefix + 'subcategories_id"]//div[@class="custom-control checkbox"][3]/label[contains(@for, "subcategories") and contains(@for, "-168")]')
     DISTANT_WORK = (By.CSS_SELECTOR, ('#' + input_prefix + 'employment .checkbox:nth-child(3) > label'))  # удаленная работа
     UNDEREMPLOYMENT = (By.CSS_SELECTOR, ('#' + input_prefix + 'employment .checkbox:nth-child(2) > label'))  # Неполная занятость
     SALARY = (By.CSS_SELECTOR, '#' + input_prefix + 'salary')
@@ -474,12 +474,12 @@ class ResumeAddEditPageLocators:
     MIDDLE_LEVEL_3 = (By.XPATH, ('//div[contains(@class, "field-resumenew-knowledgeoflanguagesnew-' + id_language + '-2-level required")]//li[4]'))
     # блок "Знание языков"
 
-    RADIO_I_DONT_HAVE_DISABILITY = (By.XPATH, ('//div[@id="resumenew-descriptions-' + id_language + '-disability"]//input[@value="1"]'))
-    RADIO_I_HAVE_DISABILITY = (By.XPATH, ('//div[@id="resumenew-descriptions-' + id_language + '-disability"]/label[2]'))
+    RADIO_I_DONT_HAVE_DISABILITY = (By.XPATH, ('//div[@id="' + input_prefix + 'disability"]//input[@value="1"]'))
+    RADIO_I_HAVE_DISABILITY = (By.XPATH, ('//div[@id="' + input_prefix + 'disability"]/label[2]'))
     FIELD_DESCRIPTION_OF_DISABILITY = (By.CSS_SELECTOR, ('#content-' + id_language + ' #is-disability'))
     # блок "Инвалидность"
 
-    IFRAME_CKEDITOR_ADDITIONAL_INFORMATION = (By.XPATH, ('//div[@id="cke_resumenew-descriptions-' + id_language + '-additionally_information"]//iframe'))
+    IFRAME_CKEDITOR_ADDITIONAL_INFORMATION = (By.XPATH, ('//div[@id="cke_' + id_language + 'additionally_information"]//iframe'))
     # блок "Дополнительная информация"
 
     DROPDOWN_JOB_SEARCH_STATUS = (By.CSS_SELECTOR, ('[data-id="resumenew-job_search_status"]'))
