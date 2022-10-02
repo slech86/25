@@ -120,7 +120,7 @@ class ResumeAddEditPageLocators:
 
     def assembly_of_locators_from_id_block(self, id_block):  # сборка локаторов с id блока
         locators = {}
-        locators['button_add_block'] = (By.CSS_SELECTOR, '#' + id_block + ' .icon-plus')
+        locators['button_add_block'] = (By.CSS_SELECTOR, '#content-' + ResumeAddEditPageLocators.id_language + ' #' + id_block + ' .icon-plus')
         return locators
 
     TAB = (By.CSS_SELECTOR, '[id="' + id_language + '-tab"]')
@@ -450,6 +450,7 @@ class ResumeAddEditPageLocators:
     IFRAME_CKEDITOR_COURSE_DESCRIPTION_3 = (By.XPATH, ('//div[@id="cke_resumenew-coursesnew-' + id_language + '-2-description"]//iframe'))
     # блок "Курсы и сертификаты"
 
+    # блок "Знание языков"
     DROPDOWN_LANGUAGE_1 = (By.CSS_SELECTOR, '[data-id="resumenew-knowledgeoflanguagesnew-' + id_language + '-0-language"]')
     POLISH_LANGUAGE_1 = (By.XPATH, ('//div[contains(@class, "field-resumenew-knowledgeoflanguagesnew-' + id_language + '-0-language required")]//li[35]'))
     ENGLISH_LANGUAGE_1 = (By.XPATH, ('//div[contains(@class, "field-resumenew-knowledgeoflanguagesnew-' + id_language + '-0-language required")]//li[2]'))
