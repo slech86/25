@@ -41,7 +41,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     vacancy_preview_page = VacancyPreviewPage(browser, browser.current_url)
     vacancy_preview_page.checking_for_preview_page_to_open(TestData.job_title_vacancy)  # проверка открытия страницы предпросмотра
 
-    browser.execute_script("window.scrollBy(0, -300);")
+    browser.execute_script("window.scrollBy(0, -1000);")
     add_vacancy_page.filling_in_optional_fields()  # заполнение не обязательных полей
     add_vacancy_page.submitting_vacancy_for_publication()  # отправка вакансии на публикацию
 

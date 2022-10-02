@@ -10,7 +10,7 @@ from Page_Object_Model.pages.site.company_preview_page import CompanyPreviewPage
 from Page_Object_Model.data_for_testing import TestData
 
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 # @pytest.mark.skip
 class TestCompanyRegistration:
     @pytest.mark.s_r_c
