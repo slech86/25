@@ -63,7 +63,7 @@ class TestResumeAdd:
         url_resume_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{singleton.id_resume[0]}"
         resume_page = ResumePage(browser, url_resume_page)
         resume_page.open()
-        resume_page.checking_opening_of_page_of_an_unpublished_resume(language)  # проверка открытия страницы не опубликованного резюме
+        resume_page.checking_opening_of_resume_page_for_moderation(language)  # проверка открытия страницы резюме на модерации
 
         admin_page.open()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"

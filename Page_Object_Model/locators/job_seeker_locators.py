@@ -480,7 +480,7 @@ class ResumeAddEditPageLocators:
     FIELD_DESCRIPTION_OF_DISABILITY = (By.CSS_SELECTOR, ('#content-' + id_language + ' #is-disability'))
     # блок "Инвалидность"
 
-    IFRAME_CKEDITOR_ADDITIONAL_INFORMATION = (By.XPATH, ('//div[@id="cke_' + id_language + 'additionally_information"]//iframe'))
+    IFRAME_CKEDITOR_ADDITIONAL_INFORMATION = (By.XPATH, ('//div[@id="cke_' + input_prefix + 'additionally_information"]//iframe'))
     # блок "Дополнительная информация"
 
     DROPDOWN_JOB_SEARCH_STATUS = (By.CSS_SELECTOR, ('[data-id="resumenew-job_search_status"]'))

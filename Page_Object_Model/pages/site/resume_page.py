@@ -10,7 +10,6 @@ import requests
 
 class ResumePage(BasePage):
     def confirmation_opening_of_resume_page(self, language, resume_id):  # подтверждение открытия страницы резюме
-        singleton = Singleton()
         if language == '/ua':
             assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/ua/resume/' + resume_id, 'Не правильный URL'
         elif language == '':
@@ -18,12 +17,21 @@ class ResumePage(BasePage):
         elif language == '/en':
             assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/en/resume/' + resume_id, 'Не правильный URL'
 
-    def checking_opening_of_page_of_an_unpublished_resume(self, language):  # проверка открытия страницы не опубликованного резюме
+    def checking_opening_of_resume_page_for_moderation(self, language):  # проверка открытия страницы резюме на модерации
         h1 = self.browser.find_element(*ResumePageLocators.H1).text
-        if language == "/ua":
-            assert h1 == 'Резюме приховано', "Не корректный h1"
-        elif language == "":
+        if language == "":
+            assert h1 == 'Ваше резюме находится на модерации. Ожидайте!', "Не корректный h1"
+        elif language == "/ua":
+            assert h1 == 'Ваше резюме знаходиться на модерації. Очікуйте!', "Не корректный h1"
+        elif language == "/en":
+            assert h1 == 'Your resume is under moderation. Please, wait!', "Не корректный h1"
+
+    def checking_opening_of_page_of_an_unpublished_resume(self, language):  # проверка открытия страницы скрытого резюме
+        h1 = self.browser.find_element(*ResumePageLocators.H1).text
+        if language == "":
             assert h1 == 'Резюме скрыто', "Не корректный h1"
+        elif language == "/ua":
+            assert h1 == 'Резюме приховано', "Не корректный h1"
         elif language == "/en":
             assert h1 == 'CV is hidden', "Не корректный h1"
 
