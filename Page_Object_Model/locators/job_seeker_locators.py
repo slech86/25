@@ -477,7 +477,7 @@ class ResumeAddEditPageLocators:
 
     RADIO_I_DONT_HAVE_DISABILITY = (By.XPATH, ('//div[@id="' + input_prefix + 'disability"]//input[@value="1"]'))
     RADIO_I_HAVE_DISABILITY = (By.XPATH, ('//div[@id="' + input_prefix + 'disability"]/label[2]'))
-    FIELD_DESCRIPTION_OF_DISABILITY = (By.CSS_SELECTOR, ('#content-' + id_language + ' #is-disability'))
+    FIELD_DESCRIPTION_OF_DISABILITY = (By.CSS_SELECTOR, ('#' + input_prefix + 'disability_description'))
     # блок "Инвалидность"
 
     IFRAME_CKEDITOR_ADDITIONAL_INFORMATION = (By.XPATH, ('//div[@id="cke_' + input_prefix + 'additionally_information"]//iframe'))
