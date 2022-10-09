@@ -93,9 +93,13 @@ class MyResumePageLocators:
     def assembly_of_locators_with_id_resume(self, index):  # сборка локаторов с id резюме
         singleton = Singleton()
         button_edit = (By.XPATH, '//a[contains(@href, "/resume/' + singleton.id_resume[index] + '/edit")]')
-        button_delete = (By.CSS_SELECTOR, '.open-delete-modal[data-resume-id="' + singleton.id_resume[index] + '"]')
-        locators = [button_edit,
-                    button_delete]
+        locators = [button_edit]
+        return locators
+
+    def new_assembly_of_locators_with_id_resume(self, id_resume):  # сборка локаторов с id резюме
+        locators = {
+            'button_delete': (By.CSS_SELECTOR, '.open-delete-modal[data-resume-id="' + id_resume + '"]')
+        }
         return locators
 
     BUTTON_PRINT = (By.XPATH, '//a[contains(@href, "/print")]')  # работает для первого резюме в списке

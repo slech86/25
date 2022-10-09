@@ -8,6 +8,12 @@ import requests
 
 
 class MyResumePage(BasePage):
+    def obtaining_number_of_resumes_to_create(self):  # получение количества резюме для создания
+        text = self.browser.find_element(*MyResumePageLocators.TEXT_OF_NUMBER_OF_CREATED_RESUMES).text
+        index = text.find(' ')
+        number_of_resumes_created = int(text[index + 1])
+        return number_of_resumes_created
+
     def checking_number_of_resumes_to_create(self, expected_number_of_resumes_generated):  # проверка количества резюме для создания
         text = self.browser.find_element(*MyResumePageLocators.TEXT_OF_NUMBER_OF_CREATED_RESUMES).text
         index = text.find(' ')
@@ -32,10 +38,10 @@ class MyResumePage(BasePage):
         response = requests.head(self.browser.current_url)
         assert response.status_code == 200, 'Статус ответа страницы не 200'
 
-    def deletion_resume_draft(self, index):  # удаление черновика резюме
+    def deletion_resume_draft(self, id_resume):  # удаление черновика резюме
         locators_with_id_resume = MyResumePageLocators()
-        locators = locators_with_id_resume.assembly_of_locators_with_id_resume(index)  # сборка локатора с id резюме
-        self.browser.find_element(*locators[1]).click()
+        locators = locators_with_id_resume.new_assembly_of_locators_with_id_resume(id_resume)  # сборка локатора с id резюме
+        self.browser.find_element(*locators['button_delete']).click()
         self.browser.find_element(*MyResumePageLocators.BUTTON_CONFIRMATION_DELETION_DRAFT_RESUME).click()
 
     def checking_message_after_deleting_resume(self, language):  # проверка сообщения после удаления резюме
