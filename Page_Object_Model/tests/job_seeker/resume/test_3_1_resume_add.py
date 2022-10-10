@@ -13,6 +13,8 @@ from Page_Object_Model.singleton import Singleton
 from Page_Object_Model.users import Accounts
 from Page_Object_Model.data_for_testing import TestData
 
+user = 'job_seeker'
+
 
 @pytest.mark.job_seeker
 # @pytest.mark.skip
@@ -24,7 +26,7 @@ class TestResumeAdd:
         # browser.maximize_window()
         page.open()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.user_new_authorization(language, 2)  # авторизация пользователя
+        page.user_authorization(user)  # авторизация пользователя
         page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
         page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 
@@ -32,7 +34,7 @@ class TestResumeAdd:
         job_seeker_personal_cabinet_page.go_to_my_resume_page()  # переход на страницу "Мои резюме"
 
         my_resume_page = MyResumePage(browser, browser.current_url)
-        my_resume_page.checking_number_of_resumes_to_create(0)  # проверка количества резюме для создания
+        number_of_resumes_created = my_resume_page.obtaining_number_of_resumes_to_create()  # получение количества резюме для создания
         my_resume_page.go_to_add_resume_page()  # переход на страницу "Разместить резюме"
 
         add_resume_page = ResumeAddPage(browser, browser.current_url)
@@ -46,7 +48,7 @@ class TestResumeAdd:
         my_resume_page.waiting_for_my_resumes_page_to_open(language)  # ожидание открытия страницы 'Мои резюме'
         my_resume_page.confirmation_of_opening_of_page_my_resumes(language)  # подтверждение открытия страницы 'Мои резюме'
         my_resume_page.checking_message_confirming_of_creation_of_resume(language)  # проверка сообщения о создании нового резюме
-        my_resume_page.checking_number_of_resumes_to_create(1)  # проверка уменьшения количества резюме для создания
+        my_resume_page.checking_number_of_resumes_to_create(number_of_resumes_created + 1)  # проверка уменьшения количества резюме для создания
 
         admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
         admin_page.open()

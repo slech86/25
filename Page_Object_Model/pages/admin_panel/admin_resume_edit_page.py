@@ -4,7 +4,7 @@ from Page_Object_Model.data_for_testing import TestData, TestDataEditing
 from Page_Object_Model.users import Accounts
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from Page_Object_Model.singleton import Singleton
+from Page_Object_Model.users import users_variables
 import time
 
 
@@ -16,15 +16,10 @@ class AdminResumeEditPage(BasePage):
         time.sleep(3)
         self.browser.find_element(*AdminResumeEditPageLocators.BUTTON_SAVE).click()
 
-    def verification_of_saving_data_entered_by_user_after_resume_creation_ru(self, language, uah_rate, key):  # проверка сохранения введенных пользователем данных после создания резюме RU
-        user = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_USER)
-        user_title = user.get_attribute("title")
-        if language == '/ua':
-            assert '(' + Singleton.logins_and_mails[key][1][0] + ')' in user_title, "Поле 'Пользователь' не верно"
-        elif language == "":
-            assert '(' + Singleton.logins_and_mails[key][0][0] + ')' in user_title, "Поле 'Пользователь' не верно"
-        elif language == "/en":
-            assert '(' + Singleton.logins_and_mails[key][2][0] + ')' in user_title, "Поле 'Пользователь' не верно"
+    def verification_of_saving_data_entered_by_user_after_resume_creation_ru(self, uah_rate, user):  # проверка сохранения введенных пользователем данных после создания резюме RU
+        user_login = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_USER)
+        user_title = user_login.get_attribute("title")
+        assert '(' + users_variables[user]["login"] + ')' in user_title, "Поле 'Пользователь' не верно"
 
         job_search_status = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_JOB_SEARCH_STATUS)
         job_search_status_title = job_search_status.get_attribute("title")

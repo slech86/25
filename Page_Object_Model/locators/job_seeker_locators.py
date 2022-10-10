@@ -499,6 +499,11 @@ class ResumeAddEditPageLocators:
 
     BUTTON_PUBLISH = (By.CSS_SELECTOR, ('#submit-button'))
     BUTTON_TO_DRAFTS = (By.CSS_SELECTOR, ('#draft-button'))
+    BUTTON_PREVIEW = None
+
+
+class ResumePreviewPageLocators:
+    H1 = (By.CSS_SELECTOR, 'h1')
 
 
 class MyResponsesPageLocators:

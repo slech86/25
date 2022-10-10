@@ -345,5 +345,10 @@ class ResumeEditPage(BasePage):
         elif language == "/en":
             assert status_level_filling == 'Professional', 'Не верный статус уровня заполнения'
 
+    def go_to_preview_page(self):  # переход на страницу предпросмотра
+        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_PREVIEW).click()
+        time.sleep(1)
+        self.browser.switch_to.window(self.browser.window_handles[1])
+
     def submitting_resume_change_for_publication(self,):  # отправка изменений резюме на публикацию
         self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_PUBLISH).click()

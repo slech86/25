@@ -241,7 +241,7 @@ function filter_table(elem) {
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 03-Oct-2022 at 15:51:47 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
+    <p>Report generated on 10-Oct-2022 at 16:31:26 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -257,8 +257,8 @@ function filter_table(elem) {
         <td>Python</td>
         <td>3.9.6</td></tr></table>
     <h2>Summary</h2>
-    <p>7 tests ran in 212.85 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">7 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">1 rerun</span>
+    <p>3 tests ran in 82.18 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">3 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">0 rerun</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -269,30 +269,11 @@ function filter_table(elem) {
           <th>Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
-      <tbody class="rerun results-table-row">
-        <tr>
-          <td class="col-result">Rerun</td>
-          <td class="col-name">tests/company/test_3_3_vacancy_edit.py::test_editing_vacancies</td>
-          <td class="col-duration">18.18</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;cec2cdad6eb7b5b317c919fcf18879e1&quot;)&gt;, language = &#x27;&#x27;<br/><br/>    @pytest.mark.s_r_c<br/>    def test_editing_vacancies(browser, language):  # редактирование вакансии<br/>        url_Page = f&quot;{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}&quot;<br/>        page = OllPage(browser, url_Page)<br/>        # browser.maximize_window()<br/>        page.open()<br/>        page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации<br/>        page.user_new_authorization(language, 1)  # авторизация пользователя<br/>        page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя<br/>        page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета<br/>    <br/>        company_personal_cabinet_page = CompanyPersonalCabinetPage(browser, browser.current_url)<br/>        company_personal_cabinet_page.go_to_my_vacancies_page()  # переход на страницу &quot;Мои вакансии&quot;<br/>    <br/>        my_vacancies_page = MyVacanciesPage(browser, browser.current_url)<br/>        my_vacancies_page.opening_vacancy_menu()  # открытие меню вакансии<br/>        my_vacancies_page.go_to_vacancy_editing_page()  # переход на страницу редактирования вакансии<br/>    <br/>        vacancy_edit_page = VacancyEditPage(browser, browser.current_url)<br/>        vacancy_edit_page.change_data_in_all_fields()  # изменение данных во всех полях<br/>&gt;       vacancy_edit_page.go_to_preview_page()  # переход на страницу предпросмотра<br/><br/>tests/company/test_3_3_vacancy_edit.py:33: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;Page_Object_Model.pages.site.vacancy_edit_page.VacancyEditPage object at 0x104530f70&gt;<br/><br/>    def go_to_preview_page(self):  # переход на страницу предпросмотра<br/>        self.browser.find_element(*VacancyAddEditPageLocators.BUTTON_PREVIEW).click()<br/>        time.sleep(1)<br/>&gt;       self.browser.switch_to.window(self.browser.window_handles[1])<br/><span class="error">E       IndexError: list index out of range</span><br/><br/>pages/site/vacancy_edit_page.py:116: IndexError<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/test_1_company_registration.py::TestCompanyRegistration::test_company_registration_with_filling_in_all_fields</td>
-          <td class="col-duration">25.78</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>https://master.logincasino.work.preprod.pw
-<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/test_1_company_registration.py::TestCompanyRegistration::test_changing_user_role_from_user_to_super_admin</td>
-          <td class="col-duration">8.94</td>
+          <td class="col-name">tests/job_seeker/resume/test_3_1_resume_add.py::TestResumeAdd::test_adding_resume</td>
+          <td class="col-duration">67.40</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -300,8 +281,8 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/test_1_company_registration.py::TestCompanyRegistration::test_email_verification_after_company_registration</td>
-          <td class="col-duration">6.37</td>
+          <td class="col-name">tests/job_seeker/resume/test_3_1_resume_add.py::TestResumeAdd::test_verification_of_letter_after_publication_of_resume</td>
+          <td class="col-duration">1.98</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -309,35 +290,8 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/test_1_company_registration.py::TestCompanyRegistration::test_change_of_employer_status_from_on_moderation_to_aktivet_ua</td>
-          <td class="col-duration">15.27</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/test_2_2_adding_vacancy_to_draft_and_deletion_it.py::TestAddingVacancyToDraft::test_checking_adding_vacancy_to_draft</td>
-          <td class="col-duration">16.03</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/test_3_0_package_purchase_help_refugee_with_his_work.py::TestPackagePurchaseHelpRefugeeWithHisWork::test_package_purchase_help_refugee_with_his_work_and_activating_it_on_site</td>
-          <td class="col-duration">30.33</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/test_3_1_vacancy_add.py::test_adding_vacancies</td>
-          <td class="col-duration">49.33</td>
+          <td class="col-name">tests/job_seeker/resume/test_3_2_0_verification_of_saving_data_entered_by_user_after_resume_creation.py::test_verification_of_saving_data_entered_by_user_after_resume_creation</td>
+          <td class="col-duration">7.30</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
