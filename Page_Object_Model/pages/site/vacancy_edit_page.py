@@ -43,8 +43,8 @@ class VacancyEditPage(BasePage):
         WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element_attribute((VacancyAddEditPageLocators.DROPDOWN_CITI), 'aria-expanded', 'false'))
 
         self.browser.find_element(*VacancyAddEditPageLocators.FIELD_STREET).send_keys('_editing')
-        # self.browser.find_element(*VacancyAddEditPageLocators.FIELD_PHONE).clear()
-        # self.browser.find_element(*VacancyAddEditPageLocators.FIELD_PHONE).send_keys(TestDataEditing.phone_vacancy)
+        self.browser.find_element(*VacancyAddEditPageLocators.FIELD_PHONE).clear()
+        self.browser.find_element(*VacancyAddEditPageLocators.FIELD_PHONE).send_keys(TestDataEditing.phone_vacancy)
         self.browser.find_element(*VacancyAddEditPageLocators.FIELD_EMAIL).send_keys('editing')
         self.browser.find_element(*VacancyAddEditPageLocators.FIELD_SKYPE).send_keys('_editing')
         self.browser.find_element(*VacancyAddEditPageLocators.FIELD_CONTACT_PERSON).send_keys('_editing')
