@@ -2,7 +2,7 @@ import pytest
 from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.resumes_page import ResumesPage
 from Page_Object_Model.pages.site.resume_page import ResumePage
-from Page_Object_Model.сonfiguration import UrlStartPage
+from Page_Object_Model.configuration import UrlStartPage
 
 
 # @pytest.mark.s_r_c

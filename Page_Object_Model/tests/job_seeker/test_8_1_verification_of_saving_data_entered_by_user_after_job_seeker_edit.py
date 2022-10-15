@@ -1,5 +1,5 @@
 import pytest
-from Page_Object_Model.сonfiguration import UrlStartPageAdmin
+from Page_Object_Model.configuration import UrlStartPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 
 

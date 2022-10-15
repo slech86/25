@@ -1,5 +1,5 @@
 import pytest
-from Page_Object_Model.сonfiguration import UrlStartPage
+from Page_Object_Model.configuration import UrlStartPage
 from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.company_edit_page import CompanyEditPage
 from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage

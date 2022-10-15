@@ -3,11 +3,11 @@ import time
 from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.resumes_page import ResumesPage
 from Page_Object_Model.pages.site.resume_page import ResumePage
-from Page_Object_Model.сonfiguration import UrlStartPage
+from Page_Object_Model.configuration import UrlStartPage
 from Page_Object_Model.data_for_testing import contact_display_when_opening_contacts
 from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
 from Page_Object_Model.pages.site.services_and_prices_page import ServicesAndPricesPage
-from Page_Object_Model.сonfiguration import UrlStartPageAdmin
+from Page_Object_Model.configuration import UrlStartPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_sql_page import AdminSqlPage
 from Page_Object_Model.users import users_variables

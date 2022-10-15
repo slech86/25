@@ -1,6 +1,6 @@
 import pytest
 from Page_Object_Model.pages.site.oll_page import OllPage
-from Page_Object_Model.сonfiguration import UrlStartPage, UrlStartPageAdmin
+from Page_Object_Model.configuration import UrlStartPage, UrlStartPageAdmin
 from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
 from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
 from Page_Object_Model.pages.site.vacancy_add_page import VacancyAddPage

@@ -3,7 +3,7 @@ import time
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.job_seeker_locators import VacancyPageLocators
 from Page_Object_Model.data_for_testing import TestData, TestDataEditing
-from Page_Object_Model.сonfiguration import UrlStartPage
+from Page_Object_Model.configuration import UrlStartPage
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import requests
