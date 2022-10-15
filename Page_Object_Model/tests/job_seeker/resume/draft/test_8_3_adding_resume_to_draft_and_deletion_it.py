@@ -9,7 +9,7 @@ from Page_Object_Model.pages.site.resume_add_page import ResumeAddPage
 from Page_Object_Model.singleton import Singleton
 from Page_Object_Model.data_for_testing import TestData
 
-# pytest --reruns 1 --html=./reports/report.html -s tests/job_seeker/test_8_3_adding_resume_to_draft_and_deletion_it.py
+# pytest --reruns 1 --html=./reports/report.html -s tests/job_seeker/resume/draft/test_8_3_adding_resume_to_draft_and_deletion_it.py
 
 user = 'job_seeker'
 
