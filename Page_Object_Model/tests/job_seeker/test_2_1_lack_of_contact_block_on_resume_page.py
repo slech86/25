@@ -4,6 +4,10 @@ from Page_Object_Model.pages.site.resumes_page import ResumesPage
 from Page_Object_Model.pages.site.resume_page import ResumePage
 from Page_Object_Model.configuration import UrlStartPage
 
+# pytest --reruns 1 --html=./reports/report.html -s tests/job_seeker/test_2_1_lack_of_contact_block_on_resume_page.py
+
+user = 'job_seeker'
+
 
 # @pytest.mark.s_r_c
 # @pytest.mark.job_seeker
@@ -20,7 +24,7 @@ def test_checking_absence_of_block_of_contacts_with_an_authorized_applicant(brow
     resume_page = ResumePage(browser, browser.current_url)
 
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.user_new_authorization(language, 2)  # авторизация пользователя
+    page.user_authorization(user)  # авторизация пользователя
 
     resume_page.checking_absence_of_contact_block_with_information()  # проверка отсутствия блока контактов c информацией
     resume_page.checking_absence_of_contact_block()  # проверка отсутствия блока контактов

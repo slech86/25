@@ -6,6 +6,10 @@ from Page_Object_Model.pages.site.vacancies_page import VacanciesPage
 from Page_Object_Model.pages.site.vacancy_page import VacancyPage
 from Page_Object_Model.pages.site.my_resume_page import MyResumePage
 
+# pytest --reruns 1 --html=./reports/report.html -s tests/job_seeker/test_3_2_1_checking_status_of_page_response_to_print_pdf.py
+
+user = 'job_seeker'
+
 
 # @pytest.mark.s_r_c
 # @pytest.mark.job_seeker
@@ -24,7 +28,7 @@ def test_checking_status_of_page_response_to_print_pdf(browser, language):  # п
     vacancy_page.checking_status_of_page_response_to_print_pdf()  # проверка статуса ответа страницы 'распечатать пдф'
 
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.user_new_authorization(language, 2)  # авторизация пользователя
+    page.user_authorization(user)  # авторизация пользователя
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
     page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 
