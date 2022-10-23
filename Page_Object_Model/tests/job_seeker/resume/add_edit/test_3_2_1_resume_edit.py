@@ -8,6 +8,7 @@ from Page_Object_Model.pages.admin_panel.admin_resumes_page import AdminResumesP
 from Page_Object_Model.pages.site.my_resume_page import MyResumePage
 from Page_Object_Model.pages.site.resume_edit_page import ResumeEditPage
 from Page_Object_Model.pages.admin_panel.admin_resume_edit_page import AdminResumeEditPage
+from Page_Object_Model.singleton import Singleton
 
 user = 'job_seeker'
 
@@ -30,7 +31,8 @@ def test_editing_resume(browser, language):  # редактирование ре
 
     my_resume_page = MyResumePage(browser, browser.current_url)
     my_resume_page.opening_resume_menu()  # открытие меню резюме
-    my_resume_page.go_to_resume_editing_page(0)  # переход на страницу редактирования резюме
+    singleton = Singleton()
+    my_resume_page.go_to_resume_editing_page(singleton.id_resume[0])  # переход на страницу редактирования резюме
 
     resume_edit_page = ResumeEditPage(browser, browser.current_url)
     resume_edit_page.change_data_in_all_fields()  # изменение данных во всех полях

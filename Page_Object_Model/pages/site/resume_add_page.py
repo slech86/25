@@ -12,7 +12,7 @@ class ResumeAddPage(BasePage):
     def filling_in_field_job_title_for_draft(self):  # заполнение поля "Название должности" для черновика
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_JOB_TITLE).send_keys(TestData.job_title_resume_for_draft)
 
-    def filling_in_required_fields(self, job_title):  # заполнение обязательных полей
+    def filling_in_required_fields(self):  # заполнение обязательных полей
         self.browser.find_element(*ResumeAddEditPageLocators.TAB).click()
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_NAME).send_keys(TestData.name_resume)
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_SURNAME).send_keys(TestData.surname_resume)
@@ -53,7 +53,7 @@ class ResumeAddPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_EMAIL).send_keys(TestData.email_resume)
         # блок "Контактная информация"
 
-        self.browser.find_element(*ResumeAddEditPageLocators.FIELD_JOB_TITLE).send_keys(job_title)
+        self.browser.find_element(*ResumeAddEditPageLocators.FIELD_JOB_TITLE).send_keys(TestData.job_title_resume)
         self.browser.find_element(*ResumeAddEditPageLocators.CATEGORY_RESUME_DESIGN_GRAPHICS_ANIMATION).click()
         subcategories = WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(ResumeAddEditPageLocators.SUBCATEGORIES_UX_DESIGNER))  # "Подкатегории"
         time.sleep(2)

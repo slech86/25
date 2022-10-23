@@ -38,7 +38,7 @@ class TestResumeAdd:
         my_resume_page.go_to_add_resume_page()  # переход на страницу "Разместить резюме"
 
         add_resume_page = ResumeAddPage(browser, browser.current_url)
-        add_resume_page.filling_in_required_fields(TestData.job_title_resume)  # заполнение обязательных полей
+        add_resume_page.filling_in_required_fields()  # заполнение обязательных полей
         browser.execute_script("window.scrollBy(0, -4000);")
         add_resume_page.filling_in_optional_fields()  # заполнение не обязательных полей
         # add_resume_page.percentage_check_of_resume_completion()  # проверка заполнения резюме в процентах

@@ -27,10 +27,10 @@ class MyResumePage(BasePage):
         self.browser.find_element(*MyResumePageLocators.BUTTON_RESUME_MENU).click()
         time.sleep(0.3)
 
-    def go_to_resume_editing_page(self, index):  # переход на страницу редактирования резюме
+    def go_to_resume_editing_page(self, id_resume):  # переход на страницу редактирования резюме
         locators_with_id_resume = MyResumePageLocators()
-        locators = locators_with_id_resume.assembly_of_locators_with_id_resume(index)  # сборка локатора с id резюме
-        self.browser.find_element(*locators[0]).click()
+        locators = locators_with_id_resume.assembly_of_locators_with_id_resume(id_resume)  # сборка локатора с id резюме
+        self.browser.find_element(*locators['button_edit']).click()
 
     def checking_status_of_page_response_to_print_pdf(self):  # проверка статуса ответа страницы 'распечатать пдф'
         WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(MyResumePageLocators.BUTTON_PRINT)).click()
@@ -40,7 +40,7 @@ class MyResumePage(BasePage):
 
     def deletion_resume_draft(self, id_resume):  # удаление черновика резюме
         locators_with_id_resume = MyResumePageLocators()
-        locators = locators_with_id_resume.new_assembly_of_locators_with_id_resume(id_resume)  # сборка локатора с id резюме
+        locators = locators_with_id_resume.assembly_of_locators_with_id_resume(id_resume)  # сборка локатора с id резюме
         self.browser.find_element(*locators['button_delete']).click()
         self.browser.find_element(*MyResumePageLocators.BUTTON_CONFIRMATION_DELETION_DRAFT_RESUME).click()
 

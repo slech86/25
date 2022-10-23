@@ -90,15 +90,10 @@ class MyResumePageLocators:
 
     BUTTON_RESUME_MENU = (By.CSS_SELECTOR, ('.lc-card.my-cv-card:nth-child(1) .lc-card-bookmarks'))  # первый в списке
 
-    def assembly_of_locators_with_id_resume(self, index):  # сборка локаторов с id резюме
-        singleton = Singleton()
-        button_edit = (By.XPATH, '//a[contains(@href, "/resume/' + singleton.id_resume[index] + '/edit")]')
-        locators = [button_edit]
-        return locators
-
-    def new_assembly_of_locators_with_id_resume(self, id_resume):  # сборка локаторов с id резюме
+    def assembly_of_locators_with_id_resume(self, id_resume):  # сборка локаторов с id резюме
         locators = {
-            'button_delete': (By.CSS_SELECTOR, '.open-delete-modal[data-resume-id="' + id_resume + '"]')
+            'button_delete': (By.CSS_SELECTOR, '.open-delete-modal[data-resume-id="' + id_resume + '"]'),
+            'button_edit': (By.XPATH, '//a[contains(@href, "/resume/' + id_resume + '/edit")]')
         }
         return locators
 
@@ -497,9 +492,9 @@ class ResumeAddEditPageLocators:
 
     CKEDITOR = (By.CSS_SELECTOR, ('body.cke_editable'))  # общий для всех блоков
 
-    BUTTON_PUBLISH = (By.CSS_SELECTOR, ('#submit-button'))
-    BUTTON_TO_DRAFTS = (By.CSS_SELECTOR, ('#draft-button'))
-    BUTTON_PREVIEW = None
+    BUTTON_PUBLISH = (By.CSS_SELECTOR, '#submit-button')
+    BUTTON_TO_DRAFTS = (By.CSS_SELECTOR, '#draft-button')
+    BUTTON_PREVIEW = (By.CSS_SELECTOR, '#resumeform-preview')
 
 
 class ResumePreviewPageLocators:
