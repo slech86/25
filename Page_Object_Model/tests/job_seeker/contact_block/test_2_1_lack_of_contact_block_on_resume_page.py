@@ -4,7 +4,7 @@ from Page_Object_Model.pages.site.resumes_page import ResumesPage
 from Page_Object_Model.pages.site.resume_page import ResumePage
 from Page_Object_Model.configuration import UrlStartPage
 
-# pytest --reruns 1 --html=./reports/report.html -s tests/job_seeker/test_2_1_lack_of_contact_block_on_resume_page.py
+# pytest --reruns 1 --html=./reports/report.html -s tests/job_seeker/contact_block/test_2_1_lack_of_contact_block_on_resume_page.py
 
 user = 'job_seeker'
 

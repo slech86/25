@@ -6,7 +6,7 @@ from Page_Object_Model.pages.site.vacancies_page import VacanciesPage
 from Page_Object_Model.pages.site.vacancy_page import VacancyPage
 from Page_Object_Model.pages.site.my_resume_page import MyResumePage
 
-# pytest --reruns 1 --html=./reports/report.html -s tests/job_seeker/test_3_2_1_checking_status_of_page_response_to_print_pdf.py
+# pytest --reruns 1 --html=./reports/report.html -s tests/job_seeker/print_pdf/test_3_2_1_checking_status_of_page_response_to_print_pdf.py
 
 user = 'job_seeker'
 

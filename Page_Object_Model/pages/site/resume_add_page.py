@@ -12,7 +12,7 @@ class ResumeAddPage(BasePage):
     def filling_in_field_job_title_for_draft(self):  # заполнение поля "Название должности" для черновика
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_JOB_TITLE).send_keys(TestData.job_title_resume_for_draft)
 
-    def filling_in_required_fields(self):  # заполнение обязательных полей
+    def filling_in_required_fields(self, job_title):  # заполнение обязательных полей
         self.browser.find_element(*ResumeAddEditPageLocators.TAB).click()
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_NAME).send_keys(TestData.name_resume)
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_SURNAME).send_keys(TestData.surname_resume)
@@ -53,7 +53,7 @@ class ResumeAddPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_EMAIL).send_keys(TestData.email_resume)
         # блок "Контактная информация"
 
-        self.browser.find_element(*ResumeAddEditPageLocators.FIELD_JOB_TITLE).send_keys(TestData.job_title_resume)
+        self.browser.find_element(*ResumeAddEditPageLocators.FIELD_JOB_TITLE).send_keys(job_title)
         self.browser.find_element(*ResumeAddEditPageLocators.CATEGORY_RESUME_DESIGN_GRAPHICS_ANIMATION).click()
         subcategories = WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(ResumeAddEditPageLocators.SUBCATEGORIES_UX_DESIGNER))  # "Подкатегории"
         time.sleep(2)
@@ -329,6 +329,11 @@ class ResumeAddPage(BasePage):
             assert validation_message == 'Необхідно заповнити "Назва посади".', f'Не верное сообщение валидации, expected result: "Необхідно заповнити "Назва посади".", actual result: "{validation_message}"'
         elif language == "/en":
             assert validation_message == "Job title cannot be blank.", f"Не верное сообщение валидации, expected result: 'Job title cannot be blank.', actual result: '{validation_message}'"
+
+    def go_to_preview_page(self):  # переход на страницу предпросмотра
+        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_PREVIEW).click()
+        time.sleep(1)
+        self.browser.switch_to.window(self.browser.window_handles[1])
 
     def submitting_resume_for_publication(self,):  # отправка резюме на публикацию
         self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_PUBLISH).click()

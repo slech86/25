@@ -120,6 +120,7 @@ class TestData:
     job_title_resume_2 = 'test_job_title_resume_2 ' + time_Now
     job_title_resume_3 = 'test_job_title_resume_3 ' + time_Now
     job_title_resume_for_draft = 'test_job_title_resume for_draft_' + time_Now
+    job_title_resume_preview = 'test_job_title_resume_preview ' + time_Now
     category_resume = '[#123] Дизайн, графика, анимация'  # не используется при заполнении полей, только при проверке заполнения полей в админке
     subcategories_resume = '[#70] UX-дизайнер'  # не используется при заполнении полей, только при проверке заполнения полей в админке
 
