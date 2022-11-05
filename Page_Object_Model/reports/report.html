@@ -241,7 +241,7 @@ function filter_table(elem) {
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 23-Oct-2022 at 20:22:49 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
+    <p>Report generated on 05-Nov-2022 at 15:34:41 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -257,8 +257,8 @@ function filter_table(elem) {
         <td>Python</td>
         <td>3.9.6</td></tr></table>
     <h2>Summary</h2>
-    <p>0 tests ran in 485.88 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">0 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">1 rerun</span>
+    <p>5 tests ran in 165.87 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">5 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">0 rerun</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -269,12 +269,48 @@ function filter_table(elem) {
           <th>Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
-      <tbody class="rerun results-table-row">
+      <tbody class="passed results-table-row">
         <tr>
-          <td class="col-result">Rerun</td>
-          <td class="col-name">tests/job_seeker/resume/preview/test_3_3_0_preview_resume_when_creating.py::TestResumeAdd::test_adding_resume</td>
-          <td class="col-duration">483.02</td>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/resume/add_edit/test_3_1_resume_add.py::TestResumeAdd::test_adding_resume</td>
+          <td class="col-duration">68.42</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">self = &lt;Page_Object_Model.tests.job_seeker.resume.preview.test_3_3_0_preview_resume_when_creating.TestResumeAdd object at 0x10435cdc0&gt;<br/>browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;1a61a0d20f46d97059d7eb6044fbb4dd&quot;)&gt;, language = &#x27;&#x27;<br/><br/>&gt;   ???<br/><br/>tests/job_seeker/resume/preview/test_3_3_0_preview_resume_when_creating.py:44: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>tests/job_seeker/resume/preview/test_3_3_0_preview_resume_when_creating.py:44: in test_adding_resume<br/>    ???<br/>/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/bdb.py:88: in trace_dispatch<br/>    return self.dispatch_line(frame)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;_pytest.debugging.pytestPDB._get_pdb_wrapper_class.&lt;locals&gt;.PytestPdbWrapper object at 0x10438c9d0&gt;<br/>frame = &lt;frame at 0x1043a49f0, file &#x27;/Users/sl./PycharmProjects/smileexpo/Page_Object_Model/tests/job_seeker/resume/preview/test_3_3_0_preview_resume_when_creating.py&#x27;, line 44, code test_adding_resume&gt;<br/><br/>    def dispatch_line(self, frame):<br/>        &quot;&quot;&quot;Invoke user function and return trace function for line event.<br/>    <br/>        If the debugger stops on the current line, invoke<br/>        self.user_line(). Raise BdbQuit if self.quitting is set.<br/>        Return self.trace_dispatch to continue tracing in this scope.<br/>        &quot;&quot;&quot;<br/>        if self.stop_here(frame) or self.break_here(frame):<br/>            self.user_line(frame)<br/>&gt;           if self.quitting: raise BdbQuit<br/><span class="error">E           bdb.BdbQuit</span><br/><br/>/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/bdb.py:113: BdbQuit<br/></div></td></tr></tbody></table></body></html>
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/resume/add_edit/test_3_1_resume_add.py::TestResumeAdd::test_verification_of_letter_after_publication_of_resume</td>
+          <td class="col-duration">1.79</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/resume/add_edit/test_3_2_0_verification_of_saving_data_entered_by_user_after_resume_creation.py::test_verification_of_saving_data_entered_by_user_after_resume_creation</td>
+          <td class="col-duration">7.60</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/resume/add_edit/test_3_2_1_resume_edit.py::test_editing_resume</td>
+          <td class="col-duration">75.26</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/resume/add_edit/test_3_3_post_conditions_resume.py::TestPostConditionsResume::test_complete_deletion_of_resume_1</td>
+          <td class="col-duration">2.59</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody></table></body></html>

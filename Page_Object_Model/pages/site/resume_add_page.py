@@ -12,6 +12,9 @@ class ResumeAddPage(BasePage):
     def filling_in_field_job_title_for_draft(self):  # заполнение поля "Название должности" для черновика
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_JOB_TITLE).send_keys(TestData.job_title_resume_for_draft)
 
+    def hiding_copy_opy_to_other_languages(self):  # скрытие кнопки "Скопировать на другие языки"
+        self.browser.find_element(*ResumeAddEditPageLocators.CROSS_IN_COPY_TO_OTHER_LANGUAGES).click()
+
     def filling_in_required_fields(self, job_title):  # заполнение обязательных полей
         self.browser.find_element(*ResumeAddEditPageLocators.TAB).click()
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_NAME).send_keys(TestData.name_resume)

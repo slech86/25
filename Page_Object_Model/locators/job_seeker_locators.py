@@ -121,7 +121,7 @@ class ResumeAddEditPageLocators:
         locators = {}
         locators['button_add_block'] = (By.CSS_SELECTOR, '#content-' + ResumeAddEditPageLocators.id_language + ' #' + id_block + ' .icon-plus')
         return locators
-
+    CROSS_IN_COPY_TO_OTHER_LANGUAGES = (By.CSS_SELECTOR, '.copy-languages-toggle-tooltip')
     TAB = (By.CSS_SELECTOR, '[id="' + id_language + '-tab"]')
     FIELD_PHOTO = (By.CSS_SELECTOR, '#resumenew-photo')
     FIELD_NAME = (By.CSS_SELECTOR, '#' + input_prefix + 'name')
