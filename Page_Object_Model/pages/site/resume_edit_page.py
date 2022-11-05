@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class ResumeEditPage(BasePage):
-    def hiding_copy_opy_to_other_languages(self):  # скрытие кнопки "Скопировать на другие языки"
+    def hiding_copy_to_other_languages(self):  # скрытие кнопки "Скопировать на другие языки"
         self.browser.find_element(*ResumeAddEditPageLocators.CROSS_IN_COPY_TO_OTHER_LANGUAGES).click()
 
     def change_data_in_all_fields(self):  # изменение данных во всех полях

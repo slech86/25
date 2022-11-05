@@ -8,6 +8,9 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class VacancyEditPage(BasePage):
+    def hiding_copy_to_other_languages(self):  # скрытие кнопки "Скопировать на другие языки"
+        self.browser.find_element(*VacancyAddEditPageLocators.CROSS_IN_COPY_TO_OTHER_LANGUAGES).click()
+
     def change_data_in_all_fields(self):  # изменение данных во всех полях
         self.browser.find_element(*VacancyAddEditPageLocators.FIELD_JOB_TITLE).send_keys('_editing')
         self.browser.find_element(*VacancyAddEditPageLocators.CATEGORY_VACANCIES_SITE_PROMOTION).click()

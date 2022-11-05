@@ -35,6 +35,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     my_vacancies_page.go_to_vacancy_add_page()  # переход на страницу "Добавить вакансию"
 
     add_vacancy_page = VacancyAddPage(browser, browser.current_url)
+    add_vacancy_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
     add_vacancy_page.filling_in_required_fields()  # заполнение обязательных полей
     add_vacancy_page.go_to_preview_page()  # переход на страницу предпросмотра
 

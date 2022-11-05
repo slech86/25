@@ -29,6 +29,7 @@ def test_editing_vacancies(browser, language):  # редактирование �
     my_vacancies_page.go_to_vacancy_editing_page()  # переход на страницу редактирования вакансии
 
     vacancy_edit_page = VacancyEditPage(browser, browser.current_url)
+    vacancy_edit_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
     vacancy_edit_page.change_data_in_all_fields()  # изменение данных во всех полях
     vacancy_edit_page.go_to_preview_page()  # переход на страницу предпросмотра
 

@@ -106,6 +106,7 @@ class TestPackagePurchase1Vacancy:
 
         my_vacancies_page.go_to_vacancy_add_page()  # переход на страницу "Добавить вакансию"
 
+        add_vacancy_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
         add_vacancy_page.submitting_vacancy_for_publication()  # проверка наличия кнопки "Опубликовать"
 
     def test_checking_letter_after_order_processing(self, browser, language):  # проверка письма после проведения заказа

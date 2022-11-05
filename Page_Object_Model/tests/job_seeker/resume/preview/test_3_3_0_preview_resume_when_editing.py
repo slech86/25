@@ -35,7 +35,7 @@ def test_editing_resume(browser, language):  # редактирование ре
     my_resume_page.go_to_resume_editing_page(resume_id)  # переход на страницу редактирования резюме
 
     resume_edit_page = ResumeEditPage(browser, browser.current_url)
-    resume_edit_page.hiding_copy_opy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
+    resume_edit_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
     resume_edit_page.go_to_preview_page()  # переход на страницу предпросмотра
 
     resume_preview_page = ResumePreviewPage(browser, browser.current_url)

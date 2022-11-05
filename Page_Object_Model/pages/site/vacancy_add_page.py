@@ -14,6 +14,9 @@ class VacancyAddPage(BasePage):
     def filling_in_field_job_title_for_draft(self):  # заполнение поля "Название должности" для черновика
         self.browser.find_element(*VacancyAddEditPageLocators.FIELD_JOB_TITLE).send_keys(TestData.job_title_vacancy_for_draft)
 
+    def hiding_copy_to_other_languages(self):  # скрытие кнопки "Скопировать на другие языки"
+        self.browser.find_element(*VacancyAddEditPageLocators.CROSS_IN_COPY_TO_OTHER_LANGUAGES).click()
+
     def filling_in_required_fields(self):  # заполнение обязательных полей
         self.browser.find_element(*VacancyAddEditPageLocators.FIELD_JOB_TITLE).send_keys(TestData.job_title_vacancy)
         self.browser.find_element(*VacancyAddEditPageLocators.CATEGORY_VACANCIES_HUMAN_RESOURCES_DEPARTMENT).click()

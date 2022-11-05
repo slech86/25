@@ -227,6 +227,7 @@ class VacancyAddEditPageLocators:
         locators['button_add_block'] = (By.CSS_SELECTOR, '#content-' + VacancyAddEditPageLocators.id_language + ' #' + id_block + ' .icon-plus')
         return locators
 
+    CROSS_IN_COPY_TO_OTHER_LANGUAGES = (By.CSS_SELECTOR, '.copy-languages-toggle-tooltip')
     TAB = (By.CSS_SELECTOR, '[id="' + id_language + '-tab"]')
     FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + input_prefix + 'job_title'))
     VALIDATION_MESSAGE_FIELD_JOB_TITLE = (By.CSS_SELECTOR, ('#' + input_prefix + 'job_title + p'))
