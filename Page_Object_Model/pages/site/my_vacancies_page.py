@@ -12,10 +12,10 @@ class MyVacanciesPage(BasePage):
     def go_to_vacancy_add_page(self):  # переход на страницу "Добавить вакансию"
         self.browser.find_element(*MyVacanciesPageLocators.BUTTON_ADD_VACANCY).click()
 
-    def opening_vacancy_menu(self):  # открытие меню вакансии
+    def opening_vacancy_menu(self, vacancy_id):  # открытие меню вакансии
         locators_with_id_vacancies = MyVacanciesPageLocators()
-        locators = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies()  # сборка локаторов с id вакансии
-        self.browser.find_element(*locators[0]).click()
+        locators = locators_with_id_vacancies.new_assembly_of_locators_with_id_vacancies(vacancy_id)  # сборка локаторов с id вакансии
+        self.browser.find_element(*locators['button_vacancy_menu']).click()
         time.sleep(0.3)
 
     def go_to_vacancy_editing_page(self):  # переход на страницу редактирования вакансии
@@ -23,8 +23,10 @@ class MyVacanciesPage(BasePage):
         locators = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies()  # сборка локаторов с id вакансии
         self.browser.find_element(*locators[1]).click()
 
-    def checking_status_of_page_response_to_print_pdf(self):  # проверка статуса ответа страницы 'распечатать пдф'
-        WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(MyVacanciesPageLocators.BUTTON_PRINT)).click()
+    def checking_status_of_page_response_to_print_pdf(self, vacancy_id):  # проверка статуса ответа страницы 'распечатать пдф'
+        locators_with_id_vacancies = MyVacanciesPageLocators()
+        locators = locators_with_id_vacancies.new_assembly_of_locators_with_id_vacancies(vacancy_id)  # сборка локаторов с id вакансии
+        WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(locators['button_print'])).click()
         self.browser.switch_to.window(self.browser.window_handles[2])
         response = requests.head(self.browser.current_url)
         assert response.status_code == 200, 'Статус ответа страницы не 200'

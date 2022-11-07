@@ -8,6 +8,7 @@ from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_vacancy_edit_page import AdminVacancyEditPage
 from Page_Object_Model.data_for_testing import TestDataEditing
 from Page_Object_Model.pages.site.vacancy_preview_page import VacancyPreviewPage
+from Page_Object_Model.singleton import Singleton
 
 
 @pytest.mark.s_r_c
@@ -25,7 +26,8 @@ def test_editing_vacancies(browser, language):  # редактирование �
     company_personal_cabinet_page.go_to_my_vacancies_page()  # переход на страницу "Мои вакансии"
 
     my_vacancies_page = MyVacanciesPage(browser, browser.current_url)
-    my_vacancies_page.opening_vacancy_menu()  # открытие меню вакансии
+    singleton = Singleton()
+    my_vacancies_page.opening_vacancy_menu(singleton.id_vacancies)  # открытие меню вакансии
     my_vacancies_page.go_to_vacancy_editing_page()  # переход на страницу редактирования вакансии
 
     vacancy_edit_page = VacancyEditPage(browser, browser.current_url)

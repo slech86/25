@@ -188,12 +188,13 @@ class MyVacanciesPageLocators:
 
     def new_assembly_of_locators_with_id_vacancies(self, id_vacancies):  # сборка локаторов с id вакансии
         locators_with_id_vacancies = {
+            'button_vacancy_menu': (By.CSS_SELECTOR, ('#my-vacancy-' + id_vacancies + ' .share-btn')),
             'new_response_icon': (By.CSS_SELECTOR, '#my-vacancy-' + id_vacancies + ' .counter.red'),
-            'button_show_responses': (By.XPATH, ('//a[contains(@href, "/vacancy/' + id_vacancies + '/feedback")]'))
+            'button_show_responses': (By.XPATH, ('//a[contains(@href, "/vacancy/' + id_vacancies + '/feedback")]')),
+            'button_print': (By.XPATH, '//a[@href="/vacancy/' + id_vacancies + '/print"]')
         }
         return locators_with_id_vacancies
 
-    BUTTON_PRINT = (By.XPATH, '//a[contains(@href, "/print")]')  # работает для первого резюме в списке
     BUTTON_CONFIRMATION_DELETION_DRAFT_VACANCIES = (By.CSS_SELECTOR, ('[class="btn btn-blue btn-apply update-status"]'))
 
     INFO_TEXT_AFTER_CREATING_VACANCY = (By.CSS_SELECTOR, ('#lc-popup-vacancy-new .text'))  # информационный текст после создания вакансии
