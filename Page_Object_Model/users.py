@@ -12,14 +12,21 @@ class Accounts():
 
 users_variables = {
     'employer': {
-        'login': 'employer',
+        'login': 'test_employer',
         'password': '65Y2ixdH4F',
         'mail': 'test_automation+employer@qazz.pw',
         'id': '4719',
         'company_name': 'test_Название компании',
     },
+    'employer_vacancy': {
+        'login': 'test_employer_vacancy',
+        'password': '4v4C8gLsR8',
+        'mail': 'test_automation+employer_vacancy@qazz.pw',
+        'id': '4719',
+        'company_name': 'test_Название компании',
+    },
     'job_seeker': {
-        'login': 'job_seeker',
+        'login': 'test_job_seeker',
         'password': '2284anVvFS',
         'mail': 'test_automation+job_seeker@qazz.pw',
         'id': '4720',
