@@ -42,7 +42,7 @@ class TestPackagePurchaseStandart1Vacancy:
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_order_page()  # переход на страницу заказов
-        admin_page.search_for_user_orders_by_email(language, 1)  # поиск заказов пользователя по e-mail
+        admin_page.old_search_for_user_orders_by_email(language, 1)  # поиск заказов пользователя по e-mail
         admin_page.order_processing()  # проведение заказа, изменение статуса заказа с "Новый" на "Проведенный"
         singleton = Singleton()
         singleton.id_order = admin_page.getting_last_order_id_of_user()  # получение последнего id заказа пользователя
@@ -81,5 +81,5 @@ class TestPackagePurchaseStandart1Vacancy:
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_order_page()  # переход на страницу заказов
-        admin_page.search_for_user_orders_by_email(language, 1)  # поиск заказов пользователя по e-mail
+        admin_page.old_search_for_user_orders_by_email(language, 1)  # поиск заказов пользователя по e-mail
         admin_page.complete_objects_deletion()  # полное удаление объектов

@@ -107,11 +107,15 @@ class AdminPageLocators:
     # SEARCH_STATUS_NEW = (By.CSS_SELECTOR, ('[name="Orders[status]"] > [value="1"]'))
     FIELD_EMAIL_SEARCH_ORDERS = (By.CSS_SELECTOR, ('[name="Orders[userEmail]"]'))
 
-    def assembly_of_locators_with_user_email(self, key):
+    def old_assembly_of_locators_with_user_email(self, key):
         user_email_orders_ru = (By.XPATH, ('//span[text()="' + Singleton.logins_and_mails[key][0][1] + '"]'))
         user_email_orders_ua = (By.XPATH, ('//span[text()="' + Singleton.logins_and_mails[key][1][1] + '"]'))
         user_email_orders_en = (By.XPATH, ('//span[text()="' + Singleton.logins_and_mails[key][2][1] + '"]'))
         user_email_orders = [user_email_orders_ru, user_email_orders_ua, user_email_orders_en]
+        return user_email_orders
+
+    def assembly_of_locators_with_user_email(self, user_email):
+        user_email_orders = (By.XPATH, ('//span[text()="' + user_email + '"]'))
         return user_email_orders
 
     STATUS_COMPLETED = (By.CSS_SELECTOR, ('.form-control.input-sm > [value="3"]'))

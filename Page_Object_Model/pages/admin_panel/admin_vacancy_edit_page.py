@@ -15,15 +15,10 @@ class AdminVacancyEditPage(BasePage):
         time.sleep(3)
         self.browser.find_element(*AdminVacancyEditPageLocators.BUTTON_SAVE).click()
 
-    def verification_of_saving_data_entered_by_user_after_vacancy_is_created_ru(self, language, key):  # проверка сохранения введенных пользователем данных после создания вакансии RU
+    def verification_of_saving_data_entered_by_user_after_vacancy_is_created_ru(self, user_login):  # проверка сохранения введенных пользователем данных после создания вакансии RU
         user = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_USER)
         user_title = user.get_attribute("title")
-        if language == '/ua':
-            assert '(' + Singleton.logins_and_mails[key][1][0] + ')' in user_title, "Поле 'Пользователь' не верно"
-        elif language == "":
-            assert '(' + Singleton.logins_and_mails[key][0][0] + ')' in user_title, "Поле 'Пользователь' не верно"
-        elif language == "/en":
-            assert '(' + Singleton.logins_and_mails[key][2][0] + ')' in user_title, "Поле 'Пользователь' не верно"
+        assert '(' + user_login + ')' in user_title, "Поле 'Пользователь' не верно"
 
         job_title_vacancy = self.browser.find_element(*AdminVacancyEditPageLocators.FIELD_JOB_TITLE)
         job_title_vacancy_value = job_title_vacancy.get_attribute("value")

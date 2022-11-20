@@ -22,7 +22,7 @@ users_variables = {
         'login': 'test_employer_vacancy',
         'password': '4v4C8gLsR8',
         'mail': 'test_automation+employer_vacancy@qazz.pw',
-        'id': '4719',
+        'id': '5035',
         'company_name': 'test_Название компании',
     },
     'job_seeker': {

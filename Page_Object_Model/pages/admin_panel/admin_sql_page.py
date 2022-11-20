@@ -17,8 +17,20 @@ class AdminSqlPage(BasePage):
         self.browser.find_element(*AdminSqlPageLocators.BUTTON_EXECUTE).click()
         time.sleep(1)
 
-    def sql_delete_record_response_to_vacancy(self, user_job_seeker, resume_id, vacancy_id):  # удаление записи отклика на вакансию
+    def sql_delete_record_response_to_vacancy(self, user_id_job_seeker, resume_id, vacancy_id):  # удаление записи отклика на вакансию
         self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).clear()
-        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).send_keys('DELETE FROM `tbl_responses` WHERE `user_id`=' + user_job_seeker + ' AND `resume_id`=' + resume_id + ' AND `vacancy_id`=' + vacancy_id + ';')
+        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).send_keys('DELETE FROM `tbl_responses` WHERE `user_id`=' + user_id_job_seeker + ' AND `resume_id`=' + resume_id + ' AND `vacancy_id`=' + vacancy_id + ';')
+        self.browser.find_element(*AdminSqlPageLocators.BUTTON_EXECUTE).click()
+        time.sleep(1)
+
+    def sql_deleting_all_user_orders(self, user_id_job_seeker):  # удаление всех заказов пользователя
+        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).clear()
+        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).send_keys('DELETE FROM `tbl_orders` WHERE `user_id`=' + user_id_job_seeker + ';')
+        self.browser.find_element(*AdminSqlPageLocators.BUTTON_EXECUTE).click()
+        time.sleep(1)
+
+    def sql_deleting_all_user_vacancies(self, user_id_job_seeker):  # удаление всех вакансий пользователя
+        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).clear()
+        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).send_keys('DELETE FROM `tbl_vacancies` WHERE `user_id`=' + user_id_job_seeker + ';')
         self.browser.find_element(*AdminSqlPageLocators.BUTTON_EXECUTE).click()
         time.sleep(1)

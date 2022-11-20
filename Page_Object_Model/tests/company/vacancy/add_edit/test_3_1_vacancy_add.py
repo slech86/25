@@ -16,6 +16,8 @@ from Page_Object_Model.users import Accounts
 from Page_Object_Model.data_for_testing import TestData
 from Page_Object_Model.pages.site.vacancy_preview_page import VacancyPreviewPage
 
+user = 'employer_vacancy'
+
 
 @pytest.mark.s_r_c
 def test_adding_vacancies(browser, language):  # добавление вакансии
@@ -24,7 +26,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     # browser.maximize_window()
     page.open()
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.user_new_authorization(language, 1)  # авторизация пользователя
+    page.user_authorization(user)  # авторизация пользователя
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
     page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 

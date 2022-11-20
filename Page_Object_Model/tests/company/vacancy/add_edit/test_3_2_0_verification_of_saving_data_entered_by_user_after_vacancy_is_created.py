@@ -3,6 +3,9 @@ from Page_Object_Model.configuration import UrlStartPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_vacancy_edit_page import AdminVacancyEditPage
 from Page_Object_Model.data_for_testing import TestData
+from Page_Object_Model.users import users_variables
+
+user = 'employer_vacancy'
 
 
 # @pytest.mark.s_r_c
@@ -16,4 +19,4 @@ def test_verification_of_saving_data_entered_by_user_after_vacancy_is_created(br
     admin_page.go_to_object_editing_page()  # переход на страницу редактирования вакансии
 
     admin_vacancy_edit_page = AdminVacancyEditPage(browser, browser.current_url)
-    admin_vacancy_edit_page.verification_of_saving_data_entered_by_user_after_vacancy_is_created_ru(language, 1)  # проверка сохранения введенных пользователем данных после создания вакансии RU
+    admin_vacancy_edit_page.verification_of_saving_data_entered_by_user_after_vacancy_is_created_ru(users_variables[user]["login"])  # проверка сохранения введенных пользователем данных после создания вакансии RU

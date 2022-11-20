@@ -163,6 +163,7 @@ class VacancyAddPage(BasePage):
             assert validation_message == "Job title cannot be blank.", f"Не верное сообщение валидации, expected result: 'Job title cannot be blank.', actual result: '{validation_message}'"
 
     def submitting_vacancy_for_publication(self):  # отправка вакансии на публикацию
+        time.sleep(3)
         self.browser.find_element(*VacancyAddEditPageLocators.BUTTON_PUBLISH).click()
 
     def adding_vacancy_to_draft(self):  # добавление вакансии в черновик
