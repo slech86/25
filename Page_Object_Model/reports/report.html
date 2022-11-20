@@ -241,7 +241,7 @@ function filter_table(elem) {
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 20-Nov-2022 at 15:36:45 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
+    <p>Report generated on 20-Nov-2022 at 20:11:26 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -257,8 +257,8 @@ function filter_table(elem) {
         <td>Python</td>
         <td>3.9.6</td></tr></table>
     <h2>Summary</h2>
-    <p>6 tests ran in 149.31 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">6 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">0 rerun</span>
+    <p>1 tests ran in 11.75 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">0 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">1 rerun</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -269,57 +269,21 @@ function filter_table(elem) {
           <th>Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
-      <tbody class="passed results-table-row">
+      <tbody class="failed results-table-row">
         <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/vacancy/add_edit/test_3_0_package_purchase_help_refugee_with_his_work.py::TestPackagePurchaseHelpRefugeeWithHisWork::test_precondition</td>
-          <td class="col-duration">4.50</td>
+          <td class="col-result">Failed</td>
+          <td class="col-name">tests/job_seeker/resume/add_edit/test_3_1_resume_add.py::TestResumeAdd::test_precondition</td>
+          <td class="col-duration">2.71</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
+            <div class="log">self = &lt;Page_Object_Model.tests.job_seeker.resume.add_edit.test_3_1_resume_add.TestResumeAdd object at 0x104f31520&gt;<br/>browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;815ff9bb5334b66ba51377ff938740fa&quot;)&gt;<br/><br/>    def test_precondition(self, browser):<br/>        admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)<br/>        admin_page.open()<br/>        admin_page.admin_authorization()<br/>        time.sleep(0.5)<br/>    <br/>        admin_sql_page = AdminSqlPage(browser, UrlStartPageAdmin.url_page_admin + &#x27;/developer/sql&#x27;)<br/>        admin_sql_page.open()<br/>&gt;       admin_sql_page.sql_deleting_all_user_resume(users_variables[user][&quot;id&quot;])  # удаление всех резюме пользователя<br/><span class="error">E       NameError: name &#x27;user&#x27; is not defined</span><br/><br/>tests/job_seeker/resume/add_edit/test_3_1_resume_add.py:33: NameError<br/></div></td></tr></tbody>
+      <tbody class="rerun results-table-row">
         <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/vacancy/add_edit/test_3_0_package_purchase_help_refugee_with_his_work.py::TestPackagePurchaseHelpRefugeeWithHisWork::test_package_purchase_help_refugee_with_his_work_and_activating_it_on_site</td>
-          <td class="col-duration">33.32</td>
+          <td class="col-result">Rerun</td>
+          <td class="col-name">tests/job_seeker/resume/add_edit/test_3_1_resume_add.py::TestResumeAdd::test_precondition</td>
+          <td class="col-duration">2.75</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/vacancy/add_edit/test_3_1_vacancy_add.py::test_adding_vacancies</td>
-          <td class="col-duration">52.30</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/vacancy/add_edit/test_3_1_vacancy_add.py::test_verification_of_letter_after_publication_of_vacancy</td>
-          <td class="col-duration">2.02</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/vacancy/add_edit/test_3_2_0_verification_of_saving_data_entered_by_user_after_vacancy_is_created.py::test_verification_of_saving_data_entered_by_user_after_vacancy_is_created</td>
-          <td class="col-duration">6.70</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/vacancy/add_edit/test_3_3_vacancy_edit.py::test_editing_vacancies</td>
-          <td class="col-duration">40.25</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody></table></body></html>
+            <div class="log">self = &lt;Page_Object_Model.tests.job_seeker.resume.add_edit.test_3_1_resume_add.TestResumeAdd object at 0x104f31520&gt;<br/>browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;f88221ed1dd281a933500b9a558fd86d&quot;)&gt;<br/><br/>    def test_precondition(self, browser):<br/>        admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)<br/>        admin_page.open()<br/>        admin_page.admin_authorization()<br/>        time.sleep(0.5)<br/>    <br/>        admin_sql_page = AdminSqlPage(browser, UrlStartPageAdmin.url_page_admin + &#x27;/developer/sql&#x27;)<br/>        admin_sql_page.open()<br/>&gt;       admin_sql_page.sql_deleting_all_user_resume(users_variables[user][&quot;id&quot;])  # удаление всех резюме пользователя<br/><span class="error">E       NameError: name &#x27;user&#x27; is not defined</span><br/><br/>tests/job_seeker/resume/add_edit/test_3_1_resume_add.py:33: NameError<br/></div></td></tr></tbody></table></body></html>

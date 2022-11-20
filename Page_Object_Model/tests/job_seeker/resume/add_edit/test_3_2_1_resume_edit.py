@@ -10,7 +10,7 @@ from Page_Object_Model.pages.site.resume_edit_page import ResumeEditPage
 from Page_Object_Model.pages.admin_panel.admin_resume_edit_page import AdminResumeEditPage
 from Page_Object_Model.singleton import Singleton
 
-user = 'job_seeker'
+user = 'job_seeker_resume'
 
 
 @pytest.mark.s_r_c

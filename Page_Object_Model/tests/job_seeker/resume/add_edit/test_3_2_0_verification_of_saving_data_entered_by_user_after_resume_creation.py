@@ -6,7 +6,7 @@ from Page_Object_Model.pages.admin_panel.admin_resume_edit_page import AdminResu
 from Page_Object_Model.pages.admin_panel.admin_currency_rates_page import AdminCurrencyRatesPage
 from Page_Object_Model.data_for_testing import TestData
 
-user = 'job_seeker'
+user = 'job_seeker_resume'
 
 
 @pytest.mark.s_r_c
