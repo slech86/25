@@ -35,6 +35,6 @@ users_variables = {
         'login': 'test_job_seeker_resume',
         'password': '3pMiK2A86g',
         'mail': 'test_automation+job_seeker_resume@qazz.pw',
-        'id': '5036',
+        'id': '5055',
     },
 }
