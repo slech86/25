@@ -3,16 +3,9 @@ import time
 import pytest
 from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
-from Page_Object_Model.configuration import UrlStartPage, UrlStartPageAdmin
-from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
-from Page_Object_Model.pages.email_page import EmailPage
+from Page_Object_Model.configuration import UrlStartPage
 from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
 from Page_Object_Model.pages.site.vacancy_add_page import VacancyAddPage
-from Page_Object_Model.pages.admin_panel.admin_vacancy_edit_page import AdminVacancyEditPage
-from Page_Object_Model.pages.site.vacancy_page import VacancyPage
-from Page_Object_Model.pages.site.services_and_prices_page import ServicesAndPricesPage
-from Page_Object_Model.singleton import Singleton
-from Page_Object_Model.users import Accounts
 from Page_Object_Model.data_for_testing import TestData
 from Page_Object_Model.pages.site.vacancy_preview_page import VacancyPreviewPage
 
@@ -45,4 +38,3 @@ def test_preview_vacancy_when_creating(browser, language):  # предпросм
 
     vacancy_preview_page = VacancyPreviewPage(browser, browser.current_url)
     vacancy_preview_page.checking_for_preview_page_to_open(TestData.job_title_vacancy)  # проверка открытия страницы предпросмотра
-    time.sleep(5)
