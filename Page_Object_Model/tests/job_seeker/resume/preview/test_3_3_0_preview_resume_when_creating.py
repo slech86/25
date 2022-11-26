@@ -18,7 +18,7 @@ user = 'job_seeker'
 # @pytest.mark.skip
 class TestResumeAdd:
     @pytest.mark.s_r_c
-    def test_adding_resume(self, browser, language):  # добавление резюме
+    def test_preview_resume_when_creating(self, browser, language):  # предпросмотр резюме при создании
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
         page = OllPage(browser, url_page)
         # browser.maximize_window()

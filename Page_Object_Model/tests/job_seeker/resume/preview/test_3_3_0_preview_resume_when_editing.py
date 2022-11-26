@@ -17,7 +17,7 @@ resume_name = 'qa test предпросмотр резюме при редакт
 @pytest.mark.s_r_c
 @pytest.mark.job_seeker
 # @pytest.mark.skip
-def test_editing_resume(browser, language):  # редактирование резюме
+def test_preview_resume_when_editing(browser, language):  # предпросмотр резюме при редактировании
     url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_page)
     # browser.maximize_window()
