@@ -30,15 +30,11 @@ def test_editing_vacancies(browser, language):  # редактирование �
     my_vacancies_page = MyVacanciesPage(browser, browser.current_url)
     singleton = Singleton()
     my_vacancies_page.opening_vacancy_menu(singleton.id_vacancies)  # открытие меню вакансии
-    my_vacancies_page.go_to_vacancy_editing_page()  # переход на страницу редактирования вакансии
+    my_vacancies_page.go_to_vacancy_editing_page(singleton.id_vacancies)  # переход на страницу редактирования вакансии
 
     vacancy_edit_page = VacancyEditPage(browser, browser.current_url)
     vacancy_edit_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
     vacancy_edit_page.change_data_in_all_fields()  # изменение данных во всех полях
-    vacancy_edit_page.go_to_preview_page()  # переход на страницу предпросмотра
-
-    vacancy_preview_page = VacancyPreviewPage(browser, browser.current_url)
-    vacancy_preview_page.checking_for_preview_page_to_open(TestDataEditing.job_title_vacancy)  # проверка открытия страницы предпросмотра
 
     vacancy_edit_page.submitting_vacancy_change_for_publication()  # отправка изменений вакансии на публикацию
     my_vacancies_page.waiting_for_my_vacancies_page_to_open(language)  # ожидание открытия страницы 'Мои вакансии'
