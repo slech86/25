@@ -172,26 +172,14 @@ class MyVacanciesPageLocators:
     H1 = (By.CSS_SELECTOR, ('h1'))
     BUTTON_ADD_VACANCY = (By.CSS_SELECTOR, ('#add-vacancy'))
 
-    def assembly_of_locators_with_id_vacancies(self):  # сборка локаторов с id вакансии
-        singleton = Singleton()
-        button_vacancy_menu = (By.CSS_SELECTOR, ('#my-vacancy-' + singleton.id_vacancies + ' .share-btn'))
-        button_edit = (By.XPATH, ('//div[@id="my-vacancy-' + singleton.id_vacancies + '"]//a[contains(@href, "/vacancy/' + singleton.id_vacancies + '/edit")]'))
-        button_show_responses = (By.XPATH, ('//a[contains(@href, "/vacancy/' + singleton.id_vacancies + '/feedback")]'))
-        new_response_icon = (By.CSS_SELECTOR, ('#my-vacancy-' + singleton.id_vacancies + ' .counter.red'))
-        button_delete = (By.CSS_SELECTOR, ('#my-vacancy-' + singleton.id_vacancies + ' .open-delete-modal'))
-        locators = [button_vacancy_menu,
-                    button_edit,
-                    button_show_responses,
-                    new_response_icon,
-                    button_delete]
-        return locators
-
-    def new_assembly_of_locators_with_id_vacancies(self, id_vacancies):  # сборка локаторов с id вакансии
+    def assembly_of_locators_with_id_vacancies(self, id_vacancies):  # сборка локаторов с id вакансии
         locators_with_id_vacancies = {
             'button_vacancy_menu': (By.CSS_SELECTOR, ('#my-vacancy-' + id_vacancies + ' .share-btn')),
+            'button_edit': (By.XPATH, ('//div[@id="my-vacancy-' + id_vacancies + '"]//a[contains(@href, "/vacancy/' + id_vacancies + '/edit")]')),
             'new_response_icon': (By.CSS_SELECTOR, '#my-vacancy-' + id_vacancies + ' .counter.red'),
             'button_show_responses': (By.XPATH, ('//a[contains(@href, "/vacancy/' + id_vacancies + '/feedback")]')),
-            'button_print': (By.XPATH, '//a[@href="/vacancy/' + id_vacancies + '/print"]')
+            'button_print': (By.XPATH, '//a[@href="/vacancy/' + id_vacancies + '/print"]'),
+            'button_delete': (By.CSS_SELECTOR, ('#my-vacancy-' + id_vacancies + ' .open-delete-modal'))
         }
         return locators_with_id_vacancies
 

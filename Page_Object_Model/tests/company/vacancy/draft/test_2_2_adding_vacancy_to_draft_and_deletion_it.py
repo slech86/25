@@ -49,15 +49,14 @@ class TestAddingVacancyToDraft:
         admin_page.go_to_vacancies_page()  # переход на страницу вакансий
         admin_page.vacancy_search_by_job_title(TestData.job_title_vacancy_for_draft)  # поиск вакансии по названию должности
 
-        singleton = Singleton()
-        singleton.id_vacancies = admin_page.getting_vacancy_id()  # получение id вакансии
+        id_vacancies = admin_page.getting_vacancy_id()  # получение id вакансии
         admin_page.checking_that_vacancy_status_is_draft()  # проверка что статус вакансии 'Черновик'
 
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/vacancy/my"
         my_vacancies_page = MyVacanciesPage(browser, url_page)
         my_vacancies_page.open()
-        my_vacancies_page.opening_vacancy_menu(singleton.id_vacancies)  # открытие меню вакансии
-        my_vacancies_page.deletion_vacancy_draft()  # удаление черновика вакансии
+        my_vacancies_page.opening_vacancy_menu(id_vacancies)  # открытие меню вакансии
+        my_vacancies_page.deletion_vacancy_draft(id_vacancies)  # удаление черновика вакансии
         my_vacancies_page.checking_message_after_deleting_vacancy(language)  # проверка сообщения после удаления вакансии
 
         admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin + '/vacancies')
