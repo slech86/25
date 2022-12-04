@@ -5,6 +5,8 @@ from Page_Object_Model.singleton import Singleton
 class CompanyRegistrationPageLocators:
     inputPrefix = 'companyregistrationform-'
 
+    CROSS_IN_COPY_TO_OTHER_LANGUAGES = (By.CSS_SELECTOR, '.copy-languages-toggle-tooltip')
+
     FIELD_LOGIN = (By.CSS_SELECTOR, ('#' + inputPrefix + 'login'))
     FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'email'))
     FIELD_PASSWORD = (By.CSS_SELECTOR, ('#' + inputPrefix + 'password'))
@@ -88,6 +90,8 @@ class CompanyPreviewPageLocators:
 
 class CompanyEditPageLocators:
     inputPrefix = 'companyform-'
+
+    CROSS_IN_COPY_TO_OTHER_LANGUAGES = (By.CSS_SELECTOR, '.copy-languages-toggle-tooltip')
 
     BUTTON_EDIT_IN_CONTACT_INFORMATION_BLOCK = (By.CSS_SELECTOR, ('#contact-information .post-resume-title + .btn-edit'))
     FIELD_NAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'name'))

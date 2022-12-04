@@ -10,6 +10,9 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class CompanyRegistrationPage(BasePage):
+    def hiding_copy_to_other_languages(self):  # скрытие кнопки "Скопировать на другие языки"
+        self.browser.find_element(*CompanyRegistrationPageLocators.CROSS_IN_COPY_TO_OTHER_LANGUAGES).click()
+
     def filling_in_required_fields(self, language, key):  # заполнение обязательных полей
         login_and_mail = TestData()
         login_and_mail.login_and_mail_generation(key)

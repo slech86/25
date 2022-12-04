@@ -26,10 +26,6 @@ class TestCompanyRegistration:
 
         company_registration_page = CompanyRegistrationPage(browser, browser.current_url)
         company_registration_page.filling_in_required_fields(language, 1)  # заполнение обязательных полей
-        company_registration_page.go_to_preview_page()  # переход на страницу предпросмотра
-
-        company_preview_page = CompanyPreviewPage(browser, browser.current_url)
-        company_preview_page.checking_for_preview_page_to_open(TestData.company_name)  # проверка открытия страницы предпросмотра
 
         company_registration_page.filling_in_optional_fields()  # заполнение не обязательных полей
         company_registration_page.browser.execute_script("window.scrollBy(0, 1300);")

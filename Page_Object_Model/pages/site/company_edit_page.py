@@ -9,6 +9,9 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class CompanyEditPage(BasePage):
+    def hiding_copy_to_other_languages(self):  # скрытие кнопки "Скопировать на другие языки"
+        self.browser.find_element(*CompanyEditPageLocators.CROSS_IN_COPY_TO_OTHER_LANGUAGES).click()
+
     def change_data_in_all_fields(self, language):  # изменение данных во всех полях
         self.browser.find_element(*CompanyEditPageLocators.BUTTON_EDIT_IN_CONTACT_INFORMATION_BLOCK).click()
         self.browser.find_element(*CompanyEditPageLocators.FIELD_NAME).send_keys('_editing')
