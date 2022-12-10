@@ -25,6 +25,7 @@ class TestCompanyRegistration:
         page.go_to_company_registration_page()  # нажатие на кнопку для перехода на страницу регистрации работодателя
 
         company_registration_page = CompanyRegistrationPage(browser, browser.current_url)
+        company_registration_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
         company_registration_page.filling_in_required_fields(language, 1)  # заполнение обязательных полей
 
         company_registration_page.filling_in_optional_fields()  # заполнение не обязательных полей
