@@ -324,7 +324,7 @@ class VacancyAddEditPageLocators:
     CKEDITOR = (By.CSS_SELECTOR, 'body.cke_editable')  # общий для всех блоков
     BUTTON_PUBLISH = (By.CSS_SELECTOR, '#submit-button')
     BUTTON_TO_DRAFTS = (By.CSS_SELECTOR, '#draft-button')
-    BUTTON_PREVIEW = (By.CSS_SELECTOR, '#vacancyform-preview')
+    BUTTON_PREVIEW = (By.CSS_SELECTOR, '[data-click=".preview-button"]')
 
 
 class VacancyPreviewPageLocators:

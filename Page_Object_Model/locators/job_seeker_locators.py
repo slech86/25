@@ -494,7 +494,7 @@ class ResumeAddEditPageLocators:
 
     BUTTON_PUBLISH = (By.CSS_SELECTOR, '#submit-button')
     BUTTON_TO_DRAFTS = (By.CSS_SELECTOR, '#draft-button')
-    BUTTON_PREVIEW = (By.CSS_SELECTOR, '#resumeform-preview')
+    BUTTON_PREVIEW = (By.CSS_SELECTOR, '[data-click=".preview-button"]')
 
 
 class ResumePreviewPageLocators:

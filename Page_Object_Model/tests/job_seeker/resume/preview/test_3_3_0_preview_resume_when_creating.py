@@ -37,7 +37,6 @@ class TestResumeAdd:
         add_resume_page = ResumeAddPage(browser, browser.current_url)
         add_resume_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
         add_resume_page.filling_in_required_fields(TestData.job_title_resume_preview)  # заполнение обязательных полей
-        time.sleep(3)
         add_resume_page.go_to_preview_page()  # переход на страницу предпросмотра
 
         resume_preview_page = ResumePreviewPage(browser, browser.current_url)

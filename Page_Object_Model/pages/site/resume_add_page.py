@@ -334,6 +334,7 @@ class ResumeAddPage(BasePage):
             assert validation_message == "Job title cannot be blank.", f"Не верное сообщение валидации, expected result: 'Job title cannot be blank.', actual result: '{validation_message}'"
 
     def go_to_preview_page(self):  # переход на страницу предпросмотра
+        time.sleep(3)
         self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_PREVIEW).click()
         time.sleep(1)
         self.browser.switch_to.window(self.browser.window_handles[1])

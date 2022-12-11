@@ -349,6 +349,7 @@ class ResumeEditPage(BasePage):
             assert status_level_filling == 'Professional', 'Не верный статус уровня заполнения'
 
     def go_to_preview_page(self):  # переход на страницу предпросмотра
+        self.browser.execute_script("window.scrollBy(0, 4000);")
         self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_PREVIEW).click()
         time.sleep(1)
         self.browser.switch_to.window(self.browser.window_handles[1])
