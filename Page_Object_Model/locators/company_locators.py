@@ -90,7 +90,7 @@ class CompanyRegistrationPageLocators:
     # подписка на новости
 
     BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#submit-button'))
-    BUTTON_PREVIEW = (By.CSS_SELECTOR, ('#' + input_prefix + 'preview'))
+    BUTTON_PREVIEW = (By.CSS_SELECTOR, ('data-click=".preview-button"'))
 
 
 class CompanyPreviewPageLocators:
@@ -169,7 +169,7 @@ class CompanyEditPageLocators:
     # блок "Настройки"
 
     BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#submit-button'))
-    BUTTON_PREVIEW = (By.CSS_SELECTOR, ('#' + inputPrefix + 'preview'))
+    BUTTON_PREVIEW = (By.CSS_SELECTOR, ('[data-click=".preview-button"]'))
 
     INFO_TEXT_AFTER_SAVING_PERSONAL_INFORMATION = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст после сохранения изменений личной информации
     CROSS_IN_POP_UP_AFTER_SAVING_CHANGES_TO_PERSONAL_INFORMATION = (By.CSS_SELECTOR, ('#thanks-modal .close'))  # крестик в pop-up окне после сохранения изменений личной информации
