@@ -76,8 +76,8 @@ class CompanyRegistrationPageLocators:
     CKEDITOR_COMPANY_DESCRIPTION = (By.CSS_SELECTOR, ('body.cke_editable'))
     # блок "Информация о компании"
 
-    FIELD_LOGO = (By.CSS_SELECTOR, ('#' + input_prefix + 'logo'))
-    FIELD_COVER = (By.CSS_SELECTOR, ('#' + input_prefix + 'cover'))
+    FIELD_LOGO = (By.CSS_SELECTOR, ('#' + prefix + 'logo'))
+    FIELD_COVER = (By.CSS_SELECTOR, ('#' + prefix + 'cover'))
 
     FIELD_VIDEO_1 = (By.CSS_SELECTOR, ('#' + input_prefix + 'video1'))
     BUTTON_VIDEO_ADD = (By.XPATH, '(//div[@id="content-' + id_language + '"]//button[contains(@class, "btn-add-video")])[1]')
@@ -86,7 +86,7 @@ class CompanyRegistrationPageLocators:
     FIELD_VIDEO_3 = (By.CSS_SELECTOR, ('#' + input_prefix + 'video3'))
     # заполнение блока "Видео"
 
-    CHECKBOX_GET_NEWS = (By.CSS_SELECTOR, ('#' + input_prefix + 'get_news'))
+    CHECKBOX_GET_NEWS = (By.CSS_SELECTOR, ('#' + prefix + 'get_news'))
     # подписка на новости
 
     BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#submit-button'))
