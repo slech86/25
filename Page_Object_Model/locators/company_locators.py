@@ -3,49 +3,51 @@ from Page_Object_Model.singleton import Singleton
 
 
 class CompanyRegistrationPageLocators:
-    inputPrefix = 'companyregistrationform-'
+    id_language = '1'
+    prefix = 'usersnew-'
+    input_prefix = prefix + 'descriptions-' + id_language + '-'
 
     CROSS_IN_COPY_TO_OTHER_LANGUAGES = (By.CSS_SELECTOR, '.copy-languages-toggle-tooltip')
 
-    FIELD_LOGIN = (By.CSS_SELECTOR, ('#' + inputPrefix + 'login'))
-    FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'email'))
-    FIELD_PASSWORD = (By.CSS_SELECTOR, ('#' + inputPrefix + 'password'))
-    FIELD_REPEAT_PASSWORD = (By.CSS_SELECTOR, ('#' + inputPrefix + 'repeatpassword'))
+    FIELD_LOGIN = (By.CSS_SELECTOR, ('#' + prefix + 'login'))
+    FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + prefix + 'email'))
+    FIELD_PASSWORD = (By.CSS_SELECTOR, ('#' + prefix + 'password'))
+    FIELD_REPEAT_PASSWORD = (By.CSS_SELECTOR, ('#' + prefix + 'repeatpassword'))
     # блок "Данные для авторизации"
 
-    FIELD_NAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'name'))
-    FIELD_SURNAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'surname'))
-    FIELD_POSITION = (By.CSS_SELECTOR, ('#' + inputPrefix + 'position'))
-    FIELD_PHONE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'phone'))
-    FIELD_CONTACT_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'contact_email'))
-    FIELD_SKYPE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'skype'))
+    FIELD_NAME = (By.CSS_SELECTOR, ('#' + input_prefix + 'name'))
+    FIELD_SURNAME = (By.CSS_SELECTOR, ('#' + input_prefix + 'surname'))
+    FIELD_POSITION = (By.CSS_SELECTOR, ('#' + input_prefix + 'position'))
+    FIELD_PHONE = (By.CSS_SELECTOR, ('#' + input_prefix + 'phone'))
+    FIELD_CONTACT_EMAIL = (By.CSS_SELECTOR, ('#' + input_prefix + 'contact_email'))
+    FIELD_SKYPE = (By.CSS_SELECTOR, ('#' + input_prefix + 'skype'))
     # блок "Контактная информация"
 
-    FIELD_COMPANY_NAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'company_name'))
-    FIELD_COMPANY_SLUG = (By.CSS_SELECTOR, ('#' + inputPrefix + 'slug'))
-    FIELD_CODE_COMPANY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'code_company'))
+    FIELD_COMPANY_NAME = (By.CSS_SELECTOR, ('#' + input_prefix + 'company_name'))
+    FIELD_COMPANY_SLUG = (By.CSS_SELECTOR, ('#' + input_prefix + 'slug'))
+    FIELD_CODE_COMPANY = (By.CSS_SELECTOR, ('#' + input_prefix + 'code_company'))
 
-    DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'country_id"]'))
-    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option'))
+    DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'country_id"]'))
+    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + input_prefix + 'country_id > option'))
 
     def assembly_of_locators_with_position_country(self):  # сборка локаторов с позицией страны
         singleton = Singleton()
-        country_ukraine = (By.CSS_SELECTOR, ('.field-' + CompanyRegistrationPageLocators.inputPrefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
+        country_ukraine = (By.CSS_SELECTOR, ('.field-' + CompanyRegistrationPageLocators.input_prefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
         return country_ukraine
 
-    DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'city_id"]'))
-    CITY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option'))
+    DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'city_id"]'))
+    CITY_LIST = (By.CSS_SELECTOR, ('#' + input_prefix + 'city_id > option'))
 
     def assembly_of_locators_with_position_city(self):  # сборка локаторов с позицией города
         singleton = Singleton()
-        city_kyiv = (By.CSS_SELECTOR, ('.field-' + CompanyRegistrationPageLocators.inputPrefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
+        city_kyiv = (By.CSS_SELECTOR, ('.field-' + CompanyRegistrationPageLocators.input_prefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
         return city_kyiv
 
-    FIELD_STREET = (By.CSS_SELECTOR, ('#' + inputPrefix + 'street'))
-    FIELD_YEAR = (By.CSS_SELECTOR, ('#' + inputPrefix + 'foundationdatey > option:nth-child(5)'))
-    FIELD_MONTH = (By.CSS_SELECTOR, ('#' + inputPrefix + 'foundationdatem > option:nth-child(13)'))
-    FIELD_DAY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'foundationdated > option:nth-child(32)'))
-    FIELD_COMPANY_SITE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'company_site'))
+    FIELD_STREET = (By.CSS_SELECTOR, ('#' + input_prefix + 'street'))
+    FIELD_YEAR = (By.CSS_SELECTOR, ('#' + input_prefix + 'foundationdatey > option:nth-child(5)'))
+    FIELD_MONTH = (By.CSS_SELECTOR, ('#' + input_prefix + 'foundationdatem > option:nth-child(13)'))
+    FIELD_DAY = (By.CSS_SELECTOR, ('#' + input_prefix + 'foundationdated > option:nth-child(32)'))
+    FIELD_COMPANY_SITE = (By.CSS_SELECTOR, ('#' + input_prefix + 'company_site'))
 
     BUTTON_FACEBOOK = (By.CSS_SELECTOR, ('[aria-controls="facebookCollapse"]'))
     BUTTON_LINKEDIN = (By.CSS_SELECTOR, ('[aria-controls="lnCollapse"]'))
@@ -54,34 +56,34 @@ class CompanyRegistrationPageLocators:
     BUTTON_TWITTER = (By.CSS_SELECTOR, ('[aria-controls="twCollapse"]'))
     BUTTON_VK = (By.CSS_SELECTOR, ('[aria-controls="vkCollapse"]'))
 
-    FIELD_FACEBOOK = (By.CSS_SELECTOR, ('#' + inputPrefix + 'facebook'))
-    FIELD_LINKEDIN = (By.CSS_SELECTOR, ('#' + inputPrefix + 'linkedin'))
-    FIELD_INSTAGRAM = (By.CSS_SELECTOR, ('#' + inputPrefix + 'instagram'))
-    FIELD_TELEGRAM = (By.CSS_SELECTOR, ('#' + inputPrefix + 'telegram'))
-    FIELD_TWITTER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'twitter'))
-    FIELD_VK = (By.CSS_SELECTOR, ('#' + inputPrefix + 'vk'))
+    FIELD_FACEBOOK = (By.CSS_SELECTOR, ('#' + input_prefix + 'facebook'))
+    FIELD_LINKEDIN = (By.CSS_SELECTOR, ('#' + input_prefix + 'linkedin'))
+    FIELD_INSTAGRAM = (By.CSS_SELECTOR, ('#' + input_prefix + 'instagram'))
+    FIELD_TELEGRAM = (By.CSS_SELECTOR, ('#' + input_prefix + 'telegram'))
+    FIELD_TWITTER = (By.CSS_SELECTOR, ('#' + input_prefix + 'twitter'))
+    FIELD_VK = (By.CSS_SELECTOR, ('#' + input_prefix + 'vk'))
 
     COMPANY_ACTIVITY = "document.getElementsByName('CompanyRegistrationForm[activity][]')[14].click()"  # Сфера деятельности компании
-    NUMBER_OF_COMPANY_EMPLOYEES = (By.CSS_SELECTOR, ('#' + inputPrefix + 'count_employees > option:nth-child(5)'))  # Количество сотрудников компании
+    NUMBER_OF_COMPANY_EMPLOYEES = (By.CSS_SELECTOR, ('#' + input_prefix + 'count_employees > option:nth-child(5)'))  # Количество сотрудников компании
 
     IFRAME_CKEDITOR_COMPANY_DESCRIPTION = (By.CSS_SELECTOR, ('iframe.cke_wysiwyg_frame'))
     CKEDITOR_COMPANY_DESCRIPTION = (By.CSS_SELECTOR, ('body.cke_editable'))
     # блок "Информация о компании"
 
-    FIELD_LOGO = (By.CSS_SELECTOR, ('#' + inputPrefix + 'logo'))
-    FIELD_COVER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'cover'))
+    FIELD_LOGO = (By.CSS_SELECTOR, ('#' + input_prefix + 'logo'))
+    FIELD_COVER = (By.CSS_SELECTOR, ('#' + input_prefix + 'cover'))
 
-    FIELD_VIDEO_1 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video1'))
-    FIELD_VIDEO_2 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video2'))
+    FIELD_VIDEO_1 = (By.CSS_SELECTOR, ('#' + input_prefix + 'video1'))
+    FIELD_VIDEO_2 = (By.CSS_SELECTOR, ('#' + input_prefix + 'video2'))
     BUTTON_VIDEO_ADD = (By.CSS_SELECTOR, ('.js-add-video'))
-    FIELD_VIDEO_3 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video3'))
+    FIELD_VIDEO_3 = (By.CSS_SELECTOR, ('#' + input_prefix + 'video3'))
     # заполнение блока "Видео"
 
-    CHECKBOX_GET_NEWS = (By.CSS_SELECTOR, ('#' + inputPrefix + 'get_news'))
+    CHECKBOX_GET_NEWS = (By.CSS_SELECTOR, ('#' + input_prefix + 'get_news'))
     # подписка на новости
 
     BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#submit-button'))
-    BUTTON_PREVIEW = (By.CSS_SELECTOR, ('#' + inputPrefix + 'preview'))
+    BUTTON_PREVIEW = (By.CSS_SELECTOR, ('#' + input_prefix + 'preview'))
 
 
 class CompanyPreviewPageLocators:
