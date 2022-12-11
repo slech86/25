@@ -44,17 +44,22 @@ class CompanyRegistrationPageLocators:
         return city_kyiv
 
     FIELD_STREET = (By.CSS_SELECTOR, ('#' + input_prefix + 'street'))
-    FIELD_YEAR = (By.CSS_SELECTOR, ('#' + input_prefix + 'foundationdatey > option:nth-child(5)'))
-    FIELD_MONTH = (By.CSS_SELECTOR, ('#' + input_prefix + 'foundationdatem > option:nth-child(13)'))
-    FIELD_DAY = (By.CSS_SELECTOR, ('#' + input_prefix + 'foundationdated > option:nth-child(32)'))
+
+    DROPDOWN_YEAR = (By.CSS_SELECTOR, '[data-id="' + input_prefix + '_datey"]')
+    YEAR_2019 = (By.CSS_SELECTOR, ('#content-' + id_language + ' .field-' + input_prefix + '_datey [data-original-index="4"]'))
+    DROPDOWN_MONTH = (By.CSS_SELECTOR, '[data-id="' + input_prefix + '_datem"]')
+    MONTH_DECEMBER = (By.CSS_SELECTOR, ('#content-' + id_language + ' .field-' + input_prefix + '_datem [data-original-index="12"]'))
+    DROPDOWN_DAY = (By.CSS_SELECTOR, '[data-id="' + input_prefix + '_dated"]')
+    DAY_31 = (By.CSS_SELECTOR, ('#content-' + id_language + ' .field-' + input_prefix + '_dated [data-original-index="31"]'))
+
     FIELD_COMPANY_SITE = (By.CSS_SELECTOR, ('#' + input_prefix + 'company_site'))
 
-    BUTTON_FACEBOOK = (By.CSS_SELECTOR, ('[aria-controls="facebookCollapse"]'))
-    BUTTON_LINKEDIN = (By.CSS_SELECTOR, ('[aria-controls="lnCollapse"]'))
-    BUTTON_INSTAGRAM = (By.CSS_SELECTOR, ('[aria-controls="inCollapse"]'))
-    BUTTON_TELEGRAM = (By.CSS_SELECTOR, ('[aria-controls="telCollapse"]'))
-    BUTTON_TWITTER = (By.CSS_SELECTOR, ('[aria-controls="twCollapse"]'))
-    BUTTON_VK = (By.CSS_SELECTOR, ('[aria-controls="vkCollapse"]'))
+    BUTTON_FACEBOOK = (By.CSS_SELECTOR, ('#content-' + id_language + ' [aria-controls="facebookCollapse"]'))
+    BUTTON_LINKEDIN = (By.CSS_SELECTOR, ('#content-' + id_language + ' [aria-controls="lnCollapse"]'))
+    BUTTON_INSTAGRAM = (By.CSS_SELECTOR, ('#content-' + id_language + ' [aria-controls="inCollapse"]'))
+    BUTTON_TELEGRAM = (By.CSS_SELECTOR, ('#content-' + id_language + ' [aria-controls="telCollapse"]'))
+    BUTTON_TWITTER = (By.CSS_SELECTOR, ('#content-' + id_language + ' [aria-controls="twCollapse"]'))
+    BUTTON_VK = (By.CSS_SELECTOR, ('#content-' + id_language + ' [aria-controls="vkCollapse"]'))
 
     FIELD_FACEBOOK = (By.CSS_SELECTOR, ('#' + input_prefix + 'facebook'))
     FIELD_LINKEDIN = (By.CSS_SELECTOR, ('#' + input_prefix + 'linkedin'))
@@ -63,10 +68,11 @@ class CompanyRegistrationPageLocators:
     FIELD_TWITTER = (By.CSS_SELECTOR, ('#' + input_prefix + 'twitter'))
     FIELD_VK = (By.CSS_SELECTOR, ('#' + input_prefix + 'vk'))
 
-    COMPANY_ACTIVITY = "document.getElementsByName('CompanyRegistrationForm[activity][]')[14].click()"  # Сфера деятельности компании
+    COMPANY_ACTIVITY = (By.XPATH, '//div[@id="' + input_prefix + 'activity"]//div[@class="custom-control checkbox"][15]/label')  # Сфера деятельности компании
+
     NUMBER_OF_COMPANY_EMPLOYEES = (By.CSS_SELECTOR, ('#' + input_prefix + 'count_employees > option:nth-child(5)'))  # Количество сотрудников компании
 
-    IFRAME_CKEDITOR_COMPANY_DESCRIPTION = (By.CSS_SELECTOR, ('iframe.cke_wysiwyg_frame'))
+    IFRAME_CKEDITOR_COMPANY_DESCRIPTION = (By.CSS_SELECTOR, ('#cke_' + input_prefix + 'description_company iframe'))
     CKEDITOR_COMPANY_DESCRIPTION = (By.CSS_SELECTOR, ('body.cke_editable'))
     # блок "Информация о компании"
 
@@ -74,8 +80,9 @@ class CompanyRegistrationPageLocators:
     FIELD_COVER = (By.CSS_SELECTOR, ('#' + input_prefix + 'cover'))
 
     FIELD_VIDEO_1 = (By.CSS_SELECTOR, ('#' + input_prefix + 'video1'))
+    BUTTON_VIDEO_ADD = (By.XPATH, '(//div[@id="content-' + id_language + '"]//button[contains(@class, "btn-add-video")])[1]')
     FIELD_VIDEO_2 = (By.CSS_SELECTOR, ('#' + input_prefix + 'video2'))
-    BUTTON_VIDEO_ADD = (By.CSS_SELECTOR, ('.js-add-video'))
+    BUTTON_VIDEO_ADD_2 = (By.XPATH, '(//div[@id="content-' + id_language + '"]//button[contains(@class, "btn-add-video")])[2]')
     FIELD_VIDEO_3 = (By.CSS_SELECTOR, ('#' + input_prefix + 'video3'))
     # заполнение блока "Видео"
 

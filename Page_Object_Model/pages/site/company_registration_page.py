@@ -49,7 +49,7 @@ class CompanyRegistrationPage(BasePage):
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_COMPANY_SLUG).send_keys(TestData.company_slug)
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_CODE_COMPANY).send_keys(TestData.code_company)
 
-        self.browser.execute_script(CompanyRegistrationPageLocators.COMPANY_ACTIVITY)  # "Сфера деятельности компании" передается параметр уже с ".click()"
+        self.browser.find_element(*CompanyRegistrationPageLocators.COMPANY_ACTIVITY).click()  # "Сфера деятельности компании" передается параметр уже с ".click()"
 
         iframe = self.browser.find_element(*CompanyRegistrationPageLocators.IFRAME_CKEDITOR_COMPANY_DESCRIPTION)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
@@ -93,9 +93,12 @@ class CompanyRegistrationPage(BasePage):
         WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element_attribute(CompanyRegistrationPageLocators.DROPDOWN_CITI, 'aria-expanded', 'false'))
 
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_STREET).send_keys(TestData.street)
-        self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_YEAR).click()
-        self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_MONTH).click()
-        self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_DAY).click()
+        self.browser.find_element(*CompanyRegistrationPageLocators.DROPDOWN_YEAR).click()
+        self.browser.find_element(*CompanyRegistrationPageLocators.YEAR_2019).click()
+        self.browser.find_element(*CompanyRegistrationPageLocators.DROPDOWN_MONTH).click()
+        self.browser.find_element(*CompanyRegistrationPageLocators.MONTH_DECEMBER).click()
+        self.browser.find_element(*CompanyRegistrationPageLocators.DROPDOWN_DAY).click()
+        self.browser.find_element(*CompanyRegistrationPageLocators.DAY_31).click()
 
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_COMPANY_SITE).send_keys(TestData.company_site)
 
@@ -125,8 +128,9 @@ class CompanyRegistrationPage(BasePage):
         # заполнение блока "Оформление профиля"
 
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_VIDEO_1).send_keys(TestData.video_1)
-        self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_VIDEO_2).send_keys(TestData.video_2)
         self.browser.find_element(*CompanyRegistrationPageLocators.BUTTON_VIDEO_ADD).click()
+        self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_VIDEO_2).send_keys(TestData.video_2)
+        self.browser.find_element(*CompanyRegistrationPageLocators.BUTTON_VIDEO_ADD_2).click()
         self.browser.find_element(*CompanyRegistrationPageLocators.FIELD_VIDEO_3).send_keys(TestData.video_3)
         # заполнение блока "Видео"
 
