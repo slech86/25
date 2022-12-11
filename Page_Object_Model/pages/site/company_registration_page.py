@@ -63,6 +63,7 @@ class CompanyRegistrationPage(BasePage):
         self.browser.execute_script("window.scrollBy(0, 1400);")
 
     def go_to_preview_page(self):  # переход на страницу предпросмотра
+        time.sleep(3)
         self.browser.find_element(*CompanyRegistrationPageLocators.BUTTON_PREVIEW).click()
         time.sleep(3)
         self.browser.switch_to.window(self.browser.window_handles[1])

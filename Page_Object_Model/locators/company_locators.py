@@ -89,8 +89,8 @@ class CompanyRegistrationPageLocators:
     CHECKBOX_GET_NEWS = (By.CSS_SELECTOR, ('#' + prefix + 'get_news'))
     # подписка на новости
 
-    BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#submit-button'))
-    BUTTON_PREVIEW = (By.CSS_SELECTOR, ('data-click=".preview-button"'))
+    BUTTON_SUBMIT = (By.CSS_SELECTOR, '#submit-button')
+    BUTTON_PREVIEW = (By.CSS_SELECTOR, '[data-click=".preview-button"]')
 
 
 class CompanyPreviewPageLocators:

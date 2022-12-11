@@ -6,8 +6,6 @@ from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
 from Page_Object_Model.pages.site.vacancy_add_page import VacancyAddPage
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.data_for_testing import TestData
-from Page_Object_Model.pages.site.vacancy_page import VacancyPage
-from Page_Object_Model.singleton import Singleton
 
 # pytest --reruns 1 --html=./reports/report.html -s tests/company/vacancy/draft/test_2_2_adding_vacancy_to_draft_and_deletion_it.py
 
