@@ -71,9 +71,9 @@ class EmailPageLocators:
     LETTER_WELCOME_TO_LCWORK_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Добро пожаловать на LСwork"]'))  # письмо после первой модерации для работодателя и подтверждение регистрации для соискателя ru
     LETTER_WELCOME_TO_LCWORK_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ласкаво просимо на LCwork"]'))  # письмо после первой модерации для работодателя и подтверждение регистрации для соискателя ua
     LETTER_WELCOME_TO_LCWORK_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Welcome to LC Work!"]'))  # письмо после первой модерации для работодателя и подтверждение регистрации для соискателя en
-    LETTER_AFTER_ORDER_PROCESSING_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Оплата подтверждена, активируйте услугу на сайте"]'))  # письмо после проведения заказа ru
-    LETTER_AFTER_ORDER_PROCESSING_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Оплата отримана, активуйте послугу на сайті"]'))  # письмо после проведения заказа ua
-    LETTER_AFTER_ORDER_PROCESSING_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Activate the service on the site."]'))  # письмо после проведения заказа en
+    LETTER_AFTER_ORDER_PROCESSING_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Оплата прошла успешно! Скорее размещайте вакансии на сайте!"]'))  # письмо после проведения заказа ru
+    LETTER_AFTER_ORDER_PROCESSING_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Оплата пройшла успішно! Мерщій розміщуйте вакансії на сайті."]'))  # письмо после проведения заказа ua
+    LETTER_AFTER_ORDER_PROCESSING_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="The payment was successful! Hurry up to place vacancies on the website!"]'))  # письмо после проведения заказа en
     LETTER_AFTER_PUBLISHING_VACANCY_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваша вакансия добавлена на сайт"]'))  # письмо после публикации вакансии ru
     LETTER_AFTER_PUBLISHING_VACANCY_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваша вакансія вже на сайті"]'))  # письмо после публикации вакансии en
     LETTER_AFTER_PUBLISHING_VACANCY_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Your vacancy is already on the site"]')) # письмо после публикации вакансии en
@@ -86,9 +86,9 @@ class EmailPageLocators:
     TEXT_IN_LETTER_AFTER_FIRST_MODERATION_RU = (By.XPATH, ('//div[text()="Ура! Ваш аккаунт прошел модерацию."]'))
     TEXT_IN_LETTER_AFTER_FIRST_MODERATION_UA = (By.XPATH, ('//div[text()="Ура! Ваш акаунт пройшов модерацiю."]'))
     TEXT_IN_LETTER_AFTER_FIRST_MODERATION_EN = (By.XPATH, ('//div[text()="Your account has been moderated."]'))
-    TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_RU = (By.XPATH, ('//div[contains(text(), "Оплата получена, активируйте услугу на ")]'))
-    TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_UA = (By.XPATH, ('//div[contains(text(), "Оплата отримана, активуйте послугу на ")]'))
-    TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_EN = (By.XPATH, ('//div[contains(text(), "Payment received, activate the service on the ")]'))
+    TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_RU = (By.XPATH, ('//p[contains(text(), "Оплата прошла успешно. Чтобы продолжить работу, перейдите в личный кабинет на")]'))
+    TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_UA = (By.XPATH, ('//p[contains(text(), "Оплата пройшла успішно. Щоб продовжити роботу перейдіть в особистий кабінет на")]'))
+    TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_EN = (By.XPATH, ('//p[contains(text(), "The payment was successful! Hurry up to place vacancies on the")]'))
     TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_RU = (By.XPATH, ('//div[text()="Ваша вакансия ' + TestData.job_title_vacancy + ' добавлена на "]'))
     TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_UA = (By.XPATH, ('//div[text()="Ваша вакансія ' + TestData.job_title_vacancy + ' вже на "]'))
     TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_EN = (By.XPATH, ('//div[text()="Your vacancy ' + TestData.job_title_vacancy + ' is already on website!"]'))

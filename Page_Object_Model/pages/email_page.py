@@ -84,15 +84,15 @@ class EmailPage(BasePage):
         if language == "/ua":
             letter_after_order_processing = EmailPageLocators.LETTER_AFTER_ORDER_PROCESSING_UA
             text_in_letter_after_order_processing = EmailPageLocators.TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_UA
-            expected_email_text = 'Оплата отримана, активуйте послугу на '
+            expected_email_text = 'Оплата пройшла успішно. Щоб продовжити роботу перейдіть в особистий кабінет на '
         elif language == "":
             letter_after_order_processing = EmailPageLocators.LETTER_AFTER_ORDER_PROCESSING_RU
             text_in_letter_after_order_processing = EmailPageLocators.TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_RU
-            expected_email_text = 'Оплата получена, активируйте услугу на '
+            expected_email_text = 'Оплата прошла успешно. Чтобы продолжить работу, перейдите в личный кабинет на '
         elif language == "/en":
             letter_after_order_processing = EmailPageLocators.LETTER_AFTER_ORDER_PROCESSING_EN
             text_in_letter_after_order_processing = EmailPageLocators.TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_EN
-            expected_email_text = 'Payment received, activate the service on the '
+            expected_email_text = 'The payment was successful! Hurry up to place vacancies on the '
 
         self.browser.find_element(*letter_after_order_processing).click()
 
