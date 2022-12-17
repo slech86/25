@@ -1,8 +1,9 @@
 import pytest
-from Page_Object_Model.configuration import UrlStartPage
+from Page_Object_Model.configuration import UrlStartPage, UrlStartPageAdmin
 from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.company_edit_page import CompanyEditPage
 from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
+from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 
 
 @pytest.mark.s_r_c
@@ -26,4 +27,10 @@ def test_changing_all_company_data(browser, language):  # изменение в�
     company_edit_page.submitting_form_for_moderation_after_changing_data()  # отправка формы на модерацию после изменения данных
     company_edit_page.checking_message_after_saving_changes_to_personal_information(language)  # проверка сообщения после сохранения изменений личной информации
 
-    # нужно добавить проверку статуса "Редактирование данных"
+    admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
+    admin_page.open()
+    admin_page.admin_authorization()
+    admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
+    admin_page.go_to_users_page()  # переход на страницу пользователей
+    admin_page.search_user_by_email(language, 1)  # поиск пользователя по e-mail
+    admin_page.check_that_user_has_status_data_editing()  # проверка что пользователь имеет статус "Редактирование данных"

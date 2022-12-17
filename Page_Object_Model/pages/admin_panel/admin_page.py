@@ -85,6 +85,11 @@ class AdminPage(BasePage):
         status = self.browser.find_element(*AdminPageLocators.USER_STATUS).text
         assert status == 'Активен', 'Статус не "Активен"'
 
+    def check_that_user_has_status_data_editing(self):  # проверка что пользователь имеет статус "Редактирование данных"
+        self.browser.refresh()
+        status = self.browser.find_element(*AdminPageLocators.USER_STATUS).text
+        assert status == 'Редактирование данных', 'Статус не "Редактирование данных"'
+
     def check_that_user_has_status_delete(self):  # проверка что пользователь имеет статус "Удалено"
         self.browser.refresh()
         status = self.browser.find_element(*AdminPageLocators.USER_STATUS).text

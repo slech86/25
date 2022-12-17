@@ -11,7 +11,7 @@ from Page_Object_Model.users import users_variables
 user = 'employer'
 
 
-@pytest.mark.s_r_c
+# @pytest.mark.s_r_c
 def test_preview_company_profile_when_editing(browser, language):  # предпросмотр профиля компании при редактировании
     url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_page)

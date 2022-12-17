@@ -3,6 +3,7 @@ from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.configuration import UrlStartPageAdmin
 
 
+@pytest.mark.s_r_c
 def test_delete_user(browser, language):  # удаление пользователя
     admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
     admin_page.open()

@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from Page_Object_Model.singleton import Singleton
 
 
-class CompanyRegistrationPageLocators:
+class CompanyRegistrationEditPageLocators:
     id_language = '1'
     prefix = 'usersnew-'
     input_prefix = prefix + 'descriptions-' + id_language + '-'
@@ -32,25 +32,28 @@ class CompanyRegistrationPageLocators:
 
     def assembly_of_locators_with_position_country(self):  # сборка локаторов с позицией страны
         singleton = Singleton()
-        country_ukraine = (By.CSS_SELECTOR, ('.field-' + CompanyRegistrationPageLocators.input_prefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
-        return country_ukraine
+        country = (By.CSS_SELECTOR, ('.field-' + CompanyRegistrationEditPageLocators.input_prefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
+        return country
 
     DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'city_id"]'))
     CITY_LIST = (By.CSS_SELECTOR, ('#' + input_prefix + 'city_id > option'))
 
     def assembly_of_locators_with_position_city(self):  # сборка локаторов с позицией города
         singleton = Singleton()
-        city_kyiv = (By.CSS_SELECTOR, ('.field-' + CompanyRegistrationPageLocators.input_prefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
-        return city_kyiv
+        city = (By.CSS_SELECTOR, ('.field-' + CompanyRegistrationEditPageLocators.input_prefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
+        return city
 
     FIELD_STREET = (By.CSS_SELECTOR, ('#' + input_prefix + 'street'))
 
     DROPDOWN_YEAR = (By.CSS_SELECTOR, '[data-id="' + input_prefix + '_datey"]')
     YEAR_2019 = (By.CSS_SELECTOR, ('#content-' + id_language + ' .field-' + input_prefix + '_datey [data-original-index="4"]'))
+    YEAR_1991 = (By.CSS_SELECTOR, ('#content-' + id_language + ' .field-' + input_prefix + '_datey [data-original-index="32"]'))
     DROPDOWN_MONTH = (By.CSS_SELECTOR, '[data-id="' + input_prefix + '_datem"]')
     MONTH_DECEMBER = (By.CSS_SELECTOR, ('#content-' + id_language + ' .field-' + input_prefix + '_datem [data-original-index="12"]'))
+    MONTH_MARCH = (By.CSS_SELECTOR, ('#content-' + id_language + ' .field-' + input_prefix + '_datem [data-original-index="3"]'))
     DROPDOWN_DAY = (By.CSS_SELECTOR, '[data-id="' + input_prefix + '_dated"]')
     DAY_31 = (By.CSS_SELECTOR, ('#content-' + id_language + ' .field-' + input_prefix + '_dated [data-original-index="31"]'))
+    DAY_17 = (By.CSS_SELECTOR, ('#content-' + id_language + ' .field-' + input_prefix + '_dated [data-original-index="17"]'))
 
     FIELD_COMPANY_SITE = (By.CSS_SELECTOR, ('#' + input_prefix + 'company_site'))
 
@@ -68,7 +71,8 @@ class CompanyRegistrationPageLocators:
     FIELD_TWITTER = (By.CSS_SELECTOR, ('#' + input_prefix + 'twitter'))
     FIELD_VK = (By.CSS_SELECTOR, ('#' + input_prefix + 'vk'))
 
-    COMPANY_ACTIVITY = (By.XPATH, '//div[@id="' + input_prefix + 'activity"]//div[@class="custom-control checkbox"][15]/label')  # Сфера деятельности компании
+    COMPANY_ACTIVITY_FINANCE = (By.XPATH, '//div[@id="' + input_prefix + 'activity"]//div[@class="custom-control checkbox"][15]/label')  # Сфера деятельности компании
+    COMPANY_ACTIVITY_GAMBLING = (By.XPATH, '//div[@id="' + input_prefix + 'activity"]//div[@class="custom-control checkbox"][16]/label')  # Сфера деятельности компании
 
     NUMBER_OF_COMPANY_EMPLOYEES = (By.CSS_SELECTOR, ('#' + input_prefix + 'count_employees > option:nth-child(5)'))  # Количество сотрудников компании
 
@@ -89,90 +93,21 @@ class CompanyRegistrationPageLocators:
     CHECKBOX_GET_NEWS = (By.CSS_SELECTOR, ('#' + prefix + 'get_news'))
     # подписка на новости
 
+    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL = (By.CSS_SELECTOR, ('[data-id="' + prefix + 'mail_language"]'))
+    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU = (By.CSS_SELECTOR, ('.field-' + prefix + 'mail_language [data-original-index="0"]'))  # русский
+    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA = (By.CSS_SELECTOR, ('.field-' + prefix + 'mail_language [data-original-index="1"]'))  # украинский
+    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_EN = (By.CSS_SELECTOR, ('.field-' + prefix + 'mail_language [data-original-index="2"]'))  # английский
+    # блок "Настройки"
+
     BUTTON_SUBMIT = (By.CSS_SELECTOR, '#submit-button')
     BUTTON_PREVIEW = (By.CSS_SELECTOR, '[data-click=".preview-button"]')
+
+    INFO_TEXT_AFTER_SAVING_PERSONAL_INFORMATION = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст после сохранения изменений личной информации
+    CROSS_IN_POP_UP_AFTER_SAVING_CHANGES_TO_PERSONAL_INFORMATION = (By.CSS_SELECTOR, ('#thanks-modal .close'))  # крестик в pop-up окне после сохранения изменений личной информации
 
 
 class CompanyPreviewPageLocators:
     H1 = (By.CSS_SELECTOR, 'h1')
-
-
-class CompanyEditPageLocators:
-    inputPrefix = 'companyform-'
-
-    CROSS_IN_COPY_TO_OTHER_LANGUAGES = (By.CSS_SELECTOR, '.copy-languages-toggle-tooltip')
-
-    BUTTON_EDIT_IN_CONTACT_INFORMATION_BLOCK = (By.CSS_SELECTOR, ('#contact-information .post-resume-title + .btn-edit'))
-    FIELD_NAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'name'))
-    FIELD_SURNAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'surname'))
-    FIELD_POSITION = (By.CSS_SELECTOR, ('#' + inputPrefix + 'position'))
-    FIELD_PHONE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'phone'))
-    FIELD_CONTACT_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'contact_email'))
-    FIELD_SKYPE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'skype'))
-    # блок "Контактная информация"
-
-    BUTTON_EDIT_IN_COMPANY_INFORMATION_BLOCK = (By.CSS_SELECTOR, ('#company-information .post-resume-title + .btn-edit'))
-    FIELD_COMPANY_NAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'company_name'))
-    FIELD_COMPANY_SLUG = (By.CSS_SELECTOR, ('#' + inputPrefix + 'slug'))
-    FIELD_CODE_COMPANY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'code_company'))
-
-    DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'country_id"]'))
-    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option'))
-
-    def assembly_of_locators_with_position_country(self):  # сборка локаторов с позицией страны
-        singleton = Singleton()
-        country_kazakhstan = (By.CSS_SELECTOR, ('.field-' + CompanyEditPageLocators.inputPrefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
-        return country_kazakhstan
-
-    DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'city_id"]'))
-    CITY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option'))
-
-    def assembly_of_locators_with_position_city(self):  # сборка локаторов с позицией города
-        singleton = Singleton()
-        city_karaganda = (By.CSS_SELECTOR, ('.field-' + CompanyEditPageLocators.inputPrefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
-        return city_karaganda
-
-    FIELD_STREET = (By.CSS_SELECTOR, ('#' + inputPrefix + 'street'))
-    FIELD_YEAR = (By.CSS_SELECTOR, ('#' + inputPrefix + 'foundationdatey > option:nth-child(33)'))
-    FIELD_MONTH = (By.CSS_SELECTOR, ('#' + inputPrefix + 'foundationdatem > option:nth-child(4)'))
-    FIELD_DAY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'foundationdated > option:nth-child(18)'))
-    FIELD_COMPANY_SITE = (By.CSS_SELECTOR, ('#' + inputPrefix + 'company_site'))
-
-    FIELD_FACEBOOK = (By.CSS_SELECTOR, ('#' + inputPrefix + 'facebook'))
-    FIELD_LINKEDIN = (By.CSS_SELECTOR, ('#' + inputPrefix + 'linkedin'))
-    FIELD_INSTAGRAM = (By.CSS_SELECTOR, ('#' + inputPrefix + 'instagram'))
-    FIELD_TELEGRAM = (By.CSS_SELECTOR, ('#' + inputPrefix + 'telegram'))
-    FIELD_TWITTER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'twitter'))
-    FIELD_VK = (By.CSS_SELECTOR, ('#' + inputPrefix + 'vk'))
-
-    COMPANY_ACTIVITY = "document.getElementsByName('CompanyForm[activity][]')[15].click()"  # Сфера деятельности компании
-    NUMBER_OF_COMPANY_EMPLOYEES = (By.CSS_SELECTOR, ('#' + inputPrefix + 'count_employees > option:nth-child(4)'))  # Количество сотрудников компании
-
-    IFRAME_CKEDITOR_COMPANY_DESCRIPTION = (By.CSS_SELECTOR, ('iframe.cke_wysiwyg_frame'))
-    CKEDITOR_COMPANY_DESCRIPTION = (By.CSS_SELECTOR, ('body.cke_editable'))
-    # блок "Информация о компании"
-
-    FIELD_LOGO = (By.CSS_SELECTOR, ('#' + inputPrefix + 'logo'))
-    FIELD_COVER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'cover'))
-
-    FIELD_VIDEO_1 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video1'))
-    FIELD_VIDEO_2 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video2'))
-    BUTTON_VIDEO_ADD = (By.CSS_SELECTOR, ('.js-add-video'))
-    FIELD_VIDEO_3 = (By.CSS_SELECTOR, ('#' + inputPrefix + 'video3'))
-    # блок "Видео"
-
-    BUTTON_EDIT_IN_SETTINGS_BLOCK = (By.CSS_SELECTOR, ('#other-settings .post-resume-title + .btn-edit'))
-    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'mail_language"]'))
-    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'mail_language [data-original-index="0"]'))  # русский
-    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'mail_language [data-original-index="1"]'))  # украинский
-    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_EN = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'mail_language [data-original-index="2"]'))  # английский
-    # блок "Настройки"
-
-    BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#submit-button'))
-    BUTTON_PREVIEW = (By.CSS_SELECTOR, ('[data-click=".preview-button"]'))
-
-    INFO_TEXT_AFTER_SAVING_PERSONAL_INFORMATION = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст после сохранения изменений личной информации
-    CROSS_IN_POP_UP_AFTER_SAVING_CHANGES_TO_PERSONAL_INFORMATION = (By.CSS_SELECTOR, ('#thanks-modal .close'))  # крестик в pop-up окне после сохранения изменений личной информации
 
 
 class CompanyPersonalCabinetPageLocators():

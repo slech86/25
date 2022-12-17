@@ -11,7 +11,7 @@ from Page_Object_Model.data_for_testing import TestData
 # @pytest.mark.s_r_c
 # @pytest.mark.skip
 class TestCompanyRegistration:
-    @pytest.mark.s_r_c
+    # @pytest.mark.s_r_c
     def test_preview_company_profile_when_registration(self, browser, language):  # предпросмотр профиля компании при регистрации
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
         print(url_page)
