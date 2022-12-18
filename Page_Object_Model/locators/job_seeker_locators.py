@@ -3,34 +3,34 @@ from Page_Object_Model.singleton import Singleton
 
 
 class JobSeekerRegistrationPageLocators():
-    inputPrefix = 'jobseekerregistrationform-'
+    input_prefix = 'jobseekerregistrationform-'
 
-    FIELD_LOGIN = (By.CSS_SELECTOR, ('#' + inputPrefix + 'login'))
-    FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + inputPrefix + 'email'))
-    FIELD_PASSWORD = (By.CSS_SELECTOR, ('#' + inputPrefix + 'password'))
-    FIELD_REPEAT_PASSWORD = (By.CSS_SELECTOR, ('#' + inputPrefix + 'repeatpassword'))
+    FIELD_LOGIN = (By.CSS_SELECTOR, ('#' + input_prefix + 'login'))
+    FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + input_prefix + 'email'))
+    FIELD_PASSWORD = (By.CSS_SELECTOR, ('#' + input_prefix + 'password'))
+    FIELD_REPEAT_PASSWORD = (By.CSS_SELECTOR, ('#' + input_prefix + 'repeatpassword'))
     # блок "Данные для авторизации"
 
-    FIELD_NAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'name'))
-    FIELD_SURNAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'surname'))
-    FIELD_YEAR = (By.CSS_SELECTOR, ('#' + inputPrefix + 'birthdayy > option:nth-child(4)'))
-    FIELD_MONTH = (By.CSS_SELECTOR, ('#' + inputPrefix + 'birthdaym > option:nth-child(12)'))
-    FIELD_DAY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'birthdayd > option:nth-child(31)'))
-    FIELD_GENDER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'gender [value="2"] + .radio-custom'))
-    DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'country_id"]'))
-    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option'))
+    FIELD_NAME = (By.CSS_SELECTOR, ('#' + input_prefix + 'name'))
+    FIELD_SURNAME = (By.CSS_SELECTOR, ('#' + input_prefix + 'surname'))
+    FIELD_YEAR = (By.CSS_SELECTOR, ('#' + input_prefix + 'birthdayy > option:nth-child(4)'))
+    FIELD_MONTH = (By.CSS_SELECTOR, ('#' + input_prefix + 'birthdaym > option:nth-child(12)'))
+    FIELD_DAY = (By.CSS_SELECTOR, ('#' + input_prefix + 'birthdayd > option:nth-child(31)'))
+    FIELD_GENDER = (By.CSS_SELECTOR, ('#' + input_prefix + 'gender [value="2"] + .radio-custom'))
+    DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'country_id"]'))
+    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + input_prefix + 'country_id > option'))
 
     def assembly_of_locators_with_position_country(self):  # сборка локаторов с позицией страны
         singleton = Singleton()
-        country_ukraine = (By.CSS_SELECTOR, ('.field-' + JobSeekerRegistrationPageLocators.inputPrefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
+        country_ukraine = (By.CSS_SELECTOR, ('.field-' + JobSeekerRegistrationPageLocators.input_prefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
         return country_ukraine
 
-    DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'city_id"]'))
-    CITY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option'))
+    DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'city_id"]'))
+    CITY_LIST = (By.CSS_SELECTOR, ('#' + input_prefix + 'city_id > option'))
 
     def assembly_of_locators_with_position_city(self):  # сборка локаторов с позицией города
         singleton = Singleton()
-        city_kyiv = (By.CSS_SELECTOR, ('.field-' + JobSeekerRegistrationPageLocators.inputPrefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
+        city_kyiv = (By.CSS_SELECTOR, ('.field-' + JobSeekerRegistrationPageLocators.input_prefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
         return city_kyiv
     # блок "Личная информация"
 
