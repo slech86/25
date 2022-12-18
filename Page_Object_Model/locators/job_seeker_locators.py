@@ -2,76 +2,58 @@ from selenium.webdriver.common.by import By
 from Page_Object_Model.singleton import Singleton
 
 
-class JobSeekerRegistrationPageLocators():
-    input_prefix = 'jobseekerregistrationform-'
+class JobSeekerRegistrationEditPageLocators:
+    id_language = '1'
+    prefix = 'usersnew-'
+    input_prefix = prefix + 'descriptions-' + id_language + '-'
 
-    FIELD_LOGIN = (By.CSS_SELECTOR, ('#' + input_prefix + 'login'))
-    FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + input_prefix + 'email'))
-    FIELD_PASSWORD = (By.CSS_SELECTOR, ('#' + input_prefix + 'password'))
-    FIELD_REPEAT_PASSWORD = (By.CSS_SELECTOR, ('#' + input_prefix + 'repeatpassword'))
+    FIELD_LOGIN = (By.CSS_SELECTOR, ('#' + prefix + 'login'))
+    FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + prefix + 'email'))
+    FIELD_PASSWORD = (By.CSS_SELECTOR, ('#' + prefix + 'password'))
+    FIELD_REPEAT_PASSWORD = (By.CSS_SELECTOR, ('#' + prefix + 'repeatpassword'))
     # блок "Данные для авторизации"
 
+    BUTTON_EDIT_IN_PERSONAL_INFORMATION_BLOCK = (By.CSS_SELECTOR, ('#personal-information .post-resume-title + .btn-edit'))
     FIELD_NAME = (By.CSS_SELECTOR, ('#' + input_prefix + 'name'))
     FIELD_SURNAME = (By.CSS_SELECTOR, ('#' + input_prefix + 'surname'))
-    FIELD_YEAR = (By.CSS_SELECTOR, ('#' + input_prefix + 'birthdayy > option:nth-child(4)'))
-    FIELD_MONTH = (By.CSS_SELECTOR, ('#' + input_prefix + 'birthdaym > option:nth-child(12)'))
-    FIELD_DAY = (By.CSS_SELECTOR, ('#' + input_prefix + 'birthdayd > option:nth-child(31)'))
-    FIELD_GENDER = (By.CSS_SELECTOR, ('#' + input_prefix + 'gender [value="2"] + .radio-custom'))
+
+    DROPDOWN_YEAR = (By.CSS_SELECTOR, '[data-id="' + input_prefix + '_datey"]')
+    YEAR_1999 = (By.CSS_SELECTOR, ('#content-' + id_language + ' .field-' + input_prefix + '_datey [data-original-index="3"]'))
+    YEAR_2001 = (By.CSS_SELECTOR, ('#content-' + id_language + ' .field-' + input_prefix + '_datey [data-original-index="1"]'))
+    DROPDOWN_MONTH = (By.CSS_SELECTOR, '[data-id="' + input_prefix + '_datem"]')
+    MONTH_NOVEMBER = (By.CSS_SELECTOR, ('#content-' + id_language + ' .field-' + input_prefix + '_datem [data-original-index="11"]'))
+    MONTH_JANUARY = (By.CSS_SELECTOR, ('#content-' + id_language + ' .field-' + input_prefix + '_datem [data-original-index="1"]'))
+    DROPDOWN_DAY = (By.CSS_SELECTOR, '[data-id="' + input_prefix + '_dated"]')
+    DAY_30 = (By.CSS_SELECTOR, ('#content-' + id_language + ' .field-' + input_prefix + '_dated [data-original-index="30"]'))
+    DAY_1 = (By.CSS_SELECTOR, ('#content-' + id_language + ' .field-' + input_prefix + '_dated [data-original-index="1"]'))
+
+    FIELD_GENDER_FEMALE = (By.CSS_SELECTOR, ('#' + input_prefix + 'gender [value="2"] + .radio-custom'))
+    FIELD_GENDER_MALE = (By.CSS_SELECTOR, ('#' + input_prefix + 'gender [value="1"] + .radio-custom'))
     DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'country_id"]'))
     COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + input_prefix + 'country_id > option'))
 
     def assembly_of_locators_with_position_country(self):  # сборка локаторов с позицией страны
         singleton = Singleton()
-        country_ukraine = (By.CSS_SELECTOR, ('.field-' + JobSeekerRegistrationPageLocators.input_prefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
-        return country_ukraine
+        country = (By.CSS_SELECTOR, ('.field-' + JobSeekerRegistrationEditPageLocators.input_prefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
+        return country
 
     DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + input_prefix + 'city_id"]'))
     CITY_LIST = (By.CSS_SELECTOR, ('#' + input_prefix + 'city_id > option'))
 
     def assembly_of_locators_with_position_city(self):  # сборка локаторов с позицией города
         singleton = Singleton()
-        city_kyiv = (By.CSS_SELECTOR, ('.field-' + JobSeekerRegistrationPageLocators.input_prefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
-        return city_kyiv
-    # блок "Личная информация"
-
-    BUTTON_SUBMIT = (By.CSS_SELECTOR, ('#button-registration'))
-
-
-class JobSeekerEditPageLocators:
-    inputPrefix = 'jobseekereditform-'
-
-    BUTTON_EDIT_IN_PERSONAL_INFORMATION_BLOCK = (By.CSS_SELECTOR, ('#personal-information .post-resume-title + .btn-edit'))
-    FIELD_NAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'name'))
-    FIELD_SURNAME = (By.CSS_SELECTOR, ('#' + inputPrefix + 'surname'))
-    FIELD_YEAR = (By.CSS_SELECTOR, ('#' + inputPrefix + 'birthdayy > option:nth-child(2)'))
-    FIELD_MONTH = (By.CSS_SELECTOR, ('#' + inputPrefix + 'birthdaym > option:nth-child(2)'))
-    FIELD_DAY = (By.CSS_SELECTOR, ('#' + inputPrefix + 'birthdayd > option:nth-child(2)'))
-    FIELD_GENDER = (By.CSS_SELECTOR, ('#' + inputPrefix + 'gender [value="1"] + .radio-custom'))
-    DROPDOWN_COUNTRY = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'country_id"]'))
-    COUNTRY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'country_id > option'))
-
-    def assembly_of_locators_with_position_country(self):  # сборка локаторов с позицией страны
-        singleton = Singleton()
-        country_kazakhstan = (By.CSS_SELECTOR, ('.field-' + JobSeekerEditPageLocators.inputPrefix + 'country_id [data-original-index="' + singleton.position_object + '"]'))
-        return country_kazakhstan
-
-    DROPDOWN_CITI = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'city_id"]'))
-    CITY_LIST = (By.CSS_SELECTOR, ('#' + inputPrefix + 'city_id > option'))
-
-    def assembly_of_locators_with_position_city(self):  # сборка локаторов с позицией города
-        singleton = Singleton()
-        city_karaganda = (By.CSS_SELECTOR, ('.field-' + JobSeekerEditPageLocators.inputPrefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
-        return city_karaganda
+        city = (By.CSS_SELECTOR, ('.field-' + JobSeekerRegistrationEditPageLocators.input_prefix + 'city_id [data-original-index="' + singleton.position_object + '"]'))
+        return city
     # блок "Личная информация"
 
     BUTTON_EDIT_IN_SETTINGS_BLOCK = (By.CSS_SELECTOR, ('#other-settings .post-resume-title + .btn-edit'))
-    DROPDOWN_LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL = (By.CSS_SELECTOR, ('[data-id="' + inputPrefix + 'mail_language"]'))
-    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'mail_language [data-original-index="0"]'))  # русский
-    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'mail_language [data-original-index="1"]'))  # украинский
-    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_EN = (By.CSS_SELECTOR, ('.field-' + inputPrefix + 'mail_language [data-original-index="2"]'))  # украинский
+    DROPDOWN_LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL = (By.CSS_SELECTOR, ('[data-id="' + prefix + 'mail_language"]'))
+    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU = (By.CSS_SELECTOR, ('.field-' + prefix + 'mail_language [data-original-index="0"]'))  # русский
+    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA = (By.CSS_SELECTOR, ('.field-' + prefix + 'mail_language [data-original-index="1"]'))  # украинский
+    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_EN = (By.CSS_SELECTOR, ('.field-' + prefix + 'mail_language [data-original-index="2"]'))  # украинский
     # блок "Настройки"
 
-    BUTTON_SAVE_CHANGES = (By.CSS_SELECTOR, ('#submit-publish'))
+    BUTTON_SUBMIT = (By.CSS_SELECTOR, '#button-submit')
 
     INFO_TEXT_AFTER_SAVING_PERSONAL_INFORMATION = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст после сохранения изменений личной информации
     CROSS_IN_POP_UP_AFTER_SAVING_CHANGES_TO_PERSONAL_INFORMATION = (By.CSS_SELECTOR, ('#thanks-modal .close'))  # крестик в pop-up окне после сохранения изменений личной информации

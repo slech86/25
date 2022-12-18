@@ -241,7 +241,7 @@ function filter_table(elem) {
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 17-Dec-2022 at 18:02:16 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
+    <p>Report generated on 18-Dec-2022 at 13:25:46 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -257,8 +257,8 @@ function filter_table(elem) {
         <td>Python</td>
         <td>3.9.6</td></tr></table>
     <h2>Summary</h2>
-    <p>1 tests ran in 59.93 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">1 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">1 rerun</span>
+    <p>7 tests ran in 89.89 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">7 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">1 rerun</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -272,17 +272,71 @@ function filter_table(elem) {
       <tbody class="rerun results-table-row">
         <tr>
           <td class="col-result">Rerun</td>
-          <td class="col-name">tests/company/vacancy/add_edit/test_3_0_package_purchase_help_refugee_with_his_work.py::TestPackagePurchaseHelpRefugeeWithHisWork::test_package_purchase_help_refugee_with_his_work_and_activating_it_on_site</td>
-          <td class="col-duration">50.18</td>
+          <td class="col-name">tests/job_seeker/test_8_1_verification_of_saving_data_entered_by_user_after_job_seeker_edit.py::test_verification_of_saving_data_entered_by_user_after_job_seeker_edit</td>
+          <td class="col-duration">6.20</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">self = &lt;Page_Object_Model.tests.company.vacancy.add_edit.test_3_0_package_purchase_help_refugee_with_his_work.TestPackagePurchaseHelpRefugeeWithHisWork object at 0x102851520&gt;<br/>browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;2b0fc87ffe4214717f7c94994ef2a5e8&quot;)&gt;, language = &#x27;&#x27;<br/><br/>    def test_package_purchase_help_refugee_with_his_work_and_activating_it_on_site(self, browser, language):  # покупка пакета &quot;Помоги беженцу с работой&quot; и активация его на сайте<br/>        url_Page = f&quot;{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}&quot;<br/>        page = OllPage(browser, url_Page)<br/>        # browser.maximize_window()<br/>        page.open()<br/>        page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации<br/>        page.user_authorization(user)  # авторизация пользователя<br/>        page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя<br/>        page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета<br/>    <br/>        company_personal_cabinet_page = CompanyPersonalCabinetPage(browser, browser.current_url)<br/>        company_personal_cabinet_page.go_to_services_and_prices_page()  # переход на страницу &quot;Услуги и цены&quot;<br/>    <br/>        services_and_prices_page = ServicesAndPricesPage(browser, browser.current_url)<br/>        singleton = Singleton()<br/>        singleton.id_product = services_and_prices_page.adding_to_cart_help_refugee_with_his_work_and_getting_product_id()  # добавление в корзину &quot;Помоги беженцу с работой&quot; и получение id продукта<br/>        services_and_prices_page.click_button_buy_in_basket()  # нажатие кнопки &quot;Курить&quot; в корзине<br/>        services_and_prices_page.verification_of_message_after_purchase(language)  # проверка сообщения после покупки<br/>    <br/>        page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя<br/>        page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета<br/>    <br/>        company_personal_cabinet_page.go_to_my_vacancies_page()  # переход на страницу &quot;Мои вакансии&quot;<br/>    <br/>        my_vacancies_page = MyVacanciesPage(browser, browser.current_url)<br/>        my_vacancies_page.go_to_vacancy_add_page()  # переход на страницу &quot;Добавить вакансию&quot;<br/>    <br/>        add_vacancy_page = VacancyAddPage(browser, browser.current_url)<br/>        breakpoint()<br/>&gt;       add_vacancy_page.absence_of_button_to_publish()  # проверка отсутствия кнопки &quot;Опубликовать&quot;<br/><br/>tests/company/vacancy/add_edit/test_3_0_package_purchase_help_refugee_with_his_work.py:59: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>tests/company/vacancy/add_edit/test_3_0_package_purchase_help_refugee_with_his_work.py:59: in test_package_purchase_help_refugee_with_his_work_and_activating_it_on_site<br/>    add_vacancy_page.absence_of_button_to_publish()  # проверка отсутствия кнопки &quot;Опубликовать&quot;<br/>/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/bdb.py:88: in trace_dispatch<br/>    return self.dispatch_line(frame)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;_pytest.debugging.pytestPDB._get_pdb_wrapper_class.&lt;locals&gt;.PytestPdbWrapper object at 0x10290b220&gt;<br/>frame = &lt;frame at 0x12bea56f0, file &#x27;/Users/sl./PycharmProjects/smileexpo/Page_Object_Model/tests/company/vacancy/add_edit/tes...lp_refugee_with_his_work.py&#x27;, line 59, code test_package_purchase_help_refugee_with_his_work_and_activating_it_on_site&gt;<br/><br/>    def dispatch_line(self, frame):<br/>        &quot;&quot;&quot;Invoke user function and return trace function for line event.<br/>    <br/>        If the debugger stops on the current line, invoke<br/>        self.user_line(). Raise BdbQuit if self.quitting is set.<br/>        Return self.trace_dispatch to continue tracing in this scope.<br/>        &quot;&quot;&quot;<br/>        if self.stop_here(frame) or self.break_here(frame):<br/>            self.user_line(frame)<br/>&gt;           if self.quitting: raise BdbQuit<br/><span class="error">E           bdb.BdbQuit</span><br/><br/>/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/bdb.py:113: BdbQuit<br/></div></td></tr></tbody>
+            <div class="log">browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;91adca776908ee1d2693892088789864&quot;)&gt;, language = &#x27;/ua&#x27;<br/><br/>    @pytest.mark.job_seeker<br/>    def test_verification_of_saving_data_entered_by_user_after_job_seeker_edit(browser, language):  # проверка сохранения введенных пользователем данных после редактирования соискателя<br/>        admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)<br/>        admin_page.open()<br/>        admin_page.admin_authorization()<br/>        admin_page.opening_dropdown_list_work()  # открытие выпадающего списка &quot;Work&quot;<br/>        admin_page.go_to_users_page()  # переход на страницу пользователей<br/>        admin_page.search_user_by_email(language, 2)  # поиск пользователя по e-mail<br/>        admin_page.go_to_object_editing_page()  # переход на страницу пользователя<br/>&gt;       admin_page.verification_of_saving_data_entered_by_user_after_job_seeker_edit_ru(language)  # проверка сохранения введенных пользователем данных после редактирования соискателя RU<br/><br/>tests/job_seeker/test_8_1_verification_of_saving_data_entered_by_user_after_job_seeker_edit.py:16: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>pages/admin_panel/admin_page.py:302: in verification_of_saving_data_entered_by_user_after_job_seeker_edit_ru<br/>    self.verification_of_saving_data_entered_job_seeker(TestDataEditing)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;Page_Object_Model.pages.admin_panel.admin_page.AdminPage object at 0x1051d4a00&gt;, test_data = &lt;class &#x27;Page_Object_Model.data_for_testing.TestDataEditing&#x27;&gt;<br/><br/>    def verification_of_saving_data_entered_job_seeker(self, test_data):  # проверка сохранения введенных данных соискателя<br/>        name = self.browser.find_element(*AdminPageLocators.FIELD_NAME)<br/>        name_value = name.get_attribute(&quot;value&quot;)<br/>        assert name_value == test_data.name, &quot;Поле &#x27;Имя&#x27; не верно&quot;<br/>    <br/>        surname = self.browser.find_element(*AdminPageLocators.FIELD_SURNAME)<br/>        surname_value = surname.get_attribute(&quot;value&quot;)<br/>        assert surname_value == test_data.surname, &quot;Поле &#x27;Фамилия&#x27; не верно&quot;<br/>    <br/>        birthday = self.browser.find_element(*AdminPageLocators.FIELD_BIRTHDAY)<br/>        birthday_value = birthday.get_attribute(&quot;value&quot;)<br/>        assert birthday_value == test_data.birthday, &quot;Поле &#x27;День рождения&#x27; не верно&quot;<br/>    <br/>        gender = self.browser.find_element(*AdminPageLocators.FIELD_GENDER)<br/>        gender_title = gender.get_attribute(&quot;title&quot;)<br/>        assert gender_title == test_data.gender, &quot;Поле &#x27;Пол&#x27; не верно&quot;<br/>    <br/>        country = self.browser.find_element(*AdminPageLocators.FIELD_COUNTRY)<br/>        country_title = country.get_attribute(&quot;title&quot;)<br/>        assert country_title == test_data.country, &quot;Поле &#x27;Страна&#x27; не верно&quot;<br/>    <br/>        WebDriverWait(self.browser, 5).until(EC.text_to_be_present_in_element((AdminPageLocators.FIELD_CITY), test_data.city))<br/>        city = self.browser.find_element(*AdminPageLocators.FIELD_CITY)<br/>        city_title = city.get_attribute(&quot;title&quot;)<br/>        assert city_title == test_data.city, &quot;Поле &#x27;Город&#x27; не верно&quot;<br/>    <br/>        checkbox_get_news = self.browser.find_element(*AdminPageLocators.CHECKBOX_GET_NEWS)<br/>        checkbox_get_news_checked = checkbox_get_news.get_attribute(&quot;checked&quot;)<br/>&gt;       assert checkbox_get_news_checked is not None, &quot;Не установлено получение новостей&quot;<br/><span class="error">E       AssertionError: Не установлено получение новостей</span><br/><br/>pages/admin_panel/admin_page.py:332: AssertionError<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">tests/company/vacancy/add_edit/test_3_0_package_purchase_help_refugee_with_his_work.py::TestPackagePurchaseHelpRefugeeWithHisWork::test_precondition</td>
-          <td class="col-duration">5.43</td>
+          <td class="col-name">tests/job_seeker/test_1_job_seeker_registration.py::TestJobSeekerRegistration::test_job_seeker_registration_with_filling_in_all_fields</td>
+          <td class="col-duration">13.95</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/test_1_job_seeker_registration.py::TestJobSeekerRegistration::test_checking_creation_of_user_in_admin_panel</td>
+          <td class="col-duration">4.49</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/test_1_job_seeker_registration.py::TestJobSeekerRegistration::test_changing_user_role_from_user_to_super_admin</td>
+          <td class="col-duration">10.66</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/test_1_job_seeker_registration.py::TestJobSeekerRegistration::test_authorization_of_user_in_disabled_status</td>
+          <td class="col-duration">4.57</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/test_1_job_seeker_registration.py::TestJobSeekerRegistration::test_confirmation_of_registration_of_applicant_and_authorization_on_site</td>
+          <td class="col-duration">14.58</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/test_1_job_seeker_registration.py::TestJobSeekerRegistration::test_check_that_user_has_status_active</td>
+          <td class="col-duration">5.18</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/test_8_0_job_seeker_edit.py::test_changing_all_job_seeker_data</td>
+          <td class="col-duration">11.25</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
