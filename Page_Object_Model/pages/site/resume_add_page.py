@@ -340,6 +340,7 @@ class ResumeAddPage(BasePage):
         self.browser.switch_to.window(self.browser.window_handles[1])
 
     def submitting_resume_for_publication(self,):  # отправка резюме на публикацию
+        time.sleep(3)
         self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_PUBLISH).click()
 
     def adding_resume_to_draft(self):  # добавление резюме в черновик
