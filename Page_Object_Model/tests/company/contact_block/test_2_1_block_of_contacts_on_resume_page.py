@@ -1,14 +1,30 @@
 import time
-
 import pytest
 from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.resumes_page import ResumesPage
 from Page_Object_Model.pages.site.resume_page import ResumePage
-from Page_Object_Model.configuration import UrlStartPage
+from Page_Object_Model.configuration import UrlStartPage, UrlStartPageAdmin
+from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
+from Page_Object_Model.pages.admin_panel.admin_sql_page import AdminSqlPage
+from Page_Object_Model.users import users_variables
+
+# pytest --reruns 1 --html=./reports/report.html -s tests/company/contact_block/test_2_1_block_of_contacts_on_resume_page.py
+
+user = 'employer_vacancy'
 
 
 # @pytest.mark.skip
 # @pytest.mark.s_r_c
+def test_precondition(browser):
+    admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
+    admin_page.open()
+    admin_page.admin_authorization()
+    time.sleep(0.5)
+
+    admin_sql_page = AdminSqlPage(browser, UrlStartPageAdmin.url_page_admin + '/developer/sql')
+    admin_sql_page.open()
+    admin_sql_page.sql_deleting_all_user_orders(users_variables[user]["id"])  # удаление всех заказов пользователя
+
 def test_block_of_contacts_on_resume_page(browser, language):  # блок контактов на странице резюме
     url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_page)
@@ -24,7 +40,7 @@ def test_block_of_contacts_on_resume_page(browser, language):  # блок кон
     resume_page.checking_absence_of_contact_block()  # проверка отсутствия блока контактов
 
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.user_new_authorization(language, 1)  # авторизация пользователя
+    page.user_authorization(user)  # авторизация пользователя
 
     resume_page.checking_contact_block_before_buying_package_of_services(language)  # проверка блока контактов до покупки пакета услуг
     resume_page.checking_absence_of_contact_block()  # проверка отсутствия блока контактов
