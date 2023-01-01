@@ -365,23 +365,6 @@ class AdminPage(BasePage):
         assert status == 'Удалено', f"Не верный статус, expected result: 'Удалено', actual result: '{status}'"
     # страница вакансий
 
-    def old_search_for_user_orders_by_email(self, language, key):  # поиск заказов пользователя по e-mail
-        user_email_locators_orders = AdminPageLocators()
-        locators = user_email_locators_orders.old_assembly_of_locators_with_user_email(key)
-        email, user_email_orders = None, None
-        if language == "":
-            email = Singleton.logins_and_mails[key][0][1]
-            user_email_orders = locators[0]
-        elif language == "/ua":
-            email = Singleton.logins_and_mails[key][1][1]
-            user_email_orders = locators[1]
-        elif language == "/en":
-            email = Singleton.logins_and_mails[key][2][1]
-            user_email_orders = locators[2]
-        self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_SEARCH_ORDERS).send_keys(email, Keys.ENTER)
-        time.sleep(2)
-        assert self.is_element_present(*user_email_orders), 'Заказ пользователя не найден'
-
     def search_for_user_orders_by_email(self, user_email):  # поиск заказов пользователя по e-mail
         user_email_locators_orders = AdminPageLocators()
         user_email_orders = user_email_locators_orders.assembly_of_locators_with_user_email(user_email)
