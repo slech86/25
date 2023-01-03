@@ -97,11 +97,11 @@ class TestPackagePurchaseMonthlyFreeVacancy:
 
 
 # закомментировано здесь чтоб в следующем тесте проверить создание вакансии, после чего там и происходит удаление этого пакета
-def test_complete_deletion_of_user_orders(browser, language):  # полное удаление заказов пользователя
-    admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
-    admin_page.open()
-    admin_page.admin_authorization()
-    admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
-    admin_page.go_to_order_page()  # переход на страницу заказов
-    admin_page.search_for_user_orders_by_email(users_variables[user]["mail"])  # поиск заказов пользователя по e-mail
-    admin_page.complete_objects_deletion()  # полное удаление объектов
+# def test_complete_deletion_of_user_orders(browser, language):  # полное удаление заказов пользователя
+#     admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
+#     admin_page.open()
+#     admin_page.admin_authorization()
+#     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
+#     admin_page.go_to_order_page()  # переход на страницу заказов
+#     admin_page.search_for_user_orders_by_email(users_variables[user]["mail"])  # поиск заказов пользователя по e-mail
+#     admin_page.complete_objects_deletion()  # полное удаление объектов

@@ -35,7 +35,7 @@ class AdminPageLocators:
 
     # страница пользователей
     H1_USERS = (By.CSS_SELECTOR, 'h1')
-    USER_STATUS = (By.XPATH, '//tr[1]/td[3]/p')
+    USER_STATUS = (By.XPATH, '//tr[1]/td[4]/p')
     FIELD_EMAIL_SEARCH = (By.CSS_SELECTOR, '[name="User[email]"]')
 
     def assembly_of_locators_with_email(self, key):
