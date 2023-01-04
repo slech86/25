@@ -34,6 +34,7 @@ def test_preview_vacancy_when_creating(browser, language):  # предпросм
     add_vacancy_page = VacancyAddPage(browser, browser.current_url)
     add_vacancy_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
     add_vacancy_page.filling_in_required_fields()  # заполнение обязательных полей
+    add_vacancy_page.browser.execute_script("window.scrollBy(0, 2500);")
     add_vacancy_page.go_to_preview_page()  # переход на страницу предпросмотра
 
     vacancy_preview_page = VacancyPreviewPage(browser, browser.current_url)
