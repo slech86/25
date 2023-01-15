@@ -56,11 +56,11 @@ class MyResumePage(BasePage):
 
     def waiting_for_my_resumes_page_to_open(self, language):  # ожидание открытия страницы 'Мои резюме'
         if language == "":
-            WebDriverWait(self.browser, 15).until(EC.text_to_be_present_in_element((MyResumePageLocators.H1), 'Мои резюме'))
+            WebDriverWait(self.browser, 35).until(EC.text_to_be_present_in_element((MyResumePageLocators.H1), 'Мои резюме'))
         elif language == "/ua":
-            WebDriverWait(self.browser, 15).until(EC.text_to_be_present_in_element((MyResumePageLocators.H1), 'Мої резюме'))
+            WebDriverWait(self.browser, 35).until(EC.text_to_be_present_in_element((MyResumePageLocators.H1), 'Мої резюме'))
         elif language == "/en":
-            WebDriverWait(self.browser, 15).until(EC.text_to_be_present_in_element((MyResumePageLocators.H1), 'My CVs'))
+            WebDriverWait(self.browser, 35).until(EC.text_to_be_present_in_element((MyResumePageLocators.H1), 'My CVs'))
 
     def confirmation_of_opening_of_page_my_resumes(self, language):  # подтверждение открытия страницы 'Мои резюме'
         if language == "":
