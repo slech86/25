@@ -124,6 +124,7 @@ class MyVacanciesPageLocators:
         locators_with_id_vacancies = {
             'button_vacancy_menu': (By.CSS_SELECTOR, ('#my-vacancy-' + id_vacancies + ' .share-btn')),
             'button_edit': (By.XPATH, ('//div[@id="my-vacancy-' + id_vacancies + '"]//a[contains(@href, "/vacancy/' + id_vacancies + '/edit")]')),
+            'button_hide': (By.XPATH, '//a[@data-vacancy-id=' + id_vacancies + '][@data-status-id="0"]'),
             'new_response_icon': (By.CSS_SELECTOR, '#my-vacancy-' + id_vacancies + ' .counter.red'),
             'button_show_responses': (By.XPATH, ('//a[contains(@href, "/vacancy/' + id_vacancies + '/feedback")]')),
             'button_print': (By.XPATH, '//a[@href="/vacancy/' + id_vacancies + '/print"]'),

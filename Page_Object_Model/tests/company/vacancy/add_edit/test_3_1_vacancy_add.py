@@ -73,7 +73,7 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     admin_vacancy_edit_page = AdminVacancyEditPage(browser, browser.current_url)
     admin_vacancy_edit_page.change_vacancy_status_to_published()  # изменение статуса вакансии на 'Опубликовано'
 
-    admin_page.waiting_to_save_status_and_open_vacansies_page()  # ожидание сохранения статуса и открытия страницы вакансий
+    admin_page.waiting_to_save_status_and_open_vacancies_page()  # ожидание сохранения статуса и открытия страницы вакансий
 
     url_Vacancy_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}/vacancy/{singleton.id_vacancies}"
     vacancy_page = VacancyPage(browser, url_Vacancy_Page)

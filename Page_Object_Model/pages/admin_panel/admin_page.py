@@ -333,7 +333,7 @@ class AdminPage(BasePage):
     # страница пользователя
 
     # страница вакансий
-    def waiting_to_save_status_and_open_vacansies_page(self):  # ожидание сохранения статуса и открытия страницы вакансий
+    def waiting_to_save_status_and_open_vacancies_page(self):  # ожидание сохранения статуса и открытия страницы вакансий
         WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((AdminPageLocators.H1_VACANCIES), 'Вакансии'))
 
     def vacancy_search_by_job_title(self, job_title_vacancy):  # поиск вакансии по названию должности
@@ -351,6 +351,10 @@ class AdminPage(BasePage):
     def getting_vacancy_id(self):  # получение id вакансии
         id_vacancies = self.browser.find_element(*AdminPageLocators.ID_VACANCY).text
         return id_vacancies
+
+    def get_status_of_vacancy(self):  # получить статус вакансии
+        status = self.browser.find_element(*AdminPageLocators.VACANCY_STATUS).text
+        return status
 
     def checking_that_vacancy_status_is_on_moderated(self):  # проверка что статус вакансии 'На модерацию'
         status = self.browser.find_element(*AdminPageLocators.VACANCY_STATUS).text

@@ -23,6 +23,11 @@ class MyVacanciesPage(BasePage):
         locators = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies(vacancy_id)  # сборка локаторов с id вакансии
         self.browser.find_element(*locators['button_edit']).click()
 
+    def hide_vacancy(self, vacancy_id):  # скрыть вакансию
+        locators_with_id_vacancies = MyVacanciesPageLocators()
+        locators = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies(vacancy_id)  # сборка локаторов с id вакансии
+        self.browser.find_element(*locators['button_hide']).click()
+
     def checking_status_of_page_response_to_print_pdf(self, vacancy_id):  # проверка статуса ответа страницы 'распечатать пдф'
         locators_with_id_vacancies = MyVacanciesPageLocators()
         locators = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies(vacancy_id)  # сборка локаторов с id вакансии

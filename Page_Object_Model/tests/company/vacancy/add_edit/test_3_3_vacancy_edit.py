@@ -53,7 +53,7 @@ def test_editing_vacancies(browser, language):  # редактирование �
     admin_vacancy_edit_page = AdminVacancyEditPage(browser, browser.current_url)
     admin_vacancy_edit_page.change_vacancy_status_to_published()  # изменение статуса вакансии на 'Опубликовано'
 
-    admin_page.waiting_to_save_status_and_open_vacansies_page()  # ожидание сохранения статуса и открытия страницы вакансий
+    admin_page.waiting_to_save_status_and_open_vacancies_page()  # ожидание сохранения статуса и открытия страницы вакансий
 
 
 # # удаление пакета к которому была привязана вакансия
