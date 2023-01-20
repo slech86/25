@@ -73,7 +73,7 @@ class AdminResumeEditPage(BasePage):
         country_education_title = country_education.get_attribute("title")
         assert country_education_title == TestData.country_education, "Поле 'Образование: Страна 1' не верно"
 
-        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element((AdminResumeEditPageLocators.FIELD_CITY_EDUCATION_1), TestData.city_education))
+        WebDriverWait(self.browser, 6).until(EC.text_to_be_present_in_element(AdminResumeEditPageLocators.FIELD_CITY_EDUCATION_1, TestData.city_education))
         city_education = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_CITY_EDUCATION_1)
         city_education_title = city_education.get_attribute("title")
         assert city_education_title == TestData.city_education, "Поле 'Образование: Город 1' не верно"
