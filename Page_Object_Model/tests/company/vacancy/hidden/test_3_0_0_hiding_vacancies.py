@@ -4,17 +4,12 @@ from Page_Object_Model.configuration import UrlStartPage, UrlStartPageAdmin
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_vacancy_edit_page import AdminVacancyEditPage
 from Page_Object_Model.pages.site.oll_page import OllPage
-from Page_Object_Model.pages.site.services_and_prices_page import ServicesAndPricesPage
-from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
 from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
-from Page_Object_Model.pages.site.vacancy_add_page import VacancyAddPage
-from Page_Object_Model.singleton import Singleton
-from Page_Object_Model.pages.admin_panel.admin_sql_page import AdminSqlPage
-from Page_Object_Model.users import users_variables
+from Page_Object_Model.pages.site.vacancy_page import VacancyPage
 
 user = 'employer'
 vacancy_name = 'qa test скрытие вакансии'
-vacancy_id = '3469'
+vacancy_id = '3519'
 
 
 @pytest.mark.s_r_c
@@ -37,7 +32,7 @@ class TestHidingVacancy:
             admin_vacancy_edit_page.change_vacancy_status_to_published()  # изменение статуса вакансии на 'Опубликовано'
             admin_vacancy_page.waiting_to_save_status_and_open_vacancies_page()  # ожидание сохранения статуса и открытия страницы вакансий
 
-    def test_hiding_and_publication_vacancies(self, browser, language):
+    def test_hiding_and_publication_vacancy(self, browser, language):  # скрытие и публикация вакансии
         url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
         page = OllPage(browser, url_Page)
         # browser.maximize_window()
@@ -48,3 +43,16 @@ class TestHidingVacancy:
         my_vacancies_page.open()
         my_vacancies_page.opening_vacancy_menu(vacancy_id)  # открытие меню вакансии
         my_vacancies_page.hide_vacancy(vacancy_id)  # скрыть вакансию
+        my_vacancies_page.checking_display_of_hidden_status_in_vacancy_block(vacancy_id, language)  # проверка отображения скритого статуса в блоке вакансии
+
+        url_Vacancy_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/vacancy/{vacancy_id}"
+        vacancy_page = VacancyPage(browser, url_Vacancy_Page)
+        vacancy_page.open()
+        vacancy_page.checking_opening_of_page_of_an_unpublished_vacancy(language)  # проверка открытия страницы не опубликованной вакансии
+
+        my_vacancies_page.open()
+        my_vacancies_page.opening_vacancy_menu(vacancy_id)  # открытие меню вакансии
+        my_vacancies_page.publish_vacancy(vacancy_id)  # опубликовать вакансию
+        vacancy_page.open()
+        vacancy_page.checking_opening_of_page_of_published_vacancy(vacancy_name)  # проверка открытия страницы опубликованной вакансии
+

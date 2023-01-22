@@ -28,6 +28,23 @@ class MyVacanciesPage(BasePage):
         locators = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies(vacancy_id)  # сборка локаторов с id вакансии
         self.browser.find_element(*locators['button_hide']).click()
 
+    def publish_vacancy(self, vacancy_id):  # опубликовать вакансию
+        locators_with_id_vacancies = MyVacanciesPageLocators()
+        locators = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies(vacancy_id)  # сборка локаторов с id вакансии
+        self.browser.find_element(*locators['button_publish']).click()
+
+    def checking_display_of_hidden_status_in_vacancy_block(self, vacancy_id, language):  # проверка отображения скритого статуса в блоке вакансии
+        time.sleep(0.5)
+        locators_with_id_vacancies = MyVacanciesPageLocators()
+        locators = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies(vacancy_id)  # сборка локаторов с id вакансии
+        status_text = self.browser.find_element(*locators['status_vacancy']).text
+        if language == "":
+            assert "Вакансия скрыта" == status_text, 'Не верное сообщение'
+        elif language == "/ua":
+            assert "Вакансія прихована" == status_text, 'Не верное сообщение'
+        elif language == "/en":
+            assert "Vacancy is hidden" == status_text, 'Не верное сообщение'
+
     def checking_status_of_page_response_to_print_pdf(self, vacancy_id):  # проверка статуса ответа страницы 'распечатать пдф'
         locators_with_id_vacancies = MyVacanciesPageLocators()
         locators = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies(vacancy_id)  # сборка локаторов с id вакансии
