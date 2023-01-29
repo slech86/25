@@ -10,7 +10,7 @@ from Page_Object_Model.pages.site.resume_page import ResumePage
 
 user = 'job_seeker'
 resume_name = 'qa test скрытие резюме'
-resume_id = '1551'
+resume_id = '1561'
 
 
 @pytest.mark.s_r_c
