@@ -60,7 +60,7 @@ class TestAddingResumeToDraft:
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/my"
         my_resume_page = MyResumePage(browser, url_page)
         my_resume_page.open()
-        my_resume_page.opening_resume_menu()  # открытие меню резюме
+        my_resume_page.opening_menu_of_first_resume_in_list()  # открытие меню резюме
         my_resume_page.deletion_resume_draft(id_resume)  # удаление черновика резюме
         my_resume_page.checking_message_after_deleting_resume(language)  # проверка сообщения после удаления резюме
         my_resume_page.checking_number_of_resumes_to_create(number_of_resumes_created)  # проверка количества резюме для создания

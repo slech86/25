@@ -369,6 +369,7 @@ class AdminPage(BasePage):
         assert status == 'Удалено', f"Не верный статус, expected result: 'Удалено', actual result: '{status}'"
     # страница вакансий
 
+    # страница заказов
     def search_for_user_orders_by_email(self, user_email):  # поиск заказов пользователя по e-mail
         user_email_locators_orders = AdminPageLocators()
         user_email_orders = user_email_locators_orders.assembly_of_locators_with_user_email(user_email)

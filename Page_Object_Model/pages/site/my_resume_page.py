@@ -23,14 +23,41 @@ class MyResumePage(BasePage):
     def go_to_add_resume_page(self):  # переход на страницу "Разместить резюме"
         self.browser.find_element(*MyResumePageLocators.BUTTON_ADD_RESUME).click()
 
-    def opening_resume_menu(self):  # открытие меню резюме
+    def opening_menu_of_first_resume_in_list(self):  # открытие меню первого резюме в списке
         self.browser.find_element(*MyResumePageLocators.BUTTON_RESUME_MENU).click()
         time.sleep(0.3)
+
+    def opening_resume_menu(self, id_resume):  # открытие меню резюме
+        locators_with_id_resume = MyResumePageLocators()
+        locators = locators_with_id_resume.assembly_of_locators_with_id_resume(id_resume)  # сборка локатора с id резюме
+        self.browser.find_element(*locators['button_resume_menu']).click()
 
     def go_to_resume_editing_page(self, id_resume):  # переход на страницу редактирования резюме
         locators_with_id_resume = MyResumePageLocators()
         locators = locators_with_id_resume.assembly_of_locators_with_id_resume(id_resume)  # сборка локатора с id резюме
         self.browser.find_element(*locators['button_edit']).click()
+
+    def hide_resume(self, id_resume):  # скрыть резюме
+        locators_with_id_resume = MyResumePageLocators()
+        locators = locators_with_id_resume.assembly_of_locators_with_id_resume(id_resume)  # сборка локаторов с id резюме
+        self.browser.find_element(*locators['button_hide']).click()
+
+    def publish_resume(self, id_resume):  # опубликовать резюме
+        locators_with_id_resume = MyResumePageLocators()
+        locators = locators_with_id_resume.assembly_of_locators_with_id_resume(id_resume)  # сборка локаторов с id резюме
+        self.browser.find_element(*locators['button_publish']).click()
+
+    def checking_status_display_is_hidden_in_resume_block(self, id_resume, language):  # проверка отображения статуса "Cкрыто" в блоке резюме
+        time.sleep(0.5)
+        locators_with_id_resume = MyResumePageLocators()
+        locators = locators_with_id_resume.assembly_of_locators_with_id_resume(id_resume)  # сборка локаторов с id резюме
+        status_text = self.browser.find_element(*locators['status_resume']).text
+        if language == "":
+            assert "Резюме скрыто" == status_text, 'Не верное сообщение'
+        elif language == "/ua":
+            assert "Резюме приховано" == status_text, 'Не верное сообщение'
+        elif language == "/en":
+            assert "CV is hidden" == status_text, 'Не верное сообщение'
 
     def checking_status_of_page_response_to_print_pdf(self):  # проверка статуса ответа страницы 'распечатать пдф'
         WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(MyResumePageLocators.BUTTON_PRINT)).click()

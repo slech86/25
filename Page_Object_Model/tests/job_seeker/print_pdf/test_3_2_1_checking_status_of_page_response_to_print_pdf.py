@@ -36,5 +36,5 @@ def test_checking_status_of_page_response_to_print_pdf(browser, language):  # п
     job_seeker_personal_cabinet_page.go_to_my_resume_page()  # переход на страницу "Мои резюме"
 
     my_resume_page = MyResumePage(browser, browser.current_url)
-    my_resume_page.opening_resume_menu()  # открытие меню резюме
+    my_resume_page.opening_menu_of_first_resume_in_list()  # открытие меню резюме
     my_resume_page.checking_status_of_page_response_to_print_pdf()  # проверка статуса ответа страницы 'распечатать пдф'

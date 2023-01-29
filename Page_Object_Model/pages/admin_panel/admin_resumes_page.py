@@ -26,6 +26,10 @@ class AdminResumesPage(BasePage):
         id_resume = self.browser.find_element(*AdminResumesPageLocators.ID_RESUME).text
         return id_resume
 
+    def get_status_of_resume(self):  # получить статус резюме
+        status = self.browser.find_element(*AdminResumesPageLocators.RESUME_STATUS).text
+        return status
+
     def checking_that_resume_status_is_on_moderated(self):  # проверка что статус резюме 'На модерацию'
         status = self.browser.find_element(*AdminResumesPageLocators.RESUME_STATUS).text
         assert status == 'На модерацию', 'Статус не "На модерацию"'

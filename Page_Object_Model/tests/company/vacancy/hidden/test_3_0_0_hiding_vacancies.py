@@ -43,10 +43,10 @@ class TestHidingVacancy:
         my_vacancies_page.open()
         my_vacancies_page.opening_vacancy_menu(vacancy_id)  # открытие меню вакансии
         my_vacancies_page.hide_vacancy(vacancy_id)  # скрыть вакансию
-        my_vacancies_page.checking_display_of_hidden_status_in_vacancy_block(vacancy_id, language)  # проверка отображения скритого статуса в блоке вакансии
+        my_vacancies_page.checking_status_display_is_hidden_in_vacancy_block(vacancy_id, language)  # проверка отображения статуса "Cкрыто" в блоке вакансии
 
-        url_Vacancy_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/vacancy/{vacancy_id}"
-        vacancy_page = VacancyPage(browser, url_Vacancy_Page)
+        url_vacancy_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/vacancy/{vacancy_id}"
+        vacancy_page = VacancyPage(browser, url_vacancy_page)
         vacancy_page.open()
         vacancy_page.checking_opening_of_page_of_an_unpublished_vacancy(language)  # проверка открытия страницы не опубликованной вакансии
 
@@ -55,4 +55,3 @@ class TestHidingVacancy:
         my_vacancies_page.publish_vacancy(vacancy_id)  # опубликовать вакансию
         vacancy_page.open()
         vacancy_page.checking_opening_of_page_of_published_vacancy(vacancy_name)  # проверка открытия страницы опубликованной вакансии
-

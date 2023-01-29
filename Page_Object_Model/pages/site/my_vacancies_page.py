@@ -33,7 +33,7 @@ class MyVacanciesPage(BasePage):
         locators = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies(vacancy_id)  # сборка локаторов с id вакансии
         self.browser.find_element(*locators['button_publish']).click()
 
-    def checking_display_of_hidden_status_in_vacancy_block(self, vacancy_id, language):  # проверка отображения скритого статуса в блоке вакансии
+    def checking_status_display_is_hidden_in_vacancy_block(self, vacancy_id, language):  # проверка отображения статуса "Cкрыто" в блоке вакансии
         time.sleep(0.5)
         locators_with_id_vacancies = MyVacanciesPageLocators()
         locators = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies(vacancy_id)  # сборка локаторов с id вакансии
