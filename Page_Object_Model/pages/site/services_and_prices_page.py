@@ -114,11 +114,11 @@ class ServicesAndPricesPage(BasePage):
     def checking_message_about_creating_test_payment(self, language):  # проверка сообщения о создании тестового платежа
         info_text = self.browser.find_element(*ServicesAndPricesPageLocators.INFO_TEXT_AFTER_OPERATIONS_IN_INTERKASSA).text
         if language == "":
-            assert "Платеж успешно прошел! Ожидайте модерации аккаунта!" == info_text, 'Не верное сообщение'
+            assert "Платеж успешно прошел, ожидайте модерации." == info_text, 'Не верное сообщение'
         elif language == "/ua":
-            assert "Платіж успішно пройшов! Чекайте на модерацію облікового запису!" == info_text, 'Не верное сообщение'
+            assert "Платіж успішно пройшов, зачекайте на модерацію." == info_text, 'Не верное сообщение'
         elif language == "/en":
-            assert "Payment successfully completed! Wait for account moderation!" == info_text, 'Не верное сообщение'
+            assert "Payment successfully completed, wait for moderation." == info_text, 'Не верное сообщение'
         self.browser.find_element(*ServicesAndPricesPageLocators.CROSS_IN_POP_UP_AFTER_OPERATIONS_IN_INTERKASSA).click()
 
     def checking_message_about_create_cancel_test_payment(self, language):  # проверка сообщения о создании отмененного тестового платежа

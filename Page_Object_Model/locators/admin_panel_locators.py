@@ -130,7 +130,7 @@ class AdminPageLocators:
         found_order = (By.XPATH, ('//li[text()=" Заказ #' + singleton.id_order + '"]'))
         return found_order
 
-    ITEMS_ID_PURCHASE = (By.CSS_SELECTOR, ('#model-grid tbody tr td:nth-child(2)'))
+    ITEMS_ID_PURCHASE = (By.CSS_SELECTOR, ('#model-grid tbody tr td:nth-child(3)'))
     # страница 'Покупки пользователей'
 
 
