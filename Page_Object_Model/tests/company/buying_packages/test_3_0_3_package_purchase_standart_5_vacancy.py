@@ -13,6 +13,7 @@ from Page_Object_Model.singleton import Singleton
 from Page_Object_Model.pages.site.interkassa_page import InterkassaPage
 from Page_Object_Model.pages.admin_panel.admin_sql_page import AdminSqlPage
 from Page_Object_Model.users import users_variables
+from Page_Object_Model.pages.admin_panel.admin_product_edit_page import AdminProductEditPage
 
 # pytest --reruns 1 --html=./reports/report.html -s tests/company/buying_packages/test_3_0_3_package_purchase_standart_5_vacancy.py
 
@@ -82,30 +83,38 @@ class TestPackagePurchaseStandart5Vacancy:
         admin_page.go_to_user_purchases_page()  # переход на страницу "Покупки пользователей"
         singleton.id_purchase = admin_page.getting_id_of_purchase(singleton.id_order)  # получение id покупки
 
-        url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
-        page = OllPage(browser, url_page)
-        # browser.maximize_window()
-        page.open()
+        admin_product_edit_page = AdminProductEditPage(browser, UrlStartPageAdmin.url_page_admin + '/products/update?pk=1')
+        admin_product_edit_page.open()
+        status_checkbox_auto_activation = admin_product_edit_page.get_auto_activation_checkbox_status()  # получить статус чекбокса авто активации
+        if status_checkbox_auto_activation is not None:
+            url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}/prices"
+            services_and_prices_page = ServicesAndPricesPage(browser, url_page)
+            services_and_prices_page.open()
+        if status_checkbox_auto_activation is None:
+            url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
+            page = OllPage(browser, url_page)
+            # browser.maximize_window()
+            page.open()
 
-        page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
-        page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
+            page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
+            page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 
-        company_personal_cabinet_page.go_to_my_vacancies_page()  # переход на страницу "Мои вакансии"
+            company_personal_cabinet_page.go_to_my_vacancies_page()  # переход на страницу "Мои вакансии"
 
-        my_vacancies_page.go_to_vacancy_add_page()  # переход на страницу "Добавить вакансию"
+            my_vacancies_page.go_to_vacancy_add_page()  # переход на страницу "Добавить вакансию"
 
-        add_vacancy_page.absence_of_button_to_publish()  # проверка отсутствия кнопки "Опубликовать"
+            add_vacancy_page.absence_of_button_to_publish()  # проверка отсутствия кнопки "Опубликовать"
 
-        page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
-        page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
+            page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
+            page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 
-        company_personal_cabinet_page = CompanyPersonalCabinetPage(browser, browser.current_url)
-        company_personal_cabinet_page.go_to_services_and_prices_page()  # переход на страницу "Услуги и цены"
+            company_personal_cabinet_page = CompanyPersonalCabinetPage(browser, browser.current_url)
+            company_personal_cabinet_page.go_to_services_and_prices_page()  # переход на страницу "Услуги и цены"
 
-        services_and_prices_page = ServicesAndPricesPage(browser, browser.current_url)
-        services_and_prices_page.switch_to_tab_not_activated()  # переход на вкладку "Не активированные"
-        services_and_prices_page.availability_of_product_in_not_activated_services()  # наличие "Standart: 5 вакансия" в не активированных услугах
-        services_and_prices_page.product_activation()  # активация продукта
+            services_and_prices_page = ServicesAndPricesPage(browser, browser.current_url)
+            services_and_prices_page.switch_to_tab_not_activated()  # переход на вкладку "Не активированные"
+            services_and_prices_page.availability_of_product_in_not_activated_services()  # наличие "Standart: 5 вакансия" в не активированных услугах
+            services_and_prices_page.product_activation()  # активация продукта
         services_and_prices_page.product_availability_in_activated_services()  # наличие "Standart: 5 вакансия" в активированных услугах
 
         page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя

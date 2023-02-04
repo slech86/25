@@ -301,3 +301,7 @@ class AdminResumeEditPageLocators:
 class AdminSqlPageLocators:
     FIELD_SQL = (By.CSS_SELECTOR, '#filter-form textarea')
     BUTTON_EXECUTE = (By.CSS_SELECTOR, '#filter-form [type="submit"]')
+
+
+class AdminProductEditPageLocators:
+    CHECKBOX_AUTO_ACTIVATION = (By.CSS_SELECTOR, '[type="checkbox"][name="Products[activatable]"]')

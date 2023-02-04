@@ -3,7 +3,7 @@ from Page_Object_Model.singleton import Singleton
 
 
 class TestData:
-    time_Now = str(int(time.time()))
+    time_Now = str(int(time.time()))[1:]
     email = ['test_automation+', '@qazz.pw']
     password = 'password_' + time_Now
 
