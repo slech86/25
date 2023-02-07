@@ -151,11 +151,16 @@ class MyVacanciesPageLocators:
 
 class ResponsesToVacancyPageLocators:
     H1 = (By.CSS_SELECTOR, 'h1')
-    MARK_NOT_VIEWED_RESPONSE = (By.CSS_SELECTOR, ('.lc-card:nth-child(1) .lc-card-time > svg'))
+    MARK_NOT_VIEWED_RESPONSE = (By.CSS_SELECTOR, '.lc-card:nth-child(1) .lc-card-time > svg')
 
     def assembly_of_locators_with_id_resume(self, id_resume):  # сборка локаторов с id резюме
-        resume_in_responses_to_vacancy = (By.XPATH, ('//a[contains(@href, "/resume/' + id_resume + '")]'))
-        return resume_in_responses_to_vacancy
+        locators = {
+            'resume_in_responses_to_vacancy': (By.XPATH, ('//a[contains(@href, "/resume/' + id_resume + '")]')),
+            'button_reject': (By.XPATH, '//a[contains(@href, "/resume/' + id_resume + '")]/ancestor::div[4]//button[@data-decline="true"]'),
+            'status_response': (By.XPATH, '//a[contains(@href, "/resume/' + id_resume + '")]/ancestor::div[4]//div[@class="lc-card-time"]/span'),
+        }
+
+        return locators
 
 
 class VacancyAddEditPageLocators:
@@ -163,8 +168,9 @@ class VacancyAddEditPageLocators:
     input_prefix = 'vacancynew-descriptions-' + id_language + '-'
 
     def assembly_of_locators_from_id_block(self, id_block):  # сборка локаторов с id блока
-        locators = {}
-        locators['button_add_block'] = (By.CSS_SELECTOR, '#content-' + VacancyAddEditPageLocators.id_language + ' #' + id_block + ' .icon-plus')
+        locators = {
+            'button_add_block': (By.CSS_SELECTOR, '#content-' + VacancyAddEditPageLocators.id_language + ' #' + id_block + ' .icon-plus')
+        }
         return locators
 
     CROSS_IN_COPY_TO_OTHER_LANGUAGES = (By.CSS_SELECTOR, '.copy-languages-toggle-tooltip')

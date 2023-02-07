@@ -74,7 +74,7 @@ class MyResumePageLocators:
 
     def assembly_of_locators_with_id_resume(self, id_resume):  # сборка локаторов с id резюме
         locators = {
-            'status_resume': (By.XPATH, '//a[@href="/resume/' + id_resume + '/edit"]/ancestor::div[5]//div[@class="lc-card-time "]/span'),
+            'status_resume': (By.XPATH, '//a[contains(@href, "/resume/' + id_resume + '/edit")]/ancestor::div[5]//div[@class="lc-card-time "]/span'),
             'button_hide': (By.XPATH, '//a[@data-resume-id=' + id_resume + '][@data-status-id="0"]'),
             'button_publish': (By.XPATH, '//a[@data-resume-id=' + id_resume + '][@data-status-id="1"]'),
             'button_delete': (By.CSS_SELECTOR, '.open-delete-modal[data-resume-id="' + id_resume + '"]'),

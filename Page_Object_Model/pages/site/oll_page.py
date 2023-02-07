@@ -56,6 +56,12 @@ class OllPage(BasePage):
         self.browser.find_element(*OllPageLocators.BUTTON_LOG_IN).click()
         time.sleep(2)
 
+    def logout(self):  # выход из учетной записи
+        self.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
+        self.pressing_leave_button()  # нажатие на кнопку выйти
+        self.browser.find_element(*OllPageLocators.BUTTON_YES_LOGOUT).click()
+        self.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
+
     def check_for_non_authorization_of_user(self):  # проверка на не авторизацию пользователя
         assert self.is_element_present(*OllPageLocators.BUTTON_POP_UP_FOR_LOGIN), 'Пользователь авторизирован, но не должен'
 
@@ -64,6 +70,9 @@ class OllPage(BasePage):
 
     def go_to_personal_cabinet_page(self):  # нажатие на кнопку для перехода на страницу личного кабинета
         self.browser.find_element(*OllPageLocators.LINK_PERSONAL_ACCOUNT).click()
+
+    def pressing_leave_button(self):  # нажатие на кнопку выйти
+        self.browser.find_element(*OllPageLocators.BUTTON_LEAVE).click()
 
     def info_text_for_authorization_in_user_status_disabled(self, language):  # инфо текст при авторизации в статусе пользователя "Отключен"
         info_text = self.browser.find_element(*OllPageLocators.INFO_TEXT_IN_POP_UP_WINDOW).text

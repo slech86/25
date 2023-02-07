@@ -94,3 +94,7 @@ class TestResponseToVacancy:
         resume_page.confirmation_opening_of_resume_page(language, resume_id)  # подтверждение открытия страницы резюме
         resume_page.checking_cover_letter_text()  # проверка текста сопроводительного письма
         resume_page.checking_contact_display(contact_display_when_response_to_vacancy)  # проверка отображения контактов
+
+        browser.switch_to.window(browser.window_handles[0])
+        responses_to_vacancy_page.deviation_of_response(resume_id, language)  # отклонение отклика
+        page.logout()  # выход из учетной записи

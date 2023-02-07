@@ -13,6 +13,8 @@ class OllPageLocators:
     BUTTON_POP_UP_FOR_LOGIN = (By.CSS_SELECTOR, ('.login.flex-row'))
     BUTTON_AUTHORIZED_USER = (By.CSS_SELECTOR, ('.logout.flex-row'))
     LINK_PERSONAL_ACCOUNT = (By.XPATH, ('//a[@class="dropdown-item"][contains(@href, "/cabinet")]'))
+    BUTTON_LEAVE = (By.CSS_SELECTOR, '[data-target="#log-out-modal"]')
+    BUTTON_YES_LOGOUT = (By.XPATH, ('//a[contains(@href, "/site/logout")]'))
     # хедер
 
     COMPANY_REGISTRATION_LINK = (By.CSS_SELECTOR, ('#employer .fz-13'))
