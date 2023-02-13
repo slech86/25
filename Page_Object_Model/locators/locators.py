@@ -6,9 +6,9 @@ from Page_Object_Model.singleton import Singleton
 class OllPageLocators:
     BUTTON_YES_WHEN_CHECKING_AGE = (By.CSS_SELECTOR, ".modal-content .btn.btn-blue.age-validation")
 
-    DROPDOWN_LIST_EMPLOYER = (By.CSS_SELECTOR, '.header_nav>.dropdown-nav-link:nth-child(2) .flex-row')  # только при не авторизированом пользователе
+    DROPDOWN_LIST_EMPLOYER = (By.CSS_SELECTOR, '.header_nav>.dropdown-nav-link:nth-child(1) .flex-row')  # только при не авторизированом пользователе
     RESUME_IN_HEDER = (By.XPATH, '//div[@class="dropdown-nav-menu"]//a[contains(@href, "/resume")]')
-    DROPDOWN_LIST_APPLICANT = (By.CSS_SELECTOR, '.header_nav>.dropdown-nav-link:nth-child(3) .flex-row')  # только при не авторизированом пользователе
+    DROPDOWN_LIST_APPLICANT = (By.CSS_SELECTOR, '.header_nav>.dropdown-nav-link:nth-child(2) .flex-row')  # только при не авторизированом пользователе
     VACANCIES_IN_HEDER = (By.XPATH, '//div[@class="dropdown-nav-menu"]//a[contains(@href, "/vacancy")]')
     BUTTON_POP_UP_FOR_LOGIN = (By.CSS_SELECTOR, ('.login.flex-row'))
     BUTTON_AUTHORIZED_USER = (By.CSS_SELECTOR, ('.logout.flex-row'))
