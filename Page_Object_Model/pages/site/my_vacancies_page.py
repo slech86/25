@@ -39,11 +39,11 @@ class MyVacanciesPage(BasePage):
         locators = locators_with_id_vacancies.assembly_of_locators_with_id_vacancies(vacancy_id)  # сборка локаторов с id вакансии
         status_text = self.browser.find_element(*locators['status_vacancy']).text
         if language == "":
-            assert "Вакансия скрыта" == status_text, 'Не верное сообщение'
+            assert "Вакансия скрыта" == status_text, 'Вакансия не скрыта'
         elif language == "/ua":
-            assert "Вакансія прихована" == status_text, 'Не верное сообщение'
+            assert "Вакансія прихована" == status_text, 'Вакансия не скрыта'
         elif language == "/en":
-            assert "Vacancy is hidden" == status_text, 'Не верное сообщение'
+            assert "Vacancy is hidden" == status_text, 'Вакансия не скрыта'
 
     def checking_status_of_page_response_to_print_pdf(self, vacancy_id):  # проверка статуса ответа страницы 'распечатать пдф'
         locators_with_id_vacancies = MyVacanciesPageLocators()

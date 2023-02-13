@@ -95,6 +95,31 @@ class TestResponseToVacancy:
         resume_page.checking_cover_letter_text()  # проверка текста сопроводительного письма
         resume_page.checking_contact_display(contact_display_when_response_to_vacancy)  # проверка отображения контактов
 
-        browser.switch_to.window(browser.window_handles[0])
+    def test_deleting_response(self, browser, language):  # удаление отклика
+        url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
+        page = OllPage(browser, url_page)
+        page.open()
+        page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
+        page.user_authorization(user_employer)  # авторизация пользователя
+
+        url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}/vacancy/{vacancy_id}/feedback"
+        responses_to_vacancy_page = ResponsesToVacancyPage(browser, url_page)
+        responses_to_vacancy_page.open()
         responses_to_vacancy_page.deviation_of_response(resume_id, language)  # отклонение отклика
         page.logout()  # выход из учетной записи
+
+        page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
+        page.user_authorization(user_job_seeker)  # авторизация пользователя
+        url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}/vacancy/feedback"
+        my_responses_page = MyResponsesPage(browser, url_page)
+        my_responses_page.open()
+
+        status_in_response_block = None
+        if language == "":
+            status_in_response_block = 'Ваше резюме отклонено'
+        elif language == "/ua":
+            status_in_response_block = 'Ваше резюме відхилено'
+        elif language == "/en":
+            status_in_response_block = 'Your CV has been rejected'
+
+        my_responses_page.checking_status_display_in_response_block(vacancy_id, status_in_response_block)  # проверка отображения статуса в блоке отклика
