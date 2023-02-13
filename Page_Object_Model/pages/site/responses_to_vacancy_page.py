@@ -19,8 +19,8 @@ class ResponsesToVacancyPage(BasePage):
         locators = resume_locator.assembly_of_locators_with_id_resume(resume_id)
         self.browser.find_element(*locators['button_reject']).click()
         if language == "":
-            WebDriverWait(self.browser, 35).until(EC.text_to_be_present_in_element(locators['status_response'], 'Вы отклонили это резюме'))
+            WebDriverWait(self.browser, 35).until(EC.text_to_be_present_in_element(locators['status_response'], 'Вы отклонили отзыв на данную вакансию!'))
         elif language == "/ua":
-            WebDriverWait(self.browser, 35).until(EC.text_to_be_present_in_element(locators['status_response'], 'Ви відхилили цю резюме'))
+            WebDriverWait(self.browser, 35).until(EC.text_to_be_present_in_element(locators['status_response'], 'Ви відхилили відгук на дану вакансію!'))
         elif language == "/en":
-            WebDriverWait(self.browser, 35).until(EC.text_to_be_present_in_element(locators['status_response'], 'You can only leave one review for a company!'))
+            WebDriverWait(self.browser, 35).until(EC.text_to_be_present_in_element(locators['status_response'], 'You have rejected feedback on this vacancy!'))
