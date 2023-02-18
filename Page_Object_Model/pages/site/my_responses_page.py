@@ -15,3 +15,8 @@ class MyResponsesPage(BasePage):
         status_text = self.browser.find_element(*locators['status_response']).text
         assert status == status_text, 'Не верный статус отклика'
 
+    def deleting_response(self, vacancy_id):  # удаление отклика
+        vacancy_locator = MyResponsesPageLocators()
+        locators = vacancy_locator.assembly_of_locators_with_id_vacancies(vacancy_id)
+        self.browser.find_element(*locators['button_delete']).click()
+        assert self.is_disappeared(*locators['block_vacancy']), "Не должно быть блока вакансии"

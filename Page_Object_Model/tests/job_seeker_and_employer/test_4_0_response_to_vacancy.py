@@ -123,3 +123,13 @@ class TestResponseToVacancy:
             status_in_response_block = 'Your CV has been rejected'
 
         my_responses_page.checking_status_display_in_response_block(vacancy_id, status_in_response_block)  # проверка отображения статуса в блоке отклика
+        my_responses_page.deleting_response(vacancy_id)  # удаление отклика
+
+        page.logout()  # выход из учетной записи
+        page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
+        page.user_authorization(user_employer)  # авторизация пользователя
+
+        url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}/vacancy/{vacancy_id}/feedback"
+        responses_to_vacancy_page = ResponsesToVacancyPage(browser, url_page)
+        responses_to_vacancy_page.open()
+        responses_to_vacancy_page.check_for_absence_of_response_block(resume_id)  # проверка отсутствия блока отклика

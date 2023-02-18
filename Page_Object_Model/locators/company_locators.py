@@ -154,12 +154,12 @@ class ResponsesToVacancyPageLocators:
     MARK_NOT_VIEWED_RESPONSE = (By.CSS_SELECTOR, '.lc-card:nth-child(1) .lc-card-time > svg')
 
     def assembly_of_locators_with_id_resume(self, id_resume):  # сборка локаторов с id резюме
+        resume_in_responses_to_vacancy = '//a[contains(@href, "/resume/' + id_resume + '")]'
         locators = {
-            'resume_in_responses_to_vacancy': (By.XPATH, ('//a[contains(@href, "/resume/' + id_resume + '")]')),
-            'button_reject': (By.XPATH, '//a[contains(@href, "/resume/' + id_resume + '")]/ancestor::div[4]//button[@data-decline="true"]'),
-            'status_response': (By.XPATH, '//a[contains(@href, "/resume/' + id_resume + '")]/ancestor::div[4]//div[@class="lc-card-time"]/span'),
+            'resume_in_responses_to_vacancy': (By.XPATH, resume_in_responses_to_vacancy),
+            'button_reject': (By.XPATH, f'{resume_in_responses_to_vacancy}/ancestor::div[4]//button[@data-decline="true"]'),
+            'status_response': (By.XPATH, f'{resume_in_responses_to_vacancy}/ancestor::div[4]//div[@class="lc-card-time"]/span'),
         }
-
         return locators
 
 

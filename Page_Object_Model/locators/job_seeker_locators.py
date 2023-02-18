@@ -491,9 +491,11 @@ class MyResponsesPageLocators:
     H1 = (By.CSS_SELECTOR, ('h1'))
 
     def assembly_of_locators_with_id_vacancies(self, id_vacancies):  # сборка локаторов с id вакансии
+        block_vacancy = '//a[contains(@href, "/vacancy/' + id_vacancies + '")]'
         locators = {
-            'block_vacancy': (By.XPATH, '//a[contains(@href, "/vacancy/' + id_vacancies + '")]'),
-            'status_response': (By.XPATH, '//a[contains(@href, "/vacancy/' + id_vacancies + '")]//div[@class="lc-card-time"]/span'),
+            'block_vacancy': (By.XPATH, block_vacancy),
+            'status_response': (By.XPATH, f'{block_vacancy}//div[@class="lc-card-time"]/span'),
+            'button_delete': (By.XPATH, f'{block_vacancy}//button[contains(@class, "del-lc-card")]'),
         }
         return locators
 
