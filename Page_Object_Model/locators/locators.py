@@ -85,6 +85,9 @@ class EmailPageLocators:
     LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Вы получили отклик на вакансию"]'))  # письмо после получения отклика на вакансию ru
     LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ви отримали відгук на вакансію"]'))  # письмо после получения отклика на вакансию ua
     LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="You have received feedback on the vacancy."]'))  # письмо после получения отклика на вакансию ua
+    LETTER_AFTER_VIEWING_RESPONSE_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваше резюме было просмотрено"]'))  # письмо после просмотра отклика ru
+    LETTER_AFTER_VIEWING_RESPONSE_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваше резюме було переглянуто"]'))  # письмо после просмотра отклика ua
+    LETTER_AFTER_VIEWING_RESPONSE_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Your resume has been reviewed"]'))  # письмо после просмотра отклика en
 
     IFRAME_LETTER = (By.CSS_SELECTOR, ('#messagecontframe'))
     LINK_IN_LETTER = (By.CSS_SELECTOR, ('[rel="noreferrer"]'))
@@ -103,6 +106,9 @@ class EmailPageLocators:
     TEXT_IN_LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_RU = (By.XPATH, ('//p[contains(text(), "Вы получили отклик на вакансию ")]'))
     TEXT_IN_LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_UA = (By.XPATH, ('//p[contains(text(), "Ви отримали відгук на вакансію ")]'))
     TEXT_IN_LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_EN = (By.XPATH, ('//p[contains(text(), "You received feedback on vacancy ")]'))
+    TEXT_IN_LETTER_AFTER_VIEWING_RESPONSE_RU = (By.XPATH, ('//div[contains(text(), "Ваше резюме было просмотрено компанией ")]'))
+    TEXT_IN_LETTER_AFTER_VIEWING_RESPONSE_UA = (By.XPATH, ('//div[contains(text(), "Ваше резюме було переглянуте компанією ")]'))
+    TEXT_IN_LETTER_AFTER_VIEWING_RESPONSE_EN = (By.XPATH, ('//div[contains(text(), "Your resume has been reviewed.")]'))
 
 
 class SitemapPageLocators():

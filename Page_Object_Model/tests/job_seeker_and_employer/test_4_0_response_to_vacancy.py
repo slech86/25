@@ -71,7 +71,7 @@ class TestResponseToVacancy:
         vacancy_page.checking_opening_of_page_of_published_vacancy(job_title_vacancy)  # проверка открытия страницы опубликованной вакансии
         vacancy_page.confirmation_opening_of_vacancy_page(language, vacancy_id)  # подтверждение открытия страницы вакансии
 
-    def test_verification_of_letters_after_receiving_response_to_vacancy(self, browser, language):  # проверка письма после получения отклика на вакансию
+    def test_verification_of_letter_after_receiving_response_to_vacancy(self, browser, language):  # проверка письма после получения отклика на вакансию
         link = Accounts.url_email
         email_page = EmailPage(browser, link)
         email_page.open()
@@ -105,6 +105,14 @@ class TestResponseToVacancy:
         resume_page.confirmation_opening_of_resume_page(language, resume_id)  # подтверждение открытия страницы резюме
         resume_page.checking_cover_letter_text()  # проверка текста сопроводительного письма
         resume_page.checking_contact_display(contact_display_when_response_to_vacancy)  # проверка отображения контактов
+
+    def test_verification_of_letter_after_viewing_response(self, browser, language):  # проверка письма после просмотра отклика
+        link = Accounts.url_email
+        email_page = EmailPage(browser, link)
+        email_page.open()
+        # browser.maximize_window()
+        email_page.email_authorization()  # авторизация email
+        email_page.verification_of_letter_after_viewing_response(language)  # проверка письма после просмотра отклика
 
     def test_deleting_response(self, browser, language):  # удаление отклика
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
