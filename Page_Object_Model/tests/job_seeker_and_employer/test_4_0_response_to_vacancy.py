@@ -14,6 +14,8 @@ from Page_Object_Model.data_for_testing import contact_display_when_response_to_
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_sql_page import AdminSqlPage
 from Page_Object_Model.users import users_variables
+from Page_Object_Model.users import Accounts
+from Page_Object_Model.pages.email_page import EmailPage
 
 # pytest --reruns 1 --html=./reports/report.html -s tests/job_seeker_and_employer/test_4_0_response_to_vacancy.py
 
@@ -69,6 +71,15 @@ class TestResponseToVacancy:
         vacancy_page.checking_opening_of_page_of_published_vacancy(job_title_vacancy)  # проверка открытия страницы опубликованной вакансии
         vacancy_page.confirmation_opening_of_vacancy_page(language, vacancy_id)  # подтверждение открытия страницы вакансии
 
+    def test_verification_of_letters_after_receiving_response_to_vacancy(self, browser, language):  # проверка письма после получения отклика на вакансию
+        link = Accounts.url_email
+        email_page = EmailPage(browser, link)
+        email_page.open()
+        # browser.maximize_window()
+        email_page.email_authorization()  # авторизация email
+        email_page.verification_of_letter_after_receiving_response_to_vacancy(language)  # проверка письма после получения отклика на вакансию
+
+
     def test_company_response_opening(self, browser, language):  # открытие отклика компанией
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
         page = OllPage(browser, url_page)
@@ -87,7 +98,7 @@ class TestResponseToVacancy:
 
         responses_to_vacancy_page = ResponsesToVacancyPage(browser, browser.current_url)
         responses_to_vacancy_page.checking_for_unread_response_flag()  # проверка наличия метки не прочитанного отклика
-        responses_to_vacancy_page.go_to_resume_page_of_response(resume_id)  # нажатие резюме отклика для перехода на его страницу
+        responses_to_vacancy_page.go_to_resume_page_of_response(resume_id)  # нажатие на резюме отклика для перехода на его страницу
 
         resume_page = ResumePage(browser, browser.current_url)
         resume_page.checking_opening_of_page_of_published_resume(job_title_resume)  # проверка открытия страницы опубликованного резюме после редактирования

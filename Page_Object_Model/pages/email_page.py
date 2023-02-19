@@ -81,14 +81,14 @@ class EmailPage(BasePage):
         # self.browser.refresh()
 
         letter_after_order_processing, text_in_letter_after_order_processing, expected_email_text = None, None, None
-        if language == "/ua":
-            letter_after_order_processing = EmailPageLocators.LETTER_AFTER_ORDER_PROCESSING_UA
-            text_in_letter_after_order_processing = EmailPageLocators.TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_UA
-            expected_email_text = 'Оплата пройшла успішно. Щоб продовжити роботу перейдіть в особистий кабінет на '
-        elif language == "":
+        if language == "":
             letter_after_order_processing = EmailPageLocators.LETTER_AFTER_ORDER_PROCESSING_RU
             text_in_letter_after_order_processing = EmailPageLocators.TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_RU
             expected_email_text = 'Оплата прошла успешно. Чтобы продолжить работу, перейдите в личный кабинет на '
+        elif language == "/ua":
+            letter_after_order_processing = EmailPageLocators.LETTER_AFTER_ORDER_PROCESSING_UA
+            text_in_letter_after_order_processing = EmailPageLocators.TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_UA
+            expected_email_text = 'Оплата пройшла успішно. Щоб продовжити роботу перейдіть в особистий кабінет на '
         elif language == "/en":
             letter_after_order_processing = EmailPageLocators.LETTER_AFTER_ORDER_PROCESSING_EN
             text_in_letter_after_order_processing = EmailPageLocators.TEXT_IN_LETTER_AFTER_ORDER_PROCESSING_EN
@@ -151,5 +151,29 @@ class EmailPage(BasePage):
         iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
         letter_text = self.browser.find_element(*text_in_letter_after_publishing_resume).text
+        assert expected_email_text in letter_text, 'Не верное сообщение'
+        self.browser.switch_to.default_content()  # выход из фрейма
+
+    def verification_of_letter_after_receiving_response_to_vacancy(self, language):  # проверка письма после получения отклика на вакансию
+
+        letter_after_receiving_response_to_vacancy, text_in_letter, expected_email_text = None, None, None
+        if language == "/ua":
+            letter_after_receiving_response_to_vacancy = EmailPageLocators.LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_UA
+            text_in_letter = EmailPageLocators.TEXT_IN_LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_UA
+            expected_email_text = 'Ви отримали відгук на вакансію '
+        elif language == "":
+            letter_after_receiving_response_to_vacancy = EmailPageLocators.LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_RU
+            text_in_letter = EmailPageLocators.TEXT_IN_LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_RU
+            expected_email_text = 'Вы получили отклик на вакансию '
+        elif language == "/en":
+            letter_after_receiving_response_to_vacancy = EmailPageLocators.LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_EN
+            text_in_letter = EmailPageLocators.TEXT_IN_LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_EN
+            expected_email_text = 'You received feedback on vacancy '
+
+        self.browser.find_element(*letter_after_receiving_response_to_vacancy).click()
+
+        iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
+        self.browser.switch_to.frame(iframe)  # вход в фрейм
+        letter_text = self.browser.find_element(*text_in_letter).text
         assert expected_email_text in letter_text, 'Не верное сообщение'
         self.browser.switch_to.default_content()  # выход из фрейма
