@@ -78,7 +78,7 @@ class EmailPageLocators:
     LETTER_AFTER_ORDER_PROCESSING_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="The payment was successful! Hurry up to place vacancies on the website!"]'))  # письмо после проведения заказа en
     LETTER_AFTER_PUBLISHING_VACANCY_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваша вакансия добавлена на сайт"]'))  # письмо после публикации вакансии ru
     LETTER_AFTER_PUBLISHING_VACANCY_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваша вакансія вже на сайті"]'))  # письмо после публикации вакансии en
-    LETTER_AFTER_PUBLISHING_VACANCY_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Your vacancy is already on the site"]')) # письмо после публикации вакансии en
+    LETTER_AFTER_PUBLISHING_VACANCY_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Your vacancy is already on the site"]'))  # письмо после публикации вакансии en
     LETTER_AFTER_PUBLISHING_RESUME_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваше резюме опубликовано"]'))  # письмо после публикации резюме ru
     LETTER_AFTER_PUBLISHING_RESUME_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваше резюме опубліковано"]'))  # письмо после публикации резюме ua
     LETTER_AFTER_PUBLISHING_RESUME_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Your resume is published on the site."]'))  # письмо после публикации резюме en
