@@ -152,3 +152,11 @@ class TestResponseToVacancy:
         responses_to_vacancy_page = ResponsesToVacancyPage(browser, url_page)
         responses_to_vacancy_page.open()
         responses_to_vacancy_page.check_for_absence_of_response_block(resume_id)  # проверка отсутствия блока отклика
+
+    def test_verification_of_letter_after_response_deviation(self, browser, language):  # проверка письма после отклонения отклика
+        link = Accounts.url_email
+        email_page = EmailPage(browser, link)
+        email_page.open()
+        # browser.maximize_window()
+        email_page.email_authorization()  # авторизация email
+        email_page.verification_of_letter_after_response_deviation(language)  # проверка письма после отклонения отклика

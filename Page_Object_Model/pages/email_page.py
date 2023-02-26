@@ -201,3 +201,27 @@ class EmailPage(BasePage):
         letter_text = self.browser.find_element(*text_in_letter).text
         assert expected_email_text in letter_text, 'Не верное сообщение'
         self.browser.switch_to.default_content()  # выход из фрейма
+
+    def verification_of_letter_after_response_deviation(self, language):  # проверка письма после отклонения отклика
+
+        letter_after_viewing_response, text_in_letter, expected_email_text = None, None, None
+        if language == "":
+            letter_after_viewing_response = EmailPageLocators.LETTER_AFTER_RESPONSE_OF_RESPONSE_RU
+            text_in_letter = EmailPageLocators.TEXT_IN_LETTER_AFTER_RESPONSE_OF_RESPONSE_RU
+            expected_email_text = ' отклонила резюме.'
+        elif language == "/ua":
+            letter_after_viewing_response = EmailPageLocators.LETTER_AFTER_RESPONSE_OF_RESPONSE_UA
+            text_in_letter = EmailPageLocators.TEXT_IN_LETTER_AFTER_RESPONSE_OF_RESPONSE_UA
+            expected_email_text = ' вiдхилила ваше резюме.'
+        elif language == "/en":
+            letter_after_viewing_response = EmailPageLocators.LETTER_AFTER_RESPONSE_OF_RESPONSE_EN
+            text_in_letter = EmailPageLocators.TEXT_IN_LETTER_AFTER_RESPONSE_OF_RESPONSE_EN
+            expected_email_text = 'Your resume has been rejected by the '
+
+        self.browser.find_element(*letter_after_viewing_response).click()
+
+        iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
+        self.browser.switch_to.frame(iframe)  # вход в фрейм
+        letter_text = self.browser.find_element(*text_in_letter).text
+        assert expected_email_text in letter_text, 'Не верное сообщение'
+        self.browser.switch_to.default_content()  # выход из фрейма

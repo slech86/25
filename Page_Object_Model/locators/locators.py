@@ -89,6 +89,10 @@ class EmailPageLocators:
     LETTER_AFTER_VIEWING_RESPONSE_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваше резюме було переглянуто"]'))  # письмо после просмотра отклика ua
     LETTER_AFTER_VIEWING_RESPONSE_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Your resume has been reviewed"]'))  # письмо после просмотра отклика en
 
+    LETTER_AFTER_RESPONSE_OF_RESPONSE_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваше резюме было отклонено"]'))  # письмо после отклонения отклика ru
+    LETTER_AFTER_RESPONSE_OF_RESPONSE_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваше резюме було відхилено"]'))  # письмо после отклонения отклика ua
+    LETTER_AFTER_RESPONSE_OF_RESPONSE_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Your resume has been rejected by the company!"]'))  # письмо после отклонения отклика en
+
     IFRAME_LETTER = (By.CSS_SELECTOR, ('#messagecontframe'))
     LINK_IN_LETTER = (By.CSS_SELECTOR, ('[rel="noreferrer"]'))
     TEXT_IN_LETTER_AFTER_FIRST_MODERATION_RU = (By.XPATH, ('//div[text()="Ура! Ваш аккаунт прошел модерацию."]'))
@@ -109,6 +113,10 @@ class EmailPageLocators:
     TEXT_IN_LETTER_AFTER_VIEWING_RESPONSE_RU = (By.XPATH, ('//div[contains(text(), "Ваше резюме было просмотрено компанией ")]'))
     TEXT_IN_LETTER_AFTER_VIEWING_RESPONSE_UA = (By.XPATH, ('//div[contains(text(), "Ваше резюме було переглянуте компанією ")]'))
     TEXT_IN_LETTER_AFTER_VIEWING_RESPONSE_EN = (By.XPATH, ('//div[contains(text(), "Your resume has been reviewed.")]'))
+
+    TEXT_IN_LETTER_AFTER_RESPONSE_OF_RESPONSE_RU = (By.XPATH, ('//div[contains(text(), " отклонила резюме.")]'))
+    TEXT_IN_LETTER_AFTER_RESPONSE_OF_RESPONSE_UA = (By.XPATH, ('//div[contains(text(), " вiдхилила ваше резюме.")]'))
+    TEXT_IN_LETTER_AFTER_RESPONSE_OF_RESPONSE_EN = (By.XPATH, ('//p[contains(text(), "Your resume has been rejected by the ")]'))
 
 
 class SitemapPageLocators():
