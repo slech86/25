@@ -351,7 +351,13 @@ class ResumeEditPage(BasePage):
     def go_to_preview_page(self):  # переход на страницу предпросмотра
         self.browser.execute_script("window.scrollBy(0, 4000);")
         self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_PREVIEW).click()
-        time.sleep(1)
+        for i in range(6):
+            browser_tabs = self.browser.window_handles
+            number_of_tabs = len(browser_tabs)
+            if number_of_tabs == 2:
+                break
+            else:
+                time.sleep(1)
         self.browser.switch_to.window(self.browser.window_handles[1])
 
     def submitting_resume_change_for_publication(self,):  # отправка изменений резюме на публикацию
