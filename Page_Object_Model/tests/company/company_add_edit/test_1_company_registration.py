@@ -26,7 +26,7 @@ class TestCompanyRegistration:
 
         company_registration_page = CompanyRegistrationPage(browser, browser.current_url)
         company_registration_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
-        company_registration_page.filling_in_required_fields(language, 1)  # заполнение обязательных полей
+        company_registration_page.filling_in_required_fields(language, 'company')  # заполнение обязательных полей
 
         company_registration_page.filling_in_optional_fields()  # заполнение не обязательных полей
         company_registration_page.browser.execute_script("window.scrollBy(0, 1300);")
@@ -43,7 +43,7 @@ class TestCompanyRegistration:
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_users_page()  # переход на страницу пользователей
-        admin_page.search_user_by_email(language, 1)  # поиск пользователя по e-mail
+        admin_page.search_user_by_email(language, 'company')  # поиск пользователя по e-mail
         admin_page.checking_that_newly_created_user_has_status_disabled()  # проверка что новосозданный пользователь имеет статус "Отключено"
 
     @pytest.mark.s_r_c
@@ -53,7 +53,7 @@ class TestCompanyRegistration:
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_users_page()  # переход на страницу пользователей
-        admin_page.search_user_by_email(language, 1)  # поиск пользователя по e-mail
+        admin_page.search_user_by_email(language, 'company')  # поиск пользователя по e-mail
         admin_page.go_to_object_editing_page()  # переход на страницу пользователя
         admin_page.changing_role_from_user_to_super_admin()  # изменение роли с "User" на "SuperAdmin"
         admin_page.saving_user_card()  # сохранение карточки пользователя
@@ -65,7 +65,7 @@ class TestCompanyRegistration:
         # browser.maximize_window()
         page.open()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.user_new_authorization(language, 1)  # авторизация пользователя
+        page.user_new_authorization(language, 'company')  # авторизация пользователя
         page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
         page.info_text_for_authorization_in_user_status_disabled(language)  # инфо текст при авторизации в статусе пользователя "Отключен"
 
@@ -87,7 +87,7 @@ class TestCompanyRegistration:
         # browser.maximize_window()
         page.open()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.user_new_authorization(language, 1)  # авторизация пользователя
+        page.user_new_authorization(language, 'company')  # авторизация пользователя
         page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
         page.info_text_for_authorization_in_user_status_on_moderation(language)  # инфо текст при авторизации в статусе пользователя "На модерации"
 
@@ -98,12 +98,12 @@ class TestCompanyRegistration:
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_users_page()  # переход на страницу пользователей
-        admin_page.search_user_by_email(language, 1)  # поиск пользователя по e-mail
+        admin_page.search_user_by_email(language, 'company')  # поиск пользователя по e-mail
         admin_page.go_to_object_editing_page()  # переход на страницу пользователя
         admin_page.change_of_user_status_from_on_moderation_to_active()  # изменение статуса пользователя с "На модерации" на "Активен"
         admin_page.saving_user_card()  # сохранение карточки пользователя
         admin_page.waiting_to_save_status_and_open_users_page()  # ожидание сохранения статуса и открытия страницы всех пользователей
-        admin_page.search_user_by_email(language, 1)  # поиск пользователя по e-mail
+        admin_page.search_user_by_email(language, 'company')  # поиск пользователя по e-mail
         admin_page.check_that_user_has_status_active()  # проверка что пользователь имеет статус "Активен"
 
 

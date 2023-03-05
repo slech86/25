@@ -39,11 +39,12 @@ class AdminPageLocators:
     FIELD_EMAIL_SEARCH = (By.CSS_SELECTOR, '[name="User[email]"]')
 
     def assembly_of_locators_with_email(self, key):
-        user_email_ru = (By.XPATH, ('//td[text()="' + Singleton.logins_and_mails[key][0][1] + '"]'))
-        user_email_ua = (By.XPATH, ('//td[text()="' + Singleton.logins_and_mails[key][1][1] + '"]'))
-        user_email_en = (By.XPATH, ('//td[text()="' + Singleton.logins_and_mails[key][2][1] + '"]'))
-        user_email = [user_email_ru, user_email_ua, user_email_en]
-        return user_email
+        locators = {
+            'user_email_ru': (By.XPATH, ('//td[text()="' + Singleton.logins_and_mails[key]['ru']['email_ru'] + '"]')),
+            'user_email_ua': (By.XPATH, ('//td[text()="' + Singleton.logins_and_mails[key]['ua']['email_ua'] + '"]')),
+            'user_email_en': (By.XPATH, ('//td[text()="' + Singleton.logins_and_mails[key]['en']['email_en'] + '"]')),
+        }
+        return locators
     # страница пользователей
 
     # страница пользователя
@@ -106,13 +107,6 @@ class AdminPageLocators:
 
     # SEARCH_STATUS_NEW = (By.CSS_SELECTOR, ('[name="Orders[status]"] > [value="1"]'))
     FIELD_EMAIL_SEARCH_ORDERS = (By.CSS_SELECTOR, ('[name="Orders[userEmail]"]'))
-
-    def old_assembly_of_locators_with_user_email(self, key):
-        user_email_orders_ru = (By.XPATH, ('//span[text()="' + Singleton.logins_and_mails[key][0][1] + '"]'))
-        user_email_orders_ua = (By.XPATH, ('//span[text()="' + Singleton.logins_and_mails[key][1][1] + '"]'))
-        user_email_orders_en = (By.XPATH, ('//span[text()="' + Singleton.logins_and_mails[key][2][1] + '"]'))
-        user_email_orders = [user_email_orders_ru, user_email_orders_ua, user_email_orders_en]
-        return user_email_orders
 
     def assembly_of_locators_with_user_email(self, user_email):
         user_email_orders = (By.XPATH, ('//span[text()="' + user_email + '"]'))

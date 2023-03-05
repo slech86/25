@@ -11,6 +11,8 @@ class Accounts():
 
 
 users_variables = {
+    # employer
+
     'employer': {
         'login': 'test_employer',
         'password': '65Y2ixdH4F',
@@ -25,6 +27,9 @@ users_variables = {
         'id': '5053',
         'company_name': 'test_Название компании',
     },
+
+    # job_seeker
+
     'job_seeker': {
         'login': 'test_job_seeker',
         'password': '2284anVvFS',
@@ -36,5 +41,11 @@ users_variables = {
         'password': '3pMiK2A86g',
         'mail': 'test_automation+job_seeker_resume@qazz.pw',
         'id': '5055',
+    },
+    'job_seeker_change_password': {
+        'login': 'test_job_seeker_change_passwd',
+        'password': 'cGsy72V9MmBCB39eY443aj',
+        'mail': 'test_automation+job_seeker_change_password@qazz.pw',
+        'id': '5517',
     },
 }

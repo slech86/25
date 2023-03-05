@@ -24,7 +24,14 @@ class OllPageLocators:
     FIELD_PASSWORD = (By.CSS_SELECTOR, ('#loginform-password'))
     BUTTON_LOG_IN = (By.CSS_SELECTOR, ('.field-loginform-summaryerror + [type="submit"]'))
     INFO_TEXT_IN_POP_UP_WINDOW = (By.CSS_SELECTOR, ('#login-form .small-text'))
+    BUTTON_FORGOT_PASSWORD = (By.CSS_SELECTOR, '.forgot-password-link')
     # pop-up окно авторизации
+
+    FIELD_FORGOT_PASSWORD_FORM_EMAIL = (By.CSS_SELECTOR, '#forgotpasswordform-email')
+    BUTTON_CHANGE_PASSWORD = (By.CSS_SELECTOR, '.modal-footer>[type="submit"]')
+    INFO_TEXT_AFTER_ =  None
+
+    # pop-up окно авторизации "Восстановить пароль"
 
 
 class VacanciesPageLocators:

@@ -19,11 +19,27 @@ class TestData:
         email_en = TestData.email[0] + time_now + 'en' + TestData.email[1]
 
         singleton = Singleton()
-        singleton.logins_and_mails[key] = [
-            [login_ru, email_ru],
-            [login_ua, email_ua],
-            [login_en, email_en]
-        ]
+        # singleton.logins_and_mails[key] = [
+        #     [login_ru, email_ru],
+        #     [login_ua, email_ua],
+        #     [login_en, email_en]
+        # ]
+        singleton.logins_and_mails[key] = {
+            'ru': {
+                'login_ru': login_ru,
+                'email_ru': email_ru,
+            },
+            'ua': {
+                'login_ua': login_ua,
+                'email_ua': email_ua,
+            },
+            'en': {
+                'login_en': login_en,
+                'email_en': email_en,
+            },
+        }
+
+
 
     email_language_ru = '[#1] Русский'
     email_language_ua = '[#3] Українська'

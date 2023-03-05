@@ -20,7 +20,7 @@ class TestJobSeekerRegistration:
         page.go_to_job_seeker_registration_page()  # нажатие на кнопку для перехода на страницу регистрации соискателя
 
         job_seeker_registration_page = JobSeekerRegistrationPage(browser, browser.current_url)
-        job_seeker_registration_page.filling_in_all_fields(language, 2)  # заполнение всех полей
+        job_seeker_registration_page.filling_in_all_fields(language, 'job_seeker')  # заполнение всех полей
         job_seeker_registration_page.submitting_form_for_registration()  # отправка формы на регистрацию
 
         main_page = MainPage(browser, browser.current_url)
@@ -34,7 +34,7 @@ class TestJobSeekerRegistration:
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_users_page()  # переход на страницу пользователей
-        admin_page.search_user_by_email(language, 2)  # поиск пользователя по e-mail
+        admin_page.search_user_by_email(language, 'job_seeker')  # поиск пользователя по e-mail
         admin_page.checking_that_newly_created_user_has_status_disabled()  # проверка что новосозданный пользователь имеет статус "Отключено"
 
     # @pytest.mark.skip
@@ -45,7 +45,7 @@ class TestJobSeekerRegistration:
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_users_page()  # переход на страницу пользователей
-        admin_page.search_user_by_email(language, 2)  # поиск пользователя по e-mail
+        admin_page.search_user_by_email(language, 'job_seeker')  # поиск пользователя по e-mail
         admin_page.go_to_object_editing_page()  # переход на страницу пользователя
         admin_page.changing_role_from_user_to_super_admin()  # изменение роли с "User" на "SuperAdmin"
         admin_page.saving_user_card()  # сохранение карточки пользователя
@@ -57,7 +57,7 @@ class TestJobSeekerRegistration:
         # browser.maximize_window()
         page.open()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.user_new_authorization(language, 2)  # авторизация пользователя
+        page.user_new_authorization(language, 'job_seeker')  # авторизация пользователя
         page.check_for_non_authorization_of_user()  # проверка на не авторизацию пользователя
         page.info_text_for_authorization_in_user_status_disabled(language)  # инфо текст при авторизации в статусе пользователя "Отключен"
 
@@ -74,7 +74,7 @@ class TestJobSeekerRegistration:
 
         page = OllPage(browser, browser.current_url)
         page.age_confirmation()  # подтверждение возраста больше 21 года
-        page.user_new_authorization(language, 2)  # авторизация пользователя
+        page.user_new_authorization(language, 'job_seeker')  # авторизация пользователя
         page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
 
     def test_check_that_user_has_status_active(self, browser, language):  # проверка что пользователь имеет статус "Активен"
@@ -83,5 +83,5 @@ class TestJobSeekerRegistration:
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_users_page()  # переход на страницу пользователей
-        admin_page.search_user_by_email(language, 2)  # поиск пользователя по e-mail
+        admin_page.search_user_by_email(language, 'job_seeker')  # поиск пользователя по e-mail
         admin_page.check_that_user_has_status_active()  # проверка что пользователь имеет статус "Активен"

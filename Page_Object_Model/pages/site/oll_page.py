@@ -33,15 +33,23 @@ class OllPage(BasePage):
         self.browser.find_element(*OllPageLocators.JOB_SEEKER_TAB).click()
         self.browser.find_element(*OllPageLocators.JOB_SEEKER_REGISTRATION_LINK).click()
 
+    def clicking_on_button_forgot_password(self):  # нажатие на кнопку "Забыли пароль"
+        self.browser.find_element(*OllPageLocators.BUTTON_FORGOT_PASSWORD).click()
+
+    def submitting_password_recovery_request(self, user):  # отправка запроса на восстановление пароля
+        self.browser.find_element(*OllPageLocators.FIELD_FORGOT_PASSWORD_FORM_EMAIL).send_keys(users_variables[user]["mail"])
+        self.browser.find_element(*OllPageLocators.BUTTON_CHANGE_PASSWORD).click()
+
+
     def user_new_authorization(self, language, key):  # авторизация нового пользователя
         if language == "":
-            self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key][0][0])
+            self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key]['ru']['login_ru'])
             # self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys('p.verbenets')
         elif language == "/ua":
-            self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key][1][0])
+            self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key]['ua']['login_ua'])
             # self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys('p.verbenets')
         elif language == "/en":
-            self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key][2][0])
+            self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key]['en']['login_en'])
             # self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys('p.verbenets')
 
         self.browser.find_element(*OllPageLocators.FIELD_PASSWORD).send_keys(TestData.password)

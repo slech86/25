@@ -63,5 +63,5 @@ def test_editing_vacancies(browser, language):  # редактирование �
 #     admin_page.admin_authorization()
 #     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
 #     admin_page.go_to_order_page()  # переход на страницу заказов
-#     admin_page.old_search_for_user_orders_by_email(language, 1)  # поиск заказов пользователя по e-mail
+#     admin_page.old_search_for_user_orders_by_email(language, 'company')  # поиск заказов пользователя по e-mail
 #     admin_page.complete_objects_deletion()  # полное удаление объектов
