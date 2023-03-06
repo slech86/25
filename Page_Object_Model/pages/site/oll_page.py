@@ -36,10 +36,17 @@ class OllPage(BasePage):
     def clicking_on_button_forgot_password(self):  # нажатие на кнопку "Забыли пароль"
         self.browser.find_element(*OllPageLocators.BUTTON_FORGOT_PASSWORD).click()
 
-    def submitting_password_recovery_request(self, user):  # отправка запроса на восстановление пароля
+    def submitting_password_recovery_request(self, language, user):  # отправка запроса на восстановление пароля
         self.browser.find_element(*OllPageLocators.FIELD_FORGOT_PASSWORD_FORM_EMAIL).send_keys(users_variables[user]["mail"])
         self.browser.find_element(*OllPageLocators.BUTTON_CHANGE_PASSWORD).click()
-
+        info_text = WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(OllPageLocators.INFO_TEXT_AFTER_PASSWORD_RESET_REQUEST)).text
+        if language == "":
+            expected_text = "Если адрес " + users_variables[user]["mail"] + " зарегистрирован в системе, на него будет выслано письмо."
+            assert expected_text == info_text, f"Не верное сообщение, expected result: '{expected_text}', actual result: '{info_text}'"
+        elif language == "/ua":
+            assert "Для завершення активації облікового запису перейдіть за посиланням у листі, який було надіслано на ваш e-mail." == info_text, 'Не верное сообщение'
+        elif language == "/en":
+            assert "To complete account activation, follow the link in the letter sent to your email." == info_text, 'Не верное сообщение'
 
     def user_new_authorization(self, language, key):  # авторизация нового пользователя
         if language == "":

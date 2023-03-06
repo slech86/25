@@ -19,7 +19,7 @@ from Page_Object_Model.pages.email_page import EmailPage
 
 # pytest --reruns 1 --html=./reports/report.html -s tests/company/password_recovery
 
-user = 'employer'
+user = 'job_seeker_change_password'
 
 
 @pytest.mark.s_r_c
@@ -35,5 +35,5 @@ class TestPasswordRecovery:
         page.open()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
         page.clicking_on_button_forgot_password()  # нажатие на кнопку "Забыли пароль"
-        page.submitting_password_recovery_request(user)  # отправка запроса на восстановление пароля
+        page.submitting_password_recovery_request(language, user)  # отправка запроса на восстановление пароля
 

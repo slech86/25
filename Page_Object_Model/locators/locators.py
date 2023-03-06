@@ -29,7 +29,7 @@ class OllPageLocators:
 
     FIELD_FORGOT_PASSWORD_FORM_EMAIL = (By.CSS_SELECTOR, '#forgotpasswordform-email')
     BUTTON_CHANGE_PASSWORD = (By.CSS_SELECTOR, '.modal-footer>[type="submit"]')
-    INFO_TEXT_AFTER_ =  None
+    INFO_TEXT_AFTER_PASSWORD_RESET_REQUEST = (By.CSS_SELECTOR, '#send-reset-link .text')
 
     # pop-up окно авторизации "Восстановить пароль"
 
