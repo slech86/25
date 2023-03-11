@@ -44,9 +44,11 @@ class OllPage(BasePage):
             expected_text = "Если адрес " + users_variables[user]["mail"] + " зарегистрирован в системе, на него будет выслано письмо."
             assert expected_text == info_text, f"Не верное сообщение, expected result: '{expected_text}', actual result: '{info_text}'"
         elif language == "/ua":
-            assert "Для завершення активації облікового запису перейдіть за посиланням у листі, який було надіслано на ваш e-mail." == info_text, 'Не верное сообщение'
+            expected_text = "Якщо адреса " + users_variables[user]["mail"] + " зареєстрована в системі, на неї буде відіслано лист."
+            assert expected_text == info_text, f"Не верное сообщение, expected result: '{expected_text}', actual result: '{info_text}'"
         elif language == "/en":
-            assert "To complete account activation, follow the link in the letter sent to your email." == info_text, 'Не верное сообщение'
+            expected_text = "If " + users_variables[user]["mail"] + " is registered in the system, an email will be sent to it."
+            assert expected_text == info_text, f"Не верное сообщение, expected result: '{expected_text}', actual result: '{info_text}'"
 
     def user_new_authorization(self, language, key):  # авторизация нового пользователя
         if language == "":

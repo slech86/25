@@ -67,6 +67,13 @@ class MainPageLocators:
     INFO_TEXT_ABOUT_SENDING_REGISTRATION_FORM = (By.CSS_SELECTOR, ('#lc-popup-registration .text'))  # информационный текст о подтверждении отправки формы регистрации
     INFO_TEXT_ABOUT_CONFIRMATION_OF_COMPANY_EMAIL_AFTER_REGISTRATION = (By.CSS_SELECTOR, ('#to-publish-modal h2'))  # информационный текст о подтверждении електронной почты работодателя после регистрации
 
+    # восстановление пароля
+    FIELD_PASSWORD_IN_RESET_PASSWORD_FORM = (By.CSS_SELECTOR, '#resetpasswordform-newpassword')
+    FIELD_REPEAT_PASSWORD_IN_RESET_PASSWORD_FORM = (By.CSS_SELECTOR, '#resetpasswordform-repeatpassword')
+    BUTTON_CHANGE_PASSWORD = (By.CSS_SELECTOR, '#resetPassword [type="submit"]')
+    INFO_TEXT_AFTER_PASSWORD_RECOVERY = (By.CSS_SELECTOR, ('#save-new-password .text'))  # информационный текст после восстановления пароля
+    # восстановление пароля
+
 
 class EmailPageLocators:
     FIELD_EMAIL = (By.CSS_SELECTOR, ('#rcmloginuser'))
@@ -95,10 +102,13 @@ class EmailPageLocators:
     LETTER_AFTER_VIEWING_RESPONSE_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваше резюме было просмотрено"]'))  # письмо после просмотра отклика ru
     LETTER_AFTER_VIEWING_RESPONSE_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваше резюме було переглянуто"]'))  # письмо после просмотра отклика ua
     LETTER_AFTER_VIEWING_RESPONSE_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Your resume has been reviewed"]'))  # письмо после просмотра отклика en
-
     LETTER_AFTER_RESPONSE_OF_RESPONSE_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваше резюме было отклонено"]'))  # письмо после отклонения отклика ru
     LETTER_AFTER_RESPONSE_OF_RESPONSE_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваше резюме було відхилено"]'))  # письмо после отклонения отклика ua
     LETTER_AFTER_RESPONSE_OF_RESPONSE_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Your resume has been rejected by the company!"]'))  # письмо после отклонения отклика en
+
+    LETTER_PASSWORD_RECOVERY_CONFIRMATION_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Подтверждение восстановления пароля на LCwork"]'))  # письмо Подтверждение восстановления пароля ru
+    LETTER_PASSWORD_RECOVERY_CONFIRMATION_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Підтвердження відновлення пароля на LCwork"]'))  # письмо Подтверждение восстановления пароля ua
+    LETTER_PASSWORD_RECOVERY_CONFIRMATION_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Confirm password recovery on LC Work"]'))  # письмо Подтверждение восстановления пароля en
 
     IFRAME_LETTER = (By.CSS_SELECTOR, ('#messagecontframe'))
     LINK_IN_LETTER = (By.CSS_SELECTOR, ('[rel="noreferrer"]'))
@@ -120,7 +130,6 @@ class EmailPageLocators:
     TEXT_IN_LETTER_AFTER_VIEWING_RESPONSE_RU = (By.XPATH, ('//div[contains(text(), "Ваше резюме было просмотрено компанией ")]'))
     TEXT_IN_LETTER_AFTER_VIEWING_RESPONSE_UA = (By.XPATH, ('//div[contains(text(), "Ваше резюме було переглянуте компанією ")]'))
     TEXT_IN_LETTER_AFTER_VIEWING_RESPONSE_EN = (By.XPATH, ('//div[contains(text(), "Your resume has been reviewed.")]'))
-
     TEXT_IN_LETTER_AFTER_RESPONSE_OF_RESPONSE_RU = (By.XPATH, ('//div[contains(text(), " отклонила резюме.")]'))
     TEXT_IN_LETTER_AFTER_RESPONSE_OF_RESPONSE_UA = (By.XPATH, ('//div[contains(text(), " вiдхилила ваше резюме.")]'))
     TEXT_IN_LETTER_AFTER_RESPONSE_OF_RESPONSE_EN = (By.XPATH, ('//p[contains(text(), "Your resume has been rejected by the ")]'))

@@ -5,6 +5,7 @@ from Page_Object_Model.locators.locators import MainPageLocators
 from Page_Object_Model.configuration import UrlStartPage
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from Page_Object_Model.utility.utility import generate_alphanum_random_string
 
 
 class MainPage(BasePage):
@@ -43,5 +44,16 @@ class MainPage(BasePage):
         elif language == "/en":
             assert "Your company profile has been sent for moderation, wait for confirmation!" == info_text, 'Не верное сообщение'
 
+    def entering_new_password_when_recovering_it(self, language):  # ввод нового пароля при его восстановлении
+        new_password = generate_alphanum_random_string(10)
+        self.browser.find_element(*MainPageLocators.FIELD_PASSWORD_IN_RESET_PASSWORD_FORM).send_keys(new_password)
+        self.browser.find_element(*MainPageLocators.FIELD_REPEAT_PASSWORD_IN_RESET_PASSWORD_FORM).send_keys(new_password)
+        self.browser.find_element(*MainPageLocators.BUTTON_CHANGE_PASSWORD).click()
 
-
+        info_text = WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(MainPageLocators.INFO_TEXT_AFTER_PASSWORD_RECOVERY)).text
+        if language == "":
+            assert "Ваш пароль был успешно изменен." == info_text, 'Не верное сообщение'
+        elif language == "/ua":
+            assert "Ваш пароль був успішно оновлений." == info_text, 'Не верное сообщение'
+        elif language == "/en":
+            assert "Your password has been successfully changed" == info_text, 'Не верное сообщение'

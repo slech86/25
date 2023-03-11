@@ -30,6 +30,23 @@ class EmailPage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
         self.browser.switch_to.window(self.browser.window_handles[1])
 
+    def following_link_in_email_to_reset_your_password(self, language):  # переход по ссылке с письма для восстановления пароля
+        letter_password_recovery_confirmation = None
+        if language == "":
+            letter_password_recovery_confirmation = EmailPageLocators.LETTER_PASSWORD_RECOVERY_CONFIRMATION_RU
+        elif language == "/ua":
+            letter_password_recovery_confirmation = EmailPageLocators.LETTER_PASSWORD_RECOVERY_CONFIRMATION_UA
+        elif language == "/en":
+            letter_password_recovery_confirmation = EmailPageLocators.LETTER_PASSWORD_RECOVERY_CONFIRMATION_EN
+
+        self.browser.find_element(*letter_password_recovery_confirmation).click()
+
+        iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
+        self.browser.switch_to.frame(iframe)  # вход в фрейм
+        self.browser.find_element(*EmailPageLocators.LINK_IN_LETTER).click()
+        self.browser.switch_to.default_content()  # выход из фрейма
+        self.browser.switch_to.window(self.browser.window_handles[1])
+
     def letter_after_first_moderation_of_company(self, language):  # письмо после первой модерации компании
         time.sleep(4.5)
         self.browser.refresh()
