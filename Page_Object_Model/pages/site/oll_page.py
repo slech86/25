@@ -67,9 +67,14 @@ class OllPage(BasePage):
         self.browser.find_element(*OllPageLocators.BUTTON_LOG_IN).click()
         time.sleep(2)
 
-    def user_authorization(self, user):  # авторизация пользователя
-        self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(users_variables[user]["login"])
-        self.browser.find_element(*OllPageLocators.FIELD_PASSWORD).send_keys(users_variables[user]["password"])
+    def user_authorization(self, user, login=None, password=None):  # авторизация пользователя
+        if login is None:
+            login = users_variables[user]["login"]
+        if password is None:
+            password = users_variables[user]["password"]
+
+        self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(login)
+        self.browser.find_element(*OllPageLocators.FIELD_PASSWORD).send_keys(password)
         self.browser.find_element(*OllPageLocators.BUTTON_LOG_IN).click()
         time.sleep(2)
 

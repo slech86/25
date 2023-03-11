@@ -57,3 +57,4 @@ class MainPage(BasePage):
             assert "Ваш пароль був успішно оновлений." == info_text, 'Не верное сообщение'
         elif language == "/en":
             assert "Your password has been successfully changed" == info_text, 'Не верное сообщение'
+        return new_password

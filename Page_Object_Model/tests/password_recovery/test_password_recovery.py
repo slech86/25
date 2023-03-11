@@ -18,9 +18,10 @@ from Page_Object_Model.users import Accounts
 from Page_Object_Model.pages.email_page import EmailPage
 from Page_Object_Model.pages.site.main_page import MainPage
 
-# pytest --reruns 1 --html=./reports/report.html -s tests/company/password_recovery
+# pytest --reruns 1 --html=./reports/report.html -s tests/password_recovery
 
 user = 'job_seeker_change_password'
+new_password = None
 
 
 # @pytest.mark.skip
@@ -40,13 +41,15 @@ class TestPasswordRecovery:
         email_page.email_authorization()  # авторизация email
         email_page.following_link_in_email_to_reset_your_password(language)  # переход по ссылке с письма для восстановления пароля
         main_page = MainPage(browser, browser.current_url)
-        breakpoint()
         main_page.waiting_for_main_page_to_open(language)  # ожидание открытия главной страницы
-        main_page.entering_new_password_when_recovering_it(language)  # ввод нового пароля при его восстановлении
+        global new_password
+        new_password = main_page.entering_new_password_when_recovering_it(language)  # ввод нового пароля при его восстановлении
 
     def test_login_with_new_password(self, browser, language):  # авторизация с новым паролем
         url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
         page = OllPage(browser, url_Page)
         page.open()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.user_authorization(user)  # авторизация пользователя
+        page.user_authorization(user, password=new_password)  # авторизация пользователя
+        page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
+        page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
