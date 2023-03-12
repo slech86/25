@@ -43,7 +43,7 @@ class TestCompanyRegistration:
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_users_page()  # переход на страницу пользователей
-        admin_page.search_user_by_email(language, 'company')  # поиск пользователя по e-mail
+        admin_page.new_user_search_by_email(language, 'company')  # поиск пользователя по e-mail
         admin_page.checking_that_newly_created_user_has_status_disabled()  # проверка что новосозданный пользователь имеет статус "Отключено"
 
     @pytest.mark.s_r_c
@@ -53,11 +53,11 @@ class TestCompanyRegistration:
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_users_page()  # переход на страницу пользователей
-        admin_page.search_user_by_email(language, 'company')  # поиск пользователя по e-mail
+        admin_page.new_user_search_by_email(language, 'company')  # поиск пользователя по e-mail
         admin_page.go_to_object_editing_page()  # переход на страницу пользователя
         admin_page.changing_role_from_user_to_super_admin()  # изменение роли с "User" на "SuperAdmin"
         admin_page.saving_user_card()  # сохранение карточки пользователя
-        admin_page.waiting_to_save_status_and_open_users_page()  # ожидание сохранения статуса и открытия страницы всех пользователей
+        admin_page.waiting_to_save_user_and_open_all_users_page()  # ожидание сохранения статуса и открытия страницы всех пользователей
 
     def test_authorization_of_user_in_disabled_status(self, browser, language):  # авторизация пользователя в статусе "Отключен"
         url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
@@ -98,12 +98,12 @@ class TestCompanyRegistration:
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_users_page()  # переход на страницу пользователей
-        admin_page.search_user_by_email(language, 'company')  # поиск пользователя по e-mail
+        admin_page.new_user_search_by_email(language, 'company')  # поиск пользователя по e-mail
         admin_page.go_to_object_editing_page()  # переход на страницу пользователя
         admin_page.change_of_user_status_from_on_moderation_to_active()  # изменение статуса пользователя с "На модерации" на "Активен"
         admin_page.saving_user_card()  # сохранение карточки пользователя
-        admin_page.waiting_to_save_status_and_open_users_page()  # ожидание сохранения статуса и открытия страницы всех пользователей
-        admin_page.search_user_by_email(language, 'company')  # поиск пользователя по e-mail
+        admin_page.waiting_to_save_user_and_open_all_users_page()  # ожидание сохранения статуса и открытия страницы всех пользователей
+        admin_page.new_user_search_by_email(language, 'company')  # поиск пользователя по e-mail
         admin_page.check_that_user_has_status_active()  # проверка что пользователь имеет статус "Активен"
 
 

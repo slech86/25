@@ -38,11 +38,9 @@ class AdminPageLocators:
     USER_STATUS = (By.XPATH, '//tr[1]/td[4]/p')
     FIELD_EMAIL_SEARCH = (By.CSS_SELECTOR, '[name="User[email]"]')
 
-    def assembly_of_locators_with_email(self, key):
+    def assembly_of_locators_with_email(self, email):
         locators = {
-            'user_email_ru': (By.XPATH, ('//td[text()="' + Singleton.logins_and_mails[key]['ru']['email_ru'] + '"]')),
-            'user_email_ua': (By.XPATH, ('//td[text()="' + Singleton.logins_and_mails[key]['ua']['email_ua'] + '"]')),
-            'user_email_en': (By.XPATH, ('//td[text()="' + Singleton.logins_and_mails[key]['en']['email_en'] + '"]')),
+            'user_email': (By.XPATH, ('//td[text()="' + email + '"]')),
         }
         return locators
     # страница пользователей

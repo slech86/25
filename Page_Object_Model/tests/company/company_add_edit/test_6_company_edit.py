@@ -32,5 +32,5 @@ def test_changing_all_company_data(browser, language):  # изменение в�
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_users_page()  # переход на страницу пользователей
-    admin_page.search_user_by_email(language, 'company')  # поиск пользователя по e-mail
+    admin_page.new_user_search_by_email(language, 'company')  # поиск пользователя по e-mail
     admin_page.check_that_user_has_status_data_editing()  # проверка что пользователь имеет статус "Редактирование данных"

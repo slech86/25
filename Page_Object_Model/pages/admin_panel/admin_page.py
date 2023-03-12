@@ -54,22 +54,28 @@ class AdminPage(BasePage):
         self.browser.find_element(*AdminPageLocators.BUTTON_OBJECT_MENU).click()  # костыль из-за ховер эффекта на кнопке меню пользователя
     # общие
 
-    def search_user_by_email(self, language, key):  # поиск пользователя по e-mail
+    def new_user_search_by_email(self, language, key):  # поиск нового пользователя по e-mail
         user_email_locators = AdminPageLocators()
-        locators = user_email_locators.assembly_of_locators_with_email(key)
         email, user_email = None, None
         if language == "":
             email = Singleton.logins_and_mails[key]['ru']['email_ru']
-            user_email = locators['user_email_ru']
+            user_email = user_email_locators.assembly_of_locators_with_email(email)
         elif language == "/ua":
             email = Singleton.logins_and_mails[key]['ua']['email_ua']
-            user_email = locators['user_email_ua']
+            user_email = user_email_locators.assembly_of_locators_with_email(email)
         elif language == "/en":
             email = Singleton.logins_and_mails[key]['en']['email_en']
-            user_email = locators['user_email_en']
+            user_email = user_email_locators.assembly_of_locators_with_email(email)
         self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_SEARCH).send_keys(email, Keys.ENTER)
         time.sleep(2)
-        assert self.is_element_present(*user_email), 'Пользователь не найден'
+        assert self.is_element_present(*user_email['user_email']), 'Пользователь не найден'
+
+    def search_user_by_email(self, email):  # поиск пользователя по e-mail
+        user_email_locators = AdminPageLocators()
+        user_email = user_email_locators.assembly_of_locators_with_email(email)
+        self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_SEARCH).send_keys(email, Keys.ENTER)
+        time.sleep(2)
+        assert self.is_element_present(*user_email['user_email']), 'Пользователь не найден'
 
     def checking_that_newly_created_user_has_status_disabled(self):  # проверка что новосозданный пользователь имеет статус "Отключено"
         status = self.browser.find_element(*AdminPageLocators.USER_STATUS).text
@@ -117,7 +123,7 @@ class AdminPage(BasePage):
     def saving_user_card(self):  # сохранение карточки пользователя
         self.browser.find_element(*AdminPageLocators.BUTTON_SAVE).click()
 
-    def waiting_to_save_status_and_open_users_page(self):  # ожидание сохранения статуса и открытия страницы всех пользователей
+    def waiting_to_save_user_and_open_all_users_page(self):  # ожидание сохранения пользователя и открытия страницы всех пользователей
         WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((AdminPageLocators.H1_USERS), 'Пользователи'))
 
     def verification_of_saving_data_entered_by_user_after_company_registration_ru(self, language, key):  # проверка сохранения введенных пользователем данных после регистрации компании RU
