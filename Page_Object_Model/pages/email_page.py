@@ -242,3 +242,20 @@ class EmailPage(BasePage):
         letter_text = self.browser.find_element(*text_in_letter).text
         assert expected_email_text in letter_text, 'Не верное сообщение'
         self.browser.switch_to.default_content()  # выход из фрейма
+
+    def click_on_link_in_email_to_confirm_password_change(self, language):  # переход по ссылке с письма для подтверждение смены пароля
+        letter_password_change = None
+        if language == "":
+            letter_password_change = EmailPageLocators.LETTER_CHANGE_PASSWORD_RU
+        elif language == "/ua":
+            letter_password_change = EmailPageLocators.LETTER_CHANGE_PASSWORD_UA
+        elif language == "/en":
+            letter_password_change = EmailPageLocators.LETTER_CHANGE_PASSWORD_EN
+
+        self.browser.find_element(*letter_password_change).click()
+
+        iframe = self.browser.find_element(*EmailPageLocators.IFRAME_LETTER)
+        self.browser.switch_to.frame(iframe)  # вход в фрейм
+        self.browser.find_element(*EmailPageLocators.LINK_IN_LETTER).click()
+        self.browser.switch_to.default_content()  # выход из фрейма
+        self.browser.switch_to.window(self.browser.window_handles[1])

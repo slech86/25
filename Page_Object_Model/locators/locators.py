@@ -66,6 +66,7 @@ class MainPageLocators:
     H1 = (By.CSS_SELECTOR, ('h1'))
     INFO_TEXT_ABOUT_SENDING_REGISTRATION_FORM = (By.CSS_SELECTOR, ('#lc-popup-registration .text'))  # информационный текст о подтверждении отправки формы регистрации
     INFO_TEXT_ABOUT_CONFIRMATION_OF_COMPANY_EMAIL_AFTER_REGISTRATION = (By.CSS_SELECTOR, ('#to-publish-modal h2'))  # информационный текст о подтверждении електронной почты работодателя после регистрации
+    INFO_TEXT_AFTER_CONFIRMATION_OF_PASSWORD_CHANGE = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст после подтверждения смены пароля
 
     # восстановление пароля
     FIELD_PASSWORD_IN_RESET_PASSWORD_FORM = (By.CSS_SELECTOR, '#resetpasswordform-newpassword')
@@ -105,10 +106,13 @@ class EmailPageLocators:
     LETTER_AFTER_RESPONSE_OF_RESPONSE_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваше резюме было отклонено"]'))  # письмо после отклонения отклика ru
     LETTER_AFTER_RESPONSE_OF_RESPONSE_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Ваше резюме було відхилено"]'))  # письмо после отклонения отклика ua
     LETTER_AFTER_RESPONSE_OF_RESPONSE_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Your resume has been rejected by the company!"]'))  # письмо после отклонения отклика en
-
     LETTER_PASSWORD_RECOVERY_CONFIRMATION_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Подтверждение восстановления пароля на LCwork"]'))  # письмо Подтверждение восстановления пароля ru
     LETTER_PASSWORD_RECOVERY_CONFIRMATION_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Підтвердження відновлення пароля на LCwork"]'))  # письмо Подтверждение восстановления пароля ua
     LETTER_PASSWORD_RECOVERY_CONFIRMATION_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Confirm password recovery on LC Work"]'))  # письмо Подтверждение восстановления пароля en
+    LETTER_CHANGE_PASSWORD_RU = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Смена пароля на LCwork"]'))  # письмо смена пароля ru
+    LETTER_CHANGE_PASSWORD_UA = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Зміна пароля на LCwork"]'))  # письмо смена пароля ua
+    LETTER_CHANGE_PASSWORD_EN = (By.XPATH, ('//tr[contains(@class, "message unread")]//span[text()="Change password on LC Work"]'))  # письмо смена пароля en
+
 
     IFRAME_LETTER = (By.CSS_SELECTOR, ('#messagecontframe'))
     LINK_IN_LETTER = (By.CSS_SELECTOR, ('[rel="noreferrer"]'))

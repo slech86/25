@@ -4,9 +4,30 @@ import time
 from Page_Object_Model.utility.utility import determining_position_of_object_in_drop_down_list
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from Page_Object_Model.utility.utility import generate_alphanum_random_string
 
 
 class JobSeekerEditPage(BasePage):
+    def password_changes(self, current_password, language):  # изменение пароля
+        self.browser.find_element(*JobSeekerRegistrationEditPageLocators.BUTTON_CHANGE_PASSWORD).click()
+        self.browser.find_element(*JobSeekerRegistrationEditPageLocators.CURRENT_PASSWORD).send_keys(current_password)
+        new_password = generate_alphanum_random_string(22)
+        self.browser.find_element(*JobSeekerRegistrationEditPageLocators.NEW_PASSWORD).send_keys(new_password)
+        self.browser.find_element(*JobSeekerRegistrationEditPageLocators.NEW_PASSWORD_AGAIN).send_keys(new_password)
+        self.browser.find_element(*JobSeekerRegistrationEditPageLocators.BUTTON_SAVE_CHANGES_PASSWORD).click()
+
+        info_text = WebDriverWait(self.browser, 12).until(EC.visibility_of_element_located(JobSeekerRegistrationEditPageLocators.INFO_TEXT_AFTER_PASSWORD_CHANGE)).text
+        if language == "":
+            assert "Ваш пароль был успешно изменен" == info_text, 'Не верное сообщение'
+        elif language == "/ua":
+            assert "Ваш пароль був успішно оновлений" == info_text, 'Не верное сообщение'
+        elif language == "/en":
+            assert "Your password has been successfully changed" == info_text, 'Не верное сообщение'
+        time.sleep(0.3)
+        self.browser.find_element(*JobSeekerRegistrationEditPageLocators.CROSS_IN_POP_UP_AFTER_PASSWORD_CHANGE).click()
+
+        return new_password
+
     def change_data_in_all_fields(self, language):  # изменение данных во всех полях
         self.browser.find_element(*JobSeekerRegistrationEditPageLocators.BUTTON_EDIT_IN_PERSONAL_INFORMATION_BLOCK).click()
         self.browser.find_element(*JobSeekerRegistrationEditPageLocators.FIELD_NAME).send_keys('_editing')

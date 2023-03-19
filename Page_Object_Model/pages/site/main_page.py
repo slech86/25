@@ -45,7 +45,7 @@ class MainPage(BasePage):
             assert "Your company profile has been sent for moderation, wait for confirmation!" == info_text, 'Не верное сообщение'
 
     def entering_new_password_when_recovering_it(self, language):  # ввод нового пароля при его восстановлении
-        new_password = generate_alphanum_random_string(10)
+        new_password = generate_alphanum_random_string(22)
         self.browser.find_element(*MainPageLocators.FIELD_PASSWORD_IN_RESET_PASSWORD_FORM).send_keys(new_password)
         self.browser.find_element(*MainPageLocators.FIELD_REPEAT_PASSWORD_IN_RESET_PASSWORD_FORM).send_keys(new_password)
         self.browser.find_element(*MainPageLocators.BUTTON_CHANGE_PASSWORD).click()
@@ -58,3 +58,13 @@ class MainPage(BasePage):
         elif language == "/en":
             assert "Your password has been successfully changed" == info_text, 'Не верное сообщение'
         return new_password
+
+    def checking_message_after_confirmation_of_password_change(self, language):  # проверка сообщения после подтверждения смены пароля
+        info_text = self.browser.find_element(*MainPageLocators.INFO_TEXT_AFTER_CONFIRMATION_OF_PASSWORD_CHANGE).text
+        if language == "":
+            assert "Ваш пароль был обновлен." == info_text, 'Не верное сообщение'
+        elif language == "/ua":
+            assert "Ваш пароль був оновлений." == info_text, 'Не верное сообщение'
+        elif language == "/en":
+            assert "Your password has been updated." == info_text, 'Не верное сообщение'
+

@@ -11,6 +11,13 @@ class JobSeekerRegistrationEditPageLocators:
     FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + prefix + 'email'))
     FIELD_PASSWORD = (By.CSS_SELECTOR, ('#' + prefix + 'password'))
     FIELD_REPEAT_PASSWORD = (By.CSS_SELECTOR, ('#' + prefix + 'repeatpassword'))
+    BUTTON_CHANGE_PASSWORD = (By.CSS_SELECTOR, '[data-target="#change-pass"]')
+    CURRENT_PASSWORD = (By.CSS_SELECTOR, '#changepasswordform-password')
+    NEW_PASSWORD = (By.CSS_SELECTOR, '#changepasswordform-newpassword')
+    NEW_PASSWORD_AGAIN = (By.CSS_SELECTOR, '#changepasswordform-repeatpassword')
+    BUTTON_SAVE_CHANGES_PASSWORD = (By.CSS_SELECTOR, '#job-seeker-edit-password-form [type="submit"]')
+    INFO_TEXT_AFTER_PASSWORD_CHANGE = (By.CSS_SELECTOR, '#save-pass .text')
+    CROSS_IN_POP_UP_AFTER_PASSWORD_CHANGE = (By.CSS_SELECTOR, '#save-pass .close')  # крестик в pop-up окне после измененя пароля
     # блок "Данные для авторизации"
 
     BUTTON_EDIT_IN_PERSONAL_INFORMATION_BLOCK = (By.CSS_SELECTOR, ('#personal-information .post-resume-title + .btn-edit'))

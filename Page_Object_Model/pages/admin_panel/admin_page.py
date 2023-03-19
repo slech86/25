@@ -120,6 +120,9 @@ class AdminPage(BasePage):
         field_user_email.clear()
         field_user_email.send_keys(TestData.time_Now + '@test.com' + str(random.random()))
 
+    def password_field_filling(self, password):  # заполнение поля пароль
+        self.browser.find_element(*AdminPageLocators.FIELD_USER_PASSWORD).send_keys(password)
+
     def saving_user_card(self):  # сохранение карточки пользователя
         self.browser.find_element(*AdminPageLocators.BUTTON_SAVE).click()
 

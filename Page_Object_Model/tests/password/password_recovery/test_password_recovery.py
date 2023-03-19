@@ -1,7 +1,7 @@
 import time
 import pytest
 from Page_Object_Model.pages.site.oll_page import OllPage
-from Page_Object_Model.configuration import UrlStartPage, UrlStartPageAdmin
+from Page_Object_Model.configuration import UrlStartPage
 from Page_Object_Model.users import Accounts
 from Page_Object_Model.pages.email_page import EmailPage
 from Page_Object_Model.pages.site.main_page import MainPage

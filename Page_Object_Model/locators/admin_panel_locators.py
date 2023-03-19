@@ -51,6 +51,7 @@ class AdminPageLocators:
     STATUS_USER_DELETE = (By.XPATH, ('//ul[contains(@id, "select2-user-status-")]/li[text()="Удалено"]'))
     FIELD_USER_LOGIN = (By.CSS_SELECTOR, ('[name="User[login]"]'))
     FIELD_USER_EMAIL = (By.CSS_SELECTOR, ('[name="User[email]"]'))
+    FIELD_USER_PASSWORD = (By.CSS_SELECTOR, '[name="User[toPassword]"]')
     FIELD_EMAIL_LANGUAGE = (By.XPATH, ('//span[contains(@id, "select2-user-mail_language-")]'))
     FIELD_SLUG = (By.CSS_SELECTOR, ('[name="User[slug]"]'))
 
