@@ -164,10 +164,10 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_NAME_OF_INSTITUTION).send_keys('_editing')
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_LEVEL_OF_EDUCATION).click()
         self.browser.find_element(*ResumeAddEditPageLocators.INCOMPLETE_HIGHER_EDUCATION).click()
-        self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_COUNTRY_EDUCATION).click()
-        self.browser.find_element(*ResumeAddEditPageLocators.COUNTRY_NOT_SELECTED_EDUCATION).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_CITI_EDUCATION).click()
         self.browser.find_element(*ResumeAddEditPageLocators.CITI_NOT_SELECTED_EDUCATION).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_COUNTRY_EDUCATION).click()
+        self.browser.find_element(*ResumeAddEditPageLocators.COUNTRY_NOT_SELECTED_EDUCATION).click()
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_DEPARTMENT_AND_SPECIALITY).send_keys('_editing')
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_MONTH_EDUCATION_START).click()
         self.browser.find_element(*ResumeAddEditPageLocators.MONTH_NOT_SELECTED_EDUCATION_START).click()
@@ -361,4 +361,5 @@ class ResumeEditPage(BasePage):
         self.browser.switch_to.window(self.browser.window_handles[1])
 
     def submitting_resume_change_for_publication(self,):  # отправка изменений резюме на публикацию
+        time.sleep(3)
         self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_PUBLISH).click()
