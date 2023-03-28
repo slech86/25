@@ -12,24 +12,19 @@ from Page_Object_Model.pages.site.interkassa_page import InterkassaPage
 from Page_Object_Model.pages.admin_panel.admin_sql_page import AdminSqlPage
 from Page_Object_Model.users import users_variables
 from Page_Object_Model.pages.admin_panel.admin_product_edit_page import AdminProductEditPage
+from Page_Object_Model.tests.company.buying_packages import _resources_buying_packages
+from Page_Object_Model.tests import _resources_tests
 
 # pytest --reruns 1 --html=./reports/report.html -s tests/company/buying_packages/test_3_0_2_package_purchase_standart_1_vacancy.py
-
-user = 'employer_vacancy'
 
 
 # @pytest.mark.skip
 # @pytest.mark.s_r_c
 class TestPackagePurchaseStandart1Vacancy:
-    def test_precondition(self, browser):
-        admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
-        admin_page.open()
-        admin_page.admin_authorization()
-        time.sleep(0.5)
-
-        admin_sql_page = AdminSqlPage(browser, UrlStartPageAdmin.url_page_admin + '/developer/sql')
-        admin_sql_page.open()
-        admin_sql_page.sql_deleting_all_user_orders(users_variables[user]["id"])  # удаление всех заказов пользователя
+    def test_precondition(self, browser, language):
+        _resources_buying_packages.admin_authorization(browser)  # авторизация в админку
+        _resources_buying_packages.sql_deleting_all_user_orders(browser)  # удаление всех заказов пользователя
+        _resources_tests.change_language_of_notifications_on_email(browser, language, users_variables[_resources_buying_packages.user]["id"])  # изменение языка уведомлений на email
 
     def test_package_purchase_standart_and_orders_processing_and_activating_it_on_site(self, browser, language):  # покупка пакета "Standart: 1 вакансия" и проведение заказа в админке и активация его на сайте
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
@@ -37,7 +32,7 @@ class TestPackagePurchaseStandart1Vacancy:
         # browser.maximize_window()
         page.open()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.user_authorization(user)  # авторизация пользователя
+        page.user_authorization(_resources_buying_packages.user)  # авторизация пользователя
         page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
         page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 
@@ -60,7 +55,7 @@ class TestPackagePurchaseStandart1Vacancy:
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_order_page()  # переход на страницу заказов
-        admin_page.search_for_user_orders_by_email(users_variables[user]["mail"])  # поиск заказов пользователя по e-mail
+        admin_page.search_for_user_orders_by_email(users_variables[_resources_buying_packages.user]["mail"])  # поиск заказов пользователя по e-mail
         admin_page.order_processing()  # проведение заказа, изменение статуса заказа с "Новый" на "Проведенный"
         singleton = Singleton()
         singleton.id_order = admin_page.getting_last_order_id_of_user()  # получение последнего id заказа пользователя
@@ -107,5 +102,5 @@ class TestPackagePurchaseStandart1Vacancy:
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_order_page()  # переход на страницу заказов
-        admin_page.search_for_user_orders_by_email(users_variables[user]["mail"])  # поиск заказов пользователя по e-mail
+        admin_page.search_for_user_orders_by_email(users_variables[_resources_buying_packages.user]["mail"])  # поиск заказов пользователя по e-mail
         admin_page.complete_objects_deletion()  # полное удаление объектов

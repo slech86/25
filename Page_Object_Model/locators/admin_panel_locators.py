@@ -53,6 +53,11 @@ class AdminPageLocators:
     FIELD_USER_EMAIL = (By.CSS_SELECTOR, ('[name="User[email]"]'))
     FIELD_USER_PASSWORD = (By.CSS_SELECTOR, '[name="User[toPassword]"]')
     FIELD_EMAIL_LANGUAGE = (By.XPATH, ('//span[contains(@id, "select2-user-mail_language-")]'))
+    EMAIL_LANGUAGE_RUSSIAN = (By.XPATH, ('//ul[contains(@id, "select2-user-mail_language-")]/li[text()="[#1] Русский"]'))
+    EMAIL_LANGUAGE_UKRAINIAN = (By.XPATH, ('//ul[contains(@id, "select2-user-mail_language-")]/li[text()="[#3] Українська"]'))
+    EMAIL_LANGUAGE_ENGLISH = (By.XPATH, ('//ul[contains(@id, "select2-user-mail_language-")]/li[text()="[#4] English"]'))
+    EMAIL_LANGUAGE_POLISH = (By.XPATH, ('//ul[contains(@id, "select2-user-mail_language-")]/li[text()="[#5] Polski"]'))
+
     FIELD_SLUG = (By.CSS_SELECTOR, ('[name="User[slug]"]'))
 
     FIELD_NAME = (By.CSS_SELECTOR, ('[name="User[descriptions][1][name]"]'))

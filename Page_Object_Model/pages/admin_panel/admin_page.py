@@ -123,6 +123,18 @@ class AdminPage(BasePage):
     def password_field_filling(self, password):  # заполнение поля пароль
         self.browser.find_element(*AdminPageLocators.FIELD_USER_PASSWORD).send_keys(password)
 
+    def change_language_of_notifications_on_email(self, language):  # изменение языка уведомлений на email
+        self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_LANGUAGE).click()
+        if language == "":
+            self.browser.find_element(*AdminPageLocators.EMAIL_LANGUAGE_RUSSIAN).click()
+        elif language == "/ua":
+            self.browser.find_element(*AdminPageLocators.EMAIL_LANGUAGE_UKRAINIAN).click()
+        elif language == "/en":
+            self.browser.find_element(*AdminPageLocators.EMAIL_LANGUAGE_ENGLISH).click()
+        elif language == "/pl":
+            self.browser.find_element(*AdminPageLocators.EMAIL_LANGUAGE_POLISH).click()
+
+
     def saving_user_card(self):  # сохранение карточки пользователя
         self.browser.find_element(*AdminPageLocators.BUTTON_SAVE).click()
 
