@@ -7,7 +7,7 @@ from Page_Object_Model.pages.site.my_resume_page import MyResumePage
 from Page_Object_Model.pages.site.resume_edit_page import ResumeEditPage
 from Page_Object_Model.pages.site.resume_preview_page import ResumePreviewPage
 
-# pytest --reruns 1 --html=./reports/report.html -s tests/job_seeker/resume/preview/test_3_3_0_preview_resume_when_editing.py
+# pytest --reruns 1 --html=./reports/report.html tests/job_seeker/resume/preview/test_3_3_0_preview_resume_when_editing.py
 
 user = 'job_seeker'
 resume_id = '1358'
