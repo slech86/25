@@ -4,12 +4,11 @@ from Page_Object_Model.pages.site.resumes_page import ResumesPage
 from Page_Object_Model.pages.site.resume_page import ResumePage
 from Page_Object_Model.configuration import UrlStartPage
 
-# pytest --reruns 1 --html=./reports/report.html -s tests/job_seeker/contact_block/test_2_1_lack_of_contact_block_on_resume_page.py
+# pytest --reruns 1 --html=./reports/report.html tests/job_seeker/contact_block/test_2_1_lack_of_contact_block_on_resume_page.py
 
 user = 'job_seeker'
 
 
-# @pytest.mark.s_r_c
 # @pytest.mark.job_seeker
 def test_checking_absence_of_block_of_contacts_with_an_authorized_applicant(browser, language):  # проверка отсутствия блока контактов при авторизации как соискатель
     url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"

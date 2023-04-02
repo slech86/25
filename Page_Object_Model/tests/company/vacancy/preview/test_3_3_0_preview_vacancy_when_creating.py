@@ -9,12 +9,11 @@ from Page_Object_Model.pages.site.vacancy_add_page import VacancyAddPage
 from Page_Object_Model.data_for_testing import TestData
 from Page_Object_Model.pages.site.vacancy_preview_page import VacancyPreviewPage
 
-# pytest --reruns 1 --html=./reports/report.html -s tests/company/vacancy/preview/test_3_3_0_preview_vacancy_when_creating.py
+# pytest --reruns 1 --html=./reports/report.html tests/company/vacancy/preview/test_3_3_0_preview_vacancy_when_creating.py
 
 user = 'employer'
 
 
-@pytest.mark.s_r_c
 def test_preview_vacancy_when_creating(browser, language):  # предпросмотр вакансии при создании
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)

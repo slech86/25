@@ -6,21 +6,17 @@ from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
 from Page_Object_Model.pages.site.vacancy_edit_page import VacancyEditPage
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_vacancy_edit_page import AdminVacancyEditPage
-from Page_Object_Model.data_for_testing import TestDataEditing
-from Page_Object_Model.pages.site.vacancy_preview_page import VacancyPreviewPage
 from Page_Object_Model.singleton import Singleton
+from Page_Object_Model.tests.company.vacancy import _resources_vacancy
 
-user = 'employer_vacancy'
 
-
-@pytest.mark.s_r_c
 def test_editing_vacancies(browser, language):  # редактирование вакансии
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)
     # browser.maximize_window()
     page.open()
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.user_authorization(user)  # авторизация пользователя
+    page.user_authorization(_resources_vacancy.user_vacancy)  # авторизация пользователя
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
     page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 

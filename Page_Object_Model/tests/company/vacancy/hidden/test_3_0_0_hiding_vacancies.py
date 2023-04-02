@@ -7,12 +7,13 @@ from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
 from Page_Object_Model.pages.site.vacancy_page import VacancyPage
 
+# pytest --reruns 1 --html=./reports/report.html tests/company/vacancy/hidden
+
 user = 'employer'
 vacancy_name = 'qa test скрытие вакансии'
 vacancy_id = '3519'
 
 
-@pytest.mark.s_r_c
 class TestHidingVacancy:
     def test_precondition(self, browser):
         admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)

@@ -8,14 +8,13 @@ from Page_Object_Model.pages.site.my_vacancies_page import MyVacanciesPage
 from Page_Object_Model.pages.site.vacancy_edit_page import VacancyEditPage
 from Page_Object_Model.pages.site.vacancy_preview_page import VacancyPreviewPage
 
-# pytest --reruns 1 --html=./reports/report.html -s tests/company/vacancy/preview/test_3_3_0_preview_vacancy_when_editing.py
+# pytest --reruns 1 --html=./reports/report.html tests/company/vacancy/preview/test_3_3_0_preview_vacancy_when_editing.py
 
 user = 'employer'
 vacancy_id = '3037'
 vacancy_name = 'qa test предпросмотр вакансии при редактировании'
 
 
-@pytest.mark.s_r_c
 def test_preview_vacancy_when_editing(browser, language):  # предпросмотр вакансии при редактировании
     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_Page)

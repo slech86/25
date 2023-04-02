@@ -12,7 +12,7 @@ from Page_Object_Model.tests import _resources_tests
 user = 'employer'
 
 
-def test_precondition(self, browser, language):
+def test_precondition(browser, language):
     _resources_tests.admin_authorization(browser)  # авторизация в админку
     _resources_tests.change_language_of_notifications_on_email(browser, language, users_variables[user]["id"])  # изменение языка уведомлений на email
 

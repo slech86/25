@@ -16,7 +16,7 @@ from Page_Object_Model.data_for_testing import TestData
 from Page_Object_Model.pages.admin_panel.admin_sql_page import AdminSqlPage
 from Page_Object_Model.users import users_variables
 
-user = 'job_seeker_resume'
+user_resume = 'job_seeker_resume'
 
 
 @pytest.mark.job_seeker
@@ -30,7 +30,7 @@ class TestResumeAdd:
 
         admin_sql_page = AdminSqlPage(browser, UrlStartPageAdmin.url_page_admin + '/developer/sql')
         admin_sql_page.open()
-        admin_sql_page.sql_deleting_all_user_resume(users_variables[user]["id"])  # удаление всех резюме пользователя
+        admin_sql_page.sql_deleting_all_user_resume(users_variables[user_resume]["id"])  # удаление всех резюме пользователя
 
     @pytest.mark.s_r_c
     def test_adding_resume(self, browser, language):  # добавление резюме
@@ -39,7 +39,7 @@ class TestResumeAdd:
         # browser.maximize_window()
         page.open()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.user_authorization(user)  # авторизация пользователя
+        page.user_authorization(user_resume)  # авторизация пользователя
         page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
         page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 

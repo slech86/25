@@ -6,7 +6,7 @@ from Page_Object_Model.pages.admin_panel.admin_resume_edit_page import AdminResu
 from Page_Object_Model.pages.admin_panel.admin_currency_rates_page import AdminCurrencyRatesPage
 from Page_Object_Model.data_for_testing import TestData
 
-user = 'job_seeker_resume'
+user_resume = 'job_seeker_resume'
 
 
 @pytest.mark.s_r_c
@@ -31,4 +31,4 @@ def test_verification_of_saving_data_entered_by_user_after_resume_creation(brows
     admin_resumes_page.go_to_object_editing_page()  # переход на страницу редактирования резюме
 
     admin_resume_edit_page = AdminResumeEditPage(browser, browser.current_url)
-    admin_resume_edit_page.verification_of_saving_data_entered_by_user_after_resume_creation_ru(exchange_rates[1], user)  # проверка сохранения введенных пользователем данных после создания резюме RU
+    admin_resume_edit_page.verification_of_saving_data_entered_by_user_after_resume_creation_ru(exchange_rates[1], user_resume)  # проверка сохранения введенных пользователем данных после создания резюме RU

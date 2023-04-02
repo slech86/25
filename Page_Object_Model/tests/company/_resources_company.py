@@ -23,3 +23,4 @@ def sql_deleting_all_user_orders(browser):  # удаление всех зака
     admin_sql_page = AdminSqlPage(browser, UrlStartPageAdmin.url_page_admin + '/developer/sql')
     admin_sql_page.open()
     admin_sql_page.sql_deleting_all_user_orders(users_variables[user]["id"])  # удаление всех заказов пользователя
+    return admin_sql_page

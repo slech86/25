@@ -7,11 +7,11 @@ from Page_Object_Model.pages.site.vacancy_add_page import VacancyAddPage
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.data_for_testing import TestData
 
-# pytest --reruns 1 --html=./reports/report.html -s tests/company/vacancy/draft/test_2_2_adding_vacancy_to_draft_and_deletion_it.py
+# pytest --reruns 1 --html=./reports/report.html tests/company/vacancy/draft/test_2_2_adding_vacancy_to_draft_and_deletion_it.py
 
 user = 'employer'
 
-# @pytest.mark.s_r_c
+
 class TestAddingVacancyToDraft:
     def test_checking_adding_vacancy_to_draft(self, browser, language):  # проверка добавления вакансии в черновик
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
