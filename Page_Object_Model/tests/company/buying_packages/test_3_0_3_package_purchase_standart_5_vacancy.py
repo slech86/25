@@ -18,7 +18,7 @@ from Page_Object_Model.tests.company.buying_packages import _resources_buying_pa
 from Page_Object_Model.tests.company import _resources_company
 from Page_Object_Model.tests import _resources_tests
 
-# pytest --reruns 1 --html=./reports/report.html -s tests/company/buying_packages/test_3_0_3_package_purchase_standart_5_vacancy.py
+# pytest --reruns 1 --html=./reports/report.html tests/company/buying_packages/test_3_0_3_package_purchase_standart_5_vacancy.py
 
 
 # @pytest.mark.skip

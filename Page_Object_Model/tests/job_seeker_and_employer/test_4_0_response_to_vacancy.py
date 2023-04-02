@@ -11,13 +11,13 @@ from Page_Object_Model.pages.site.vacancy_page import VacancyPage
 from Page_Object_Model.pages.site.my_responses_page import MyResponsesPage
 from Page_Object_Model.pages.site.responses_to_vacancy_page import ResponsesToVacancyPage
 from Page_Object_Model.data_for_testing import contact_display_when_response_to_vacancy
-from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_sql_page import AdminSqlPage
 from Page_Object_Model.users import users_variables
 from Page_Object_Model.users import Accounts
 from Page_Object_Model.pages.email_page import EmailPage
+from Page_Object_Model.tests import _resources_tests
 
-# pytest --reruns 1 --html=./reports/report.html -s tests/job_seeker_and_employer/test_4_0_response_to_vacancy.py
+# pytest --reruns 1 --html=./reports/report.html tests/job_seeker_and_employer/test_4_0_response_to_vacancy.py
 
 job_title_vacancy = 'qa test отклик на вакансию'
 job_title_resume = 'qa test отклик на вакансию'
@@ -27,14 +27,12 @@ user_employer = 'employer'
 user_job_seeker = 'job_seeker'
 
 
-@pytest.mark.s_r_c
 # @pytest.mark.skip
 class TestResponseToVacancy:
-    def test_precondition(self, browser):
-        admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
-        admin_page.open()
-        admin_page.admin_authorization()
-        time.sleep(0.5)
+    def test_precondition(self, browser, language):
+        _resources_tests.admin_authorization(browser)  # авторизация в админку
+        _resources_tests.change_language_of_notifications_on_email(browser, language, users_variables[user_employer]["id"])  # изменение языка уведомлений на email
+        _resources_tests.change_language_of_notifications_on_email(browser, language, users_variables[user_job_seeker]["id"])  # изменение языка уведомлений на email
 
         admin_sql_page = AdminSqlPage(browser, UrlStartPageAdmin.url_page_admin + '/developer/sql')
         admin_sql_page.open()

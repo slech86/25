@@ -8,9 +8,9 @@ from Page_Object_Model.data_for_testing import contact_display_when_opening_cont
 from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
 from Page_Object_Model.pages.site.services_and_prices_page import ServicesAndPricesPage
 from Page_Object_Model.configuration import UrlStartPageAdmin
-from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_sql_page import AdminSqlPage
 from Page_Object_Model.users import users_variables
+from Page_Object_Model.tests import _resources_tests
 
 # pytest --reruns 1 --html=./reports/report.html -s tests/job_seeker_and_employer/contact_block/test_4_1_opening_contacts_in_resume.py
 
@@ -23,12 +23,9 @@ product_id = '30'
 
 class TestBlockOfContactsOnResumePage:
     # @pytest.mark.skip
-    # @pytest.mark.s_r_c
-    def test_precondition(self, browser):
-        admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
-        admin_page.open()
-        admin_page.admin_authorization()
-        time.sleep(0.5)
+    def test_precondition(self, browser, language):
+        _resources_tests.admin_authorization(browser)  # авторизация в админку
+        _resources_tests.change_language_of_notifications_on_email(browser, language, users_variables[user]["id"])  # изменение языка уведомлений на email
 
         admin_sql_page = AdminSqlPage(browser, UrlStartPageAdmin.url_page_admin + '/developer/sql')
         admin_sql_page.open()

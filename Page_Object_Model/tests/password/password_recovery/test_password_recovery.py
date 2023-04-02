@@ -5,6 +5,8 @@ from Page_Object_Model.configuration import UrlStartPage
 from Page_Object_Model.users import Accounts
 from Page_Object_Model.pages.email_page import EmailPage
 from Page_Object_Model.pages.site.main_page import MainPage
+from Page_Object_Model.users import users_variables
+from Page_Object_Model.tests import _resources_tests
 
 # pytest --reruns 1 --html=./reports/report.html -s tests/password/password_recovery
 
@@ -14,6 +16,10 @@ new_password = None
 
 # @pytest.mark.skip
 class TestPasswordRecovery:
+    def test_precondition(self, browser, language):
+        _resources_tests.admin_authorization(browser)  # авторизация в админку
+        _resources_tests.change_language_of_notifications_on_email(browser, language, users_variables[user]["id"])  # изменение языка уведомлений на email
+
     def test_submitting_password_recovery_request(self, browser, language):  # отправка запроса на восстановление пароля
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
         page = OllPage(browser, url_page)

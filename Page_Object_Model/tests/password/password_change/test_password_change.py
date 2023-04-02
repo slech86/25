@@ -9,6 +9,7 @@ from Page_Object_Model.pages.site.main_page import MainPage
 from Page_Object_Model.users import users_variables
 from Page_Object_Model.pages.site.job_seeker_edit_page import JobSeekerEditPage
 from Page_Object_Model.pages.site.job_seeker_personal_cabinet_page import JobSeekerPersonalCabinetPage
+from Page_Object_Model.tests import _resources_tests
 
 # pytest --reruns 1 --html=./reports/report.html -s tests/password/password_change
 
@@ -18,11 +19,10 @@ new_password = None
 
 # @pytest.mark.skip
 class TestPasswordChange:
-    def test_precondition(self, browser):
-        admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
-        admin_page.open()
-        admin_page.admin_authorization()
-        time.sleep(0.5)
+    def test_precondition(self, browser, language):
+        _resources_tests.admin_authorization(browser)  # авторизация в админку
+        _resources_tests.change_language_of_notifications_on_email(browser, language, users_variables[user]["id"])  # изменение языка уведомлений на email
+
         admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin + '/user')
         admin_page.open()
         admin_page.search_user_by_email(users_variables[user]["mail"])  # поиск пользователя по e-mail
