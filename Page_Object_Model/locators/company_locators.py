@@ -129,7 +129,7 @@ class MyVacanciesPageLocators:
             'button_publish': (By.XPATH, '//a[@data-vacancy-id=' + id_vacancies + '][@data-status-id="1"]'),
             'new_response_icon': (By.CSS_SELECTOR, '#my-vacancy-' + id_vacancies + ' .counter.red'),
             'button_show_responses': (By.XPATH, ('//a[contains(@href, "/vacancy/' + id_vacancies + '/feedback")]')),
-            'button_print': (By.XPATH, '//a[@href="/vacancy/' + id_vacancies + '/print"]'),
+            'button_print': (By.XPATH, '//a[contains(@href, "/vacancy/' + id_vacancies + '/print")]'),
             'button_delete': (By.CSS_SELECTOR, ('#my-vacancy-' + id_vacancies + ' .open-delete-modal'))
         }
         return locators_with_id_vacancies
