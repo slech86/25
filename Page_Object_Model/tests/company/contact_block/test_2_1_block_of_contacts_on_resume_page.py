@@ -4,9 +4,8 @@ from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.resumes_page import ResumesPage
 from Page_Object_Model.pages.site.resume_page import ResumePage
 from Page_Object_Model.configuration import UrlStartPage, UrlStartPageAdmin
-from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
-from Page_Object_Model.pages.admin_panel.admin_sql_page import AdminSqlPage
-from Page_Object_Model.users import users_variables
+from Page_Object_Model.tests.company import _resources_company
+from Page_Object_Model.tests import _resources_tests
 
 # pytest --reruns 1 --html=./reports/report.html -s tests/company/contact_block/test_2_1_block_of_contacts_on_resume_page.py
 
@@ -16,14 +15,8 @@ user = 'employer_vacancy'
 # @pytest.mark.skip
 # @pytest.mark.s_r_c
 def test_precondition(browser):
-    admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
-    admin_page.open()
-    admin_page.admin_authorization()
-    time.sleep(0.5)
-
-    admin_sql_page = AdminSqlPage(browser, UrlStartPageAdmin.url_page_admin + '/developer/sql')
-    admin_sql_page.open()
-    admin_sql_page.sql_deleting_all_user_orders(users_variables[user]["id"])  # удаление всех заказов пользователя
+    _resources_tests.admin_authorization(browser)  # авторизация в админку
+    _resources_company.sql_deleting_all_user_orders(browser)  # удаление всех заказов пользователя
 
 def test_block_of_contacts_on_resume_page(browser, language):  # блок контактов на странице резюме
     url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"

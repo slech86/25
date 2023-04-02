@@ -18,3 +18,8 @@ from Page_Object_Model.users import users_variables
 
 user = 'employer_vacancy'
 
+
+def sql_deleting_all_user_orders(browser):  # удаление всех заказов пользователя
+    admin_sql_page = AdminSqlPage(browser, UrlStartPageAdmin.url_page_admin + '/developer/sql')
+    admin_sql_page.open()
+    admin_sql_page.sql_deleting_all_user_orders(users_variables[user]["id"])  # удаление всех заказов пользователя

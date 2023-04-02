@@ -8,10 +8,8 @@ from Page_Object_Model.data_for_testing import TestData
 # pytest --reruns 1 --html=./reports/report.html -s tests/company/preview_company/test_3_3_0_preview_company_profile_when_registration.py
 
 
-# @pytest.mark.s_r_c
 # @pytest.mark.skip
 class TestCompanyRegistration:
-    # @pytest.mark.s_r_c
     def test_preview_company_profile_when_registration(self, browser, language):  # предпросмотр профиля компании при регистрации
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
         print(url_page)

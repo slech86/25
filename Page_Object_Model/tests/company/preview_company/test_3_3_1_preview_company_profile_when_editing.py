@@ -5,13 +5,18 @@ from Page_Object_Model.pages.site.company_edit_page import CompanyEditPage
 from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
 from Page_Object_Model.pages.site.company_preview_page import CompanyPreviewPage
 from Page_Object_Model.users import users_variables
+from Page_Object_Model.tests import _resources_tests
 
 # pytest --reruns 1 --html=./reports/report.html -s tests/company/preview_company/test_3_3_1_preview_company_profile_when_editing.py
 
 user = 'employer'
 
 
-# @pytest.mark.s_r_c
+def test_precondition(self, browser, language):
+    _resources_tests.admin_authorization(browser)  # авторизация в админку
+    _resources_tests.change_language_of_notifications_on_email(browser, language, users_variables[user]["id"])  # изменение языка уведомлений на email
+
+
 def test_preview_company_profile_when_editing(browser, language):  # предпросмотр профиля компании при редактировании
     url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     page = OllPage(browser, url_page)

@@ -15,6 +15,7 @@ from Page_Object_Model.pages.admin_panel.admin_sql_page import AdminSqlPage
 from Page_Object_Model.users import users_variables
 from Page_Object_Model.pages.admin_panel.admin_product_edit_page import AdminProductEditPage
 from Page_Object_Model.tests.company.buying_packages import _resources_buying_packages
+from Page_Object_Model.tests.company import _resources_company
 from Page_Object_Model.tests import _resources_tests
 
 # pytest --reruns 1 --html=./reports/report.html -s tests/company/buying_packages/test_3_0_3_package_purchase_standart_5_vacancy.py
@@ -25,7 +26,7 @@ from Page_Object_Model.tests import _resources_tests
 class TestPackagePurchaseStandart5Vacancy:
     def test_precondition(self, browser, language):
         _resources_tests.admin_authorization(browser)  # авторизация в админку
-        _resources_buying_packages.sql_deleting_all_user_orders(browser)  # удаление всех заказов пользователя
+        _resources_company.sql_deleting_all_user_orders(browser)  # удаление всех заказов пользователя
         _resources_tests.change_language_of_notifications_on_email(browser, language, users_variables[_resources_buying_packages.user]["id"])  # изменение языка уведомлений на email
 
     def test_package_purchase_standart_and_orders_processing_and_activating_it_on_site(self, browser, language):  # покупка пакета "Standart: 5 вакансия" и проведение заказа в админке и активация его на сайте
