@@ -19,13 +19,6 @@ from Page_Object_Model.users import users_variables
 user = 'employer_vacancy'
 
 
-def admin_authorization(browser):  # авторизация в админку
-    admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
-    admin_page.open()
-    admin_page.admin_authorization()
-    time.sleep(0.5)
-
-
 def sql_deleting_all_user_orders(browser):  # удаление всех заказов пользователя
     admin_sql_page = AdminSqlPage(browser, UrlStartPageAdmin.url_page_admin + '/developer/sql')
     admin_sql_page.open()

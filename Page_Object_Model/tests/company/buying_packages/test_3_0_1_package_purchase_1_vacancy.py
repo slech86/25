@@ -24,7 +24,7 @@ from Page_Object_Model.tests import _resources_tests
 # @pytest.mark.s_r_c
 class TestPackagePurchase1Vacancy:
     def test_precondition(self, browser, language):
-        _resources_buying_packages.admin_authorization(browser)  # авторизация в админку
+        _resources_tests.admin_authorization(browser)  # авторизация в админку
         _resources_buying_packages.sql_deleting_all_user_orders(browser)  # удаление всех заказов пользователя
         _resources_tests.change_language_of_notifications_on_email(browser, language, users_variables[_resources_buying_packages.user]["id"])  # изменение языка уведомлений на email
 
