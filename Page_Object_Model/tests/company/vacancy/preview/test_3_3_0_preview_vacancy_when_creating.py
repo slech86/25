@@ -31,6 +31,7 @@ def test_preview_vacancy_when_creating(browser, language):  # предпросм
     my_vacancies_page.go_to_vacancy_add_page()  # переход на страницу "Добавить вакансию"
 
     add_vacancy_page = VacancyAddPage(browser, browser.current_url)
+    page.choice_of_russian_language_in_multi_language_forms()  # выбор русского языка в мультиязычных формах
     add_vacancy_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
     add_vacancy_page.filling_in_required_fields()  # заполнение обязательных полей
     add_vacancy_page.browser.execute_script("window.scrollBy(0, 2500);")

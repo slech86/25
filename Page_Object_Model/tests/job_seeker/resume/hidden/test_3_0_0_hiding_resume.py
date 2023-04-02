@@ -8,6 +8,8 @@ from Page_Object_Model.pages.admin_panel.admin_resume_edit_page import AdminResu
 from Page_Object_Model.pages.site.my_resume_page import MyResumePage
 from Page_Object_Model.pages.site.resume_page import ResumePage
 
+# pytest --reruns 1 --html=./reports/report.html tests/job_seeker/resume/hidden
+
 user = 'job_seeker'
 resume_name = 'qa test скрытие резюме'
 resume_id = '1561'

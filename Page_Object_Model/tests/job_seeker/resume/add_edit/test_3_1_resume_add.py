@@ -32,7 +32,6 @@ class TestResumeAdd:
         admin_sql_page.open()
         admin_sql_page.sql_deleting_all_user_resume(users_variables[user_resume]["id"])  # удаление всех резюме пользователя
 
-    @pytest.mark.s_r_c
     def test_adding_resume(self, browser, language):  # добавление резюме
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
         page = OllPage(browser, url_page)
@@ -51,6 +50,7 @@ class TestResumeAdd:
         my_resume_page.go_to_add_resume_page()  # переход на страницу "Разместить резюме"
 
         add_resume_page = ResumeAddPage(browser, browser.current_url)
+        page.choice_of_russian_language_in_multi_language_forms()  # выбор русского языка в мультиязычных формах
         add_resume_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
         add_resume_page.filling_in_required_fields(TestData.job_title_resume)  # заполнение обязательных полей
         browser.execute_script("window.scrollBy(0, -4000);")
@@ -98,8 +98,6 @@ class TestResumeAdd:
         resume_page.open()
         resume_page.checking_opening_of_page_of_published_resume(TestData.job_title_resume)  # проверка открытия страницы опубликованного резюме
 
-
-    # @pytest.mark.s_r_c
     def test_verification_of_letter_after_publication_of_resume(self, browser, language):  # проверка письма после публикации резюме
         link = Accounts.url_email
         email_page = EmailPage(browser, link)

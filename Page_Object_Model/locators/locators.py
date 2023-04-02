@@ -30,8 +30,12 @@ class OllPageLocators:
     FIELD_FORGOT_PASSWORD_FORM_EMAIL = (By.CSS_SELECTOR, '#forgotpasswordform-email')
     BUTTON_CHANGE_PASSWORD = (By.CSS_SELECTOR, '.modal-footer>[type="submit"]')
     INFO_TEXT_AFTER_PASSWORD_RESET_REQUEST = (By.CSS_SELECTOR, '#send-reset-link .text')
-
     # pop-up окно авторизации "Восстановить пароль"
+
+    RUSSIAN_LANGUAGE_TAB = (By.CSS_SELECTOR, '[id="1-tab"]')
+    UKRAINIAN_LANGUAGE_TAB = (By.CSS_SELECTOR, 'id="3-tab"')
+    ENGLISH_LANGUAGE_TAB = (By.CSS_SELECTOR, 'id="4-tab"')
+    # страницы мультиязычности
 
 
 class VacanciesPageLocators:

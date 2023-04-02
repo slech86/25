@@ -86,7 +86,7 @@ class MyResumePageLocators:
             'button_publish': (By.XPATH, '//a[@data-resume-id=' + id_resume + '][@data-status-id="1"]'),
             'button_delete': (By.CSS_SELECTOR, '.open-delete-modal[data-resume-id="' + id_resume + '"]'),
             'button_edit': (By.XPATH, '//a[contains(@href, "/resume/' + id_resume + '/edit")]'),
-            'button_resume_menu': (By.XPATH, '//a[@href="/resume/' + id_resume + '/edit"]/ancestor::div[4]')
+            'button_resume_menu': (By.XPATH, '//a[contains(@href, "/resume/' + id_resume + '/edit")]/ancestor::div[4]'),
         }
         return locators
 

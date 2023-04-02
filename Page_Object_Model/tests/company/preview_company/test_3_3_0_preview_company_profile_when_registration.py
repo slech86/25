@@ -5,7 +5,7 @@ from Page_Object_Model.configuration import UrlStartPage
 from Page_Object_Model.pages.site.company_preview_page import CompanyPreviewPage
 from Page_Object_Model.data_for_testing import TestData
 
-# pytest --reruns 1 --html=./reports/report.html -s tests/company/preview_company/test_3_3_0_preview_company_profile_when_registration.py
+# pytest --reruns 1 --html=./reports/report.html tests/company/preview_company/test_3_3_0_preview_company_profile_when_registration.py
 
 
 # @pytest.mark.skip
@@ -20,6 +20,7 @@ class TestCompanyRegistration:
         page.go_to_company_registration_page()  # нажатие на кнопку для перехода на страницу регистрации работодателя
 
         company_registration_page = CompanyRegistrationPage(browser, browser.current_url)
+        page.choice_of_russian_language_in_multi_language_forms()  # выбор русского языка в мультиязычных формах
         company_registration_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
         company_registration_page.filling_in_required_fields(language, 'company')  # заполнение обязательных полей
         company_registration_page.go_to_preview_page()  # переход на страницу предпросмотра

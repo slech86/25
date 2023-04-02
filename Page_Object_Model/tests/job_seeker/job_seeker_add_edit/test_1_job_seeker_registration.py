@@ -20,6 +20,7 @@ class TestJobSeekerRegistration:
         page.go_to_job_seeker_registration_page()  # нажатие на кнопку для перехода на страницу регистрации соискателя
 
         job_seeker_registration_page = JobSeekerRegistrationPage(browser, browser.current_url)
+        page.choice_of_russian_language_in_multi_language_forms()  # выбор русского языка в мультиязычных формах
         job_seeker_registration_page.filling_in_all_fields(language, 'job_seeker')  # заполнение всех полей
         job_seeker_registration_page.submitting_form_for_registration()  # отправка формы на регистрацию
 

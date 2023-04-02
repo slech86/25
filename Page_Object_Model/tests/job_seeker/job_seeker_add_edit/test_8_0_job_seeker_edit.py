@@ -21,6 +21,7 @@ def test_changing_all_job_seeker_data(browser, language):  # изменение 
     job_seeker_personal_cabinet_page.go_to_personal_data_page()  # переход на страницу "Личные данные"
 
     job_seeker_edit_page = JobSeekerEditPage(browser, browser.current_url)
+    page.choice_of_russian_language_in_multi_language_forms()  # выбор русского языка в мультиязычных формах
     job_seeker_edit_page.change_data_in_all_fields(language)  # изменение данных во всех полях
     job_seeker_edit_page.saving_data_after_modification()  # сохранение данных после изменений
     job_seeker_edit_page.checking_message_after_saving_changes_to_personal_information(language)  # проверка сообщения после сохранения изменений личной информации

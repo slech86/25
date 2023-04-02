@@ -21,6 +21,7 @@ def test_changing_all_company_data(browser, language):  # изменение в�
     company_personal_cabinet_page.go_to_personal_data_page()  # переход на страницу "Личные данные"
 
     company_edit_page = CompanyEditPage(browser, browser.current_url)
+    page.choice_of_russian_language_in_multi_language_forms()  # выбор русского языка в мультиязычных формах
     company_edit_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
     company_edit_page.change_data_in_all_fields(language)  # изменение данных во всех полях
 

@@ -113,3 +113,7 @@ class OllPage(BasePage):
             assert "Модерація вашого облікового запису завершиться впродовж 24 годин" == info_text, 'Не верное сообщение'
         elif language == "/en":
             assert "Your account will be moderated within 24 hours." == info_text, 'Не верное сообщение'
+
+    def choice_of_russian_language_in_multi_language_forms(self):  # выбор русского языка в мультиязычных формах
+        self.browser.find_element(*OllPageLocators.RUSSIAN_LANGUAGE_TAB).click()
+        time.sleep(0.5)
