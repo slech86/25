@@ -9,11 +9,9 @@ from Page_Object_Model.pages.site.my_resume_page import MyResumePage
 from Page_Object_Model.pages.site.resume_edit_page import ResumeEditPage
 from Page_Object_Model.pages.admin_panel.admin_resume_edit_page import AdminResumeEditPage
 from Page_Object_Model.singleton import Singleton
+from Page_Object_Model.tests.job_seeker.resume import _resources_resume
 
-user_resume = 'job_seeker_resume'
 
-
-@pytest.mark.s_r_c
 @pytest.mark.job_seeker
 # @pytest.mark.skip
 def test_editing_resume(browser, language):  # редактирование резюме
@@ -22,7 +20,7 @@ def test_editing_resume(browser, language):  # редактирование ре
     # browser.maximize_window()
     page.open()
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.user_authorization(user_resume)  # авторизация пользователя
+    page.user_authorization(_resources_resume.user_resume)  # авторизация пользователя
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
     page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 

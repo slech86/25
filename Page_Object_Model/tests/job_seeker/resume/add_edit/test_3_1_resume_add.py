@@ -15,22 +15,19 @@ from Page_Object_Model.users import Accounts
 from Page_Object_Model.data_for_testing import TestData
 from Page_Object_Model.pages.admin_panel.admin_sql_page import AdminSqlPage
 from Page_Object_Model.users import users_variables
-
-user_resume = 'job_seeker_resume'
+from Page_Object_Model.tests import _resources_tests
+from Page_Object_Model.tests.job_seeker.resume import _resources_resume
 
 
 @pytest.mark.job_seeker
 # @pytest.mark.skip
 class TestResumeAdd:
-    def test_precondition(self, browser):
-        admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
-        admin_page.open()
-        admin_page.admin_authorization()
-        time.sleep(0.5)
-
+    def test_precondition(self, browser, language):
+        _resources_tests.admin_authorization(browser)  # авторизация в админку
+        _resources_tests.change_language_of_notifications_on_email(browser, language, users_variables[_resources_resume.user_resume]["id"])  # изменение языка уведомлений на email
         admin_sql_page = AdminSqlPage(browser, UrlStartPageAdmin.url_page_admin + '/developer/sql')
         admin_sql_page.open()
-        admin_sql_page.sql_deleting_all_user_resume(users_variables[user_resume]["id"])  # удаление всех резюме пользователя
+        admin_sql_page.sql_deleting_all_user_resume(users_variables[_resources_resume.user_resume]["id"])  # удаление всех резюме пользователя
 
     def test_adding_resume(self, browser, language):  # добавление резюме
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
@@ -38,7 +35,7 @@ class TestResumeAdd:
         # browser.maximize_window()
         page.open()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.user_authorization(user_resume)  # авторизация пользователя
+        page.user_authorization(_resources_resume.user_resume)  # авторизация пользователя
         page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
         page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 
