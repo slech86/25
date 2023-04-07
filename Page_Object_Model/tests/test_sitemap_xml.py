@@ -2,7 +2,7 @@ import pytest
 from Page_Object_Model.pages.site.sitemap_xml_page import SitemapXmlPage
 from Page_Object_Model.configuration import UrlStartPage
 
-# pytest --reruns 1 --html=./reports/report.html -s tests/test_sitemap_xml.py
+# pytest --reruns 1 --html=./reports/report.html tests/test_sitemap_xml.py
 
 
 @pytest.mark.skip
