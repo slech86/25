@@ -333,6 +333,7 @@ class ServicesAndPricesPageLocators:
 
 class ResumePageLocators:
     H1 = (By.CSS_SELECTOR, 'h1')
+    EXPAND_COVER_LETTER = (By.CSS_SELECTOR, '.card-header > .card-header__more-arrow')
     COVER_LETTER_TEXT = (By.CSS_SELECTOR, '.covering-letter-description')
     BUTTON_RESUME_MENU = (By.CSS_SELECTOR, '.share-btn')
     BUTTON_PRINT = (By.XPATH, '//a[contains(@href, "/print")]')

@@ -1,3 +1,5 @@
+import time
+
 from Page_Object_Model.pages.base_page import BasePage
 from Page_Object_Model.locators.company_locators import ResumePageLocators
 from Page_Object_Model.data_for_testing import TestData, TestDataEditing
@@ -40,6 +42,8 @@ class ResumePage(BasePage):
         assert h1 == job_title_resume, "Резюме не опубликована"
 
     def checking_cover_letter_text(self):  # проверка текста сопроводительного письма
+        self.browser.find_element(*ResumePageLocators.EXPAND_COVER_LETTER).click()
+        time.sleep(0.3)
         cover_letter_text = self.browser.find_element(*ResumePageLocators.COVER_LETTER_TEXT).text
         assert cover_letter_text == TestData.cover_letter, "Сопроводительное письмо не совпадает"
 
