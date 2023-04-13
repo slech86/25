@@ -31,7 +31,7 @@ class VacancyAddPage(BasePage):
 
     def go_to_preview_page(self):  # переход на страницу предпросмотра
         self.browser.find_element(*VacancyAddEditPageLocators.BUTTON_PREVIEW).click()
-        time.sleep(1)
+        time.sleep(3)
         self.browser.switch_to.window(self.browser.window_handles[1])
 
     def filling_in_optional_fields(self):  # заполнение не обязательных полей
