@@ -25,7 +25,7 @@ class TestPasswordRecovery:
         page = OllPage(browser, url_page)
         page.open()
         page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-        page.clicking_on_button_forgot_password()  # нажатие на кнопку "Забыли пароль"
+        page.clicking_on_button_forgot_password(user)  # нажатие на кнопку "Забыли пароль"
         page.submitting_password_recovery_request(language, user)  # отправка запроса на восстановление пароля
 
     def test_password_recovery_from_an_email(self, browser, language):  # восстановление пароля с электронной почты

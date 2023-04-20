@@ -33,7 +33,9 @@ class OllPage(BasePage):
         self.browser.find_element(*OllPageLocators.JOB_SEEKER_TAB).click()
         self.browser.find_element(*OllPageLocators.JOB_SEEKER_REGISTRATION_LINK).click()
 
-    def clicking_on_button_forgot_password(self):  # нажатие на кнопку "Забыли пароль"
+    def clicking_on_button_forgot_password(self, user):  # нажатие на кнопку "Забыли пароль"
+        if 'job_seeker' in user:
+            self.browser.find_element(*OllPageLocators.JOB_SEEKER_TAB).click()
         self.browser.find_element(*OllPageLocators.BUTTON_FORGOT_PASSWORD).click()
 
     def submitting_password_recovery_request(self, language, user):  # отправка запроса на восстановление пароля
@@ -51,7 +53,7 @@ class OllPage(BasePage):
             assert expected_text == info_text, f"Не верное сообщение, expected result: '{expected_text}', actual result: '{info_text}'"
 
     def user_new_authorization(self, language, key):  # авторизация нового пользователя
-        if 'job_seeker' is key:
+        if 'job_seeker' == key:
             self.browser.find_element(*OllPageLocators.JOB_SEEKER_TAB).click()
 
         if language == "":
