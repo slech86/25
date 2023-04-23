@@ -116,6 +116,7 @@ class AdminPage(BasePage):
         self.browser.find_element(*AdminPageLocators.FIELD_USER_PASSWORD).send_keys(password)
 
     def change_language_of_notifications_on_email(self, language):  # изменение языка уведомлений на email
+        self.browser.execute_script("window.scrollBy(0, 200);")
         self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_LANGUAGE).click()
         if language == "":
             self.browser.find_element(*AdminPageLocators.EMAIL_LANGUAGE_RUSSIAN).click()

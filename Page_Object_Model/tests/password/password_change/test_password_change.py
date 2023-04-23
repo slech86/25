@@ -10,11 +10,13 @@ from Page_Object_Model.users import users_variables
 from Page_Object_Model.pages.site.job_seeker_edit_page import JobSeekerEditPage
 from Page_Object_Model.pages.site.job_seeker_personal_cabinet_page import JobSeekerPersonalCabinetPage
 from Page_Object_Model.tests import _resources_tests
+from Page_Object_Model.mail.onesec_api import Mailbox
 
 # pytest --reruns 1 --html=./reports/report.html -s tests/password/password_change
 
 user = 'job_seeker_change_password'
 new_password = None
+domain_sender_letter = _resources_tests.domain_sender_letter
 
 
 # @pytest.mark.skip
@@ -47,14 +49,27 @@ class TestPasswordChange:
         global new_password
         new_password = job_seeker_edit_page.password_changes(users_variables[user]["password"], language)  # изменение пароля
 
-    def test_confirmation_of_password_changes_through_email(self, browser, language):  # подтверждения смены пароля через email
-        link = Accounts.url_email
-        email_page = EmailPage(browser, link)
-        email_page.open()
-        email_page.email_authorization()  # авторизация email
-        email_page.click_on_link_in_email_to_confirm_password_change(language)  # переход по ссылке с письма для подтверждение смены пароля
+    def test_confirmation_of_password_changes_through_email(self, browser, language):  # подтверждение смены пароля через email
+        # link = Accounts.url_email
+        # email_page = EmailPage(browser, link)
+        # email_page.open()
+        # email_page.email_authorization()  # авторизация email
+        # email_page.click_on_link_in_email_to_confirm_password_change(language)  # переход по ссылке с письма для подтверждение смены пароля
 
-        main_page = MainPage(browser, browser.current_url)
+        email = Mailbox(users_variables[user]['mail_name'])
+
+        subject = None
+        if language == "":
+            subject = 'Смена пароля на LCwork'
+        elif language == "/ua":
+            subject = 'Зміна пароля на LCwork'
+        elif language == "/en":
+            subject = 'Change password on LC Work'
+        _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
+        link = email.get_link(domain_sender_letter, subject, clear=False)
+
+        main_page = MainPage(browser, link)
+        main_page.open(cookie=False)
         main_page.waiting_for_main_page_to_open(language)  # ожидание открытия главной страницы
         main_page.confirmation_opening_of_main_page(language)  # подтверждение открытия главной страницы
         main_page.checking_message_after_confirmation_of_password_change(language)  # проверка сообщения после подтверждения смены пароля

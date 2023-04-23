@@ -45,7 +45,8 @@ users_variables = {
     'job_seeker_change_password': {
         'login': 'test_job_seeker_change_passwd',
         'password': 'cGsy72V9MmBCB39eY443aj',
-        'mail': 'test_automation+job_seeker_change_password@qazz.pw',
+        'mail': 'test_automation+job_seeker_change_password@1secmail.com',
+        'mail_name': 'test_automation+job_seeker_change_password',
         'id': '5517',
     },
 }

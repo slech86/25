@@ -46,6 +46,7 @@ class MainPage(BasePage):
 
     def entering_new_password_when_recovering_it(self, language):  # ввод нового пароля при его восстановлении
         new_password = generate_alphanum_random_string(22)
+        time.sleep(1)
         self.browser.find_element(*MainPageLocators.FIELD_PASSWORD_IN_RESET_PASSWORD_FORM).send_keys(new_password)
         self.browser.find_element(*MainPageLocators.FIELD_REPEAT_PASSWORD_IN_RESET_PASSWORD_FORM).send_keys(new_password)
         self.browser.find_element(*MainPageLocators.BUTTON_CHANGE_PASSWORD).click()

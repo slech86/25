@@ -7,11 +7,13 @@ from Page_Object_Model.pages.email_page import EmailPage
 from Page_Object_Model.pages.site.main_page import MainPage
 from Page_Object_Model.users import users_variables
 from Page_Object_Model.tests import _resources_tests
+from Page_Object_Model.mail.onesec_api import Mailbox
 
 # pytest --reruns 1 --html=./reports/report.html -s tests/password/password_recovery
 
 user = 'job_seeker_change_password'
 new_password = None
+domain_sender_letter = _resources_tests.domain_sender_letter
 
 
 # @pytest.mark.skip
@@ -29,12 +31,26 @@ class TestPasswordRecovery:
         page.submitting_password_recovery_request(language, user)  # отправка запроса на восстановление пароля
 
     def test_password_recovery_from_an_email(self, browser, language):  # восстановление пароля с электронной почты
-        link = Accounts.url_email
-        email_page = EmailPage(browser, link)
-        email_page.open()
-        email_page.email_authorization()  # авторизация email
-        email_page.following_link_in_email_to_reset_your_password(language)  # переход по ссылке с письма для восстановления пароля
-        main_page = MainPage(browser, browser.current_url)
+        # link = Accounts.url_email
+        # email_page = EmailPage(browser, link)
+        # email_page.open()
+        # email_page.email_authorization()  # авторизация email
+        # email_page.following_link_in_email_to_reset_your_password(language)  # переход по ссылке с письма для восстановления пароля
+
+        email = Mailbox(users_variables[user]['mail_name'])
+
+        subject = None
+        if language == "":
+            subject = 'Подтверждение восстановления пароля на LCwork'
+        elif language == "/ua":
+            subject = 'Підтвердження відновлення пароля на LCwork'
+        elif language == "/en":
+            subject = 'Confirm password recovery on LC Work'
+        _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
+        link = email.get_link(domain_sender_letter, subject, clear=False)
+
+        main_page = MainPage(browser, link)
+        main_page.open(cookie=False)
         main_page.waiting_for_main_page_to_open(language)  # ожидание открытия главной страницы
         global new_password
         new_password = main_page.entering_new_password_when_recovering_it(language)  # ввод нового пароля при его восстановлении
