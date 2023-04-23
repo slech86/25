@@ -2,6 +2,8 @@ from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.configuration import UrlStartPage, UrlStartPageAdmin
 import time
 
+domain_sender_letter = '@logincasino.work'
+
 
 def change_language_of_notifications_on_email(browser, language, user_id):  # изменение языка уведомлений на email
     admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin + '/user/update?pk=' + user_id + '')

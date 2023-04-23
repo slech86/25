@@ -13,7 +13,7 @@ from Page_Object_Model.tests import _resources_tests
 import time
 import json
 
-domain_sender_letter = '@logincasino.work'
+domain_sender_letter = _resources_tests.domain_sender_letter
 
 
 @pytest.mark.s_r_c
