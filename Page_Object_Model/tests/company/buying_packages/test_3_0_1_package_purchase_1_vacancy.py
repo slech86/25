@@ -146,7 +146,7 @@ class TestPackagePurchase1Vacancy:
         if language == "":
             subject = 'Оплата прошла успешно! Скорее размещайте вакансии на сайте!'
         elif language == "/ua":
-            subject = 'Оплата пройшла успішно! Мерщій розміщуйте вакансії на сайті."]'
+            subject = 'Оплата пройшла успішно! Мерщій розміщуйте вакансії на сайті.'
         elif language == "/en":
             subject = 'The payment was successful! Hurry up to place vacancies on the website!'
 
