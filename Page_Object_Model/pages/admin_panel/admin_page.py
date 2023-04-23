@@ -54,18 +54,10 @@ class AdminPage(BasePage):
         self.browser.find_element(*AdminPageLocators.BUTTON_OBJECT_MENU).click()  # костыль из-за ховер эффекта на кнопке меню пользователя
     # общие
 
-    def new_user_search_by_email(self, language, key):  # поиск нового пользователя по e-mail
+    def new_user_search_by_email(self, key):  # поиск нового пользователя по e-mail
         user_email_locators = AdminPageLocators()
-        email, user_email = None, None
-        if language == "":
-            email = Singleton.logins_and_mails[key]['ru']['email_ru']
-            user_email = user_email_locators.assembly_of_locators_with_email(email)
-        elif language == "/ua":
-            email = Singleton.logins_and_mails[key]['ua']['email_ua']
-            user_email = user_email_locators.assembly_of_locators_with_email(email)
-        elif language == "/en":
-            email = Singleton.logins_and_mails[key]['en']['email_en']
-            user_email = user_email_locators.assembly_of_locators_with_email(email)
+        email = Singleton.logins_and_mails[key]['email']
+        user_email = user_email_locators.assembly_of_locators_with_email(email)
         self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_SEARCH).send_keys(email, Keys.ENTER)
         time.sleep(2)
         assert self.is_element_present(*user_email['user_email']), 'Пользователь не найден'
@@ -144,21 +136,11 @@ class AdminPage(BasePage):
     def verification_of_saving_data_entered_by_user_after_company_registration_ru(self, language, key):  # проверка сохранения введенных пользователем данных после регистрации компании RU
         login = self.browser.find_element(*AdminPageLocators.FIELD_USER_LOGIN)
         login_value = login.get_attribute("value")
-        if language == "":
-            assert login_value == Singleton.logins_and_mails[key]['ru']['login_ru'], "Поле 'Логин' не верно"
-        elif language == "/ua":
-            assert login_value == Singleton.logins_and_mails[key]['ua']['login_ua'], "Поле 'Логин' не верно"
-        elif language == "/en":
-            assert login_value == Singleton.logins_and_mails[key]['en']['login_ru'], "Поле 'Логин' не верно"
+        assert login_value == Singleton.logins_and_mails[key]['login'], "Поле 'Логин' не верно"
 
         email = self.browser.find_element(*AdminPageLocators.FIELD_USER_EMAIL)
         email_value = email.get_attribute("value")
-        if language == "":
-            assert email_value == Singleton.logins_and_mails[key]['ru']['email_ru'], "Поле 'Email' не верно"
-        elif language == "/ua":
-            assert email_value == Singleton.logins_and_mails[key]['ua']['email_ua'], "Поле 'Email' не верно"
-        elif language == "/en":
-            assert email_value == Singleton.logins_and_mails[key]['en']['email_en'], "Поле 'Email' не верно"
+        assert email_value == Singleton.logins_and_mails[key]['email'], "Поле 'Email' не верно"
 
         email_language = self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_LANGUAGE)
         email_language_title = email_language.get_attribute("title")
@@ -283,21 +265,11 @@ class AdminPage(BasePage):
     def verification_of_saving_data_entered_by_user_after_job_seeker_registration_ru(self, language, key):  # проверка сохранения введенных пользователем данных после регистрации соискателя RU
         login = self.browser.find_element(*AdminPageLocators.FIELD_USER_LOGIN)
         login_value = login.get_attribute("value")
-        if language == "":
-            assert login_value == Singleton.logins_and_mails[key]['ru']['login_ru'], "Поле 'Логин' не верно"
-        elif language == "/ua":
-            assert login_value == Singleton.logins_and_mails[key]['ua']['login_ua'], "Поле 'Логин' не верно"
-        elif language == "/en":
-            assert login_value == Singleton.logins_and_mails[key]['en']['login_en'], "Поле 'Логин' не верно"
+        assert login_value == Singleton.logins_and_mails[key]['login'], "Поле 'Логин' не верно"
 
         email = self.browser.find_element(*AdminPageLocators.FIELD_USER_EMAIL)
         email_value = email.get_attribute("value")
-        if language == "":
-            assert email_value == Singleton.logins_and_mails[key]['ru']['email_ru'], "Поле 'Email' не верно"
-        elif language == "/ua":
-            assert email_value == Singleton.logins_and_mails[key]['ua']['email_ua'], "Поле 'Email' не верно"
-        elif language == "/en":
-            assert email_value == Singleton.logins_and_mails[key]['en']['email_en'], "Поле 'Email' не верно"
+        assert email_value == Singleton.logins_and_mails[key]['email'], "Поле 'Email' не верно"
 
         email_language = self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_LANGUAGE)
         email_language_title = email_language.get_attribute("title")

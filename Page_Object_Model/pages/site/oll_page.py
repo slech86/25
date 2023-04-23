@@ -52,19 +52,12 @@ class OllPage(BasePage):
             expected_text = "If " + users_variables[user]["mail"] + " is registered in the system, an email will be sent to it."
             assert expected_text == info_text, f"Не верное сообщение, expected result: '{expected_text}', actual result: '{info_text}'"
 
-    def user_new_authorization(self, language, key):  # авторизация нового пользователя
+    def user_new_authorization(self, key):  # авторизация нового пользователя
         if 'job_seeker' == key:
             self.browser.find_element(*OllPageLocators.JOB_SEEKER_TAB).click()
 
-        if language == "":
-            self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key]['ru']['login_ru'])
-            # self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys('p.verbenets')
-        elif language == "/ua":
-            self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key]['ua']['login_ua'])
-            # self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys('p.verbenets')
-        elif language == "/en":
-            self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key]['en']['login_en'])
-            # self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys('p.verbenets')
+        self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key]['login'])
+        # self.browser.find_element(*OllPageLocators.FIELD_LOGIN).send_keys('p.verbenets')
 
         self.browser.find_element(*OllPageLocators.FIELD_PASSWORD).send_keys(TestData.password)
         # self.browser.find_element(*OllPageLocators.FIELD_PASSWORD).send_keys('l6FOt9tvJT')

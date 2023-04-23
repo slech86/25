@@ -4,6 +4,7 @@ from Page_Object_Model.pages.site.oll_page import OllPage
 from Page_Object_Model.pages.site.company_edit_page import CompanyEditPage
 from Page_Object_Model.pages.site.company_personal_cabinet_page import CompanyPersonalCabinetPage
 from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
+from Page_Object_Model.tests.company.company_add_edit import _resources_company_add_edit
 
 
 @pytest.mark.s_r_c
@@ -13,7 +14,7 @@ def test_changing_all_company_data(browser, language):  # изменение в�
     # browser.maximize_window()
     page.open()
     page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации
-    page.user_new_authorization(language, 'company')  # авторизация пользователя
+    page.user_new_authorization(_resources_company_add_edit.user)  # авторизация пользователя
     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
     page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
 
@@ -33,5 +34,5 @@ def test_changing_all_company_data(browser, language):  # изменение в�
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_users_page()  # переход на страницу пользователей
-    admin_page.new_user_search_by_email(language, 'company')  # поиск пользователя по e-mail
+    admin_page.new_user_search_by_email(_resources_company_add_edit.user)  # поиск пользователя по e-mail
     admin_page.check_that_user_has_status_data_editing()  # проверка что пользователь имеет статус "Редактирование данных"

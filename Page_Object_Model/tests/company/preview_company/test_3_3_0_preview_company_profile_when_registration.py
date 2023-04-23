@@ -22,7 +22,7 @@ class TestCompanyRegistration:
         company_registration_page = CompanyRegistrationPage(browser, browser.current_url)
         page.choice_of_russian_language_in_multi_language_forms()  # выбор русского языка в мультиязычных формах
         company_registration_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
-        company_registration_page.filling_in_required_fields(language, 'company')  # заполнение обязательных полей
+        company_registration_page.filling_in_required_fields('company')  # заполнение обязательных полей
         company_registration_page.go_to_preview_page()  # переход на страницу предпросмотра
 
         company_preview_page = CompanyPreviewPage(browser, browser.current_url)

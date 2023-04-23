@@ -13,22 +13,11 @@ class CompanyRegistrationPage(BasePage):
     def hiding_copy_to_other_languages(self):  # скрытие кнопки "Скопировать на другие языки"
         self.browser.find_element(*CompanyRegistrationEditPageLocators.CROSS_IN_COPY_TO_OTHER_LANGUAGES).click()
 
-    def filling_in_required_fields(self, language, key):  # заполнение обязательных полей
+    def filling_in_required_fields(self, key):  # заполнение обязательных полей
         login_and_mail = TestData()
         login_and_mail.login_and_mail_generation(key)
-        if language == "":
-            self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key]['ru']['login_ru'])
-        elif language == "/ua":
-            self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key]['ua']['login_ua'])
-        elif language == "/en":
-            self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key]['en']['login_en'])
-
-        if language == "":
-            self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_EMAIL).send_keys(Singleton.logins_and_mails[key]['ru']['email_ru'])
-        elif language == "/ua":
-            self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_EMAIL).send_keys(Singleton.logins_and_mails[key]['ua']['email_ua'])
-        elif language == "/en":
-            self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_EMAIL).send_keys(Singleton.logins_and_mails[key]['en']['email_en'])
+        self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key]['login'])
+        self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_EMAIL).send_keys(Singleton.logins_and_mails[key]['email'])
 
         self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_PASSWORD).send_keys(TestData.password)
         self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_REPEAT_PASSWORD).send_keys(TestData.password)

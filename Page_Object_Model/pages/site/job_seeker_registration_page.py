@@ -12,19 +12,9 @@ class JobSeekerRegistrationPage(BasePage):
     def filling_in_all_fields(self, language, key):  # заполнение всех полей
         login_and_mail = TestData()
         login_and_mail.login_and_mail_generation(key)
-        if language == "":
-            self.browser.find_element(*JobSeekerRegistrationEditPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key]['ru']['login_ru'])
-        elif language == "/ua":
-            self.browser.find_element(*JobSeekerRegistrationEditPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key]['ua']['login_ua'])
-        elif language == "/en":
-            self.browser.find_element(*JobSeekerRegistrationEditPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key]['en']['login_en'])
+        self.browser.find_element(*JobSeekerRegistrationEditPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key]['login'])
 
-        if language == "":
-            self.browser.find_element(*JobSeekerRegistrationEditPageLocators.FIELD_EMAIL).send_keys(Singleton.logins_and_mails[key]['ru']['email_ru'])
-        elif language == "/ua":
-            self.browser.find_element(*JobSeekerRegistrationEditPageLocators.FIELD_EMAIL).send_keys(Singleton.logins_and_mails[key]['ua']['email_ua'])
-        elif language == "/en":
-            self.browser.find_element(*JobSeekerRegistrationEditPageLocators.FIELD_EMAIL).send_keys(Singleton.logins_and_mails[key]['en']['email_ru'])
+        self.browser.find_element(*JobSeekerRegistrationEditPageLocators.FIELD_EMAIL).send_keys(Singleton.logins_and_mails[key]['email'])
 
         self.browser.find_element(*JobSeekerRegistrationEditPageLocators.FIELD_PASSWORD).send_keys(TestData.password)
         self.browser.find_element(*JobSeekerRegistrationEditPageLocators.FIELD_REPEAT_PASSWORD).send_keys(TestData.password)

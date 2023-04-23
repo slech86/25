@@ -35,7 +35,7 @@ class TestJobSeekerRegistration:
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_users_page()  # переход на страницу пользователей
-        admin_page.new_user_search_by_email(language, 'job_seeker')  # поиск пользователя по e-mail
+        admin_page.new_user_search_by_email('job_seeker')  # поиск пользователя по e-mail
         admin_page.checking_that_newly_created_user_has_status_disabled()  # проверка что новосозданный пользователь имеет статус "Отключено"
 
     # @pytest.mark.skip
@@ -46,7 +46,7 @@ class TestJobSeekerRegistration:
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_users_page()  # переход на страницу пользователей
-        admin_page.new_user_search_by_email(language, 'job_seeker')  # поиск пользователя по e-mail
+        admin_page.new_user_search_by_email('job_seeker')  # поиск пользователя по e-mail
         admin_page.go_to_object_editing_page()  # переход на страницу пользователя
         admin_page.changing_role_from_user_to_super_admin()  # изменение роли с "User" на "SuperAdmin"
         admin_page.saving_user_card()  # сохранение карточки пользователя
@@ -78,11 +78,11 @@ class TestJobSeekerRegistration:
         page.user_new_authorization(language, 'job_seeker')  # авторизация пользователя
         page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
 
-    def test_check_that_user_has_status_active(self, browser, language):  # проверка что пользователь имеет статус "Активен"
+    def test_check_that_user_has_status_active(self, browser):  # проверка что пользователь имеет статус "Активен"
         admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
         admin_page.open()
         admin_page.admin_authorization()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_users_page()  # переход на страницу пользователей
-        admin_page.new_user_search_by_email(language, 'job_seeker')  # поиск пользователя по e-mail
+        admin_page.new_user_search_by_email('job_seeker')  # поиск пользователя по e-mail
         admin_page.check_that_user_has_status_active()  # проверка что пользователь имеет статус "Активен"

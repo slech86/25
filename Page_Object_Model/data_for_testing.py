@@ -4,34 +4,23 @@ from Page_Object_Model.singleton import Singleton
 
 class TestData:
     time_Now = str(int(time.time()))[1:]
-    email = ['test_automation+', '@qazz.pw']
+    # email = ['test_automation+', '@qazz.pw']
+    email = ['test_automation+', '@1secmail.com']
     password = 'password_' + time_Now
 
     # пользователи
     def login_and_mail_generation(self, key):
         time_now = str(int(time.time()))
-        login_ru = 'testLogin_' + time_now
-        login_ua = login_ru + 'ua'
-        login_en = login_ru + 'en'
+        login = 'testLogin_' + time_now
 
-        email_ru = TestData.email[0] + time_now + TestData.email[1]
-        email_ua = TestData.email[0] + time_now + 'ua' + TestData.email[1]
-        email_en = TestData.email[0] + time_now + 'en' + TestData.email[1]
+        mail_name = TestData.email[0] + time_now
+        email = mail_name + TestData.email[1]
 
         singleton = Singleton()
         singleton.logins_and_mails[key] = {
-            'ru': {
-                'login_ru': login_ru,
-                'email_ru': email_ru,
-            },
-            'ua': {
-                'login_ua': login_ua,
-                'email_ua': email_ua,
-            },
-            'en': {
-                'login_en': login_en,
-                'email_en': email_en,
-            },
+            'login': login,
+            'email': email,
+            'mail_name': mail_name,
         }
 
     email_language_ru = '[#1] Русский'
