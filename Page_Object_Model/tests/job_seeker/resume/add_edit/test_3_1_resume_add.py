@@ -17,6 +17,9 @@ from Page_Object_Model.pages.admin_panel.admin_sql_page import AdminSqlPage
 from Page_Object_Model.users import users_variables
 from Page_Object_Model.tests import _resources_tests
 from Page_Object_Model.tests.job_seeker.resume import _resources_resume
+from Page_Object_Model.mail.onesec_api import Mailbox
+
+domain_sender_letter = _resources_tests.domain_sender_letter
 
 
 @pytest.mark.job_seeker
@@ -96,9 +99,29 @@ class TestResumeAdd:
         resume_page.checking_opening_of_page_of_published_resume(TestData.job_title_resume)  # проверка открытия страницы опубликованного резюме
 
     def test_verification_of_letter_after_publication_of_resume(self, browser, language):  # проверка письма после публикации резюме
-        link = Accounts.url_email
-        email_page = EmailPage(browser, link)
-        email_page.open()
-        # browser.maximize_window()
-        email_page.email_authorization()  # авторизация email
-        email_page.verification_of_letter_after_publication_of_resume(language)  # проверка письма после публикации резюме
+        # link = Accounts.url_email
+        # email_page = EmailPage(browser, link)
+        # email_page.open()
+        # # browser.maximize_window()
+        # email_page.email_authorization()  # авторизация email
+        # email_page.verification_of_letter_after_publication_of_resume(language)  # проверка письма после публикации резюме
+
+        subject = None
+        if language == "":
+            subject = 'Ваше резюме опубликовано'
+        elif language == "/ua":
+            subject = 'Ваше резюме опубліковано'
+        elif language == "/en":
+            subject = 'Your resume is published on the site.'
+
+        expected_text = None
+        if language == "":
+            expected_text = 'Ваше резюме опубликовано на'
+        elif language == "/ua":
+            expected_text = 'Ваше резюме опубліковано на'
+        elif language == "/en":
+            expected_text = 'Your resume is published on the'
+
+        email = Mailbox(users_variables[_resources_resume.user_resume]['mail_name'])
+        letter = _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
+        _resources_tests.checking_content_of_letter(email, letter, expected_text)  # проверка содержания письма

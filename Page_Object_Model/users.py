@@ -40,7 +40,8 @@ users_variables = {
     'job_seeker_resume': {
         'login': 'test_job_seeker_resume',
         'password': '3pMiK2A86g',
-        'mail': 'test_automation+job_seeker_resume@qazz.pw',
+        'mail': 'test_automation+job_seeker_resume@1secmail.com',
+        'mail_name': 'test_automation+job_seeker_resume',
         'id': '5055',
     },
     'job_seeker_change_password': {
