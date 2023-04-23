@@ -23,8 +23,9 @@ users_variables = {
     'employer_vacancy': {
         'login': 'test_employer_vacancy',
         'password': '4v4C8gLsR8',
-        'mail': 'test_automation+employer_vacancy@qazz.pw',
+        'mail': 'test_automation+employer_vacancy@1secmail.com',
         'id': '5053',
+        'mail_name': 'test_automation+employer_vacancy',
         'company_name': 'test_Название компании',
     },
 

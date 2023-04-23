@@ -17,8 +17,11 @@ from Page_Object_Model.users import users_variables
 from Page_Object_Model.tests.company.buying_packages import _resources_buying_packages
 from Page_Object_Model.tests.company import _resources_company
 from Page_Object_Model.tests import _resources_tests
+from Page_Object_Model.mail.onesec_api import Mailbox
 
 # pytest --reruns 1 --html=./reports/report.html -s tests/company/buying_packages/test_3_0_1_package_purchase_1_vacancy.py
+
+domain_sender_letter = _resources_tests.domain_sender_letter
 
 
 # @pytest.mark.skip
@@ -132,12 +135,32 @@ class TestPackagePurchase1Vacancy:
         add_vacancy_page.submitting_vacancy_for_publication()  # проверка наличия кнопки "Опубликовать"
 
     def test_checking_letter_after_order_processing(self, browser, language):  # проверка письма после проведения заказа
-        link = Accounts.url_email
-        email_page = EmailPage(browser, link)
-        email_page.open()
-        # browser.maximize_window()
-        email_page.email_authorization()  # авторизация email
-        email_page.letter_after_order_processing(language)  # письмо после проведения заказа
+        # link = Accounts.url_email
+        # email_page = EmailPage(browser, link)
+        # email_page.open()
+        # # browser.maximize_window()
+        # email_page.email_authorization()  # авторизация email
+        # email_page.letter_after_order_processing(language)  # письмо после проведения заказа
+
+        subject = None
+        if language == "":
+            subject = 'Оплата прошла успешно! Скорее размещайте вакансии на сайте!'
+        elif language == "/ua":
+            subject = 'Оплата пройшла успішно! Мерщій розміщуйте вакансії на сайті."]'
+        elif language == "/en":
+            subject = 'The payment was successful! Hurry up to place vacancies on the website!'
+
+        expected_text = None
+        if language == "":
+            expected_text = 'Оплата прошла успешно. Чтобы продолжить работу, перейдите в личный кабинет на'
+        elif language == "/ua":
+            expected_text = 'Оплата пройшла успішно. Щоб продовжити роботу перейдіть в особистий кабінет на'
+        elif language == "/en":
+            expected_text = 'The payment was successful! Hurry up to place vacancies on the'
+
+        email = Mailbox(users_variables[_resources_buying_packages.user]['mail_name'])
+        letter = _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
+        _resources_tests.checking_content_of_letter(email, letter, expected_text)  # проверка содержания письма
 
     def test_complete_deletion_of_user_orders(self, browser, language):  # полное удаление заказов пользователя
         admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
