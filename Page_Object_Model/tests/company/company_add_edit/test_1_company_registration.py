@@ -129,7 +129,6 @@ class TestCompanyRegistration:
         admin_page.new_user_search_by_email(_resources_company_add_edit.user)  # поиск пользователя по e-mail
         admin_page.check_that_user_has_status_active()  # проверка что пользователь имеет статус "Активен"
 
-
     # def test_authorization_of_user_in_Active_status(browser, language):  # авторизация пользователя в статусе "Активен"
     #     url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
     #     page = OllPage(browser, url_Page)

@@ -81,12 +81,14 @@ class VacancyAddPage(BasePage):
         self.browser.find_element(*button_add_skills['button_add_block']).click()
         self.browser.find_element(*VacancyAddEditPageLocators.DROPDOWN_LANGUAGE_1).click()
         self.browser.find_element(*VacancyAddEditPageLocators.ENGLISH_LANGUAGE_1).click()
+        time.sleep(3)
         self.browser.find_element(*VacancyAddEditPageLocators.DROPDOWN_LEVEL_OF_LANGUAGE_1).click()
         self.browser.find_element(*VacancyAddEditPageLocators.MIDDLE_LEVEL_1).click()
 
         self.browser.find_element(*VacancyAddEditPageLocators.BUTTON_ADD_LANGUAGE_NUMBER_2).click()
         self.browser.find_element(*VacancyAddEditPageLocators.DROPDOWN_LANGUAGE_2).click()
         self.browser.find_element(*VacancyAddEditPageLocators.RUSSIAN_LANGUAGE_2).click()
+        time.sleep(1)
         self.browser.find_element(*VacancyAddEditPageLocators.DROPDOWN_LEVEL_OF_LANGUAGE_2).click()
         self.browser.find_element(*VacancyAddEditPageLocators.NATIVE_LEVEL_2).click()
         # блок "Знание языков"

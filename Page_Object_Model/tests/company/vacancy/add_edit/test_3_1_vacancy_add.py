@@ -16,6 +16,11 @@ from Page_Object_Model.users import Accounts
 from Page_Object_Model.data_for_testing import TestData
 from Page_Object_Model.pages.site.vacancy_preview_page import VacancyPreviewPage
 from Page_Object_Model.tests.company.vacancy import _resources_vacancy
+from Page_Object_Model.mail.onesec_api import Mailbox
+from Page_Object_Model.tests import _resources_tests
+from Page_Object_Model.users import users_variables
+
+domain_sender_letter = _resources_tests.domain_sender_letter
 
 
 def test_adding_vacancies(browser, language):  # добавление вакансии
@@ -100,9 +105,29 @@ def test_adding_vacancies(browser, language):  # добавление вакан
 
 # @pytest.mark.s_r_c
 def test_verification_of_letter_after_publication_of_vacancy(browser, language):  # проверка письма после публикации вакансии
-    link = Accounts.url_email
-    email_page = EmailPage(browser, link)
-    email_page.open()
-    # browser.maximize_window()
-    email_page.email_authorization()  # авторизация email
-    email_page.verification_of_letter_after_publication_of_vacancy(language)  # проверка письма после публикации вакансии
+    # link = Accounts.url_email
+    # email_page = EmailPage(browser, link)
+    # email_page.open()
+    # # browser.maximize_window()
+    # email_page.email_authorization()  # авторизация email
+    # email_page.verification_of_letter_after_publication_of_vacancy(language)  # проверка письма после публикации вакансии
+
+    subject = None
+    if language == "":
+        subject = 'Ваша вакансия добавлена на сайт'
+    elif language == "/ua":
+        subject = 'Ваша вакансія вже на сайті'
+    elif language == "/en":
+        subject = 'Your vacancy is already on the site'
+
+    expected_text = None
+    if language == "":
+        expected_text = 'Ваша вакансия ' + TestData.job_title_vacancy + ' добавлена на'
+    elif language == "/ua":
+        expected_text = 'Ваша вакансія ' + TestData.job_title_vacancy + ' вже на'
+    elif language == "/en":
+        expected_text = 'Your vacancy ' + TestData.job_title_vacancy + ' is already on'
+
+    email = Mailbox(users_variables[_resources_vacancy.user_vacancy]['mail_name'])
+    letter = _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
+    _resources_tests.checking_content_of_letter(email, letter, expected_text)  # проверка содержания письма
