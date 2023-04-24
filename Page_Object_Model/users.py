@@ -16,7 +16,8 @@ users_variables = {
     'employer': {
         'login': 'test_employer',
         'password': '65Y2ixdH4F',
-        'mail': 'test_automation+employer@qazz.pw',
+        'mail': 'test_automation+employer@1secmail.com',
+        'mail_name': 'test_automation+employer',
         'id': '4719',
         'company_name': 'test_Название компании',
     },
@@ -34,7 +35,8 @@ users_variables = {
     'job_seeker': {
         'login': 'test_job_seeker',
         'password': '2284anVvFS',
-        'mail': 'test_automation+job_seeker@qazz.pw',
+        'mail': 'test_automation+job_seeker@1secmail.com',
+        'mail_name': 'test_automation+job_seeker',
         'id': '4720',
     },
     'job_seeker_resume': {

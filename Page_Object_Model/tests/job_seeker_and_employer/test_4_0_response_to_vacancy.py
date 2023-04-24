@@ -16,6 +16,7 @@ from Page_Object_Model.users import users_variables
 from Page_Object_Model.users import Accounts
 from Page_Object_Model.pages.email_page import EmailPage
 from Page_Object_Model.tests import _resources_tests
+from Page_Object_Model.mail.onesec_api import Mailbox
 
 # pytest --reruns 1 --html=./reports/report.html tests/job_seeker_and_employer/test_4_0_response_to_vacancy.py
 
@@ -25,6 +26,7 @@ resume_id = '1269'
 vacancy_id = '1979'
 user_employer = 'employer'
 user_job_seeker = 'job_seeker'
+domain_sender_letter = _resources_tests.domain_sender_letter
 
 
 # @pytest.mark.skip
@@ -70,12 +72,32 @@ class TestResponseToVacancy:
         vacancy_page.confirmation_opening_of_vacancy_page(language, vacancy_id)  # подтверждение открытия страницы вакансии
 
     def test_verification_of_letter_after_receiving_response_to_vacancy(self, browser, language):  # проверка письма после получения отклика на вакансию
-        link = Accounts.url_email
-        email_page = EmailPage(browser, link)
-        email_page.open()
-        # browser.maximize_window()
-        email_page.email_authorization()  # авторизация email
-        email_page.verification_of_letter_after_receiving_response_to_vacancy(language)  # проверка письма после получения отклика на вакансию
+        # link = Accounts.url_email
+        # email_page = EmailPage(browser, link)
+        # email_page.open()
+        # # browser.maximize_window()
+        # email_page.email_authorization()  # авторизация email
+        # email_page.verification_of_letter_after_receiving_response_to_vacancy(language)  # проверка письма после получения отклика на вакансию
+
+        subject = None
+        if language == "":
+            subject = 'Вы получили отклик на вакансию'
+        elif language == "/ua":
+            subject = 'Ви отримали відгук на вакансію'
+        elif language == "/en":
+            subject = 'You have received feedback on the vacancy.'
+
+        expected_text = None
+        if language == "":
+            expected_text = 'Вы получили отклик на вакансию'
+        elif language == "/ua":
+            expected_text = 'Ви отримали відгук на вакансію'
+        elif language == "/en":
+            expected_text = 'You received feedback on vacancy'
+
+        email = Mailbox(users_variables[user_employer]['mail_name'])
+        letter = _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
+        _resources_tests.checking_content_of_letter(email, letter, expected_text)  # проверка содержания письма
 
 
     def test_company_response_opening(self, browser, language):  # открытие отклика компанией
@@ -105,12 +127,32 @@ class TestResponseToVacancy:
         resume_page.checking_contact_display(contact_display_when_response_to_vacancy)  # проверка отображения контактов
 
     def test_verification_of_letter_after_viewing_response(self, browser, language):  # проверка письма после просмотра отклика
-        link = Accounts.url_email
-        email_page = EmailPage(browser, link)
-        email_page.open()
-        # browser.maximize_window()
-        email_page.email_authorization()  # авторизация email
-        email_page.verification_of_letter_after_viewing_response(language)  # проверка письма после просмотра отклика
+        # link = Accounts.url_email
+        # email_page = EmailPage(browser, link)
+        # email_page.open()
+        # # browser.maximize_window()
+        # email_page.email_authorization()  # авторизация email
+        # email_page.verification_of_letter_after_viewing_response(language)  # проверка письма после просмотра отклика
+
+        subject = None
+        if language == "":
+            subject = 'Ваше резюме было просмотрено'
+        elif language == "/ua":
+            subject = 'Ваше резюме було переглянуто'
+        elif language == "/en":
+            subject = 'Your resume has been reviewed'
+
+        expected_text = None
+        if language == "":
+            expected_text = 'Ваше резюме было просмотрено компанией'
+        elif language == "/ua":
+            expected_text = 'Ваше резюме було переглянуте компанією'
+        elif language == "/en":
+            expected_text = 'Your resume has been reviewed.'
+
+        email = Mailbox(users_variables[user_job_seeker]['mail_name'])
+        letter = _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
+        _resources_tests.checking_content_of_letter(email, letter, expected_text)  # проверка содержания письма
 
     def test_deleting_response(self, browser, language):  # удаление отклика
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
@@ -152,9 +194,29 @@ class TestResponseToVacancy:
         responses_to_vacancy_page.check_for_absence_of_response_block(resume_id)  # проверка отсутствия блока отклика
 
     def test_verification_of_letter_after_response_deviation(self, browser, language):  # проверка письма после отклонения отклика
-        link = Accounts.url_email
-        email_page = EmailPage(browser, link)
-        email_page.open()
-        # browser.maximize_window()
-        email_page.email_authorization()  # авторизация email
-        email_page.verification_of_letter_after_response_deviation(language)  # проверка письма после отклонения отклика
+        # link = Accounts.url_email
+        # email_page = EmailPage(browser, link)
+        # email_page.open()
+        # # browser.maximize_window()
+        # email_page.email_authorization()  # авторизация email
+        # email_page.verification_of_letter_after_response_deviation(language)  # проверка письма после отклонения отклика
+
+        subject = None
+        if language == "":
+            subject = 'Ваше резюме было отклонено'
+        elif language == "/ua":
+            subject = 'Ваше резюме було відхилено'
+        elif language == "/en":
+            subject = 'Your resume has been rejected by the company!'
+
+        expected_text = None
+        if language == "":
+            expected_text = 'отклонила резюме.'
+        elif language == "/ua":
+            expected_text = 'вiдхилила ваше резюме.'
+        elif language == "/en":
+            expected_text = 'Your resume has been rejected by the'
+
+        email = Mailbox(users_variables[user_job_seeker]['mail_name'])
+        letter = _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
+        _resources_tests.checking_content_of_letter(email, letter, expected_text)  # проверка содержания письма
