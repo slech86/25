@@ -145,10 +145,10 @@ class AdminPage(BasePage):
 
         email_language = self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_LANGUAGE)
         email_language_title = email_language.get_attribute("title")
-        if language == "/ua":
-            assert email_language_title == TestData.email_language_ua, "Поле 'Язык уведомлений на e-mail' не верно"
-        elif language == "":
+        if language == "":
             assert email_language_title == TestData.email_language_ru, "Поле 'Язык уведомлений на e-mail' не верно"
+        elif language == "/ua":
+            assert email_language_title == TestData.email_language_ua, "Поле 'Язык уведомлений на e-mail' не верно"
         elif language == "/en":
             assert email_language_title == TestData.email_language_en, "Поле 'Язык уведомлений на e-mail' не верно"
 
@@ -274,10 +274,10 @@ class AdminPage(BasePage):
 
         email_language = self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_LANGUAGE)
         email_language_title = email_language.get_attribute("title")
-        if language == "/ua":
-            assert email_language_title == TestData.email_language_ua, "Поле 'Язык уведомлений на e-mail' не верно"
-        elif language == "":
+        if language == "":
             assert email_language_title == TestData.email_language_ru, "Поле 'Язык уведомлений на e-mail' не верно"
+        elif language == "/ua":
+            assert email_language_title == TestData.email_language_ua, "Поле 'Язык уведомлений на e-mail' не верно"
         elif language == "/en":
             assert email_language_title == TestData.email_language_en, "Поле 'Язык уведомлений на e-mail' не верно"
 
@@ -286,10 +286,10 @@ class AdminPage(BasePage):
     def verification_of_saving_data_entered_by_user_after_job_seeker_edit_ru(self, language):  # проверка сохранения введенных пользователем данных после редактирования соискателя RU
         email_language = self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_LANGUAGE)
         email_language_title = email_language.get_attribute("title")
-        if language == "/ua":
-            assert email_language_title == TestDataEditing.email_language_ru, "Поле 'Язык уведомлений на e-mail' не верно"
-        elif language == "":
+        if language == "":
             assert email_language_title == TestDataEditing.email_language_en, "Поле 'Язык уведомлений на e-mail' не верно"
+        elif language == "/ua":
+            assert email_language_title == TestDataEditing.email_language_ru, "Поле 'Язык уведомлений на e-mail' не верно"
         elif language == "/en":
             assert email_language_title == TestDataEditing.email_language_ua, "Поле 'Язык уведомлений на e-mail' не верно"
 

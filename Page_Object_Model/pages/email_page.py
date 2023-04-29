@@ -15,10 +15,10 @@ class EmailPage(BasePage):
         # time.sleep(20)
         # self.browser.refresh()
         letter_of_registration_confirmation_company = None
-        if language == "/ua":
-            letter_of_registration_confirmation_company = EmailPageLocators.LETTER_OF_REGISTRATION_CONFIRMATION_COMPANY_UA
-        elif language == "":
+        if language == "":
             letter_of_registration_confirmation_company = EmailPageLocators.LETTER_OF_REGISTRATION_CONFIRMATION_COMPANY_RU
+        elif language == "/ua":
+            letter_of_registration_confirmation_company = EmailPageLocators.LETTER_OF_REGISTRATION_CONFIRMATION_COMPANY_UA
         elif language == "/en":
             letter_of_registration_confirmation_company = EmailPageLocators.LETTER_OF_REGISTRATION_CONFIRMATION_COMPANY_EN
 
@@ -52,14 +52,14 @@ class EmailPage(BasePage):
         self.browser.refresh()
 
         letter_welcome_to_lcwork, text_in_letter_after_first_moderation, text = None, None, None
-        if language == "/ua":
-            letter_welcome_to_lcwork = EmailPageLocators.LETTER_WELCOME_TO_LCWORK_UA
-            text_in_letter_after_first_moderation = EmailPageLocators.TEXT_IN_LETTER_AFTER_FIRST_MODERATION_UA
-            text = 'Ура! Ваш акаунт пройшов модерацiю.'
-        elif language == "":
+        if language == "":
             letter_welcome_to_lcwork = EmailPageLocators.LETTER_WELCOME_TO_LCWORK_RU
             text_in_letter_after_first_moderation = EmailPageLocators.TEXT_IN_LETTER_AFTER_FIRST_MODERATION_RU
             text = 'Ура! Ваш аккаунт прошел модерацию.'
+        elif language == "/ua":
+            letter_welcome_to_lcwork = EmailPageLocators.LETTER_WELCOME_TO_LCWORK_UA
+            text_in_letter_after_first_moderation = EmailPageLocators.TEXT_IN_LETTER_AFTER_FIRST_MODERATION_UA
+            text = 'Ура! Ваш акаунт пройшов модерацiю.'
         elif language == "/en":
             letter_welcome_to_lcwork = EmailPageLocators.LETTER_WELCOME_TO_LCWORK_EN
             text_in_letter_after_first_moderation = EmailPageLocators.TEXT_IN_LETTER_AFTER_FIRST_MODERATION_EN
@@ -78,10 +78,10 @@ class EmailPage(BasePage):
         # self.browser.refresh()
 
         letter_welcome_to_lcwork = None
-        if language == "/ua":
-            letter_welcome_to_lcwork = EmailPageLocators.LETTER_WELCOME_TO_LCWORK_UA
-        elif language == "":
+        if language == "":
             letter_welcome_to_lcwork = EmailPageLocators.LETTER_WELCOME_TO_LCWORK_RU
+        elif language == "/ua":
+            letter_welcome_to_lcwork = EmailPageLocators.LETTER_WELCOME_TO_LCWORK_UA
         elif language == "/en":
             letter_welcome_to_lcwork = EmailPageLocators.LETTER_WELCOME_TO_LCWORK_EN
 
@@ -124,14 +124,14 @@ class EmailPage(BasePage):
         # self.browser.refresh()
 
         letter_after_publishing_vacancy, text_in_letter_after_publishing_vacancy, expected_email_text = None, None, None
-        if language == "/ua":
-            letter_after_publishing_vacancy = EmailPageLocators.LETTER_AFTER_PUBLISHING_VACANCY_UA
-            text_in_letter_after_publishing_vacancy = EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_UA
-            expected_email_text = ['Ваша вакансія ', ' вже на сайті!']
-        elif language == "":
+        if language == "":
             letter_after_publishing_vacancy = EmailPageLocators.LETTER_AFTER_PUBLISHING_VACANCY_RU
             text_in_letter_after_publishing_vacancy = EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_RU
             expected_email_text = ['Ваша вакансия ', ' добавлена на сайт.']
+        elif language == "/ua":
+            letter_after_publishing_vacancy = EmailPageLocators.LETTER_AFTER_PUBLISHING_VACANCY_UA
+            text_in_letter_after_publishing_vacancy = EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_UA
+            expected_email_text = ['Ваша вакансія ', ' вже на сайті!']
         elif language == "/en":
             letter_after_publishing_vacancy = EmailPageLocators.LETTER_AFTER_PUBLISHING_VACANCY_EN
             text_in_letter_after_publishing_vacancy = EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_VACANCY_EN
@@ -150,14 +150,14 @@ class EmailPage(BasePage):
         # self.browser.refresh()
 
         letter_after_publishing_resume, text_in_letter_after_publishing_resume, expected_email_text = None, None, None
-        if language == "/ua":
-            letter_after_publishing_resume = EmailPageLocators.LETTER_AFTER_PUBLISHING_RESUME_UA
-            text_in_letter_after_publishing_resume = EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_UA
-            expected_email_text = 'Ваше резюме опубліковано на '
-        elif language == "":
+        if language == "":
             letter_after_publishing_resume = EmailPageLocators.LETTER_AFTER_PUBLISHING_RESUME_RU
             text_in_letter_after_publishing_resume = EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_RU
             expected_email_text = 'Ваше резюме опубликовано на '
+        elif language == "/ua":
+            letter_after_publishing_resume = EmailPageLocators.LETTER_AFTER_PUBLISHING_RESUME_UA
+            text_in_letter_after_publishing_resume = EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_UA
+            expected_email_text = 'Ваше резюме опубліковано на '
         elif language == "/en":
             letter_after_publishing_resume = EmailPageLocators.LETTER_AFTER_PUBLISHING_RESUME_EN
             text_in_letter_after_publishing_resume = EmailPageLocators.TEXT_IN_LETTER_AFTER_PUBLISHING_RESUME_EN
@@ -174,14 +174,14 @@ class EmailPage(BasePage):
     def verification_of_letter_after_receiving_response_to_vacancy(self, language):  # проверка письма после получения отклика на вакансию
 
         letter_after_receiving_response_to_vacancy, text_in_letter, expected_email_text = None, None, None
-        if language == "/ua":
-            letter_after_receiving_response_to_vacancy = EmailPageLocators.LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_UA
-            text_in_letter = EmailPageLocators.TEXT_IN_LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_UA
-            expected_email_text = 'Ви отримали відгук на вакансію '
-        elif language == "":
+        if language == "":
             letter_after_receiving_response_to_vacancy = EmailPageLocators.LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_RU
             text_in_letter = EmailPageLocators.TEXT_IN_LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_RU
             expected_email_text = 'Вы получили отклик на вакансию '
+        elif language == "/ua":
+            letter_after_receiving_response_to_vacancy = EmailPageLocators.LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_UA
+            text_in_letter = EmailPageLocators.TEXT_IN_LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_UA
+            expected_email_text = 'Ви отримали відгук на вакансію '
         elif language == "/en":
             letter_after_receiving_response_to_vacancy = EmailPageLocators.LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_EN
             text_in_letter = EmailPageLocators.TEXT_IN_LETTER_AFTER_RECEIVING_RESPONSE_TO_VACANCY_EN
@@ -198,14 +198,14 @@ class EmailPage(BasePage):
     def verification_of_letter_after_viewing_response(self, language):  # проверка письма после просмотра отклика
 
         letter_after_viewing_response, text_in_letter, expected_email_text = None, None, None
-        if language == "/ua":
-            letter_after_viewing_response = EmailPageLocators.LETTER_AFTER_VIEWING_RESPONSE_UA
-            text_in_letter = EmailPageLocators.TEXT_IN_LETTER_AFTER_VIEWING_RESPONSE_UA
-            expected_email_text = 'Ваше резюме було переглянуте компанією '
-        elif language == "":
+        if language == "":
             letter_after_viewing_response = EmailPageLocators.LETTER_AFTER_VIEWING_RESPONSE_RU
             text_in_letter = EmailPageLocators.TEXT_IN_LETTER_AFTER_VIEWING_RESPONSE_RU
             expected_email_text = 'Ваше резюме было просмотрено компанией '
+        elif language == "/ua":
+            letter_after_viewing_response = EmailPageLocators.LETTER_AFTER_VIEWING_RESPONSE_UA
+            text_in_letter = EmailPageLocators.TEXT_IN_LETTER_AFTER_VIEWING_RESPONSE_UA
+            expected_email_text = 'Ваше резюме було переглянуте компанією '
         elif language == "/en":
             letter_after_viewing_response = EmailPageLocators.LETTER_AFTER_VIEWING_RESPONSE_EN
             text_in_letter = EmailPageLocators.TEXT_IN_LETTER_AFTER_VIEWING_RESPONSE_EN
