@@ -23,6 +23,8 @@ class JobSeekerEditPage(BasePage):
             assert "Ваш пароль був успішно оновлений" == info_text, 'Не верное сообщение'
         elif language == "/en":
             assert "Your password has been successfully changed" == info_text, 'Не верное сообщение'
+        elif language == "/pl":
+            assert "Your password has been successfully changed" == info_text, 'Не верное сообщение'
         time.sleep(0.3)
         self.browser.find_element(*JobSeekerRegistrationEditPageLocators.CROSS_IN_POP_UP_AFTER_PASSWORD_CHANGE).click()
 
@@ -65,11 +67,13 @@ class JobSeekerEditPage(BasePage):
 
         self.browser.find_element(*JobSeekerRegistrationEditPageLocators.BUTTON_EDIT_IN_SETTINGS_BLOCK).click()
         self.browser.find_element(*JobSeekerRegistrationEditPageLocators.DROPDOWN_LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL).click()
-        if language == "/ua":
-            self.browser.find_element(*JobSeekerRegistrationEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU).click()
-        elif language == "":
+        if language == "":
             self.browser.find_element(*JobSeekerRegistrationEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_EN).click()
+        elif language == "/ua":
+            self.browser.find_element(*JobSeekerRegistrationEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU).click()
         elif language == "/en":
+            self.browser.find_element(*JobSeekerRegistrationEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA).click()
+        elif language == "/pl":
             self.browser.find_element(*JobSeekerRegistrationEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA).click()
         # редактирование блока "Настройки"
 
@@ -78,10 +82,12 @@ class JobSeekerEditPage(BasePage):
 
     def checking_message_after_saving_changes_to_personal_information(self, language):  # проверка сообщения после сохранения изменений личной информации
         info_text = self.browser.find_element(*JobSeekerRegistrationEditPageLocators.INFO_TEXT_AFTER_SAVING_PERSONAL_INFORMATION).text
-        if language == "/ua":
-            assert "Зміни особистої інформації збережені" == info_text, 'Не верное сообщение'
-        elif language == "":
+        if language == "":
             assert "Изменения личной информации сохранены" == info_text, 'Не верное сообщение'
+        elif language == "/ua":
+            assert "Зміни особистої інформації збережені" == info_text, 'Не верное сообщение'
         elif language == "/en":
+            assert "Changes to personal information saved" == info_text, 'Не верное сообщение'
+        elif language == "/pl":
             assert "Changes to personal information saved" == info_text, 'Не верное сообщение'
         self.browser.find_element(*JobSeekerRegistrationEditPageLocators.CROSS_IN_POP_UP_AFTER_SAVING_CHANGES_TO_PERSONAL_INFORMATION).click()

@@ -60,6 +60,8 @@ class ServicesAndPricesPage(BasePage):
             assert "Після активації послуги в особистому кабінеті, ви можете запропонувати вакансію здобувачам!" == info_text, 'Не верное сообщение'
         elif language == "/en":
             assert "You will be able to offer a vacancy to job seekers after activating the service in your account!" == info_text, 'Не верное сообщение'
+        elif language == "/pl":
+            assert "You will be able to offer a vacancy to job seekers after activating the service in your account!" == info_text, 'Не верное сообщение'
         self.browser.find_element(*ServicesAndPricesPageLocators.CROSS_IN_POP_UP_AFTER_PRESSING_BUTTON_BUY_IN_BASKET).click()
 
     def switch_to_tab_not_activated(self):  # переход на вкладку "Не активированные"

@@ -26,6 +26,8 @@ class VacancyPage(BasePage):
             assert h1 == 'Поиск завершен', "Не корректный h1"
         if language == "/en":
             assert h1 == 'Search completed', "Не корректный h1"
+        if language == "/pl":
+            assert h1 == 'Search completed', "Не корректный h1"
 
     def checking_opening_of_page_of_published_vacancy(self, job_title_vacancy):  # проверка открытия страницы опубликованной вакансии
         h1 = self.browser.find_element(*VacancyPageLocators.H1).text
@@ -58,11 +60,13 @@ class VacancyPage(BasePage):
         info_text = WebDriverWait(self.browser, 20).until(EC.visibility_of_element_located(VacancyPageLocators.INFO_TEXT_AFTER_SENDING_RESPONSE_TO_VACANCY)).text
         print(info_text)
         print('info_text')
-        if language == "/ua":
-            assert "Ваше резюме відправлено роботодавцю!" == info_text, 'Не верное сообщение'
-        elif language == "":
+        if language == "":
             assert "Ваше резюме отправлено работодателю!" == info_text, 'Не верное сообщение'
+        elif language == "/ua":
+            assert "Ваше резюме відправлено роботодавцю!" == info_text, 'Не верное сообщение'
         elif language == "/en":
+            assert "Your CV has been sent to an employer!" == info_text, 'Не верное сообщение'
+        elif language == "/pl":
             assert "Your CV has been sent to an employer!" == info_text, 'Не верное сообщение'
         self.browser.find_element(*VacancyPageLocators.CROSS_IN_POP_UP_AFTER_SENDING_RESPONSE_TO_VACANCY).click()
         time.sleep(0.5)

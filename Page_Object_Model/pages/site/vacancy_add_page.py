@@ -163,6 +163,8 @@ class VacancyAddPage(BasePage):
             assert validation_message == 'Необхідно заповнити "Назва посади".', f'Не верное сообщение валидации, expected result: "Необхідно заповнити "Назва посади".", actual result: "{validation_message}"'
         elif language == "/en":
             assert validation_message == "Job title cannot be blank.", f"Не верное сообщение валидации, expected result: 'Job title cannot be blank.', actual result: '{validation_message}'"
+        elif language == "/pl":
+            assert validation_message == "Job title cannot be blank.", f"Не верное сообщение валидации, expected result: 'Job title cannot be blank.', actual result: '{validation_message}'"
 
     def submitting_vacancy_for_publication(self):  # отправка вакансии на публикацию
         time.sleep(3)

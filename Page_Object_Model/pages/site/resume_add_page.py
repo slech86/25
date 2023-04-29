@@ -317,11 +317,13 @@ class ResumeAddPage(BasePage):
 
     def checking_status_level_filling_resume(self, language):  # проверка статуса уровня заполнения резюме
         status_level_filling = self.browser.find_element(*ResumeAddEditPageLocators.STATUS_OF_YOUR_RESUME).text
-        if language == "/ua":
-            assert status_level_filling == 'Професійне', 'Не верный статус уровня заполнения'
-        elif language == "":
+        if language == "":
             assert status_level_filling == 'Профессиональное', 'Не верный статус уровня заполнения'
+        elif language == "/ua":
+            assert status_level_filling == 'Професійне', 'Не верный статус уровня заполнения'
         elif language == "/en":
+            assert status_level_filling == 'Professional', 'Не верный статус уровня заполнения'
+        elif language == "/pl":
             assert status_level_filling == 'Professional', 'Не верный статус уровня заполнения'
 
     def checking_field_job_title_validation_message_about_need_to_fill_out(self, language):  # проверка сообщения валидации поля "Название должности" о необходимости его заполнения
@@ -331,6 +333,8 @@ class ResumeAddPage(BasePage):
         elif language == "/ua":
             assert validation_message == 'Необхідно заповнити "Назва посади".', f'Не верное сообщение валидации, expected result: "Необхідно заповнити "Назва посади".", actual result: "{validation_message}"'
         elif language == "/en":
+            assert validation_message == "Job title cannot be blank.", f"Не верное сообщение валидации, expected result: 'Job title cannot be blank.', actual result: '{validation_message}'"
+        elif language == "/pl":
             assert validation_message == "Job title cannot be blank.", f"Не верное сообщение валидации, expected result: 'Job title cannot be blank.', actual result: '{validation_message}'"
 
     def go_to_preview_page(self):  # переход на страницу предпросмотра

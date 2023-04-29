@@ -99,11 +99,13 @@ class CompanyEditPage(BasePage):
         # редактирование блока "Видео"
 
         self.browser.find_element(*CompanyRegistrationEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL).click()
-        if language == "/ua":
-            self.browser.find_element(*CompanyRegistrationEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU).click()
-        elif language == "":
+        if language == "":
             self.browser.find_element(*CompanyRegistrationEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_EN).click()
+        elif language == "/ua":
+            self.browser.find_element(*CompanyRegistrationEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU).click()
         elif language == "/en":
+            self.browser.find_element(*CompanyRegistrationEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA).click()
+        elif language == "/pl":
             self.browser.find_element(*CompanyRegistrationEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA).click()
         # редактирование блока "Настройки"
 
@@ -122,5 +124,7 @@ class CompanyEditPage(BasePage):
         elif language == "/ua":
             assert "Редагування інформації про вашу компанію прийнято та відправлено на модерацію. Оновлена інформація буде доступна на сайті протягом 24 годин." == infoText, 'Не верное сообщение'
         elif language == "/en":
+            assert "Editing information about your company is accepted and sent for moderation. Updated information will be available on the site within 24 hours." == infoText, 'Не верное сообщение'
+        elif language == "/pl":
             assert "Editing information about your company is accepted and sent for moderation. Updated information will be available on the site within 24 hours." == infoText, 'Не верное сообщение'
         self.browser.find_element(*CompanyRegistrationEditPageLocators.CROSS_IN_POP_UP_AFTER_SAVING_CHANGES_TO_PERSONAL_INFORMATION).click()

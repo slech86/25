@@ -65,6 +65,8 @@ class TestPasswordChange:
             subject = 'Зміна пароля на LCwork'
         elif language == "/en":
             subject = 'Change password on LC Work'
+        elif language == "/pl":
+            subject = 'Change password on LC Work'
         _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
         link = email.get_link(domain_sender_letter, subject, clear=False)
 

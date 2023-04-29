@@ -119,6 +119,8 @@ def test_verification_of_letter_after_publication_of_vacancy(browser, language):
         subject = 'Ваша вакансія вже на сайті'
     elif language == "/en":
         subject = 'Your vacancy is already on the site'
+    elif language == "/pl":
+        subject = 'Your vacancy is already on the site'
 
     expected_text = None
     if language == "":
@@ -126,6 +128,8 @@ def test_verification_of_letter_after_publication_of_vacancy(browser, language):
     elif language == "/ua":
         expected_text = 'Ваша вакансія ' + TestData.job_title_vacancy + ' вже на'
     elif language == "/en":
+        expected_text = 'Your vacancy ' + TestData.job_title_vacancy + ' is already on'
+    elif language == "/pl":
         expected_text = 'Your vacancy ' + TestData.job_title_vacancy + ' is already on'
 
     email = Mailbox(users_variables[_resources_vacancy.user_vacancy]['mail_name'])

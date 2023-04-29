@@ -113,6 +113,8 @@ class TestResumeAdd:
             subject = 'Ваше резюме опубліковано'
         elif language == "/en":
             subject = 'Your resume is published on the site.'
+        elif language == "/pl":
+            subject = 'Your resume is published on the site.'
 
         expected_text = None
         if language == "":
@@ -120,6 +122,8 @@ class TestResumeAdd:
         elif language == "/ua":
             expected_text = 'Ваше резюме опубліковано на'
         elif language == "/en":
+            expected_text = 'Your resume is published on the'
+        elif language == "/pl":
             expected_text = 'Your resume is published on the'
 
         email = Mailbox(users_variables[_resources_resume.user_resume]['mail_name'])

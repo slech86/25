@@ -86,6 +86,8 @@ class TestJobSeekerRegistration:
             subject = 'Ласкаво просимо на LCwork"]'
         elif language == "/en":
             subject = 'Welcome to LC Work!'
+        elif language == "/pl":
+            subject = 'Welcome to LC Work!'
         _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
         link = email.get_link(domain_sender_letter, subject, clear=False)
 

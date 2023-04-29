@@ -97,6 +97,8 @@ class TestCompanyRegistration:
             subject = 'Реєстрація роботодавця на LCwork'
         elif language == "/en":
             subject = 'Employer registration on LCwork'
+        elif language == "/pl":
+            subject = 'Employer registration on LCwork'
         _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
         link = email.get_link(domain_sender_letter, subject, clear=False)
         main_page = MainPage(browser, link)
@@ -153,6 +155,8 @@ class TestCompanyRegistration:
             subject = 'Ласкаво просимо на LCwork"]'
         elif language == "/en":
             subject = 'Welcome to LC Work!'
+        elif language == "/pl":
+            subject = 'Welcome to LC Work!'
 
         expected_text = None
         if language == "":
@@ -160,6 +164,8 @@ class TestCompanyRegistration:
         elif language == "/ua":
             expected_text = 'Ура! Ваш акаунт пройшов модерацiю.'
         elif language == "/en":
+            expected_text = 'Your account has been moderated.'
+        elif language == "/pl":
             expected_text = 'Your account has been moderated.'
 
         email = Mailbox(Singleton.logins_and_mails[_resources_company_add_edit.user]['mail_name'])

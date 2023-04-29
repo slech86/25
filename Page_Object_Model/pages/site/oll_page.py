@@ -51,6 +51,9 @@ class OllPage(BasePage):
         elif language == "/en":
             expected_text = "If " + users_variables[user]["mail"] + " is registered in the system, an email will be sent to it."
             assert expected_text == info_text, f"Не верное сообщение, expected result: '{expected_text}', actual result: '{info_text}'"
+        elif language == "/pl":
+            expected_text = "If " + users_variables[user]["mail"] + " is registered in the system, an email will be sent to it."
+            assert expected_text == info_text, f"Не верное сообщение, expected result: '{expected_text}', actual result: '{info_text}'"
 
     def user_new_authorization(self, key):  # авторизация нового пользователя
         if 'job_seeker' == key:
@@ -103,6 +106,8 @@ class OllPage(BasePage):
             assert "Користувач ще не активований. Для завершення активації облікового запису перейдіть за посиланням у листі, який було надіслано на ваш e-mail." == info_text, 'Не верное сообщение'
         elif language == "/en":
             assert "The user has not yet been activated. To complete the activation of your account, follow the link in the letter that was sent to your e-mail." == info_text, 'Не верное сообщение'
+        elif language == "/pl":
+            assert "The user has not yet been activated. To complete the activation of your account, follow the link in the letter that was sent to your e-mail." == info_text, 'Не верное сообщение'
 
     def info_text_for_authorization_in_user_status_on_moderation(self, language):  # инфо текст при авторизации в статусе пользователя "На модерации"
         info_text = self.browser.find_element(*OllPageLocators.INFO_TEXT_IN_POP_UP_WINDOW).text
@@ -111,6 +116,8 @@ class OllPage(BasePage):
         elif language == "/ua":
             assert "Модерація вашого облікового запису завершиться впродовж 24 годин" == info_text, 'Не верное сообщение'
         elif language == "/en":
+            assert "Your account will be moderated within 24 hours." == info_text, 'Не верное сообщение'
+        elif language == "/pl":
             assert "Your account will be moderated within 24 hours." == info_text, 'Не верное сообщение'
 
     def choice_of_russian_language_in_multi_language_forms(self):  # выбор русского языка в мультиязычных формах

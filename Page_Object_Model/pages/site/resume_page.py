@@ -27,6 +27,8 @@ class ResumePage(BasePage):
             assert h1 == 'Ваше резюме знаходиться на модерації. Очікуйте!', "Не корректный h1"
         elif language == "/en":
             assert h1 == 'Your resume is under moderation. Please, wait!', "Не корректный h1"
+        elif language == "/pl":
+            assert h1 == 'Your resume is under moderation. Please, wait!', "Не корректный h1"
 
     def checking_opening_of_page_of_an_unpublished_resume(self, language):  # проверка открытия страницы скрытого резюме
         h1 = self.browser.find_element(*ResumePageLocators.H1).text
@@ -35,6 +37,8 @@ class ResumePage(BasePage):
         elif language == "/ua":
             assert h1 == 'Резюме приховано', "Не корректный h1"
         elif language == "/en":
+            assert h1 == 'CV is hidden', "Не корректный h1"
+        elif language == "/pl":
             assert h1 == 'CV is hidden', "Не корректный h1"
 
     def checking_opening_of_page_of_published_resume(self, job_title_resume):  # проверка открытия страницы опубликованного резюме
@@ -63,6 +67,8 @@ class ResumePage(BasePage):
             assert text_in_contact_block == 'Прізвище та контакти шукача доступні лише зареєстрованим роботодавцям. Зареєструйтесь або увійдіть, щоб отримати доступ до інформації.', "Текст в блоке контактов до авторизации, не верный"
         elif language == "/en":
             assert text_in_contact_block == 'The surname and contacts of the applicant are available only to registered employers. Register or login to access the information.', "Текст в блоке контактов до авторизации, не верный"
+        elif language == "/pl":
+            assert text_in_contact_block == 'The surname and contacts of the applicant are available only to registered employers. Register or login to access the information.', "Текст в блоке контактов до авторизации, не верный"
 
     def checking_contact_block_before_buying_package_of_services(self, language):  # проверка блока контактов до покупки пакета услуг
         text_in_contact_block = self.browser.find_element(*ResumePageLocators.TEXT_OF_CONTACT_BLOCK).text
@@ -71,6 +77,8 @@ class ResumePage(BasePage):
         elif language == "/ua":
             assert text_in_contact_block == 'Зацікавив кандидат? Для перегляду прізвища та контактних даних шукача необхідно скористатися пакетними послугами.', "Текст в блоке контактов до покупки пакета услуг, не верный"
         elif language == "/en":
+            assert text_in_contact_block == 'Interested in a candidate? Use the package services to view the name and contact details of the applicant.', "Текст в блоке контактов до покупки пакета услуг, не верный"
+        elif language == "/pl":
             assert text_in_contact_block == 'Interested in a candidate? Use the package services to view the name and contact details of the applicant.', "Текст в блоке контактов до покупки пакета услуг, не верный"
 
     def checking_absence_of_contact_block_with_information(self):  # проверка отсутствия блока контактов c информацией
@@ -91,6 +99,8 @@ class ResumePage(BasePage):
         elif language == "/ua":
             assert text_in_contact_block == 'Увага! Ви використали можливість відкривати контакти здобувачів в рамках свого пакету послуг.', "Текст в блоке контактов после спользования возможности открывать контакты, не верный"
         elif language == "/en":
+            assert text_in_contact_block == 'Attention! You have used the ability to open job seeker contacts within your service package', "Текст в блоке контактов после спользования возможности открывать контакты, не верный"
+        elif language == "/pl":
             assert text_in_contact_block == 'Attention! You have used the ability to open job seeker contacts within your service package', "Текст в блоке контактов после спользования возможности открывать контакты, не верный"
 
     def checking_contact_display(self, contacts):  # проверка отображения контактов

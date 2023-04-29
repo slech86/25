@@ -341,11 +341,13 @@ class ResumeEditPage(BasePage):
 
     def checking_status_level_filling_resume(self, language):  # проверка статуса уровня заполнения резюме
         status_level_filling = self.browser.find_element(*ResumeAddEditPageLocators.STATUS_OF_YOUR_RESUME).text
-        if language == "/ua":
-            assert status_level_filling == 'Професійне', 'Не верный статус уровня заполнения'
-        elif language == "":
+        if language == "":
             assert status_level_filling == 'Профессиональное', 'Не верный статус уровня заполнения'
+        elif language == "/ua":
+            assert status_level_filling == 'Професійне', 'Не верный статус уровня заполнения'
         elif language == "/en":
+            assert status_level_filling == 'Professional', 'Не верный статус уровня заполнения'
+        elif language == "/pl":
             assert status_level_filling == 'Professional', 'Не верный статус уровня заполнения'
 
     def go_to_preview_page(self):  # переход на страницу предпросмотра

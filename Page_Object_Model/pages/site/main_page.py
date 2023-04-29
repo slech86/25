@@ -10,38 +10,46 @@ from Page_Object_Model.utility.utility import generate_alphanum_random_string
 
 class MainPage(BasePage):
     def waiting_for_main_page_to_open(self, language):  # ожидание открытия главной страницы
-        if language == "/ua":
-            WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Робота у гральному бізнесі та IT'))
-        elif language == "":
+        if language == "":
             WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Работа в игорном бизнесе и IT'))
+        elif language == "/ua":
+            WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Робота у гральному бізнесі та IT'))
         elif language == "/en":
+            WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Work in the Gambling Business and IT'))
+        elif language == "/pl":
             WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Work in the Gambling Business and IT'))
 
     def confirmation_opening_of_main_page(self, language):  # подтверждение открытия главной страницы
-        if language == '/ua':
-            assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/ua', 'Не правильный URL'
-        elif language == '':
+        if language == '':
             assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/', 'Не правильный URL'
+        elif language == '/ua':
+            assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/ua', 'Не правильный URL'
         elif language == '/en':
             assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/en', 'Не правильный URL'
+        elif language == '/pl':
+            assert self.browser.current_url == f'{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/pl', 'Не правильный URL'
 
     def checking_message_for_sending_registration_form(self, language):  # проверка сообщения о подтверждении отправки формы регистрации работодателя, соискателя
         info_text = self.browser.find_element(*MainPageLocators.INFO_TEXT_ABOUT_SENDING_REGISTRATION_FORM).text
-        if language == "/ua":
-            assert "Для завершення активації облікового запису перейдіть за посиланням у листі, який було надіслано на ваш e-mail." == info_text, 'Не верное сообщение'
-        elif language == "":
+        if language == "":
             assert "Для завершения активации своего аккаунта перейдите по ссылке в письме, которое было отправлено на ваш e-mail." == info_text, 'Не верное сообщение'
+        elif language == "/ua":
+            assert "Для завершення активації облікового запису перейдіть за посиланням у листі, який було надіслано на ваш e-mail." == info_text, 'Не верное сообщение'
         elif language == "/en":
+            assert "To complete account activation, follow the link in the letter sent to your email." == info_text, 'Не верное сообщение'
+        elif language == "/pl":
             assert "To complete account activation, follow the link in the letter sent to your email." == info_text, 'Не верное сообщение'
 
     def checking_employer_email_confirmation_message_after_registration(self, language):  # проверка сообщения о подтверждении электронной почты работодателя после регистрации
         time.sleep(1)
         info_text = self.browser.find_element(*MainPageLocators.INFO_TEXT_ABOUT_CONFIRMATION_OF_COMPANY_EMAIL_AFTER_REGISTRATION).text
-        if language == "/ua":
-            assert "Профіль Вашої компанії був відправлений на модерацію, очікуйте на підтвердження!" == info_text, 'Не верное сообщение'
-        elif language == "":
+        if language == "":
             assert "Профиль Вашей компании был отправлен на модерацию, ожидайте подтверждения!" == info_text, 'Не верное сообщение'
+        elif language == "/ua":
+            assert "Профіль Вашої компанії був відправлений на модерацію, очікуйте на підтвердження!" == info_text, 'Не верное сообщение'
         elif language == "/en":
+            assert "Your company profile has been sent for moderation, wait for confirmation!" == info_text, 'Не верное сообщение'
+        elif language == "/pl":
             assert "Your company profile has been sent for moderation, wait for confirmation!" == info_text, 'Не верное сообщение'
 
     def entering_new_password_when_recovering_it(self, language):  # ввод нового пароля при его восстановлении
@@ -58,6 +66,8 @@ class MainPage(BasePage):
             assert "Ваш пароль був успішно оновлений." == info_text, 'Не верное сообщение'
         elif language == "/en":
             assert "Your password has been successfully changed" == info_text, 'Не верное сообщение'
+        elif language == "/pl":
+            assert "Your password has been successfully changed" == info_text, 'Не верное сообщение'
         return new_password
 
     def checking_message_after_confirmation_of_password_change(self, language):  # проверка сообщения после подтверждения смены пароля
@@ -67,5 +77,7 @@ class MainPage(BasePage):
         elif language == "/ua":
             assert "Ваш пароль був оновлений." == info_text, 'Не верное сообщение'
         elif language == "/en":
+            assert "Your password has been updated." == info_text, 'Не верное сообщение'
+        elif language == "/pl":
             assert "Your password has been updated." == info_text, 'Не верное сообщение'
 

@@ -58,6 +58,8 @@ class MyResumePage(BasePage):
             assert "Резюме приховано" == status_text, 'Не верное сообщение'
         elif language == "/en":
             assert "CV is hidden" == status_text, 'Не верное сообщение'
+        elif language == "/pl":
+            assert "CV is hidden" == status_text, 'Не верное сообщение'
 
     def checking_status_of_page_response_to_print_pdf(self):  # проверка статуса ответа страницы 'распечатать пдф'
         WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(MyResumePageLocators.BUTTON_PRINT)).click()
@@ -79,6 +81,8 @@ class MyResumePage(BasePage):
             assert "Чернетка видалена." == info_text, 'Не верное сообщение'
         elif language == "/en":
             assert "Draft deleted" == info_text, 'Не верное сообщение'
+        elif language == "/pl":
+            assert "Draft deleted" == info_text, 'Не верное сообщение'
         self.browser.find_element(*MyResumePageLocators.CROSS_IN_POP_UP_AFTER_DELETING_DRAFT_RESUME).click()
 
     def waiting_for_my_resumes_page_to_open(self, language):  # ожидание открытия страницы 'Мои резюме'
@@ -88,6 +92,8 @@ class MyResumePage(BasePage):
             WebDriverWait(self.browser, 35).until(EC.text_to_be_present_in_element((MyResumePageLocators.H1), 'Мої резюме'))
         elif language == "/en":
             WebDriverWait(self.browser, 35).until(EC.text_to_be_present_in_element((MyResumePageLocators.H1), 'My CVs'))
+        elif language == "/pl":
+            WebDriverWait(self.browser, 35).until(EC.text_to_be_present_in_element((MyResumePageLocators.H1), 'My CVs'))
 
     def confirmation_of_opening_of_page_my_resumes(self, language):  # подтверждение открытия страницы 'Мои резюме'
         if language == "":
@@ -95,6 +101,8 @@ class MyResumePage(BasePage):
         elif language == "/ua":
             assert self.browser.current_url == f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/ua/resume/my", "Не правильный URL"
         elif language == "/en":
+            assert self.browser.current_url == f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/en/resume/my", "Не правильный URL"
+        elif language == "/pl":
             assert self.browser.current_url == f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/en/resume/my", "Не правильный URL"
 
     def checking_message_confirming_of_creation_of_resume(self, language):  # проверка сообщения о создании нового резюме
@@ -104,6 +112,8 @@ class MyResumePage(BasePage):
         elif language == "/ua":
             assert "Створене вами резюме прийнято і відправлено на модерацію. Резюме буде доступним на сайті протягом 12 годин." == info_text, 'Не верное сообщение'
         elif language == "/en":
+            assert "Your resume has been accepted and sent for moderation. The summary will be available on the site within 12 hours." == info_text, 'Не верное сообщение'
+        elif language == "/pl":
             assert "Your resume has been accepted and sent for moderation. The summary will be available on the site within 12 hours." == info_text, 'Не верное сообщение'
         self.browser.find_element(*MyResumePageLocators.CROSS_IN_POP_UP_AFTER_CREATING_RESUME).click()
 
@@ -115,6 +125,8 @@ class MyResumePage(BasePage):
             assert "Ваше резюме додане до чернеток" == info_text, f"Не верное сообщение, expected result: 'Ваше резюме додане до чернеток', actual result: '{info_text}'"
         elif language == "/en":
             assert "Your CV has been added to drafts" == info_text, f"Не верное сообщение, expected result: 'Your CV has been added to drafts', actual result: '{info_text}'"
+        elif language == "/pl":
+            assert "Your CV has been added to drafts" == info_text, f"Не верное сообщение, expected result: 'Your CV has been added to drafts', actual result: '{info_text}'"
         self.browser.find_element(*MyResumePageLocators.CROSS_IN_POP_UP_AFTER_ADDING_RESUME_TO_DRAFT).click()
 
     def checking_message_confirming_submission_of_resume_for_moderation(self, language):  # проверка сообщения о подтверждении отправки резюме на модерацию
@@ -124,5 +136,7 @@ class MyResumePage(BasePage):
         elif language == "/ua":
             assert "Створене вами резюме прийнято і відправлено на модерацію. Резюме буде доступним на сайті протягом 12 годин." == info_text, 'Не верное сообщение'
         elif language == "/en":
+            assert "Your resume has been accepted and sent for moderation. The summary will be available on the site within 12 hours." == info_text, 'Не верное сообщение'
+        elif language == "/pl":
             assert "Your resume has been accepted and sent for moderation. The summary will be available on the site within 12 hours." == info_text, 'Не верное сообщение'
         self.browser.find_element(*MyResumePageLocators.CROSS_IN_POP_UP_AFTER_SUBMITTING_RESUME_FOR_MODERATION).click()
