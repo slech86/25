@@ -45,4 +45,6 @@ def language(request):
         language = '/ua'
     elif user_language == "en":
         language = '/en'
+    elif user_language == "pl":
+        language = '/pl'
     yield language

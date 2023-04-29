@@ -18,3 +18,28 @@ from Page_Object_Model.users import users_variables
 
 user = 'employer_vacancy'
 
+
+def get_subject_letter(language):
+    subject = None
+    if language == "":
+        subject = 'Оплата прошла успешно! Скорее размещайте вакансии на сайте!'
+    elif language == "/ua":
+        subject = 'Оплата пройшла успішно! Мерщій розміщуйте вакансії на сайті.'
+    elif language == "/en":
+        subject = 'The payment was successful! Hurry up to place vacancies on the website!'
+    elif language == "/pl":
+        subject = 'Płatność powiodła się! Proszę zamieszczać oferty pracy na stronie!'
+    return subject
+
+
+def get_expected_text_letter(language):
+    expected_text = None
+    if language == "":
+        expected_text = 'Оплата прошла успешно. Чтобы продолжить работу, перейдите в личный кабинет на'
+    elif language == "/ua":
+        expected_text = 'Оплата пройшла успішно. Щоб продовжити роботу перейдіть в особистий кабінет на'
+    elif language == "/en":
+        expected_text = 'The payment was successful! Hurry up to place vacancies on the'
+    elif language == "/pl":
+        expected_text = 'Płatność powiodła się. Aby kontynuować pracę, przejdź do swojego'
+    return expected_text

@@ -134,21 +134,8 @@ class TestPackagePurchaseStandart5Vacancy:
         # email_page.email_authorization()  # авторизация email
         # email_page.letter_after_order_processing(language)  # письмо после проведения заказа
 
-        subject = None
-        if language == "":
-            subject = 'Оплата прошла успешно! Скорее размещайте вакансии на сайте!'
-        elif language == "/ua":
-            subject = 'Оплата пройшла успішно! Мерщій розміщуйте вакансії на сайті.'
-        elif language == "/en":
-            subject = 'The payment was successful! Hurry up to place vacancies on the website!'
-
-        expected_text = None
-        if language == "":
-            expected_text = 'Оплата прошла успешно. Чтобы продолжить работу, перейдите в личный кабинет на'
-        elif language == "/ua":
-            expected_text = 'Оплата пройшла успішно. Щоб продовжити роботу перейдіть в особистий кабінет на'
-        elif language == "/en":
-            expected_text = 'The payment was successful! Hurry up to place vacancies on the'
+        subject = _resources_buying_packages.get_subject_letter(language)
+        expected_text = _resources_buying_packages.get_expected_text_letter(language)
 
         email = Mailbox(users_variables[_resources_buying_packages.user]['mail_name'])
         letter = _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
