@@ -119,6 +119,8 @@ class ServicesAndPricesPage(BasePage):
             assert "Платіж успішно пройшов, зачекайте на модерацію." == info_text, 'Не верное сообщение'
         elif language == "/en":
             assert "Payment successfully completed, wait for moderation." == info_text, 'Не верное сообщение'
+        elif language == "/pl":
+            assert "Płatność się powiodła, proszę czekać na moderację." == info_text, 'Не верное сообщение'
         self.browser.find_element(*ServicesAndPricesPageLocators.CROSS_IN_POP_UP_AFTER_OPERATIONS_IN_INTERKASSA).click()
 
     def checking_message_about_create_cancel_test_payment(self, language):  # проверка сообщения о создании отмененного тестового платежа
@@ -129,6 +131,8 @@ class ServicesAndPricesPage(BasePage):
             assert "Щось пішло не так! Спробуйте сплатити знову!" == info_text, 'Не верное сообщение'
         elif language == "/en":
             assert "Something went wrong! Try to pay again!" == info_text, 'Не верное сообщение'
+        elif language == "/pl":
+            assert "Coś poszło nie tak! Spróbuj zapłacić ponownie!" == info_text, 'Не верное сообщение'
         self.browser.find_element(*ServicesAndPricesPageLocators.CROSS_IN_POP_UP_AFTER_OPERATIONS_IN_INTERKASSA).click()
 
     def checking_message_about_create_pending_payment(self, language):  # проверка сообщения о создании платежа в ожидании
@@ -139,5 +143,7 @@ class ServicesAndPricesPage(BasePage):
             assert "Платіж знаходиться в обробці!" == info_text, 'Не верное сообщение'
         elif language == "/en":
             assert "Payment is being processed!" == info_text, 'Не верное сообщение'
+        elif language == "/pl":
+            assert "Płatność jest przetwarzana!" == info_text, 'Не верное сообщение'
         self.browser.find_element(
             *ServicesAndPricesPageLocators.CROSS_IN_POP_UP_AFTER_OPERATIONS_IN_INTERKASSA).click()
