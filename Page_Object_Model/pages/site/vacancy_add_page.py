@@ -165,7 +165,7 @@ class VacancyAddPage(BasePage):
         elif language == "/en":
             assert validation_message == "Job title cannot be blank.", f"Не верное сообщение валидации, expected result: 'Job title cannot be blank.', actual result: '{validation_message}'"
         elif language == "/pl":
-            assert validation_message == "Job title cannot be blank.", f"Не верное сообщение валидации, expected result: 'Job title cannot be blank.', actual result: '{validation_message}'"
+            assert validation_message == "Zasadź nazwę nie może pozostać bez wartości.", f"Не верное сообщение валидации, expected result: 'Job title cannot be blank.', actual result: '{validation_message}'"
 
     def submitting_vacancy_for_publication(self):  # отправка вакансии на публикацию
         time.sleep(3)

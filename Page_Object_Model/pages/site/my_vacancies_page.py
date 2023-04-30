@@ -70,7 +70,7 @@ class MyVacanciesPage(BasePage):
         elif language == "/en":
             assert "Draft deleted" == info_text, 'Не верное сообщение'
         elif language == "/pl":
-            assert "Draft deleted" == info_text, 'Не верное сообщение'
+            assert "Wersja robocza została usunięta." == info_text, 'Не верное сообщение'
         self.browser.find_element(*MyVacanciesPageLocators.CROSS_IN_POP_UP_AFTER_DELETING_DRAFT_VACANCY).click()
 
     def checking_for_availability_icon_new_response_to_vacancy(self, vacancy_id):  # проверка наличия иконки нового отклика на вакансию
@@ -124,7 +124,7 @@ class MyVacanciesPage(BasePage):
         elif language == "/en":
             assert "Your vacancy has been added to drafts" == info_text, f"Не верное сообщение, expected result: 'Your vacancy has been added to drafts', actual result: '{info_text}'"
         elif language == "/pl":
-            assert "Your vacancy has been added to drafts" == info_text, f"Не верное сообщение, expected result: 'Your vacancy has been added to drafts', actual result: '{info_text}'"
+            assert "Twoja oferta pracy została dodana do szkiców" == info_text, f"Не верное сообщение, expected result: 'Your vacancy has been added to drafts', actual result: '{info_text}'"
         self.browser.find_element(*MyVacanciesPageLocators.CROSS_IN_POP_UP_AFTER_ADDING_VACANCY_TO_DRAFT).click()
 
 
