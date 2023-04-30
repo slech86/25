@@ -24,7 +24,7 @@ class JobSeekerEditPage(BasePage):
         elif language == "/en":
             assert "Your password has been successfully changed" == info_text, 'Не верное сообщение'
         elif language == "/pl":
-            assert "Your password has been successfully changed" == info_text, 'Не верное сообщение'
+            assert "Twoje hasło zostało pomyślnie zaktualizowane." == info_text, 'Не верное сообщение'
         time.sleep(0.3)
         self.browser.find_element(*JobSeekerRegistrationEditPageLocators.CROSS_IN_POP_UP_AFTER_PASSWORD_CHANGE).click()
 

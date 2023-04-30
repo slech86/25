@@ -79,5 +79,5 @@ class MainPage(BasePage):
         elif language == "/en":
             assert "Your password has been updated." == info_text, 'Не верное сообщение'
         elif language == "/pl":
-            assert "Your password has been updated." == info_text, 'Не верное сообщение'
+            assert "Twoje hasło zostało zaktualizowane." == info_text, 'Не верное сообщение'
 
