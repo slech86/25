@@ -50,6 +50,7 @@ class VacancyPage(BasePage):
     def filling_and_sending_response_with_selected_active_resume(self, resume_id):  # заполнение и отправка отклика с выбранным активным резюме
         resume_locator = VacancyPageLocators()
         resume = resume_locator.assembly_of_locators_with_id_resume(resume_id)
+        breakpoint()
         self.browser.find_element(*resume).click()
         self.browser.find_element(*VacancyPageLocators.BUTTON_ADD_COVER_LETTER).click()
         self.browser.find_element(*VacancyPageLocators.FIELD_COVER_LETTER).send_keys(TestData.cover_letter)
@@ -67,7 +68,7 @@ class VacancyPage(BasePage):
         elif language == "/en":
             assert "Your CV has been sent to an employer!" == info_text, 'Не верное сообщение'
         elif language == "/pl":
-            assert "Your CV has been sent to an employer!" == info_text, 'Не верное сообщение'
+            assert "Twoje CV zostało wysłane do pracodawcy!" == info_text, 'Не верное сообщение'
         self.browser.find_element(*VacancyPageLocators.CROSS_IN_POP_UP_AFTER_SENDING_RESPONSE_TO_VACANCY).click()
         time.sleep(0.5)
 

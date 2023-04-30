@@ -25,7 +25,7 @@ class ResponsesToVacancyPage(BasePage):
         elif language == "/en":
             WebDriverWait(self.browser, 35).until(EC.text_to_be_present_in_element(locators['status_response'], 'You have rejected feedback on this vacancy!'))
         elif language == "/pl":
-            WebDriverWait(self.browser, 35).until(EC.text_to_be_present_in_element(locators['status_response'], 'You have rejected feedback on this vacancy!'))
+            WebDriverWait(self.browser, 35).until(EC.text_to_be_present_in_element(locators['status_response'], 'Odrzuciliście recenzję na ten wakat!'))
 
     def check_for_absence_of_response_block(self, resume_id):  # проверка отсутствия блока отклика
         resume_locator = ResponsesToVacancyPageLocators()

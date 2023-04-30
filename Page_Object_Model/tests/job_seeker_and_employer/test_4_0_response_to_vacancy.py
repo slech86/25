@@ -87,7 +87,7 @@ class TestResponseToVacancy:
         elif language == "/en":
             subject = 'You have received feedback on the vacancy.'
         elif language == "/pl":
-            subject = 'You have received feedback on the vacancy.'
+            subject = 'Otrzymałeś odpowiedź na ofertę pracy'
 
         expected_text = None
         if language == "":
@@ -97,7 +97,7 @@ class TestResponseToVacancy:
         elif language == "/en":
             expected_text = 'You received feedback on vacancy'
         elif language == "/pl":
-            expected_text = 'You received feedback on vacancy'
+            expected_text = 'Otrzymałeś informację zwrotną na temat wakatu'
 
         email = Mailbox(users_variables[user_employer]['mail_name'])
         letter = _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
@@ -146,7 +146,7 @@ class TestResponseToVacancy:
         elif language == "/en":
             subject = 'Your resume has been reviewed'
         elif language == "/pl":
-            subject = 'Your resume has been reviewed'
+            subject = 'Twoje CV zostało obejrzane'
 
         expected_text = None
         if language == "":
@@ -156,7 +156,7 @@ class TestResponseToVacancy:
         elif language == "/en":
             expected_text = 'Your resume has been reviewed.'
         elif language == "/pl":
-            expected_text = 'Your resume has been reviewed.'
+            expected_text = 'Twoje CV zostało sprawdzone przez firmę na stronie internetowej'
 
         email = Mailbox(users_variables[user_job_seeker]['mail_name'])
         letter = _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
@@ -189,7 +189,7 @@ class TestResponseToVacancy:
         elif language == "/en":
             status_in_response_block = 'Your CV has been rejected'
         elif language == "/pl":
-            status_in_response_block = 'Your CV has been rejected'
+            status_in_response_block = 'Twoje CV zostało odrzucone'
 
         my_responses_page.checking_status_display_in_response_block(vacancy_id, status_in_response_block)  # проверка отображения статуса в блоке отклика
         my_responses_page.deleting_response(vacancy_id)  # удаление отклика
@@ -219,7 +219,7 @@ class TestResponseToVacancy:
         elif language == "/en":
             subject = 'Your resume has been rejected by the company!'
         elif language == "/pl":
-            subject = 'Your resume has been rejected by the company!'
+            subject = 'Twoje CV zostało odrzucone'
 
         expected_text = None
         if language == "":
@@ -229,7 +229,7 @@ class TestResponseToVacancy:
         elif language == "/en":
             expected_text = 'Your resume has been rejected by the'
         elif language == "/pl":
-            expected_text = 'Your resume has been rejected by the'
+            expected_text = 'odrzuciła Twoje CV.'
 
         email = Mailbox(users_variables[user_job_seeker]['mail_name'])
         letter = _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
