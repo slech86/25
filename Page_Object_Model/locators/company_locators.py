@@ -97,6 +97,7 @@ class CompanyRegistrationEditPageLocators:
     LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU = (By.CSS_SELECTOR, ('.field-' + prefix + 'mail_language [data-original-index="0"]'))  # русский
     LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA = (By.CSS_SELECTOR, ('.field-' + prefix + 'mail_language [data-original-index="1"]'))  # украинский
     LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_EN = (By.CSS_SELECTOR, ('.field-' + prefix + 'mail_language [data-original-index="2"]'))  # английский
+    LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_PL = (By.CSS_SELECTOR, ('.field-' + prefix + 'mail_language [data-original-index="3"]'))  # польский
     # блок "Настройки"
 
     BUTTON_SUBMIT = (By.CSS_SELECTOR, '#submit-button')

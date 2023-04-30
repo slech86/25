@@ -104,7 +104,7 @@ class CompanyEditPage(BasePage):
         elif language == "/ua":
             self.browser.find_element(*CompanyRegistrationEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU).click()
         elif language == "/en":
-            self.browser.find_element(*CompanyRegistrationEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA).click()
+            self.browser.find_element(*CompanyRegistrationEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_PL).click()
         elif language == "/pl":
             self.browser.find_element(*CompanyRegistrationEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA).click()
         # редактирование блока "Настройки"
