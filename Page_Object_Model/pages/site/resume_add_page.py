@@ -335,7 +335,7 @@ class ResumeAddPage(BasePage):
         elif language == "/en":
             assert validation_message == "Job title cannot be blank.", f"Не верное сообщение валидации, expected result: 'Job title cannot be blank.', actual result: '{validation_message}'"
         elif language == "/pl":
-            assert validation_message == "Job title cannot be blank.", f"Не верное сообщение валидации, expected result: 'Job title cannot be blank.', actual result: '{validation_message}'"
+            assert validation_message == "Zasadź nazwę nie może pozostać bez wartości.", f"Не верное сообщение валидации, expected result: 'Job title cannot be blank.', actual result: '{validation_message}'"
 
     def go_to_preview_page(self):  # переход на страницу предпросмотра
         time.sleep(3)

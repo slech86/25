@@ -82,7 +82,7 @@ class MyResumePage(BasePage):
         elif language == "/en":
             assert "Draft deleted" == info_text, 'Не верное сообщение'
         elif language == "/pl":
-            assert "Draft deleted" == info_text, 'Не верное сообщение'
+            assert "Wersja robocza została usunięta." == info_text, 'Не верное сообщение'
         self.browser.find_element(*MyResumePageLocators.CROSS_IN_POP_UP_AFTER_DELETING_DRAFT_RESUME).click()
 
     def waiting_for_my_resumes_page_to_open(self, language):  # ожидание открытия страницы 'Мои резюме'
@@ -126,7 +126,7 @@ class MyResumePage(BasePage):
         elif language == "/en":
             assert "Your CV has been added to drafts" == info_text, f"Не верное сообщение, expected result: 'Your CV has been added to drafts', actual result: '{info_text}'"
         elif language == "/pl":
-            assert "Your CV has been added to drafts" == info_text, f"Не верное сообщение, expected result: 'Your CV has been added to drafts', actual result: '{info_text}'"
+            assert "Twoje CV zostało dodane do szkiców" == info_text, f"Не верное сообщение, expected result: 'Your CV has been added to drafts', actual result: '{info_text}'"
         self.browser.find_element(*MyResumePageLocators.CROSS_IN_POP_UP_AFTER_ADDING_RESUME_TO_DRAFT).click()
 
     def checking_message_confirming_submission_of_resume_for_moderation(self, language):  # проверка сообщения о подтверждении отправки резюме на модерацию
