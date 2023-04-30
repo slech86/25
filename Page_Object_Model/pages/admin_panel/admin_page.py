@@ -283,7 +283,7 @@ class AdminPage(BasePage):
         elif language == "/en":
             assert email_language_title == TestData.email_language_en, "Поле 'Язык уведомлений на e-mail' не верно"
         elif language == "/pl":
-            assert email_language_title == TestData.email_language_en, "Поле 'Язык уведомлений на e-mail' не верно"
+            assert email_language_title == TestData.email_language_pl, "Поле 'Язык уведомлений на e-mail' не верно"
 
         self.verification_of_saving_data_entered_job_seeker(TestData)
 
@@ -295,7 +295,7 @@ class AdminPage(BasePage):
         elif language == "/ua":
             assert email_language_title == TestDataEditing.email_language_ru, "Поле 'Язык уведомлений на e-mail' не верно"
         elif language == "/en":
-            assert email_language_title == TestDataEditing.email_language_ua, "Поле 'Язык уведомлений на e-mail' не верно"
+            assert email_language_title == TestDataEditing.email_language_pl, "Поле 'Язык уведомлений на e-mail' не верно"
         elif language == "/pl":
             assert email_language_title == TestDataEditing.email_language_ua, "Поле 'Язык уведомлений на e-mail' не верно"
 

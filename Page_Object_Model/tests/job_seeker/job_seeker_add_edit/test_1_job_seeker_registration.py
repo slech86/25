@@ -27,7 +27,7 @@ class TestJobSeekerRegistration:
 
         job_seeker_registration_page = JobSeekerRegistrationPage(browser, browser.current_url)
         page.choice_of_russian_language_in_multi_language_forms()  # выбор русского языка в мультиязычных формах
-        job_seeker_registration_page.filling_in_all_fields(language, _resources_job_seeker_add_edit.user)  # заполнение всех полей
+        job_seeker_registration_page.filling_in_all_fields(_resources_job_seeker_add_edit.user)  # заполнение всех полей
         job_seeker_registration_page.submitting_form_for_registration()  # отправка формы на регистрацию
 
         main_page = MainPage(browser, browser.current_url)
@@ -35,7 +35,7 @@ class TestJobSeekerRegistration:
         main_page.confirmation_opening_of_main_page(language)  # подтверждение открытия главной страницы
         main_page.checking_message_for_sending_registration_form(language)  # проверка сообщения о подтверждении отправки формы регистрации
 
-    def test_checking_creation_of_user_in_admin_panel(self, browser, language):  # проверка создания пользователя в админке
+    def test_checking_creation_of_user_in_admin_panel(self, browser):  # проверка создания пользователя в админке
         admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
         admin_page.open()
         admin_page.admin_authorization()
@@ -46,7 +46,7 @@ class TestJobSeekerRegistration:
 
     # @pytest.mark.skip
     # @pytest.mark.s_r_c
-    def test_changing_user_role_from_user_to_super_admin(self, browser, language):  # изменение роли пользователя с "User" на "SuperAdmin"
+    def test_changing_user_role_from_user_to_super_admin(self, browser):  # изменение роли пользователя с "User" на "SuperAdmin"
         admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
         admin_page.open()
         admin_page.admin_authorization()
@@ -87,7 +87,7 @@ class TestJobSeekerRegistration:
         elif language == "/en":
             subject = 'Welcome to LC Work!'
         elif language == "/pl":
-            subject = 'Welcome to LC Work!'
+            subject = 'Witamy w pracy w kasynie logowania!'
         _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
         link = email.get_link(domain_sender_letter, subject, clear=False)
 

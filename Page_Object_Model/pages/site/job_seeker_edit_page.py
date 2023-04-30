@@ -72,7 +72,7 @@ class JobSeekerEditPage(BasePage):
         elif language == "/ua":
             self.browser.find_element(*JobSeekerRegistrationEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_RU).click()
         elif language == "/en":
-            self.browser.find_element(*JobSeekerRegistrationEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA).click()
+            self.browser.find_element(*JobSeekerRegistrationEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_PL).click()
         elif language == "/pl":
             self.browser.find_element(*JobSeekerRegistrationEditPageLocators.LANGUAGE_OF_NOTIFICATIONS_ON_EMAIL_UA).click()
         # редактирование блока "Настройки"
@@ -89,5 +89,5 @@ class JobSeekerEditPage(BasePage):
         elif language == "/en":
             assert "Changes to personal information saved" == info_text, 'Не верное сообщение'
         elif language == "/pl":
-            assert "Changes to personal information saved" == info_text, 'Не верное сообщение'
+            assert "Zmiany danych osobowych zostały zapisane" == info_text, 'Не верное сообщение'
         self.browser.find_element(*JobSeekerRegistrationEditPageLocators.CROSS_IN_POP_UP_AFTER_SAVING_CHANGES_TO_PERSONAL_INFORMATION).click()

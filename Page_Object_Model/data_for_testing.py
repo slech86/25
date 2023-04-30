@@ -193,6 +193,7 @@ class TestDataEditing:
     email_language_ru = '[#1] Русский'
     email_language_ua = '[#3] Українська'
     email_language_en = '[#4] English'
+    email_language_pl = '[#5] Polski'
 
     name = TestData.name + '_editing'
     surname = TestData.surname + '_editing'

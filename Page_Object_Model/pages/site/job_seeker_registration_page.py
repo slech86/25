@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class JobSeekerRegistrationPage(BasePage):
-    def filling_in_all_fields(self, language, key):  # заполнение всех полей
+    def filling_in_all_fields(self, key):  # заполнение всех полей
         login_and_mail = TestData()
         login_and_mail.login_and_mail_generation(key)
         self.browser.find_element(*JobSeekerRegistrationEditPageLocators.FIELD_LOGIN).send_keys(Singleton.logins_and_mails[key]['login'])
