@@ -101,7 +101,7 @@ class ResumePage(BasePage):
         elif language == "/en":
             assert text_in_contact_block == 'Attention! You have used the ability to open job seeker contacts within your service package', "Текст в блоке контактов после спользования возможности открывать контакты, не верный"
         elif language == "/pl":
-            assert text_in_contact_block == 'Attention! You have used the ability to open job seeker contacts within your service package', "Текст в блоке контактов после спользования возможности открывать контакты, не верный"
+            assert text_in_contact_block == 'Uwaga! Skorzystałeś z możliwości otwierania kontaktów z kandydatami w ramach Twojego pakiet usług.', "Текст в блоке контактов после спользования возможности открывать контакты, не верный"
 
     def checking_contact_display(self, contacts):  # проверка отображения контактов
         phone1 = self.browser.find_element(*ResumePageLocators.PHONE_1_IN_CONTACT_INFORMATION).text
