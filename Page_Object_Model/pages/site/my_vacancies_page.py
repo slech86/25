@@ -45,7 +45,7 @@ class MyVacanciesPage(BasePage):
         elif language == "/en":
             assert "Vacancy is hidden" == status_text, 'Вакансия не скрыта'
         elif language == "/pl":
-            assert "Vacancy is hidden" == status_text, 'Вакансия не скрыта'
+            assert "Wakat ukryty" == status_text, 'Вакансия не скрыта'
 
     def checking_status_of_page_response_to_print_pdf(self, vacancy_id):  # проверка статуса ответа страницы 'распечатать пдф'
         locators_with_id_vacancies = MyVacanciesPageLocators()
