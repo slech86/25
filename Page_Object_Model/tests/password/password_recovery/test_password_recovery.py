@@ -47,7 +47,7 @@ class TestPasswordRecovery:
         elif language == "/en":
             subject = 'Confirm password recovery on LC Work'
         elif language == "/pl":
-            subject = 'Confirm password recovery on LC Work'
+            subject = 'Odzyskiwanie hasła w LCwork'
         _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
         link = email.get_link(domain_sender_letter, subject, clear=False)
 

@@ -67,7 +67,7 @@ class MainPage(BasePage):
         elif language == "/en":
             assert "Your password has been successfully changed" == info_text, 'Не верное сообщение'
         elif language == "/pl":
-            assert "Your password has been successfully changed" == info_text, 'Не верное сообщение'
+            assert "Twoje hasło zostało zaktualizowane pomyślnie." == info_text, 'Не верное сообщение'
         return new_password
 
     def checking_message_after_confirmation_of_password_change(self, language):  # проверка сообщения после подтверждения смены пароля
