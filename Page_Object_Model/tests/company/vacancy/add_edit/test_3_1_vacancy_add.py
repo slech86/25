@@ -120,7 +120,7 @@ def test_verification_of_letter_after_publication_of_vacancy(browser, language):
     elif language == "/en":
         subject = 'Your vacancy is already on the site'
     elif language == "/pl":
-        subject = 'Your vacancy is already on the site'
+        subject = 'Twoje ogłoszenie jest już na'
 
     expected_text = None
     if language == "":
@@ -130,7 +130,7 @@ def test_verification_of_letter_after_publication_of_vacancy(browser, language):
     elif language == "/en":
         expected_text = 'Your vacancy ' + TestData.job_title_vacancy + ' is already on'
     elif language == "/pl":
-        expected_text = 'Your vacancy ' + TestData.job_title_vacancy + ' is already on'
+        expected_text = 'Twoje wakat ' + TestData.job_title_vacancy + ' jest już na stronie!'
 
     email = Mailbox(users_variables[_resources_vacancy.user_vacancy]['mail_name'])
     letter = _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма

@@ -79,6 +79,7 @@ class VacancyAddPage(BasePage):
         locators_from_id_block = VacancyAddEditPageLocators()
         button_add_skills = locators_from_id_block.assembly_of_locators_from_id_block('knowledge-of-languages')
         self.browser.find_element(*button_add_skills['button_add_block']).click()
+        time.sleep(1)
         self.browser.find_element(*VacancyAddEditPageLocators.DROPDOWN_LANGUAGE_1).click()
         self.browser.find_element(*VacancyAddEditPageLocators.ENGLISH_LANGUAGE_1).click()
         time.sleep(3)

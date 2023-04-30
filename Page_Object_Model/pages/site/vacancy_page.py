@@ -27,7 +27,7 @@ class VacancyPage(BasePage):
         if language == "/en":
             assert h1 == 'Search completed', "Не корректный h1"
         if language == "/pl":
-            assert h1 == 'Search completed', "Не корректный h1"
+            assert h1 == 'Wyszukiwanie zakończone', "Не корректный h1"
 
     def checking_opening_of_page_of_published_vacancy(self, job_title_vacancy):  # проверка открытия страницы опубликованной вакансии
         h1 = self.browser.find_element(*VacancyPageLocators.H1).text

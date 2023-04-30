@@ -101,7 +101,7 @@ class MyVacanciesPage(BasePage):
         elif language == "/en":
             assert self.browser.current_url == f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/en/vacancy/my", "Не правильный URL"
         elif language == "/pl":
-            assert self.browser.current_url == f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/en/vacancy/my", "Не правильный URL"
+            assert self.browser.current_url == f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/pl/vacancy/my", "Не правильный URL"
 
     def checking_message_confirming_of_creation_of_vacancy(self, language):  # проверка сообщения о создании новой вакансии
         info_text = self.browser.find_element(*MyVacanciesPageLocators.INFO_TEXT_AFTER_CREATING_VACANCY).text
@@ -112,7 +112,7 @@ class MyVacanciesPage(BasePage):
         elif language == "/en":
             assert "The vacancy you have created has been accepted and sent for moderation. The vacancy will be available on the website within 12 hours." == info_text, 'Не верное сообщение'
         elif language == "/pl":
-            assert "The vacancy you have created has been accepted and sent for moderation. The vacancy will be available on the website within 12 hours." == info_text, 'Не верное сообщение'
+            assert "Wolne miejsca pracy będą dostępne na stronie internetowej w ciągu 24 godzin." == info_text, 'Не верное сообщение'
         self.browser.find_element(*MyVacanciesPageLocators.CROSS_IN_POP_UP_AFTER_CREATING_VACANCY).click()
 
     def checking_message_about_adding_vacancy_to_draft(self, language):  # проверка сообщения о добавлении вакансии в черновик
@@ -137,5 +137,5 @@ class MyVacanciesPage(BasePage):
         elif language == "/en":
             assert "The vacancy you have created has been accepted and sent for moderation. The vacancy will be available on the website within 12 hours." == info_text, 'Не верное сообщение'
         elif language == "/pl":
-            assert "The vacancy you have created has been accepted and sent for moderation. The vacancy will be available on the website within 12 hours." == info_text, 'Не верное сообщение'
+            assert "Wolne miejsca pracy będą dostępne na stronie internetowej w ciągu 24 godzin." == info_text, 'Не верное сообщение'
         self.browser.find_element(*MyVacanciesPageLocators.CROSS_IN_POP_UP_AFTER_SUBMITTING_VACANCY_FOR_MODERATION).click()
