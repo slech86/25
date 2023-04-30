@@ -28,7 +28,7 @@ class ResumePage(BasePage):
         elif language == "/en":
             assert h1 == 'Your resume is under moderation. Please, wait!', "Не корректный h1"
         elif language == "/pl":
-            assert h1 == 'Your resume is under moderation. Please, wait!', "Не корректный h1"
+            assert h1 == 'Twoje CV jest w trakcie moderacji. Proszę czekać!', "Не корректный h1"
 
     def checking_opening_of_page_of_an_unpublished_resume(self, language):  # проверка открытия страницы скрытого резюме
         h1 = self.browser.find_element(*ResumePageLocators.H1).text

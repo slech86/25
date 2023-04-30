@@ -103,7 +103,7 @@ class MyResumePage(BasePage):
         elif language == "/en":
             assert self.browser.current_url == f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/en/resume/my", "Не правильный URL"
         elif language == "/pl":
-            assert self.browser.current_url == f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/en/resume/my", "Не правильный URL"
+            assert self.browser.current_url == f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}/pl/resume/my", "Не правильный URL"
 
     def checking_message_confirming_of_creation_of_resume(self, language):  # проверка сообщения о создании нового резюме
         info_text = self.browser.find_element(*MyResumePageLocators.INFO_TEXT_AFTER_CREATING_RESUME).text
@@ -114,7 +114,7 @@ class MyResumePage(BasePage):
         elif language == "/en":
             assert "Your resume has been accepted and sent for moderation. The summary will be available on the site within 12 hours." == info_text, 'Не верное сообщение'
         elif language == "/pl":
-            assert "Your resume has been accepted and sent for moderation. The summary will be available on the site within 12 hours." == info_text, 'Не верное сообщение'
+            assert "Stworzone przez Ciebie CV zostało zaakceptowane i wysłane do moderacji. CV będą dostępne na stronie w ciągu 12 godzin." == info_text, 'Не верное сообщение'
         self.browser.find_element(*MyResumePageLocators.CROSS_IN_POP_UP_AFTER_CREATING_RESUME).click()
 
     def checking_message_about_adding_resume_to_draft(self, language):  # проверка сообщения о добавлении резюме в черновик
@@ -138,5 +138,5 @@ class MyResumePage(BasePage):
         elif language == "/en":
             assert "Your resume has been accepted and sent for moderation. The summary will be available on the site within 12 hours." == info_text, 'Не верное сообщение'
         elif language == "/pl":
-            assert "Your resume has been accepted and sent for moderation. The summary will be available on the site within 12 hours." == info_text, 'Не верное сообщение'
+            assert "Stworzone przez Ciebie CV zostało zaakceptowane i wysłane do moderacji. CV będą dostępne na stronie w ciągu 12 godzin." == info_text, 'Не верное сообщение'
         self.browser.find_element(*MyResumePageLocators.CROSS_IN_POP_UP_AFTER_SUBMITTING_RESUME_FOR_MODERATION).click()

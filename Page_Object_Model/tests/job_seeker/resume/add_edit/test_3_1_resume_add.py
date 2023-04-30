@@ -114,7 +114,7 @@ class TestResumeAdd:
         elif language == "/en":
             subject = 'Your resume is published on the site.'
         elif language == "/pl":
-            subject = 'Your resume is published on the site.'
+            subject = 'Twoje CV zostało opublikowane'
 
         expected_text = None
         if language == "":
@@ -124,7 +124,7 @@ class TestResumeAdd:
         elif language == "/en":
             expected_text = 'Your resume is published on the'
         elif language == "/pl":
-            expected_text = 'Your resume is published on the'
+            expected_text = 'Twoje CV jest publikowane na stronie internetowej.'
 
         email = Mailbox(users_variables[_resources_resume.user_resume]['mail_name'])
         letter = _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
