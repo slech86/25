@@ -59,7 +59,7 @@ class MyResumePage(BasePage):
         elif language == "/en":
             assert "CV is hidden" == status_text, 'Не верное сообщение'
         elif language == "/pl":
-            assert "CV is hidden" == status_text, 'Не верное сообщение'
+            assert "Podsumowanie ukryte" == status_text, 'Не верное сообщение'
 
     def checking_status_of_page_response_to_print_pdf(self):  # проверка статуса ответа страницы 'распечатать пдф'
         WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(MyResumePageLocators.BUTTON_PRINT)).click()
