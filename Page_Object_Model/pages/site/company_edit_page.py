@@ -126,5 +126,5 @@ class CompanyEditPage(BasePage):
         elif language == "/en":
             assert "Editing information about your company is accepted and sent for moderation. Updated information will be available on the site within 24 hours." == infoText, 'Не верное сообщение'
         elif language == "/pl":
-            assert "Editing information about your company is accepted and sent for moderation. Updated information will be available on the site within 24 hours." == infoText, 'Не верное сообщение'
+            assert "Edycja informacji o Państwa firmie została zaakceptowana i wysłana do moderacji. Zaktualizowane informacje będą dostępne na stronie w ciągu 24 godzin." == infoText, 'Не верное сообщение'
         self.browser.find_element(*CompanyRegistrationEditPageLocators.CROSS_IN_POP_UP_AFTER_SAVING_CHANGES_TO_PERSONAL_INFORMATION).click()

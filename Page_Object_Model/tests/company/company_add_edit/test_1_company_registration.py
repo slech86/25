@@ -98,7 +98,7 @@ class TestCompanyRegistration:
         elif language == "/en":
             subject = 'Employer registration on LCwork'
         elif language == "/pl":
-            subject = 'Employer registration on LCwork'
+            subject = 'Witamy w pracy w kasynie logowania!'
         _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
         link = email.get_link(domain_sender_letter, subject, clear=False)
         main_page = MainPage(browser, link)
@@ -140,7 +140,7 @@ class TestCompanyRegistration:
     #     page.user_new_authorization()  # авторизация пользователя
     #     page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
 
-    def test_checking_letter_after_first_moderation(self,browser, language):  # проверка письма после первой модерации компании
+    def test_checking_letter_after_first_moderation(self, browser, language):  # проверка письма после первой модерации компании
         # link = Accounts.url_email
         # email_page = EmailPage(browser, link)
         # email_page.open()
@@ -156,7 +156,7 @@ class TestCompanyRegistration:
         elif language == "/en":
             subject = 'Welcome to LC Work!'
         elif language == "/pl":
-            subject = 'Welcome to LC Work!'
+            subject = 'Twoje konto zostało zmoderowane.'
 
         expected_text = None
         if language == "":
@@ -166,7 +166,7 @@ class TestCompanyRegistration:
         elif language == "/en":
             expected_text = 'Your account has been moderated.'
         elif language == "/pl":
-            expected_text = 'Your account has been moderated.'
+            expected_text = 'Twoje konto zostało zmoderowane. Przejdź do'
 
         email = Mailbox(Singleton.logins_and_mails[_resources_company_add_edit.user]['mail_name'])
         letter = _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма

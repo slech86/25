@@ -152,7 +152,7 @@ class AdminPage(BasePage):
         elif language == "/en":
             assert email_language_title == TestData.email_language_en, "Поле 'Язык уведомлений на e-mail' не верно"
         elif language == "/pl":
-            assert email_language_title == TestData.email_language_en, "Поле 'Язык уведомлений на e-mail' не верно"
+            assert email_language_title == TestData.email_language_pl, "Поле 'Язык уведомлений на e-mail' не верно"
 
         slug = self.browser.find_element(*AdminPageLocators.FIELD_SLUG)
         slug_value = slug.get_attribute("value")

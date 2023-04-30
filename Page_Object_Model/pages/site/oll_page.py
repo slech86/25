@@ -107,7 +107,7 @@ class OllPage(BasePage):
         elif language == "/en":
             assert "The user has not yet been activated. To complete the activation of your account, follow the link in the letter that was sent to your e-mail." == info_text, 'Не верное сообщение'
         elif language == "/pl":
-            assert "The user has not yet been activated. To complete the activation of your account, follow the link in the letter that was sent to your e-mail." == info_text, 'Не верное сообщение'
+            assert "Użytkownik nie został jeszcze aktywowany. Aby dokończyć aktywację konta, skorzystaj z linku zawartego w wysłanej do Ciebie wiadomości e-mail." == info_text, 'Не верное сообщение'
 
     def info_text_for_authorization_in_user_status_on_moderation(self, language):  # инфо текст при авторизации в статусе пользователя "На модерации"
         info_text = self.browser.find_element(*OllPageLocators.INFO_TEXT_IN_POP_UP_WINDOW).text
@@ -118,7 +118,7 @@ class OllPage(BasePage):
         elif language == "/en":
             assert "Your account will be moderated within 24 hours." == info_text, 'Не верное сообщение'
         elif language == "/pl":
-            assert "Your account will be moderated within 24 hours." == info_text, 'Не верное сообщение'
+            assert "Moderacja Twojego postu tytułowego zakończy się w ciągu najbliższych 24 lat" == info_text, 'Не верное сообщение'
 
     def choice_of_russian_language_in_multi_language_forms(self):  # выбор русского языка в мультиязычных формах
         self.browser.find_element(*OllPageLocators.RUSSIAN_LANGUAGE_TAB).click()

@@ -26,6 +26,7 @@ class TestData:
     email_language_ru = '[#1] Русский'
     email_language_ua = '[#3] Українська'
     email_language_en = '[#4] English'
+    email_language_pl = '[#5] Polski'
 
     name = 'name_' + time_Now
     surname = 'surname_' + time_Now

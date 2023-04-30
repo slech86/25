@@ -17,7 +17,7 @@ class MainPage(BasePage):
         elif language == "/en":
             WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Work in the Gambling Business and IT'))
         elif language == "/pl":
-            WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Work in the Gambling Business and IT'))
+            WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Praca w branży hazardowej i IT'))
 
     def confirmation_opening_of_main_page(self, language):  # подтверждение открытия главной страницы
         if language == '':
@@ -38,7 +38,7 @@ class MainPage(BasePage):
         elif language == "/en":
             assert "To complete account activation, follow the link in the letter sent to your email." == info_text, 'Не верное сообщение'
         elif language == "/pl":
-            assert "To complete account activation, follow the link in the letter sent to your email." == info_text, 'Не верное сообщение'
+            assert "Aby dokończyć aktywację konta, skorzystaj z linku zawartego w wysłanej do Ciebie wiadomości e-mail." == info_text, 'Не верное сообщение'
 
     def checking_employer_email_confirmation_message_after_registration(self, language):  # проверка сообщения о подтверждении электронной почты работодателя после регистрации
         time.sleep(1)
@@ -50,7 +50,7 @@ class MainPage(BasePage):
         elif language == "/en":
             assert "Your company profile has been sent for moderation, wait for confirmation!" == info_text, 'Не верное сообщение'
         elif language == "/pl":
-            assert "Your company profile has been sent for moderation, wait for confirmation!" == info_text, 'Не верное сообщение'
+            assert "Twój profil firmowy został wysłany do moderacji, oczekuj potwierdzenia!" == info_text, 'Не верное сообщение'
 
     def entering_new_password_when_recovering_it(self, language):  # ввод нового пароля при его восстановлении
         new_password = generate_alphanum_random_string(22)
