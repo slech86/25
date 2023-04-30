@@ -353,7 +353,7 @@ class ResumeEditPage(BasePage):
     def go_to_preview_page(self):  # переход на страницу предпросмотра
         self.browser.execute_script("window.scrollBy(0, 4000);")
         self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_PREVIEW).click()
-        for i in range(6):
+        for i in range(10):
             browser_tabs = self.browser.window_handles
             number_of_tabs = len(browser_tabs)
             if number_of_tabs == 2:
