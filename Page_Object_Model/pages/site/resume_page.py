@@ -68,7 +68,7 @@ class ResumePage(BasePage):
         elif language == "/en":
             assert text_in_contact_block == 'The surname and contacts of the applicant are available only to registered employers. Register or login to access the information.', "Текст в блоке контактов до авторизации, не верный"
         elif language == "/pl":
-            assert text_in_contact_block == 'The surname and contacts of the applicant are available only to registered employers. Register or login to access the information.', "Текст в блоке контактов до авторизации, не верный"
+            assert text_in_contact_block == 'Nazwisko i kontakty wnioskodawcy są dostępne tylko dla zarejestrowanych pracodawców Zarejestruj się lub Wejdź w celu uzyskania dostępu do informacji.', "Текст в блоке контактов до авторизации, не верный"
 
     def checking_contact_block_before_buying_package_of_services(self, language):  # проверка блока контактов до покупки пакета услуг
         text_in_contact_block = self.browser.find_element(*ResumePageLocators.TEXT_OF_CONTACT_BLOCK).text
@@ -79,7 +79,7 @@ class ResumePage(BasePage):
         elif language == "/en":
             assert text_in_contact_block == 'Interested in a candidate? Use the package services to view the name and contact details of the applicant.', "Текст в блоке контактов до покупки пакета услуг, не верный"
         elif language == "/pl":
-            assert text_in_contact_block == 'Interested in a candidate? Use the package services to view the name and contact details of the applicant.', "Текст в блоке контактов до покупки пакета услуг, не верный"
+            assert text_in_contact_block == 'Jesteś zainteresowany kandydatem? Aby zobaczyć nazwisko i dane kontaktowe kandydata użyj usługi pakietowe.', "Текст в блоке контактов до покупки пакета услуг, не верный"
 
     def checking_absence_of_contact_block_with_information(self):  # проверка отсутствия блока контактов c информацией
         assert self.is_not_element_present(*ResumePageLocators.CONTACT_INFORMATION_BLOCK), "Не должно быть блока контактов с информацией"
