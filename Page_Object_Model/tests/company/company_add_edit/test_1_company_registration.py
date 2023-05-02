@@ -152,7 +152,7 @@ class TestCompanyRegistration:
         if language == "":
             subject = 'Добро пожаловать на LСwork'
         elif language == "/ua":
-            subject = 'Ласкаво просимо на LCwork"]'
+            subject = 'Ласкаво просимо на LCwork'
         elif language == "/en":
             subject = 'Welcome to LC Work!'
         elif language == "/pl":
