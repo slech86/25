@@ -103,7 +103,6 @@ class TestResponseToVacancy:
         letter = _resources_tests.waiting_letter(email, domain_sender_letter, subject)  # ожидание письма
         _resources_tests.checking_content_of_letter(email, letter, expected_text)  # проверка содержания письма
 
-
     def test_company_response_opening(self, browser, language):  # открытие отклика компанией
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
         page = OllPage(browser, url_page)
