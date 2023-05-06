@@ -47,12 +47,13 @@ class TestPackagePurchaseStandart1Vacancy:
         singleton = Singleton()
         singleton.id_product = services_and_prices_page.adding_to_cart_standart_1_vacancy_and_getting_product_id()  # добавление в корзину "Standart: 1 вакансия" и получение id продукта
         services_and_prices_page.click_button_buy_in_basket()  # нажатие кнопки "Курить" в корзине
+        services_and_prices_page.checking_message_after_buying_paid_package(language)  # проверка сообщения после покупки платного пакета
 
-        interkassa_page = InterkassaPage(browser, browser.current_url)
-        interkassa_page.transition_to_test_payment_page()  # переход на страницу тестового платежа
-        interkassa_page.create_cancel_test_payment()  # Создать отмененный тестовый платеж
-
-        services_and_prices_page.checking_message_about_create_cancel_test_payment(language)  # проверка сообщения о создании отмененного тестового платежа
+        # interkassa_page = InterkassaPage(browser, browser.current_url)
+        # interkassa_page.transition_to_test_payment_page()  # переход на страницу тестового платежа
+        # interkassa_page.create_cancel_test_payment()  # Создать отмененный тестовый платеж
+        #
+        # services_and_prices_page.checking_message_about_create_cancel_test_payment(language)  # проверка сообщения о создании отмененного тестового платежа
 
         admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
         admin_page.open()
