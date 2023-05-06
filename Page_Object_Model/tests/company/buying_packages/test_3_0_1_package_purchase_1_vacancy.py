@@ -61,12 +61,13 @@ class TestPackagePurchase1Vacancy:
         singleton = Singleton()
         singleton.id_product = services_and_prices_page.adding_to_cart_1_vacancy_and_getting_product_id()  # добавление в корзину "1 вакансия" и получение id продукта
         services_and_prices_page.click_button_buy_in_basket()  # нажатие кнопки "Курить" в корзине
+        services_and_prices_page.checking_message_after_buying_paid_package(language)  # проверка сообщения после покупки платного пакета
 
-        interkassa_page = InterkassaPage(browser, browser.current_url)
-        interkassa_page.transition_to_test_payment_page()  # переход на страницу тестового платежа
-        interkassa_page.creating_test_payment()  # создание тестового платежа
-
-        services_and_prices_page.checking_message_about_creating_test_payment(language)  # проверка сообщения о создании тестового платежа
+        # interkassa_page = InterkassaPage(browser, browser.current_url)
+        # interkassa_page.transition_to_test_payment_page()  # переход на страницу тестового платежа
+        # interkassa_page.creating_test_payment()  # создание тестового платежа
+        #
+        # services_and_prices_page.checking_message_about_creating_test_payment(language)  # проверка сообщения о создании тестового платежа
 
         page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
         page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
@@ -83,7 +84,7 @@ class TestPackagePurchase1Vacancy:
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
         admin_page.go_to_order_page()  # переход на страницу заказов
         admin_page.search_for_user_orders_by_email(users_variables[_resources_buying_packages.user]["mail"])  # поиск заказов пользователя по e-mail
-        admin_page.order_processing_2()  # проведение заказа, изменение статуса заказа с "Оплачено" на "Проведенный"
+        admin_page.order_processing()  # проведение заказа, изменение статуса заказа с "Новый" на "Проведенный"
         singleton = Singleton()
         singleton.id_order = admin_page.getting_last_order_id_of_user()  # получение последнего id заказа пользователя
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"

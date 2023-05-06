@@ -52,7 +52,7 @@ class ServicesAndPricesPage(BasePage):
         self.browser.find_element(*ServicesAndPricesPageLocators.BUTTON_BUY).click()
         time.sleep(1)
 
-    def verification_of_message_after_purchase(self, language):  # проверка сообщения после покупки
+    def checking_message_after_buying_free_package(self, language):  # проверка сообщения после покупки бесплатного пакета
         info_text = self.browser.find_element(*ServicesAndPricesPageLocators.INFO_TEXT_AFTER_BUTTON_PRESSED_BUY_IN_CART).text
         if language == "":
             assert "После активации услуги в личном кабинете, вы можете предложить вакансию соискателям!" == info_text, 'Не верное сообщение'
@@ -62,6 +62,18 @@ class ServicesAndPricesPage(BasePage):
             assert "You will be able to offer a vacancy to job seekers after activating the service in your account!" == info_text, 'Не верное сообщение'
         elif language == "/pl":
             assert "Po aktywacji usługi na koncie osobistym możesz oferować wolne miejsca pracy osobom poszukującym pracy!" == info_text, 'Не верное сообщение'
+        self.browser.find_element(*ServicesAndPricesPageLocators.CROSS_IN_POP_UP_AFTER_PRESSING_BUTTON_BUY_IN_BASKET).click()
+
+    def checking_message_after_buying_paid_package(self, language):  # проверка сообщения после покупки платного пакета
+        info_text = self.browser.find_element(*ServicesAndPricesPageLocators.INFO_TEXT_AFTER_BUTTON_PRESSED_BUY_IN_CART).text
+        if language == "":
+            assert "Наш менеджер свяжется с Вами в кратчайшие сроки. После согласования всех деталей Вы получите доступ к услуге." == info_text, 'Не верное сообщение'
+        elif language == "/ua":
+            assert "Наш менеджер зв'яжеться з Вами у найкоротші терміни. Після узгодження всіх деталей Ви отримаєте доступ до послуги." == info_text, 'Не верное сообщение'
+        elif language == "/en":
+            assert "Our manager will contact you as soon as possible. After agreeing on all the details, you will get access to the service." == info_text, 'Не верное сообщение'
+        elif language == "/pl":
+            assert "Nasz menedżer skontaktuje się z Tobą tak szybko, jak to możliwe. Po uzgodnieniu wszystkich szczegółów otrzymasz dostęp do usługi." == info_text, 'Не верное сообщение'
         self.browser.find_element(*ServicesAndPricesPageLocators.CROSS_IN_POP_UP_AFTER_PRESSING_BUTTON_BUY_IN_BASKET).click()
 
     def switch_to_tab_not_activated(self):  # переход на вкладку "Не активированные"

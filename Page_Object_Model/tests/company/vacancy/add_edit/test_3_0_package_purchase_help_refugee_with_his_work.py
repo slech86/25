@@ -40,7 +40,7 @@ class TestPackagePurchaseHelpRefugeeWithHisWork:
         singleton = Singleton()
         singleton.id_product = services_and_prices_page.adding_to_cart_help_refugee_with_his_work_and_getting_product_id()  # добавление в корзину "Помоги беженцу с работой" и получение id продукта
         services_and_prices_page.click_button_buy_in_basket()  # нажатие кнопки "Курить" в корзине
-        services_and_prices_page.verification_of_message_after_purchase(language)  # проверка сообщения после покупки
+        services_and_prices_page.checking_message_after_buying_free_package(language)  # проверка сообщения после покупки бесплатного пакета
 
         admin_page = AdminPage(browser, UrlStartPageAdmin.url_page_admin)
         admin_page.open()

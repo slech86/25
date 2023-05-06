@@ -42,7 +42,7 @@ class TestPackagePurchaseMonthlyFreeVacancy:
         singleton = Singleton()
         singleton.id_product = services_and_prices_page.adding_to_cart_monthly_free_vacancy_and_getting_product_id()  # добавление в корзину "Ежемесячная бесплатная вакансия" и получение id продукта
         services_and_prices_page.click_button_buy_in_basket()  # нажатие кнопки "Курить" в корзине
-        services_and_prices_page.verification_of_message_after_purchase(language)  # проверка сообщения после покупки
+        services_and_prices_page.checking_message_after_buying_free_package(language)  # проверка сообщения после покупки бесплатного пакета
 
         page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
         page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета
