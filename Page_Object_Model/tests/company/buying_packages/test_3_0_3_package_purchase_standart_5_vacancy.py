@@ -49,13 +49,13 @@ class TestPackagePurchaseStandart5Vacancy:
         singleton = Singleton()
         singleton.id_product = services_and_prices_page.adding_to_cart_standart_5_vacancy_and_getting_product_id()  # добавление в корзину "Standart: 5 вакансия" и получение id продукта
         services_and_prices_page.click_button_buy_in_basket()  # нажатие кнопки "Курить" в корзине
+        services_and_prices_page.checking_message_after_buying_paid_package(language)  # проверка сообщения после покупки платного пакета
 
-        # services_and_prices_page.checking_message_after_buying_free_package(language)  # проверка сообщения после покупки
-        interkassa_page = InterkassaPage(browser, browser.current_url)
-        interkassa_page.transition_to_test_payment_page()  # переход на страницу тестового платежа
-        interkassa_page.create_pending_payment()  # создать платеж в ожидании
-
-        services_and_prices_page.checking_message_about_create_pending_payment(language)  # проверка сообщения о создании платежа в ожидании
+        # interkassa_page = InterkassaPage(browser, browser.current_url)
+        # interkassa_page.transition_to_test_payment_page()  # переход на страницу тестового платежа
+        # interkassa_page.create_pending_payment()  # создать платеж в ожидании
+        #
+        # services_and_prices_page.checking_message_about_create_pending_payment(language)  # проверка сообщения о создании платежа в ожидании
 
         page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя
         page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета

@@ -26,8 +26,8 @@ class TestHidingResume:
         admin_resumes_page = AdminResumesPage(browser, UrlStartPageAdmin.url_page_admin + '/resume')
         admin_resumes_page.open()
         admin_resumes_page.resume_search_by_job_title(resume_name)  # поиск резюме по названию должности
-        vacancy_status = admin_resumes_page.get_status_of_resume()  # получить статус резюме
-        if vacancy_status == 'Опубликовано':
+        resume_status = admin_resumes_page.get_status_of_resume()  # получить статус резюме
+        if resume_status == 'Опубликовано':
             pass
         else:
             admin_resumes_page.go_to_object_editing_page()  # переход на страницу редактирования резюме
