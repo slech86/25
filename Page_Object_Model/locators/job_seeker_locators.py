@@ -518,8 +518,11 @@ class VacancyPageLocators:
     NOT_ACTIVE_BUTTON_RESUME_POSTED_2 = (By.CSS_SELECTOR, ('.btn-wrap > [data-target="#respond-modal"][disabled="disabled"]'))
 
     def assembly_of_locators_with_id_resume(self, id_resume):  # сборка локаторов с id резюме
-        resume_in_response_popup_window = (By.CSS_SELECTOR, ('label[for="resume-' + id_resume + '"]'))
-        return resume_in_response_popup_window
+        locators = {
+            'resume_in_response_popup_window': (By.CSS_SELECTOR, ('label[for="resume-' + id_resume + '"]')),
+            'resume_in_response_popup_window_input': (By.CSS_SELECTOR, ('label[for="resume-' + id_resume + '"] input'))
+        }
+        return locators
 
     BUTTON_ADD_COVER_LETTER = (By.CSS_SELECTOR, ('.required + .form-group > .cover-letter-btn'))
     FIELD_COVER_LETTER = (By.CSS_SELECTOR, ('.required + .form-group #response-description'))

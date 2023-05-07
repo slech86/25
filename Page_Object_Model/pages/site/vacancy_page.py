@@ -49,10 +49,20 @@ class VacancyPage(BasePage):
 
     def filling_and_sending_response_with_selected_active_resume(self, resume_id):  # заполнение и отправка отклика с выбранным активным резюме
         resume_locator = VacancyPageLocators()
-        resume = resume_locator.assembly_of_locators_with_id_resume(resume_id)
-        self.browser.find_element(*resume).click()
-        self.browser.find_element(*VacancyPageLocators.BUTTON_ADD_COVER_LETTER).click()
-        self.browser.find_element(*VacancyPageLocators.FIELD_COVER_LETTER).send_keys(TestData.cover_letter)
+        resume_locators = resume_locator.assembly_of_locators_with_id_resume(resume_id)
+        breakpoint()
+        status_checkbox_resume = self.browser.find_element(*resume_locators['resume_in_response_popup_window_input']).get_attribute("checked")
+        if status_checkbox_resume is None:
+            self.browser.find_element(*resume_locators['resume_in_response_popup_window']).click()
+
+        status = self.check_for_displaying_element_and_returning_status(*VacancyPageLocators.BUTTON_ADD_COVER_LETTER)
+        if status:
+            self.browser.find_element(*VacancyPageLocators.BUTTON_ADD_COVER_LETTER).click()
+            self.browser.find_element(*VacancyPageLocators.FIELD_COVER_LETTER).send_keys(TestData.cover_letter)
+        elif status is False:
+            self.browser.find_element(*VacancyPageLocators.FIELD_COVER_LETTER).clear()
+            self.browser.find_element(*VacancyPageLocators.FIELD_COVER_LETTER).send_keys(TestData.cover_letter)
+
         self.browser.find_element(*VacancyPageLocators.BUTTON_SEND_CV).click()
 
     def checking_confirmation_message_for_sending_resume_of_company(self, language):  # проверка сообщения о подтверждении отправки резюме компании

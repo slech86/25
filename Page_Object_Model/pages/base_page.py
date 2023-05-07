@@ -38,3 +38,10 @@ class BasePage:
         except TimeoutException:
             return False
         return True
+
+    def check_for_displaying_element_and_returning_status(self, how, what, timeout=4):  # проверка на отображение элемента и возвращения статуса
+        try:
+            WebDriverWait(self.browser, timeout, 1, TimeoutException).until(EC.visibility_of_element_located((how, what)))
+        except TimeoutException:
+            return False
+        return True
