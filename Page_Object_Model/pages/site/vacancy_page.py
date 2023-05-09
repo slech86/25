@@ -50,7 +50,6 @@ class VacancyPage(BasePage):
     def filling_and_sending_response_with_selected_active_resume(self, resume_id):  # заполнение и отправка отклика с выбранным активным резюме
         resume_locator = VacancyPageLocators()
         resume_locators = resume_locator.assembly_of_locators_with_id_resume(resume_id)
-        breakpoint()
         status_checkbox_resume = self.browser.find_element(*resume_locators['resume_in_response_popup_window_input']).get_attribute("checked")
         if status_checkbox_resume is None:
             self.browser.find_element(*resume_locators['resume_in_response_popup_window']).click()
