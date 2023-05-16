@@ -22,8 +22,11 @@ class VacancyEditPage(BasePage):
         self.browser.find_element(*VacancyAddEditPageLocators.FIELD_MINIMAL_SALARY).send_keys(TestDataEditing.salary_min)
         self.browser.find_element(*VacancyAddEditPageLocators.FIELD_MAXIMUM_SALARY).clear()
         self.browser.find_element(*VacancyAddEditPageLocators.FIELD_MAXIMUM_SALARY).send_keys(TestDataEditing.salary_max)
+        time.sleep(2)
         self.browser.find_element(*VacancyAddEditPageLocators.DROPDOWN_CURRENCY).click()
+        time.sleep(1)
         self.browser.find_element(*VacancyAddEditPageLocators.CURRENCY_UAH).click()
+        time.sleep(2)
         self.browser.find_element(*VacancyAddEditPageLocators.DROPDOWN_COUNTRY).click()
         country_list = self.browser.find_elements(*VacancyAddEditPageLocators.COUNTRY_LIST)
 

@@ -59,8 +59,11 @@ class VacancyAddPage(BasePage):
 
         self.browser.find_element(*VacancyAddEditPageLocators.FIELD_MINIMAL_SALARY).send_keys(TestData.salary_min)
         self.browser.find_element(*VacancyAddEditPageLocators.FIELD_MAXIMUM_SALARY).send_keys(TestData.salary_max)
+        time.sleep(2)
         self.browser.find_element(*VacancyAddEditPageLocators.DROPDOWN_CURRENCY).click()
+        time.sleep(1)
         self.browser.find_element(*VacancyAddEditPageLocators.CURRENCY_USD).click()
+        time.sleep(2)
         self.browser.find_element(*VacancyAddEditPageLocators.FIELD_STREET).send_keys(TestData.street_vacancy)
         self.browser.find_element(*VacancyAddEditPageLocators.FIELD_PHONE).clear()
         self.browser.find_element(*VacancyAddEditPageLocators.FIELD_PHONE).send_keys(TestData.phone_vacancy)
