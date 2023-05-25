@@ -82,7 +82,9 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.SALARY).clear()
         self.browser.find_element(*ResumeAddEditPageLocators.SALARY).send_keys(TestDataEditing.salary_resume)
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_CURRENCY).click()
+        time.sleep(1)
         self.browser.find_element(*ResumeAddEditPageLocators.CURRENCY_USD).click()
+        time.sleep(1)
         # блок "Желаемая должность"
 
         # self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_SKILLS_AND_ACHIEVEMENTS_BLOCK).click()

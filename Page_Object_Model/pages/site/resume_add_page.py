@@ -106,7 +106,9 @@ class ResumeAddPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.DISTANT_WORK).click()
         self.browser.find_element(*ResumeAddEditPageLocators.SALARY).send_keys(TestData.salary_resume)
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_CURRENCY).click()
+        time.sleep(1)
         self.browser.find_element(*ResumeAddEditPageLocators.CURRENCY_UAH).click()
+        time.sleep(1)
         # блок "Желаемая должность"
 
         locators_from_id_block = ResumeAddEditPageLocators()

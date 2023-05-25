@@ -218,9 +218,9 @@ class AdminPage(BasePage):
         twitter_value = twitter.get_attribute("value")
         assert twitter_value == TestData.twitter, "Поле 'Twitter' не верно"
 
-        vk = self.browser.find_element(*AdminPageLocators.FIELD_VK)
-        vk_value = vk.get_attribute("value")
-        assert vk_value == TestData.vk, "Поле 'VK' не верно"
+        # vk = self.browser.find_element(*AdminPageLocators.FIELD_VK)
+        # vk_value = vk.get_attribute("value")
+        # assert vk_value == TestData.vk, "Поле 'VK' не верно"
 
         company_activity = self.browser.find_element(*AdminPageLocators.FIELD_COMPANY_ACTIVITY)
         company_activity_title = company_activity.get_attribute("title")

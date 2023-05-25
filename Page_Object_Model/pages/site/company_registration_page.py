@@ -97,14 +97,14 @@ class CompanyRegistrationPage(BasePage):
         self.browser.find_element(*CompanyRegistrationEditPageLocators.BUTTON_INSTAGRAM).click()
         self.browser.find_element(*CompanyRegistrationEditPageLocators.BUTTON_TELEGRAM).click()
         self.browser.find_element(*CompanyRegistrationEditPageLocators.BUTTON_TWITTER).click()
-        self.browser.find_element(*CompanyRegistrationEditPageLocators.BUTTON_VK).click()
+        # self.browser.find_element(*CompanyRegistrationEditPageLocators.BUTTON_VK).click()
 
         self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_FACEBOOK).send_keys(TestData.facebook)
         self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_LINKEDIN).send_keys(TestData.linkedin)
         self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_INSTAGRAM).send_keys(TestData.instagram)
         self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_TELEGRAM).send_keys(TestData.telegram)
         self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_TWITTER).send_keys(TestData.twitter)
-        self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_VK).send_keys(TestData.vk)
+        # self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_VK).send_keys(TestData.vk)
 
         self.browser.find_element(*CompanyRegistrationEditPageLocators.NUMBER_OF_COMPANY_EMPLOYEES).click()  # Количество сотрудников компании
         # заполнение блока "Информация о компании"

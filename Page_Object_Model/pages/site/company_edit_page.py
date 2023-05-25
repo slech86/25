@@ -69,7 +69,7 @@ class CompanyEditPage(BasePage):
         self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_INSTAGRAM).send_keys('_editing')
         self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_TELEGRAM).send_keys('_editing')
         self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_TWITTER).send_keys('_editing')
-        self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_VK).send_keys('_editing')
+        # self.browser.find_element(*CompanyRegistrationEditPageLocators.FIELD_VK).send_keys('_editing')
 
         self.browser.find_element(*CompanyRegistrationEditPageLocators.COMPANY_ACTIVITY_GAMBLING).click()  # "Сфера деятельности компании"
         self.browser.find_element(*CompanyRegistrationEditPageLocators.NUMBER_OF_COMPANY_EMPLOYEES).click()  # Количество сотрудников компании
