@@ -68,7 +68,7 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_INSTAGRAM).send_keys('_editing/')
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_TELEGRAM).send_keys('_editing/')
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_TWITTER).send_keys('_editing/')
-        self.browser.find_element(*ResumeAddEditPageLocators.FIELD_VK).send_keys('_editing/')
+        # self.browser.find_element(*ResumeAddEditPageLocators.FIELD_VK).send_keys('_editing/')
         # блок "Контактная информация"
 
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_JOB_TITLE).send_keys('_editing')

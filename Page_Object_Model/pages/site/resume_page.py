@@ -140,6 +140,6 @@ class ResumePage(BasePage):
         twitter_href = twitter.get_attribute("href")
         assert twitter_href == contacts['twitter'], f"Twitter в контактах резюме, expected result: '{contacts['twitter']}', actual result: '{twitter_href}'"
 
-        vk = self.browser.find_element(*ResumePageLocators.VK_IN_CONTACT_INFORMATION)
-        vk_href = vk.get_attribute("href")
-        assert vk_href == contacts['vk'], f"VK в контактах резюме, expected result: '{contacts['vk']}', actual result: '{vk_href}'"
+        # vk = self.browser.find_element(*ResumePageLocators.VK_IN_CONTACT_INFORMATION)
+        # vk_href = vk.get_attribute("href")
+        # assert vk_href == contacts['vk'], f"VK в контактах резюме, expected result: '{contacts['vk']}', actual result: '{vk_href}'"

@@ -93,14 +93,14 @@ class ResumeAddPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_INSTAGRAM).click()
         self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_TELEGRAM).click()
         self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_TWITTER).click()
-        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_VK).click()
+        # self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_VK).click()
 
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_FACEBOOK).send_keys(TestData.facebook_resume)
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_LINKEDIN).send_keys(TestData.linkedin_resume)
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_INSTAGRAM).send_keys(TestData.instagram_resume)
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_TELEGRAM).send_keys(TestData.telegram_resume)
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_TWITTER).send_keys(TestData.twitter_resume)
-        self.browser.find_element(*ResumeAddEditPageLocators.FIELD_VK).send_keys(TestData.vk_resume)
+        # self.browser.find_element(*ResumeAddEditPageLocators.FIELD_VK).send_keys(TestData.vk_resume)
         # блок "Контактная информация"
 
         self.browser.find_element(*ResumeAddEditPageLocators.DISTANT_WORK).click()

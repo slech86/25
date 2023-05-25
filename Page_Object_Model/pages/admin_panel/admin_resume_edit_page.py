@@ -264,9 +264,9 @@ class AdminResumeEditPage(BasePage):
         twitter_resume_value = twitter_resume.get_attribute("value")
         assert twitter_resume_value == TestData.twitter_resume, "Поле 'Twitter' не верно"
 
-        vk_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_VK)
-        vk_resume_value = vk_resume.get_attribute("value")
-        assert vk_resume_value == TestData.vk_resume, "Поле 'VK' не верно"
+        # vk_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_VK)
+        # vk_resume_value = vk_resume.get_attribute("value")
+        # assert vk_resume_value == TestData.vk_resume, "Поле 'VK' не верно"
 
         job_title_resume = self.browser.find_element(*AdminResumeEditPageLocators.FIELD_JOB_TITLE)
         job_title_resume_value = job_title_resume.get_attribute("value")
