@@ -25,8 +25,16 @@ users_variables = {
         'login': 'test_employer_vacancy',
         'password': '4v4C8gLsR8',
         'mail': 'test_automation+employer_vacancy@1secmail.com',
-        'id': '5053',
         'mail_name': 'test_automation+employer_vacancy',
+        'id': '5053',
+        'company_name': 'test_Название компании',
+    },
+    'employer_change_email': {
+        'login': 'test_employer_change_email',
+        'password': '4L7ktJ6Y9hbnL8VN77hcL4',
+        'mail': 'test_automation_employer_change_email@1secmail.com',  # может быди измененным
+        'mail_name': 'test_automation_employer_change_email',  # может быди измененным
+        'id': '5853',
         'company_name': 'test_Название компании',
     },
 

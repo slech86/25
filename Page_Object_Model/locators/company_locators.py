@@ -11,8 +11,15 @@ class CompanyRegistrationEditPageLocators:
 
     FIELD_LOGIN = (By.CSS_SELECTOR, ('#' + prefix + 'login'))
     FIELD_EMAIL = (By.CSS_SELECTOR, ('#' + prefix + 'email'))
+    USER_EMAIL = (By.XPATH, '(//div[@id="authorization-data"]//div[@class="items-authorization-data"][2]//p)[2]')
     FIELD_PASSWORD = (By.CSS_SELECTOR, ('#' + prefix + 'password'))
     FIELD_REPEAT_PASSWORD = (By.CSS_SELECTOR, ('#' + prefix + 'repeatpassword'))
+    BUTTON_CHANGE_EMAIL = (By.CSS_SELECTOR, '[data-target="#change-mail"]')
+    CURRENT_PASSWORD_CHANGE_EMAIL = (By.CSS_SELECTOR, '#changeemailform-password')
+    NEW_EMAIL_CHANGE_EMAIL = (By.CSS_SELECTOR, '#changeemailform-new_email')
+    BUTTON_SAVE_CHANGES_EMAIL = (By.CSS_SELECTOR, '#job-seeker-edit-email-form [type="submit"]')
+    INFO_TEXT_AFTER_EMAIL_CHANGE = (By.CSS_SELECTOR, '#save-mail .text')
+    CROSS_IN_POP_UP_AFTER_EMAIL_CHANGE = (By.CSS_SELECTOR, '#save-mail .close')  # крестик в pop-up окне после измененя email
     # блок "Данные для авторизации"
 
     FIELD_NAME = (By.CSS_SELECTOR, ('#' + input_prefix + 'name'))

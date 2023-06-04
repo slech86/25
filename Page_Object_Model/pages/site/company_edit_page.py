@@ -9,6 +9,28 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class CompanyEditPage(BasePage):
+    def user_email_verification(self, expected_email):  # проверка email пользователя
+        user_email = self.browser.find_element(*CompanyRegistrationEditPageLocators.USER_EMAIL).text
+        assert user_email == expected_email, 'Не вернвй email'
+
+    def email_changes(self, current_password, language, new_email):  # изменение email
+        self.browser.find_element(*CompanyRegistrationEditPageLocators.BUTTON_CHANGE_EMAIL).click()
+        self.browser.find_element(*CompanyRegistrationEditPageLocators.CURRENT_PASSWORD_CHANGE_EMAIL).send_keys(current_password)
+        self.browser.find_element(*CompanyRegistrationEditPageLocators.NEW_EMAIL_CHANGE_EMAIL).send_keys(new_email)
+        self.browser.find_element(*CompanyRegistrationEditPageLocators.BUTTON_SAVE_CHANGES_EMAIL).click()
+
+        info_text = WebDriverWait(self.browser, 12).until(EC.visibility_of_element_located(CompanyRegistrationEditPageLocators.INFO_TEXT_AFTER_EMAIL_CHANGE)).text
+        if language == "":
+            assert "Мы отправили письмо на ваш новый e-mail, откройте его и перейдите по ссылке" == info_text, 'Не верное сообщение'
+        elif language == "/ua":
+            assert "Ми відправили лист на ваш новий e-mail, відкрийте його і перейдіть за посиланням" == info_text, 'Не верное сообщение'
+        elif language == "/en":
+            assert "We sent a letter to your new e-mail, open it and follow the link" == info_text, 'Не верное сообщение'
+        elif language == "/pl":
+            assert "Wysłaliśmy wiadomość na Twój nowy adres e-mail, otwórz ją i skorzystaj z linku" == info_text, 'Не верное сообщение'
+        time.sleep(0.3)
+        self.browser.find_element(*CompanyRegistrationEditPageLocators.CROSS_IN_POP_UP_AFTER_EMAIL_CHANGE).click()
+
     def hiding_copy_to_other_languages(self):  # скрытие кнопки "Скопировать на другие языки"
         self.browser.find_element(*CompanyRegistrationEditPageLocators.CROSS_IN_COPY_TO_OTHER_LANGUAGES).click()
 

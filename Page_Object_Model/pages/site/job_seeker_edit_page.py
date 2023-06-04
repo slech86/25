@@ -10,7 +10,7 @@ from Page_Object_Model.utility.utility import generate_alphanum_random_string
 class JobSeekerEditPage(BasePage):
     def password_changes(self, current_password, language):  # изменение пароля
         self.browser.find_element(*JobSeekerRegistrationEditPageLocators.BUTTON_CHANGE_PASSWORD).click()
-        self.browser.find_element(*JobSeekerRegistrationEditPageLocators.CURRENT_PASSWORD).send_keys(current_password)
+        self.browser.find_element(*JobSeekerRegistrationEditPageLocators.CURRENT_PASSWORD_CHANGE_PASSWORD).send_keys(current_password)
         new_password = generate_alphanum_random_string(22)
         self.browser.find_element(*JobSeekerRegistrationEditPageLocators.NEW_PASSWORD).send_keys(new_password)
         self.browser.find_element(*JobSeekerRegistrationEditPageLocators.NEW_PASSWORD_AGAIN).send_keys(new_password)

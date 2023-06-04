@@ -70,7 +70,7 @@ class MainPageLocators:
     H1 = (By.CSS_SELECTOR, ('h1'))
     INFO_TEXT_ABOUT_SENDING_REGISTRATION_FORM = (By.CSS_SELECTOR, ('#lc-popup-registration .text'))  # информационный текст о подтверждении отправки формы регистрации
     INFO_TEXT_ABOUT_CONFIRMATION_OF_COMPANY_EMAIL_AFTER_REGISTRATION = (By.CSS_SELECTOR, ('#to-publish-modal h2'))  # информационный текст о подтверждении електронной почты работодателя после регистрации
-    INFO_TEXT_AFTER_CONFIRMATION_OF_PASSWORD_CHANGE = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст после подтверждения смены пароля
+    INFO_TEXT_IN_MODAL = (By.CSS_SELECTOR, ('#thanks-modal .text'))  # информационный текст в модальном окне
 
     # восстановление пароля
     FIELD_PASSWORD_IN_RESET_PASSWORD_FORM = (By.CSS_SELECTOR, '#resetpasswordform-newpassword')

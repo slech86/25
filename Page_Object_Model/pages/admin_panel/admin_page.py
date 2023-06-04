@@ -64,10 +64,17 @@ class AdminPage(BasePage):
 
     def search_user_by_email(self, email):  # поиск пользователя по e-mail
         user_email_locators = AdminPageLocators()
-        user_email = user_email_locators.assembly_of_locators_with_email(email)
+        locators = user_email_locators.assembly_of_locators_with_email(email)
         self.browser.find_element(*AdminPageLocators.FIELD_EMAIL_SEARCH).send_keys(email, Keys.ENTER)
         time.sleep(2)
-        assert self.is_element_present(*user_email['user_email']), 'Пользователь не найден'
+        assert self.is_element_present(*locators['user_email']), 'Пользователь не найден'
+
+    def search_user_by_id(self, id):  # поиск пользователя по id
+        user_email_locators = AdminPageLocators()
+        locators = user_email_locators.assembly_of_locators_with_email(id)
+        self.browser.find_element(*AdminPageLocators.FIELD_ID_SEARCH).send_keys(id, Keys.ENTER)
+        time.sleep(2)
+        assert self.is_element_present(*locators['user_id']), 'Пользователь не найден'
 
     def checking_that_newly_created_user_has_status_disabled(self):  # проверка что новосозданный пользователь имеет статус "Отключено"
         status = self.browser.find_element(*AdminPageLocators.USER_STATUS).text
@@ -114,6 +121,15 @@ class AdminPage(BasePage):
 
     def password_field_filling(self, password):  # заполнение поля пароль
         self.browser.find_element(*AdminPageLocators.FIELD_USER_PASSWORD).send_keys(password)
+
+    def email_field_filling(self, email):  # заполнение поля "Электронный адрес"
+        self.browser.find_element(*AdminPageLocators.FIELD_USER_EMAIL).clear()
+        self.browser.find_element(*AdminPageLocators.FIELD_USER_EMAIL).send_keys(email)
+
+    def email_field_validation(self, expected_email):  # проверка поля email
+        email = self.browser.find_element(*AdminPageLocators.FIELD_USER_EMAIL)
+        email_value = email.get_attribute("value")
+        assert email_value == expected_email, "Поле 'Email' не верно"
 
     def change_language_of_notifications_on_email(self, language):  # изменение языка уведомлений на email
         self.browser.execute_script("window.scrollBy(0, 200);")

@@ -71,7 +71,7 @@ class MainPage(BasePage):
         return new_password
 
     def checking_message_after_confirmation_of_password_change(self, language):  # проверка сообщения после подтверждения смены пароля
-        info_text = self.browser.find_element(*MainPageLocators.INFO_TEXT_AFTER_CONFIRMATION_OF_PASSWORD_CHANGE).text
+        info_text = self.browser.find_element(*MainPageLocators.INFO_TEXT_IN_MODAL).text
         if language == "":
             assert "Ваш пароль был обновлен." == info_text, 'Не верное сообщение'
         elif language == "/ua":
@@ -81,3 +81,13 @@ class MainPage(BasePage):
         elif language == "/pl":
             assert "Twoje hasło zostało zaktualizowane." == info_text, 'Не верное сообщение'
 
+    def checking_message_after_confirmation_of_email_change(self, language):  # проверка сообщения после подтверждения смены email
+        info_text = self.browser.find_element(*MainPageLocators.INFO_TEXT_IN_MODAL).text
+        if language == "":
+            assert "Ваш e-mail был обновлен." == info_text, 'Не верное сообщение'
+        elif language == "/ua":
+            assert "Ваша електронна адреса була оновлена." == info_text, 'Не верное сообщение'
+        elif language == "/en":
+            assert "Your email has been updated." == info_text, 'Не верное сообщение'
+        elif language == "/pl":
+            assert "Pański/Pani adres e-mail został zaktualizowany." == info_text, 'Не верное сообщение'

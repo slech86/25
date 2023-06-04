@@ -12,7 +12,7 @@ class JobSeekerRegistrationEditPageLocators:
     FIELD_PASSWORD = (By.CSS_SELECTOR, ('#' + prefix + 'password'))
     FIELD_REPEAT_PASSWORD = (By.CSS_SELECTOR, ('#' + prefix + 'repeatpassword'))
     BUTTON_CHANGE_PASSWORD = (By.CSS_SELECTOR, '[data-target="#change-pass"]')
-    CURRENT_PASSWORD = (By.CSS_SELECTOR, '#changepasswordform-password')
+    CURRENT_PASSWORD_CHANGE_PASSWORD = (By.CSS_SELECTOR, '#changepasswordform-password')
     NEW_PASSWORD = (By.CSS_SELECTOR, '#changepasswordform-newpassword')
     NEW_PASSWORD_AGAIN = (By.CSS_SELECTOR, '#changepasswordform-repeatpassword')
     BUTTON_SAVE_CHANGES_PASSWORD = (By.CSS_SELECTOR, '#job-seeker-edit-password-form [type="submit"]')
