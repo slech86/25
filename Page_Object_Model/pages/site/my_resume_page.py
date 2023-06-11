@@ -120,13 +120,13 @@ class MyResumePage(BasePage):
     def checking_message_about_adding_resume_to_draft(self, language):  # проверка сообщения о добавлении резюме в черновик
         info_text = self.browser.find_element(*MyResumePageLocators.INFO_TEXT_AFTER_ADDING_RESUME_TO_DRAFT).text
         if language == "":
-            assert "Ваше резюме добавлено в черновики" == info_text, f"Не верное сообщение, expected result: 'Ваше резюме добавлено в черновики', actual result: '{info_text}'"
+            assert "Ваши изменения были сохранены в черновик" == info_text, f"Не верное сообщение, expected result: 'Ваше резюме добавлено в черновики', actual result: '{info_text}'"
         elif language == "/ua":
-            assert "Ваше резюме додане до чернеток" == info_text, f"Не верное сообщение, expected result: 'Ваше резюме додане до чернеток', actual result: '{info_text}'"
+            assert "Ваші зміни були збережені в чернетку" == info_text, f"Не верное сообщение, expected result: 'Ваше резюме додане до чернеток', actual result: '{info_text}'"
         elif language == "/en":
-            assert "Your CV has been added to drafts" == info_text, f"Не верное сообщение, expected result: 'Your CV has been added to drafts', actual result: '{info_text}'"
+            assert "Your changes have been saved to draft" == info_text, f"Не верное сообщение, expected result: 'Your CV has been added to drafts', actual result: '{info_text}'"
         elif language == "/pl":
-            assert "Twoje CV zostało dodane do szkiców" == info_text, f"Не верное сообщение, expected result: 'Your CV has been added to drafts', actual result: '{info_text}'"
+            assert "Twoje zmiany zostały zapisane w szkicu" == info_text, f"Не верное сообщение, expected result: 'Your CV has been added to drafts', actual result: '{info_text}'"
         self.browser.find_element(*MyResumePageLocators.CROSS_IN_POP_UP_AFTER_ADDING_RESUME_TO_DRAFT).click()
 
     def checking_message_confirming_submission_of_resume_for_moderation(self, language):  # проверка сообщения о подтверждении отправки резюме на модерацию

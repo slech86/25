@@ -36,8 +36,7 @@ class TestAddingResumeToDraft:
 
         add_resume_page = ResumeAddPage(browser, browser.current_url)
         add_resume_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
-        add_resume_page.adding_resume_to_draft()  # добавление резюме в черновик
-        add_resume_page.checking_field_job_title_validation_message_about_need_to_fill_out(language)  # проверка сообщения валидации поля "Название должности" о необходимости его заполнения
+        page.choice_of_russian_language_in_multi_language_forms()  # выбор русского языка в мультиязычных формах
         add_resume_page.filling_in_field_job_title_for_draft()  # заполнение поля "Название должности" для черновика
         add_resume_page.adding_resume_to_draft()  # добавление резюме в черновик
 

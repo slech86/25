@@ -147,8 +147,8 @@ class MyVacanciesPageLocators:
     INFO_TEXT_AFTER_CREATING_VACANCY = (By.CSS_SELECTOR, ('#lc-popup-vacancy-new .text'))  # информационный текст после создания вакансии
     CROSS_IN_POP_UP_AFTER_CREATING_VACANCY = (By.CSS_SELECTOR, ('#lc-popup-vacancy-new .close'))  # крестик в pop-up окне после создания вакансии
 
-    INFO_TEXT_AFTER_ADDING_VACANCY_TO_DRAFT = (By.CSS_SELECTOR, ('#lc-popup-vacancy-draft h2'))  # информационный текст после добавления вакансии в черновик
-    CROSS_IN_POP_UP_AFTER_ADDING_VACANCY_TO_DRAFT = (By.CSS_SELECTOR, ('#lc-popup-vacancy-draft .close'))  # крестик в pop-up окне после добавления вакансии в черновик
+    INFO_TEXT_AFTER_ADDING_VACANCY_TO_DRAFT = (By.CSS_SELECTOR, ('#lc-popup-resume-draft h2'))  # информационный текст после добавления вакансии в черновик
+    CROSS_IN_POP_UP_AFTER_ADDING_VACANCY_TO_DRAFT = (By.CSS_SELECTOR, ('#lc-popup-resume-draft .close'))  # крестик в pop-up окне после добавления вакансии в черновик
 
     INFO_TEXT_AFTER_DELETING_DRAFT_VACANCY = (By.CSS_SELECTOR, '#thanks-modal h2')  # информационный текст после удаления вакансии
     CROSS_IN_POP_UP_AFTER_DELETING_DRAFT_VACANCY = (By.CSS_SELECTOR, '#thanks-modal .close')  # крестик в pop-up окне после удаления вакансии

@@ -118,13 +118,13 @@ class MyVacanciesPage(BasePage):
     def checking_message_about_adding_vacancy_to_draft(self, language):  # проверка сообщения о добавлении вакансии в черновик
         info_text = self.browser.find_element(*MyVacanciesPageLocators.INFO_TEXT_AFTER_ADDING_VACANCY_TO_DRAFT).text
         if language == "":
-            assert "Ваша вакансия добавлена в черновики" == info_text, f"Не верное сообщение, expected result: 'Ваша вакансия добавлена в черновики', actual result: '{info_text}'"
+            assert "Ваши изменения были сохранены в черновик" == info_text, f"Не верное сообщение, expected result: 'Ваша вакансия добавлена в черновики', actual result: '{info_text}'"
         elif language == "/ua":
-            assert "Ваша вакансія додана до чернеток" == info_text, f"Не верное сообщение, expected result: 'Ваша вакансія додана до чернеток', actual result: '{info_text}'"
+            assert "Ваші зміни були збережені в чернетку" == info_text, f"Не верное сообщение, expected result: 'Ваша вакансія додана до чернеток', actual result: '{info_text}'"
         elif language == "/en":
-            assert "Your vacancy has been added to drafts" == info_text, f"Не верное сообщение, expected result: 'Your vacancy has been added to drafts', actual result: '{info_text}'"
+            assert "Your changes have been saved to draft" == info_text, f"Не верное сообщение, expected result: 'Your vacancy has been added to drafts', actual result: '{info_text}'"
         elif language == "/pl":
-            assert "Twoja oferta pracy została dodana do szkiców" == info_text, f"Не верное сообщение, expected result: 'Your vacancy has been added to drafts', actual result: '{info_text}'"
+            assert "Twoje zmiany zostały zapisane w szkicu" == info_text, f"Не верное сообщение, expected result: 'Your vacancy has been added to drafts', actual result: '{info_text}'"
         self.browser.find_element(*MyVacanciesPageLocators.CROSS_IN_POP_UP_AFTER_ADDING_VACANCY_TO_DRAFT).click()
 
 
