@@ -56,6 +56,7 @@ class ResumeAddPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_EMAIL).send_keys(TestData.email_resume)
         # блок "Контактная информация"
 
+        self.browser.find_element(*ResumeAddEditPageLocators.FIELD_JOB_TITLE).clear()
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_JOB_TITLE).send_keys(job_title)
         self.browser.find_element(*ResumeAddEditPageLocators.CATEGORY_RESUME_DESIGN_GRAPHICS_ANIMATION).click()
         subcategories = WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(ResumeAddEditPageLocators.SUBCATEGORIES_UX_DESIGNER))  # "Подкатегории"

@@ -18,6 +18,7 @@ class VacancyAddPage(BasePage):
         self.browser.find_element(*VacancyAddEditPageLocators.CROSS_IN_COPY_TO_OTHER_LANGUAGES).click()
 
     def filling_in_required_fields(self):  # заполнение обязательных полей
+        self.browser.find_element(*VacancyAddEditPageLocators.FIELD_JOB_TITLE).clear()
         self.browser.find_element(*VacancyAddEditPageLocators.FIELD_JOB_TITLE).send_keys(TestData.job_title_vacancy)
         self.browser.find_element(*VacancyAddEditPageLocators.CATEGORY_VACANCIES_HUMAN_RESOURCES_DEPARTMENT).click()
         time.sleep(2)
