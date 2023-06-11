@@ -35,3 +35,7 @@ def checking_content_of_letter(class_object, letter, expected_text):  # пров
     object_email = class_object.mailjobs('read', letter[0])
     body_email = object_email.json()['body']
     assert expected_text in body_email, f'В письме нет текста: "{expected_text}"'
+
+
+def mailbox_cleaning(class_object):
+    class_object.mailjobs('del')
