@@ -16,7 +16,7 @@ user = 'job_seeker'
 
 @pytest.mark.job_seeker
 # @pytest.mark.skip
-class TestResumeAdd:
+class TestPreviewResumeAdd:
     @pytest.mark.s_r_c
     def test_preview_resume_when_creating(self, browser, language):  # предпросмотр резюме при создании
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"

@@ -23,20 +23,34 @@ class AdminSqlPage(BasePage):
         self.browser.find_element(*AdminSqlPageLocators.BUTTON_EXECUTE).click()
         time.sleep(1)
 
-    def sql_deleting_all_user_orders(self, user_id_job_seeker):  # удаление всех заказов пользователя
+    def sql_deleting_all_user_orders(self, user_id):  # удаление всех заказов пользователя
         self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).clear()
-        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).send_keys('DELETE FROM `tbl_orders` WHERE `user_id`=' + user_id_job_seeker + ';')
+        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).send_keys('DELETE FROM `tbl_orders` WHERE `user_id`=' + user_id + ';')
         self.browser.find_element(*AdminSqlPageLocators.BUTTON_EXECUTE).click()
         time.sleep(1)
 
-    def sql_deleting_all_user_vacancies(self, user_id_job_seeker):  # удаление всех вакансий пользователя
+    def sql_deleting_all_user_vacancies(self, user_id):  # удаление всех вакансий пользователя
         self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).clear()
-        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).send_keys('DELETE FROM `tbl_vacancies` WHERE `user_id`=' + user_id_job_seeker + ';')
+        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).send_keys('DELETE FROM `tbl_vacancies` WHERE `user_id`=' + user_id + ';')
         self.browser.find_element(*AdminSqlPageLocators.BUTTON_EXECUTE).click()
         time.sleep(1)
 
-    def sql_deleting_all_user_resume(self, user_id_job_seeker):  # удаление всех резюме пользователя
+    def sql_deleting_all_user_vacancies_except_these(self, user_id, id_vacancies):  # удаление всех вакансий пользователя кроме указанных
+        id_vacancies = ', '.join([str(item) for item in id_vacancies])
         self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).clear()
-        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).send_keys('DELETE FROM `tbl_resume` WHERE `user_id`=' + user_id_job_seeker + ';')
+        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).send_keys('DELETE FROM `tbl_vacancies` WHERE `user_id`=' + user_id + ' AND `id` NOT IN (' + id_vacancies +');')
+        self.browser.find_element(*AdminSqlPageLocators.BUTTON_EXECUTE).click()
+        time.sleep(1)
+
+    def sql_deleting_all_user_resume(self, user_id):  # удаление всех резюме пользователя
+        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).clear()
+        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).send_keys('DELETE FROM `tbl_resume` WHERE `user_id`=' + user_id + ';')
+        self.browser.find_element(*AdminSqlPageLocators.BUTTON_EXECUTE).click()
+        time.sleep(1)
+
+    def sql_deleting_all_user_resume_except_these(self, user_id, id_resume):  # удаление всех резюме пользователя кроме указанных
+        id_resume = ', '.join([str(item) for item in id_resume])
+        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).clear()
+        self.browser.find_element(*AdminSqlPageLocators.FIELD_SQL).send_keys('DELETE FROM `tbl_resume` WHERE `user_id`=' + user_id + ' AND `id` NOT IN (' + id_resume +');')
         self.browser.find_element(*AdminSqlPageLocators.BUTTON_EXECUTE).click()
         time.sleep(1)

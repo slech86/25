@@ -7,16 +7,25 @@ from Page_Object_Model.pages.admin_panel.admin_resumes_page import AdminResumesP
 from Page_Object_Model.pages.site.my_resume_page import MyResumePage
 from Page_Object_Model.pages.site.resume_add_page import ResumeAddPage
 from Page_Object_Model.singleton import Singleton
+from Page_Object_Model.tests import _resources_tests
+from Page_Object_Model.pages.admin_panel.admin_sql_page import AdminSqlPage
+from Page_Object_Model.users import users_variables
 from Page_Object_Model.data_for_testing import TestData
 
 # pytest --reruns 1 --html=./reports/report.html -s tests/job_seeker/resume/draft/test_8_3_adding_resume_to_draft_and_deletion_it.py
 
 user = 'job_seeker'
+id_resume = [1267, 1268, 1269, 1358, 1561]
 
 
 @pytest.mark.job_seeker
 class TestAddingResumeToDraft:
-    @pytest.mark.s_r_c
+    def test_precondition(self, browser):
+        _resources_tests.admin_authorization(browser)  # авторизация в админку
+        admin_sql_page = AdminSqlPage(browser, UrlStartPageAdmin.url_page_admin + '/developer/sql')
+        admin_sql_page.open()
+        admin_sql_page.sql_deleting_all_user_resume_except_these(users_variables[user]["id"], id_resume)  # удаление всех резюме пользователя кроме указанных
+
     def test_checking_adding_resume_to_draft(self, browser, language):  # проверка добавления резюме в черновик
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
         page = OllPage(browser, url_page)
