@@ -241,7 +241,7 @@ function filter_table(elem) {
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 18-Jun-2023 at 22:42:03 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
+    <p>Report generated on 22-Jun-2023 at 17:11:45 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -257,8 +257,8 @@ function filter_table(elem) {
         <td>Python</td>
         <td>3.9.6</td></tr></table>
     <h2>Summary</h2>
-    <p>2 tests ran in 30.46 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">2 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">0 rerun</span>
+    <p>85 tests ran in 1276.73 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">85 passed</span>, <input checked="true" class="filter" data-test-result="skipped" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">3 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">1 rerun</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -269,11 +269,608 @@ function filter_table(elem) {
           <th>Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
+      <tbody class="rerun results-table-row">
+        <tr>
+          <td class="col-result">Rerun</td>
+          <td class="col-name">tests/company/buying_packages/test_3_0_3_package_purchase_standart_5_vacancy.py::TestPackagePurchaseStandart5Vacancy::test_package_purchase_standart_and_orders_processing_and_activating_it_on_site</td>
+          <td class="col-duration">16.31</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;Page_Object_Model.tests.company.buying_packages.test_3_0_3_package_purchase_standart_5_vacancy.TestPackagePurchaseStandart5Vacancy object at 0x1049eaa30&gt;<br/>browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;e2a4b35e991695e26b080208b730e268&quot;)&gt;, language = &#x27;&#x27;<br/><br/>    def test_package_purchase_standart_and_orders_processing_and_activating_it_on_site(self, browser, language):  # покупка пакета &quot;Standart: 5 вакансия&quot; и проведение заказа в админке и активация его на сайте<br/>        url_page = f&quot;{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}&quot;<br/>        page = OllPage(browser, url_page)<br/>        # browser.maximize_window()<br/>        page.open()<br/>        page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации<br/>        page.user_authorization(_resources_buying_packages.user)  # авторизация пользователя<br/>        page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя<br/>        page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета<br/>    <br/>        company_personal_cabinet_page = CompanyPersonalCabinetPage(browser, browser.current_url)<br/>        company_personal_cabinet_page.go_to_services_and_prices_page()  # переход на страницу &quot;Услуги и цены&quot;<br/>    <br/>        services_and_prices_page = ServicesAndPricesPage(browser, browser.current_url)<br/>        singleton = Singleton()<br/>        singleton.id_product = services_and_prices_page.adding_to_cart_standart_5_vacancy_and_getting_product_id()  # добавление в корзину &quot;Standart: 5 вакансия&quot; и получение id продукта<br/>        services_and_prices_page.click_button_buy_in_basket()  # нажатие кнопки &quot;Курить&quot; в корзине<br/>        services_and_prices_page.checking_message_after_buying_paid_package(language)  # проверка сообщения после покупки платного пакета<br/>    <br/>        # interkassa_page = InterkassaPage(browser, browser.current_url)<br/>        # interkassa_page.transition_to_test_payment_page()  # переход на страницу тестового платежа<br/>        # interkassa_page.create_pending_payment()  # создать платеж в ожидании<br/>        #<br/>        # services_and_prices_page.checking_message_about_create_pending_payment(language)  # проверка сообщения о создании платежа в ожидании<br/>    <br/>&gt;       page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя<br/><br/>tests/company/buying_packages/test_3_0_3_package_purchase_standart_5_vacancy.py:60: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>pages/site/oll_page.py:93: in opening_authorized_user_menu<br/>    self.browser.find_element(*OllPageLocators.BUTTON_AUTHORIZED_USER).click()<br/>../../../Library/Python/3.9/lib/python/site-packages/selenium/webdriver/remote/webelement.py:81: in click<br/>    self._execute(Command.CLICK_ELEMENT)<br/>../../../Library/Python/3.9/lib/python/site-packages/selenium/webdriver/remote/webelement.py:710: in _execute<br/>    return self._parent.execute(command, params)<br/>../../../Library/Python/3.9/lib/python/site-packages/selenium/webdriver/remote/webdriver.py:424: in execute<br/>    self.error_handler.check_response(response)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x104bd2790&gt;<br/>response = {&#x27;status&#x27;: 400, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;element click intercepted&quot;,&quot;message&quot;:&quot;element click intercepted: Element ...000199de7fa8 _pthread_start + 148\\n21  libsystem_pthread.dylib             0x0000000199de2da0 thread_start + 8\\n&quot;}}&#x27;}<br/><br/>    def check_response(self, response: Dict[str, Any]) -&gt; None:<br/>        &quot;&quot;&quot;<br/>        Checks that a JSON response from the WebDriver does not have an error.<br/>    <br/>        :Args:<br/>         - response - The JSON response from the WebDriver server as a dictionary<br/>           object.<br/>    <br/>        :Raises: If the response contains an error message.<br/>        &quot;&quot;&quot;<br/>        status = response.get(&#x27;status&#x27;, None)<br/>        if not status or status == ErrorCode.SUCCESS:<br/>            return<br/>        value = None<br/>        message = response.get(&quot;message&quot;, &quot;&quot;)<br/>        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)<br/>        stacktrace = None<br/>        if isinstance(status, int):<br/>            value_json = response.get(&#x27;value&#x27;, None)<br/>            if value_json and isinstance(value_json, str):<br/>                import json<br/>                try:<br/>                    value = json.loads(value_json)<br/>                    if len(value.keys()) == 1:<br/>                        value = value[&#x27;value&#x27;]<br/>                    status = value.get(&#x27;error&#x27;, None)<br/>                    if not status:<br/>                        status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)<br/>                        message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)<br/>                        if not isinstance(message, str):<br/>                            value = message<br/>                            message = message.get(&#x27;message&#x27;)<br/>                    else:<br/>                        message = value.get(&#x27;message&#x27;, None)<br/>                except ValueError:<br/>                    pass<br/>    <br/>        exception_class: Type[WebDriverException]<br/>        if status in ErrorCode.NO_SUCH_ELEMENT:<br/>            exception_class = NoSuchElementException<br/>        elif status in ErrorCode.NO_SUCH_FRAME:<br/>            exception_class = NoSuchFrameException<br/>        elif status in ErrorCode.NO_SUCH_SHADOW_ROOT:<br/>            exception_class = NoSuchShadowRootException<br/>        elif status in ErrorCode.NO_SUCH_WINDOW:<br/>            exception_class = NoSuchWindowException<br/>        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:<br/>            exception_class = StaleElementReferenceException<br/>        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:<br/>            exception_class = ElementNotVisibleException<br/>        elif status in ErrorCode.INVALID_ELEMENT_STATE:<br/>            exception_class = InvalidElementStateException<br/>        elif status in ErrorCode.INVALID_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:<br/>            exception_class = InvalidSelectorException<br/>        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:<br/>            exception_class = ElementNotSelectableException<br/>        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:<br/>            exception_class = ElementNotInteractableException<br/>        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:<br/>            exception_class = InvalidCookieDomainException<br/>        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:<br/>            exception_class = UnableToSetCookieException<br/>        elif status in ErrorCode.TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.SCRIPT_TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.UNKNOWN_ERROR:<br/>            exception_class = WebDriverException<br/>        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:<br/>            exception_class = UnexpectedAlertPresentException<br/>        elif status in ErrorCode.NO_ALERT_OPEN:<br/>            exception_class = NoAlertPresentException<br/>        elif status in ErrorCode.IME_NOT_AVAILABLE:<br/>            exception_class = ImeNotAvailableException<br/>        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:<br/>            exception_class = ImeActivationFailedException<br/>        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:<br/>            exception_class = MoveTargetOutOfBoundsException<br/>        elif status in ErrorCode.JAVASCRIPT_ERROR:<br/>            exception_class = JavascriptException<br/>        elif status in ErrorCode.SESSION_NOT_CREATED:<br/>            exception_class = SessionNotCreatedException<br/>        elif status in ErrorCode.INVALID_ARGUMENT:<br/>            exception_class = InvalidArgumentException<br/>        elif status in ErrorCode.NO_SUCH_COOKIE:<br/>            exception_class = NoSuchCookieException<br/>        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:<br/>            exception_class = ScreenshotException<br/>        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:<br/>            exception_class = ElementClickInterceptedException<br/>        elif status in ErrorCode.INSECURE_CERTIFICATE:<br/>            exception_class = InsecureCertificateException<br/>        elif status in ErrorCode.INVALID_COORDINATES:<br/>            exception_class = InvalidCoordinatesException<br/>        elif status in ErrorCode.INVALID_SESSION_ID:<br/>            exception_class = InvalidSessionIdException<br/>        elif status in ErrorCode.UNKNOWN_METHOD:<br/>            exception_class = UnknownMethodException<br/>        else:<br/>            exception_class = WebDriverException<br/>        if not value:<br/>            value = response[&#x27;value&#x27;]<br/>        if isinstance(value, str):<br/>            raise exception_class(value)<br/>        if message == &quot;&quot; and &#x27;message&#x27; in value:<br/>            message = value[&#x27;message&#x27;]<br/>    <br/>        screen = None  # type: ignore[assignment]<br/>        if &#x27;screen&#x27; in value:<br/>            screen = value[&#x27;screen&#x27;]<br/>    <br/>        stacktrace = None<br/>        st_value = value.get(&#x27;stackTrace&#x27;) or value.get(&#x27;stacktrace&#x27;)<br/>        if st_value:<br/>            if isinstance(st_value, str):<br/>                stacktrace = st_value.split(&#x27;\n&#x27;)<br/>            else:<br/>                stacktrace = []<br/>                try:<br/>                    for frame in st_value:<br/>                        line = self._value_or_default(frame, &#x27;lineNumber&#x27;, &#x27;&#x27;)<br/>                        file = self._value_or_default(frame, &#x27;fileName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                        if line:<br/>                            file = &quot;%s:%s&quot; % (file, line)<br/>                        meth = self._value_or_default(frame, &#x27;methodName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                        if &#x27;className&#x27; in frame:<br/>                            meth = &quot;%s.%s&quot; % (frame[&#x27;className&#x27;], meth)<br/>                        msg = &quot;    at %s (%s)&quot;<br/>                        msg = msg % (meth, file)<br/>                        stacktrace.append(msg)<br/>                except TypeError:<br/>                    pass<br/>        if exception_class == UnexpectedAlertPresentException:<br/>            alert_text = None<br/>            if &#x27;data&#x27; in value:<br/>                alert_text = value[&#x27;data&#x27;].get(&#x27;text&#x27;)<br/>            elif &#x27;alert&#x27; in value:<br/>                alert_text = value[&#x27;alert&#x27;].get(&#x27;text&#x27;)<br/>            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here<br/>&gt;       raise exception_class(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;button class=&quot;logout flex-row&quot; data-toggle=&quot;dropdown-block&quot; aria-label=&quot;Logout&quot;&gt;...&lt;/button&gt; is not clickable at point (1251, 50). Other element would receive the click: &lt;div class=&quot;modal footer-border fade to-buy-modal show&quot; id=&quot;to-buy-modal&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-labelledby=&quot;myModalLabel&quot; style=&quot;padding-right: 15px; display: block;&quot; aria-modal=&quot;true&quot;&gt;...&lt;/div&gt;</span><br/><span class="error">E         (Session info: chrome=114.0.5735.133)</span><br/><span class="error">E       Stacktrace:</span><br/><span class="error">E       0   chromedriver                        0x00000001024e3f48 chromedriver + 4226888</span><br/><span class="error">E       1   chromedriver                        0x00000001024dc4f4 chromedriver + 4195572</span><br/><span class="error">E       2   chromedriver                        0x0000000102120d68 chromedriver + 281960</span><br/><span class="error">E       3   chromedriver                        0x00000001021626e8 chromedriver + 550632</span><br/><span class="error">E       4   chromedriver                        0x0000000102160638 chromedriver + 542264</span><br/><span class="error">E       5   chromedriver                        0x000000010215e548 chromedriver + 533832</span><br/><span class="error">E       6   chromedriver                        0x000000010215d918 chromedriver + 530712</span><br/><span class="error">E       7   chromedriver                        0x0000000102151eec chromedriver + 483052</span><br/><span class="error">E       8   chromedriver                        0x0000000102151734 chromedriver + 481076</span><br/><span class="error">E       9   chromedriver                        0x0000000102192c58 chromedriver + 748632</span><br/><span class="error">E       10  chromedriver                        0x000000010214ff1c chromedriver + 474908</span><br/><span class="error">E       11  chromedriver                        0x0000000102150ef4 chromedriver + 478964</span><br/><span class="error">E       12  chromedriver                        0x00000001024a559c chromedriver + 3970460</span><br/><span class="error">E       13  chromedriver                        0x00000001024a96f0 chromedriver + 3987184</span><br/><span class="error">E       14  chromedriver                        0x00000001024af5b4 chromedriver + 4011444</span><br/><span class="error">E       15  chromedriver                        0x00000001024aa2fc chromedriver + 3990268</span><br/><span class="error">E       16  chromedriver                        0x00000001024821c0 chromedriver + 3826112</span><br/><span class="error">E       17  chromedriver                        0x00000001024c6088 chromedriver + 4104328</span><br/><span class="error">E       18  chromedriver                        0x00000001024c61e0 chromedriver + 4104672</span><br/><span class="error">E       19  chromedriver                        0x00000001024d5f28 chromedriver + 4169512</span><br/><span class="error">E       20  libsystem_pthread.dylib             0x0000000199de7fa8 _pthread_start + 148</span><br/><span class="error">E       21  libsystem_pthread.dylib             0x0000000199de2da0 thread_start + 8</span><br/><br/>../../../Library/Python/3.9/lib/python/site-packages/selenium/webdriver/remote/errorhandler.py:247: ElementClickInterceptedException<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">tests/test_sitemap_xml.py::test_checking_response_statuses_of_all_pages_in_sitemap_xml::setup</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/Users/sl./PycharmProjects/smileexpo/Page_Object_Model/tests/test_sitemap_xml.py&#x27;, 8, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">tests/company/buying_packages/test_4_0_package_purchase_monthly_free_vacancy.py::TestPackagePurchaseMonthlyFreeVacancy::test_precondition::setup</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/Users/sl./PycharmProjects/smileexpo/Page_Object_Model/tests/company/buying_packages/test_4_0_package_purchase_monthly_free_vacancy.py&#x27;, 23, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">tests/company/buying_packages/test_4_0_package_purchase_monthly_free_vacancy.py::TestPackagePurchaseMonthlyFreeVacancy::test_package_purchase_monthly_free_vacancy_and_activating_it_on_site::setup</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/Users/sl./PycharmProjects/smileexpo/Page_Object_Model/tests/company/buying_packages/test_4_0_package_purchase_monthly_free_vacancy.py&#x27;, 28, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/buying_packages/test_3_0_1_package_purchase_1_vacancy.py::TestPackagePurchase1Vacancy::test_precondition</td>
+          <td class="col-duration">6.63</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>use mailbox: test_automation_employer_vacancy@1secmail.com
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/buying_packages/test_3_0_1_package_purchase_1_vacancy.py::TestPackagePurchase1Vacancy::test_package_purchase_1_vacancy_and_orders_processing_and_activating_it_on_site</td>
+          <td class="col-duration">53.84</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/buying_packages/test_3_0_1_package_purchase_1_vacancy.py::TestPackagePurchase1Vacancy::test_checking_letter_after_order_processing</td>
+          <td class="col-duration">0.32</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>use mailbox: test_automation_employer_vacancy@1secmail.com
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/buying_packages/test_3_0_1_package_purchase_1_vacancy.py::TestPackagePurchase1Vacancy::test_complete_deletion_of_user_orders</td>
+          <td class="col-duration">5.85</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/buying_packages/test_3_0_2_package_purchase_standart_1_vacancy.py::TestPackagePurchaseStandart1Vacancy::test_precondition</td>
+          <td class="col-duration">5.07</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/buying_packages/test_3_0_2_package_purchase_standart_1_vacancy.py::TestPackagePurchaseStandart1Vacancy::test_package_purchase_standart_and_orders_processing_and_activating_it_on_site</td>
+          <td class="col-duration">25.98</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/buying_packages/test_3_0_2_package_purchase_standart_1_vacancy.py::TestPackagePurchaseStandart1Vacancy::test_checking_letter_after_order_processing</td>
+          <td class="col-duration">0.31</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>use mailbox: test_automation_employer_vacancy@1secmail.com
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/buying_packages/test_3_0_2_package_purchase_standart_1_vacancy.py::TestPackagePurchaseStandart1Vacancy::test_complete_deletion_of_user_orders</td>
+          <td class="col-duration">5.05</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/buying_packages/test_3_0_3_package_purchase_standart_5_vacancy.py::TestPackagePurchaseStandart5Vacancy::test_precondition</td>
+          <td class="col-duration">6.05</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/buying_packages/test_3_0_3_package_purchase_standart_5_vacancy.py::TestPackagePurchaseStandart5Vacancy::test_package_purchase_standart_and_orders_processing_and_activating_it_on_site</td>
+          <td class="col-duration">48.61</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/buying_packages/test_3_0_3_package_purchase_standart_5_vacancy.py::TestPackagePurchaseStandart5Vacancy::test_checking_letter_after_order_processing</td>
+          <td class="col-duration">0.30</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>use mailbox: test_automation_employer_vacancy@1secmail.com
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/buying_packages/test_3_0_3_package_purchase_standart_5_vacancy.py::TestPackagePurchaseStandart5Vacancy::test_complete_deletion_of_user_orders</td>
+          <td class="col-duration">5.42</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/company_add_edit/test_1_company_registration.py::TestCompanyRegistration::test_company_registration_with_filling_in_all_fields</td>
+          <td class="col-duration">25.36</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>https://logincasino.work
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/company_add_edit/test_1_company_registration.py::TestCompanyRegistration::test_checking_creation_of_user_in_admin_panel</td>
+          <td class="col-duration">4.48</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/company_add_edit/test_1_company_registration.py::TestCompanyRegistration::test_changing_user_role_from_user_to_super_admin</td>
+          <td class="col-duration">6.89</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/company_add_edit/test_1_company_registration.py::TestCompanyRegistration::test_authorization_of_user_in_disabled_status</td>
+          <td class="col-duration">6.49</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/company_add_edit/test_1_company_registration.py::TestCompanyRegistration::test_email_verification_after_company_registration</td>
+          <td class="col-duration">5.34</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>use mailbox: test_automation+1687442039@1secmail.com
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/company_add_edit/test_1_company_registration.py::TestCompanyRegistration::test_authorization_of_user_in_on_moderation_status</td>
+          <td class="col-duration">6.72</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/company_add_edit/test_1_company_registration.py::TestCompanyRegistration::test_change_of_employer_status_from_on_moderation_to_activet</td>
+          <td class="col-duration">14.08</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/company_add_edit/test_1_company_registration.py::TestCompanyRegistration::test_checking_letter_after_first_moderation</td>
+          <td class="col-duration">0.31</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>use mailbox: test_automation+1687442039@1secmail.com
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/company_add_edit/test_2_0_verification_of_saving_data_entered_by_user_after_company_registration.py::test_verification_of_saving_data_entered_by_user_after_company_registration</td>
+          <td class="col-duration">6.49</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/company_add_edit/test_6_company_edit.py::test_changing_all_company_data</td>
+          <td class="col-duration">23.47</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/company_add_edit/test_9_post_conditions_company.py::test_delete_user</td>
+          <td class="col-duration">10.25</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/contact_block/test_2_1_block_of_contacts_on_resume_page.py::test_precondition</td>
+          <td class="col-duration">3.27</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/contact_block/test_2_1_block_of_contacts_on_resume_page.py::test_block_of_contacts_on_resume_page</td>
+          <td class="col-duration">24.36</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/preview_company/test_3_3_0_preview_company_profile_when_registration.py::TestCompanyRegistration::test_preview_company_profile_when_registration</td>
+          <td class="col-duration">14.12</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>https://logincasino.work
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/preview_company/test_3_3_1_preview_company_profile_when_editing.py::test_precondition</td>
+          <td class="col-duration">5.02</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/preview_company/test_3_3_1_preview_company_profile_when_editing.py::test_preview_company_profile_when_editing</td>
+          <td class="col-duration">12.41</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/print_pdf/test_3_2_1_checking_status_of_page_response_to_print_pdf.py::test_checking_status_of_page_response_to_print_pdf</td>
+          <td class="col-duration">13.30</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/vacancy/add_edit/test_3_0_package_purchase_help_refugee_with_his_work.py::TestPackagePurchaseHelpRefugeeWithHisWork::test_precondition</td>
+          <td class="col-duration">7.28</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/vacancy/add_edit/test_3_0_package_purchase_help_refugee_with_his_work.py::TestPackagePurchaseHelpRefugeeWithHisWork::test_package_purchase_help_refugee_with_his_work_and_activating_it_on_site</td>
+          <td class="col-duration">23.80</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/vacancy/add_edit/test_3_1_vacancy_add.py::test_adding_vacancies</td>
+          <td class="col-duration">70.36</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/vacancy/add_edit/test_3_1_vacancy_add.py::test_verification_of_letter_after_publication_of_vacancy</td>
+          <td class="col-duration">0.30</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>use mailbox: test_automation_employer_vacancy@1secmail.com
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/vacancy/add_edit/test_3_2_0_verification_of_saving_data_entered_by_user_after_vacancy_is_created.py::test_verification_of_saving_data_entered_by_user_after_vacancy_is_created</td>
+          <td class="col-duration">6.69</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/vacancy/add_edit/test_3_3_vacancy_edit.py::test_editing_vacancies</td>
+          <td class="col-duration">43.73</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/vacancy/draft/test_2_2_adding_vacancy_to_draft_and_deletion_it.py::TestAddingVacancyToDraft::test_precondition</td>
+          <td class="col-duration">3.35</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/vacancy/draft/test_2_2_adding_vacancy_to_draft_and_deletion_it.py::TestAddingVacancyToDraft::test_checking_adding_vacancy_to_draft</td>
+          <td class="col-duration">20.30</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/vacancy/hidden/test_3_0_0_hiding_vacancies.py::TestHidingVacancy::test_precondition</td>
+          <td class="col-duration">11.83</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/vacancy/hidden/test_3_0_0_hiding_vacancies.py::TestHidingVacancy::test_hiding_and_publication_vacancy</td>
+          <td class="col-duration">13.34</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/company/vacancy/preview/test_3_3_0_preview_vacancy_when_editing.py::test_preview_vacancy_when_editing</td>
+          <td class="col-duration">12.94</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/email/email_change/test_email_change.py::TestEmailChange::test_precondition</td>
+          <td class="col-duration">4.43</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/email/email_change/test_email_change.py::TestEmailChange::test_email_changes</td>
+          <td class="col-duration">17.20</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/email/email_change/test_email_change.py::TestEmailChange::test_confirmation_changes_email</td>
+          <td class="col-duration">14.69</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>use mailbox: test_automation_employer_change_email_1687441828@1secmail.com
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/email/email_change/test_email_change.py::TestEmailChange::test_email_replacement_check</td>
+          <td class="col-duration">13.60</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/contact_block/test_2_1_lack_of_contact_block_on_resume_page.py::test_checking_absence_of_block_of_contacts_with_an_authorized_applicant</td>
+          <td class="col-duration">23.63</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/job_seeker_add_edit/test_1_job_seeker_registration.py::TestJobSeekerRegistration::test_job_seeker_registration_with_filling_in_all_fields</td>
+          <td class="col-duration">16.95</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/job_seeker_add_edit/test_1_job_seeker_registration.py::TestJobSeekerRegistration::test_checking_creation_of_user_in_admin_panel</td>
+          <td class="col-duration">4.53</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/job_seeker_add_edit/test_1_job_seeker_registration.py::TestJobSeekerRegistration::test_changing_user_role_from_user_to_super_admin</td>
+          <td class="col-duration">7.45</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/job_seeker_add_edit/test_1_job_seeker_registration.py::TestJobSeekerRegistration::test_authorization_of_user_in_disabled_status</td>
+          <td class="col-duration">6.68</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/job_seeker_add_edit/test_1_job_seeker_registration.py::TestJobSeekerRegistration::test_confirmation_of_registration_of_applicant_and_authorization_on_site</td>
+          <td class="col-duration">12.91</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>use mailbox: test_automation+1687442552@1secmail.com
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/job_seeker_add_edit/test_1_job_seeker_registration.py::TestJobSeekerRegistration::test_check_that_user_has_status_active</td>
+          <td class="col-duration">4.66</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/job_seeker_add_edit/test_2_0_verification_of_saving_data_entered_by_user_after_job_seeker_registration.py::test_verification_of_saving_data_entered_by_user_after_job_seeker_registration</td>
+          <td class="col-duration">6.24</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/job_seeker_add_edit/test_8_0_job_seeker_edit.py::test_changing_all_job_seeker_data</td>
+          <td class="col-duration">12.30</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/job_seeker_add_edit/test_8_1_verification_of_saving_data_entered_by_user_after_job_seeker_edit.py::test_verification_of_saving_data_entered_by_user_after_job_seeker_edit</td>
+          <td class="col-duration">5.75</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/job_seeker_add_edit/test_post_conditions_job_seeker.py::test_delete_user</td>
+          <td class="col-duration">9.86</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/print_pdf/test_3_2_1_checking_status_of_page_response_to_print_pdf.py::test_checking_status_of_page_response_to_print_pdf</td>
+          <td class="col-duration">13.52</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/resume/add_edit/test_3_1_resume_add.py::TestResumeAdd::test_precondition</td>
+          <td class="col-duration">5.61</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/resume/add_edit/test_3_1_resume_add.py::TestResumeAdd::test_adding_resume</td>
+          <td class="col-duration">75.40</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/resume/add_edit/test_3_1_resume_add.py::TestResumeAdd::test_verification_of_letter_after_publication_of_resume</td>
+          <td class="col-duration">0.31</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>use mailbox: test_automation+job_seeker_resume@1secmail.com
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/resume/add_edit/test_3_2_0_verification_of_saving_data_entered_by_user_after_resume_creation.py::test_verification_of_saving_data_entered_by_user_after_resume_creation</td>
+          <td class="col-duration">7.24</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/resume/add_edit/test_3_2_1_resume_edit.py::test_editing_resume</td>
+          <td class="col-duration">74.79</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/job_seeker/resume/draft/test_8_3_adding_resume_to_draft_and_deletion_it.py::TestAddingResumeToDraft::test_precondition</td>
-          <td class="col-duration">4.73</td>
+          <td class="col-duration">3.21</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -282,7 +879,212 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">tests/job_seeker/resume/draft/test_8_3_adding_resume_to_draft_and_deletion_it.py::TestAddingResumeToDraft::test_checking_adding_resume_to_draft</td>
-          <td class="col-duration">20.98</td>
+          <td class="col-duration">25.63</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/resume/hidden/test_3_0_0_hiding_resume.py::TestHidingResume::test_precondition</td>
+          <td class="col-duration">4.47</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/resume/hidden/test_3_0_0_hiding_resume.py::TestHidingResume::test_hiding_and_publication_resume</td>
+          <td class="col-duration">15.09</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker/resume/preview/test_3_3_0_preview_resume_when_editing.py::test_preview_resume_when_editing</td>
+          <td class="col-duration">14.29</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker_and_employer/test_4_0_response_to_vacancy.py::TestResponseToVacancy::test_precondition</td>
+          <td class="col-duration">7.07</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker_and_employer/test_4_0_response_to_vacancy.py::TestResponseToVacancy::test_response_to_vacancy</td>
+          <td class="col-duration">19.94</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Ваше резюме отправлено работодателю!
+info_text
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker_and_employer/test_4_0_response_to_vacancy.py::TestResponseToVacancy::test_verification_of_letter_after_receiving_response_to_vacancy</td>
+          <td class="col-duration">0.31</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>use mailbox: test_automation+employer@1secmail.com
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker_and_employer/test_4_0_response_to_vacancy.py::TestResponseToVacancy::test_company_response_opening</td>
+          <td class="col-duration">13.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker_and_employer/test_4_0_response_to_vacancy.py::TestResponseToVacancy::test_verification_of_letter_after_viewing_response</td>
+          <td class="col-duration">0.30</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>use mailbox: test_automation+job_seeker@1secmail.com
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker_and_employer/test_4_0_response_to_vacancy.py::TestResponseToVacancy::test_deleting_response</td>
+          <td class="col-duration">38.09</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker_and_employer/test_4_0_response_to_vacancy.py::TestResponseToVacancy::test_verification_of_letter_after_response_deviation</td>
+          <td class="col-duration">0.35</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>use mailbox: test_automation+job_seeker@1secmail.com
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker_and_employer/contact_block/test_4_1_opening_contacts_in_resume.py::TestBlockOfContactsOnResumePage::test_precondition</td>
+          <td class="col-duration">6.83</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker_and_employer/contact_block/test_4_1_opening_contacts_in_resume.py::TestBlockOfContactsOnResumePage::test_block_of_contacts_on_resume_page</td>
+          <td class="col-duration">10.06</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker_and_employer/contact_block/test_4_1_opening_contacts_in_resume.py::TestBlockOfContactsOnResumePage::test_checking_reduction_in_number_of_contact_views_in_service_package</td>
+          <td class="col-duration">8.07</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/job_seeker_and_employer/contact_block/test_4_2_verification_of_contact_block_after_end_of_views.py::TestContactBlockAfterEndOfViews::test_verification_of_contact_block_after_end_of_views</td>
+          <td class="col-duration">9.23</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/password/password_change/test_password_change.py::TestPasswordChange::test_precondition</td>
+          <td class="col-duration">7.79</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/password/password_change/test_password_change.py::TestPasswordChange::test_password_changes</td>
+          <td class="col-duration">15.56</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/password/password_change/test_password_change.py::TestPasswordChange::test_confirmation_of_password_changes_through_email</td>
+          <td class="col-duration">4.44</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>use mailbox: test_automation+job_seeker_change_password@1secmail.com
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/password/password_change/test_password_change.py::TestPasswordChange::test_login_with_new_password</td>
+          <td class="col-duration">6.81</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/password/password_recovery/test_password_recovery.py::TestPasswordRecovery::test_precondition</td>
+          <td class="col-duration">5.03</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/password/password_recovery/test_password_recovery.py::TestPasswordRecovery::test_submitting_password_recovery_request</td>
+          <td class="col-duration">9.06</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/password/password_recovery/test_password_recovery.py::TestPasswordRecovery::test_password_recovery_from_an_email</td>
+          <td class="col-duration">7.49</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>use mailbox: test_automation+job_seeker_change_password@1secmail.com
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/password/password_recovery/test_password_recovery.py::TestPasswordRecovery::test_login_with_new_password</td>
+          <td class="col-duration">6.95</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">

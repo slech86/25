@@ -65,7 +65,7 @@ class ServicesAndPricesPage(BasePage):
         self.browser.find_element(*ServicesAndPricesPageLocators.CROSS_IN_POP_UP_AFTER_PRESSING_BUTTON_BUY_IN_BASKET).click()
 
     def checking_message_after_buying_paid_package(self, language):  # проверка сообщения после покупки платного пакета
-        info_text = self.browser.find_element(*ServicesAndPricesPageLocators.INFO_TEXT_AFTER_BUTTON_PRESSED_BUY_IN_CART).text
+        info_text = WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(ServicesAndPricesPageLocators.INFO_TEXT_AFTER_BUTTON_PRESSED_BUY_IN_CART)).text
         if language == "":
             assert "Наш менеджер свяжется с Вами в кратчайшие сроки. После согласования всех деталей Вы получите доступ к услуге." == info_text, 'Не верное сообщение'
         elif language == "/ua":
@@ -75,6 +75,7 @@ class ServicesAndPricesPage(BasePage):
         elif language == "/pl":
             assert "Nasz menedżer skontaktuje się z Tobą tak szybko, jak to możliwe. Po uzgodnieniu wszystkich szczegółów otrzymasz dostęp do usługi." == info_text, 'Не верное сообщение'
         self.browser.find_element(*ServicesAndPricesPageLocators.CROSS_IN_POP_UP_AFTER_PRESSING_BUTTON_BUY_IN_BASKET).click()
+        time.sleep(1)
 
     def switch_to_tab_not_activated(self):  # переход на вкладку "Не активированные"
         self.browser.find_element(*ServicesAndPricesPageLocators.TAB_NOT_ACTIVATED_SERVICES).click()
