@@ -22,6 +22,9 @@ class TestPasswordRecovery:
         _resources_tests.admin_authorization(browser)  # авторизация в админку
         _resources_tests.change_language_of_notifications_on_email(browser, language, users_variables[user]["id"])  # изменение языка уведомлений на email
 
+        email = Mailbox(users_variables[user]['mail_name'])
+        _resources_tests.mailbox_cleaning(email)
+
     def test_submitting_password_recovery_request(self, browser, language):  # отправка запроса на восстановление пароля
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
         page = OllPage(browser, url_page)

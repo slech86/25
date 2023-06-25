@@ -30,6 +30,9 @@ class TestPackagePurchaseStandart1Vacancy:
         _resources_company.sql_deleting_all_user_orders(browser)  # удаление всех заказов пользователя
         _resources_tests.change_language_of_notifications_on_email(browser, language, users_variables[_resources_buying_packages.user]["id"])  # изменение языка уведомлений на email
 
+        email = Mailbox(users_variables[_resources_buying_packages.user]['mail_name'])
+        _resources_tests.mailbox_cleaning(email)
+
     def test_package_purchase_standart_and_orders_processing_and_activating_it_on_site(self, browser, language):  # покупка пакета "Standart: 1 вакансия" и проведение заказа в админке и активация его на сайте
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
         page = OllPage(browser, url_page)

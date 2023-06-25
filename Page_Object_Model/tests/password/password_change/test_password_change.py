@@ -33,6 +33,9 @@ class TestPasswordChange:
         admin_page.saving_user_card()  # сохранение карточки пользователя
         admin_page.waiting_to_save_user_and_open_all_users_page()  # ожидание сохранения пользователя и открытия страницы всех пользователей
 
+        email = Mailbox(users_variables[user]['mail_name'])
+        _resources_tests.mailbox_cleaning(email)
+
     def test_password_changes(self, browser, language):  # изменение пароля
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
         page = OllPage(browser, url_page)

@@ -40,6 +40,12 @@ class TestResponseToVacancy:
         admin_sql_page.open()
         admin_sql_page.sql_delete_record_response_to_vacancy(users_variables[user_job_seeker]["id"], resume_id, vacancy_id)  # удаление записи отклика на вакансию
 
+        email = Mailbox(users_variables[user_employer]['mail_name'])
+        _resources_tests.mailbox_cleaning(email)
+
+        email = Mailbox(users_variables[user_job_seeker]['mail_name'])
+        _resources_tests.mailbox_cleaning(email)
+
     def test_response_to_vacancy(self, browser, language):  # отклик на вакансию
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
         page = OllPage(browser, url_page)

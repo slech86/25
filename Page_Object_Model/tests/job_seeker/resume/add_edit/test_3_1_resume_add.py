@@ -32,6 +32,9 @@ class TestResumeAdd:
         admin_sql_page.open()
         admin_sql_page.sql_deleting_all_user_resume(users_variables[_resources_resume.user_resume]["id"])  # удаление всех резюме пользователя
 
+        email = Mailbox(users_variables[_resources_resume.user_resume]['mail_name'])
+        _resources_tests.mailbox_cleaning(email)
+
     def test_adding_resume(self, browser, language):  # добавление резюме
         url_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
         page = OllPage(browser, url_page)

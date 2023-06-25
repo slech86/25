@@ -14,6 +14,7 @@ from Page_Object_Model.pages.admin_panel.admin_product_edit_page import AdminPro
 from Page_Object_Model.tests.company import _resources_company
 from Page_Object_Model.tests import _resources_tests
 from Page_Object_Model.tests.company.vacancy import _resources_vacancy
+from Page_Object_Model.mail.onesec_api import Mailbox
 
 
 class TestPackagePurchaseHelpRefugeeWithHisWork:
@@ -22,6 +23,9 @@ class TestPackagePurchaseHelpRefugeeWithHisWork:
         admin_sql_page = _resources_company.sql_deleting_all_user_orders(browser)  # удаление всех заказов пользователя
         admin_sql_page.sql_deleting_all_user_vacancies(users_variables[_resources_vacancy.user_vacancy]["id"])  # удаление всех вакансий пользователя
         _resources_tests.change_language_of_notifications_on_email(browser, language, users_variables[_resources_vacancy.user_vacancy]["id"])  # изменение языка уведомлений на email
+
+        email = Mailbox(users_variables[_resources_vacancy.user_vacancy]['mail_name'])
+        _resources_tests.mailbox_cleaning(email)
 
     def test_package_purchase_help_refugee_with_his_work_and_activating_it_on_site(self, browser, language):  # покупка пакета "Помоги беженцу с работой" и активация его на сайте
         url_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}"
