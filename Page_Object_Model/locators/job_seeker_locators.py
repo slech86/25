@@ -91,7 +91,7 @@ class MyResumePageLocators:
         }
         return locators
 
-    BUTTON_PRINT = (By.XPATH, '//a[contains(@href, "/print")]')  # работает для первого резюме в списке
+    BUTTON_PRINT = (By.XPATH, '//a[contains(@data-url, "/print")]')  # работает для первого резюме в списке
     BUTTON_CONFIRMATION_DELETION_DRAFT_RESUME = (By.CSS_SELECTOR, ('[class="btn btn-blue btn-apply update-status"]'))
 
     INFO_TEXT_AFTER_CREATING_RESUME = (By.CSS_SELECTOR, '#lc-popup-resume-new .text')  # информационный текст после создания резюме
@@ -511,7 +511,7 @@ class MyResponsesPageLocators:
 class VacancyPageLocators:
     H1 = (By.CSS_SELECTOR, ('h1'))
     BUTTON_VACANCY_MENU = (By.CSS_SELECTOR, '.share-btn')
-    BUTTON_PRINT = (By.XPATH, '//a[contains(@href, "/print")]')
+    BUTTON_PRINT = (By.XPATH, '//a[contains(@data-url, "/print")]')
     BUTTON_RESPONSE_1 = (By.CSS_SELECTOR, ('.company-respond > .btn-response'))
     BUTTON_RESPONSE_2 = (By.CSS_SELECTOR, ('.btn-wrap > .btn-response'))
     NOT_ACTIVE_BUTTON_RESUME_POSTED_1 = (By.CSS_SELECTOR, ('.company-respond > [data-target="#respond-modal"][disabled="disabled"]'))

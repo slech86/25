@@ -137,7 +137,7 @@ class MyVacanciesPageLocators:
             'button_publish': (By.XPATH, '//a[@data-vacancy-id=' + id_vacancies + '][@data-status-id="1"]'),
             'new_response_icon': (By.CSS_SELECTOR, '#my-vacancy-' + id_vacancies + ' .counter.red'),
             'button_show_responses': (By.XPATH, ('//a[contains(@href, "/vacancy/' + id_vacancies + '/feedback")]')),
-            'button_print': (By.XPATH, '//a[contains(@href, "/vacancy/' + id_vacancies + '/print")]'),
+            'button_print': (By.XPATH, '//a[contains(@data-url, "/vacancy/' + id_vacancies + '/print")]'),
             'button_delete': (By.CSS_SELECTOR, ('#my-vacancy-' + id_vacancies + ' .open-delete-modal'))
         }
         return locators_with_id_vacancies
@@ -344,7 +344,7 @@ class ResumePageLocators:
     EXPAND_COVER_LETTER = (By.CSS_SELECTOR, '.card-header > .card-header__more-arrow')
     COVER_LETTER_TEXT = (By.CSS_SELECTOR, '.covering-letter-description')
     BUTTON_RESUME_MENU = (By.CSS_SELECTOR, '.share-btn')
-    BUTTON_PRINT = (By.XPATH, '//a[contains(@href, "/print")]')
+    BUTTON_PRINT = (By.XPATH, '//a[contains(@data-url, "/print")]')
 
     CONTACT_INFORMATION_BLOCK = (By.CSS_SELECTOR, '.cv-card .danger')
     CONTACT_BLOCK = (By.CSS_SELECTOR, '.contacts-block')
