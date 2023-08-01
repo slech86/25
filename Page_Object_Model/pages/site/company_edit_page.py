@@ -132,6 +132,7 @@ class CompanyEditPage(BasePage):
         # редактирование блока "Настройки"
 
     def go_to_preview_page(self):  # переход на страницу предпросмотра
+        self.browser.execute_script("window.scrollBy(0, 2000);")
         self.browser.find_element(*CompanyRegistrationEditPageLocators.BUTTON_PREVIEW).click()
         time.sleep(3)
         self.browser.switch_to.window(self.browser.window_handles[1])
