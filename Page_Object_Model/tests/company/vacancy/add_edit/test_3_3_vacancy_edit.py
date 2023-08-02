@@ -31,7 +31,7 @@ def test_editing_vacancies(browser, language):  # редактирование �
     vacancy_edit_page = VacancyEditPage(browser, browser.current_url)
     page.choice_of_russian_language_in_multi_language_forms()  # выбор русского языка в мультиязычных формах
     vacancy_edit_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
-    vacancy_edit_page.change_data_in_all_fields()  # изменение данных во всех полях
+    vacancy_edit_page.change_data_in_all_fields(browser)  # изменение данных во всех полях
 
     vacancy_edit_page.submitting_vacancy_change_for_publication()  # отправка изменений вакансии на публикацию
     my_vacancies_page.waiting_for_my_vacancies_page_to_open(language)  # ожидание открытия страницы 'Мои вакансии'

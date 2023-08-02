@@ -5,13 +5,20 @@ from Page_Object_Model.locators.company_locators import VacancyAddEditPageLocato
 from Page_Object_Model.utility.utility import determining_position_of_object_in_drop_down_list
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from Page_Object_Model.elements.button import Button
 
 
 class VacancyEditPage(BasePage):
     def hiding_copy_to_other_languages(self):  # скрытие кнопки "Скопировать на другие языки"
         self.browser.find_element(*VacancyAddEditPageLocators.CROSS_IN_COPY_TO_OTHER_LANGUAGES).click()
 
-    def change_data_in_all_fields(self):  # изменение данных во всех полях
+    @staticmethod
+    def start_editing_block_main_information(browser):  # начать редактировать блок "Основная информация"
+        root_xpath = '//div[@id="general-information"]'
+        Button.button_btn_edit_click(browser, root_xpath=root_xpath)
+
+    def change_data_in_all_fields(self, browser):  # изменение данных во всех полях
+        self.start_editing_block_main_information(browser)  # начать редактировать блок "Основная информация"
         self.browser.find_element(*VacancyAddEditPageLocators.FIELD_JOB_TITLE).send_keys('_editing')
         self.browser.find_element(*VacancyAddEditPageLocators.CATEGORY_VACANCIES_SITE_PROMOTION).click()
         subcategories = WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(VacancyAddEditPageLocators.SUBCATEGORIES_SEO_SPECIALIST))  # "Подкатегории"

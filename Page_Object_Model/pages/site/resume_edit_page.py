@@ -6,13 +6,20 @@ from Page_Object_Model.locators.job_seeker_locators import ResumeAddEditPageLoca
 from Page_Object_Model.utility.utility import determining_position_of_object_in_drop_down_list
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from Page_Object_Model.elements.button import Button
 
 
 class ResumeEditPage(BasePage):
     def hiding_copy_to_other_languages(self):  # скрытие кнопки "Скопировать на другие языки"
         self.browser.find_element(*ResumeAddEditPageLocators.CROSS_IN_COPY_TO_OTHER_LANGUAGES).click()
 
-    def change_data_in_all_fields(self):  # изменение данных во всех полях
+    @staticmethod
+    def start_editing_block_personal_information(browser):  # начать редактировать блок "Личная информация"
+        root_xpath = '//div[@id="personal-information"]'
+        Button.button_btn_edit_click(browser, root_xpath=root_xpath)
+
+    def change_data_in_all_fields(self, browser):  # изменение данных во всех полях
+        self.start_editing_block_personal_information(browser)  # начать редактировать блок "Личная информация"
         current_dir = os.path.abspath(os.path.dirname(__file__))
         file_path = os.path.join(current_dir, 'фото 2 120x150.png')
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_PHOTO).send_keys(file_path)

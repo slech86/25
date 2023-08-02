@@ -35,6 +35,7 @@ def test_preview_resume_when_editing(browser, language):  # предпросмо
     my_resume_page.go_to_resume_editing_page(resume_id)  # переход на страницу редактирования резюме
 
     resume_edit_page = ResumeEditPage(browser, browser.current_url)
+    resume_edit_page.start_editing_block_personal_information(browser)  # начать редактировать блок "Личная информация"
     resume_edit_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
     resume_edit_page.go_to_preview_page()  # переход на страницу предпросмотра
 

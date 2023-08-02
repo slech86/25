@@ -33,6 +33,7 @@ def test_preview_vacancy_when_editing(browser, language):  # предпросм�
     my_vacancies_page.go_to_vacancy_editing_page(vacancy_id)  # переход на страницу редактирования вакансии
 
     vacancy_edit_page = VacancyEditPage(browser, browser.current_url)
+    vacancy_edit_page.start_editing_block_main_information(browser)  # начать редактировать блок "Основная информация"
     vacancy_edit_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
     vacancy_edit_page.browser.execute_script("window.scrollBy(0, 3500);")
     vacancy_edit_page.go_to_preview_page()  # переход на страницу предпросмотра

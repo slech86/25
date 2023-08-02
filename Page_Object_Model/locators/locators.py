@@ -43,7 +43,8 @@ class VacanciesPageLocators:
 
     H1 = (By.CSS_SELECTOR, ('h1'))
     FIELD_JOB_TITLE_TO_SEARCH = (By.CSS_SELECTOR, ('#' + inputPrefix + 'job_title'))
-    BUTTON_SEARCH = (By.CSS_SELECTOR, ('#top-sort-form-btn'))
+    BUTTON_SEARCH = (By.CSS_SELECTOR, '#top-sort-form-btn')
+    BUTTON_BOOKMARK = (By.CSS_SELECTOR, '.short-card-bookmarks')
 
     def assembly_of_locators_with_id_vacancies(self, id_vacancies):  # сборка локаторов с id вакансии
         locator = (By.XPATH, ('//a[contains(@href, "/vacancy/' + id_vacancies + '")]'))
