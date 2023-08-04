@@ -11,7 +11,7 @@ from Page_Object_Model.utility.utility import generate_alphanum_random_string
 class MainPage(BasePage):
     def waiting_for_main_page_to_open(self, language):  # ожидание открытия главной страницы
         if language == "":
-            WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Работа в игорном бизнесе и IT'))
+            WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Поиск работы в сфере игорного бизнеса в Украине'))
         elif language == "/ua":
             WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Робота у гральному бізнесі та IT'))
         elif language == "/en":

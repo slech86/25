@@ -29,6 +29,7 @@ def test_editing_vacancies(browser, language):  # редактирование �
     my_vacancies_page.go_to_vacancy_editing_page(singleton.id_vacancies)  # переход на страницу редактирования вакансии
 
     vacancy_edit_page = VacancyEditPage(browser, browser.current_url)
+    vacancy_edit_page.start_editing_block_main_information(browser)  # начать редактировать блок "Основная информация"
     page.choice_of_russian_language_in_multi_language_forms()  # выбор русского языка в мультиязычных формах
     vacancy_edit_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
     vacancy_edit_page.change_data_in_all_fields(browser)  # изменение данных во всех полях

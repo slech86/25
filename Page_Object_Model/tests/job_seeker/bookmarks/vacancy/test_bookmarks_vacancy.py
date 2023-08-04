@@ -20,4 +20,3 @@ class TestBookmarksVacancy:
         vacancies_page.add_vacancy_to_bookmarks(browser)  # добавить вакансию в закладки (первую в списке)
         page = OllPage(browser, browser.current_url)
         page.user_authorization(user)  # авторизация пользователя
-        breakpoint()

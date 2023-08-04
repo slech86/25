@@ -18,7 +18,6 @@ class VacancyEditPage(BasePage):
         Button.button_btn_edit_click(browser, root_xpath=root_xpath)
 
     def change_data_in_all_fields(self, browser):  # изменение данных во всех полях
-        self.start_editing_block_main_information(browser)  # начать редактировать блок "Основная информация"
         self.browser.find_element(*VacancyAddEditPageLocators.FIELD_JOB_TITLE).send_keys('_editing')
         self.browser.find_element(*VacancyAddEditPageLocators.CATEGORY_VACANCIES_SITE_PROMOTION).click()
         subcategories = WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(VacancyAddEditPageLocators.SUBCATEGORIES_SEO_SPECIALIST))  # "Подкатегории"
@@ -72,6 +71,7 @@ class VacancyEditPage(BasePage):
         self.browser.find_element(*VacancyAddEditPageLocators.READY_TO_TAKE_PERSON_WITH_DISABILITY).click()
         # блок 'Основная информация'
 
+        Button.button_btn_edit_click(browser, root_xpath='//div[@id="knowledge-of-languages"]')
         self.browser.find_element(*VacancyAddEditPageLocators.BUTTON_TO_DELETE_FIRST_LANGUAGE).click()
         self.browser.find_element(*VacancyAddEditPageLocators.DROPDOWN_LANGUAGE_2).click()
         self.browser.find_element(*VacancyAddEditPageLocators.ENGLISH_LANGUAGE_2).click()
@@ -79,6 +79,7 @@ class VacancyEditPage(BasePage):
         self.browser.find_element(*VacancyAddEditPageLocators.ABOVE_AVERAGE_LEVEL_2).click()
         # блок "Знание языков"
 
+        Button.button_btn_edit_click(browser, root_xpath='//div[@id="vacancy-description"]')
         iframe = self.browser.find_element(*VacancyAddEditPageLocators.IFRAME_CKEDITOR_DESCRIPTION_OF_VACANCIES)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
         CKEditor = self.browser.find_element(*VacancyAddEditPageLocators.CKEDITOR)
@@ -86,6 +87,7 @@ class VacancyEditPage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
         # блок "Описание вакансии"
 
+        Button.button_btn_edit_click(browser, root_xpath='//div[@id="about-company"]')
         iframe = self.browser.find_element(*VacancyAddEditPageLocators.IFRAME_CKEDITOR_ABOUT_COMPANY)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
         CKEditor = self.browser.find_element(*VacancyAddEditPageLocators.CKEDITOR)
@@ -93,6 +95,7 @@ class VacancyEditPage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
         # блок "О компании"
 
+        Button.button_btn_edit_click(browser, root_xpath='//div[@id="working-conditions"]')
         iframe = self.browser.find_element(*VacancyAddEditPageLocators.IFRAME_CKEDITOR_WORKING_CONDITIONS)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
         CKEditor = self.browser.find_element(*VacancyAddEditPageLocators.CKEDITOR)
@@ -100,6 +103,7 @@ class VacancyEditPage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
         # блок "Условия работы"
 
+        Button.button_btn_edit_click(browser, root_xpath='//div[@id="tasks"]')
         iframe = self.browser.find_element(*VacancyAddEditPageLocators.IFRAME_CKEDITOR_TASKS)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
         CKEditor = self.browser.find_element(*VacancyAddEditPageLocators.CKEDITOR)
@@ -107,6 +111,7 @@ class VacancyEditPage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
         # блок "Задачи"
 
+        Button.button_btn_edit_click(browser, root_xpath='//div[@id="requirements-candidate"]')
         iframe = self.browser.find_element(*VacancyAddEditPageLocators.IFRAME_CKEDITOR_REQUIREMENTS)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
         CKEditor = self.browser.find_element(*VacancyAddEditPageLocators.CKEDITOR)
@@ -114,6 +119,7 @@ class VacancyEditPage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
         # блок "Требования к соискателю"
 
+        Button.button_btn_edit_click(browser, root_xpath='//div[@id="additional-information"]')
         iframe = self.browser.find_element(*VacancyAddEditPageLocators.IFRAME_CKEDITOR_ADDITIONAL_INFORMATION)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
         CKEditor = self.browser.find_element(*VacancyAddEditPageLocators.CKEDITOR)

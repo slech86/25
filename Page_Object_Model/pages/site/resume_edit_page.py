@@ -19,7 +19,6 @@ class ResumeEditPage(BasePage):
         Button.button_btn_edit_click(browser, root_xpath=root_xpath)
 
     def change_data_in_all_fields(self, browser):  # изменение данных во всех полях
-        self.start_editing_block_personal_information(browser)  # начать редактировать блок "Личная информация"
         current_dir = os.path.abspath(os.path.dirname(__file__))
         file_path = os.path.join(current_dir, 'фото 2 120x150.png')
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_PHOTO).send_keys(file_path)
@@ -61,6 +60,7 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.READY_TO_RELOCATE).click()
         # блок "Личная информация"
 
+        Button.button_btn_edit_click(browser, root_xpath='//div[@id="contact-information"]')
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_PHONE_1).clear()
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_PHONE_1).send_keys(TestDataEditing.phone_1_resume)
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_PHONE_2).clear()
@@ -78,6 +78,7 @@ class ResumeEditPage(BasePage):
         # self.browser.find_element(*ResumeAddEditPageLocators.FIELD_VK).send_keys('_editing/')
         # блок "Контактная информация"
 
+        Button.button_btn_edit_click(browser, root_xpath='//div[@id="desired-job-title"]')
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_JOB_TITLE).send_keys('_editing')
         self.browser.find_element(*ResumeAddEditPageLocators.CATEGORY_RESUME_SALES_CUSTOMER_MANAGEMENT).click()
         subcategories = WebDriverWait(self.browser, 7).until(EC.visibility_of_element_located(ResumeAddEditPageLocators.SUBCATEGORIES_ACCOUNT_MANAGER))  # "Подкатегории"
@@ -94,7 +95,7 @@ class ResumeEditPage(BasePage):
         time.sleep(1)
         # блок "Желаемая должность"
 
-        # self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_EDIT_IN_SKILLS_AND_ACHIEVEMENTS_BLOCK).click()
+        Button.button_btn_edit_click(browser, root_xpath='//div[@id="skills-and-achievements"]')
         iframe = self.browser.find_element(*ResumeAddEditPageLocators.IFRAME_CKEDITOR_SKILLS_AND_ACHIEVEMENTS)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
         CKEditor = self.browser.find_element(*ResumeAddEditPageLocators.CKEDITOR)
@@ -102,6 +103,7 @@ class ResumeEditPage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
         # блок "Навыки и достижения"
 
+        Button.button_btn_edit_click(browser, root_xpath='//div[@id="work-experience"]')
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_COMPANY_NAME).send_keys('_editing')
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_SITE_COMPANY).send_keys('_editing')
         self.browser.find_element(*ResumeAddEditPageLocators.SCOPE_OF_COMPANY_SECURITY_SERVICE).click()
@@ -166,10 +168,12 @@ class ResumeEditPage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
         # блок "Опыт работы"
 
+        Button.button_btn_edit_click(browser, root_xpath='//div[@id="gambling-experience"]')
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_WORK_EXPERIENCE_GAMBLING_INDUSTRY).click()
         self.browser.find_element(*ResumeAddEditPageLocators.EXPERIENCE_2_TO_5_YEARS).click()
         # блок "Опыт работы в игорной индустрии"
 
+        Button.button_btn_edit_click(browser, root_xpath='//div[@id="education"]')
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_NAME_OF_INSTITUTION).send_keys('_editing')
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_LEVEL_OF_EDUCATION).click()
         self.browser.find_element(*ResumeAddEditPageLocators.INCOMPLETE_HIGHER_EDUCATION).click()
@@ -259,6 +263,7 @@ class ResumeEditPage(BasePage):
         # блок "Образование"
 
         # блок "Курсы и сертификаты"
+        Button.button_btn_edit_click(browser, root_xpath='//div[@id="courses-and-certificates"]')
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_NAME_OF_INSTITUTION_OR_CERTIFICATE).send_keys('_editing')
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_MONTH_COURSES_START).click()
         self.browser.find_element(*ResumeAddEditPageLocators.MONTH_SEPTEMBER_COURSES_START).click()
@@ -311,6 +316,7 @@ class ResumeEditPage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
         # блок "Курсы и сертификаты"
 
+        Button.button_btn_edit_click(browser, root_xpath='//div[@id="knowledge-of-languages"]')
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_LANGUAGE_1).click()
         self.browser.find_element(*ResumeAddEditPageLocators.ENGLISH_LANGUAGE_1).click()
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_LEVEL_OF_LANGUAGE_1).click()
@@ -329,10 +335,12 @@ class ResumeEditPage(BasePage):
         self.browser.find_element(*ResumeAddEditPageLocators.MIDDLE_LEVEL_3).click()
         # блок "Знание языков"
 
+        Button.button_btn_edit_click(browser, root_xpath='//div[@id="disability"]')
         self.browser.find_element(*ResumeAddEditPageLocators.RADIO_I_HAVE_DISABILITY).click()
         self.browser.find_element(*ResumeAddEditPageLocators.FIELD_DESCRIPTION_OF_DISABILITY).send_keys(TestDataEditing.description_of_disability)
         # блок "Инвалидность"
 
+        Button.button_btn_edit_click(browser, root_xpath='//div[@id="additional-information"]')
         iframe = self.browser.find_element(*ResumeAddEditPageLocators.IFRAME_CKEDITOR_ADDITIONAL_INFORMATION)
         self.browser.switch_to.frame(iframe)  # вход в фрейм
         CKEditor = self.browser.find_element(*ResumeAddEditPageLocators.CKEDITOR)
@@ -340,6 +348,7 @@ class ResumeEditPage(BasePage):
         self.browser.switch_to.default_content()  # выход из фрейма
         # блок "Дополнительная информация"
 
+        Button.button_btn_edit_click(browser, root_xpath='//div[@id="resume-visibility-settings"]')
         self.browser.find_element(*ResumeAddEditPageLocators.DROPDOWN_JOB_SEARCH_STATUS).click()
         self.browser.find_element(*ResumeAddEditPageLocators.WORKING_BUT_OPEN_TO_SUGGESTIONS).click()
         # блок "Статус поиска работы"

@@ -34,6 +34,7 @@ def test_editing_resume(browser, language):  # редактирование ре
 
     resume_edit_page = ResumeEditPage(browser, browser.current_url)
     page.choice_of_russian_language_in_multi_language_forms()  # выбор русского языка в мультиязычных формах
+    resume_edit_page.start_editing_block_personal_information(browser)  # начать редактировать блок "Личная информация"
     resume_edit_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
     resume_edit_page.change_data_in_all_fields(browser)  # изменение данных во всех полях
     # resume_edit_page.percentage_check_of_resume_completion()  # проверка заполнения резюме в процентах
