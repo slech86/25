@@ -68,6 +68,7 @@ class JobSeekerRegistrationEditPageLocators:
 
 
 class JobSeekerPersonalCabinetPageLocators:
+    H1 = (By.CSS_SELECTOR, 'h1')
     MY_RESUME = (By.XPATH, ('//a[contains(@href, "/resume/my")]/div[@class="employer-card"]'))
     MY_RESPONSES = (By.XPATH, ('//a[contains(@href, "/vacancy/feedback")]/div[@class="employer-card"]'))
     PERSONAL_DATA = (By.XPATH, ('//a[contains(@href, "/job-seeker/edit")]/div[@class="employer-card"]'))
@@ -116,6 +117,8 @@ class ResumeAddEditPageLocators:
         locators['button_add_block'] = (By.CSS_SELECTOR, '#content-' + ResumeAddEditPageLocators.id_language + ' #' + id_block + ' .icon-plus')
         return locators
     CROSS_IN_COPY_TO_OTHER_LANGUAGES = (By.CSS_SELECTOR, '.copy-languages-toggle-tooltip')
+    BUTTON_COPY_TO_OTHER_LANGUAGES = (By.CSS_SELECTOR, '.copy-languages-block a.btn')
+    LOADING_SPIN = (By.XPATH, '//form[@class="lc-form needs-validation work-experience-inner-form loading"]')
     TAB = (By.CSS_SELECTOR, '[id="' + id_language + '-tab"]')
     FIELD_PHOTO = (By.CSS_SELECTOR, '#resumenew-photo')
     FIELD_NAME = (By.CSS_SELECTOR, '#' + input_prefix + 'name')
@@ -156,7 +159,7 @@ class ResumeAddEditPageLocators:
     # блок "Личная информация"
 
     # блок "Контактная информация"
-    FIELD_PHONE_1 = (By.CSS_SELECTOR, ('[name="ResumeNew[descriptions][' + id_language + '][phone]"]'))
+    FIELD_PHONE_1 = (By.CSS_SELECTOR, ('[name="ResumeNew[descriptions][' + id_language + '][phone1]"]'))
     BUTTON_ADD_PHONE = (By.XPATH, ('(//div[@id = "content-' + id_language + '"]//div[@id = "contact-information"]//button[contains(@class, "addPhone")])[1]'))
     FIELD_PHONE_2 = (By.CSS_SELECTOR, ('[name="ResumeNew[descriptions][' + id_language + '][phone2]"]'))
 
@@ -476,9 +479,9 @@ class ResumeAddEditPageLocators:
     IFRAME_CKEDITOR_ADDITIONAL_INFORMATION = (By.XPATH, ('//div[@id="cke_' + input_prefix + 'additionally_information"]//iframe'))
     # блок "Дополнительная информация"
 
-    DROPDOWN_JOB_SEARCH_STATUS = (By.CSS_SELECTOR, ('[data-id="resumenew-job_search_status"]'))
-    ACTIVELY_LOOKING_FOR_JOB = (By.XPATH, '//div[contains(@class, "field-resumenew-job_search_status required")]//li[3]')
-    WORKING_BUT_OPEN_TO_SUGGESTIONS = (By.XPATH, ('//div[contains(@class, "field-resumenew-job_search_status required")]//li[2]'))
+    DROPDOWN_JOB_SEARCH_STATUS = (By.CSS_SELECTOR, ('[data-id="resumenew-descriptions-1-job_searching_status"]'))
+    ACTIVELY_LOOKING_FOR_JOB = (By.XPATH, '//div[contains(@class, "field-resumenew-descriptions-1-job_searching_status required")]//li[3]')
+    WORKING_BUT_OPEN_TO_SUGGESTIONS = (By.XPATH, ('//div[contains(@class, "field-resumenew-descriptions-1-job_searching_status required")]//li[2]'))
     # блок "Статус поиска работы"
 
     RESUME_COMPLETED_ON = (By.CSS_SELECTOR, ('.post-resume-status span.resume-rate'))

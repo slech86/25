@@ -36,7 +36,7 @@
 #
 #         add_resume_page = ResumeAddPage(browser, browser.current_url)
 #         page.choice_of_russian_language_in_multi_language_forms()  # выбор русского языка в мультиязычных формах
-#         add_resume_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
+#         add_resume_page.hiding_opening_button_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
 #         add_resume_page.filling_in_required_fields(TestData.job_title_resume_preview)  # заполнение обязательных полей
 #         add_resume_page.go_to_preview_page()  # переход на страницу предпросмотра
 #

@@ -8,6 +8,7 @@ from Page_Object_Model.pages.admin_panel.admin_page import AdminPage
 from Page_Object_Model.pages.admin_panel.admin_vacancy_edit_page import AdminVacancyEditPage
 from Page_Object_Model.singleton import Singleton
 from Page_Object_Model.tests.company.vacancy import _resources_vacancy
+from Page_Object_Model.data_for_testing import TestData
 
 
 def test_editing_vacancies(browser, language):  # редактирование вакансии
@@ -44,7 +45,7 @@ def test_editing_vacancies(browser, language):  # редактирование �
     admin_page.admin_authorization()
     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"
     admin_page.go_to_vacancies_page()  # переход на страницу вакансий
-    admin_page.vacancy_search_by_job_title_after_editing()  # поиск вакансии по названию должности после редактирования
+    admin_page.vacancy_search_by_job_title(TestData.job_title_vacancy)  # поиск вакансии по названию должности
     admin_page.checking_that_vacancy_status_is_on_moderated()  # проверка что статус вакансии 'На модерацию'
     admin_page.go_to_object_editing_page()  # переход на страницу редактирования вакансии
 

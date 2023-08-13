@@ -44,7 +44,7 @@ class TestAddingResumeToDraft:
         my_resume_page.go_to_add_resume_page()  # переход на страницу "Разместить резюме"
 
         add_resume_page = ResumeAddPage(browser, browser.current_url)
-        add_resume_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
+        add_resume_page.hiding_opening_button_copy_to_other_languages()  # скрытие-открытие кнопки "Скопировать на другие языки"
         page.choice_of_russian_language_in_multi_language_forms()  # выбор русского языка в мультиязычных формах
         add_resume_page.filling_in_field_job_title_for_draft()  # заполнение поля "Название должности" для черновика
         add_resume_page.adding_resume_to_draft()  # добавление резюме в черновик

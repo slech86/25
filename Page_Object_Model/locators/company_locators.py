@@ -119,6 +119,7 @@ class CompanyPreviewPageLocators:
 
 
 class CompanyPersonalCabinetPageLocators():
+    H1 = (By.CSS_SELECTOR, ('h1'))
     MY_VACANCIES = (By.XPATH, ('//a[contains(@href, "/vacancy/my")]/div[@class="employer-card"]'))
     PERSONAL_DATA = (By.XPATH, ('//a[contains(@href, "/company/edit")]/div[@class="employer-card"]'))
     SERVICES_AND_PRICES = (By.XPATH, ('//a[contains(@href, "/prices")]/div[@class="employer-card"]'))

@@ -66,7 +66,9 @@ def test_adding_vacancies(browser, language):  # добавление вакан
     url_Vacancy_Page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/vacancy/{singleton.id_vacancies}"
     vacancy_page = VacancyPage(browser, url_Vacancy_Page)
     vacancy_page.open()
-    vacancy_page.checking_opening_of_page_of_an_unpublished_vacancy(language)  # проверка открытия страницы не опубликованной вакансии
+    # редирект на страницу персонального кабинета
+    company_personal_cabinet_page = CompanyPersonalCabinetPage(browser, browser.current_url)
+    company_personal_cabinet_page.checking_opening_of_page_of_personal_office(language)  # проверка открытия страницы персонального кабинета
 
     admin_page.open()
     admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"

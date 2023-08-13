@@ -10,6 +10,7 @@ from Page_Object_Model.pages.site.resume_edit_page import ResumeEditPage
 from Page_Object_Model.pages.admin_panel.admin_resume_edit_page import AdminResumeEditPage
 from Page_Object_Model.singleton import Singleton
 from Page_Object_Model.tests.job_seeker.resume import _resources_resume
+from Page_Object_Model.data_for_testing import TestData
 
 
 @pytest.mark.job_seeker
@@ -35,10 +36,13 @@ def test_editing_resume(browser, language):  # редактирование ре
     resume_edit_page = ResumeEditPage(browser, browser.current_url)
     page.choice_of_russian_language_in_multi_language_forms()  # выбор русского языка в мультиязычных формах
     resume_edit_page.start_editing_block_personal_information(browser)  # начать редактировать блок "Личная информация"
-    resume_edit_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
+    resume_edit_page.hiding_opening_button_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
     resume_edit_page.change_data_in_all_fields(browser)  # изменение данных во всех полях
     # resume_edit_page.percentage_check_of_resume_completion()  # проверка заполнения резюме в процентах
     # resume_edit_page.checking_status_level_filling_resume(language)  # проверка статуса уровня заполнения резюме
+    resume_edit_page.hiding_opening_button_copy_to_other_languages()  # скрытие-открытие кнопки "Скопировать на другие языки"
+    resume_edit_page.copy_to_other_languages()  # скопировать на другие языки
+    resume_edit_page.hiding_opening_button_copy_to_other_languages()  # скрытие-открытие кнопки "Скопировать на другие языки"
     resume_edit_page.submitting_resume_change_for_publication()  # отправка изменений резюме на публикацию
 
     my_resume_page.waiting_for_my_resumes_page_to_open(language)  # ожидание открытия страницы 'Мои резюме'
@@ -52,7 +56,7 @@ def test_editing_resume(browser, language):  # редактирование ре
     admin_page.go_to_resumes_page()  # переход на страницу резюме
 
     admin_resumes_page = AdminResumesPage(browser, browser.current_url)
-    admin_resumes_page.resume_search_by_job_title_after_editing()  # поиск резюме по названию должности после редактирования
+    admin_resumes_page.resume_search_by_job_title(TestData.job_title_resume)  # поиск резюме по названию должности
     admin_resumes_page.checking_that_resume_status_is_on_moderated()  # проверка что статус резюме 'На модерацию'
     admin_resumes_page.go_to_object_editing_page()  # переход на страницу редактирования резюме
 

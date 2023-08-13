@@ -54,12 +54,15 @@ class TestResumeAdd:
 
         add_resume_page = ResumeAddPage(browser, browser.current_url)
         page.choice_of_russian_language_in_multi_language_forms()  # выбор русского языка в мультиязычных формах
-        add_resume_page.hiding_copy_to_other_languages()  # скрытие кнопки "Скопировать на другие языки"
+        add_resume_page.hiding_opening_button_copy_to_other_languages()  # скрытие-открытие кнопки "Скопировать на другие языки"
         add_resume_page.filling_in_required_fields(TestData.job_title_resume)  # заполнение обязательных полей
         browser.execute_script("window.scrollBy(0, -4000);")
         add_resume_page.filling_in_optional_fields()  # заполнение не обязательных полей
         # add_resume_page.percentage_check_of_resume_completion()  # проверка заполнения резюме в процентах
         # add_resume_page.checking_status_level_filling_resume(language)  # проверка статуса уровня заполнения резюме
+        add_resume_page.hiding_opening_button_copy_to_other_languages()  # скрытие-открытие кнопки "Скопировать на другие языки"
+        add_resume_page.copy_to_other_languages()  # скопировать на другие языки
+        add_resume_page.hiding_opening_button_copy_to_other_languages()  # скрытие-открытие кнопки "Скопировать на другие языки"
         add_resume_page.submitting_resume_for_publication()  # отправка резюме на публикацию
 
         my_resume_page.waiting_for_my_resumes_page_to_open(language)  # ожидание открытия страницы 'Мои резюме'
@@ -82,7 +85,9 @@ class TestResumeAdd:
         url_resume_page = f"{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}/resume/{singleton.id_resume[0]}"
         resume_page = ResumePage(browser, url_resume_page)
         resume_page.open()
-        resume_page.checking_opening_of_resume_page_for_moderation(language)  # проверка открытия страницы резюме на модерации
+        # редирект на страницу персонального кабинета
+        job_seeker_personal_cabinet_page = JobSeekerPersonalCabinetPage(browser, browser.current_url)
+        job_seeker_personal_cabinet_page.checking_opening_of_page_of_personal_office(language)  # проверка открытия страницы персонального кабинета
 
         admin_page.open()
         admin_page.opening_dropdown_list_work()  # открытие выпадающего списка "Work"

@@ -241,7 +241,7 @@ function filter_table(elem) {
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 04-Aug-2023 at 18:42:40 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
+    <p>Report generated on 14-Aug-2023 at 00:12:43 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -257,8 +257,8 @@ function filter_table(elem) {
         <td>Python</td>
         <td>3.9.6</td></tr></table>
     <h2>Summary</h2>
-    <p>4 tests ran in 38.83 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">4 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">0 rerun</span>
+    <p>1 tests ran in 95.32 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">1 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">1 rerun</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -269,39 +269,22 @@ function filter_table(elem) {
           <th>Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
-      <tbody class="passed results-table-row">
+      <tbody class="rerun results-table-row">
         <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/password/password_recovery/test_password_recovery.py::TestPasswordRecovery::test_precondition</td>
-          <td class="col-duration">4.46</td>
+          <td class="col-result">Rerun</td>
+          <td class="col-name">tests/job_seeker/resume/add_edit/test_3_1_resume_add.py::TestResumeAdd::test_adding_resume</td>
+          <td class="col-duration">76.69</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
+            <div class="log">self = &lt;Page_Object_Model.tests.job_seeker.resume.add_edit.test_3_1_resume_add.TestResumeAdd object at 0x1065879a0&gt;<br/>browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;2dde0b90c2fce6c46bdf61c29bbc2515&quot;)&gt;, language = &#x27;&#x27;<br/><br/>    def test_adding_resume(self, browser, language):  # добавление резюме<br/>        url_page = f&quot;{UrlStartPage.prefix}logincasino.work{UrlStartPage.suffix}{language}{UrlStartPage.suffix_page}&quot;<br/>        page = OllPage(browser, url_page)<br/>        # browser.maximize_window()<br/>        page.open()<br/>        page.opening_pop_up_for_login()  # нажатие на кнопку для открытия pop-up окна для регистрации или авторизации<br/>        page.user_authorization(_resources_resume.user_resume)  # авторизация пользователя<br/>        page.opening_authorized_user_menu()  # нажатие на кнопку для открытия меню авторизированного пользователя<br/>        page.go_to_personal_cabinet_page()  # нажатие на кнопку для перехода на страницу личного кабинета<br/>    <br/>        job_seeker_personal_cabinet_page = JobSeekerPersonalCabinetPage(browser, browser.current_url)<br/>        job_seeker_personal_cabinet_page.go_to_my_resume_page()  # переход на страницу &quot;Мои резюме&quot;<br/>    <br/>        my_resume_page = MyResumePage(browser, browser.current_url)<br/>        number_of_resumes_created = my_resume_page.obtaining_number_of_resumes_to_create()  # получение количества резюме для создания<br/>        my_resume_page.go_to_add_resume_page()  # переход на страницу &quot;Разместить резюме&quot;<br/>    <br/>        add_resume_page = ResumeAddPage(browser, browser.current_url)<br/>        page.choice_of_russian_language_in_multi_language_forms()  # выбор русского языка в мультиязычных формах<br/>        add_resume_page.hiding_opening_button_copy_to_other_languages()  # скрытие-открытие кнопки &quot;Скопировать на другие языки&quot;<br/>        add_resume_page.filling_in_required_fields(TestData.job_title_resume)  # заполнение обязательных полей<br/>        browser.execute_script(&quot;window.scrollBy(0, -4000);&quot;)<br/>        add_resume_page.filling_in_optional_fields()  # заполнение не обязательных полей<br/>        # add_resume_page.percentage_check_of_resume_completion()  # проверка заполнения резюме в процентах<br/>        # add_resume_page.checking_status_level_filling_resume(language)  # проверка статуса уровня заполнения резюме<br/>        add_resume_page.hiding_opening_button_copy_to_other_languages()  # скрытие-открытие кнопки &quot;Скопировать на другие языки&quot;<br/>&gt;       add_resume_page.copy_to_other_languages()  # скопировать на другие языки<br/><br/>tests/job_seeker/resume/add_edit/test_3_1_resume_add.py:64: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;Page_Object_Model.pages.site.resume_add_page.ResumeAddPage object at 0x1066e8670&gt;<br/><br/>    def copy_to_other_languages(self):  # скопировать на другие языки<br/>        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_COPY_TO_OTHER_LANGUAGES).click()<br/>        time.sleep(1)<br/>&gt;       assert self.is_disappeared(*ResumeAddEditPageLocators.LOADING_SPIN, timeout=10), &quot;Копирование на другие языки не произошло&quot;<br/><span class="error">E       AssertionError: Копирование на другие языки не произошло</span><br/><br/>pages/site/resume_add_page.py:23: AssertionError<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">tests/password/password_recovery/test_password_recovery.py::TestPasswordRecovery::test_submitting_password_recovery_request</td>
-          <td class="col-duration">9.23</td>
+          <td class="col-name">tests/job_seeker/resume/add_edit/test_3_1_resume_add.py::TestResumeAdd::test_precondition</td>
+          <td class="col-duration">5.86</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/password/password_recovery/test_password_recovery.py::TestPasswordRecovery::test_password_recovery_from_an_email</td>
-          <td class="col-duration">10.83</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/password/password_recovery/test_password_recovery.py::TestPasswordRecovery::test_login_with_new_password</td>
-          <td class="col-duration">8.52</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody></table></body></html>
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>use mailbox: test_automation+job_seeker_resume@1secmail.com
+<br/></div></td></tr></tbody></table></body></html>

@@ -11,3 +11,14 @@ class CompanyPersonalCabinetPage(BasePage):
 
     def go_to_services_and_prices_page(self):  # переход на страницу "Услуги и цены"
         self.browser.find_element(*CompanyPersonalCabinetPageLocators.SERVICES_AND_PRICES).click()
+
+    def checking_opening_of_page_of_personal_office(self, language):  # проверка открытия страницы персонального кабинета
+        h1 = self.browser.find_element(*CompanyPersonalCabinetPageLocators.H1).text
+        if language == "":
+            assert h1 == 'Личный кабинет', "Не корректный h1"
+        elif language == "/ua":
+            assert h1 == 'Особистий кабінет', "Не корректный h1"
+        elif language == "/en":
+            assert h1 == 'Personal Account', "Не корректный h1"
+        elif language == "/pl":
+            assert h1 == 'Personal Account', "Не корректный h1"

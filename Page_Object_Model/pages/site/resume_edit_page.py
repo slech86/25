@@ -10,8 +10,14 @@ from Page_Object_Model.elements.button import Button
 
 
 class ResumeEditPage(BasePage):
-    def hiding_copy_to_other_languages(self):  # скрытие кнопки "Скопировать на другие языки"
+    def hiding_opening_button_copy_to_other_languages(self):  # скрытие-открытие кнопки "Скопировать на другие языки"
         self.browser.find_element(*ResumeAddEditPageLocators.CROSS_IN_COPY_TO_OTHER_LANGUAGES).click()
+        time.sleep(0.5)
+
+    def copy_to_other_languages(self):  # скопировать на другие языки
+        self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_COPY_TO_OTHER_LANGUAGES).click()
+        time.sleep(1)
+        assert self.is_disappeared(*ResumeAddEditPageLocators.LOADING_SPIN, timeout=10), "Копирование на другие языки не произошло"
 
     @staticmethod
     def start_editing_block_personal_information(browser):  # начать редактировать блок "Личная информация"
@@ -381,5 +387,5 @@ class ResumeEditPage(BasePage):
         self.browser.switch_to.window(self.browser.window_handles[1])
 
     def submitting_resume_change_for_publication(self,):  # отправка изменений резюме на публикацию
-        time.sleep(3)
+        time.sleep(1)
         self.browser.find_element(*ResumeAddEditPageLocators.BUTTON_PUBLISH).click()

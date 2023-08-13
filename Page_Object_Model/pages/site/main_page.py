@@ -11,13 +11,13 @@ from Page_Object_Model.utility.utility import generate_alphanum_random_string
 class MainPage(BasePage):
     def waiting_for_main_page_to_open(self, language):  # ожидание открытия главной страницы
         if language == "":
-            WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Поиск работы в сфере игорного бизнеса в Украине'))
+            WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Поиск работы в сфере IT, Gambling та Digital!'))
         elif language == "/ua":
-            WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Робота у гральному бізнесі та IT'))
+            WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Пошук роботи в IT, Gambling та Digital!'))
         elif language == "/en":
-            WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Work in the Gambling Business and IT'))
+            WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Job searching in IT, Gambling, and Digital!'))
         elif language == "/pl":
-            WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Praca w branży hazardowej i IT'))
+            WebDriverWait(self.browser, 17).until(EC.text_to_be_present_in_element((MainPageLocators.H1), 'Szukam pracy w IT, hazardzie i dziedzinie cyfrowej!'))
 
     def confirmation_opening_of_main_page(self, language):  # подтверждение открытия главной страницы
         if language == '':
