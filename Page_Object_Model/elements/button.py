@@ -1,9 +1,3 @@
-# button type=button click by label
-#     [Arguments]    ${text}    ${count}=1    ${root_xpath}=${EMPTY}
-#     ${locator}    set variable    xpath=(${root_xpath}//button[@type="button" and contains(@aria-label, "${text}")])[${count}]
-#     Scroll Page To Element XPATH  ${locator}
-#     click element    ${locator}
-
 from Page_Object_Model.pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 
