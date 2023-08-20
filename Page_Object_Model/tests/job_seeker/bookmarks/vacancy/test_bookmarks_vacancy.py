@@ -20,3 +20,7 @@ class TestBookmarksVacancy:
         vacancies_page.add_vacancy_to_bookmarks(browser)  # добавить вакансию в закладки (первую в списке)
         page = OllPage(browser, browser.current_url)
         page.user_authorization(user)  # авторизация пользователя
+        vacancies_page.go_to_first_vacancy_page_in_list()  # нажатие на блок первой вакансии в списке для перехода на ее страницу
+        vacancies_page.add_vacancy_to_bookmarks(browser)  # добавить вакансию в закладки (первую в списке)
+
+        breakpoint()

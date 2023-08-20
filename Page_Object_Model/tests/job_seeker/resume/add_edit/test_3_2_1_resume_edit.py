@@ -64,3 +64,4 @@ def test_editing_resume(browser, language):  # редактирование ре
     admin_resume_edit_page.change_resume_status_to_published()  # изменение статуса резюме на 'Опубликовано'
 
     admin_resumes_page.waiting_to_save_status_and_open_resume_page()  # ожидание сохранения статуса и открытия страницы всех рузюме
+    admin_resumes_page.resume_search_by_job_title_after_editing()  # поиск резюме по названию должности после редактирования
